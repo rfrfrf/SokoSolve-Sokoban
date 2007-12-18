@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+public enum CellStates
+    {
+        Void,
+        Wall,
+        Floor,
+        FloorCrate,
+        FloorGoal,
+        FloorGoalCrate,
+        FloorPlayer,
+        FloorGoalPlayer
+    }
+-->
+<Resources Directory="$Graphics\Tiles\Static" Description="16x16 Simple Test Set">
+	<Resource ID="0" Name="Void" Filename="SimpleVoid16x16.png"/>
+	<Resource ID="1" Name="Wall" Filename="SimpleWall16x16.png"/>
+	<Resource ID="2" Name="Floor" Filename="SimpleFloor16x16.png"/>
+	<Resource ID="3" Name="FloorCrate" Filename="SimpleCrate16x16.png"/>
+	<Resource ID="4" Name="FloorGoal" Filename="SimpleGoal16x16.png"/>
+	<Resource ID="5" Name="FloorGoalCrate" Filename="SimpleCrateGoal16x16.png"/>
+	<Resource ID="6" Name="FloorPlayer" Filename="SimplePlayer16x16.png"/>
+	<Resource ID="7" Name="FloorGoalPlayer" Filename="SimplePlayer16x16.png"/>
+</Resources>

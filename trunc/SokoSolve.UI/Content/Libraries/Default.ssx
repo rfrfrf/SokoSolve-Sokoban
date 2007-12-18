@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SokobanLibrary xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
+	<Details>
+		<Name>Default Library Collection</Name>
+	</Details>
+	<Categories>
+		<Category CategoryID="Categories.MasterList" >
+			<CategoryDescription License="GPL" Date="2007-01-01T10:10:00">
+				<Name>Master list</Name>
+				<Description>Description field</Description>
+				<Comments>General comments</Comments>
+				<Author Email="guy@langston.org.za" Homepage="http://www.guylangston.net" Name="Guy Langston"/>
+			</CategoryDescription>
+		</Category>
+		<Category CategoryID="Categories.MasterList.Easy" CategoryParentREF="Categories.MasterList" >
+			<CategoryDescription License="GPL" Date="2007-01-01T10:10:00">
+				<Name>Master list</Name>
+				<Description>Description field</Description>
+				<Comments>General comments</Comments>
+				<Author Email="guy@langston.org.za" Homepage="http://www.guylangston.net" Name="Guy Langston"/>
+			</CategoryDescription>
+		</Category>
+	</Categories>
+	<Puzzles>
+		<Puzzle PuzzleID="1" CategoryREF="Categories.MasterList.Easy">
+			<PuzzleDescription>
+				<Name>Master list</Name>
+				<Description>Description field</Description>
+				<Comments>General comments</Comments>
+				<Author Email="guy@langston.org.za" Homepage="http://www.guylangston.net" Name="Guy Langston"/>
+					 </PuzzleDescription>
+			<Maps>
+				<Map>
+					<Row >~~~###~~~~~</Row>
+					<Row >~~##.#~####</Row>
+					<Row >~##..###..#</Row>
+					<Row >##.X......#</Row>
+					<Row >#...PX.#..#</Row>
+					<Row >###.X###..#</Row>
+					<Row >~~#..#OO..#</Row>
+					<Row >~##.##O#.##</Row>
+					<Row >~#......##~</Row>
+					<Row >~#.....##~~</Row>
+					<Row >~#######~~~</Row>
+					<Solutions>
+						<Solution>
+							<Steps>UUUUUUUUUUUDUDUDDUDUDUUDUDUDUDUDUDUDUD</Steps>
+						</Solution>
+					</Solutions>
+					<MapDetails/>
+				</Map>
+			</Maps>
+		</Puzzle>
+		<Puzzle PuzzleID="2" CategoryREF="Categories.MasterList">
+			<PuzzleDescription/>
+			<Maps>
+				<Map>
+					<Row >~~~###~~~~~</Row>
+					<Row >~~##.#~####</Row>
+					<Row >~##..###..#</Row>
+					<Row >##.X......#</Row>
+					<Row >#...PX.#..#</Row>
+					<Row >###.X###..#</Row>
+					<Row >~~#..#OO..#</Row>
+					<Row >~##.##O#.##</Row>
+					<Row >~#......##~</Row>
+					<Row >~#.....##~~</Row>
+					<Row >~#######~~~</Row>
+					<Solutions>
+						<Solution>
+							<Steps>UUUUUUUUUUUDUDUDDUDUDUUDUDUDUDUDUDUDUD</Steps>
+						</Solution>
+					</Solutions>
+					<MapDetails/>
+				</Map>
+			</Maps>
+		</Puzzle>
+		<Puzzle PuzzleID="3" CategoryREF="Categories.MasterList.Easy">
+			<PuzzleDescription/>
+			<Maps>
+				<Map>
+					<Row >~~~###~~~~~</Row>
+					<Row >~~##.#~####</Row>
+					<Row >~##..###..#</Row>
+					<Row >##.X......#</Row>
+					<Row >#...PX.#..#</Row>
+					<Row >###.X###..#</Row>
+					<Row >~~#..#OO..#</Row>
+					<Row >~##.##O#.##</Row>
+					<Row >~#......##~</Row>
+					<Row >~#.....##~~</Row>
+					<Row >~#######~~~</Row>
+					<Solutions>
+						<Solution>
+							<Steps>UUUUUUUUUUUDUDUDDUDUDUUDUDUDUDUDUDUDUD</Steps>
+						</Solution>
+					</Solutions>
+					<MapDetails/>
+				</Map>
+			</Maps>
+		</Puzzle>
+	</Puzzles>
+</SokobanLibrary>

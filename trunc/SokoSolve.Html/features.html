@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+		<title>No title</title>
+		<link type="text/css" rel="Stylesheet" href="style.css" />
+		<style type="text/css">
+		    .statusU { color: red; }
+		    .statusP { color: orange; }
+		    .statusC { color: green; }
+		</style>
+	</head>
+	<body>
+		<h1>Feature List</h1>
+		<h2> GameUI</h2>
+		<ul>
+			<li>Complete mouse movement <span class="statusP">[PARTIAL]</span></li>
+			<li>Solutions:
+    <ul>
+					<li>Playout solutions&nbsp; <span class="statusU">[UNIMPLEMENTED]</span>&nbsp;</li><li>Initial suggestions (quickly highlight crates that are pushed, like
+        thefirst 5 or so...)&nbsp; <span class="statusU">[UNIMPLEMENTED]</span>&nbsp;</li></ul>
+			</li>
+			<li>Game Preferences (change the skin), stored in profile.&nbsp;
+        <span class="statusU">[UNIMPLEMENTED]</span>&nbsp;</li>
+        <li>Add toolbar (up, down, left, right, restart, undo, hint, play solution,help/ui features) <span class="statusP">[PARTIAL]</span></li>
+        <li>Static deadmap hightlighting (static, current-depth0, current-depth1[isthis possible] )&nbsp; <span class="statusU">[UNIMPLEMENTED]</span>&nbsp;</li>
+        <li>CrateGraph Stacked bar graph with CountCrateGoal/CountGoal %&nbsp; <span class="statusU">[UNIMPLEMENTED]</span>&nbsp;</li><li>Promote the status region to animated fonts.
+			<ul>
+					<li>Blocked fonts (shown in a grid) for steps, pushes, undos, restarts&nbsp; <span class="statusU">[UNIMPLEMENTED]</span>&nbsp;</li><li>Time should grow and change colour (every 1min is gets bigger,
+    withquick beeps every 30 secs)&nbsp; <span class="statusU">[UNIMPLEMENTED]</span>&nbsp;</li></ul>
+			</li>
+			<li>GameUI should name features(animations, sounds, etc) and allow them
+    tobe disabled.
+    <ul>
+					<li>GameUI.Effects {On, Off, OffInherit}&nbsp; <span class="statusU">[UNIMPLEMENTED]</span>&nbsp;</li><li>GameUI.Effects.Time.FontSizeBounce {On, Off, OffInherit} <span class="statusU">[UNIMPLEMENTED]</span>&nbsp;</li><li>GameUI.Effects.Time.Sound.30sec {On, Off, OffInherit} <span class="statusU">[UNIMPLEMENTED]</span>&nbsp;</li></ul>
+			</li>
+    <li>Bookmarks, stored in the profile, for puzzles, with quick names. <span class="statusU">[UNIMPLEMENTED]</span>&nbsp;</li>
+</ul>
+		<h2> Profiles</h2>
+		<ul>
+			<li>User OS user (machine\guy) allow many game profiles (Guy, Caroline,
+    Brett, etc)</li>
+			<li>Profiles\User[Name=XXX]\Settings[Name=Skin]</li>
+			<li>Profiles\User[Name=XXX]\PuzzleHistory\Puzzle[Name, Date, steps, pushes,
+    undos, restarts, duration]/Solution</li>
+		</ul>
+		<h2> Library</h2>
+		<ul>
+			<li>Overlay the profile information on the puzzle.</li>
+			<li>Add a green tick for puzzle with solutions</li>
+			<li>Add a red cross for puzzle attempted, but no solutions</li>
+			<li>Mouse-over with text on the number of attempts, moves, pushes</li>
+			<li>Overlay the diffuculty rating Green=Easy, Orange=Medium, Red=Hard</li>
+		</ul>
+		<h2>
+    Top10 Screen</h2>
+		<ul>
+			<li>Columns: Complexity, Puzzle, Name, Moves, Pushes, Time</li>
+		</ul>
+		<h2> Complexity Rating</h2>
+		<ul>
+			<li>Complexity = Weighting(Crate)*CrateCount +
+  Weigthing(Floor)*FloorCount</li>
+			<li>ComplexityWithKnownSolution = Weighting(Crate)*CrateCount +
+    Weigthing(Floor)*FloorCount +
+  Weigthing(SolutionLength)*SolutionLength</li>
+			<li>ComplexityHumanHistory = Weighting(HumanEfficeincy)*(SolutionTime /
+    SolutionLength)
+    <ul>
+					<li>enum Complexity = {None, Easy, Medium, Difficult, Insane}</li>
+				</ul>
+			</li>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Interface Name="GL.Develop.Rosetta.Common.Structures.INodeLink&lt;T&gt;">
+    <Position X="16.25" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Structures\FundementalInterfaces.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAEAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GL.Develop.Rosetta.Common.Structures.INode&lt;T&gt;">
+    <Position X="13.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Structures\FundementalInterfaces.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GL.Develop.Rosetta.Common.Structures.IDirectedNode&lt;T&gt;">
+    <Position X="13.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Structures\FundementalInterfaces.cs</FileName>
+      <HashCode>AAAAAAAEAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GL.Develop.Rosetta.Common.Structures.ITreeNode&lt;T&gt;">
+    <Position X="13.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Structures\FundementalInterfaces.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GL.Develop.Rosetta.Common.Structures.IGraph&lt;T&gt;">
+    <Position X="10.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Structures\FundementalInterfaces.cs</FileName>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GL.Develop.Rosetta.Common.Structures.IDirectedGraph&lt;T&gt;">
+    <Position X="10.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Structures\FundementalInterfaces.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAABAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GL.Develop.Rosetta.Common.Structures.ITree&lt;T&gt;">
+    <Position X="10.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Structures\FundementalInterfaces.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEIAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GL.Develop.Rosetta.Common.Structures.IPath&lt;T&gt;">
+    <Position X="18" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Structures\FundementalInterfaces.cs</FileName>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GL.Develop.Rosetta.Common.Structures.IEvaluator&lt;T&gt;">
+    <Position X="19.25" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>Structures\FundementalInterfaces.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAABAAAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Strategy" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="GL.Develop.Rosetta.Common.Structures.IEvaluationStrategy&lt;T&gt;">
+    <Position X="16.25" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>Structures\FundementalInterfaces.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAABAAAAAIAAAAIAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+</ClassDiagram>

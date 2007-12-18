@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="SokoSolve.UI.Section.AttachedCommand&lt;T&gt;">
+    <Position X="7" Y="7.75" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Section\AttachedCommand.cs</FileName>
+      <HashCode>AAAQAAAABAAAAAAAAAAAAAAAAAABAAAAAABCABAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="SokoSolve.UI.Section.Command&lt;T&gt;">
+    <Position X="7" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Section\Command.cs</FileName>
+      <HashCode>AAAAFAAAARAgBIUAIACAEAAAIABAAAAIAAAACAABAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="SokoSolve.UI.Section.CommandInstance&lt;T&gt;">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Section\CommandInstance.cs</FileName>
+      <HashCode>AAAAAAAAAAACAAAAAAAABAAAAAQAAAAAAAAAgAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Command" />
+    </ShowAsAssociation>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="SokoSolve.UI.Section.Controller&lt;T&gt;">
+    <Position X="4.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Section\Controller.cs</FileName>
+      <HashCode>AAQQAgAEAAIAAAACBAAAAgQAQAABAAAAAABAAAAAQAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="commands" />
+    </ShowAsCollectionAssociation>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="SokoSolve.UI.Section.ExplorerPattern">
+    <Position X="1.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Section\Explorer.cs</FileName>
+      <HashCode>AgAAACAAAQAAAAEAAAAAEAEAAAAAACAAIAAAAAIAAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="controller" />
+    </ShowAsAssociation>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="SokoSolve.UI.Section.Library.ExplorerItem">
+    <Position X="0.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Section\Library\ExplorerItem.cs</FileName>
+      <HashCode>AAIAAAAAAAAAAAgAAAAAIJAAACAQACAAgAAYgAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Explorer" />
+    </ShowAsAssociation>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SokoSolve.UI.Section.Library.ExplorerItemBase&lt;T&gt;">
+    <Position X="2.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Section\Library\ExplorerItem.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="SokoSolve.Common.Structures.ITreeNodeBackReference&lt;T&gt;">
+    <Position X="2.5" Y="6" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Enum Name="SokoSolve.UI.Section.ControllerStatus">
+    <Position X="5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Section\Controller.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAQIAAAAAAAAAAAAAAAAAAAAIQAEAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+</ClassDiagram>

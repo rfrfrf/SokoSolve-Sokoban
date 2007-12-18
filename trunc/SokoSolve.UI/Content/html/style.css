@@ -1,0 +1,53 @@
+body
+{
+	font-family: Calibri, Verdana, Arial;
+	font-size: 11pt;
+	padding: 0px 0px 0px 0px;
+}
+
+h1
+{
+	font-family: Calibri, 'Bookman Old Style' , Verdana;
+	width: 100%;
+	border-bottom: lightsteelblue 2px solid;
+	color: #003366;
+	padding-bottom: 1px;
+}
+
+h2 
+{
+	width: 100%;
+	border-bottom: solid 1px lightsteelblue;
+}
+
+table
+{
+	width: 100%;
+	border: solid 1px black;
+}
+
+a 
+{
+	color: #003366; 
+	border: none;
+}
+
+
+img
+{
+	border: none;
+}
+
+.tableformat 
+{
+	width: 100%;
+	border-style: none;
+	
+}
+
+.tableformat td 
+{
+	vertical-align: top;
+}
+
+
