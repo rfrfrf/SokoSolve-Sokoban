@@ -65,7 +65,7 @@ namespace SokoSolve.Core.IO
                 {
                     if (xmlLevel.LocalName == "Level")
                     {
-                        Puzzle newPuzzle = new Puzzle();
+                        Puzzle newPuzzle = new Puzzle(lib);
                         newPuzzle.PuzzleID = lib.IdProvider.GetNextIDString("P{0}");
                         newPuzzle.Details = new GenericDescription();
                         newPuzzle.Details.Name = string.Format("Puzzle No. {0}", lib.Puzzles.Count);

@@ -21,7 +21,10 @@ namespace SokoSolve.UI
 
 			try
 			{
-				Application.Run(new FormMain());	
+			    ProfileController.Init(Application.UserAppDataPath);
+				Application.Run(new FormMain());
+                ProfileController.SaveOnClose(Application.UserAppDataPath);
+
 			}
             catch(NotImplementedException notImpl)
             {

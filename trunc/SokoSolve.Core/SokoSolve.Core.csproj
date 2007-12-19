@@ -47,6 +47,9 @@
       <DependentUpon>SokoSolveLibrary.xsd</DependentUpon>
     </Compile>
     <Compile Include="Model\DataModel\SokoSolveLibraryExtension.cs" />
+    <Compile Include="Model\DataModel\SokoSolveProfile.cs">
+      <DependentUpon>SokoSolveProfile.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Model\DataModel\XmlProvider.cs" />
     <Compile Include="Model\Identity.cs" />
     <Compile Include="Model\IDProvider.cs" />

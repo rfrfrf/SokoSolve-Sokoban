@@ -36,7 +36,7 @@ namespace SokoSolve.UI.Controls.Primary
             this.htmlView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.htmlView.Location = new System.Drawing.Point(0, 0);
             this.htmlView.Name = "htmlView";
-            this.htmlView.ShowCommands = false;
+            this.htmlView.ShowCommands = true;
             this.htmlView.ShowStatus = false;
             this.htmlView.Size = new System.Drawing.Size(150, 150);
             this.htmlView.TabIndex = 0;

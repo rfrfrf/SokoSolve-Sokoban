@@ -20,11 +20,13 @@ namespace SokoSolve.Core.Model
 		private Category category;
     	private string rating;
         private string puzzleID;
+        private Library library; // simple back reference
 
-    	public Puzzle()
+    	public Puzzle(Library myLibrary)
     	{
     		maps = new List<PuzzleMap>();
     		details = new GenericDescription();
+    	    library = myLibrary;
     	}
 
         /// <summary>
@@ -34,6 +36,14 @@ namespace SokoSolve.Core.Model
         {
             get { return puzzleID; }
             set { puzzleID = value; }
+        }
+
+       /// <summary>
+       /// Simple ownershio back-ref
+       /// </summary>
+        public Library Library
+        {
+            get { return library; }
         }
 
         public Category Category

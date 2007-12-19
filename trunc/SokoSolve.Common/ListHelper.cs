@@ -8,6 +8,29 @@ namespace SokoSolve.Common
 	{
 		static private Random random = new Random();
 
+        /// <summary>
+        /// Helper to resize an array
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="Source"></param>
+        /// <param name="NewItem"></param>
+        /// <returns></returns>
+        public static T[] AddToArray<T>(T[] Source, T NewItem)
+        {
+            if (Source == null || Source.Length == 0)
+            {
+                T[] newresult = new T[1];
+                newresult[0] = NewItem;
+                return newresult;
+            }
+
+            T[] result = new T[Source.Length+1];
+            Source.CopyTo(result, 0);
+            result[result.Length - 1] = NewItem;
+            return result;
+        }
+
+
 		/// <summary>
 		/// Select a single item randomly from a list
 		/// </summary>

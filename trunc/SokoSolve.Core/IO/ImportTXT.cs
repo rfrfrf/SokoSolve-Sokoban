@@ -71,7 +71,7 @@ See http://users.bentonrea.com/~sasquatch/sokoban/. ";
             if (name.Length == 0) name = namer.MakeName();
             
 
-            Puzzle puz = new Puzzle();
+            Puzzle puz = new Puzzle(lib);
             puz.Details.Name = name;
             puz.Details.Description = "";
             puz.Category = lib.Categories.Top.Data;

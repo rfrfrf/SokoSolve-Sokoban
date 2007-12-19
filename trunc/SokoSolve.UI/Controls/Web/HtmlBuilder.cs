@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using SokoSolve.Core;
+using SokoSolve.Core.Model;
 
 namespace SokoSolve.UI.Controls.Web
 {
@@ -12,24 +13,6 @@ namespace SokoSolve.UI.Controls.Web
     /// </summary>
     public class HtmlBuilder
     {
-        /// <summary>
-        /// Destructor.
-        /// Clean up unneeded HTML temp images
-        /// </summary>
-        ~HtmlBuilder()
-        {
-            if (tmpImages != null)
-            {
-                foreach (string delFile in tmpImages)
-                {
-                    File.Delete(delFile);
-                }
-                tmpImages = null;
-            }
-        }
-        private static List<string> tmpImages = new List<string>();
-
-
         public string GetHTMLPage()
         {
             StringBuilder result = new StringBuilder();
@@ -80,10 +63,13 @@ namespace SokoSolve.UI.Controls.Web
         /// Add a temp image, by creating a temp image.
         /// </summary>
         /// <param name="Image"></param>
-        public void Add(Image Image, string style)
+        public void Add(Puzzle Puzzle, Image Image, string style)
         {
-            string tmpFile = Path.GetTempFileName();
-            Image.Save(tmpFile);
+            string tmpFile = ImageFileCache.Singleton.GetImageURL(Puzzle);
+            if (tmpFile == null)
+            {
+                tmpFile = ImageFileCache.Singleton.AddSaveImage(Puzzle, Image);
+            }
             Add("<img src=\"{0}\" style=\"{1}\" alt=\"SokoSolve\"/>", tmpFile, style);
         }
 

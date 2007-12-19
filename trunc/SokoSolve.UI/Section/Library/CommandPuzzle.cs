@@ -29,7 +29,7 @@ namespace SokoSolve.UI.Section.Library
             if (category != null)
             {
                 // Create a new puzzle with a valid number etc.
-                Puzzle newPuz = new Puzzle();
+                Puzzle newPuz = new Puzzle(Controller.Current);
                 newPuz.PuzzleID = Controller.Current.IdProvider.GetNextIDString("P{0}");
                 newPuz.Details = new GenericDescription();
                 newPuz.Details.Name = string.Format("New Puzzle #{0}", Controller.Current.Puzzles.Count+1);

@@ -79,7 +79,7 @@ namespace SokoSolve.UI.Section.Library
             hard.CategoryParentREF = lib.Categories.Top.Data.CategoryID;
             lib.Categories.Top.Add(hard);
 
-            Puzzle newPuz = new Puzzle();
+            Puzzle newPuz = new Puzzle(lib);
             newPuz.PuzzleID = lib.IdProvider.GetNextIDString("P{0}");
             newPuz.Category = easy;
             newPuz.Details = new GenericDescription(lib.Details);

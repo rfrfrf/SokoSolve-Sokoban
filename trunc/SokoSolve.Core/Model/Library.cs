@@ -15,6 +15,7 @@ namespace SokoSolve.Core.Model
     	private Tree<Category> categories;
 		private GenericDescription details;
     	private string rating;
+        private string libraryID;
         private IDProvider idProvider;
 
 
@@ -28,12 +29,22 @@ namespace SokoSolve.Core.Model
     		details.Name = "unnamed library";
     		details.Description = "a blank library created by SokoSolve";
 
+            libraryID = Guid.NewGuid().ToString();
+
     		categories.Top.Data  = new Category();
     		categories.Top.Data.Details.Name = "Master List";
     		categories.Top.Data.CategoryID = "C"+idProvider.GetNextID().ToString();
     	}
 
-    	public List<Puzzle> Puzzles
+        /// <summary>
+        /// This is normally a GUID for universal identity
+        /// </summary>
+        public string LibraryID
+        {
+            get { return libraryID; }
+        }
+
+        public List<Puzzle> Puzzles
     	{
     		get { return puzzles; }
     		set { puzzles = value; }
@@ -57,10 +68,14 @@ namespace SokoSolve.Core.Model
     		set { rating = value; }
     	}
 
-
         public IDProvider IdProvider
         {
             get { return idProvider; }
+        }
+
+        public Puzzle GetPuzzleByID(string PuzzleID)
+        {
+            return puzzles.Find(delegate(Puzzle item) { return item.PuzzleID == PuzzleID; });
         }
     }
 

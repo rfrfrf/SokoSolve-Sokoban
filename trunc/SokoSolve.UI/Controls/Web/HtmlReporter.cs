@@ -69,7 +69,7 @@ namespace SokoSolve.UI.Controls.Web
             
             if (drawing != null)
             {
-                sb.Add(drawing.Draw(puzzle.MasterMap.Map), null);    
+                sb.Add(puzzle, drawing.Draw(puzzle.MasterMap.Map), null);    
             }
             
             sb.Add("</td></tr></table>");
@@ -125,7 +125,7 @@ namespace SokoSolve.UI.Controls.Web
                 report.Add(puzzle.Details.Name);
                 report.Add("<br/>");
                 report.Add("<a href=\"app://puzzle/{0}\">", puzzle.PuzzleID);
-                report.Add(img.Draw(puzzle.MasterMap.Map), "width:100px; height:80px");
+                report.Add(puzzle, img.Draw(puzzle.MasterMap.Map), "width:100px; height:80px");
                 report.Add("</a>");
 
                 if (counter % puzPerLine == 0)

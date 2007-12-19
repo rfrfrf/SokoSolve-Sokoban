@@ -125,7 +125,7 @@ namespace SokoSolve.Core.Model.DataModel
             public Puzzle current = null;
             public Puzzle ConvertPuzzle(SokobanLibraryPuzzle xmlPuzzle)
             {
-                current = new Puzzle();
+                current = new Puzzle(this.model);
                 current.PuzzleID = xmlPuzzle.PuzzleID;
                 current.Details = xmlPuzzle.PuzzleDescription;
                 current.Order = xmlPuzzle.Order;
