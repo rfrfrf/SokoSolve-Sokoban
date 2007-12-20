@@ -75,7 +75,9 @@ namespace SokoSolve.UI.Controls.Web
 
         public void AddSection(string title)
         {
-            Add("<h{0}>{1}</h{0}>", currentDepth++, title);
+            if (title != null) Add("<h{0}>{1}</h{0}>", currentDepth, title);
+
+            currentDepth++;
         }
 
         public void EndSection()

@@ -22,7 +22,20 @@ namespace SokoSolve.UI.Controls.Web
             get { return command; }
         }
 
+
+        /// <summary>
+        /// Has this commond be implemented/handled.
+        /// false means not handled
+        /// </summary>
+        public bool Completed
+        {
+            get { return completed; }
+            set { completed = value; }
+        }
+
+
         private HtmlView browser;
         private Uri command;
+        private bool completed;
     }
 }

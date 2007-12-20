@@ -12,9 +12,9 @@
     </Category>
   </Categories>
   <Puzzles>
-    <Puzzle Rating="051.7" PuzzleID="P1" CategoryREF="C0">
+    <Puzzle Rating="51.7" PuzzleID="P1" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Nefarious Hamlet</Name>
+        <Name>Splendid Hamlet</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -36,7 +36,7 @@
     </Puzzle>
     <Puzzle Rating="117.6" PuzzleID="P2" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Splendid Town</Name>
+        <Name>Caroline's Tunnel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -54,9 +54,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="081.3" PuzzleID="P3" CategoryREF="C0">
+    <Puzzle Rating="81.3" PuzzleID="P3" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Cold Mountain</Name>
+        <Name>Ghastly Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -81,7 +81,7 @@
     </Puzzle>
     <Puzzle Rating="157.9" PuzzleID="P4" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Old Estate</Name>
+        <Name>Superb House</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -102,7 +102,7 @@
     </Puzzle>
     <Puzzle Rating="214.8" PuzzleID="P5" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Grand Gem</Name>
+        <Name>Cat's Lagoon</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -128,7 +128,7 @@
     </Puzzle>
     <Puzzle Rating="147.7" PuzzleID="P6" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Dastardly School</Name>
+        <Name>Hot Mountain</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -149,9 +149,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="071.4" PuzzleID="P7" CategoryREF="C0">
+    <Puzzle Rating="71.4" PuzzleID="P7" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Ghastly Green Blanket</Name>
+        <Name>Leigh's Shower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -170,9 +170,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="089.7" PuzzleID="P8" CategoryREF="C0">
+    <Puzzle Rating="89.7" PuzzleID="P8" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Splendid Mountain</Name>
+        <Name>Delighted Town</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -194,7 +194,7 @@
     </Puzzle>
     <Puzzle Rating="135.1" PuzzleID="P9" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Nefarious Morning</Name>
+        <Name>Dire School</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -212,9 +212,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="071.0" PuzzleID="P10" CategoryREF="C0">
+    <Puzzle Rating="71.0" PuzzleID="P10" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Small House</Name>
+        <Name>Small Hovel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -242,7 +242,7 @@
     </Puzzle>
     <Puzzle Rating="130.4" PuzzleID="P11" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Small School</Name>
+        <Name>Uptight Estate</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -260,9 +260,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="086.2" PuzzleID="P12" CategoryREF="C0">
+    <Puzzle Rating="86.2" PuzzleID="P12" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Big Gem</Name>
+        <Name>Lucy's Shower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -285,7 +285,7 @@
     </Puzzle>
     <Puzzle Rating="107.5" PuzzleID="P13" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Superb Tower</Name>
+        <Name>Old Yellow House</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -310,7 +310,7 @@
     </Puzzle>
     <Puzzle Rating="157.9" PuzzleID="P14" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Dire Hamlet</Name>
+        <Name>Splendid Nemosis</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -329,7 +329,7 @@
     </Puzzle>
     <Puzzle Rating="107.7" PuzzleID="P15" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Wilma's Hamlet</Name>
+        <Name>Big Shower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -350,9 +350,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="087.3" PuzzleID="P16" CategoryREF="C0">
+    <Puzzle Rating="87.3" PuzzleID="P16" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Tight Hamlet</Name>
+        <Name>Superb Hamlet</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -378,9 +378,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="085.5" PuzzleID="P17" CategoryREF="C0">
+    <Puzzle Rating="85.5" PuzzleID="P17" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Uptight Hamlet</Name>
+        <Name>Grim Nemosis</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -403,7 +403,7 @@
     </Puzzle>
     <Puzzle Rating="324.3" PuzzleID="P18" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Dire Shower</Name>
+        <Name>Dire Blanket</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -427,9 +427,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="062.5" PuzzleID="P19" CategoryREF="C0">
+    <Puzzle Rating="62.5" PuzzleID="P19" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Splendid Toad</Name>
+        <Name>Tense Blanket</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -455,7 +455,7 @@
     </Puzzle>
     <Puzzle Rating="225.0" PuzzleID="P20" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Uptight Hovel</Name>
+        <Name>Delighted Morning</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -474,7 +474,7 @@
     </Puzzle>
     <Puzzle Rating="181.8" PuzzleID="P21" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Ghastly Night</Name>
+        <Name>Wilma's Cottage</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -489,9 +489,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="072.1" PuzzleID="P22" CategoryREF="C0">
+    <Puzzle Rating="72.1" PuzzleID="P22" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Cold Hovel</Name>
+        <Name>Ghastly Morning</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -516,7 +516,7 @@
     </Puzzle>
     <Puzzle Rating="172.8" PuzzleID="P23" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Delighted Night</Name>
+        <Name>Ghastly Blanket</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -536,7 +536,7 @@
     </Puzzle>
     <Puzzle Rating="126.2" PuzzleID="P24" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Dire Red Town</Name>
+        <Name>Tense Gem</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -561,7 +561,7 @@
     </Puzzle>
     <Puzzle Rating="146.2" PuzzleID="P25" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Nefarious House</Name>
+        <Name>Tight Hovel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -586,7 +586,7 @@
     </Puzzle>
     <Puzzle Rating="122.4" PuzzleID="P26" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Old Mountain</Name>
+        <Name>Uptight Morning</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -606,9 +606,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="057.1" PuzzleID="P27" CategoryREF="C0">
+    <Puzzle Rating="57.1" PuzzleID="P27" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Grim Hamlet</Name>
+        <Name>Slimy Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -635,7 +635,7 @@
     </Puzzle>
     <Puzzle Rating="130.8" PuzzleID="P28" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Grim Tower</Name>
+        <Name>David's Shower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -659,7 +659,7 @@
     </Puzzle>
     <Puzzle Rating="110.4" PuzzleID="P29" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Old Lagoon</Name>
+        <Name>Tepid Toad</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -684,9 +684,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="076.9" PuzzleID="P30" CategoryREF="C0">
+    <Puzzle Rating="76.9" PuzzleID="P30" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Hot Gem</Name>
+        <Name>Edgy Tunnel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -711,7 +711,7 @@
     </Puzzle>
     <Puzzle Rating="120.5" PuzzleID="P31" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Dire Nemosis</Name>
+        <Name>Small Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -736,9 +736,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="074.9" PuzzleID="P32" CategoryREF="C0">
+    <Puzzle Rating="74.9" PuzzleID="P32" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Dastardly Hovel</Name>
+        <Name>Grim Nemosis</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -765,7 +765,7 @@
     </Puzzle>
     <Puzzle Rating="116.6" PuzzleID="P33" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Uptight Lagoon</Name>
+        <Name>Edgy Tunnel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -791,9 +791,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="068.3" PuzzleID="P34" CategoryREF="C0">
+    <Puzzle Rating="68.3" PuzzleID="P34" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Tense Blanket</Name>
+        <Name>Cold Nemosis</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -821,7 +821,7 @@
     </Puzzle>
     <Puzzle Rating="133.0" PuzzleID="P35" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Leigh's Cottage</Name>
+        <Name>Edgy Yellow House</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -847,9 +847,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="064.7" PuzzleID="P36" CategoryREF="C0">
+    <Puzzle Rating="64.7" PuzzleID="P36" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Uptight School</Name>
+        <Name>Delighted Hovel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -875,7 +875,7 @@
     </Puzzle>
     <Puzzle Rating="108.7" PuzzleID="P37" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Bob's Toad</Name>
+        <Name>Cold School</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -901,9 +901,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="094.0" PuzzleID="P38" CategoryREF="C0">
+    <Puzzle Rating="94.0" PuzzleID="P38" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Small Spider</Name>
+        <Name>Nefarious Nemosis</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -932,7 +932,7 @@
     </Puzzle>
     <Puzzle Rating="116.3" PuzzleID="P39" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Tricky Red Toad</Name>
+        <Name>Susan's Shower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -960,7 +960,7 @@
     </Puzzle>
     <Puzzle Rating="139.5" PuzzleID="P40" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Old Town</Name>
+        <Name>Cold Mountain</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -984,9 +984,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="096.4" PuzzleID="P41" CategoryREF="C0">
+    <Puzzle Rating="96.4" PuzzleID="P41" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Cold Tunnel</Name>
+        <Name>Delighted House</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1009,9 +1009,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="091.5" PuzzleID="P42" CategoryREF="C0">
+    <Puzzle Rating="91.5" PuzzleID="P42" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Superb Toad</Name>
+        <Name>Delighted Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1037,9 +1037,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="089.4" PuzzleID="P43" CategoryREF="C0">
+    <Puzzle Rating="89.4" PuzzleID="P43" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Tense Lagoon</Name>
+        <Name>Tight Town</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1068,7 +1068,7 @@
     </Puzzle>
     <Puzzle Rating="100.4" PuzzleID="P44" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Uptight Grave</Name>
+        <Name>Caroline's Morning</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1095,9 +1095,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="090.5" PuzzleID="P45" CategoryREF="C0">
+    <Puzzle Rating="90.5" PuzzleID="P45" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Ghastly Town</Name>
+        <Name>Hot Green Lagoon</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1126,7 +1126,7 @@
     </Puzzle>
     <Puzzle Rating="103.8" PuzzleID="P46" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Tepid Blanket</Name>
+        <Name>Ghastly School</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1155,7 +1155,7 @@
     </Puzzle>
     <Puzzle Rating="186.4" PuzzleID="P47" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Uptight Estate</Name>
+        <Name>Tight Estate</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1178,9 +1178,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="073.5" PuzzleID="P48" CategoryREF="C0">
+    <Puzzle Rating="73.5" PuzzleID="P48" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Tricky Tower</Name>
+        <Name>Andrew's Lagoon</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1206,7 +1206,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="044.2" PuzzleID="P49" CategoryREF="C0">
+    <Puzzle Rating="44.2" PuzzleID="P49" CategoryREF="C0">
       <PuzzleDescription>
         <Name>'Parallel Logic'</Name>
         <Description />

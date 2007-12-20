@@ -49,6 +49,7 @@ namespace SokoSolve.UI.Section.Library
             Register(new HelpRelease(this, new object[] { view.tsbHelpReleaseNotes }));
             Register(new HelpCheckVersion(this, new object[] { view.tsbCheckVersion }));
             Register(new HelpWebSite(this, new object[] { view.tsbHelpWebSite }));
+            Register(new HelpReturn(this, new object[] { view.tsbReturn }));
 
 			UpdateUI("Controller.Init");
 		}

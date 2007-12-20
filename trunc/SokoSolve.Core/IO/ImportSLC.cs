@@ -18,7 +18,7 @@ namespace SokoSolve.Core.IO
 
         protected override Library ImportImplementation(string FileName)
         {
-            SokoSolve.Core.Model.Library lib = new SokoSolve.Core.Model.Library();
+            SokoSolve.Core.Model.Library lib = new SokoSolve.Core.Model.Library(Guid.NewGuid());
 
             XmlDocument import = new XmlDocument();
 

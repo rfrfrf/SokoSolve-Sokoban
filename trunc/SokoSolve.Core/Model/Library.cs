@@ -19,7 +19,7 @@ namespace SokoSolve.Core.Model
         private IDProvider idProvider;
 
 
-    	public Library()
+    	public Library(Guid LibraryGUID)
     	{
     	    idProvider = new IDProvider(0);
 
@@ -29,7 +29,7 @@ namespace SokoSolve.Core.Model
     		details.Name = "unnamed library";
     		details.Description = "a blank library created by SokoSolve";
 
-            libraryID = Guid.NewGuid().ToString();
+    	    libraryID = LibraryGUID.ToString();
 
     		categories.Top.Data  = new Category();
     		categories.Top.Data.Details.Name = "Master List";
@@ -42,6 +42,7 @@ namespace SokoSolve.Core.Model
         public string LibraryID
         {
             get { return libraryID; }
+            set { libraryID = value; }
         }
 
         public List<Puzzle> Puzzles

@@ -70,13 +70,19 @@ namespace SokoSolve.UI
 	        }
 	    }
 
-        public void StartGame(Puzzle puzzle, PuzzleMap map)
+        public void StartGame(Puzzle puzzle, PuzzleMap map, Modes returnMode)
         {
             Mode = Modes.Game;
             if (gameControl != null)
             {
+                gameControl.ReturnMode = returnMode;
                 gameControl.StartGame(puzzle, map);
             }
+        }
+
+        public void InitLibrary(SokoSolve.Core.Model.Library Current)
+        {
+            libControl.InitLibrary(Current);
         }
 
         public void ShowInBrowser(string Url)

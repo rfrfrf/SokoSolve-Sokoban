@@ -20,7 +20,7 @@ See http://users.bentonrea.com/~sasquatch/sokoban/. ";
 
         protected override Library ImportImplementation(string FileName)
         {
-            Library lib = new Library();
+            Library lib = new Library(Guid.NewGuid());
 
             lib.Details.Name = Path.GetFileNameWithoutExtension(FileName);
             lib.Details.Description = "Imported sokoban library.";
@@ -84,7 +84,7 @@ See http://users.bentonrea.com/~sasquatch/sokoban/. ";
             puz.MasterMap = new PuzzleMap(puz);
             puz.MasterMap.Map = new SokobanMap();
             puz.MasterMap.Map.setFromStrings(block.ToArray(), "v# $.*@+");
-            puz.Rating = PuzzleAnalysis.CalcRating(puz.MasterMap.Map).ToString("000.0");
+            puz.Rating = PuzzleAnalysis.CalcRating(puz.MasterMap.Map).ToString("0.0");
 
             // Cleanup
             puz.MasterMap.Map.ApplyVoidCells();

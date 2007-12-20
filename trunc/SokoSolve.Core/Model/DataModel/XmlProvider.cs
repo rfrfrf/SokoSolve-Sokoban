@@ -85,9 +85,10 @@ namespace SokoSolve.Core.Model.DataModel
 			if (xmlLib == null) throw new ArgumentNullException("cannot load library");
 
 		    ModelToXml converter = new ModelToXml();
-            converter.model = new Library();
+            converter.model = new Library(Guid.Empty);
             converter.model.Details = xmlLib.Details;
             converter.model.Rating = xmlLib.Rating;
+		    converter.model.LibraryID = xmlLib.LibraryID;
 
             List<Category> categories = new List<SokobanLibraryCategory>(xmlLib.Categories).ConvertAll<Category>(ModelToXml.ConvertCategory);
 

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using SokoSolve.UI.Controls.Secondary;
 using SokoSolve.UI.Section;
 using SokoSolve.UI.Section.Library;
+using SokoSolve.UI.Section.Library.Items;
 
 namespace SokoSolve.UI.Controls.Primary
 {
@@ -42,5 +43,11 @@ namespace SokoSolve.UI.Controls.Primary
             report.ShowDialog();
         }
 
+	    public void InitLibrary(SokoSolve.Core.Model.Library current)
+	    {
+	        controller.Current = current;
+	        explorer.SyncRoot(new ItemLibrary(controller.Current));
+	        explorer.BindUI();
+	    }
 	}
 }

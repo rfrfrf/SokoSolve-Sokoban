@@ -298,7 +298,7 @@ namespace SokoSolve.UI.Section.Library
                 FormMain form = Controller.Explorer.TreeView.FindForm() as FormMain;
                 if (form != null)
                 {
-                    form.StartGame(puz.Data, puz.Data.MasterMap);
+                    form.StartGame(puz.Data, puz.Data.MasterMap, FormMain.Modes.Library);
                 }
             }
         }

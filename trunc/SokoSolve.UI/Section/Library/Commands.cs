@@ -186,7 +186,34 @@ namespace SokoSolve.UI.Section.Library
 
     }
 
-    
+    //#################################################################
+    //#################################################################
+    //#################################################################
+
+
+    class HelpReturn : CommandLibraryBase
+    {
+        public HelpReturn(Controller<ExplorerItem> controller, object[] buttonControls)
+            : base(controller, buttonControls)
+        {
+            Init("Return", "Return to welcome home page");
+        }
+
+        protected override void ExecuteImplementation(CommandInstance<ExplorerItem> instance)
+        {
+            FormMain main = Controller.Explorer.TreeView.FindForm() as FormMain;
+            if (main != null)
+            {
+                main.Mode = FormMain.Modes.Welcome;
+            }
+        }
+
+        public override void UpdateForSelection(List<ExplorerItem> selection)
+        {
+            Enabled = true;
+        }
+
+    }
 
     
 }

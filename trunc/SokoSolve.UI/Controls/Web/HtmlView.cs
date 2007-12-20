@@ -59,20 +59,87 @@ namespace SokoSolve.UI.Controls.Web
             }
         }
 
+        public bool ShowCommandBack
+        {
+            get { return tsbBack.Visible;  }
+            set { tsbBack.Visible = value;  }
+        }
+
+        public bool ShowCommandForward
+        {
+            get { return tsbForward.Visible; }
+            set { tsbForward.Visible = value; }
+        }
+
+        public bool ShowCommandHome
+        {
+            get { return tsbHome.Visible; }
+            set { tsbHome.Visible = value; }
+        }
+
+
+        public bool ShowCommandDone
+        {
+            get { return tsbDone.Visible; }
+            set { tsbDone.Visible = value; }
+        }
+
+        public bool ShowCommandPrint
+        {
+            get { return tsbPrint.Visible; }
+            set { tsbPrint.Visible = value; }
+        }
+
 
         private void tsbBack_Click(object sender, EventArgs e)
         {
-            webBrowser.GoBack();
+            if (OnCommand != null)
+            {
+                UIBrowserEvent args = new UIBrowserEvent(this, new Uri("app://Controller/Back"));
+                OnCommand(sender, args);
+                if (!args.Completed)
+                {
+                    webBrowser.GoBack();
+                }
+            }
+            else
+            {
+                webBrowser.GoBack();
+            }
         }
 
         private void tsbForward_Click(object sender, EventArgs e)
         {
-            webBrowser.GoForward();
+            if (OnCommand != null)
+            {
+                UIBrowserEvent args = new UIBrowserEvent(this, new Uri("app://Controller/Forward"));
+                OnCommand(sender, args);
+                if (!args.Completed)
+                {
+                    webBrowser.GoForward();
+                }
+            }
+            else
+            {
+                webBrowser.GoForward();
+            }
         }
 
         private void tsbHome_Click(object sender, EventArgs e)
         {
-            webBrowser.GoHome();
+            if (OnCommand != null)
+            {
+                UIBrowserEvent args = new UIBrowserEvent(this, new Uri("app://Controller/Home"));
+                OnCommand(sender, args);
+                if (!args.Completed)
+                {
+                    webBrowser.GoHome();
+                }
+            }
+            else
+            {
+                webBrowser.GoHome();
+            }
         }
 
         private void tsbPrint_Click(object sender, EventArgs e)
@@ -82,7 +149,7 @@ namespace SokoSolve.UI.Controls.Web
 
         private void tsbDone_Click(object sender, EventArgs e)
         {
-            if (OnCommand != null) OnCommand(sender, new UIBrowserEvent(this, new Uri("app://done")));
+            if (OnCommand != null) OnCommand(sender, new UIBrowserEvent(this, new Uri("app://Controller/Done")));
         }
 
         private void webBrowser_Navigating(object sender, WebBrowserNavigatingEventArgs e)

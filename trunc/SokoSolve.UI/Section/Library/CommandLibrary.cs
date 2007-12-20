@@ -47,7 +47,7 @@ namespace SokoSolve.UI.Section.Library
         /// <returns></returns>
         SokoSolve.Core.Model.Library MakeDefaultLibrary()
         {
-            SokoSolve.Core.Model.Library lib = new SokoSolve.Core.Model.Library();
+            SokoSolve.Core.Model.Library lib = new SokoSolve.Core.Model.Library(Guid.NewGuid());
             lib.Details.Name = "New default library";
             lib.Details.Description = "Skeleton new library";
             lib.Details.Author = new GenericDescriptionAuthor();

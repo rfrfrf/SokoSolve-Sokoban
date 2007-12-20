@@ -46,7 +46,6 @@ namespace SokoSolve.UI.Controls.Primary
             ProcessImput(keyData);
 
             return base.ProcessDialogKey(keyData);
-            
         }
 
 
@@ -60,7 +59,7 @@ namespace SokoSolve.UI.Controls.Primary
             FormMain main = FindForm() as FormMain;
             if (main != null)
             {
-                main.Mode = FormMain.Modes.Library;
+                main.Mode = returnMode;
             }
         }
 
@@ -170,8 +169,14 @@ namespace SokoSolve.UI.Controls.Primary
             }
         }
 
-
-        private GameUI gameUI;
+        /// <summary>
+        /// Which UI state to return from a game to.
+        /// </summary>
+        public FormMain.Modes ReturnMode
+        {
+            get { return returnMode; }
+            set { returnMode = value; }
+        }
 
         private void Game_Resize(object sender, EventArgs e)
         {
@@ -179,7 +184,9 @@ namespace SokoSolve.UI.Controls.Primary
             {
                 gameUI.GameCoords.WindowRegion = new RectangleInt(new VectorInt(0, 0), new SizeInt(this.Width, this.Height));    
             }
-            
         }
+
+        private GameUI gameUI;
+        private FormMain.Modes returnMode = FormMain.Modes.Library;
 	}
 }

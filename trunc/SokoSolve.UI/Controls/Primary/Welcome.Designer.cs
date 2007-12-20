@@ -36,9 +36,14 @@ namespace SokoSolve.UI.Controls.Primary
             this.htmlView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.htmlView.Location = new System.Drawing.Point(0, 0);
             this.htmlView.Name = "htmlView";
+            this.htmlView.ShowCommandBack = true;
+            this.htmlView.ShowCommandDone = false;
+            this.htmlView.ShowCommandForward = false;
+            this.htmlView.ShowCommandHome = true;
+            this.htmlView.ShowCommandPrint = false;
             this.htmlView.ShowCommands = true;
             this.htmlView.ShowStatus = false;
-            this.htmlView.Size = new System.Drawing.Size(150, 150);
+            this.htmlView.Size = new System.Drawing.Size(400, 150);
             this.htmlView.TabIndex = 0;
             this.htmlView.OnCommand += new System.EventHandler<SokoSolve.UI.Controls.Web.UIBrowserEvent>(this.htmlView_OnCommand);
             // 
@@ -48,6 +53,7 @@ namespace SokoSolve.UI.Controls.Primary
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.htmlView);
             this.Name = "Welcome";
+            this.Size = new System.Drawing.Size(400, 150);
             this.ResumeLayout(false);
 
         }

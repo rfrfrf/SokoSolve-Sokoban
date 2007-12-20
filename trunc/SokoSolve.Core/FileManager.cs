@@ -14,7 +14,7 @@ namespace SokoSolve.Core
 			if (!Directory.Exists(baseloc))
 			{
 				// Assume we are in debug mode
-				baseloc = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "..\\..\\Content";
+				baseloc = AppDomain.CurrentDomain.SetupInformation.ApplicationBase.Replace("\\bin\\Debug", "") + "Content";
 			}
 
 			if (!Directory.Exists(baseloc))

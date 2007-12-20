@@ -18,6 +18,11 @@ namespace SokoSolve.UI.Controls.Primary
 
         public void Navigate(string Uri)
         {
+            if (firstURL != null)
+            {
+                firstURL = Uri;
+            }
+
             htmlView.Navigate(Uri); 
         }
 
@@ -32,14 +37,24 @@ namespace SokoSolve.UI.Controls.Primary
 
         private void htmlView_OnCommand(object sender, SokoSolve.UI.Controls.Web.UIBrowserEvent e)
         {
-            if (e.Command.ToString() == "app://done")
+            FormMain main = FindForm() as FormMain;
+            if (main != null) return;
+
+            if (e.Command.ToString() == "app://Controller/Done")
             {
-                FormMain main = FindForm() as FormMain;
-                if (main != null)
-                {
-                    main.Mode = FormMain.Modes.Library;
-                }
+                main.Mode = FormMain.Modes.Library;
+                e.Completed = true;
+                return;
+            }
+
+            if (e.Command.ToString() == "app://Controller/Home")
+            {
+                Navigate(firstURL);
+                e.Completed = true;
+                return;
             }
         }
+
+        private string firstURL;
     }
 }

@@ -45,8 +45,8 @@ namespace SokoSolve.UI.Controls.Secondary
             this.label7 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonOk = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonOk = new System.Windows.Forms.Button();
             this.groupboxAuthor.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -193,6 +193,7 @@ namespace SokoSolve.UI.Controls.Secondary
             "BSD",
             "Creative Commons",
             "Public Domain",
+            "Acknowledgement Required",
             "Commercial*"});
             this.cbLicense.Location = new System.Drawing.Point(14, 23);
             this.cbLicense.Name = "cbLicense";
@@ -243,15 +244,6 @@ namespace SokoSolve.UI.Controls.Secondary
             this.panel1.Size = new System.Drawing.Size(172, 39);
             this.panel1.TabIndex = 9;
             // 
-            // buttonOk
-            // 
-            this.buttonOk.Location = new System.Drawing.Point(3, 3);
-            this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(75, 23);
-            this.buttonOk.TabIndex = 0;
-            this.buttonOk.Text = "&Ok";
-            this.buttonOk.UseVisualStyleBackColor = true;
-            // 
             // buttonCancel
             // 
             this.buttonCancel.Location = new System.Drawing.Point(84, 3);
@@ -260,6 +252,15 @@ namespace SokoSolve.UI.Controls.Secondary
             this.buttonCancel.TabIndex = 1;
             this.buttonCancel.Text = "&Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            // 
+            // buttonOk
+            // 
+            this.buttonOk.Location = new System.Drawing.Point(3, 3);
+            this.buttonOk.Name = "buttonOk";
+            this.buttonOk.Size = new System.Drawing.Size(75, 23);
+            this.buttonOk.TabIndex = 0;
+            this.buttonOk.Text = "&Ok";
+            this.buttonOk.UseVisualStyleBackColor = true;
             // 
             // ucGenericDescription
             // 
