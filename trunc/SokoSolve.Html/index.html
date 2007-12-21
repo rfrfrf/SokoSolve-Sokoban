@@ -7,6 +7,9 @@
 	<body>
 	    
 	    <h1>SokoSolve | Sokoban Game</h1>
+	    
+	    <img src="images/SokoSolve-Logo-Medium.png" alt="SokoSolve" style="width:80px; height:80px; float:left; padding: 0px 5px 0px 0px;"/>
+	    
 	    <p><i>SokoSolve - A <a href="http://en.wikipedia.org/wiki/Sokoban">Sokoban</a> library, game and solver toolset. 
 	    It is written in C# .NET 2.0 for windows and is <a href="http://opensource.org/licenses/gpl-license.php">GPL</a> open source</i>. 
 	    SokoSolve is kindly hosted by <a href="http://www.sourceforge.net">SourceForge</a>. 
@@ -26,20 +29,27 @@
 	    
 	    <h2>Status</h2>
 	    <p>The current version of SokoSolve is 1.2.0, which represents a complete rewrite to the .NET 2 platform. 
-	    For a more detailed <a href="features.html">progress</a> &amp; features report, which is not completely acurate and only pertains to the latest source.</p>
+	    For a more detailed <a href="features.html">progress</a> &amp; features report, which is not completely accurate 
+	    and only pertains to the latest source.</p>
+	    
 	    <h2>Blocks</h2>
-	    <h3>Library</h3>
-	    <p>An XML library of Sokoban puzzles (XSD, XSLT), were the user can easily manage many puzzle 
-	       libraries with rich information</p>
 	    <h3>Game</h3>
-	    <p>A sprite based game UI with little effects. The aim here is to be able to play puzzles from the library. 
-	    Ths ultimate aim is for the user to play against the solver, or other human players.</p>
+	    <p>Allow the player to solve puzzles in an animated environment, which includes mouse movement. Coming soon sounds effects and music.
+	    The ultimate aim is for the user to play against the solver, or other human players.</p>
+	    
+	    <h3>Library</h3>
+	    <p>The real home for any Sokoban enthusiast. The library features an extensible XML implementation with rich content, 
+	    saved solutions, puzzle alternatives, a puzzle editor, and import and export tools.</p>
+	    
 	    <h3>Solver</h3>
 	    <p>This was the reason this project started. The ability to solver and analyse puzzles from the library. Technically, this is 
-	    the only block that is interesting. Additional solver information is managed <a href="solver.html">here</a></p>
+	    the only block that is interesting. Additional solver information is managed <a href="solver.html">here</a>. As of 1.2.0 the solver 
+	    has been temporarily removed to focus on stability. It will be reintroduced soon!</p>
+	    
 	    <h3>Generator</h3>
-	    <p>This is essentially the end-goal for the project. To be able to generate interresting (from a human perspective)
-	    puzzles, which are checked as valid by the solver, and then played in the Game/Library blocks.</p>
+	    <p>This is essentially the end-goal for the project. To be able to generate interesting (from a human perspective)
+	    puzzles, which are checked as valid by the solver, and then played in the Game/Library blocks.
+	    This feature is currently under development.</p>
 	    
 	    <h2>Author</h2>
 	    	<p><img src="images/postcard.gif" alt="Postcard"/>&nbsp;<b>Send a postcard!!</b> -- <i>send us a postcard to let us know if you like the software.</i> While SokoSolve is completely free software. It has however taken a lot of time to write and maintain. 
