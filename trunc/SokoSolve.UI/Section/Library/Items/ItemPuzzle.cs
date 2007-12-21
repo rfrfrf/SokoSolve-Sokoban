@@ -17,47 +17,37 @@ namespace SokoSolve.UI.Section.Library.Items
 		{
 		}
 
-		public override void SyncWithData()
+		public override void SyncDomain()
 		{
-		    int cc = 0;
-			foreach (PuzzleMap map in Data.Maps)
-			{
-                // Skip the first
-                if (cc++ == 0) continue;
-			    
-				TreeNode.Add(new ItemPuzzleMap(map));
-			}
+            if (DomainData.HasAlternatives)
+            {
+                SyncUICollectionWithData<PuzzleMap>(DomainData.Alternatives, delegate(PuzzleMap item) { return new ItemPuzzleMap(item); });
+            }
 
-			foreach (TreeNode<ExplorerItem> kid in TreeNode.Children)
-			{
-				kid.Data.SyncWithData();
-			}
+            if (DomainData.MasterMap.HasSolution)
+            {
+                SyncUICollectionWithData<Solution>(DomainData.MasterMap.Solutions, delegate(Solution item) { return new ItemSolution(item); });
+            }
+
+		    base.SyncDomain();
 		}
 
-		public override void BindToUI()
+		public override void BindUI()
 		{
-			if (UINode == null)
-			{
-				UINode = TreeNode.Parent.Data.UINode.Nodes.Add("new node for " + this.GetType().ToString());
-				UINode.Tag = this;
-                UINode.ImageIndex = Explorer.Controller.IconBinder.getIcon(IconSizes.Small, Data);
-                UINode.SelectedImageIndex = UINode.ImageIndex;
-			
-			}
+            base.BindUI();
 
-			UINode.Tag = this;
-			if (Data != null)
+			if (DomainData != null)
 			{
-				UINode.Text = Data.Details.Name;
+				TreeViewUINode.Text = DomainData.Details.Name;
 			}
 			else
 			{
-				UINode.Text = "No puzzle";
+				TreeViewUINode.Text = "No puzzle";
 			}
 		}
 
-		public override Control ShowDetail()
-		{
+        public override Control ShowDetail()
+        {
             if (IsEditable)
             {
                 if (showProps)
@@ -70,11 +60,11 @@ namespace SokoSolve.UI.Section.Library.Items
                         Explorer.DetailPayload.Controls.Add(properties);
                         properties.Dock = DockStyle.Fill;
 
-                        properties.Data = Data.Details;
+                        properties.Data = DomainData.Details;
 
                         Explorer.DetailPayload.ResumeLayout();
 
-                        properties.Data = Data.Details;
+                        properties.Data = DomainData.Details;
                     }
 
                     return properties;
@@ -91,7 +81,7 @@ namespace SokoSolve.UI.Section.Library.Items
 
                         Explorer.DetailPayload.ResumeLayout();
 
-                        puzzleEditor.Map = Data.MasterMap.Map;
+                        puzzleEditor.Map = DomainData.MasterMap.Map;
                     }
 
                     return puzzleEditor;
@@ -113,23 +103,14 @@ namespace SokoSolve.UI.Section.Library.Items
 
                 HtmlBuilder html = BuildDetails();
                 browser.SetHTML(html.GetHTMLPage());
-           
+
                 return browser;
             }
-		}
-
-        static ItemPuzzle()
-        {
-            drawing = new StaticImage(ResourceFactory.Singleton.GetInstance("Default.Tiles"), new VectorInt(16, 16));
-            drawing.Tiles[0] = null;  // Make void transparent
         }
 
-	    private static StaticImage drawing;
-
-        HtmlBuilder BuildDetails()
+	    HtmlBuilder BuildDetails()
         {
-            return HtmlReporter.Report(Data, drawing);
-            
+            return HtmlReporter.Report(DomainData, DrawingHelper.Images);
         }
 
         /// <summary>

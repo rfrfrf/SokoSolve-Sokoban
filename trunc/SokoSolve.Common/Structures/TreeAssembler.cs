@@ -41,9 +41,9 @@ namespace SokoSolve.Common.Structures
 				nodelist.Add(ID, item);
 			}
 
-			result.Top.Data = root;
+			result.Root.Data = root;
 
-			AddChildren(result.Top, GetID, GetREF, source);
+			AddChildren(result.Root, GetID, GetREF, source);
 
 			return result;
 		}

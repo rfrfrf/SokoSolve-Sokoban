@@ -13,6 +13,8 @@ namespace SokoSolve.Core.Model.DataModel
 
         public GenericDescription(GenericDescription copy)
         {
+            if (copy == null) return;
+
             this.Name = copy.Name;
             this.Description = copy.Description;
             this.Author = copy.Author;
@@ -20,6 +22,11 @@ namespace SokoSolve.Core.Model.DataModel
             this.DateSpecified = copy.DateSpecified;
             this.License = copy.License;
             this.Comments = copy.Comments;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1} ...", Name, Description);
         }
     }
 }

@@ -33,17 +33,17 @@ namespace SokoSolve.UI.Section.Library
                 newPuz.PuzzleID = Controller.Current.IdProvider.GetNextIDString("P{0}");
                 newPuz.Details = new GenericDescription();
                 newPuz.Details.Name = string.Format("New Puzzle #{0}", Controller.Current.Puzzles.Count+1);
-                newPuz.Category = category.Data;
+                newPuz.Category = category.DomainData;
                 newPuz.MasterMap = new PuzzleMap(newPuz);
                 newPuz.MasterMap.MapID = Controller.Current.IdProvider.GetNextIDString("M{0}");
 
                 Controller.Current.Puzzles.Add(newPuz);
 
                 // Refresh the UI model to updated domain data
-                category.SyncWithData();
+                category.SyncDomain();
 
                 // Refresh enture tree
-                Controller.Explorer.BindUI();
+                Controller.Explorer.SyncUI();
             }
         }
 
@@ -231,16 +231,16 @@ namespace SokoSolve.UI.Section.Library
             {
                 ExplorerItem parent = delMe.TreeNode.Parent.Data;
 
-                Controller.Current.Puzzles.Remove(delMe.Data);
+                Controller.Current.Puzzles.Remove(delMe.DomainData);
 
-                parent.SyncWithData(); 
-                parent.BindToUI();
+                parent.SyncDomain(); 
+                parent.SyncUI();
 
                 // Set selection as parent
                 Controller.UpdateSelectionSingle(parent);
 
                 // Refresh enture tree
-                Controller.Explorer.BindUI();
+                Controller.Explorer.SyncUI();
             }
         }
 
@@ -267,7 +267,21 @@ namespace SokoSolve.UI.Section.Library
 
         protected override void ExecuteImplementation(CommandInstance<ExplorerItem> instance)
         {
-            throw new NotImplementedException();
+            ItemPuzzle puz = instance.Context[0] as ItemPuzzle;
+            if (puz != null)
+            {
+                Puzzle cloned = new Puzzle(puz.DomainData.Library);
+                cloned.PuzzleID = puz.DomainData.Library.IdProvider.GetNextIDString("P{0}");
+                cloned.Category = puz.DomainData.Category;
+                cloned.Details = new GenericDescription(puz.DomainData.Details);
+                cloned.MasterMap = new PuzzleMap(cloned);
+                cloned.MasterMap.Details = new GenericDescription(puz.DomainData.MasterMap.Details);
+                cloned.MasterMap.MapID = puz.DomainData.Library.IdProvider.GetNextIDString("M{0}");
+                cloned.MasterMap.Map = new SokobanMap(puz.DomainData.MasterMap.Map);
+                puz.DomainData.Library.Puzzles.Add(cloned);
+
+                Controller.Explorer.Refresh();
+            }
         }
 
         public override void UpdateForSelection(List<ExplorerItem> selection)
@@ -298,7 +312,7 @@ namespace SokoSolve.UI.Section.Library
                 FormMain form = Controller.Explorer.TreeView.FindForm() as FormMain;
                 if (form != null)
                 {
-                    form.StartGame(puz.Data, puz.Data.MasterMap, FormMain.Modes.Library);
+                    form.StartGame(puz.DomainData, puz.DomainData.MasterMap, FormMain.Modes.Library);
                 }
             }
         }

@@ -26,7 +26,7 @@ namespace SokoSolve.Common.Structures
 
 			// Add the start location
 			searchTree = new Tree<LocationNode>();
-			TreeNode<LocationNode> startNode = searchTree.Top;
+			TreeNode<LocationNode> startNode = searchTree.Root;
 			startNode.Data = new LocationNode(startLocation);
 
 			evaluationList.Add(startNode);
@@ -47,7 +47,7 @@ namespace SokoSolve.Common.Structures
 		/// <returns>null - no path found</returns>
 		public List<LocationNode> GetShortestPath(VectorInt destination)
 		{
-			TreeNode<LocationNode> destinationNode = searchTree.Top.Find(delegate(TreeNode<LocationNode> node) { return node.Data.Location == destination; }, int.MaxValue);
+			TreeNode<LocationNode> destinationNode = searchTree.Root.Find(delegate(TreeNode<LocationNode> node) { return node.Data.Location == destination; }, int.MaxValue);
 			if (destinationNode == null) return null;
 
 			// Here root node is the start location

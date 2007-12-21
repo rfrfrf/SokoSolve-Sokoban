@@ -1,103 +1,120 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<SokobanLibrary xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
-	<Details>
-		<Name>Default Library Collection</Name>
-	</Details>
-	<Categories>
-		<Category CategoryID="Categories.MasterList" >
-			<CategoryDescription License="GPL" Date="2007-01-01T10:10:00">
-				<Name>Master list</Name>
-				<Description>Description field</Description>
-				<Comments>General comments</Comments>
-				<Author Email="guy@langston.org.za" Homepage="http://www.guylangston.net" Name="Guy Langston"/>
-			</CategoryDescription>
-		</Category>
-		<Category CategoryID="Categories.MasterList.Easy" CategoryParentREF="Categories.MasterList" >
-			<CategoryDescription License="GPL" Date="2007-01-01T10:10:00">
-				<Name>Master list</Name>
-				<Description>Description field</Description>
-				<Comments>General comments</Comments>
-				<Author Email="guy@langston.org.za" Homepage="http://www.guylangston.net" Name="Guy Langston"/>
-			</CategoryDescription>
-		</Category>
-	</Categories>
-	<Puzzles>
-		<Puzzle PuzzleID="1" CategoryREF="Categories.MasterList.Easy">
-			<PuzzleDescription>
-				<Name>Master list</Name>
-				<Description>Description field</Description>
-				<Comments>General comments</Comments>
-				<Author Email="guy@langston.org.za" Homepage="http://www.guylangston.net" Name="Guy Langston"/>
-					 </PuzzleDescription>
-			<Maps>
-				<Map>
-					<Row >~~~###~~~~~</Row>
-					<Row >~~##.#~####</Row>
-					<Row >~##..###..#</Row>
-					<Row >##.X......#</Row>
-					<Row >#...PX.#..#</Row>
-					<Row >###.X###..#</Row>
-					<Row >~~#..#OO..#</Row>
-					<Row >~##.##O#.##</Row>
-					<Row >~#......##~</Row>
-					<Row >~#.....##~~</Row>
-					<Row >~#######~~~</Row>
-					<Solutions>
-						<Solution>
-							<Steps>UUUUUUUUUUUDUDUDDUDUDUUDUDUDUDUDUDUDUD</Steps>
-						</Solution>
-					</Solutions>
-					<MapDetails/>
-				</Map>
-			</Maps>
-		</Puzzle>
-		<Puzzle PuzzleID="2" CategoryREF="Categories.MasterList">
-			<PuzzleDescription/>
-			<Maps>
-				<Map>
-					<Row >~~~###~~~~~</Row>
-					<Row >~~##.#~####</Row>
-					<Row >~##..###..#</Row>
-					<Row >##.X......#</Row>
-					<Row >#...PX.#..#</Row>
-					<Row >###.X###..#</Row>
-					<Row >~~#..#OO..#</Row>
-					<Row >~##.##O#.##</Row>
-					<Row >~#......##~</Row>
-					<Row >~#.....##~~</Row>
-					<Row >~#######~~~</Row>
-					<Solutions>
-						<Solution>
-							<Steps>UUUUUUUUUUUDUDUDDUDUDUUDUDUDUDUDUDUDUD</Steps>
-						</Solution>
-					</Solutions>
-					<MapDetails/>
-				</Map>
-			</Maps>
-		</Puzzle>
-		<Puzzle PuzzleID="3" CategoryREF="Categories.MasterList.Easy">
-			<PuzzleDescription/>
-			<Maps>
-				<Map>
-					<Row >~~~###~~~~~</Row>
-					<Row >~~##.#~####</Row>
-					<Row >~##..###..#</Row>
-					<Row >##.X......#</Row>
-					<Row >#...PX.#..#</Row>
-					<Row >###.X###..#</Row>
-					<Row >~~#..#OO..#</Row>
-					<Row >~##.##O#.##</Row>
-					<Row >~#......##~</Row>
-					<Row >~#.....##~~</Row>
-					<Row >~#######~~~</Row>
-					<Solutions>
-						<Solution>
-							<Steps>UUUUUUUUUUUDUDUDDUDUDUUDUDUDUDUDUDUDUD</Steps>
-						</Solution>
-					</Solutions>
-					<MapDetails/>
-				</Map>
-			</Maps>
-		</Puzzle>
-	</Puzzles>
+<?xml version="1.0"?>
+<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LibraryID="e94cc831-432f-4269-aae9-639f500030cc" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
+  <Details License="GPL">
+    <Name>Development Library</Name>
+    <Description>A simple test library for development. The puzzles included are not for human consumption. ;-)</Description>
+    <Comments />
+    <Author Name="Guy Langston" Email="bitwacker@users.sourceforge.net" Homepage="http://sokosolve.sourceforge.net" />
+  </Details>
+  <Categories>
+    <Category CategoryID="C0">
+      <CategoryDescription>
+        <Name>Master List</Name>
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C1" CategoryParentREF="C0">
+      <CategoryDescription License="Creative Commons">
+        <Name>Easy</Name>
+        <Description>Skeleton new library</Description>
+        <Comments>This is a skeleton sokoban library. ALL RIGHTS RESERVED.</Comments>
+        <Author Name="Unknown author" Email="noreply@sokosolve.sourceforge.net" Homepage="http://sokosolve.sourceforge.net" />
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C2" CategoryParentREF="C0">
+      <CategoryDescription License="Creative Commons">
+        <Name>Medium</Name>
+        <Description>Skeleton new library</Description>
+        <Comments>This is a skeleton sokoban library. ALL RIGHTS RESERVED.</Comments>
+        <Author Name="Unknown author" Email="noreply@sokosolve.sourceforge.net" Homepage="http://sokosolve.sourceforge.net" />
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C3" CategoryParentREF="C0">
+      <CategoryDescription License="Creative Commons">
+        <Name>Hard</Name>
+        <Description>Skeleton new library</Description>
+        <Comments>This is a skeleton sokoban library. ALL RIGHTS RESERVED.</Comments>
+        <Author Name="Unknown author" Email="noreply@sokosolve.sourceforge.net" Homepage="http://sokosolve.sourceforge.net" />
+      </CategoryDescription>
+    </Category>
+  </Categories>
+  <Puzzles>
+    <Puzzle Rating="Normal" PuzzleID="P4" CategoryREF="C1">
+      <PuzzleDescription License="Creative Commons">
+        <Name>Standard</Name>
+        <Description>Source from Sasquatch</Description>
+        <Comments />
+        <Author Name="Unknown author" Email="noreply@sokosolve.sourceforge.net" Homepage="http://sokosolve.sourceforge.net" />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M5" Rating="">
+          <Row>###########</Row>
+          <Row>####.######</Row>
+          <Row>###..###..#</Row>
+          <Row>##........#</Row>
+          <Row>#...PX.#X.#</Row>
+          <Row>###.X###..#</Row>
+          <Row>###..#OO..#</Row>
+          <Row>###.##O#.##</Row>
+          <Row>##......###</Row>
+          <Row>##.....####</Row>
+          <Row>###########</Row>
+          <Solutions>
+            <Solution>
+              <Steps>urrrrDullllldddrUUdldddrrruurrruuullllLulDDDDDuuuurrrrrrdddllldddlllluRRluuruuurrdLullddrUluRRRRldllddldddrrruuurrruulDrdLLruuruulDDDrdLuuullldlddlddrRdrU</Steps>
+              <SolutionDescription Date="2007-12-21T21:27:36.797703+02:00">
+                <Name>'Standard' Solution</Name>
+                <Comments>Solution found from game player.</Comments>
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
+        </Map>
+        <Map MapID="M6" Rating="">
+          <Row>~~~###~~~~~</Row>
+          <Row>~~#..#~####</Row>
+          <Row>~#...###..#</Row>
+          <Row>##.X......#</Row>
+          <Row>#...PX.#..#</Row>
+          <Row>###.X###..#</Row>
+          <Row>~~#..#OO..#</Row>
+          <Row>~##.##O#.##</Row>
+          <Row>~#......##~</Row>
+          <Row>~#.....##~~</Row>
+          <Row>~#######~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle PuzzleID="P7" CategoryREF="C1">
+      <PuzzleDescription License="Creative Commons">
+        <Name>Quick Solution</Name>
+        <Description>Edit me...</Description>
+        <Comments>This is a skeleton sokoban library. ALL RIGHTS RESERVED.</Comments>
+        <Author Name="Unknown author" Email="noreply@sokosolve.sourceforge.net" Homepage="http://sokosolve.sourceforge.net" />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M8" Rating="">
+          <Row>~~~###~~~~~</Row>
+          <Row>~~##.#~####</Row>
+          <Row>~##..###..#</Row>
+          <Row>##........#</Row>
+          <Row>#...P..#..#</Row>
+          <Row>###..###..#</Row>
+          <Row>~~#..#$$..#</Row>
+          <Row>~##.##O#.##</Row>
+          <Row>~#....X.##~</Row>
+          <Row>~#.....##~~</Row>
+          <Row>~#######~~~</Row>
+          <Solutions>
+            <Solution>
+              <Steps>lddddrrdrU</Steps>
+              <SolutionDescription Date="2007-12-21T21:24:28.6779075+02:00">
+                <Name>'Quick Solution' Solution</Name>
+                <Comments>Solution found from game player.</Comments>
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
+        </Map>
+      </Maps>
+    </Puzzle>
+  </Puzzles>
 </SokobanLibrary>

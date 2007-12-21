@@ -21,25 +21,25 @@ namespace SokoSolve.Core.Model
 
         public string LibraryCurrentOpenDir
         {
-            get { return simpleParams["LibraryCurrentOpenDir"]; }
+            get { return GetGeneralParam("LibraryCurrentOpenDir"); }
             set { simpleParams["LibraryCurrentOpenDir"] = value; }
         }
 
         public string LibraryCurrentImportDir
         {
-            get { return simpleParams["LibraryCurrentImportDir"]; }
+            get { return GetGeneralParam("LibraryCurrentImportDir"); }
             set { simpleParams["LibraryCurrentImportDir"] = value; }
         }
 
         public string LibraryLastFile
         {
-            get { return simpleParams["LibraryLastFile"]; }
+            get { return GetGeneralParam("LibraryLastFile"); }
             set { simpleParams["LibraryLastFile"] = value; }
         }
 
         public string LibraryLastPuzzle
         {
-            get { return simpleParams["LibraryLastPuzzle"]; }
+            get { return GetGeneralParam("LibraryLastPuzzle"); }
             set { simpleParams["LibraryLastPuzzle"] = value; }
         }
 
@@ -100,6 +100,12 @@ namespace SokoSolve.Core.Model
                 XmlSerializer ser = new XmlSerializer(typeof(SokoSolveProfile));
                 ser.Serialize(stream, currentXML);
             }   
+        }
+
+        string GetGeneralParam(string parmName)
+        {
+            if (!simpleParams.ContainsKey(parmName)) return null;
+            return simpleParams[parmName];
         }
 
         private Dictionary<string, string> simpleParams;

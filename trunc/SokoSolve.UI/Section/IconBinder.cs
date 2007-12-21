@@ -83,6 +83,8 @@ namespace SokoSolve.UI.Section
             
             if (item is SokoSolve.Core.Model.Library) return 0;
             if (item is SokoSolve.Core.Model.Category) return 1;
+            if (item is SokoSolve.Core.Model.Solution) return 3;
+            if (item is SokoSolve.Core.Model.PuzzleMap) return 2;
             if (item is SokoSolve.Core.Model.Puzzle)
             {
                 if (size == IconSizes.Small) return 2;

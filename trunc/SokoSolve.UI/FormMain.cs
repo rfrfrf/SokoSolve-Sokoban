@@ -47,6 +47,7 @@ namespace SokoSolve.UI
                 {
                     case (Modes.Library):
                         Controls.Add(libControl);
+                        libControl.Refresh();
                         libControl.Dock = DockStyle.Fill;
                         break;
                     case (Modes.Game):

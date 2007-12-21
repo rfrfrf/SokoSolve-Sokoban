@@ -26,8 +26,8 @@ namespace SokoSolve.Core.UI
         /// <summary>
         /// Strong Construction. <see cref="Init"/>, then <see cref="InitFX"/>, then <see cref="InitDisplay"/>
         /// </summary>
-        /// <param name="aPuz">Puzzle to play</param>
-        public GameUI(SokobanMap aPuz) : base(aPuz)
+        /// <param name="Map">Puzzle to play</param>
+        public GameUI(Puzzle aPuzzle, SokobanMap Map) : base(aPuzzle, Map)
         {
             GameCoords = new GameCoords(this);
             StepCurrent = 0;
@@ -210,6 +210,7 @@ namespace SokoSolve.Core.UI
         /// </summary>
         public void Exit()
         {
+            Active = false;
             if (OnExit != null) OnExit(this, new EventArgs());
         }
 
@@ -257,6 +258,8 @@ namespace SokoSolve.Core.UI
         /// </summary>
         public virtual void PerformStep()
         {
+            if (!Active) return;
+
             StepCurrent++;
             foreach (NodeBase n in nodes)
             {
@@ -281,6 +284,8 @@ namespace SokoSolve.Core.UI
         /// </summary>
         public virtual void Render()
         {
+            if (!Active) return;
+
             // Clean Up
             //Graphics.FillRectangle(new SolidBrush(Color.Gray), GameCoords.PuzzleRegion.ToDrawingRect());
 
@@ -358,6 +363,7 @@ namespace SokoSolve.Core.UI
         public ResourceManager ResourceManager;
         public Size SizeTile;
         public int StepCurrent;
+        public bool Active;
 
         List<NodeBase> nodes;
         List<NodeBase> nodesToAdd;
@@ -365,5 +371,6 @@ namespace SokoSolve.Core.UI
 
         private NodeCursor cursor;
         NodeDynamicPlayer player;
+
     }
 }

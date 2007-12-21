@@ -10,6 +10,7 @@ using SokoSolve.Core.Model.DataModel;
 using SokoSolve.Core.UI;
 using SokoSolve.UI.Controls.Secondary;
 using SokoSolve.UI.Controls.Web;
+using SokoSolve.UI.Section;
 
 namespace SokoSolve.UI.Controls.Web
 {
@@ -92,7 +93,7 @@ namespace SokoSolve.UI.Controls.Web
             
             if (drawing != null)
             {
-                sb.Add(puzzle, drawing.Draw(puzzle.MasterMap.Map), null);    
+                sb.Add(puzzle.MasterMap, drawing.Draw(puzzle.MasterMap.Map), null);    
             }
             
             sb.Add("</td></tr></table>");
@@ -101,13 +102,15 @@ namespace SokoSolve.UI.Controls.Web
 			return sb;
 		}
 
-        public static HtmlBuilder Report(PuzzleMap item)
+        public static HtmlBuilder Report(PuzzleMap item, StaticImage drawing)
         {
             HtmlBuilder sb = new HtmlBuilder();
-            if (item != item.Puzzle.MasterMap)
+            
+            sb.Add(Report(item.Details));
+
+            if (drawing != null)
             {
-                // Not the master map
-                sb.Add(Report(item.Details));
+                sb.Add(item, drawing.Draw(item.Map), null);
             }
 
             if (item.HasSolution)
@@ -125,7 +128,7 @@ namespace SokoSolve.UI.Controls.Web
 	        report.AddLabel("Rating", library.Rating);
             report.AddLabel("Puzzles", library.Puzzles.Count.ToString());
 
-	        foreach (Category category in library.Categories.Top.ToList())
+	        foreach (Category category in library.Categories.Root.ToList())
 	        {
 	            report.Add(Report(category, library));
 	        }
@@ -138,7 +141,6 @@ namespace SokoSolve.UI.Controls.Web
 
             List<Puzzle> puz = category.GetPuzzles(helpLib);
             report.AddLabel("Puzzles", puz.Count.ToString());
-            StaticImage img = new StaticImage(ResourceFactory.Singleton.GetInstance("Default.Tiles"), new VectorInt(16, 16));
 
             int puzPerLine = 4;
             int counter = 1;
@@ -148,7 +150,7 @@ namespace SokoSolve.UI.Controls.Web
                 report.Add(puzzle.Details.Name);
                 report.Add("<br/>");
                 report.Add("<a href=\"app://puzzle/{0}\">", puzzle.PuzzleID);
-                report.Add(puzzle, img.Draw(puzzle.MasterMap.Map), "width:100px; height:80px");
+                report.Add(puzzle.MasterMap, DrawingHelper.DrawPuzzle(puzzle.MasterMap), "width:100px; height:80px");
                 report.Add("</a>");
 
                 if (counter % puzPerLine == 0)

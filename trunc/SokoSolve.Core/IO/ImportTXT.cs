@@ -74,7 +74,7 @@ See http://users.bentonrea.com/~sasquatch/sokoban/. ";
             Puzzle puz = new Puzzle(lib);
             puz.Details.Name = name;
             puz.Details.Description = "";
-            puz.Category = lib.Categories.Top.Data;
+            puz.Category = lib.Categories.Root.Data;
             puz.Order = lib.Puzzles.Count + 1;
             puz.PuzzleID = lib.IdProvider.GetNextIDString("P{0}");
 
@@ -82,6 +82,7 @@ See http://users.bentonrea.com/~sasquatch/sokoban/. ";
             block.RemoveAt(0);
 
             puz.MasterMap = new PuzzleMap(puz);
+            puz.MasterMap.MapID = puz.Library.IdProvider.GetNextIDString("M{0}");
             puz.MasterMap.Map = new SokobanMap();
             puz.MasterMap.Map.setFromStrings(block.ToArray(), "v# $.*@+");
             puz.Rating = PuzzleAnalysis.CalcRating(puz.MasterMap.Map).ToString("0.0");

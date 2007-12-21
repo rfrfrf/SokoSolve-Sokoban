@@ -31,8 +31,6 @@ namespace SokoSolve.UI.Controls.Primary
 
                 explorer = new LibraryExplorer(controller, treeViewLibrary, splitContainer1.Panel2);
             }
-			
-
 		}
 
         private void toolStripDropDownButtonDebug_Click(object sender, EventArgs e)
@@ -46,8 +44,17 @@ namespace SokoSolve.UI.Controls.Primary
 	    public void InitLibrary(SokoSolve.Core.Model.Library current)
 	    {
 	        controller.Current = current;
-	        explorer.SyncRoot(new ItemLibrary(controller.Current));
-	        explorer.BindUI();
+	        explorer.SyncDomain(new ItemLibrary(controller.Current));
+	        explorer.SyncUI();
 	    }
+
+        public override void Refresh()
+        {
+            base.Refresh();
+            if (explorer != null)
+            {
+                explorer.Refresh();
+            }
+        }
 	}
 }

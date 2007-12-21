@@ -81,11 +81,13 @@ namespace SokoSolve.Core.UI.Nodes
                         else if (res == Game.Game.MoveResult.ValidPushWin)
                         {
                             NodeEffectText msg = new NodeEffectText(GameUI, 20, "Puzzle Complete!", CurrentCentre);
-                            msg.Path = new Paths.Linear(CurrentCentre, new VectorInt(50, 50), new VectorDouble(1, 1), false);
+                            msg.Path = new Paths.Spiral(CurrentCentre);
                             GameUI.Add(msg);
 
-                            msg = new NodeEffectText(GameUI, 20, "Sucess! Well Done.", CurrentCentre);
-                            GameUI.Add(msg);
+                            if (this.GameUI.OnGameWin != null)
+                            {
+                                this.GameUI.OnGameWin(this, new EventArgs());
+                            }
                         }
                     }
                     

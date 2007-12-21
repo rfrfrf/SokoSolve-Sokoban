@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using SokoSolve.Common.Math;
 using SokoSolve.Common.Structures;
 using SokoSolve.Core.Model;
+using SokoSolve.Core.UI;
 using SokoSolve.UI.Section;
 
 namespace SokoSolve.UI.Section.Library
@@ -19,6 +21,7 @@ namespace SokoSolve.UI.Section.Library
         /// <param name="myView"></param>
         public LibraryController(SokoSolve.UI.Controls.Primary.Library myView)
 		{
+            
 			view = myView;
 			selection = new List<ExplorerItem>();
 
@@ -29,6 +32,7 @@ namespace SokoSolve.UI.Section.Library
             Register(new LibrarySave(this, new object[] { view.tsbLibrarySave, view.mbSave }));
 		    Register(new LibraryEdit(this, new object[] {view.mbEdit, view.tsbLibraryProperties}));
             Register(new LibraryImport(this, new object[] { view.tsbLibraryImport }));
+            Register(new LibraryRefresh(this, new object[] { view.tsbLibraryRefresh }));
 
             // Category Commands
             Register(new CategoryNew(this, new object[] { view.tsbCategoryNew }));
@@ -77,8 +81,8 @@ namespace SokoSolve.UI.Section.Library
 				if (OnCurrentChanged != null) OnCurrentChanged(this, new EventArgs());
 
                 // Now change the selection to the Library
-			    UpdateSelectionSingle(Explorer.Top.Data);
-			    Explorer.UpdateSelection(Explorer.Top.Data);
+			    UpdateSelectionSingle(Explorer.Root.Data);
+			    Explorer.UpdateSelection(Explorer.Root.Data);
 			}
 		}
         /// <summary>
@@ -169,7 +173,7 @@ namespace SokoSolve.UI.Section.Library
             {
                 // Select the top item
                 string findID = appURI.ToString().Remove(0, "app://puzzle/".Length);
-                TreeNode<ExplorerItem> find = explorer.Top.Find(delegate(TreeNode<ExplorerItem> item)
+                TreeNode<ExplorerItem> find = explorer.Root.Find(delegate(TreeNode<ExplorerItem> item)
                           {
                               Puzzle puz = item.Data.DataUnTyped as Puzzle;
                               if (puz == null) return false;
@@ -187,9 +191,12 @@ namespace SokoSolve.UI.Section.Library
             return true;
         }
 
+      
+
         private SokoSolve.Core.Model.Library currentLibrary;
         private SokoSolve.UI.Controls.Primary.Library view;
         private List<ExplorerItem> selection;
         private LibraryExplorer explorer;
+
 	}
 }

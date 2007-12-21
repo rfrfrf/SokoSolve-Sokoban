@@ -97,7 +97,7 @@ namespace SokoSolve.Common.Structures
 		}
 
         /// <summary>
-        /// Children Date (immutable)
+        /// Children Data (immutable)
         /// </summary>
         public T[] ChildrenData
         {
@@ -245,7 +245,7 @@ namespace SokoSolve.Common.Structures
 		}
 
 		/// <summary>
-		/// Apply an action for each node recursive
+		/// Apply an action for each node recursive, includingTHIS
 		/// </summary>
 		/// <param name="predicate">predicate match function</param>
 		/// <param name="searchDepth">Depth 0 (this), 1 (all children), int.MaxValue (recurse), -1 parent, int.MinValue (recurse to root)</param>

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
+<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd" LibraryID="L1">
   <Details License="Unknown" Date="2007-12-15T11:43:20.365097+02:00">
     <Name>Sasquatch</Name>
     <Description>Imported sokoban library.</Description>
@@ -14,11 +14,11 @@
   <Puzzles>
     <Puzzle Rating="51.7" PuzzleID="P1" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Splendid Hamlet</Name>
+        <Name>Superb Gem</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M2" Rating="">
           <Row>~~~###~~~~~</Row>
           <Row>~~##.#~####</Row>
           <Row>~##..###..#</Row>
@@ -34,13 +34,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="117.6" PuzzleID="P2" CategoryREF="C0">
+    <Puzzle Rating="117.6" PuzzleID="P3" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Caroline's Tunnel</Name>
+        <Name>Slimy Grave</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M4" Rating="">
           <Row>~##~#####</Row>
           <Row>##.##.O.#</Row>
           <Row>#.##.XO.#</Row>
@@ -54,13 +54,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="81.3" PuzzleID="P3" CategoryREF="C0">
+    <Puzzle Rating="81.3" PuzzleID="P5" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Ghastly Tower</Name>
+        <Name>Grim Town</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M6" Rating="">
           <Row>~~~~~~~~~~~#####</Row>
           <Row>~~~~~~~~~~##...#</Row>
           <Row>~~~~~~~~~~#....#</Row>
@@ -79,13 +79,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="157.9" PuzzleID="P4" CategoryREF="C0">
+    <Puzzle Rating="157.9" PuzzleID="P7" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Superb House</Name>
+        <Name>Bob's Cottage</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M8" Rating="">
           <Row>~~###########</Row>
           <Row>~##.....#..P#</Row>
           <Row>###.X.XX#...#</Row>
@@ -100,13 +100,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="214.8" PuzzleID="P5" CategoryREF="C0">
+    <Puzzle Rating="214.8" PuzzleID="P9" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Cat's Lagoon</Name>
+        <Name>Tepid Gem</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M10" Rating="">
           <Row>~~###########~~</Row>
           <Row>~##....#....##~</Row>
           <Row>###.X.X#X.X.###</Row>
@@ -126,13 +126,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="147.7" PuzzleID="P6" CategoryREF="C0">
+    <Puzzle Rating="147.7" PuzzleID="P11" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Hot Mountain</Name>
+        <Name>Tricky Spider</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M12" Rating="">
           <Row>~~###########~~</Row>
           <Row>###O..OXO..O###</Row>
           <Row>~##.X..X..X.##~</Row>
@@ -149,13 +149,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="71.4" PuzzleID="P7" CategoryREF="C0">
+    <Puzzle Rating="71.4" PuzzleID="P13" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Leigh's Shower</Name>
+        <Name>Dire Blanket</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M14" Rating="">
           <Row>~~~~~~~~~~~######~~</Row>
           <Row>~~~~####~~##....#~~</Row>
           <Row>~~###..#~~#..##.###</Row>
@@ -170,13 +170,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="89.7" PuzzleID="P8" CategoryREF="C0">
+    <Puzzle Rating="89.7" PuzzleID="P15" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Delighted Town</Name>
+        <Name>Ghastly House</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M16" Rating="">
           <Row>~~~~#######~~</Row>
           <Row>~~~~#.....##~</Row>
           <Row>#####.###..##</Row>
@@ -192,13 +192,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="135.1" PuzzleID="P9" CategoryREF="C0">
+    <Puzzle Rating="135.1" PuzzleID="P17" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Dire School</Name>
+        <Name>Cold Nemosis</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M18" Rating="">
           <Row>#########</Row>
           <Row>#O.O....#</Row>
           <Row>#OXO.O..#</Row>
@@ -212,13 +212,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="71.0" PuzzleID="P10" CategoryREF="C0">
+    <Puzzle Rating="71.0" PuzzleID="P19" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Small Hovel</Name>
+        <Name>Old Town</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M20" Rating="">
           <Row>~~~~~~######~~~~~~</Row>
           <Row>~~~~~~#....#~~~~~~</Row>
           <Row>~~~~~~#.P..###~~~~</Row>
@@ -240,13 +240,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="130.4" PuzzleID="P11" CategoryREF="C0">
+    <Puzzle Rating="130.4" PuzzleID="P21" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Uptight Estate</Name>
+        <Name>Slimy Gem</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M22" Rating="">
           <Row>~~####~~~~~</Row>
           <Row>###..####~~</Row>
           <Row>#...P...##~</Row>
@@ -260,13 +260,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="86.2" PuzzleID="P12" CategoryREF="C0">
+    <Puzzle Rating="86.2" PuzzleID="P23" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Lucy's Shower</Name>
+        <Name>Old School</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M24" Rating="">
           <Row>~~~~~~~~~~~~~~#####~~~~~~~~</Row>
           <Row>~~~~~~~~~~~~~~#...#~~~~~~~~</Row>
           <Row>~~~~#####~~~~~#...#######~~</Row>
@@ -283,13 +283,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="107.5" PuzzleID="P13" CategoryREF="C0">
+    <Puzzle Rating="107.5" PuzzleID="P25" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Old Yellow House</Name>
+        <Name>Tepid Blanket</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M26" Rating="">
           <Row>~~~#######~~</Row>
           <Row>~###.....##~</Row>
           <Row>~#...###..#~</Row>
@@ -308,13 +308,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="157.9" PuzzleID="P14" CategoryREF="C0">
+    <Puzzle Rating="157.9" PuzzleID="P27" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Splendid Nemosis</Name>
+        <Name>Dastardly Black Morning</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M28" Rating="">
           <Row>~#######~~</Row>
           <Row>##.....#~#</Row>
           <Row>#..$OXO#~~</Row>
@@ -327,13 +327,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="107.7" PuzzleID="P15" CategoryREF="C0">
+    <Puzzle Rating="107.7" PuzzleID="P29" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Big Shower</Name>
+        <Name>Tepid Estate</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M30" Rating="">
           <Row>~~~####~~~~</Row>
           <Row>~~~#P.#~~~~</Row>
           <Row>~~##..##~~~</Row>
@@ -350,13 +350,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="87.3" PuzzleID="P16" CategoryREF="C0">
+    <Puzzle Rating="87.3" PuzzleID="P31" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Superb Hamlet</Name>
+        <Name>Cold Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M32" Rating="">
           <Row>~~######~~~~~~~</Row>
           <Row>~##.#..###~~~~~</Row>
           <Row>##.#...#.##~~~~</Row>
@@ -378,13 +378,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="85.5" PuzzleID="P17" CategoryREF="C0">
+    <Puzzle Rating="85.5" PuzzleID="P33" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Grim Nemosis</Name>
+        <Name>Caroline's Gem</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M34" Rating="">
           <Row>~~~~###########~~~~~~~~</Row>
           <Row>~~~##.O.O.O.O.###~~~~~~</Row>
           <Row>~~~#..XX.X.X.X..#~~~~~~</Row>
@@ -401,13 +401,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="324.3" PuzzleID="P18" CategoryREF="C0">
+    <Puzzle Rating="324.3" PuzzleID="P35" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Dire Blanket</Name>
+        <Name>Grand House</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M36" Rating="">
           <Row>~~~~####</Row>
           <Row>#####..#</Row>
           <Row>#......#</Row>
@@ -427,13 +427,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="62.5" PuzzleID="P19" CategoryREF="C0">
+    <Puzzle Rating="62.5" PuzzleID="P37" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Tense Blanket</Name>
+        <Name>Grim Grave</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M38" Rating="">
           <Row>#####~~~~~~~~~~~~~~~~~~~~</Row>
           <Row>#...#######~~~~~~~~~~~~~~</Row>
           <Row>#..X......##~~~~~~~~~~~~~</Row>
@@ -453,13 +453,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="225.0" PuzzleID="P20" CategoryREF="C0">
+    <Puzzle Rating="225.0" PuzzleID="P39" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Delighted Morning</Name>
+        <Name>Dire Gem</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M40" Rating="">
           <Row>~~~~~####</Row>
           <Row>~~~~~#..#</Row>
           <Row>######XO#</Row>
@@ -472,13 +472,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="181.8" PuzzleID="P21" CategoryREF="C0">
+    <Puzzle Rating="181.8" PuzzleID="P41" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Wilma's Cottage</Name>
+        <Name>Edgy Grave</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M42" Rating="">
           <Row>#####~########~</Row>
           <Row>#...###.O.X..#~</Row>
           <Row>#...X.$OO.#X.##</Row>
@@ -489,13 +489,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="72.1" PuzzleID="P22" CategoryREF="C0">
+    <Puzzle Rating="72.1" PuzzleID="P43" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Ghastly Morning</Name>
+        <Name>Cold Toad</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M44" Rating="">
           <Row>~~~#####~####~~</Row>
           <Row>~~~#P.O###..###</Row>
           <Row>####..XX.X....#</Row>
@@ -514,13 +514,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="172.8" PuzzleID="P23" CategoryREF="C0">
+    <Puzzle Rating="172.8" PuzzleID="P45" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Ghastly Blanket</Name>
+        <Name>Neville's Toad</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M46" Rating="">
           <Row>~~~~~#######~~~~~</Row>
           <Row>######.....######</Row>
           <Row>#..O.OOX#XOO.O..#</Row>
@@ -534,13 +534,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="126.2" PuzzleID="P24" CategoryREF="C0">
+    <Puzzle Rating="126.2" PuzzleID="P47" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Tense Gem</Name>
+        <Name>Tight Toad</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M48" Rating="">
           <Row>~~~~~~~~######</Row>
           <Row>~~~~~~~~#...##</Row>
           <Row>~~#######.X..#</Row>
@@ -559,13 +559,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="146.2" PuzzleID="P25" CategoryREF="C0">
+    <Puzzle Rating="146.2" PuzzleID="P49" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Tight Hovel</Name>
+        <Name>Tepid Mountain</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M50" Rating="">
           <Row>~~~~~~~~~#####~~~~</Row>
           <Row>~~~~~#####..#####~</Row>
           <Row>~~~~~#..O#X...X.#~</Row>
@@ -584,13 +584,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="122.4" PuzzleID="P26" CategoryREF="C0">
+    <Puzzle Rating="122.4" PuzzleID="P51" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Uptight Morning</Name>
+        <Name>Delighted Hamlet</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M52" Rating="">
           <Row>~~~~~~~~~~~####~~~</Row>
           <Row>~###########..#~~~</Row>
           <Row>~#..X.X.X.X...##~~</Row>
@@ -606,13 +606,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="57.1" PuzzleID="P27" CategoryREF="C0">
+    <Puzzle Rating="57.1" PuzzleID="P53" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Slimy Tower</Name>
+        <Name>Big Cottage</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M54" Rating="">
           <Row>~~~~~~########~~~~~~~~~~</Row>
           <Row>~######......##########~</Row>
           <Row>##.X.....###..........##</Row>
@@ -633,13 +633,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="130.8" PuzzleID="P28" CategoryREF="C0">
+    <Puzzle Rating="130.8" PuzzleID="P55" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>David's Shower</Name>
+        <Name>Grim Nemosis</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M56" Rating="">
           <Row>~~~~~~~######~~~~~~~~</Row>
           <Row>~~~~~~~#....###~~~~~~</Row>
           <Row>~~~#####.X.X..#~~~~~~</Row>
@@ -657,13 +657,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="110.4" PuzzleID="P29" CategoryREF="C0">
+    <Puzzle Rating="110.4" PuzzleID="P57" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Tepid Toad</Name>
+        <Name>Edgy Blanket</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M58" Rating="">
           <Row>####~~~~~~~~~~~~~~~~~~</Row>
           <Row>#..#~~~~~~~~~~~~~~####</Row>
           <Row>#..########~#######..#</Row>
@@ -684,13 +684,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="76.9" PuzzleID="P30" CategoryREF="C0">
+    <Puzzle Rating="76.9" PuzzleID="P59" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Edgy Tunnel</Name>
+        <Name>Dastardly Lagoon</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M60" Rating="">
           <Row>~~~~~#####~~~~~~~~~~~~~~~~</Row>
           <Row>~~~~~#...#~~~~~~~~~~~~~~~~</Row>
           <Row>~~~~~#...#~~~~~~~~######~~</Row>
@@ -709,13 +709,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="120.5" PuzzleID="P31" CategoryREF="C0">
+    <Puzzle Rating="120.5" PuzzleID="P61" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Small Tower</Name>
+        <Name>Dastardly Mountain</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M62" Rating="">
           <Row>~~~#####~~~~~~~~~~~~~</Row>
           <Row>~~~#...#####~~~~~~~~~</Row>
           <Row>~~~#.XX#...######~~~~</Row>
@@ -736,13 +736,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="74.9" PuzzleID="P32" CategoryREF="C0">
+    <Puzzle Rating="74.9" PuzzleID="P63" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Grim Nemosis</Name>
+        <Name>Uptight Night</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M64" Rating="">
           <Row>~~~~~~~~~~~~~~~~~~~#####</Row>
           <Row>~~~~~~~~~~~~~~~~~~~#...#</Row>
           <Row>~~~~~~~~~~~#########.X.#</Row>
@@ -763,13 +763,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="116.6" PuzzleID="P33" CategoryREF="C0">
+    <Puzzle Rating="116.6" PuzzleID="P65" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Edgy Tunnel</Name>
+        <Name>Grand Grave</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M66" Rating="">
           <Row>~~~#######~~~~~~~~~~~~~~~</Row>
           <Row>~~##.....##~~~~~~~~~~~~~~</Row>
           <Row>~~#..###..#~~~~~~~~~~~~~~</Row>
@@ -791,13 +791,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="68.3" PuzzleID="P34" CategoryREF="C0">
+    <Puzzle Rating="68.3" PuzzleID="P67" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Cold Nemosis</Name>
+        <Name>Funny Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M68" Rating="">
           <Row>~~~~~~~~~~~~#####~~~~~~~~~</Row>
           <Row>~~~~~~~~~~~~#.OO########~~</Row>
           <Row>~~~~~~~~~~~~#.OOOOOO#..#~~</Row>
@@ -819,13 +819,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="133.0" PuzzleID="P35" CategoryREF="C0">
+    <Puzzle Rating="133.0" PuzzleID="P69" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Edgy Yellow House</Name>
+        <Name>Slimy Spider</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M70" Rating="">
           <Row>~#####~~~~~~~~~~~~~~~~~~~~</Row>
           <Row>~#...#~~~~~~~~~~~~~~~~~~~~</Row>
           <Row>##.#.#####~~~~~~~~~~~~~~~~</Row>
@@ -847,13 +847,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="64.7" PuzzleID="P36" CategoryREF="C0">
+    <Puzzle Rating="64.7" PuzzleID="P71" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Delighted Hovel</Name>
+        <Name>Grim Hovel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M72" Rating="">
           <Row>~~~~~~~~~~~~~~~~#####~~~~~~~</Row>
           <Row>~~~~####~~~~~~~~#...######~~</Row>
           <Row>~~~~#..#~~~~~~~~#.X....X.#~~</Row>
@@ -873,13 +873,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="108.7" PuzzleID="P37" CategoryREF="C0">
+    <Puzzle Rating="108.7" PuzzleID="P73" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Cold School</Name>
+        <Name>Superb Green Tunnel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M74" Rating="">
           <Row>~~#####~~~~~~~#########~~~~~~</Row>
           <Row>~~#...#~~~~~~~#.......#~~~~~~</Row>
           <Row>###.#X###~#####.#.#.#.#####~~</Row>
@@ -901,13 +901,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="94.0" PuzzleID="P38" CategoryREF="C0">
+    <Puzzle Rating="94.0" PuzzleID="P75" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Nefarious Nemosis</Name>
+        <Name>Tricky Toad</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M76" Rating="">
           <Row>~~~~~~~~~~~~~~~~~~~~~~####</Row>
           <Row>~~####~~~~~~~~~########..#</Row>
           <Row>###P.##~~~~~~~~#......#..#</Row>
@@ -930,13 +930,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="116.3" PuzzleID="P39" CategoryREF="C0">
+    <Puzzle Rating="116.3" PuzzleID="P77" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Susan's Shower</Name>
+        <Name>Uptight Blanket</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M78" Rating="">
           <Row>~~~####~~~~~~~~~~~#####</Row>
           <Row>~~~#..#######~~####...#</Row>
           <Row>~~~#.P..X...####...X..#</Row>
@@ -958,13 +958,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="139.5" PuzzleID="P40" CategoryREF="C0">
+    <Puzzle Rating="139.5" PuzzleID="P79" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Cold Mountain</Name>
+        <Name>Uptight Hovel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M80" Rating="">
           <Row>~~~~~#######~~~~~~~~~~~~</Row>
           <Row>####~#.....#~~~~~~~~~~~~</Row>
           <Row>#..###.XXX.#~~~~~~~~~~~~</Row>
@@ -984,13 +984,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="96.4" PuzzleID="P41" CategoryREF="C0">
+    <Puzzle Rating="96.4" PuzzleID="P81" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Delighted House</Name>
+        <Name>Ghastly Town</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M82" Rating="">
           <Row>~~~#####~~~~~~~~~~~~~~~~</Row>
           <Row>~~~#...#~~~~~~~~~~~~~~~~</Row>
           <Row>~###...########~~~~~~~~~</Row>
@@ -1009,13 +1009,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="91.5" PuzzleID="P42" CategoryREF="C0">
+    <Puzzle Rating="91.5" PuzzleID="P83" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Delighted Tower</Name>
+        <Name>Tense Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M84" Rating="">
           <Row>####~~~~~~~~~~~~~~~</Row>
           <Row>#..######~~~~~~~~~~</Row>
           <Row>#.......####~~~~~~~</Row>
@@ -1037,13 +1037,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="89.4" PuzzleID="P43" CategoryREF="C0">
+    <Puzzle Rating="89.4" PuzzleID="P85" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Tight Town</Name>
+        <Name>Uptight Grave</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M86" Rating="">
           <Row>~~~####~~~~~~~~~~~~~~~~~~~~~~~</Row>
           <Row>~~##..#############~~~~~~~~~~~</Row>
           <Row>~##....OOOOOOOOOO.#~~~~~~~~~~~</Row>
@@ -1066,13 +1066,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="100.4" PuzzleID="P44" CategoryREF="C0">
+    <Puzzle Rating="100.4" PuzzleID="P87" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Caroline's Morning</Name>
+        <Name>Old Nemosis</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M88" Rating="">
           <Row>~#############~~~~~~~~~~</Row>
           <Row>##.......#...###~~~~~~~~</Row>
           <Row>#..X.XXXXX.....#~~~~~~~~</Row>
@@ -1095,13 +1095,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="90.5" PuzzleID="P45" CategoryREF="C0">
+    <Puzzle Rating="90.5" PuzzleID="P89" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Hot Green Lagoon</Name>
+        <Name>Ghastly Shower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M90" Rating="">
           <Row>~~####~~~~~~########~~~</Row>
           <Row>~~#..#####~##...#..#~~~</Row>
           <Row>~~#....X.###.X..X..#~~~</Row>
@@ -1124,13 +1124,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="103.8" PuzzleID="P46" CategoryREF="C0">
+    <Puzzle Rating="103.8" PuzzleID="P91" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Ghastly School</Name>
+        <Name>Tricky Hovel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M92" Rating="">
           <Row>~~~~~~####~###################</Row>
           <Row>~~#####..###............OX...#</Row>
           <Row>###..XO.......#####X####...#.#</Row>
@@ -1153,13 +1153,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="186.4" PuzzleID="P47" CategoryREF="C0">
+    <Puzzle Rating="186.4" PuzzleID="P93" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Tight Estate</Name>
+        <Name>Ghastly Hovel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M94" Rating="">
           <Row>#########~~~~~~~~~~~~~</Row>
           <Row>#.......#~~~~######~~~</Row>
           <Row>#...X...######....###~</Row>
@@ -1178,13 +1178,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="73.5" PuzzleID="P48" CategoryREF="C0">
+    <Puzzle Rating="73.5" PuzzleID="P95" CategoryREF="C0">
       <PuzzleDescription>
-        <Name>Andrew's Lagoon</Name>
+        <Name>Exacting Spider</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M96" Rating="">
           <Row>~~~####~####~~~~~~~~~~~</Row>
           <Row>~~##..#~#..#~~#######~~</Row>
           <Row>###...###X.##~#.....###</Row>
@@ -1206,13 +1206,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="44.2" PuzzleID="P49" CategoryREF="C0">
+    <Puzzle Rating="44.2" PuzzleID="P97" CategoryREF="C0">
       <PuzzleDescription>
         <Name>'Parallel Logic'</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M98" Rating="">
           <Row>~#########################~</Row>
           <Row>~#..#..#..#..#..#..#..#..#~</Row>
           <Row>~#.X#X.#.X#X.#.X#X.#.X#X.#~</Row>
@@ -1230,13 +1230,13 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="125.4" PuzzleID="P50" CategoryREF="C0">
+    <Puzzle Rating="125.4" PuzzleID="P99" CategoryREF="C0">
       <PuzzleDescription>
         <Name>'Particle Theory'</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
-        <Map Rating="">
+        <Map MapID="M100" Rating="">
           <Row>~~~#~#~#~#~#~#~#~#~#~#~#~#~~</Row>
           <Row>~~#.#.#.#.#.#.#.#.#.#.#.#.#~</Row>
           <Row>~#...OX....O.XO..O.X...OX..#</Row>

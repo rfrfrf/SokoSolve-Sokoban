@@ -63,6 +63,14 @@ namespace SokoSolve.UI.Section
         }
 
         /// <summary>
+        /// Is there a selection
+        /// </summary>
+        public bool HasSelection
+        {
+            get { return selection != null && selection.Count > 0; }
+        }
+
+        /// <summary>
         /// Current Status Text
         /// </summary>
 		public string StatusText

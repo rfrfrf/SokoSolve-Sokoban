@@ -10,6 +10,7 @@ namespace SokoSolve.Core.Model
         private string mapID;
         private Puzzle puzzle;
         private SokobanMap map;
+        private string rating;
 
         private GenericDescription details;
         private List<Solution> solutions;
@@ -25,6 +26,12 @@ namespace SokoSolve.Core.Model
         {
             get { return mapID; }
             set { mapID = value; }
+        }
+
+        public string Rating
+        {
+            get { return rating; }
+            set { rating = value; }
         }
 
         public Puzzle Puzzle
@@ -53,6 +60,11 @@ namespace SokoSolve.Core.Model
         public bool HasSolution
         {
             get { return solutions != null && solutions.Count > 0;  }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1}", mapID, details);
         }
     }
 }

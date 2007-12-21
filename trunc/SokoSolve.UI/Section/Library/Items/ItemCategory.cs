@@ -33,43 +33,31 @@ namespace SokoSolve.UI.Section.Library.Items
         /// <summary>
         /// Syncronise the model data <see cref="DataUnTyped"/> children with <see cref="ExplorerItem"/> (the UI Model)
         /// </summary>
-		public override void SyncWithData()
+		public override void SyncDomain()
 		{
-            SyncUICollectionWithData<Category>(Data.Children, delegate(Category item) { return new ItemCategory(item); });
+            SyncUICollectionWithData<Category>(DomainData.Children, delegate(Category item) { return new ItemCategory(item); });
 
             // Add puzzles
             LibraryController libCont = Explorer.Controller as LibraryController;
-            SyncUICollectionWithData<Puzzle>(Data.GetPuzzles(libCont.Current), delegate(Puzzle item) { return new ItemPuzzle(item); });
+            SyncUICollectionWithData<Puzzle>(DomainData.GetPuzzles(libCont.Current), delegate(Puzzle item) { return new ItemPuzzle(item); });
 
-            // Sync all shildren: chain downward
-			foreach (TreeNode<ExplorerItem> kid in TreeNode.Children)
-			{
-				kid.Data.SyncWithData();
-			}
+            base.SyncDomain();
 		}
 
         /// <summary>
         /// Bind UI Model ( <see cref="ExplorerItem"/>) to the TreeView nodes <see cref="UINode"/>
         /// </summary>
-		public override void BindToUI()
+		public override void BindUI()
 		{
-			if (UINode == null)
-			{
-				UINode = TreeNode.Parent.Data.UINode.Nodes.Add("new node for " + this.GetType().ToString());
-				UINode.Tag = this;
-                UINode.ImageIndex = Explorer.Controller.IconBinder.getIcon(IconSizes.Icon, Data);
-                UINode.SelectedImageIndex = UINode.ImageIndex;
-			
-			}
+            base.BindUI();
 
-			UINode.Tag = this;
-			if (Data != null && Data.Details != null && Data.Details.Name != null)
+			if (DomainData != null && DomainData.Details != null && DomainData.Details.Name != null)
 			{
-				UINode.Text = Data.Details.Name;
+				TreeViewUINode.Text = DomainData.Details.Name;
 			}
 			else
 			{
-				UINode.Text = "No category";
+				TreeViewUINode.Text = "No category";
 			}
 		}
 
@@ -85,7 +73,7 @@ namespace SokoSolve.UI.Section.Library.Items
                     Explorer.DetailPayload.Controls.Add(desc);
                     desc.Dock = DockStyle.Fill;
 
-                    desc.Data = Data.Details;
+                    desc.Data = DomainData.Details;
                 }
 
                
@@ -94,7 +82,7 @@ namespace SokoSolve.UI.Section.Library.Items
             {
                 //BindListView();
 
-                if (Data != null)
+                if (DomainData != null)
                 {
                     if (!Explorer.DetailPayload.Controls.Contains(html))
                     {
@@ -105,7 +93,7 @@ namespace SokoSolve.UI.Section.Library.Items
                     html.Dock = DockStyle.Fill;
 
                     LibraryController libController = Explorer.Controller as LibraryController;
-                    html.SetHTML(HtmlReporter.Report(Data, libController.Current).GetHTMLPage());
+                    html.SetHTML(HtmlReporter.Report(DomainData, libController.Current).GetHTMLPage());
                 }
             }
 

@@ -90,7 +90,7 @@ namespace SokoSolve.Common.Structures
 		/// <summary>
 		/// The top node (essentially this represents the entire tree)
 		/// </summary>
-		ITreeNode<T> Top { get; }
+		ITreeNode<T> Root { get; }
 
 		/// <summary>
 		/// A collection of leaf nodes (nodes without children)

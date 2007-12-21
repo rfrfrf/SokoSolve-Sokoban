@@ -30,15 +30,15 @@ namespace SokoSolve.UI.Section.Library
                 Category newCat = new Category();
                 newCat.Details = new GenericDescription();
                 newCat.Details.Name = "New Category";
-                cat.Data.TreeNode.Add(newCat);
+                cat.DomainData.TreeNode.Add(newCat);
 
                 // Select new cat, set to edit...
 
                 // Refresh the UI model to updated domain data
-                cat.SyncWithData();
+                cat.SyncDomain();
 
                 // Refresh enture tree
-                Controller.Explorer.BindUI();
+                Controller.Explorer.SyncUI();
             }
         }
 
@@ -69,17 +69,17 @@ namespace SokoSolve.UI.Section.Library
                 ItemCategory catParent = parent.Data as ItemCategory;
                 if (catParent != null)
                 {
-                    catParent.Data.TreeNode.RemoveChild(delMe.Data);
+                    catParent.DomainData.TreeNode.RemoveChild(delMe.DomainData);
 
                     // Refresh the UI model to updated domain data
-                    catParent.SyncWithData();
+                    catParent.SyncDomain();
                 }
 
                 // Set selection as parent
                 Controller.UpdateSelectionSingle(catParent);
 
                 // Refresh enture tree
-                Controller.Explorer.BindUI();
+                Controller.Explorer.SyncUI();
             }
         }
 

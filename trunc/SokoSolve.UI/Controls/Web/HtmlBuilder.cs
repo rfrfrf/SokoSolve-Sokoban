@@ -63,12 +63,12 @@ namespace SokoSolve.UI.Controls.Web
         /// Add a temp image, by creating a temp image.
         /// </summary>
         /// <param name="Image"></param>
-        public void Add(Puzzle Puzzle, Image Image, string style)
+        public void Add(PuzzleMap PuzzleMap, Image Image, string style)
         {
-            string tmpFile = ImageFileCache.Singleton.GetImageURL(Puzzle);
+            string tmpFile = ImageFileCache.Singleton.GetImageURL(PuzzleMap);
             if (tmpFile == null)
             {
-                tmpFile = ImageFileCache.Singleton.AddSaveImage(Puzzle, Image);
+                tmpFile = ImageFileCache.Singleton.AddSaveImage(PuzzleMap, Image);
             }
             Add("<img src=\"{0}\" style=\"{1}\" alt=\"SokoSolve\"/>", tmpFile, style);
         }

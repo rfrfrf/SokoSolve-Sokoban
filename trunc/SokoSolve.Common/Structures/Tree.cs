@@ -11,24 +11,24 @@ namespace SokoSolve.Common.Structures
 	/// <typeparam name="T">Node's data</typeparam>
 	public class Tree<T> : ITree<T>
 	{
-		private TreeNode<T> top;
+		private TreeNode<T> root;
 
 		/// <summary>
 		/// Default Constructor
 		/// </summary>
 		public Tree()
 		{
-			this.top = new TreeNode<T>(null);
-			this.top.Tree = this;
+			this.root = new TreeNode<T>(null);
+			this.root.Tree = this;
 		}
 
 		
 		/// <summary>
 		/// The top node (essentially this represents the entire tree)
 		/// </summary>
-		public TreeNode<T> Top
+		public TreeNode<T> Root
 		{
-			get { return top; }
+			get { return root; }
 		}
 
 		/// <summary>
@@ -38,7 +38,7 @@ namespace SokoSolve.Common.Structures
 		{
 			get
 			{
-				return Top.FindAll(delegate(TreeNode<T> item) { return item.IsLeaf; }, int.MaxValue);
+				return Root.FindAll(delegate(TreeNode<T> item) { return item.IsLeaf; }, int.MaxValue);
 			}
 		}
 
@@ -60,9 +60,9 @@ namespace SokoSolve.Common.Structures
 
 		#region ITree<T> Members
 
-		ITreeNode<T> ITree<T>.Top
+		ITreeNode<T> ITree<T>.Root
 		{
-			get { return top; }
+			get { return root; }
 		}
 
 		ICollection<ITreeNode<T>> ITree<T>.Leaves

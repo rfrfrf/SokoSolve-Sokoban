@@ -62,22 +62,22 @@ namespace SokoSolve.UI.Section.Library
             easy.CategoryID = lib.IdProvider.GetNextIDString("C{0}");
             easy.Details = new GenericDescription(lib.Details);
             easy.Details.Name = "Easy";
-            easy.CategoryParentREF = lib.Categories.Top.Data.CategoryID;
-            lib.Categories.Top.Add(easy);
+            easy.CategoryParentREF = lib.Categories.Root.Data.CategoryID;
+            lib.Categories.Root.Add(easy);
 
             Category medium = new Category();
             medium.CategoryID = lib.IdProvider.GetNextIDString("C{0}");
             medium.Details = new GenericDescription(lib.Details);
             medium.Details.Name = "Medium";
-            medium.CategoryParentREF = lib.Categories.Top.Data.CategoryID;
-            lib.Categories.Top.Add(medium);
+            medium.CategoryParentREF = lib.Categories.Root.Data.CategoryID;
+            lib.Categories.Root.Add(medium);
 
             Category hard = new Category();
             hard.CategoryID = lib.IdProvider.GetNextIDString("C{0}");
             hard.Details = new GenericDescription(lib.Details);
             hard.Details.Name = "Hard";
-            hard.CategoryParentREF = lib.Categories.Top.Data.CategoryID;
-            lib.Categories.Top.Add(hard);
+            hard.CategoryParentREF = lib.Categories.Root.Data.CategoryID;
+            lib.Categories.Root.Add(hard);
 
             Puzzle newPuz = new Puzzle(lib);
             newPuz.PuzzleID = lib.IdProvider.GetNextIDString("P{0}");
@@ -359,7 +359,23 @@ namespace SokoSolve.UI.Section.Library
             // Enable only when there is exact 1 item of type ItemLibrary
             Enabled = ExplorerItem.SelectionHelper(selection, true, 1, 1, typeof (ItemLibrary));
         }
-
-       
     }
+
+    //#################################################################
+    //#################################################################
+    //#################################################################
+
+    class LibraryRefresh : CommandLibraryBase
+    {
+        public LibraryRefresh(Controller<ExplorerItem> controller, object[] buttonControls) : base(controller, buttonControls)
+        {
+            Init("Refresh", "Import an external library");
+        }
+
+        protected override void ExecuteImplementation(CommandInstance<ExplorerItem> instance)
+        {
+            Controller.Explorer.Refresh();
+        }
+    }
+
 }

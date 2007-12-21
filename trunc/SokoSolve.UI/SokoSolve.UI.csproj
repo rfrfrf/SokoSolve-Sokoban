@@ -86,6 +86,7 @@
     <Compile Include="Section\Command.cs" />
     <Compile Include="Section\CommandInstance.cs" />
     <Compile Include="Section\ContextLogger.cs" />
+    <Compile Include="Section\DrawingHelper.cs" />
     <Compile Include="Section\Explorer.cs" />
     <Compile Include="Section\ICommandInstance.cs" />
     <Compile Include="Section\IconBinder.cs" />
@@ -110,7 +111,7 @@
     <Compile Include="Controls\Web\HtmlReporter.cs" />
     <Compile Include="Section\Library\Items\ItemCategory.cs" />
     <Compile Include="Section\Library\Items\ItemLibrary.cs" />
-    <Compile Include="Section\Library\Items\ItemMap.cs" />
+    <Compile Include="Section\Library\Items\ItemPuzzleMap.cs" />
     <Compile Include="Section\Library\Items\ItemPuzzle.cs" />
     <Compile Include="Section\Library\Items\ItemSolution.cs" />
     <Compile Include="Section\Library\Library.cs">

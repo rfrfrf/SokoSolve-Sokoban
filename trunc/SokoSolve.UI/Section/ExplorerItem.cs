@@ -9,36 +9,124 @@ namespace SokoSolve.UI.Section
 {
     /// <summary>
     /// Strongly associated with <see cref="ExplorerPattern"/>, this class encapsulates
-    /// an explorer's tree item. It has a weakly typed encapsulation of the domain <see cref="data"/> and 
-    /// the UI representation <see cref="uiNode"/>. It also has back references to the domain.
+    /// an explorer's tree item. It has a weakly typed encapsulation of the domain <see cref="domainData"/> and 
+    /// the UI representation <see cref="treeViewUINode"/>. It also has back references to the domain.
     /// </summary>
     public abstract class ExplorerItem : ITreeNodeBackReference<ExplorerItem>
     {
-        protected TreeNode uiNode;
-        protected object data;
+        protected TreeNode treeViewUINode;
+        protected object domainData;
         private TreeNode<ExplorerItem> treeNode;
         private bool isEditable;
 
         /// <summary>
         /// Abstract constructor
         /// </summary>
-        /// <param name="data"></param>
-        protected ExplorerItem(object data)
+        /// <param name="domainData"></param>
+        protected ExplorerItem(object domainData)
         {
-            this.data = data;
+            this.domainData = domainData;
         }
 
         /// <summary>
         /// Syncronise the model data <see cref="DataUnTyped"/> children with <see cref="ExplorerItem"/> (the UI Model)
         /// </summary>
-        public abstract void SyncWithData();
+        public virtual void SyncDomain()
+        {
+            // Sync children
+            foreach (TreeNode<ExplorerItem> kid in TreeNode.Children)
+            {
+                kid.Data.SyncDomain();
+            }
+        }
 
+        void SyncCollections(IList<ExplorerItem> UIModel, TreeNodeCollection UIControls)
+        {
+            List<TreeNode> removeList = new List<TreeNode>();
+
+            foreach (TreeNode node in UIControls)
+            {
+                ExplorerItem tag = node.Tag as ExplorerItem;
+                if (tag == null)
+                {
+                    removeList.Add(node);
+                }
+                else
+                {
+                    if (!UIModel.Contains(tag))
+                    {
+                        removeList.Add(node);
+                    }
+                }
+            }
+
+            foreach (TreeNode node in removeList)
+            {
+                UIControls.Remove(node);
+            }
+        }
 
         /// <summary>
-        /// Bind UI Model ( <see cref="ExplorerItem"/>) to the TreeView nodes <see cref="UINode"/>
+        /// Sync ExplorerModel with the UI TreeView.TreeNodes
         /// </summary>
-        public abstract void BindToUI();
+        public virtual void SyncUI()
+        {
+            if (treeViewUINode == null)
+            {
+                // UI TreeNode required
+                if (TreeNode.IsRoot)
+                {
+                    treeViewUINode = Explorer.TreeView.Nodes[0];
+                    if (treeViewUINode == null) throw new NullReferenceException("TreeView must already have a Root node");
+                }
+                else
+                {
+                    // Add a node to the parent
+                    treeViewUINode = TreeNode.Parent.Data.TreeViewUINode.Nodes.Add("Node:  " + this.GetType().ToString());
+                }
+              
+                treeViewUINode.Tag = this;
+                treeViewUINode.ImageIndex = Explorer.Controller.IconBinder.getIcon(IconSizes.Small, DataUnTyped);
+                treeViewUINode.SelectedImageIndex = TreeViewUINode.ImageIndex;
+            }
+            else
+            {
+                // Already have one, but we need to check it is correctly bound...
+                if (treeViewUINode.Tag == null)
+                {
+                    treeViewUINode.Tag = this;
+                    treeViewUINode.ImageIndex = Explorer.Controller.IconBinder.getIcon(IconSizes.Small, DataUnTyped);
+                    treeViewUINode.SelectedImageIndex = TreeViewUINode.ImageIndex;
+                }
+                else
+                {
+                    if (treeViewUINode.Tag != this) throw new InvalidOperationException("This should not happen");
+                }
+            }
 
+            SyncCollections(TreeNode.ChildrenData, treeViewUINode.Nodes);
+
+            // Databind the ExplorerItem to the TreeView TreeNode#
+            if (domainData != null) BindUI();
+        }
+
+        /// <summary>
+        /// Bind ExplorerModel with the UI TreeView.TreeNodes
+        /// </summary>
+        public virtual void BindUI()
+        {
+            if (Explorer.Controller.HasSelection)
+            {
+                if (Explorer.Controller.Selection[0] == treeViewUINode.Tag)
+                {
+                    if (Explorer.TreeView.SelectedNode != treeViewUINode)
+                    {
+                        Explorer.TreeView.SelectedNode = treeViewUINode;
+                    }
+                    return;
+                }
+            }
+        }
 
         public virtual Control ShowDetail()
         {
@@ -63,7 +151,7 @@ namespace SokoSolve.UI.Section
             set
             {
                 isEditable = value;
-                BindToUI();
+                SyncUI();
             }
         }
 
@@ -73,17 +161,17 @@ namespace SokoSolve.UI.Section
         /// </summary>
         public object DataUnTyped
         {
-            get { return data; }
-            set { data = value; }
+            get { return domainData; }
+            set { domainData = value; }
         }
 
         /// <summary>
         /// UI Tree node
         /// </summary>
-        public TreeNode UINode
+        public TreeNode TreeViewUINode
         {
-            get { return uiNode; }
-            set { uiNode = value; }
+            get { return treeViewUINode; }
+            set { treeViewUINode = value; }
         }
 
         /// <summary>
@@ -150,7 +238,6 @@ namespace SokoSolve.UI.Section
                     if (existingUI.Data.DataUnTyped.GetType() != typeof(T)) continue;
                 }
 
-
                 bool found = false;
                 foreach (T dataItem in Collection)
                 {
@@ -171,9 +258,6 @@ namespace SokoSolve.UI.Section
                 {
                     // Remove from UI model
                     TreeNode.Children.Remove(remove);
-
-                    // Remove from actual UI controls (this should perhaps be done in BindToUI()
-                    UINode.Nodes.Remove(remove.Data.UINode);
                 }
             }
 
@@ -221,6 +305,11 @@ namespace SokoSolve.UI.Section
 
             return true;
         }
+
+        public override string ToString()
+        {
+            return string.Format("{0}: {1}", GetType().Name, DataUnTyped);
+        }
     }
 
     /// <summary>
@@ -229,17 +318,27 @@ namespace SokoSolve.UI.Section
     /// <typeparam name="T"></typeparam>
     public abstract class ExplorerItemBase<T> : ExplorerItem
     {
-        protected ExplorerItemBase(T data)
-            : base(data)
+        protected ExplorerItemBase(T domainData)
+            : base(domainData)
         {
         }
 
-
-
-        public T Data
+        /// <summary>
+        /// Not sure is this reallu fits with the model
+        /// </summary>
+        protected LibraryController Controller
         {
-            get { return (T)data; }
-            set { data = value; }
+            get
+            {
+                return base.Explorer.Controller as LibraryController;
+            }
+        }
+
+
+        public T DomainData
+        {
+            get { return (T)domainData; }
+            set { domainData = value; }
         }
     }
 

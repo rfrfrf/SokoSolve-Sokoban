@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
-using SokoSolve.Common;
 using SokoSolve.Common.Structures;
 using SokoSolve.Core.Model;
 using SokoSolve.UI.Controls.Secondary;
@@ -10,33 +9,44 @@ using SokoSolve.UI.Controls.Web;
 
 namespace SokoSolve.UI.Section.Library.Items
 {
-	class ItemSolution : ExplorerItemBase<Solution>
+
+
+	class ItemPuzzleMap : ExplorerItemBase<PuzzleMap>
 	{
-		public ItemSolution(Solution data) : base(data)
+		public ItemPuzzleMap(PuzzleMap data)
+			: base(data)
 		{
 		}
 
 		public override void SyncDomain()
 		{
-            // No children
+			foreach (Solution solution in DomainData.Solutions)
+			{
+				TreeNode.Add(new ItemSolution(solution));
+			}
+
+            base.SyncDomain();
 		}
 
 		public override void BindUI()
 		{
             base.BindUI();
 
-            if (DomainData != null && DomainData.Details != null)
-            {
-                TreeViewUINode.Text = DomainData.Details.Name;
-            }
-            else
-            {
-                TreeViewUINode.Text = "No solution";
-            }
+			if (DomainData != null && DomainData.Details != null)
+			{
+				TreeViewUINode.Text = string.Format("{0}", DomainData.Details.Name);
+			}
+			else
+			{
+				TreeViewUINode.Text = "No puzzle map";
+			}
 		}
 
-        public override Control ShowDetail()
-        {
+	    private static HtmlView html = new HtmlView();
+        private static ucGenericDescription properties = new ucGenericDescription();
+
+		public override Control ShowDetail()
+		{
             if (IsEditable)
             {
                 if (!Explorer.DetailPayload.Controls.Contains(properties))
@@ -62,22 +72,18 @@ namespace SokoSolve.UI.Section.Library.Items
                 if (DomainData != null)
                 {
                     HtmlBuilder builder = new HtmlBuilder();
-                    builder.Add(HtmlReporter.Report(DomainData.Details));
+                    builder.Add(HtmlReporter.Report(DomainData, DrawingHelper.Images));
 
-                    string[] moveSplit = StringHelper.SplitOnLength(DomainData.Steps, 60);
-                    builder.AddLabel("Moves", StringHelper.Join(moveSplit, "<br/>"));
-                    builder.AddLabel("Move Length", DomainData.Steps.Length.ToString());
+                    
 
                     html.SetHTML(builder.GetHTMLPage());
                 }
                 return html;
             }
-        }
+		}
 
 
-
-        static HtmlView html = new HtmlView();
-        private static ucGenericDescription properties = new ucGenericDescription();
+        
 	}
 
 }

@@ -54,6 +54,27 @@ namespace SokoSolve.Common
         }
 
         /// <summary>
+        /// Split string at fixed intervals
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        public static string[] SplitOnLength(string source, int length)
+        {
+            List<string> result = new List<string>();
+
+            while (source.Length > length)
+            {
+                result.Add(source.Substring(0, length));
+                source = source.Remove(0, length);
+            }
+
+            result.Add(source);
+
+            return result.ToArray();
+        }
+
+        /// <summary>
         /// Join a list of string using a seperator
         /// </summary>
         public static string Join(IList<string> source, string sep)

@@ -9,10 +9,11 @@ using SokoSolve.Common.Structures;
 namespace SokoSolve.Core.Model.DataModel
 {
 	public class XmlProvider
-	{
-		
+    {
 
-		public void Save(Library library, string fileName)
+        #region Save
+
+        public void Save(Library library, string fileName)
 		{
 		    XmlToModel converter = new XmlToModel();
 		    SokobanLibrary xmlLib = converter.Convert(library);
@@ -29,11 +30,11 @@ namespace SokoSolve.Core.Model.DataModel
             public  SokobanLibrary Convert(Library source)
             {
                 SokobanLibrary res = new SokobanLibrary();
-
+                res.LibraryID = source.LibraryID;
                 res.Rating = source.Rating;
                 res.Details = source.Details;
                 res.Puzzles = source.Puzzles.ConvertAll<SokobanLibraryPuzzle>(Convert).ToArray();
-                res.Categories = source.Categories.Top.ToList().ConvertAll<SokobanLibraryCategory>(Convert).ToArray();
+                res.Categories = source.Categories.Root.ToList().ConvertAll<SokobanLibraryCategory>(Convert).ToArray();
                
                 return res;
             }
@@ -54,11 +55,20 @@ namespace SokoSolve.Core.Model.DataModel
             {
                 SokobanLibraryPuzzleMap res = new SokobanLibraryPuzzleMap();
                 res.MapID = input.MapID;
-                res.Rating = "";
+                res.Rating = input.Rating;
                 res.Row = input.Map.ToStringArray();
-                res.Solutions = new SokobanLibraryPuzzleMapSolution[0];
+                res.Solutions = input.Solutions.ConvertAll<SokobanLibraryPuzzleMapSolution>(Convert).ToArray();
+                res.MapDetails = input.Details;
                 return res;
             }
+
+             private SokobanLibraryPuzzleMapSolution Convert(Solution input)
+             {
+                 SokobanLibraryPuzzleMapSolution res = new SokobanLibraryPuzzleMapSolution();
+                 res.SolutionDescription = input.Details;
+                 res.Steps = input.Steps;
+                 return res;
+             }
 
             private SokobanLibraryCategory Convert(Category source)
             {
@@ -69,10 +79,15 @@ namespace SokoSolve.Core.Model.DataModel
                 return result;
             }
 
-            
+
         }
 
-		public Library Load(string fileName)
+        #endregion Save
+
+        #region Load
+        
+
+        public Library Load(string fileName)
 		{
 			XmlSerializer ser = new XmlSerializer(typeof(SokobanLibrary));
 
@@ -131,7 +146,7 @@ namespace SokoSolve.Core.Model.DataModel
                 current.Details = xmlPuzzle.PuzzleDescription;
                 current.Order = xmlPuzzle.Order;
                 current.Rating = xmlPuzzle.Rating;
-                TreeNode<Category> myCat = model.Categories.Top.Find(delegate(TreeNode<Category> item) { return item.Data.CategoryID == xmlPuzzle.CategoryREF; }, int.MaxValue);
+                TreeNode<Category> myCat = model.Categories.Root.Find(delegate(TreeNode<Category> item) { return item.Data.CategoryID == xmlPuzzle.CategoryREF; }, int.MaxValue);
                 if (myCat != null) current.Category = myCat.Data;
                 current.Maps = new List<SokobanLibraryPuzzleMap>(xmlPuzzle.Maps).ConvertAll<PuzzleMap>(ConvertPuzzleMap);
                 return current;
@@ -140,7 +155,9 @@ namespace SokoSolve.Core.Model.DataModel
             public PuzzleMap ConvertPuzzleMap(SokobanLibraryPuzzleMap xmlPuzzleMap)
             {
                 PuzzleMap result = new PuzzleMap(current);
+                result.MapID = xmlPuzzleMap.MapID;
                 result.Details = xmlPuzzleMap.MapDetails;
+                result.Rating = xmlPuzzleMap.Rating;
                 result.Map = new SokobanMap();
                 result.Map.setFromStrings(xmlPuzzleMap.Row);
                 result.Solutions = new List<SokobanLibraryPuzzleMapSolution>(xmlPuzzleMap.Solutions).ConvertAll<Solution>(ConvertSolution);
@@ -156,6 +173,6 @@ namespace SokoSolve.Core.Model.DataModel
             }
         }
 
-		
-	}
+        #endregion Load
+    }
 }

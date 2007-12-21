@@ -15,14 +15,15 @@ namespace SokoSolve.Core.Game
         /// <summary>
         /// Strong Construction
         /// </summary>
-        /// <param name="aPuz"></param>
-        public Game(SokobanMap aPuz)
+        /// <param name="aMap"></param>
+        public Game(Puzzle aPuzzle, SokobanMap aMap)
         {
-            if (aPuz == null) throw new ArgumentNullException("aPuz");
+            if (aMap == null) throw new ArgumentNullException("aPuz");
             StringCollection sc = null;
-            if (!aPuz.isValid(out sc)) throw new Exception(sc[0]);
+            if (!aMap.isValid(out sc)) throw new Exception(sc[0]);
 
-            StartPuzzle = aPuz;
+            Puzzle = aPuzzle;
+            StartPuzzle = aMap;
             Current = new SokobanMap(StartPuzzle);
             Moves = new Stack<Move>();
             
@@ -186,11 +187,13 @@ namespace SokoSolve.Core.Game
             Moves = new Stack<Move>();
         }
 
+        public Puzzle Puzzle;
         public SokobanMap StartPuzzle;
         public SokobanMap Current;
         public Stack<Move> Moves;
         public DateTime Start;
         public DateTime End;
         public Stats Stats;
+        public EventHandler OnGameWin;
     }
 }

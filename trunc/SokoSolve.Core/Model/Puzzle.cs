@@ -123,5 +123,12 @@ namespace SokoSolve.Core.Model
                 return maps.Count > 1;
             }
         }
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1}", puzzleID, details);
+        }
+
+
     }
 }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using SokoSolve.Common.Math;
 using SokoSolve.Core.Model;
+using SokoSolve.Core.Model.DataModel;
 using SokoSolve.Core.UI;
 
 namespace SokoSolve.UI.Controls.Primary
@@ -51,6 +52,8 @@ namespace SokoSolve.UI.Controls.Primary
 
         private void buttonDone_Click(object sender, EventArgs e)
         {
+            gameUI.Active = false;
+
             Cursor.Show();
 
             timerAnimation.Enabled = false;
@@ -65,20 +68,46 @@ namespace SokoSolve.UI.Controls.Primary
 
         public void StartGame(Puzzle puzzle, PuzzleMap map)
         {
-            gameUI = new GameUI(map.Map);
+            gameUI = new GameUI(puzzle, map.Map);
             gameUI.OnExit += new EventHandler(gameUI_OnExit);
+            gameUI.OnGameWin += new EventHandler(gameUI_OnGameWin);
             Game_Resize(null, null);
             timerAnimation.Enabled = true;
 
             Cursor.Hide();
 
             gameUI.Init();
+
+            gameUI.Active = true;
         }
 
         void gameUI_OnExit(object sender, EventArgs e)
         {
             buttonDone_Click(sender, e);
         }
+
+        void gameUI_OnGameWin(object sender, EventArgs e)
+        {
+            gameUI.Active = false;
+
+            Cursor.Show();
+
+            timerAnimation.Enabled = false;
+
+            DialogResult res = MessageBox.Show("Congrats! You have solved the puzzle. Do you want to save your solution to the library?", "Well Done", MessageBoxButtons.OKCancel);
+            if(res == DialogResult.OK)
+            {
+                Solution sol = new Solution();
+                sol.FromGame(gameUI.Moves);
+                sol.Details = new GenericDescription();
+                sol.Details.Name = string.Format("'{0}' Solution", gameUI.Puzzle.Details.Name);
+                sol.Details.Date = DateTime.Now;
+                sol.Details.DateSpecified = true;
+                sol.Details.Comments = "Solution found from game player.";
+                gameUI.Puzzle.MasterMap.Solutions.Add(sol);
+            }
+        }
+        
 
         private void timerAnimation_Tick(object sender, EventArgs e)
         {

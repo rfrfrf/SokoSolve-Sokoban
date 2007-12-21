@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using SokoSolve.Common.Structures;
+using SokoSolve.Core.Model;
 using SokoSolve.UI.Controls.Secondary;
 using SokoSolve.UI.Controls.Web;
 
@@ -15,44 +16,32 @@ namespace SokoSolve.UI.Section.Library.Items
             html.OnCommand += new EventHandler<UIBrowserEvent>(html_OnCommand);
 		}
 
-        void html_OnCommand(object sender, UIBrowserEvent e)
-        {
-            if (e.Command.Scheme == "app")
-            {
-                this.Explorer.Controller.PerformCommandURI(e.Command);
-            }
-        }
 
-
-		public override void SyncWithData()
+		public override void SyncDomain()
 		{
-			if (Data != null)
-			{
-				if (Data.Categories != null)
-				{
-					TreeNode.Add(new ItemCategory(Data.Categories.Top.Data));
-					foreach (TreeNode<ExplorerItem> kid in TreeNode.Children)
-					{
-						kid.Data.SyncWithData();
-					}
-				}
-			}
+            if (DomainData != null)
+            {
+                List<Category> wrapper = new List<Category>();
+                wrapper.Add(DomainData.Categories.Root.Data);
+                SyncUICollectionWithData<Category>(wrapper, delegate(Category item) { return new ItemCategory(item); });
+
+                base.SyncDomain();
+            }
+		    
 		}
 
-
-		public override void BindToUI()
+		public override void BindUI()
 		{
-			if (Data != null)
+            base.BindUI();
+
+			if (DomainData != null)
 			{
-				UINode.Text = string.Format("{0}", Data.Details.Name);
+				TreeViewUINode.Text = string.Format("{0}", DomainData.Details.Name);
 			}
 			else
 			{
-				UINode.Text = "No library is loaded";
-			}
-            UINode.ImageIndex = Explorer.Controller.IconBinder.getIcon(IconSizes.Icon, Data);
-            UINode.SelectedImageIndex = UINode.ImageIndex;
-			
+				TreeViewUINode.Text = "No library is loaded";
+			}		
 		}
 
 		public override Control ShowDetail()
@@ -65,7 +54,7 @@ namespace SokoSolve.UI.Section.Library.Items
                     Explorer.DetailPayload.Controls.Add(desc);
                     desc.Dock = DockStyle.Fill;
 
-                    desc.Data = Data.Details;
+                    desc.Data = DomainData.Details;
                 }
                 return desc;
                 
@@ -78,14 +67,23 @@ namespace SokoSolve.UI.Section.Library.Items
                     Explorer.DetailPayload.Controls.Add(html);
                 }
 
-                if (Data != null)
+                if (DomainData != null)
                 {
                     html.Dock = DockStyle.Fill;
-                    html.SetHTML( HtmlReporter.Report(Data).GetHTMLPage() );
+                    html.SetHTML( HtmlReporter.Report(DomainData).GetHTMLPage() );
                 }
                 return html;
             }
 		}
+
+
+        void html_OnCommand(object sender, UIBrowserEvent e)
+        {
+            if (e.Command.Scheme == "app")
+            {
+                this.Explorer.Controller.PerformCommandURI(e.Command);
+            }
+        }
 
         HtmlView html = new HtmlView();
         ucGenericDescription desc = new ucGenericDescription();

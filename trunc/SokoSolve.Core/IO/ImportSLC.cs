@@ -52,7 +52,7 @@ namespace SokoSolve.Core.IO
                 lib.Details.Author.Homepage = import.DocumentElement["Url"].InnerText;
             }
 
-            lib.Categories.Top.Data.Details = new GenericDescription(lib.Details);
+            lib.Categories.Root.Data.Details = new GenericDescription(lib.Details);
 
 
             if (import.DocumentElement["LevelCollection"] != null)
@@ -70,7 +70,7 @@ namespace SokoSolve.Core.IO
                         newPuzzle.Details = new GenericDescription();
                         newPuzzle.Details.Name = string.Format("Puzzle No. {0}", lib.Puzzles.Count);
                         newPuzzle.Details.Description = string.Format("Imported SLV puzzle");
-                        newPuzzle.Category = lib.Categories.Top.Data;
+                        newPuzzle.Category = lib.Categories.Root.Data;
                         newPuzzle.Order = levelcount++;
 
                         PuzzleMap newMap = new PuzzleMap(newPuzzle);

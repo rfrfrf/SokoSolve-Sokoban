@@ -31,9 +31,9 @@ namespace SokoSolve.Core.Model
 
     	    libraryID = LibraryGUID.ToString();
 
-    		categories.Top.Data  = new Category();
-    		categories.Top.Data.Details.Name = "Master List";
-    		categories.Top.Data.CategoryID = "C"+idProvider.GetNextID().ToString();
+    		categories.Root.Data  = new Category();
+    		categories.Root.Data.Details.Name = "Master List";
+    		categories.Root.Data.CategoryID = "C"+idProvider.GetNextID().ToString();
     	}
 
         /// <summary>
@@ -77,6 +77,11 @@ namespace SokoSolve.Core.Model
         public Puzzle GetPuzzleByID(string PuzzleID)
         {
             return puzzles.Find(delegate(Puzzle item) { return item.PuzzleID == PuzzleID; });
+        }
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1}", libraryID, details);
         }
     }
 

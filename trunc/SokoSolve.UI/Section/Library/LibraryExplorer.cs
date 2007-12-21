@@ -25,19 +25,21 @@ namespace SokoSolve.UI.Section.Library
 
 		    treeView.ImageList = controller.IconBinder.GetImageList(IconSizes.Small);
 
-			SyncRoot(new ItemLibrary(controller.Current));
-			BindUI();
+			SyncDomain(new ItemLibrary(controller.Current));
+			SyncUI();
 
 		    controller.UpdateSelection(controller.Selection);
 		}
 
 		void controller_OnCurrentChanged(object sender, EventArgs e)
 		{
-			SyncRoot(new ItemLibrary(controller.Current));
-			BindUI();
+			SyncDomain(new ItemLibrary(controller.Current));
+			SyncUI();
 
 			TreeView.ExpandAll();
 		}
+
+	    
 	}
 
 	
