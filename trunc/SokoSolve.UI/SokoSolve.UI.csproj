@@ -231,9 +231,10 @@
     <Content Include="Content\Graphics\Icons\Open.png" />
     <Content Include="Content\Graphics\Icons\Play.png" />
     <None Include="Content\Graphics\Icons\Print.png" />
-    <None Include="Content\Libraries\Default.ssx" />
-    <None Include="Content\Libraries\Microban.ssx" />
-    <None Include="Content\Libraries\Sasquatch.ssx" />
+    <None Include="Content\html\ReadMe.rtf" />
+    <Content Include="Content\Libraries\Default.ssx" />
+    <Content Include="Content\Libraries\Microban.ssx" />
+    <Content Include="Content\Libraries\Sasquatch.ssx" />
     <Content Include="Content\Graphics\Icons\Quit.bmp" />
     <Content Include="Content\Graphics\Icons\Restart.png" />
     <Content Include="Content\Graphics\Icons\Right.png" />
@@ -250,6 +251,15 @@
     <Content Include="Content\Graphics\Tiles\Clean\Player.png" />
     <Content Include="Content\Graphics\Tiles\Clean\Void.png" />
     <Content Include="Content\Graphics\Tiles\Clean\Wall.png" />
+    <Content Include="Content\Graphics\Tiles\Static\SimpleCrate16x16.png" />
+    <Content Include="Content\Graphics\Tiles\Static\SimpleCrateGoal16x16.png" />
+    <Content Include="Content\Graphics\Tiles\Static\SimpleFloor16x16.png" />
+    <Content Include="Content\Graphics\Tiles\Static\SimpleGoal16x16.png" />
+    <Content Include="Content\Graphics\Tiles\Static\SimplePlayer16x16.png" />
+    <Content Include="Content\Graphics\Tiles\Static\SimpleVoid16x16.png" />
+    <Content Include="Content\Graphics\Tiles\Static\SimpleWall16x16.png" />
+    <Content Include="Content\Graphics\Tiles\Static\SokoSolve16x16.bmp" />
+    <Content Include="Content\Graphics\Tiles\Static\StaticSmall-16x16.xml" />
     <Content Include="Content\Graphics\Tiles\Test\SimpleCrate16x16.png" />
     <Content Include="Content\Graphics\Tiles\Test\SimpleCrateGoal16x16.png" />
     <Content Include="Content\Graphics\Tiles\Test\SimpleFloor16x16.png" />
@@ -269,9 +279,6 @@
     <Content Include="Content\html\ReleaseNotes.html" />
     <Content Include="Content\html\style.css" />
     <Content Include="Content\html\Welcome.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\Graphics\Tiles\SokoSolveGems\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

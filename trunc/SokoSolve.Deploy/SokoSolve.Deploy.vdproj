@@ -15,20 +15,20 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_3AA9DAFAE28A41404A6547CA77590752"
+        "MsmKey" = "8:_660EFE022E140D8F7B4FCF145DB45A39"
         "OwnerKey" = "8:_A1998136E81740C8A9DC917C61AB41D8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3AA9DAFAE28A41404A6547CA77590752"
-        "OwnerKey" = "8:_47EB1AA8CCFA13D41100B03DB0C9ADBA"
+        "MsmKey" = "8:_660EFE022E140D8F7B4FCF145DB45A39"
+        "OwnerKey" = "8:_E54DA4E38055676570958B110D6F7267"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_47EB1AA8CCFA13D41100B03DB0C9ADBA"
-        "OwnerKey" = "8:_A1998136E81740C8A9DC917C61AB41D8"
+        "MsmKey" = "8:_781A35AFBA304FE9ABDE0DDF0EDAD58E"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -45,6 +45,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_E54DA4E38055676570958B110D6F7267"
+        "OwnerKey" = "8:_A1998136E81740C8A9DC917C61AB41D8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_A1998136E81740C8A9DC917C61AB41D8"
         "MsmSig" = "8:_UNDEFINED"
@@ -52,13 +58,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_47EB1AA8CCFA13D41100B03DB0C9ADBA"
+        "OwnerKey" = "8:_E54DA4E38055676570958B110D6F7267"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3AA9DAFAE28A41404A6547CA77590752"
+        "OwnerKey" = "8:_660EFE022E140D8F7B4FCF145DB45A39"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -151,14 +157,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3AA9DAFAE28A41404A6547CA77590752"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_660EFE022E140D8F7B4FCF145DB45A39"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SokoSolve.Common, Version=1.2.0.34603, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:SokoSolve.Common, Version=1.2.0.39416, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_3AA9DAFAE28A41404A6547CA77590752"
+                    "_660EFE022E140D8F7B4FCF145DB45A39"
                     {
                     "Name" = "8:SokoSolve.Common.dll"
                     "Attributes" = "3:512"
@@ -182,14 +188,54 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_47EB1AA8CCFA13D41100B03DB0C9ADBA"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_781A35AFBA304FE9ABDE0DDF0EDAD58E"
+            {
+            "SourcePath" = "8:..\\SokoSolve.UI\\Content\\html\\ReadMe.rtf"
+            "TargetName" = "8:ReadMe.rtf"
+            "Tag" = "8:"
+            "Folder" = "8:_AA1BE3CA7D6841B3B88009CD5A7D4BF7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DDD9850AF2594403A342BAD315A0D4CF"
+            {
+            "SourcePath" = "8:..\\SokoSolve.UI\\Content\\Graphics\\Icons\\SokoSolve16x16.ico"
+            "TargetName" = "8:SokoSolve16x16.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_AA1BE3CA7D6841B3B88009CD5A7D4BF7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E54DA4E38055676570958B110D6F7267"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SokoSolve.Core, Version=1.2.0.17554, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:SokoSolve.Core, Version=1.2.0.39416, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_47EB1AA8CCFA13D41100B03DB0C9ADBA"
+                    "_E54DA4E38055676570958B110D6F7267"
                     {
                     "Name" = "8:SokoSolve.Core.dll"
                     "Attributes" = "3:512"
@@ -211,26 +257,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DDD9850AF2594403A342BAD315A0D4CF"
-            {
-            "SourcePath" = "8:..\\SokoSolve.UI\\Content\\Graphics\\Icons\\SokoSolve16x16.ico"
-            "TargetName" = "8:SokoSolve16x16.ico"
-            "Tag" = "8:"
-            "Folder" = "8:_AA1BE3CA7D6841B3B88009CD5A7D4BF7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -294,6 +320,17 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_DC4FECA9A371418688B899EE0A2A1C3F"
+                    {
+                    "Name" = "8:Games"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_8034E1450FD74C37B6826A32CDB596B6"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
         }
@@ -312,7 +349,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SokoSolve"
         "ProductCode" = "8:{A52F392E-4829-48E5-9627-79D4937960AA}"
-        "PackageCode" = "8:{07585ED9-4A95-4259-8901-F4AD186DF168}"
+        "PackageCode" = "8:{E46F7C43-4A5E-480F-8E55-786A5BB3AB16}"
         "UpgradeCode" = "8:{72834B61-C2A8-4119-9ADD-E306A2A8F675}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
@@ -431,6 +468,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_CEBB81A024AA4C53B203CC5CA23C891E"
+            {
+            "Name" = "8:SokoSolve Sokoban"
+            "Arguments" = "8:"
+            "Description" = "8:SokoSolve Sokoban game client"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_A1998136E81740C8A9DC917C61AB41D8"
+            "Folder" = "8:_DC4FECA9A371418688B899EE0A2A1C3F"
+            "WorkingFolder" = "8:_AA1BE3CA7D6841B3B88009CD5A7D4BF7"
+            "Icon" = "8:_DDD9850AF2594403A342BAD315A0D4CF"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
@@ -487,7 +538,7 @@
                 {
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_4480A4ABA6CA42D7A60C6BE24E6B0D18"
                     {
-                    "Sequence" = "3:100"
+                    "Sequence" = "3:110"
                     "DisplayName" = "8:Finished"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
@@ -516,6 +567,53 @@
                             "Setting" = "3:1"
                             "Value" = "8:#1258"
                             "DefaultValue" = "8:#1258"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                        }
+                    }
+                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_9F5A2915C16842658E25F8D118E5E410"
+                    {
+                    "Sequence" = "3:100"
+                    "DisplayName" = "8:Read Me"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "IsDependency" = "11:FALSE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdReadmeDlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:#1001"
+                            "Description" = "8:#1101"
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "ReadmeText"
+                            {
+                            "Name" = "8:ReadmeText"
+                            "DisplayName" = "8:#1010"
+                            "Description" = "8:#1110"
+                            "Type" = "3:6"
+                            "ContextData" = "8:"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:2"
+                            "Value" = "8:_781A35AFBA304FE9ABDE0DDF0EDAD58E"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Sunken"
+                            {
+                            "Name" = "8:Sunken"
+                            "DisplayName" = "8:#1007"
+                            "Description" = "8:#1107"
+                            "Type" = "3:5"
+                            "ContextData" = "8:4;True=4;False=0"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:0"
+                            "Value" = "3:4"
+                            "DefaultValue" = "3:4"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -657,7 +755,7 @@
                 {
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_78F3F37828B847A78071B36D5BF50D1C"
                     {
-                    "Sequence" = "3:100"
+                    "Sequence" = "3:200"
                     "DisplayName" = "8:Finished"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
@@ -830,7 +928,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_58AC400A61DB49AF8BB5EDDB5A4807C7"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_11728F4D41624BC28D0F1EEB68E654A0"
             {
             "SourcePath" = "8:"
             "TargetName" = "8:"
@@ -852,7 +950,7 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:ContentFiles"
-            "OutputProjectGuid" = "8:{04E6AAA7-DB10-4F61-BC6C-5211D189D40A}"
+            "OutputProjectGuid" = "8:{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
