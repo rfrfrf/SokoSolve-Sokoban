@@ -4,27 +4,86 @@ using System.Text;
 
 namespace SokoSolve.Common.Structures.Evaluation
 {
-	public class Evaluator<T> : IEvaluator<T> where T : IManagedNodeData
+    /// <summary>
+    /// Simple Evaluation implementation.
+    /// Itterates through all nodes, storing all solutions
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+	public class Evaluator<T> : IEvaluator<T> where T : IEvaluationNode
 	{
-		public bool Evaluate(IEvaluationStrategy<T> strategy)
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        public Evaluator()
+        {
+            stopOnSolution = false;
+            solutions = new List<INode<T>>();
+        }
+
+        /// <summary>
+        /// Evaluate using a strategy
+        /// </summary>
+        /// <param name="evalStrategy"></param>
+        /// <returns></returns>
+		public EvalStatus Evaluate(IEvaluationStrategy<T> evalStrategy)
 		{
+            strategy = evalStrategy;
+            strategy.Init();
+
 			bool complete = false;
 			while (!complete)
 			{
-				INode<T> current = strategy.GetNext();
-				if (current == null) return false;
+			    EvalStatus nextStatus;
+				INode<T> current = strategy.GetNext(out nextStatus);
+                if (current == null) return nextStatus;
 
 				if (!current.Data.IsStateEvaluated)
 				{
-					complete = strategy.EvaluateState(current);
+					complete = (strategy.EvaluateState(current) == EvalStatus.CompleteSolution);
+
+                    if (strategy.IsSolution(current))
+                    {
+                        solutions.Add(current);
+                        if (stopOnSolution) return EvalStatus.CompleteSolution;
+                    }
 				}
 				else if (!current.Data.IsChildrenEvaluated)
 				{
-					complete = strategy.EvaluateChildren(current);
+					strategy.EvaluateChildren(current);
 				}
 			}
-			return false;
+			return EvalStatus.CompleteNoSolution;
 		}
+
+	    public bool HasSolution
+	    {
+            get { return solutions != null && solutions.Count > 0;  }
+	    }
+
+	    public List<INode<T>> Solutions
+	    {
+	        get { return solutions; }
+	    }
+
+	    public bool StopOnSolution
+	    {
+	        get { return stopOnSolution; }
+	        set { stopOnSolution = value; }
+	    }
+
+        public IEvaluationStrategy<T> Strategy
+        {
+            get { return strategy; }
+        }
+
+        public override string ToString()
+        {
+            return string.Format("Evaluting. Solutions:{0} {1}", solutions.Count, strategy);
+        }
+
+        private bool stopOnSolution;
+        private List<INode<T>> solutions;
+        private IEvaluationStrategy<T> strategy;
 	}
 
 }

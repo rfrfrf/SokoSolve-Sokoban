@@ -5,7 +5,7 @@ using SokoSolve.Common.Math;
 
 namespace SokoSolve.Common.Structures.Evaluation
 {
-	public class LocationNode : IManagedNodeData
+	public class LocationNode : IEvaluationNode
 	{
 		private VectorInt location;
 		private string nodeID;

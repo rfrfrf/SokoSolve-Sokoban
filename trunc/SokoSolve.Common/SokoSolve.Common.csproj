@@ -48,6 +48,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StringHelper.cs" />
     <Compile Include="Structures\Bitmap.cs" />
+    <Compile Include="Structures\Evaluation\DepthFirstItterator.cs" />
+    <Compile Include="Structures\Evaluation\DepthLastItterator.cs" />
+    <Compile Include="Structures\Evaluation\EvaluationStrategyBase.cs" />
     <Compile Include="Structures\Evaluation\Evaluator.cs" />
     <Compile Include="Structures\Evaluation\FloodFill.cs" />
     <Compile Include="Structures\Evaluation\LocationNode.cs" />

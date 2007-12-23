@@ -34,6 +34,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analysis\CrateAnalysis.cs" />
+    <Compile Include="Analysis\MapAnalysis.cs" />
+    <Compile Include="Analysis\MoveAnalysis.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="Game\Game.cs" />
     <Compile Include="Game\Move.cs" />
@@ -57,8 +60,9 @@
     <Compile Include="Model\NamerUtil.cs" />
     <Compile Include="Model\Profile.cs" />
     <Compile Include="Model\Puzzle.cs" />
-    <Compile Include="Model\PuzzleAnalysis.cs" />
+    <Compile Include="Analysis\PuzzleAnalysis.cs" />
     <Compile Include="Model\PuzzleMap.cs" />
+    <Compile Include="Model\PuzzlePath.cs" />
     <Compile Include="Model\SokobanMap.cs" />
     <Compile Include="Model\Solution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -96,6 +96,8 @@ namespace SokoSolve.Common
         /// </summary>
         public static string Join<T>(IList<T> source, ToString<T> toStringDelegate, string sep)
         {
+            if (source == null || source.Count == 0) return string.Empty;
+
             StringBuilder sb = new StringBuilder();
             foreach (T item in source)
             {

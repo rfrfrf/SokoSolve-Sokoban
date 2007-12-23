@@ -50,6 +50,7 @@ namespace SokoSolve.UI.Controls.Primary
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Game_MouseMove);
             this.Resize += new System.EventHandler(this.Game_Resize);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Game_Paint);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Game_MouseUp);
             this.ResumeLayout(false);
 
 		}

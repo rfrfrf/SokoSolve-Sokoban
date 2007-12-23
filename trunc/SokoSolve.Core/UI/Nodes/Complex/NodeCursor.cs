@@ -4,19 +4,23 @@ using System.Drawing;
 using System.Text;
 using SokoSolve.Common.Math;
 using SokoSolve.Common.Structures;
+using SokoSolve.Core.Analysis;
 using SokoSolve.Core.Model;
+using Bitmap=SokoSolve.Common.Structures.Bitmap;
 
 namespace SokoSolve.Core.UI.Nodes.Complex
 {
 
     class NodeCursorEventArgs : NotificationEvent
     {
-        public NodeCursorEventArgs(NodeBase source, string command, object tag, int x, int y, int clicks, int button) : base(source, command, tag)
+        public NodeCursorEventArgs(NodeBase source, string command, object tag, 
+            int X, int Y, int ClickCount, GameUI.MouseButtons Button, GameUI.MouseClicks ClickType) : base(source, command, tag)
         {
-            this.x = x;
-            this.y = y;
-            this.clicks = clicks;
-            this.button = button;
+            this.x = X;
+            this.y = Y;
+            this.clicks = ClickCount;
+            this.button = Button;
+            this.clicktype = ClickType;
         }
 
 
@@ -35,15 +39,22 @@ namespace SokoSolve.Core.UI.Nodes.Complex
             get { return clicks; }
         }
 
-        public int Button
+        public GameUI.MouseButtons Button
         {
             get { return button; }
+        }
+
+
+        public GameUI.MouseClicks Clicktype
+        {
+            get { return clicktype; }
         }
 
         private int x;
         private int y;
         private int clicks;
-        private int button;
+        private GameUI.MouseButtons button;
+        private GameUI.MouseClicks clicktype;
     }
 
     class NodeCursor : NodeBase
@@ -56,30 +67,22 @@ namespace SokoSolve.Core.UI.Nodes.Complex
             brushCursorMini = new SolidBrush(Color.FromArgb(200, Color.White));
         }
 
-        public override VectorInt CurrentAbsolute
-        {
-            get
-            {
-                return base.CurrentAbsolute;
-            }
-            set
-            {
-                base.CurrentAbsolute = value;
-                // Notify stuff that the position has changed
-            }
-        }
 
+        /// <summary>
+        /// Allow other elements to 'listen' to mouse changes
+        /// </summary>
         public event EventHandler<NodeCursorEventArgs> OnClick;
 
+       
           /// <summary>
         /// Update the cursor position
         /// </summary>
         /// <param name="X">Mouse X</param>
         /// <param name="Y">Mouse Y</param>
-        /// <param name="Clicks">Number of clicks</param>
+        /// <param name="ClickCount">Number of clicks</param>
         /// <param name="Button">Button enum 0=None, 1=Left, 2=Right</param>
         /// <returns>true is cursor is drawn by game</returns>
-        public bool SetCursor(int X, int Y, int Clicks, int Button)
+        public bool SetCursor(int X, int Y, int ClickCount, GameUI.MouseButtons Button, GameUI.MouseClicks ClickType)
         {
             bool manualDraw = false;
 
@@ -99,42 +102,77 @@ namespace SokoSolve.Core.UI.Nodes.Complex
                 puzCell = GameUI.Current[puzPos];
             }
 
-            // Process a click
-            if (Clicks > 0)
+            if (ClickCount > 0 && ClickType == GameUI.MouseClicks.Down)
             {
-                // Do not allow the move, it other previous moves are still pending
-                if (puzCell != CellStates.Void && !GameUI.Player.HasFutureMoves)
-                {
-                    // Draw the path from the player to the this as a path
-                    VectorInt playerPos = GameUI.Current.Player;
+                dragStarted = true;
+                dragStartPixelLocation = this.CurrentAbsolute;
+                dragStartCellLocation = puzPos;
+                dragStartCell = puzCell;
+            }
 
-                    // Try crate movement
-                    bool cellIsCrate = (puzCell == CellStates.FloorCrate || puzCell == CellStates.FloorGoalCrate);
-                    Direction playerIsAdjacent = IsAdjacentPlayer(GameUI.Current, puzPos);
-                    if (cellIsCrate && playerIsAdjacent != Direction.None)
+
+            if (dragStarted)
+            {
+                
+            }
+
+            // Process a click
+            if (ClickCount > 0 && ClickType == GameUI.MouseClicks.Up)
+            {
+                dragStarted = false;
+
+                if (dragStartCell == CellStates.Floor)
+                {
+                    PerformMouseMovement(puzPos, puzCell);       
+                }
+                else if (dragStartCell == CellStates.FloorCrate)
+                {
+                    PerformCrateMovement(dragStartCellLocation, puzPos);
+                }
+                
+            }
+
+            if (OnClick != null)
+            {
+                OnClick(this, new NodeCursorEventArgs(this, "Click", this, X, Y, ClickCount, Button, ClickType));
+            }
+
+            return manualDraw; 
+        }
+
+        private void PerformCrateMovement(VectorInt startCrateLocation, VectorInt targetCrateLocation)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void PerformMouseMovement(VectorInt puzPos, CellStates puzCell)
+        {
+            // Do not allow the move, it other previous moves are still pending
+            if (puzCell != CellStates.Void && !GameUI.Player.HasFutureMoves)
+            {
+                // Draw the path from the player to the this as a path
+                VectorInt playerPos = GameUI.Current.Player;
+
+                // Try crate movement
+                bool cellIsCrate = (puzCell == CellStates.FloorCrate || puzCell == CellStates.FloorGoalCrate);
+                Direction playerIsAdjacent = IsAdjacentPlayer(GameUI.Current, puzPos);
+                if (cellIsCrate && playerIsAdjacent != Direction.None)
+                {
+                    GameUI.Player.doMove(playerIsAdjacent);
+                }
+                else
+                {
+                    // Try Path movement
+                    List<Direction> path = Convert(MoveAnalysis.FindPlayerPath(GameUI.Current, puzPos));
+                    if (path != null)
                     {
-                        GameUI.Player.doMove(playerIsAdjacent);
-                    }
-                    else
-                    {
-                        // Try Path movement
-                        List<Direction> path = Convert(PuzzleAnalysis.FindPath(GameUI.Current, puzPos));
-                        if (path != null)
+                        foreach (Direction aMove in path)
                         {
-                            foreach (Direction aMove in path)
-                            {
-                                GameUI.Player.doMove(aMove);
-                            }
+                            GameUI.Player.doMove(aMove);
                         }
                     }
                 }
-
-                if (OnClick != null)
-                {
-                    OnClick(this, new NodeCursorEventArgs(this, "Click", Clicks, X, Y, Clicks, Button));
-                }
             }
-            return manualDraw; 
         }
 
         /// <summary>
@@ -169,9 +207,11 @@ namespace SokoSolve.Core.UI.Nodes.Complex
             }
 
             return result;
-
         }
 
+        /// <summary>
+        /// Draw the cursor
+        /// </summary>
         public override void Render()
         {
             // Mark the current puzzle cell
@@ -182,24 +222,38 @@ namespace SokoSolve.Core.UI.Nodes.Complex
                 GameUI.Graphics.FillRectangle(brushCellMarker, cellStartAbs.X, cellStartAbs.Y, GameUI.GameCoords.GlobalTileSize.X, GameUI.GameCoords.GlobalTileSize.Y);    
             }
 
-            // Draw the path from the player to the cursor as a path
-            VectorInt playerPos = GameUI.Current.Player;
+            
+                // Draw the path from the player to the cursor as a path
+                VectorInt playerPos = GameUI.Current.Player;
 
-            // Show path to cursor, if the player is not busy moving
-            if (!GameUI.Player.HasFutureMoves)
-            {
-                List<VectorInt> path = PuzzleAnalysis.FindPath(GameUI.Current, cellPos);
-                if (path != null)
+                // Show path to cursor, if the player is not busy moving
+                if (!GameUI.Player.HasFutureMoves)
                 {
-                    foreach (VectorInt pathNode in path)
+                    List<VectorInt> path = MoveAnalysis.FindPlayerPath(GameUI.Current, cellPos);
+                    if (path != null)
                     {
-                        VectorInt pathDrawPos = GameUI.GameCoords.PositionAbsoluteFromPuzzle(pathNode);
-                        pathDrawPos = pathDrawPos.Add(GameUI.GameCoords.GlobalTileSize.X/2, GameUI.GameCoords.GlobalTileSize.Y/2);
-                        GameUI.Graphics.FillEllipse(brushCursorMini, pathDrawPos.X, pathDrawPos.Y, 3, 3);
+                        foreach (VectorInt pathNode in path)
+                        {
+                            VectorInt pathDrawPos = GameUI.GameCoords.PositionAbsoluteFromPuzzle(pathNode);
+                            pathDrawPos = pathDrawPos.Add(GameUI.GameCoords.GlobalTileSize.X / 2, GameUI.GameCoords.GlobalTileSize.Y / 2);
+                            GameUI.Graphics.FillEllipse(brushCursorMini, pathDrawPos.X, pathDrawPos.Y, 3, 3);
+                        }
                     }
                 }
-            }
+            
+            if (dragStarted)
+            {
+                if (dragStartCell == CellStates.FloorCrate)
+                {
+                    Bitmap crateMoveMap = CrateAnalysis.BuildCrateMoveMap(GameUI.Current, dragStartCellLocation);
 
+                    if (crateMoveMap != null && crateMoveMap[cellPos])
+                    {
+                        GameUI.Graphics.DrawLine(penCursorMini, dragStartPixelLocation.X, dragStartPixelLocation.Y,
+                                             CurrentAbsolute.X, CurrentAbsolute.Y);    
+                    }   
+                }
+            }
 
             // Draw the current mini-cursor
             int miniCursorSize = 5;
@@ -212,5 +266,9 @@ namespace SokoSolve.Core.UI.Nodes.Complex
         private Brush brushCursorMini;
         private Brush brushCellMarker;
         private Pen penCursorMini;
+        private bool dragStarted = false;
+        private VectorInt dragStartPixelLocation;
+        private VectorInt dragStartCellLocation;
+        private CellStates dragStartCell;
     }
 }

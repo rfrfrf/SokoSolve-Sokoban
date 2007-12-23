@@ -31,14 +31,12 @@ namespace SokoSolve.UI.Controls.Web
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.tsLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripCommands = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbDone = new System.Windows.Forms.ToolStripButton();
-            this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.tsbBack = new System.Windows.Forms.ToolStripButton();
             this.tsbForward = new System.Windows.Forms.ToolStripButton();
             this.tsbHome = new System.Windows.Forms.ToolStripButton();
             this.tsbPrint = new System.Windows.Forms.ToolStripButton();
+            this.tsbDone = new System.Windows.Forms.ToolStripButton();
+            this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.statusStrip.SuspendLayout();
             this.toolStripCommands.SuspendLayout();
             this.SuspendLayout();
@@ -65,45 +63,13 @@ namespace SokoSolve.UI.Controls.Web
             this.tsbBack,
             this.tsbForward,
             this.tsbHome,
-            this.toolStripSeparator1,
             this.tsbPrint,
-            this.toolStripSeparator2,
             this.tsbDone});
             this.toolStripCommands.Location = new System.Drawing.Point(0, 0);
             this.toolStripCommands.Name = "toolStripCommands";
             this.toolStripCommands.Size = new System.Drawing.Size(423, 25);
             this.toolStripCommands.TabIndex = 1;
             this.toolStripCommands.Text = "toolStrip1";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tsbDone
-            // 
-            this.tsbDone.Image = global::SokoSolve.UI.Properties.Resources.Exit;
-            this.tsbDone.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbDone.Name = "tsbDone";
-            this.tsbDone.Size = new System.Drawing.Size(52, 22);
-            this.tsbDone.Text = "Done";
-            this.tsbDone.Click += new System.EventHandler(this.tsbDone_Click);
-            // 
-            // webBrowser
-            // 
-            this.webBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser.Location = new System.Drawing.Point(0, 25);
-            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(423, 350);
-            this.webBrowser.TabIndex = 2;
-            this.webBrowser.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser_Navigated);
-            this.webBrowser.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.webBrowser_Navigating);
             // 
             // tsbBack
             // 
@@ -141,6 +107,26 @@ namespace SokoSolve.UI.Controls.Web
             this.tsbPrint.Text = "Print";
             this.tsbPrint.Click += new System.EventHandler(this.tsbPrint_Click);
             // 
+            // tsbDone
+            // 
+            this.tsbDone.Image = global::SokoSolve.UI.Properties.Resources.Exit;
+            this.tsbDone.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDone.Name = "tsbDone";
+            this.tsbDone.Size = new System.Drawing.Size(52, 22);
+            this.tsbDone.Text = "Done";
+            this.tsbDone.Click += new System.EventHandler(this.tsbDone_Click);
+            // 
+            // webBrowser
+            // 
+            this.webBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser.Location = new System.Drawing.Point(0, 25);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser.Name = "webBrowser";
+            this.webBrowser.Size = new System.Drawing.Size(423, 350);
+            this.webBrowser.TabIndex = 2;
+            this.webBrowser.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser_Navigated);
+            this.webBrowser.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.webBrowser_Navigating);
+            // 
             // HtmlView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -168,8 +154,6 @@ namespace SokoSolve.UI.Controls.Web
         private System.Windows.Forms.ToolStripButton tsbHome;
         private System.Windows.Forms.ToolStripButton tsbPrint;
         private System.Windows.Forms.WebBrowser webBrowser;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsbDone;
         private System.Windows.Forms.ToolStripStatusLabel tsLabelStatus;
     }

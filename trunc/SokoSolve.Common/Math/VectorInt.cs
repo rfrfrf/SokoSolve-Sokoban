@@ -190,6 +190,24 @@ namespace SokoSolve.Common.Math
 			throw new InvalidOperationException();
 		}
 
+        /// <summary>
+        /// Helper.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static Direction Reverse(Direction input)
+        {
+            switch (input)
+            {
+                case (Direction.Up): return Direction.Down;
+                case (Direction.Down): return Direction.Up;
+                case (Direction.Left): return Direction.Right;
+                case (Direction.Right): return Direction.Left;
+            }
+            throw new InvalidOperationException();
+
+        }
+
 		/// <summary>
 		/// Geint FOUR offsets (Up, Down, Left, Right) as an array
 		/// </summary>

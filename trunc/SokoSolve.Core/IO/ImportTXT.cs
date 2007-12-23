@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using SokoSolve.Common;
 using SokoSolve.Core.Model;
+using SokoSolve.Core.Model.Analysis;
 
 namespace SokoSolve.Core.IO
 {

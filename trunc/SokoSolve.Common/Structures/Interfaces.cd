@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Font Name="Tahoma" Size="8.25" />
   <Interface Name="GL.Develop.Rosetta.Common.Structures.INodeLink&lt;T&gt;">
     <Position X="16.25" Y="5.25" Width="1.5" />
@@ -72,6 +72,107 @@
     <TypeIdentifier>
       <FileName>Structures\FundementalInterfaces.cs</FileName>
       <HashCode>AAAAAAAAAAAAAAABAAAAAAAABAAAAAIAAAAIAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SokoSolve.Common.Structures.INodeLink&lt;T&gt;" Collapsed="true">
+    <Position X="2.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Structures\Interfaces.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAEAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SokoSolve.Common.Structures.IEvaluationNodeData" Collapsed="true">
+    <Position X="6.25" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Structures\Interfaces.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAACAAAAAAAEAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SokoSolve.Common.Structures.INode&lt;T&gt;">
+    <Position X="6.5" Y="4" Width="2" />
+    <TypeIdentifier>
+      <FileName>Structures\Interfaces.cs</FileName>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Graph" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="LinkNodes" />
+    </ShowAsCollectionAssociation>
+    <AssociationLine Name="LinkNodes" Type="SokoSolve.Common.Structures.INode&lt;T&gt;" ManuallyRouted="true">
+      <Path>
+        <Point X="7.193" Y="4.981" />
+        <Point X="7.193" Y="5.429" />
+        <Point X="7.822" Y="5.429" />
+        <Point X="7.822" Y="4.981" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.9" Y="0.56" />
+      </MemberNameLabel>
+    </AssociationLine>
+  </Interface>
+  <Interface Name="SokoSolve.Common.Structures.IDirectedNode&lt;T&gt;" Collapsed="true">
+    <Position X="6.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Structures\Interfaces.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAgAAAAIAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SokoSolve.Common.Structures.IGraph&lt;T&gt;">
+    <Position X="6.75" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <FileName>Structures\Interfaces.cs</FileName>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SokoSolve.Common.Structures.IDirectedGraph&lt;T&gt;" Collapsed="true">
+    <Position X="4.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Structures\Interfaces.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACCAAAAAABAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SokoSolve.Common.Structures.ITree&lt;T&gt;" Collapsed="true">
+    <Position X="6.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Structures\Interfaces.cs</FileName>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SokoSolve.Common.Structures.ITreeNode&lt;T&gt;" Collapsed="true">
+    <Position X="6.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Structures\Interfaces.cs</FileName>
+      <HashCode>AAAAAAAAAECAAAAAAAAAAAAAAAAAABAAAAAAAAAQAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SokoSolve.Common.Structures.IPath&lt;T&gt;">
+    <Position X="2.75" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Structures\Interfaces.cs</FileName>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SokoSolve.Common.Structures.IEvaluator&lt;T&gt;">
+    <Position X="4" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Structures\Interfaces.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SokoSolve.Common.Structures.IEvaluationStrategy&lt;T&gt;">
+    <Position X="3.75" Y="4" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Structures\Interfaces.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAABAAAAAIAAAAKAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SokoSolve.Common.Structures.IBitmap">
+    <Position X="1.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Structures\Interfaces.cs</FileName>
+      <HashCode>AAAAAAAAAAAAgAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
   </Interface>
 </ClassDiagram>

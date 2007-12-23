@@ -7,6 +7,8 @@ using SokoSolve.Common;
 using SokoSolve.Common.Math;
 using SokoSolve.Common.Structures;
 using SokoSolve.Common.Structures.Evaluation;
+using SokoSolve.Core.Analysis;
+using SokoSolve.Core.Model;
 
 namespace SokoSolve.Test.Common.Structures
 {
@@ -16,7 +18,7 @@ namespace SokoSolve.Test.Common.Structures
 		[TestMethod]
 		public void FloodFill()
 		{
-			Bitmap map = new Bitmap(new string[]
+            Bitmap map = new Bitmap(new string[]
 			                        	{
 			                        		"111111111111111111",
 			                        		"100000000000001001",
@@ -40,11 +42,44 @@ namespace SokoSolve.Test.Common.Structures
 			Debug.WriteLine(strategy.Result.ToString());
 
 			List<LocationNode> path = strategy.GetShortestPath(new VectorInt(9, 9));
+		    Assert.IsNotNull(path);
 
 			
 			Debug.WriteLine(StringHelper.Join(path, delegate(LocationNode node) { return node.Location.ToString(); }, ", "));
 
 			Debug.WriteLine(map.ToString());
+
+            // Expected value
+		    Assert.AreEqual(new VectorInt(9, 9), path[path.Count - 1].Location);
 		}
+
+        [TestMethod]
+        public void FloodCrateMoveMap()
+        {
+         
+
+             SokobanMap map = new SokobanMap();
+		    map.setFromStrings(new string[]
+		                           {
+"~~~###~~~~~",
+"~~##.#~####",
+"~##..###..#",
+"##.X......#",
+"#...PX.#..#",
+"###.X###..#",
+"~~#..#OO..#",
+"~##.##O#.##",
+"~#......##~",
+"~#.....##~~",
+"~#######~~~"
+		                           });
+
+            Bitmap result = CrateAnalysis.BuildCrateMoveMap(map, new VectorInt(3,3));
+            Assert.IsNotNull(result);
+
+            Debug.WriteLine(map.ToString());
+            Debug.WriteLine(result.ToString());
+            Debug.WriteLine("XXX");
+        }
 	}
 }

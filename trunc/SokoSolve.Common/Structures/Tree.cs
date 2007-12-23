@@ -71,5 +71,10 @@ namespace SokoSolve.Common.Structures
 		}
 
 		#endregion
+
+        public override string ToString()
+        {
+            return string.Format("Tree Size:{0}", Leaves.Count);
+        }
 	}
 }

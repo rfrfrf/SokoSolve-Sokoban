@@ -166,12 +166,36 @@ namespace SokoSolve.UI.Controls.Primary
             }
         }
 
+        static GameUI.MouseButtons Convert(MouseButtons item)
+        {
+            if (item == MouseButtons.Left) return GameUI.MouseButtons.Left;
+            if (item == MouseButtons.Right) return GameUI.MouseButtons.Right;
+
+            return GameUI.MouseButtons.None;
+        }
+
         private void Game_MouseDown(object sender, MouseEventArgs e)
         {
             
             if (gameUI != null)
             {
-                if (gameUI.SetCursor(e.X, e.Y, e.Clicks, (int)e.Button))
+                if (gameUI.SetCursor(e.X, e.Y, e.Clicks, Convert(e.Button), GameUI.MouseClicks.Down))
+                {
+                    // Does not seem to work.
+                    //Cursor.Hide();
+                }
+                else
+                {
+                    //Cursor.Show();
+                }
+            }
+        }
+
+        private void Game_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (gameUI != null)
+            {
+                if (gameUI.SetCursor(e.X, e.Y, e.Clicks, Convert(e.Button), GameUI.MouseClicks.Up))
                 {
                     // Does not seem to work.
                     //Cursor.Hide();
@@ -187,7 +211,7 @@ namespace SokoSolve.UI.Controls.Primary
         {
             if (gameUI != null)
             {
-                if (gameUI.SetCursor(e.X, e.Y, e.Clicks, (int)e.Button))
+                if (gameUI.SetCursor(e.X, e.Y, e.Clicks, Convert(e.Button), GameUI.MouseClicks.None))
                 {
                     //Cursor.Hide();
                 }
@@ -217,5 +241,7 @@ namespace SokoSolve.UI.Controls.Primary
 
         private GameUI gameUI;
         private FormMain.Modes returnMode = FormMain.Modes.Library;
+
+        
 	}
 }

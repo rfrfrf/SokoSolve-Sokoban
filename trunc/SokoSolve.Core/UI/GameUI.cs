@@ -298,20 +298,34 @@ namespace SokoSolve.Core.UI
             }
         }
 
+        public enum MouseButtons
+        {
+            None,
+            Left,
+            Right
+        }
+
+        public enum MouseClicks
+        {
+            None,
+            Down,
+            Up
+        }
+
         /// <summary>
         /// Update the cursor position
         /// </summary>
         /// <param name="X">Mouse X</param>
         /// <param name="Y">Mouse Y</param>
-        /// <param name="Clicks">Number of clicks</param>
+        /// <param name="ClickCount">Number of clicks</param>
         /// <param name="Button">Button enum 0=None, 1=Left, 2=Right</param>
         /// <returns>true is cursor is drawn by game</returns>
         /// <remarks>
         /// See <see cref="NodeCursor"/> for implementation. This is a proxy method.
         /// </remarks>
-        public bool SetCursor(int X, int Y, int Clicks, int Button)
+        public bool SetCursor(int X, int Y, int ClickCount, MouseButtons Button, MouseClicks ClickType)
         {
-            return cursor.SetCursor(X, Y, Clicks, Button);
+            return cursor.SetCursor(X, Y, ClickCount, Button, ClickType);
         }
 
 

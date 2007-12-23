@@ -6,31 +6,37 @@ using SokoSolve.Common.Structures.Evaluation;
 
 namespace SokoSolve.Common.Structures
 {
-	
-	
+    /// <summary>
+    /// Do a location based (Up, Down, Left, Right) classic flood fill within a constraint map.
+    /// </summary>
 	public class FloodFillStrategy : IEvaluationStrategy<LocationNode>
 	{
-		private IBitmap initialState;
-		private Bitmap currentState;
-		private VectorInt startLocation;
-		private List<TreeNode<LocationNode>> evaluationList;
-		private Tree<LocationNode> searchTree;
-
-
+        /// <summary>
+        /// Strong Construction
+        /// </summary>
+        /// <param name="initialState"></param>
+        /// <param name="startLocation"></param>
 		public FloodFillStrategy(IBitmap initialState, VectorInt startLocation)
 		{
 			this.initialState = initialState;
 			this.currentState = new Bitmap(initialState.Size);
 			this.startLocation = startLocation;
-			evaluationList = new List<TreeNode<LocationNode>>();
+            workList = new DepthLastItterator<LocationNode>(GetLocationNodeDepth);
 
 			// Add the start location
 			searchTree = new Tree<LocationNode>();
 			TreeNode<LocationNode> startNode = searchTree.Root;
 			startNode.Data = new LocationNode(startLocation);
 
-			evaluationList.Add(startNode);
+			workList.Add(startNode);
 		}
+
+        private static int GetLocationNodeDepth(INode<LocationNode> node)
+        {
+            TreeNode<LocationNode> upcast = node as TreeNode<LocationNode>;
+            if (upcast == null) return 0;
+            return upcast.Depth;
+        }
 
 		/// <summary>
 		/// The result of the solution
@@ -59,20 +65,32 @@ namespace SokoSolve.Common.Structures
 
 		#region IEvaluationStrategy<BitmapLocation> Members
 
-		public bool IsSolution(INode<LocationNode> node)
+        #region IEvaluationStrategy<LocationNode> Members
+
+        /// <summary>
+        /// Set the initial conditions. This is not strictly nessesary, but makes implementation easier.
+        /// </summary>
+        public void Init()
+        {
+            // Nothing to do
+        }
+
+        #endregion
+
+        public bool IsSolution(INode<LocationNode> node)
 		{
 			// There is no solution for flood fill.
 			return false;
 		}
 
-		public bool EvaluateState(INode<LocationNode> node)
+		public EvalStatus EvaluateState(INode<LocationNode> node)
 		{
 			node.Data.IsStateEvaluated = true;
 			// Nothing to do, we only evaluate children
-			return false;
+            return EvalStatus.InProgress;
 		}
 
-		public bool EvaluateChildren(INode<LocationNode> node)
+		public void EvaluateChildren(INode<LocationNode> node)
 		{
 			TreeNode<LocationNode> treeNode = node as TreeNode<LocationNode>;
 			if (treeNode == null) throw new NotSupportedException();
@@ -107,26 +125,15 @@ namespace SokoSolve.Common.Structures
 
 			node.Data.IsChildrenEvaluated = true;
 
-			return false;
+            // Remove this node from the worklist
+            workList.Remove(node);
 		}
 
 
-		public INode<LocationNode> GetNext()
+		public INode<LocationNode> GetNext(out EvalStatus Status)
 		{
-			while(true)
-			{
-				if (evaluationList.Count == 0) return null;
-
-				// Depth first
-				// Note (this is a very slow way of doing this)
-				evaluationList.Sort(delegate(TreeNode<LocationNode> lhs, TreeNode<LocationNode> rhs) { return lhs.Depth.CompareTo(rhs.Depth); });
-
-				TreeNode<LocationNode> first = evaluationList[0];
-				if (!first.Data.IsStateEvaluated) return first;
-				if (!first.Data.IsChildrenEvaluated) return first;
-
-				evaluationList.RemoveAt(0);	
-			}			
+            // Delegate this work to the DepthFirstIterator
+            return workList.GetNext(out Status);	
 		}
 
 		#endregion
@@ -137,11 +144,16 @@ namespace SokoSolve.Common.Structures
 			{
 				TreeNode<LocationNode> kid = new TreeNode<LocationNode>(treeNode, new LocationNode(pos));
 				treeNode.Children.Add(kid);
-				evaluationList.Add(kid);
+				workList.Add(kid);
 				currentState[pos] = true;
 				kid.Data.IsStateEvaluated = true;
 			}
 		}
 
+        private IBitmap initialState;
+        private Bitmap currentState;
+        private VectorInt startLocation;
+        private DepthLastItterator<LocationNode> workList;
+        private Tree<LocationNode> searchTree;
 	}
 }

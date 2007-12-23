@@ -9,6 +9,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SokoSolve.UI</RootNamespace>
     <AssemblyName>SokoSolve.UI</AssemblyName>
+    <StartupObject>SokoSolve.UI.Program</StartupObject>
+    <ApplicationIcon>SokoSolve16x16.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -18,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\SokoSolve.UI.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -279,6 +282,7 @@
     <Content Include="Content\html\ReleaseNotes.html" />
     <Content Include="Content\html\style.css" />
     <Content Include="Content\html\Welcome.html" />
+    <Content Include="SokoSolve16x16.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

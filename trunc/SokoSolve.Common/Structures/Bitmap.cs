@@ -181,10 +181,10 @@ namespace SokoSolve.Common.Structures
 			{
 				for (int ccx = 0; ccx < sizeX; ccx++)
 				{
-					if (this[ccx, ccy]) rep.Append('X');
-					else rep.Append('-');
+					if (this[ccx, ccy]) rep.Append('1');
+					else rep.Append('0');
 				}
-				rep.Append("\r\n");
+				rep.Append(Environment.NewLine);
 			}
 			return rep.ToString();
 		}

@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Text;
 using SokoSolve.Common.Math;
 using SokoSolve.Core.Model;
+using SokoSolve.Core.Model.Analysis;
 using SokoSolve.Core.UI.Nodes.Effects;
 
 namespace SokoSolve.Core.UI.Nodes.Complex

@@ -5,16 +5,35 @@ using SokoSolve.Common.Math;
 
 namespace SokoSolve.Common.Structures
 {
+    /// <summary>
+    /// Link two nodes together
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
 	public interface INodeLink<T>
 	{
-		T A { get; }
-		T B { get; }
+		INode<T> A { get; }
+		INode<T> B { get; }
 	}
 
-	public interface IManagedNodeData
+    /// <summary>
+    /// To be used with the <see cref="IEvaluationStrategy{T}"/>, and allows the evaluation state to be 
+    /// encapsulated seperately from node's payload data.
+    /// </summary>
+	public interface IEvaluationNode
 	{
+        /// <summary>
+        /// Human-readable ID.
+        /// </summary>
 		string NodeID { get; }
+
+        /// <summary>
+        /// Has the initial evaluation been done
+        /// </summary>
 		bool IsStateEvaluated { get; set; }
+
+        /// <summary>
+        /// Have the children been generated
+        /// </summary>
 		bool IsChildrenEvaluated { get; set; }
 	}
 
@@ -132,19 +151,89 @@ namespace SokoSolve.Common.Structures
 		ICollection<INode<T>> Nodes { get; }
 	}
 
+    /// <summary>
+    /// Enumeration of evaluation status
+    /// </summary>
+    public enum EvalStatus
+    {
+        NotStarted,
+        InProgress,
+        CompleteSolution,
+        CompleteNoSolution,
+        ExitIncomplete,
+        Error
+    }
+
 	public interface IEvaluator<T>
 	{
-		bool Evaluate(IEvaluationStrategy<T> strategy );
+        EvalStatus Evaluate(IEvaluationStrategy<T> strategy);
 	}
 
+    /// <summary>
+    /// Encapsulate with the 'Strategy' design pattern the algorythm need to evaluate a graph of interconnected nodes.
+    /// Perfect for complex solution searchs.
+    /// </summary>
+    /// <typeparam name="T">Domain Node</typeparam>
 	public interface IEvaluationStrategy<T>
 	{
+        /// <summary>
+        /// Set the initial conditions. This is not strictly nessesary, but makes implementation easier.
+        /// </summary>
+	    void Init();
+
+        /// <summary>
+        /// Is the node a solution
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
 		bool IsSolution(INode<T> node);
-		bool EvaluateState(INode<T> node);
-		bool EvaluateChildren(INode<T> node);
-		INode<T> GetNext();
+
+        /// <summary>
+        /// Evaluate the current node
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
+        EvalStatus EvaluateState(INode<T> node);
+
+        /// <summary>
+        /// Evaluate all child nodes. Based on a <paramref name="node"/> create all children. Be s
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
+		void EvaluateChildren(INode<T> node);
+
+        /// <summary>
+        /// Get the next node for evaluation
+        /// </summary>
+        /// <returns></returns>
+		INode<T> GetNext(out EvalStatus Status);
 	}
 
+
+    public interface IEvaluationStrategyItterator<T>
+    {
+        /// <summary>
+        /// Get the next node to evaluate, based on depth-first.
+        /// </summary>
+        /// <returns>null means exit evaluation</returns>
+        INode<T> GetNext(out EvalStatus Status);
+
+        /// <summary>
+        /// Add another node to evaluate
+        /// </summary>
+        /// <param name="EvalNode"></param>
+        void Add(INode<T> EvalNode);
+
+        /// <summary>
+        /// Remove a node (it has been evaluated)
+        /// </summary>
+        /// <param name="EvalNode"></param>
+        void Remove(INode<T> EvalNode);
+    }
+
+    /// <summary>
+    /// A stripped down boolean map interface
+    /// </summary>
 	public interface IBitmap
 	{
 		bool this[int X, int Y] { get; set; }
