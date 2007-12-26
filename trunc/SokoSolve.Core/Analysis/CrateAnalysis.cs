@@ -11,6 +11,13 @@ namespace SokoSolve.Core.Analysis
 {
     public class CrateAnalysis
     {
+
+        public class ShortestCratePath
+        {
+            public Path CratePath;
+            public Path PlayerPath;
+        }
+
         /// <summary>
         /// Given a map (and player position), find the move tree to push the target crate to a goal position
         /// </summary>
@@ -18,9 +25,16 @@ namespace SokoSolve.Core.Analysis
         /// <param name="CratePosition"></param>
         /// <param name="GoalCratePosition"></param>
         /// <returns></returns>
-        static public object FindCratePath(SokobanMap Map, VectorInt CratePosition, VectorInt GoalCratePosition)
+        static public ShortestCratePath FindCratePath(SokobanMap Map, VectorInt CratePosition, VectorInt GoalCratePosition)
         {
-            throw new NotImplementedException();
+            CellStates crateCell = Map[CratePosition];
+            if (crateCell != CellStates.FloorCrate && crateCell != CellStates.FloorGoalCrate) throw new ArgumentException("CratePosition is not a crate");
+
+            Evaluator<CrateMapNode> eval = new Evaluator<CrateMapNode>();
+            BuildCrateMapImplementation strat = new BuildCrateMapImplementation(Map, CratePosition);
+            eval.Evaluate(strat);
+
+            return strat.FindShortestCratePath(GoalCratePosition);
         }
 
         /// <summary>
@@ -51,13 +65,81 @@ namespace SokoSolve.Core.Analysis
             {
                 crateLocationStart = CrateStartLocation;
                 initialConditions = InitialConditions;
-                constraintMap = null;
+                constraintMapStatic = null;
                 crateMap = null;
             }
 
+            /// <summary>
+            /// Return the CrateMap as a result
+            /// </summary>
+            /// <returns></returns>
             public Bitmap GenerateResult()
             {
                 return crateMap;
+            }
+
+            public ShortestCratePath FindShortestCratePath(VectorInt CratePostition)
+            {
+                if (crateMap[CratePostition] == false) return null;
+
+                TreeNode<CrateMapNode> goal = evaluation.Root.Find(
+                    delegate(TreeNode<CrateMapNode> item)
+                    {
+                        return item.Data.CratePosition == CratePostition;
+                    }, int.MaxValue);
+            
+                if (goal != null)
+                {
+                    List<TreeNode<CrateMapNode>> pathToRoot = goal.GetPathToRoot();
+                    pathToRoot.Reverse();
+
+                    ShortestCratePath result = new ShortestCratePath();
+                    
+                    // Build crate path, this is easy as each node is a crate push
+                    result.CratePath = new Path(crateLocationStart);
+                    foreach (TreeNode<CrateMapNode> node in pathToRoot)
+                    {
+                        result.CratePath.Add(node.Data.CratePosition);
+                    }
+
+                    // Build the player path, this is not so each, as we have to expand the move map
+                    result.PlayerPath = new Path(pathToRoot[0].Data.PlayerPosition);
+
+                    // Walk through all the crate pushes, filling in the actual player moved in between
+                    for (int cc=0; cc<pathToRoot.Count; cc++)
+                    {
+                        TreeNode<CrateMapNode> cratePushNode = pathToRoot[cc];
+                        Bitmap boundry = cratePushNode.Data.PlayerMoveMap.BitwiseNOT();
+                        boundry[pathToRoot[cc].Data.CratePosition] = true;
+
+                        // Find all positble moves for the player
+                        FloodFillStrategy floodFill = new FloodFillStrategy(boundry, cratePushNode.Data.PlayerPosition);
+                        Evaluator<LocationNode> eval = new Evaluator<LocationNode>();
+                        eval.Evaluate(floodFill);
+
+                        VectorInt playerPushPosition = null;
+                        if (cc < pathToRoot.Count-1)
+                        {
+                            playerPushPosition = pathToRoot[cc + 1].Data.PlayerPosition.Offset(VectorInt.Reverse(pathToRoot[cc + 1].Data.Direction));
+                            List<LocationNode> movepath = floodFill.GetShortestPath(playerPushPosition);
+                            if (movepath != null)
+                            {
+                                foreach (LocationNode locationNode in movepath)
+                                {
+                                    result.PlayerPath.Add(locationNode.Location);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            // Final move
+                            result.PlayerPath.Add(VectorInt.GetDirection(pathToRoot[cc].Data.PlayerPosition, pathToRoot[cc].Data.CratePosition));
+                        }
+                    }
+                    return result;
+                }
+
+                return null;
             }
 
             /// <summary>
@@ -67,15 +149,15 @@ namespace SokoSolve.Core.Analysis
             public override CrateMapNode InitStartConditions()
             {
                 // Generate the constraint Map
-                constraintMap = initialConditions.ToBitmap(CellStates.Void);
-                constraintMap = constraintMap.BitwiseOR(initialConditions.ToBitmap(CellStates.Wall));
-                constraintMap = constraintMap.BitwiseOR(initialConditions.ToBitmap(CellStates.FloorCrate));
-                constraintMap = constraintMap.BitwiseOR(initialConditions.ToBitmap(CellStates.FloorGoalCrate));
+                constraintMapStatic = initialConditions.ToBitmap(CellStates.Void);
+                constraintMapStatic = constraintMapStatic.BitwiseOR(initialConditions.ToBitmap(CellStates.Wall));
+                constraintMapStatic = constraintMapStatic.BitwiseOR(initialConditions.ToBitmap(CellStates.FloorCrate));
+                constraintMapStatic = constraintMapStatic.BitwiseOR(initialConditions.ToBitmap(CellStates.FloorGoalCrate));
 
                 // Remove the target crate
-                constraintMap[crateLocationStart] = false;
+                constraintMapStatic[crateLocationStart] = false;
 
-                crateMap = new Bitmap(constraintMap.Size);
+                crateMap = new Bitmap(constraintMapStatic.Size);
 
                 CrateMapNode root = new CrateMapNode("$root$");
                 root.PlayerPosition = initialConditions.Player;
@@ -103,6 +185,10 @@ namespace SokoSolve.Core.Analysis
             /// <returns></returns>
             public override EvalStatus EvaluateState(INode<CrateMapNode> node)
             {
+                // Crate the new constraint map
+                Bitmap constraintMap = new Bitmap(constraintMapStatic);
+                constraintMap[node.Data.CratePosition] = true;
+
                 // Generate MoveMap
                 node.Data.PlayerMoveMap = MapAnalysis.GenerateMoveMap(constraintMap, null, node.Data.PlayerPosition);
                 node.Data.IsStateEvaluated = true;
@@ -133,14 +219,18 @@ namespace SokoSolve.Core.Analysis
                 MarkEvalCompelete(node);
             }
 
-           
-
+            /// <summary>
+            ///  <see cref="EvaluateChildren"/> Check if a crate can be pushed (resulting in a new sub-node)
+            /// </summary>
+            /// <param name="node"></param>
+            /// <param name="direction"></param>
+            /// <returns></returns>
             private bool CheckPush(INode<CrateMapNode> node, Direction direction)
             {
                 VectorInt newCrateLocation = node.Data.CratePosition.Offset(direction);
 
                 // Check if this violates the ConstraintMap
-                if (!constraintMap[newCrateLocation])
+                if (!constraintMapStatic[newCrateLocation])
                 {
                     // Check if we have this position already
                     if (!crateMap[newCrateLocation])
@@ -156,19 +246,17 @@ namespace SokoSolve.Core.Analysis
                             // We have a valid child
                             CrateMapNode child = new CrateMapNode(GetNextNodeID());
                             child.CratePosition = newCrateLocation;
+                            child.Direction = direction;
                             child.PlayerPosition = node.Data.CratePosition; // Player takes the place of the crate
                             AddNodeForEval(node, child);
                             return true;    
                         }
-                        
                     }
                 }
-
                 return false;
             }
 
-
-            private Bitmap constraintMap;
+            private Bitmap constraintMapStatic;
             private Bitmap crateMap;
             private VectorInt crateLocationStart;
             private SokobanMap initialConditions;
@@ -208,8 +296,8 @@ namespace SokoSolve.Core.Analysis
 
             public VectorInt PlayerPosition;
             public VectorInt CratePosition;
-            public Bitmap PlayerMoveMap; 
-
+            public Bitmap PlayerMoveMap;
+            public Direction Direction;
 
             private string nodeID;
             private bool isStateEvaluated;

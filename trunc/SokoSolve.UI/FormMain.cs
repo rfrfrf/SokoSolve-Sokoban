@@ -46,8 +46,8 @@ namespace SokoSolve.UI
                 switch(mode)
                 {
                     case (Modes.Library):
+                        libControl.Dock = DockStyle.Fill;
                         Controls.Add(libControl);
-                        libControl.Refresh();
                         libControl.Dock = DockStyle.Fill;
                         break;
                     case (Modes.Game):
@@ -77,12 +77,15 @@ namespace SokoSolve.UI
             if (gameControl != null)
             {
                 gameControl.ReturnMode = returnMode;
+
+                ProfileController.Current.LibraryLastPuzzle = puzzle.PuzzleID;
                 gameControl.StartGame(puzzle, map);
             }
         }
 
         public void InitLibrary(SokoSolve.Core.Model.Library Current)
         {
+            ProfileController.Current.LibraryLastPuzzle = Current.FileName;
             libControl.InitLibrary(Current);
         }
 

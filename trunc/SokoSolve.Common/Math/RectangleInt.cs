@@ -46,6 +46,12 @@ namespace SokoSolve.Common.Math
             set { throw new NotImplementedException(); }
         }
 
+        public SizeInt Size
+        {
+            get { return new SizeInt(Width, Height); }
+            set { throw new NotImplementedException(); }
+        }
+
         public VectorInt TopRight
         {
             get { return TopLeft.Add(Width, 0); }
@@ -63,12 +69,22 @@ namespace SokoSolve.Common.Math
 
         public VectorInt BottomMiddle
         {
-            get { return TopLeft.Add(0, Height/2); }
+            get { return BottomRight.Subtract(Width/2, 0); }
         }
 
         public VectorInt Center
         {
             get { return TopLeft.Add(Width/2, Height / 2); }
+        }
+
+        public VectorInt MiddleRight
+        {
+            get { return TopRight.Add(0, Height/2);  }
+        }
+
+        public VectorInt MiddleLeft
+        {
+            get { return TopLeft.Add(0, Height / 2); }
         }
 
         public bool Contains(VectorInt P)

@@ -52,6 +52,14 @@ namespace SokoSolve.UI.Section.Library
             this.tsbClear = new System.Windows.Forms.ToolStripButton();
             this.tsbProps = new System.Windows.Forms.ToolStripButton();
             this.lStatus = new System.Windows.Forms.Label();
+            this.tsbExportText = new System.Windows.Forms.ToolStripButton();
+            this.tsbImportTXT = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.flipHorzToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.flipVertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rotate90ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbValidate = new System.Windows.Forms.ToolStripButton();
+            this.tsbTestPlay = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.pbPaletteLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPaletteRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCurrentLeft)).BeginInit();
@@ -258,7 +266,12 @@ namespace SokoSolve.UI.Section.Library
             this.tsbCancel,
             this.toolStripSeparator1,
             this.tsbClear,
-            this.tsbProps});
+            this.tsbProps,
+            this.tsbExportText,
+            this.tsbImportTXT,
+            this.toolStripSplitButton1,
+            this.tsbValidate,
+            this.tsbTestPlay});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(538, 25);
@@ -316,6 +329,71 @@ namespace SokoSolve.UI.Section.Library
             this.lStatus.TabIndex = 13;
             this.lStatus.Text = "Mouse status";
             // 
+            // tsbExportText
+            // 
+            this.tsbExportText.Image = ((System.Drawing.Image)(resources.GetObject("tsbExportText.Image")));
+            this.tsbExportText.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbExportText.Name = "tsbExportText";
+            this.tsbExportText.Size = new System.Drawing.Size(80, 22);
+            this.tsbExportText.Text = "Export TXT";
+            this.tsbExportText.ToolTipText = "Export to text";
+            this.tsbExportText.Click += new System.EventHandler(this.tsbExportText_Click);
+            // 
+            // tsbImportTXT
+            // 
+            this.tsbImportTXT.Image = ((System.Drawing.Image)(resources.GetObject("tsbImportTXT.Image")));
+            this.tsbImportTXT.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbImportTXT.Name = "tsbImportTXT";
+            this.tsbImportTXT.Size = new System.Drawing.Size(80, 22);
+            this.tsbImportTXT.Text = "Import TXT";
+            // 
+            // toolStripSplitButton1
+            // 
+            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.flipHorzToolStripMenuItem,
+            this.flipVertToolStripMenuItem,
+            this.rotate90ToolStripMenuItem});
+            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
+            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 22);
+            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
+            // 
+            // flipHorzToolStripMenuItem
+            // 
+            this.flipHorzToolStripMenuItem.Name = "flipHorzToolStripMenuItem";
+            this.flipHorzToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.flipHorzToolStripMenuItem.Text = "Flip Horz";
+            // 
+            // flipVertToolStripMenuItem
+            // 
+            this.flipVertToolStripMenuItem.Name = "flipVertToolStripMenuItem";
+            this.flipVertToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.flipVertToolStripMenuItem.Text = "Flip Vert";
+            // 
+            // rotate90ToolStripMenuItem
+            // 
+            this.rotate90ToolStripMenuItem.Name = "rotate90ToolStripMenuItem";
+            this.rotate90ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.rotate90ToolStripMenuItem.Text = "Rotate 90";
+            // 
+            // tsbValidate
+            // 
+            this.tsbValidate.Image = ((System.Drawing.Image)(resources.GetObject("tsbValidate.Image")));
+            this.tsbValidate.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbValidate.Name = "tsbValidate";
+            this.tsbValidate.Size = new System.Drawing.Size(65, 20);
+            this.tsbValidate.Text = "Validate";
+            // 
+            // tsbTestPlay
+            // 
+            this.tsbTestPlay.Image = ((System.Drawing.Image)(resources.GetObject("tsbTestPlay.Image")));
+            this.tsbTestPlay.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbTestPlay.Name = "tsbTestPlay";
+            this.tsbTestPlay.Size = new System.Drawing.Size(71, 20);
+            this.tsbTestPlay.Text = "Test Play";
+            // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,5 +450,13 @@ namespace SokoSolve.UI.Section.Library
         internal System.Windows.Forms.ToolStripButton tsbCancel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton tsbProps;
+        private System.Windows.Forms.ToolStripButton tsbExportText;
+        private System.Windows.Forms.ToolStripButton tsbImportTXT;
+        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
+        private System.Windows.Forms.ToolStripMenuItem flipHorzToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem flipVertToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rotate90ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton tsbValidate;
+        private System.Windows.Forms.ToolStripButton tsbTestPlay;
 	}
 }

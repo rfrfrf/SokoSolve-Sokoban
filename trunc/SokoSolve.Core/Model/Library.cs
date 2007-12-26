@@ -17,6 +17,7 @@ namespace SokoSolve.Core.Model
     	private string rating;
         private string libraryID;
         private IDProvider idProvider;
+        private string fileName;
 
 
     	public Library(Guid LibraryGUID)
@@ -68,6 +69,15 @@ namespace SokoSolve.Core.Model
     		get { return rating; }
     		set { rating = value; }
     	}
+
+        /// <summary>
+        /// Return the current file from which this library was loaded. Ie. This is not stored in XML
+        /// </summary>
+        public string FileName
+        {
+            get { return fileName; }
+            set { fileName = value; }
+        }
 
         public IDProvider IdProvider
         {

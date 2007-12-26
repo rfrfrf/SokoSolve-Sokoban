@@ -82,7 +82,14 @@ namespace SokoSolve.Core.UI
         public RectangleInt WindowRegion
         {
             get { return windowRegion;  }
-            set { windowRegion = value; }
+            set
+            {
+                windowRegion = value;
+                if (windowRegion.Size < PuzzleRegion.Size)
+                {
+                    GlobalOffset = new VectorInt((windowRegion.Width - PuzzleRegion.Width) / 2, (windowRegion.Height - PuzzleRegion.Height) / 2);
+                }
+            }
         }
 
         /// <summary>
@@ -98,10 +105,20 @@ namespace SokoSolve.Core.UI
         /// </summary>
         public RectangleInt PositionMovementCommands
         {
-            get { return new RectangleInt(WindowRegion.BottomRight.Subtract(90, 90), new SizeInt(90, 90)); }
+            get { return new RectangleInt(WindowRegion.BottomRight.Subtract(movementCommands).Subtract(20, 20), movementCommands); }
+        }
+
+        /// <summary>
+        /// Region to display the status information
+        /// </summary>
+        public RectangleInt PositionGeneralCommands
+        {
+            get { return new RectangleInt(WindowRegion.TopRight.Subtract(generalCommands).Subtract(20, 0), generalCommands); }
         }
 
         private GameUI GameUI;
         private RectangleInt windowRegion;
+        private SizeInt movementCommands = new SizeInt(75, 75);
+        private SizeInt generalCommands = new SizeInt(75, -40);
     }
 }

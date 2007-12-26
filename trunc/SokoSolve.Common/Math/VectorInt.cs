@@ -143,6 +143,27 @@ namespace SokoSolve.Common.Math
 			return !GeneralHelper.StaticEqualityCheckHelper(lhs, rhs);
 		}
 
+
+        public static bool operator >(VectorInt lhs, VectorInt rhs)
+        {
+            return lhs.X*lhs.Y > rhs.X*rhs.Y;
+        }
+
+        public static bool operator <(VectorInt lhs, VectorInt rhs)
+        {
+            return lhs.X * lhs.Y > rhs.X * rhs.Y;
+        }
+
+        public static bool operator >=(VectorInt lhs, VectorInt rhs)
+        {
+            return lhs.X * lhs.Y >= rhs.X * rhs.Y;
+        }
+
+        public static bool operator <=(VectorInt lhs, VectorInt rhs)
+        {
+            return lhs.X * lhs.Y >= rhs.X * rhs.Y;
+        }
+
 		public override bool Equals(object obj)
 		{
 			if (obj is VectorInt)
@@ -188,7 +209,24 @@ namespace SokoSolve.Common.Math
 				case (Direction.Right): return this.Add(1, 0);
 			}
 			throw new InvalidOperationException();
-		}
+        }
+
+        #region DirectionReleatedHelpers
+
+        /// <summary>
+        /// Is the player adjacent to a puzzle position
+        /// </summary>
+        /// <param name="B"></param>
+        /// <returns></returns>
+        static private Direction IsAdjacentPlayer(VectorInt A, VectorInt B)
+        {
+            if (A.Offset(Direction.Up) == B) return Direction.Up;
+            if (A.Offset(Direction.Down) == B) return Direction.Down;
+            if (A.Offset(Direction.Left) == B) return Direction.Left;
+            if (A.Offset(Direction.Right) == B) return Direction.Right;
+
+            return Direction.None;
+        }
 
         /// <summary>
         /// Helper.
@@ -205,8 +243,25 @@ namespace SokoSolve.Common.Math
                 case (Direction.Right): return Direction.Left;
             }
             throw new InvalidOperationException();
-
         }
+
+        /// <summary>
+        /// Direction Helper
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
+        public static Direction GetDirection(VectorInt A, VectorInt B)
+        {
+            if (A.X > B.X) return Direction.Left;
+            if (A.X < B.X) return Direction.Right;
+            if (A.Y > B.Y) return Direction.Up;
+            if (A.Y < B.Y) return Direction.Down;
+            return Direction.None;
+        }
+
+        #endregion DirectionReleatedHelpers
+        
 
 		/// <summary>
 		/// Geint FOUR offsets (Up, Down, Left, Right) as an array
@@ -222,14 +277,7 @@ namespace SokoSolve.Common.Math
             };
 		}
 
-        public static Direction GetDirection(VectorInt A, VectorInt B)
-        {
-            if (A.X > B.X) return Direction.Left;
-            if (A.X < B.X) return Direction.Right;
-            if (A.Y > B.Y) return Direction.Up;
-            if (A.Y < B.Y) return Direction.Down;
-            return Direction.None;
-        }
+        
 	}
 
 }

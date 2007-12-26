@@ -82,6 +82,10 @@ namespace SokoSolve.Core.UI
                 // Not complete, see dockpoint
                 return currentAbsolute.Add(size.X/2, size.Y/2);
             }
+            set
+            {
+                CurrentAbsolute = value.Subtract(size.X/2, size.Y/2);
+            }
         }
 
         /// <summary>

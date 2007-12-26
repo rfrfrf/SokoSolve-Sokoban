@@ -62,7 +62,6 @@
     <Compile Include="Model\Puzzle.cs" />
     <Compile Include="Analysis\PuzzleAnalysis.cs" />
     <Compile Include="Model\PuzzleMap.cs" />
-    <Compile Include="Model\PuzzlePath.cs" />
     <Compile Include="Model\SokobanMap.cs" />
     <Compile Include="Model\Solution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,7 +72,11 @@
     <Compile Include="UI\GameUI.cs" />
     <Compile Include="UI\Nodes\Complex\NodeControllerCommands.cs" />
     <Compile Include="UI\Nodes\Complex\NodeControllerStatus.cs" />
+    <Compile Include="UI\Nodes\Complex\NodeCursorEventArgs.cs" />
     <Compile Include="UI\Nodes\NotifcationEvent.cs" />
+    <Compile Include="UI\Nodes\Specific\NodeDebug.cs" />
+    <Compile Include="UI\Nodes\Specific\NodeTitle.cs" />
+    <Compile Include="UI\Nodes\UINodes\NodeUIDialog.cs" />
     <Compile Include="UI\Paths\IPath.cs" />
     <Compile Include="UI\Nodes\Effects\NodeEffect.cs" />
     <Compile Include="UI\Nodes\Effects\NodeEffectCircle.cs" />

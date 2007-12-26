@@ -57,6 +57,7 @@
     <Compile Include="Structures\Graph.cs" />
     <Compile Include="Structures\Interfaces.cs" />
     <Compile Include="Structures\ManagedCollection.cs" />
+    <Compile Include="Structures\Path.cs" />
     <Compile Include="Structures\Tree.cs" />
     <Compile Include="Structures\TreeAssembler.cs" />
     <Compile Include="Structures\TreeNode.cs" />

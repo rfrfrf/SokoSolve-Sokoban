@@ -44,8 +44,8 @@ namespace SokoSolve.UI.Controls.Primary
 	    public void InitLibrary(SokoSolve.Core.Model.Library current)
 	    {
 	        controller.Current = current;
-	        explorer.SyncDomain(new ItemLibrary(controller.Current));
-	        explorer.SyncUI();
+            explorer.SyncDomain(new ItemLibrary(controller.Current));
+            explorer.SyncUI();
 	    }
 
         public override void Refresh()

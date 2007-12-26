@@ -16,27 +16,9 @@ namespace SokoSolve.Core.UI.Nodes
             
         }
 
-        public override void doStep()
-        {
-            base.doStep();
-
-            isPushable = Array.IndexOf(PuzzleLocation.OffsetDirections(), GameUI.Current.Player) >= 0;
-
-            if (isPushable && effect == null)
-            {
-                effect = new NodeEffectCircle(GameUI, 10, CurrentCentre);
-                GameUI.Add(effect);
-            }
-
-            if (!isPushable && effect != null)
-            {
-                GameUI.Remove(effect);
-                effect = null;
-            }
-
-        }
+        
 
         NodeEffect effect;
-        public bool isPushable;
+        
     }
 }

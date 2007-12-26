@@ -76,9 +76,8 @@ namespace SokoSolve.UI.Controls.Primary
 
             Cursor.Hide();
 
-            gameUI.Init();
-
-            gameUI.Active = true;
+            gameUI.Start();
+            
         }
 
         void gameUI_OnExit(object sender, EventArgs e)

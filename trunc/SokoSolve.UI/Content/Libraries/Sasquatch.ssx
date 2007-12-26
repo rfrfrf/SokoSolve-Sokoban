@@ -1,8 +1,10 @@
 <?xml version="1.0"?>
-<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd" LibraryID="L1">
-  <Details License="Unknown" Date="2007-12-15T11:43:20.365097+02:00">
+<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LibraryID="L1" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
+  <Details License="Acknowledgement Required">
     <Name>Sasquatch</Name>
-    <Description>Imported sokoban library.</Description>
+    <Description>This is my first set. Scott Lindhurst describes them as generally of just the right difficulty to be fun: not too easy, but (usually) not so hard that you get frustrated.</Description>
+    <Comments>50 puzzles, released January, 1999</Comments>
+    <Author Name="David W. Skinner " Email="sasquatch@bentonrea.com" Homepage="http://users.bentonrea.com/~sasquatch/" />
   </Details>
   <Categories>
     <Category CategoryID="C0">
@@ -12,7 +14,7 @@
     </Category>
   </Categories>
   <Puzzles>
-    <Puzzle Rating="51.7" PuzzleID="P1" CategoryREF="C0">
+    <Puzzle Rating="51.7" PuzzleID="P1" CategoryREF="C0" Order="1">
       <PuzzleDescription>
         <Name>Superb Gem</Name>
         <Description />
@@ -30,11 +32,21 @@
           <Row>~#......##~</Row>
           <Row>~#.....##~~</Row>
           <Row>~#######~~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution>
+              <Steps>
+                lluRRRRRllldlddddrrruurruuruulDDulldLLulDDDDuuuurrrrrdrddllldddlllluRuurUUluRRRRldllddldddrruruurrruulDrdLLruuruulDDDrdL
+              </Steps>
+              <SolutionDescription Date="2007-12-21T21:27:36.797703+02:00">
+                <Name>Solution</Name>
+                <Comments>Solution found from game player.</Comments>
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="117.6" PuzzleID="P3" CategoryREF="C0">
+    <Puzzle Rating="117.6" PuzzleID="P3" CategoryREF="C0" Order="2">
       <PuzzleDescription>
         <Name>Slimy Grave</Name>
         <Description />
@@ -50,11 +62,22 @@
           <Row>#OO.##.##</Row>
           <Row>#...#~##~</Row>
           <Row>#####~#~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution>
+              <Steps>
+                ruruulrddldldldlluRuRuRuRurrddlUlldRlldDuurrdLulDrdLulDlddrr
+                ULuurrdLulDurururrrdLullddrUluR
+              </Steps>
+              <SolutionDescription Date="2007-12-21T21:27:36.797703+02:00">
+                <Name>Solution</Name>
+                <Comments>Solution found from game player.</Comments>
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="81.3" PuzzleID="P5" CategoryREF="C0">
+    <Puzzle Rating="81.3" PuzzleID="P5" CategoryREF="C0" Order="3">
       <PuzzleDescription>
         <Name>Grim Town</Name>
         <Description />
@@ -75,11 +98,29 @@
           <Row>#OOOO....#~~~~~~</Row>
           <Row>##..######~~~~~~</Row>
           <Row>~####~~~~~~~~~~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution>
+              <Steps>
+                luuuuurrrdddrrruLuLrddlluUruLLLulDDDDDDrdLLullddrUluRRdrUUUl
+                uRuurrrdddrUruLdlUruLLLulDDDldRuuurrrdddrrrrruLLLdlUruLdlUru
+                LLLulDDDDDDrdLLullddrUruLLrrruuuuurrrddrrrruLLLdlUruLLLulDDD
+                DDDrdLLullddrUluRRRRluuuuurrrdrrruLLLLLulDDDDDDrdLLLLurrruuu
+                uurrrrrrUrDDlddrruLdlUUruLLLLLLulDDDDDDrdLLullddrUruruuuuurr
+                rrrrurUruulDDDDDlddrruLdlUUruLLLLLLulDDDDDDrdLLLdlUrruruuuuu
+                rrrrrruruulDDrdLLLLLLulDDDDDDrdLLLruruuuuurrrrrrrrUUluurrdLu
+                lDDDrdLLLLLLLulDDDDDDrdLLuruuuuurrrddrrrrrUUUUluurrdLulDDDrd
+                LLLLLLLulDDDDDDrdLrrruLLL
+              </Steps>
+              <SolutionDescription Date="2007-12-21T21:27:36.797703+02:00">
+                <Name>Solution</Name>
+                <Comments>Solution found from game player.</Comments>
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="157.9" PuzzleID="P7" CategoryREF="C0">
+    <Puzzle Rating="157.9" PuzzleID="P7" CategoryREF="C0" Order="4">
       <PuzzleDescription>
         <Name>Bob's Cottage</Name>
         <Description />
@@ -96,11 +137,26 @@
           <Row>#.OO....###~~</Row>
           <Row>#..OO#####~~~</Row>
           <Row>#########~~~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution>
+              <Steps>
+                dddllUdrUllllluurrDullddrRRRlllluRullldRRddlUrrrdLdDrdLLulld
+                drUluRdrruuuulldRurDDDrdLLLdlUluRdrrruuuuluurDDDDDrdLLLdlluu
+                rDldRurrruuuuuullldRurDDldRurDDDrdLLLLulDldRurrrruuuurrrdrru
+                LLLLdlluurDDDDrdLLLLullddrUrrrruuuurrrrruulDrdLLLLdlluurDDDD
+                rdLLLLLdlUrrrrruuuurrrruulDrdLLLdlluurDDDDrdLLLLrrruuuuuurDl
+                dRRRurrdLLLLulDDDDrdLLL
+              </Steps>
+              <SolutionDescription Date="2007-12-21T21:27:36.797703+02:00">
+                <Name>Solution</Name>
+                <Comments>Solution found from game player.</Comments>
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="214.8" PuzzleID="P9" CategoryREF="C0">
+    <Puzzle Rating="214.8" PuzzleID="P9" CategoryREF="C0" Order="5">
       <PuzzleDescription>
         <Name>Tepid Gem</Name>
         <Description />
@@ -126,7 +182,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="147.7" PuzzleID="P11" CategoryREF="C0">
+    <Puzzle Rating="147.7" PuzzleID="P11" CategoryREF="C0" Order="6">
       <PuzzleDescription>
         <Name>Tricky Spider</Name>
         <Description />
@@ -149,7 +205,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="71.4" PuzzleID="P13" CategoryREF="C0">
+    <Puzzle Rating="71.4" PuzzleID="P13" CategoryREF="C0" Order="7">
       <PuzzleDescription>
         <Name>Dire Blanket</Name>
         <Description />
@@ -170,8 +226,8 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="89.7" PuzzleID="P15" CategoryREF="C0">
-      <PuzzleDescription>
+    <Puzzle Rating="89.7" PuzzleID="P15" CategoryREF="C0" Order="8">
+      <PuzzleDescription> 
         <Name>Ghastly House</Name>
         <Description />
       </PuzzleDescription>
@@ -192,7 +248,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="135.1" PuzzleID="P17" CategoryREF="C0">
+    <Puzzle Rating="135.1" PuzzleID="P17" CategoryREF="C0" Order="9">
       <PuzzleDescription>
         <Name>Cold Nemosis</Name>
         <Description />
@@ -212,7 +268,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="71.0" PuzzleID="P19" CategoryREF="C0">
+    <Puzzle Rating="71.0" PuzzleID="P19" CategoryREF="C0" Order="10">
       <PuzzleDescription>
         <Name>Old Town</Name>
         <Description />
@@ -240,7 +296,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="130.4" PuzzleID="P21" CategoryREF="C0">
+    <Puzzle Rating="130.4" PuzzleID="P21" CategoryREF="C0" Order="11">
       <PuzzleDescription>
         <Name>Slimy Gem</Name>
         <Description />
@@ -260,7 +316,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="86.2" PuzzleID="P23" CategoryREF="C0">
+    <Puzzle Rating="86.2" PuzzleID="P23" CategoryREF="C0" Order="12">
       <PuzzleDescription>
         <Name>Old School</Name>
         <Description />
@@ -283,7 +339,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="107.5" PuzzleID="P25" CategoryREF="C0">
+    <Puzzle Rating="107.5" PuzzleID="P25" CategoryREF="C0" Order="13">
       <PuzzleDescription>
         <Name>Tepid Blanket</Name>
         <Description />
@@ -308,7 +364,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="157.9" PuzzleID="P27" CategoryREF="C0">
+    <Puzzle Rating="157.9" PuzzleID="P27" CategoryREF="C0" Order="14">
       <PuzzleDescription>
         <Name>Dastardly Black Morning</Name>
         <Description />
@@ -327,7 +383,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="107.7" PuzzleID="P29" CategoryREF="C0">
+    <Puzzle Rating="107.7" PuzzleID="P29" CategoryREF="C0" Order="15">
       <PuzzleDescription>
         <Name>Tepid Estate</Name>
         <Description />
@@ -350,7 +406,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="87.3" PuzzleID="P31" CategoryREF="C0">
+    <Puzzle Rating="87.3" PuzzleID="P31" CategoryREF="C0" Order="16">
       <PuzzleDescription>
         <Name>Cold Tower</Name>
         <Description />
@@ -378,7 +434,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="85.5" PuzzleID="P33" CategoryREF="C0">
+    <Puzzle Rating="85.5" PuzzleID="P33" CategoryREF="C0"  Order="17">
       <PuzzleDescription>
         <Name>Caroline's Gem</Name>
         <Description />
@@ -401,7 +457,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="324.3" PuzzleID="P35" CategoryREF="C0">
+    <Puzzle Rating="324.3" PuzzleID="P35" CategoryREF="C0" Order="18">
       <PuzzleDescription>
         <Name>Grand House</Name>
         <Description />
@@ -427,7 +483,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="62.5" PuzzleID="P37" CategoryREF="C0">
+    <Puzzle Rating="62.5" PuzzleID="P37" CategoryREF="C0" Order="19">
       <PuzzleDescription>
         <Name>Grim Grave</Name>
         <Description />
@@ -453,7 +509,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="225.0" PuzzleID="P39" CategoryREF="C0">
+    <Puzzle Rating="225.0" PuzzleID="P39" CategoryREF="C0" Order="20">
       <PuzzleDescription>
         <Name>Dire Gem</Name>
         <Description />
@@ -472,7 +528,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="181.8" PuzzleID="P41" CategoryREF="C0">
+    <Puzzle Rating="181.8" PuzzleID="P41" CategoryREF="C0" Order="21">
       <PuzzleDescription>
         <Name>Edgy Grave</Name>
         <Description />
@@ -489,7 +545,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="72.1" PuzzleID="P43" CategoryREF="C0">
+    <Puzzle Rating="72.1" PuzzleID="P43" CategoryREF="C0" Order="22">
       <PuzzleDescription>
         <Name>Cold Toad</Name>
         <Description />
@@ -514,7 +570,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="172.8" PuzzleID="P45" CategoryREF="C0">
+    <Puzzle Rating="172.8" PuzzleID="P45" CategoryREF="C0" Order="23">
       <PuzzleDescription>
         <Name>Neville's Toad</Name>
         <Description />
@@ -534,7 +590,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="126.2" PuzzleID="P47" CategoryREF="C0">
+    <Puzzle Rating="126.2" PuzzleID="P47" CategoryREF="C0" Order="24">
       <PuzzleDescription>
         <Name>Tight Toad</Name>
         <Description />
@@ -559,7 +615,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="146.2" PuzzleID="P49" CategoryREF="C0">
+    <Puzzle Rating="146.2" PuzzleID="P49" CategoryREF="C0" Order="25">
       <PuzzleDescription>
         <Name>Tepid Mountain</Name>
         <Description />
@@ -584,7 +640,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="122.4" PuzzleID="P51" CategoryREF="C0">
+    <Puzzle Rating="122.4" PuzzleID="P51" CategoryREF="C0" Order="26">
       <PuzzleDescription>
         <Name>Delighted Hamlet</Name>
         <Description />
@@ -606,7 +662,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="57.1" PuzzleID="P53" CategoryREF="C0">
+    <Puzzle Rating="57.1" PuzzleID="P53" CategoryREF="C0" Order="27">
       <PuzzleDescription>
         <Name>Big Cottage</Name>
         <Description />
@@ -633,7 +689,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="130.8" PuzzleID="P55" CategoryREF="C0">
+    <Puzzle Rating="130.8" PuzzleID="P55" CategoryREF="C0" Order="28">
       <PuzzleDescription>
         <Name>Grim Nemosis</Name>
         <Description />
@@ -657,7 +713,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="110.4" PuzzleID="P57" CategoryREF="C0">
+    <Puzzle Rating="110.4" PuzzleID="P57" CategoryREF="C0" Order="29">
       <PuzzleDescription>
         <Name>Edgy Blanket</Name>
         <Description />
@@ -684,7 +740,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="76.9" PuzzleID="P59" CategoryREF="C0">
+    <Puzzle Rating="76.9" PuzzleID="P59" CategoryREF="C0" Order="30">
       <PuzzleDescription>
         <Name>Dastardly Lagoon</Name>
         <Description />
@@ -709,7 +765,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="120.5" PuzzleID="P61" CategoryREF="C0">
+    <Puzzle Rating="120.5" PuzzleID="P61" CategoryREF="C0" Order="31">
       <PuzzleDescription>
         <Name>Dastardly Mountain</Name>
         <Description />
@@ -736,7 +792,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="74.9" PuzzleID="P63" CategoryREF="C0">
+    <Puzzle Rating="74.9" PuzzleID="P63" CategoryREF="C0" Order="32">
       <PuzzleDescription>
         <Name>Uptight Night</Name>
         <Description />
@@ -763,7 +819,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="116.6" PuzzleID="P65" CategoryREF="C0">
+    <Puzzle Rating="116.6" PuzzleID="P65" CategoryREF="C0" Order="33">
       <PuzzleDescription>
         <Name>Grand Grave</Name>
         <Description />
@@ -791,7 +847,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="68.3" PuzzleID="P67" CategoryREF="C0">
+    <Puzzle Rating="68.3" PuzzleID="P67" CategoryREF="C0" Order="34">
       <PuzzleDescription>
         <Name>Funny Tower</Name>
         <Description />
@@ -819,7 +875,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="133.0" PuzzleID="P69" CategoryREF="C0">
+    <Puzzle Rating="133.0" PuzzleID="P69" CategoryREF="C0" Order="35">
       <PuzzleDescription>
         <Name>Slimy Spider</Name>
         <Description />
@@ -847,7 +903,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="64.7" PuzzleID="P71" CategoryREF="C0">
+    <Puzzle Rating="64.7" PuzzleID="P71" CategoryREF="C0" Order="36">
       <PuzzleDescription>
         <Name>Grim Hovel</Name>
         <Description />
@@ -873,7 +929,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="108.7" PuzzleID="P73" CategoryREF="C0">
+    <Puzzle Rating="108.7" PuzzleID="P73" CategoryREF="C0" Order="37">
       <PuzzleDescription>
         <Name>Superb Green Tunnel</Name>
         <Description />
@@ -901,7 +957,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="94.0" PuzzleID="P75" CategoryREF="C0">
+    <Puzzle Rating="94.0" PuzzleID="P75" CategoryREF="C0" Order="38">
       <PuzzleDescription>
         <Name>Tricky Toad</Name>
         <Description />
@@ -930,7 +986,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="116.3" PuzzleID="P77" CategoryREF="C0">
+    <Puzzle Rating="116.3" PuzzleID="P77" CategoryREF="C0" Order="39">
       <PuzzleDescription>
         <Name>Uptight Blanket</Name>
         <Description />
@@ -958,7 +1014,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="139.5" PuzzleID="P79" CategoryREF="C0">
+    <Puzzle Rating="139.5" PuzzleID="P79" CategoryREF="C0" Order="40">
       <PuzzleDescription>
         <Name>Uptight Hovel</Name>
         <Description />
@@ -984,7 +1040,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="96.4" PuzzleID="P81" CategoryREF="C0">
+    <Puzzle Rating="96.4" PuzzleID="P81" CategoryREF="C0" Order="41">
       <PuzzleDescription>
         <Name>Ghastly Town</Name>
         <Description />
@@ -1009,7 +1065,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="91.5" PuzzleID="P83" CategoryREF="C0">
+    <Puzzle Rating="91.5" PuzzleID="P83" CategoryREF="C0" Order="42">
       <PuzzleDescription>
         <Name>Tense Tower</Name>
         <Description />
@@ -1037,7 +1093,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="89.4" PuzzleID="P85" CategoryREF="C0">
+    <Puzzle Rating="89.4" PuzzleID="P85" CategoryREF="C0" Order="43">
       <PuzzleDescription>
         <Name>Uptight Grave</Name>
         <Description />
@@ -1066,7 +1122,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="100.4" PuzzleID="P87" CategoryREF="C0">
+    <Puzzle Rating="100.4" PuzzleID="P87" CategoryREF="C0" Order="44">
       <PuzzleDescription>
         <Name>Old Nemosis</Name>
         <Description />
@@ -1095,7 +1151,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="90.5" PuzzleID="P89" CategoryREF="C0">
+    <Puzzle Rating="90.5" PuzzleID="P89" CategoryREF="C0" Order="45">
       <PuzzleDescription>
         <Name>Ghastly Shower</Name>
         <Description />
@@ -1124,7 +1180,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="103.8" PuzzleID="P91" CategoryREF="C0">
+    <Puzzle Rating="103.8" PuzzleID="P91" CategoryREF="C0" Order="46">
       <PuzzleDescription>
         <Name>Tricky Hovel</Name>
         <Description />
@@ -1153,7 +1209,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="186.4" PuzzleID="P93" CategoryREF="C0">
+    <Puzzle Rating="186.4" PuzzleID="P93" CategoryREF="C0" Order ="47">
       <PuzzleDescription>
         <Name>Ghastly Hovel</Name>
         <Description />
@@ -1178,7 +1234,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="73.5" PuzzleID="P95" CategoryREF="C0">
+    <Puzzle Rating="73.5" PuzzleID="P95" CategoryREF="C0" Order="48">
       <PuzzleDescription>
         <Name>Exacting Spider</Name>
         <Description />
@@ -1206,7 +1262,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="44.2" PuzzleID="P97" CategoryREF="C0">
+    <Puzzle Rating="44.2" PuzzleID="P97" CategoryREF="C0" Order="49">
       <PuzzleDescription>
         <Name>'Parallel Logic'</Name>
         <Description />
@@ -1230,7 +1286,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="125.4" PuzzleID="P99" CategoryREF="C0">
+    <Puzzle Rating="125.4" PuzzleID="P99" CategoryREF="C0" Order="50">
       <PuzzleDescription>
         <Name>'Particle Theory'</Name>
         <Description />

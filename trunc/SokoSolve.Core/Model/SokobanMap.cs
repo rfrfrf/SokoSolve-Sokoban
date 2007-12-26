@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
 using System.Xml;
+using SokoSolve.Common;
 using SokoSolve.Common.Math;
 using SokoSolve.Common.Structures;
 
@@ -388,6 +389,11 @@ namespace SokoSolve.Core.Model
                 {
                     this[cx, cy] = old[cx, cy];
                 }
+        }
+
+        public void setFromString(string LinesWithBreaks)
+        {
+            setFromStrings(StringHelper.Split(LinesWithBreaks, Environment.NewLine));
         }
 
         /// <summary>

@@ -87,24 +87,25 @@ namespace SokoSolve.UI.Section
             if (item is SokoSolve.Core.Model.PuzzleMap) return 2;
             if (item is SokoSolve.Core.Model.Puzzle)
             {
-                if (size == IconSizes.Small) return 2;
+                return 2;
+                //if (size == IconSizes.Small) return 2;
 
-                Puzzle puz = item as Puzzle;
-                if (puz.MasterMap != null)
-                {
-                    if (cache.ContainsKey(puz.MasterMap.Map))
-                    {
-                        return cache[puz.MasterMap.Map];
-                    }
-                    else
-                    {
-                        // Create
-                        thumbnail.Images.Add(this.images.DrawColours(puz.MasterMap.Map));
-                        int idx = thumbnail.Images.Count - 1;
-                        cache.Add(puz.MasterMap.Map, idx);
-                        return idx;
-                    }    
-                }
+                //Puzzle puz = item as Puzzle;
+                //if (puz.MasterMap != null)
+                //{
+                //    if (cache.ContainsKey(puz.MasterMap.Map))
+                //    {
+                //        return cache[puz.MasterMap.Map];
+                //    }
+                //    else
+                //    {
+                //        // Create
+                //        thumbnail.Images.Add(this.images.DrawColours(puz.MasterMap.Map));
+                //        int idx = thumbnail.Images.Count - 1;
+                //        cache.Add(puz.MasterMap.Map, idx);
+                //        return idx;
+                //    }    
+                //}
                 
                
             }

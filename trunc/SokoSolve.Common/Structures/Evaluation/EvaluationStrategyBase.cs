@@ -116,7 +116,7 @@ namespace SokoSolve.Common.Structures.Evaluation
         }
 
         private int nextID;
-        private Tree<T> evaluation;
-        private IEvaluationStrategyItterator<T> workList;
+        protected Tree<T> evaluation;
+        protected IEvaluationStrategyItterator<T> workList;
     }
 }

@@ -28,7 +28,7 @@ namespace SokoSolve.Core.UI.Nodes.Effects
             text = Text;
             font = new Font("Arial", 12, FontStyle.Bold);
             brush = new SolidBrush(Color.White);
-            brushShaddow = new SolidBrush(Color.Black);
+            brushShaddow = new SolidBrush(Color.FromArgb(80,80,80));
             Path = null;
         }
 
@@ -46,7 +46,7 @@ namespace SokoSolve.Core.UI.Nodes.Effects
             
             font = new Font("Arial", 12, FontStyle.Bold);
             brush = new SolidBrush(Color.Yellow);
-            brushShaddow = new SolidBrush(Color.Black);
+            brushShaddow = new SolidBrush(Color.FromArgb(80, 80, 80));
             Path = new Linear(CurrentAbsolute, new VectorInt(20, 20), new VectorDouble(1, 1), false);
             text = RandomHelper.Select<string>(Text);
         }
@@ -60,8 +60,9 @@ namespace SokoSolve.Core.UI.Nodes.Effects
         /// <param name="brushShaddow">Shaddow Brush (Null for none)</param>
         /// <param name="text">Message</param>
         /// <param name="font">Text Font</param>
-        public NodeEffectText(GameUI myGameUI, int myDepth, string text, Font font, Brush brush, Brush brushShaddow) : base(myGameUI, myDepth)
+        public NodeEffectText(GameUI myGameUI, int myDepth, string text, Font font, Brush brush, Brush brushShaddow, VectorInt start) : base(myGameUI, myDepth)
         {
+            CurrentAbsolute = start;
             this.brush = brush;
             this.brushShaddow = brushShaddow;
             this.text = text;
@@ -131,5 +132,6 @@ namespace SokoSolve.Core.UI.Nodes.Effects
         string text;
         Font font;
         StringFormat stringFormat = new StringFormat();
+        private IPath alphaPath;
     }
 }

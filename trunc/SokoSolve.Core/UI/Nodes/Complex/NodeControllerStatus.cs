@@ -62,7 +62,19 @@ namespace SokoSolve.Core.UI.Nodes.Complex
             valueComplete.Text = string.Format("{0}%", PuzzleAnalysis.PercentageComplete(GameUI.Current));
             valueUndo.Text = GameUI.Stats.Undos.ToString();
             valueRestart.Text = GameUI.Stats.Restarts.ToString();
-            valueTime.Text = GameUI.Stats.Duration.ToString();
+
+            if (GameUI.Stats.Duration.TotalMinutes < 1)
+            {
+                valueTime.Text = string.Format("{0:0} sec", GameUI.Stats.Duration.Seconds);
+            }
+            else if (GameUI.Stats.Duration.TotalHours < 1)
+            {
+                valueTime.Text = string.Format("{0:0}m{1:0}s", GameUI.Stats.Duration.TotalMinutes, GameUI.Stats.Duration.Seconds);
+            }
+            else
+            {
+                valueTime.Text = string.Format("{0:0}h{1:0}m", GameUI.Stats.Duration.TotalHours, GameUI.Stats.Duration.Minutes);   
+            }
         }
 
         private NodeEffectText labelMoves;

@@ -79,7 +79,65 @@ namespace SokoSolve.Test.Common.Structures
 
             Debug.WriteLine(map.ToString());
             Debug.WriteLine(result.ToString());
-            Debug.WriteLine("XXX");
+            Debug.WriteLine("done.");
+        }
+
+        [TestMethod]
+        public void TestFindCratePath()
+        {
+
+
+            SokobanMap map = new SokobanMap();
+            map.setFromStrings(new string[]
+		                           {
+"~~~###~~~~~",
+"~~##.#~####",
+"~##..###..#",
+"##.X......#",
+"#...PX.#..#",
+"###.X###..#",
+"~~#..#OO..#",
+"~##.##O#.##",
+"~#......##~",
+"~#.....##~~",
+"~#######~~~"
+		                           });
+
+            CrateAnalysis.ShortestCratePath result = CrateAnalysis.FindCratePath(map, new VectorInt(3, 3), new VectorInt(9, 5));
+            Assert.IsNotNull(result);
+
+            Debug.WriteLine(map.ToString());
+            Debug.WriteLine(result.CratePath.ToString());
+            Debug.WriteLine(result.PlayerPath.ToString());
+            Debug.WriteLine("done.");
+        }
+
+        [TestMethod]
+        public void TestFindCratePath_DeeperTest()
+        {
+            string mapString =
+@"~~~~~~~~~~~#####
+~~~~~~~~~~##...#
+~~~~~~~~~~#....#
+~~~~####~~#.X.##
+~~~~#..####X.X#~
+~~~~#.....X.X.#~
+~~~##.##.X.X.X#~
+~~~#..O#..X.X.#~
+~~~#..O#......#~
+#####.#########~
+#OOOO.P..#~~~~~~
+#OOOO....#~~~~~~
+##..######~~~~~~
+~####~~~~~~~~~~~";
+
+            SokobanMap map = new SokobanMap();
+            map.setFromString(mapString);
+
+            CrateAnalysis.ShortestCratePath result = CrateAnalysis.FindCratePath(map, new VectorInt(10, 7), new VectorInt(7, 5));
+            Assert.IsNull(result, "There is not cratemovepath to from position 10,7 to 7,5");
+
         }
 	}
 }
+

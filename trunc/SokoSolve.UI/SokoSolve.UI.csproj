@@ -216,6 +216,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Graphics\Icons\BasicButtonBK.png" />
     <Content Include="Content\Graphics\Icons\Cancel.png" />
     <Content Include="Content\Graphics\Icons\CircleGreen.png" />
     <Content Include="Content\Graphics\Icons\CircleOrange.png" />

@@ -160,6 +160,11 @@ namespace SokoSolve.UI.Section.Library
         private Cell[] paletteCells = new Cell[] { Cell.Void, Cell.Wall, Cell.Floor, Cell.Crate, Cell.Goal, Cell.Player };
         private StaticImage staticImage;
 
+        private void tsbExportText_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(Map.ToString(), TextDataFormat.Text);
+        }
+
        
 	}
 }

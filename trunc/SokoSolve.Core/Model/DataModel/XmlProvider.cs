@@ -111,6 +111,9 @@ namespace SokoSolve.Core.Model.DataModel
 
             converter.model.Puzzles = new List<SokobanLibraryPuzzle>(xmlLib.Puzzles).ConvertAll<Puzzle>(converter.ConvertPuzzle);
 
+            // Keep track of where this came from
+            converter.model.FileName = fileName;
+
             return converter.model;
 		}
 

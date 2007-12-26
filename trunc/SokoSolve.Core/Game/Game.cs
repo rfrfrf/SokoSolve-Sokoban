@@ -191,8 +191,6 @@ namespace SokoSolve.Core.Game
         public SokobanMap StartPuzzle;
         public SokobanMap Current;
         public Stack<Move> Moves;
-        public DateTime Start;
-        public DateTime End;
         public Stats Stats;
         public EventHandler OnGameWin;
     }

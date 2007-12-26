@@ -17,36 +17,47 @@ namespace SokoSolve.Core.UI.Nodes.Complex
             VectorInt locCommands = myGameUI.GameCoords.PositionMovementCommands.TopLeft;
 
             NodeUIButton buttonUp = new NodeUIButton(myGameUI, myDepth + 1, locCommands.Add(22, 2), "$Graphics/Icons/Up.png", "Up");
+            buttonUp.CurrentCentre = panel.TopMiddle;
             buttonUp.OnClick += new EventHandler<NotificationEvent>(Button_OnClick);
             myGameUI.Add(buttonUp);
 
-            NodeUIButton buttonDown = new NodeUIButton(myGameUI, myDepth + 1, locCommands.Add(22, 42), "$Graphics/Icons/Down.png", "Down");
+            NodeUIButton buttonDown = new NodeUIButton(myGameUI, myDepth + 2, locCommands.Add(22, 42), "$Graphics/Icons/Down.png", "Down");
+            buttonDown.CurrentCentre = panel.BottomMiddle;
             buttonDown.OnClick += new EventHandler<NotificationEvent>(Button_OnClick);
             myGameUI.Add(buttonDown);
 
-            NodeUIButton buttonLeft = new NodeUIButton(myGameUI, myDepth + 1, locCommands.Add(2, 22), "$Graphics/Icons/Left.png", "Left");
+            NodeUIButton buttonLeft = new NodeUIButton(myGameUI, myDepth + 3, locCommands.Add(2, 22), "$Graphics/Icons/Left.png", "Left");
+            buttonLeft.CurrentCentre = panel.MiddleLeft;
             buttonLeft.OnClick += new EventHandler<NotificationEvent>(Button_OnClick);
             myGameUI.Add(buttonLeft);
 
-            NodeUIButton buttonRight = new NodeUIButton(myGameUI, myDepth + 1, locCommands.Add(42, 22), "$Graphics/Icons/Right.png", "Right");
+            NodeUIButton buttonRight = new NodeUIButton(myGameUI, myDepth + 4, locCommands.Add(42, 22), "$Graphics/Icons/Right.png", "Right");
+            buttonRight.CurrentCentre = panel.MiddleRight;
             buttonRight.OnClick += new EventHandler<NotificationEvent>(Button_OnClick);
             myGameUI.Add(buttonRight);
 
-            NodeUIButton buttonHelp = new NodeUIButton(myGameUI, myDepth + 1, locCommands.Add(2, 42), "$Graphics/Icons/Help.png", "Help");
-            buttonHelp.OnClick += new EventHandler<NotificationEvent>(Button_OnClick);
-            myGameUI.Add(buttonHelp);
-
-            NodeUIButton buttonUndo = new NodeUIButton(myGameUI, myDepth + 1, locCommands.Add(22, 22), "$Graphics/Icons/Undo.png", "Undo");
+            NodeUIButton buttonUndo = new NodeUIButton(myGameUI, myDepth + 6, locCommands.Add(22, 22), "$Graphics/Icons/Undo.png", "Undo");
+            buttonUndo.CurrentCentre = panel.Center;
             buttonUndo.OnClick += new EventHandler<NotificationEvent>(Button_OnClick);
             myGameUI.Add(buttonUndo);
 
-            NodeUIButton buttonRestart = new NodeUIButton(myGameUI, myDepth + 1, locCommands.Add(42, 42), "$Graphics/Icons/Restart.png", "Restart");
+            RectangleInt panelGen = myGameUI.GameCoords.PositionGeneralCommands;
+
+
+            NodeUIButton buttonRestart = new NodeUIButton(myGameUI, myDepth + 7, locCommands.Add(42, 42), "$Graphics/Icons/Restart.png", "Restart");
+            buttonRestart.CurrentCentre = panelGen.MiddleLeft;
             buttonRestart.OnClick += new EventHandler<NotificationEvent>(Button_OnClick);
             myGameUI.Add(buttonRestart);
 
-            NodeUIButton buttonExit = new NodeUIButton(myGameUI, myDepth + 1, locCommands.Add(42, 2), "$Graphics/Icons/Exit.png", "Exit");
+            NodeUIButton buttonExit = new NodeUIButton(myGameUI, myDepth + 8, locCommands.Add(42, 2), "$Graphics/Icons/Cancel.png", "Exit");
+            buttonExit.CurrentCentre = panelGen.Center;
             buttonExit.OnClick += new EventHandler<NotificationEvent>(Button_OnClick);
             myGameUI.Add(buttonExit);
+
+            NodeUIButton buttonHelp = new NodeUIButton(myGameUI, myDepth + 5, locCommands.Add(2, 42), "$Graphics/Icons/Help.png", "Help");
+            buttonHelp.CurrentCentre = panelGen.MiddleRight;
+            buttonHelp.OnClick += new EventHandler<NotificationEvent>(Button_OnClick);
+            myGameUI.Add(buttonHelp);
 
         }
 

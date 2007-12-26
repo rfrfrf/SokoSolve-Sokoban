@@ -6,7 +6,7 @@ using SokoSolve.Common.Math;
 using SokoSolve.Core.UI;
 using SokoSolve.Core.Game;
 using SokoSolve.Core.UI.Nodes.Effects;
-
+using SokoSolve.Core.UI.Nodes.UINodes;
 
 namespace SokoSolve.Core.UI.Nodes
 {
@@ -84,10 +84,15 @@ namespace SokoSolve.Core.UI.Nodes
                             msg.Path = new Paths.Spiral(CurrentCentre);
                             GameUI.Add(msg);
 
-                            if (this.GameUI.OnGameWin != null)
-                            {
-                                this.GameUI.OnGameWin(this, new EventArgs());
-                            }
+                            NodeUIDialog dialog = new NodeUIDialog(GameUI, 5000);
+                            dialog.Size = new SizeInt(400, 180);
+                            dialog.CurrentCentre = GameUI.GameCoords.PuzzleRegion.Center;
+                            GameUI.Add(dialog);
+
+                            //if (this.GameUI.OnGameWin != null)
+                            //{
+                            //    this.GameUI.OnGameWin(this, new EventArgs());
+                            //}
                         }
                     }
                     

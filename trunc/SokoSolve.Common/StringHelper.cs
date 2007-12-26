@@ -50,7 +50,18 @@ namespace SokoSolve.Common
         /// </summary>
         public static string[] Split(string source, string sep)
         {
-            throw new NotImplementedException();
+            List<string> result = new List<string>();
+            int iSep;
+            while ((iSep = source.IndexOf(sep)) > 0)
+            {
+                result.Add(source.Substring(0, iSep));
+                source = source.Remove(0, iSep + sep.Length);
+            }
+
+            // Add the last line
+            if (source != null && source.Length > 0) result.Add(source);
+
+            return result.ToArray();
         }
 
         /// <summary>

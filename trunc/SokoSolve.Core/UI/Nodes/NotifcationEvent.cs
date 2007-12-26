@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SokoSolve.Core.UI.Nodes
 {
-    class NotificationEvent : EventArgs
+    public class NotificationEvent : EventArgs
     {
         public NotificationEvent(NodeBase source, string command, object tag)
         {

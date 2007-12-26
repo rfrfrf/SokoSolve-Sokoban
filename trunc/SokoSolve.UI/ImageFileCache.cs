@@ -41,7 +41,7 @@ namespace SokoSolve.UI
 
             if (images.ContainsKey(id))
             {
-                // Already exists, cleanup
+                // Already exists
                 File.Delete(images[id]);
                 images.Remove(id);
             }

@@ -190,11 +190,15 @@ namespace SokoSolve.UI.Section.Library
         protected override void ExecuteImplementation(CommandInstance<ExplorerItem> instance)
         {
             OpenFileDialog open = new OpenFileDialog();
-            open.InitialDirectory = FileManager.getContent("Libraries/");
+            open.InitialDirectory = ProfileController.Current.LibraryCurrentOpenDir;
+            open.CheckFileExists = true;
+            open.DefaultExt = ".ssx";
             if (open.ShowDialog() == DialogResult.OK)
             {
                 XmlProvider xmlLoad = new XmlProvider();
                 Controller.Current = xmlLoad.Load(open.FileName);
+
+                ProfileController.Current.LibraryLastFile = open.FileName;
             }
         }
 

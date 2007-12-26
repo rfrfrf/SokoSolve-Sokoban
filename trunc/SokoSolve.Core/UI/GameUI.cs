@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Specialized;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -9,6 +10,7 @@ using SokoSolve.Core.Model;
 using SokoSolve.Core.UI.Nodes;
 using SokoSolve.Core.UI.Nodes.Complex;
 using SokoSolve.Core.UI.Nodes.Effects;
+using SokoSolve.Core.UI.Nodes.Specific;
 using SokoSolve.Core.UI.Nodes.UINodes;
 
 namespace SokoSolve.Core.UI
@@ -38,6 +40,13 @@ namespace SokoSolve.Core.UI
             nodes = new List<NodeBase>();
             nodesToRemove = new List<NodeBase>();
             nodesToAdd = new List<NodeBase>();
+        }
+
+        public void Start()
+        {
+            initType = InitType.NewGame;
+            Init();
+            Active = true;
         }
 
         /// <summary>
@@ -134,6 +143,14 @@ namespace SokoSolve.Core.UI
             InitFX();
         }
 
+        public enum InitType
+        {
+            NewGame,
+            Restart,
+            Undo,
+            SolutionReplay
+        }
+
         /// <summary>
         /// Inititialise the special effects
         /// </summary>
@@ -142,17 +159,43 @@ namespace SokoSolve.Core.UI
             cursor = new NodeCursor(this, int.MaxValue);
             Add(cursor);
 
-            NodeEffectText start = new NodeEffectText(this, 10, "Welcome to SokoSolve, START!", Player.CurrentAbsolute);
-            start.Brush = new SolidBrush(Color.FromArgb(80, Color.White));
-            start.BrushShaddow = new SolidBrush(Color.FromArgb(80, Color.Black));
-            start.Path = new Paths.Spiral(Player.CurrentCentre);
-            Add(start);
+            if (initType == InitType.NewGame)
+            {
+                NodeEffectText start = new NodeEffectText(this, 10, "Welcome to SokoSolve, START!", Player.CurrentAbsolute);
+                start.Brush = new SolidBrush(Color.FromArgb(80, Color.White));
+                start.BrushShaddow = new SolidBrush(Color.FromArgb(80, Color.Black));
+                start.Path = new Paths.Spiral(Player.CurrentCentre);
+                Add(start);
+            }
+            else if (initType == InitType.Restart)
+            {
+                NodeEffectText start = new NodeEffectText(this, 10, "Starting again, eh?", Player.CurrentAbsolute);
+                start.Brush = new SolidBrush(Color.FromArgb(180, Color.Gold));
+                start.BrushShaddow = new SolidBrush(Color.FromArgb(180, Color.Black));
+                start.Path = new Paths.Spiral(Player.CurrentCentre);
+                Add(start);
+            }
+            else if (initType == InitType.Undo)
+            {
+                NodeEffectText start = new NodeEffectText(this, 10, new string[] { "Hmmm", "Grrr", "Pity", "???"}, GameCoords.WindowRegion.Center);
+                start.Brush = new SolidBrush(Color.Cyan);
+                Add(start);
+            }
+            
 
             NodeControllerStatus status = new NodeControllerStatus(this, 500);
             Add(status);
 
             NodeControllerCommands commands = new NodeControllerCommands(this, 500);
             Add(commands);
+
+            NodeTitle title = new NodeTitle(this, 1000);
+            Add(title);
+
+#if DEBUG
+            NodeDebug debug = new NodeDebug(this, int.MaxValue);
+            Add(debug);
+#endif
         }
 
         /// <summary>
@@ -190,6 +233,7 @@ namespace SokoSolve.Core.UI
         /// </summary>
         public override void Undo()
         {
+            initType = InitType.Undo;
             base.Undo();
             Init();
             
@@ -200,6 +244,7 @@ namespace SokoSolve.Core.UI
         /// </summary>
         public override void Reset()
         {
+            initType = InitType.Restart;
             base.Reset();
             Init();
             
@@ -232,6 +277,11 @@ namespace SokoSolve.Core.UI
                 }
                 return player;
             }
+        }
+
+        public NodeCursor Cursor
+        {
+            get { return cursor;  }
         }
 
         /// <summary>
@@ -286,15 +336,24 @@ namespace SokoSolve.Core.UI
         {
             if (!Active) return;
 
-            // Clean Up
-            //Graphics.FillRectangle(new SolidBrush(Color.Gray), GameCoords.PuzzleRegion.ToDrawingRect());
-
-            // Sort
-            nodes.Sort(new Comparison<NodeBase>(NodeCompareDepth));
-            // Render each node
-            foreach (NodeBase n in nodes)
+            try
             {
-                n.Render();
+                // Sort
+                nodes.Sort(new Comparison<NodeBase>(NodeCompareDepth));
+                // Render each node
+                foreach (NodeBase n in nodes)
+                {
+                    n.Render();
+                }
+            }
+            catch(Exception ex)
+            {
+                // Log me?
+                Debug.WriteLine(ex.Message);
+
+                // So that the render cycle does not get completely killed.
+                Graphics.DrawString(ex.Message, new Font("Arial", 10f), new SolidBrush(Color.Red), 2, 2);
+                
             }
         }
 
@@ -385,6 +444,8 @@ namespace SokoSolve.Core.UI
 
         private NodeCursor cursor;
         NodeDynamicPlayer player;
+
+        private InitType initType;
 
     }
 }
