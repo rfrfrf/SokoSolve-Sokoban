@@ -30,6 +30,7 @@ namespace SokoSolve.Core.UI.Nodes.Effects
             brush = new SolidBrush(Color.White);
             brushShaddow = new SolidBrush(Color.FromArgb(80,80,80));
             Path = null;
+            IsVisible = true;
         }
 
         /// <summary>
@@ -49,6 +50,7 @@ namespace SokoSolve.Core.UI.Nodes.Effects
             brushShaddow = new SolidBrush(Color.FromArgb(80, 80, 80));
             Path = new Linear(CurrentAbsolute, new VectorInt(20, 20), new VectorDouble(1, 1), false);
             text = RandomHelper.Select<string>(Text);
+            IsVisible = true;
         }
 
         /// <summary>
@@ -67,6 +69,7 @@ namespace SokoSolve.Core.UI.Nodes.Effects
             this.brushShaddow = brushShaddow;
             this.text = text;
             this.font = font;
+            IsVisible = true;
         }
 
         /// <summary>
@@ -74,6 +77,8 @@ namespace SokoSolve.Core.UI.Nodes.Effects
         /// </summary>
         public override void Render()
         {
+            if (!isVisible) return;
+
             if (CurrentAbsolute != null)
             {
                 if (brushShaddow != null)
@@ -127,11 +132,19 @@ namespace SokoSolve.Core.UI.Nodes.Effects
             set { stringFormat = value; }
         }
 
+
+        public bool IsVisible
+        {
+            get { return isVisible; }
+            set { isVisible = value; }
+        }
+
         Brush brush;
         Brush brushShaddow;
         string text;
         Font font;
         StringFormat stringFormat = new StringFormat();
         private IPath alphaPath;
+        private bool isVisible;
     }
 }

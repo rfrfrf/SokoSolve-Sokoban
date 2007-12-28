@@ -54,18 +54,10 @@ namespace SokoSolve.Core.UI.Nodes.UINodes
 
         public override void Render()
         {
-            int offset = 6;
+            //DrawBitmapCentered(GameUI.Graphics, CurrentRect, imageBack);
+            VectorInt pos = CurrentRect.Center.Subtract(imageBack.Width / 2 +2, imageBack.Height / 2 +2);
+            GameUI.Graphics.DrawImage(imageBack, pos.X, pos.Y);
 
-            Brush bkBrush = new SolidBrush(Color.FromArgb(140, Color.WhiteSmoke));
-            RectangleInt fullSize = new RectangleInt(CurrentRect.TopLeft.Subtract(offset, offset), new SizeInt(CurrentRect.Width + 2 * offset, CurrentRect.Height + 2 * offset));
-            //if (fullSize.Contains(GameUI.Cursor.CurrentAbsolute))
-            //{
-            //    bkBrush = new SolidBrush(Color.FromArgb(180,  Color.DarkGray));
-
-            //    GameUI.Graphics.FillEllipse(bkBrush, CurrentAbsolute.X - offset, CurrentAbsolute.Y - offset, Size.Width + (2 * offset), Size.Height + (2 * offset));
-            //}
-
-            DrawBitmapCentered(GameUI.Graphics, CurrentRect, imageBack);
             DrawBitmapCentered(GameUI.Graphics, CurrentRect, imageNormal);
         }
 

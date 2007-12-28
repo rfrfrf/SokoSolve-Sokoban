@@ -68,11 +68,17 @@
     <Compile Include="RandomHelper.cs" />
     <Compile Include="UI\DockPoint.cs" />
     <Compile Include="UI\GameCoords.cs" />
+    <Compile Include="UI\ISoundSubSystem.cs" />
     <Compile Include="UI\NodeBase.cs" />
     <Compile Include="UI\GameUI.cs" />
+    <Compile Include="UI\Nodes\Actions\ActionCounter.cs" />
+    <Compile Include="UI\Nodes\Actions\ActionMethod.cs" />
+    <Compile Include="UI\Nodes\Actions\ActionRetartChain.cs" />
     <Compile Include="UI\Nodes\Complex\NodeControllerCommands.cs" />
     <Compile Include="UI\Nodes\Complex\NodeControllerStatus.cs" />
     <Compile Include="UI\Nodes\Complex\NodeCursorEventArgs.cs" />
+    <Compile Include="UI\Nodes\Actions\Action.cs" />
+    <Compile Include="UI\Nodes\Actions\ActionChain.cs" />
     <Compile Include="UI\Nodes\NotifcationEvent.cs" />
     <Compile Include="UI\Nodes\Specific\NodeDebug.cs" />
     <Compile Include="UI\Nodes\Specific\NodeTitle.cs" />

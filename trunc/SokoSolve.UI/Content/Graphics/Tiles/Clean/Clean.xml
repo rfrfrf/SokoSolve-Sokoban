@@ -1,10 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <!-- Void, Wall, Floor, Crate, Goal, Player -->
-<Resources Directory="$Graphics\Tiles\Clean" Description="96x96 Clean puzzle set, based on KSokoban initially">
+<Resources Directory="$Graphics\Tiles\Clean" Description="Game Tiles">
 	<Resource ID="0" Name="Void" Filename="Void.png"/>
 	<Resource ID="1" Name="Wall" Filename="Wall.png"/>
 	<Resource ID="2" Name="Floor" Filename="Floor.png"/>
 	<Resource ID="3" Name="Crate" Filename="Crate.png"/>
 	<Resource ID="4" Name="Goal" Filename="Goal.png"/>
 	<Resource ID="6" Name="Player" Filename="Player.png"/>
+    
+    <Resource ID="10" Name="WayPointButton1" Filename="WayPointButton1.png"/>
+	<Resource ID="11" Name="WayPointButton2" Filename="WayPointButton2.png"/>
+	<Resource ID="12" Name="WayPointButton3" Filename="WayPointButton3.png"/>
+	<Resource ID="13" Name="WayPointButton4" Filename="WayPointButton4.png"/>
+	<Resource ID="14" Name="WayPointButton5" Filename="WayPointButton5.png"/>
 </Resources>

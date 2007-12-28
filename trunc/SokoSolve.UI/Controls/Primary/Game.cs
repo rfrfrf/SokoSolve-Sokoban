@@ -5,10 +5,12 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
+using SokoSolve.Common;
 using SokoSolve.Common.Math;
 using SokoSolve.Core.Model;
 using SokoSolve.Core.Model.DataModel;
 using SokoSolve.Core.UI;
+using SokoSolve.UI.Controls.Secondary;
 
 namespace SokoSolve.UI.Controls.Primary
 {
@@ -38,6 +40,8 @@ namespace SokoSolve.UI.Controls.Primary
             // to the screen (the previous two styles are required for this to work)
             this.SetStyle(ControlStyles.DoubleBuffer, true);
 
+		    
+
             // Set coord size
 		    Game_Resize(null, null);
 		}
@@ -66,20 +70,66 @@ namespace SokoSolve.UI.Controls.Primary
             }
         }
 
+        public void HandleGameException(string Context, Exception ex)
+        {
+            FormError error = new FormError();
+            error.Exception = ex;
+            error.ShowDialog();
+        }
+
+        #region Core Game Functions
+
+        /// <summary>
+        /// Start the game
+        /// </summary>
+        /// <param name="puzzle"></param>
+        /// <param name="map"></param>
         public void StartGame(Puzzle puzzle, PuzzleMap map)
         {
-            gameUI = new GameUI(puzzle, map.Map);
-            gameUI.OnExit += new EventHandler(gameUI_OnExit);
-            gameUI.OnGameWin += new EventHandler(gameUI_OnGameWin);
-            Game_Resize(null, null);
-            timerAnimation.Enabled = true;
+            try
+            {
+                gameUI = new GameUI(puzzle, map.Map, new WindowsSoundSubSystem());
+                gameUI.OnExit += new EventHandler(gameUI_OnExit);
+                gameUI.OnGameWin += new EventHandler(gameUI_OnGameWin);
+                Game_Resize(null, null);
+                timerAnimation.Enabled = true;
 
-            Cursor.Hide();
+                Cursor.Hide();
 
-            gameUI.Start();
+                gameUI.Start();
+            }
+            catch (Exception ex)
+            {
+                HandleGameException("During Game Startup", ex);
+            }
+        }
+
+        /// <summary>
+        /// Perform game step and drawing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Game_Paint(object sender, PaintEventArgs e)
+        {
+            try
+            {
+                if (gameUI != null)
+                {
+                    gameUI.InitDisplay(e.Graphics);
+                    gameUI.PerformStep();
+                    gameUI.Render();
+                }
+            }
+            catch(Exception ex)
+            {
+                HandleGameException("Drawing Frame", ex);
+            }
             
         }
 
+        #endregion
+
+        
         void gameUI_OnExit(object sender, EventArgs e)
         {
             buttonDone_Click(sender, e);
@@ -113,15 +163,6 @@ namespace SokoSolve.UI.Controls.Primary
             Refresh();
         }        
 
-        private void Game_Paint(object sender, PaintEventArgs e)
-        {
-            if (gameUI != null)
-            {
-                gameUI.InitDisplay(e.Graphics);
-                gameUI.PerformStep();
-                gameUI.Render();
-            }
-        }
 
         private void ProcessImput(Keys inputKey)
         {

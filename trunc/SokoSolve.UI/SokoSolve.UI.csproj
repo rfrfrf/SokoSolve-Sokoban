@@ -57,6 +57,9 @@
     <Compile Include="Controls\Primary\Welcome.Designer.cs">
       <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Primary\WindowsSoundSubSystem.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\Secondary\FormDisplayText.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,7 +286,29 @@
     <Content Include="Content\html\ReleaseNotes.html" />
     <Content Include="Content\html\style.css" />
     <Content Include="Content\html\Welcome.html" />
+    <Content Include="Content\Music\Camokaze-Low.mp3" />
+    <Content Include="Content\SFX\sound31.wav" />
+    <Content Include="Content\SFX\sound40.wav" />
+    <Content Include="Content\SFX\Welcome.wav" />
     <Content Include="SokoSolve16x16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="MediaPlayer">
+      <Guid>{22D6F304-B0F6-11D0-94AB-0080C74C7E95}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

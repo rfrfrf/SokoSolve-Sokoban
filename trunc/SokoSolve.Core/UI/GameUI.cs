@@ -29,7 +29,7 @@ namespace SokoSolve.Core.UI
         /// Strong Construction. <see cref="Init"/>, then <see cref="InitFX"/>, then <see cref="InitDisplay"/>
         /// </summary>
         /// <param name="Map">Puzzle to play</param>
-        public GameUI(Puzzle aPuzzle, SokobanMap Map) : base(aPuzzle, Map)
+        public GameUI(Puzzle aPuzzle, SokobanMap Map, ISoundSubSystem sfx) : base(aPuzzle, Map)
         {
             GameCoords = new GameCoords(this);
             StepCurrent = 0;
@@ -40,6 +40,13 @@ namespace SokoSolve.Core.UI
             nodes = new List<NodeBase>();
             nodesToRemove = new List<NodeBase>();
             nodesToAdd = new List<NodeBase>();
+
+            // I would like to move this somewhere else
+            sound = sfx;
+            sfxWelcome = sound.GetHandle("Welcome.wav");
+            sfxUndo = sound.GetHandle("sound40.wav");
+            sfxRestart = sound.GetHandle("sound31.wav");
+            
         }
 
         public void Start()
@@ -159,6 +166,8 @@ namespace SokoSolve.Core.UI
             cursor = new NodeCursor(this, int.MaxValue);
             Add(cursor);
 
+            
+
             if (initType == InitType.NewGame)
             {
                 NodeEffectText start = new NodeEffectText(this, 10, "Welcome to SokoSolve, START!", Player.CurrentAbsolute);
@@ -166,6 +175,11 @@ namespace SokoSolve.Core.UI
                 start.BrushShaddow = new SolidBrush(Color.FromArgb(80, Color.Black));
                 start.Path = new Paths.Spiral(Player.CurrentCentre);
                 Add(start);
+
+                sound.PlaySound(sfxWelcome);
+
+                sound.PlayMusic(sound.GetHandle("Camokaze-Low.mp3"));
+
             }
             else if (initType == InitType.Restart)
             {
@@ -174,12 +188,16 @@ namespace SokoSolve.Core.UI
                 start.BrushShaddow = new SolidBrush(Color.FromArgb(180, Color.Black));
                 start.Path = new Paths.Spiral(Player.CurrentCentre);
                 Add(start);
+
+                sound.PlaySound(sfxRestart);
             }
             else if (initType == InitType.Undo)
             {
                 NodeEffectText start = new NodeEffectText(this, 10, new string[] { "Hmmm", "Grrr", "Pity", "???"}, GameCoords.WindowRegion.Center);
                 start.Brush = new SolidBrush(Color.Cyan);
                 Add(start);
+
+                sound.PlaySound(sfxUndo);
             }
             
 
@@ -279,9 +297,21 @@ namespace SokoSolve.Core.UI
             }
         }
 
+        /// <summary>
+        /// Allow direct accuss to the cursor node and logic
+        /// </summary>
         public NodeCursor Cursor
         {
             get { return cursor;  }
+        }
+
+        /// <summary>
+        /// Access the sound (sfx, music)  playing sub-system
+        /// </summary>
+        public ISoundSubSystem Sound
+        {
+            get { return sound; }
+            set { sound = value; }
         }
 
         /// <summary>
@@ -443,7 +473,12 @@ namespace SokoSolve.Core.UI
         List<NodeBase> nodesToRemove;
 
         private NodeCursor cursor;
-        NodeDynamicPlayer player;
+        private NodeDynamicPlayer player;
+        private ISoundSubSystem sound;
+
+        private ISoundHandle sfxUndo;
+        private ISoundHandle sfxRestart;
+        private ISoundHandle sfxWelcome;
 
         private InitType initType;
 
