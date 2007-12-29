@@ -50,4 +50,15 @@ img
 	vertical-align: top;
 }
 
+.quote
+{
+	font-family: Times New Roman;
+	font-size: 13pt;
+	border-left: solid 5px #909090;
+	background-color: #f0f0f0;
+	padding-left: 20px;
+	padding-right: 80px;
+	margin-left: 30px;
+}
+
 

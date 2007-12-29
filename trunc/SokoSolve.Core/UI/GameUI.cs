@@ -6,6 +6,7 @@ using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using SokoSolve.Common.Math;
+using SokoSolve.Core.Game;
 using SokoSolve.Core.Model;
 using SokoSolve.Core.UI.Nodes;
 using SokoSolve.Core.UI.Nodes.Complex;
@@ -20,13 +21,13 @@ namespace SokoSolve.Core.UI
     /// </summary>
     /// <remarks>
     /// The key node is <see cref="NodeDynamicPlayer"/> which acts as the primary input driver.
-    /// Note however that the game logic does not reside here. Therefore a key mechanism is how 
+    /// The game logic does not reside here. Therefore a key mechanism is how 
     /// changes to the Game object's Cells are communicated to the nodes.
     /// </remarks>
     public class GameUI : SokoSolve.Core.Game.Game
     {
         /// <summary>
-        /// Strong Construction. <see cref="Init"/>, then <see cref="InitFX"/>, then <see cref="InitDisplay"/>
+        /// Strong Construction. <see cref="Init"/>, then <see cref="InitFX"/>, then <see cref="StartRender"/>
         /// </summary>
         /// <param name="Map">Puzzle to play</param>
         public GameUI(Puzzle aPuzzle, SokobanMap Map, ISoundSubSystem sfx) : base(aPuzzle, Map)
@@ -46,6 +47,13 @@ namespace SokoSolve.Core.UI
             sfxWelcome = sound.GetHandle("Welcome.wav");
             sfxUndo = sound.GetHandle("sound40.wav");
             sfxRestart = sound.GetHandle("sound31.wav");
+
+            // Add blank bookmarks
+            Add((Bookmark)null);
+            Add((Bookmark)null);
+            Add((Bookmark)null);
+            Add((Bookmark)null);
+            Add((Bookmark)null);
             
         }
 
@@ -60,9 +68,14 @@ namespace SokoSolve.Core.UI
         /// Setup the display or drawing system
         /// </summary>
         /// <param name="aGraphics"></param>
-        public void InitDisplay(Graphics aGraphics)
+        public void StartRender(Graphics aGraphics)
         {
             Graphics = aGraphics;
+        }
+
+        public void EndRender()
+        {
+            Graphics = null;
         }
 
         /// <summary>
@@ -166,8 +179,6 @@ namespace SokoSolve.Core.UI
             cursor = new NodeCursor(this, int.MaxValue);
             Add(cursor);
 
-            
-
             if (initType == InitType.NewGame)
             {
                 NodeEffectText start = new NodeEffectText(this, 10, "Welcome to SokoSolve, START!", Player.CurrentAbsolute);
@@ -209,6 +220,9 @@ namespace SokoSolve.Core.UI
 
             NodeTitle title = new NodeTitle(this, 1000);
             Add(title);
+
+            NodeControllerBookmarks waypoint = new NodeControllerBookmarks(this, 500);
+            Add(waypoint);
 
 #if DEBUG
             NodeDebug debug = new NodeDebug(this, int.MaxValue);
@@ -265,7 +279,16 @@ namespace SokoSolve.Core.UI
             initType = InitType.Restart;
             base.Reset();
             Init();
-            
+        }
+
+        /// <summary>
+        /// Reset/Restart the puzzle to its initial condition
+        /// </summary>
+        public override void Reset(Bookmark bookMark)
+        {
+            initType = InitType.Restart;
+            base.Reset(bookMark);
+            Init();
         }
 
         /// <summary>
@@ -343,7 +366,7 @@ namespace SokoSolve.Core.UI
             StepCurrent++;
             foreach (NodeBase n in nodes)
             {
-                n.doStep();
+                if (!n.IsRemoved) n.doStep();
             }
 
             foreach (NodeBase n in nodesToAdd)
@@ -373,7 +396,7 @@ namespace SokoSolve.Core.UI
                 // Render each node
                 foreach (NodeBase n in nodes)
                 {
-                    n.Render();
+                    if (!n.IsRemoved)  n.Render();
                 }
             }
             catch(Exception ex)
@@ -415,6 +438,16 @@ namespace SokoSolve.Core.UI
         public bool SetCursor(int X, int Y, int ClickCount, MouseButtons Button, MouseClicks ClickType)
         {
             return cursor.SetCursor(X, Y, ClickCount, Button, ClickType);
+        }
+
+        /// <summary>
+        /// Does this node already exist
+        /// </summary>
+        /// <param name="aNode"></param>
+        /// <returns></returns>
+        public bool HasNode(NodeBase aNode)
+        {
+            return (nodesToAdd.Contains(aNode) || nodes.Contains(aNode));
         }
 
 
@@ -482,5 +515,6 @@ namespace SokoSolve.Core.UI
 
         private InitType initType;
 
+        
     }
 }

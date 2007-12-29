@@ -10,23 +10,12 @@ namespace SokoSolve.Core.UI.Nodes.UINodes
     {
         public NodeUIDialog(GameUI myGameUI, int myDepth) : base(myGameUI, myDepth)
         {
-            buttonOk = new NodeUIButton(myGameUI, myDepth+1, CurrentAbsolute, "$Graphics/Icons/Right.png", "Exit");
-            buttonCancel = new NodeUIButton(myGameUI, myDepth + 1, CurrentAbsolute, "$Graphics/Icons/Cancel.png", "Exit");
-            buttonSave = new NodeUIButton(myGameUI, myDepth + 1, CurrentAbsolute, "$Graphics/Icons/Save.png", "Exit");
-            buttonExit = new NodeUIButton(myGameUI, myDepth + 1, CurrentAbsolute, "$Graphics/Icons/Home.png", "Exit");
+            buttons = new List<NodeUIButton>();
 
-            myGameUI.Add(buttonOk);
-            myGameUI.Add(buttonCancel);
-            myGameUI.Add(buttonSave);
-            myGameUI.Add(buttonExit);
+            doStep(); // This will set the initial positions
         }
 
-        private NodeUIButton buttonOk;
-        private NodeUIButton buttonCancel;
-        private NodeUIButton buttonSave;
-        private NodeUIButton buttonExit;
-
-        private int sizeTitle;
+    
 
         RectangleInt TitleRect
         {
@@ -52,29 +41,65 @@ namespace SokoSolve.Core.UI.Nodes.UINodes
             }
         }
 
+        public void Add(NodeUIButton button)
+        {
+            buttons.Add(button);
+            if (!GameUI.HasNode(button))
+            {
+                GameUI.Add(button);
+            }
+
+            button.OnClick += new EventHandler<NotificationEvent>(OnClickButton);
+        }
+
+        protected virtual void OnClickButton(object sender, NotificationEvent e)
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        public string Text
+        {
+            get { return text; }
+            set { text = value; }
+        }
+
+        public string TextTitle
+        {
+            get { return textTitle; }
+            set { textTitle = value; }
+        }
+
         public override void doStep()
         {
-            buttonOk.CurrentCentre = CurrentRect.BottomMiddle.Subtract(0, 20);
-            buttonCancel.CurrentCentre = CurrentRect.BottomMiddle.Subtract(40, 20);
-            buttonSave.CurrentCentre = CurrentRect.BottomMiddle.Subtract(-40, 20);
-            buttonExit.CurrentCentre = CurrentRect.BottomMiddle.Subtract(-80, 20);
+            // Dock the buttons
+            int offset = 0;
+            foreach (NodeUIButton button in buttons)
+            {
+                button.CurrentCentre = CurrentRect.BottomMiddle.Subtract(offset, 23);
+                offset -= 40;
+            }
         }
 
         public override void Render()
         {
             // Draw entire surface
-            GameUI.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(180, 20, 20, 20)), CurrentRect.ToDrawingRect());
+            GameUI.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(180, 10, 10, 10)), CurrentRect.ToDrawingRect());
+
+            // Draw border
+            GameUI.Graphics.DrawRectangle(new Pen(Color.DarkGray), CurrentRect.ToDrawingRect());
 
             // Draw Title
-            GameUI.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(210, Color.LavenderBlush)), TitleRect.ToDrawingRect());
-            GameUI.Graphics.DrawString(textTitle, new Font("Arial", 13f, FontStyle.Bold), new SolidBrush(Color.DarkBlue), TitleRect.ToDrawingRect());
+            GameUI.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(210, Color.DarkBlue)), TitleRect.ToDrawingRect());
+            GameUI.Graphics.DrawString(textTitle, new Font("Lucida Console", 13f, FontStyle.Bold), new SolidBrush(Color.Yellow), TitleRect.ToDrawingRect());
 
             // Draw Text
             GameUI.Graphics.DrawString(text, new Font("Arial", 12f, FontStyle.Bold), new SolidBrush(Color.White), TextRect.ToDrawingRect());
         }
 
-        private string text = @"Congrats! You have solved the puzzle. Do you want to continue with the next puzzle in the library? Again, well done!";
-        private string textTitle = "Puzzle Complete";
+        private string text;
+        private string textTitle;
+        private List<NodeUIButton> buttons;
+        private int sizeTitle;
     }
 }
 

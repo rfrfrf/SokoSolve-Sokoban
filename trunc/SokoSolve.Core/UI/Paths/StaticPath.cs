@@ -8,7 +8,7 @@ namespace SokoSolve.Core.UI.Paths
     /// <summary>
     /// The most simple of all paths: no movement
     /// </summary>
-    class StaticPath : IPath
+    public class StaticPath : IPath
     {
         /// <summary>
         /// Strong Constructor

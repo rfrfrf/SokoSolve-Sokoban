@@ -26,6 +26,7 @@ namespace SokoSolve.Core.UI
             dockPoint = DockPoint.Centre;
             size = new SizeInt(0, 0);
             currentAbsolute = VectorInt.Zero;
+            isRemoved = false;
         }
 
         /// <summary>
@@ -129,6 +130,12 @@ namespace SokoSolve.Core.UI
             // Do nothing
         }
 
+        public void Remove()
+        {
+            isRemoved = true;
+            GameUI.Remove(this);
+        }
+
         /// <summary>
         /// Depth (Z) of the node.
         /// </summary>
@@ -156,11 +163,19 @@ namespace SokoSolve.Core.UI
             set { dockPoint = value; }
         }
 
+
+        public bool IsRemoved
+        {
+            get { return isRemoved; }
+            set { isRemoved = value; }
+        }
+
         private int depth;
         private GameUI gameUI;
         private DockPoint dockPoint;
         private VectorInt currentAbsolute;
         private SizeInt size;
         private VectorInt last;
+        private bool isRemoved;
     }
 }

@@ -41,6 +41,7 @@
     <Compile Include="Game\Game.cs" />
     <Compile Include="Game\Move.cs" />
     <Compile Include="Game\Stats.cs" />
+    <Compile Include="Game\Bookmark.cs" />
     <Compile Include="GlobalEnum.cs" />
     <Compile Include="IO\Importer.cs" />
     <Compile Include="IO\ImportSLC.cs" />
@@ -76,11 +77,16 @@
     <Compile Include="UI\Nodes\Actions\ActionRetartChain.cs" />
     <Compile Include="UI\Nodes\Complex\NodeControllerCommands.cs" />
     <Compile Include="UI\Nodes\Complex\NodeControllerStatus.cs" />
+    <Compile Include="UI\Nodes\Complex\NodeControllerBookmarks.cs" />
     <Compile Include="UI\Nodes\Complex\NodeCursorEventArgs.cs" />
     <Compile Include="UI\Nodes\Actions\Action.cs" />
     <Compile Include="UI\Nodes\Actions\ActionChain.cs" />
+    <Compile Include="UI\Nodes\Effects\NodeEffectImage.cs" />
     <Compile Include="UI\Nodes\NotifcationEvent.cs" />
     <Compile Include="UI\Nodes\Specific\NodeDebug.cs" />
+    <Compile Include="UI\Nodes\Specific\NodePuzzleWin.cs" />
+    <Compile Include="UI\Nodes\Specific\NodeUIDialogHelp.cs" />
+    <Compile Include="UI\Nodes\Specific\NodeUIDialogPuzzleWin.cs" />
     <Compile Include="UI\Nodes\Specific\NodeTitle.cs" />
     <Compile Include="UI\Nodes\UINodes\NodeUIDialog.cs" />
     <Compile Include="UI\Paths\IPath.cs" />

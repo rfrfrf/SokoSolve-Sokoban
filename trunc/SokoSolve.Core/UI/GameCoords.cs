@@ -116,6 +116,14 @@ namespace SokoSolve.Core.UI
             get { return new RectangleInt(WindowRegion.TopRight.Subtract(generalCommands).Subtract(20, 0), generalCommands); }
         }
 
+        /// <summary>
+        /// Region to display the status information
+        /// </summary>
+        public RectangleInt PositionWayPoints
+        {
+            get { return new RectangleInt(WindowRegion.TopLeft.Add(10, 10), new SizeInt(30, 300)); }
+        }
+
         private GameUI GameUI;
         private RectangleInt windowRegion;
         private SizeInt movementCommands = new SizeInt(75, 75);

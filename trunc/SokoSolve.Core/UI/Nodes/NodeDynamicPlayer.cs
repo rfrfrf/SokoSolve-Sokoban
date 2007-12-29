@@ -6,6 +6,7 @@ using SokoSolve.Common.Math;
 using SokoSolve.Core.UI;
 using SokoSolve.Core.Game;
 using SokoSolve.Core.UI.Nodes.Effects;
+using SokoSolve.Core.UI.Nodes.Specific;
 using SokoSolve.Core.UI.Nodes.UINodes;
 
 namespace SokoSolve.Core.UI.Nodes
@@ -21,8 +22,7 @@ namespace SokoSolve.Core.UI.Nodes
         /// <param name="myGameUI"></param>
         /// <param name="myPuzzleLocation"></param>
         /// <param name="myDepth"></param>
-        public NodeDynamicPlayer(GameUI myGameUI, VectorInt myPuzzleLocation, int myDepth)
-            : base(myGameUI, Cell.Player, myPuzzleLocation, myDepth)
+        public NodeDynamicPlayer(GameUI myGameUI, VectorInt myPuzzleLocation, int myDepth) : base(myGameUI, Cell.Player, myPuzzleLocation, myDepth)
         {
             futureMoves = new Queue<Direction>();
         }
@@ -84,15 +84,10 @@ namespace SokoSolve.Core.UI.Nodes
                             msg.Path = new Paths.Spiral(CurrentCentre);
                             GameUI.Add(msg);
 
-                            NodeUIDialog dialog = new NodeUIDialog(GameUI, 5000);
-                            dialog.Size = new SizeInt(400, 180);
-                            dialog.CurrentCentre = GameUI.GameCoords.PuzzleRegion.Center;
-                            GameUI.Add(dialog);
+                            NodePuzzleWin win = new NodePuzzleWin(GameUI, 5000, GameUI.GameCoords.PuzzleRegion.Center);
+                            GameUI.Add(win);
 
-                            //if (this.GameUI.OnGameWin != null)
-                            //{
-                            //    this.GameUI.OnGameWin(this, new EventArgs());
-                            //}
+                            
                         }
                     }
                     

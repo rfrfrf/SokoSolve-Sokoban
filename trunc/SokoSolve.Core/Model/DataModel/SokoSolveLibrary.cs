@@ -174,12 +174,20 @@ namespace SokoSolve.Core.Model.DataModel {
         public GenericDescription MapDetails;
         
         /// <remarks/>
+        [System.Xml.Serialization.XmlArrayItemAttribute("Hint", IsNullable=false)]
+        public SokobanLibraryPuzzleMapHint[] Hints;
+        
+        /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(DataType="ID")]
         public string MapID;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string Rating;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string MapType;
     }
     
     /// <remarks/>
@@ -195,5 +203,30 @@ namespace SokoSolve.Core.Model.DataModel {
         
         /// <remarks/>
         public GenericDescription SolutionDescription;
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "2.0.50727.42")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd")]
+    public partial class SokobanLibraryPuzzleMapHint {
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="language")]
+        public string X;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(DataType="integer")]
+        public string Y;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Type;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Text;
     }
 }

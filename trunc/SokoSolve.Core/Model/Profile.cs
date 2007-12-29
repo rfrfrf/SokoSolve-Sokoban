@@ -90,10 +90,15 @@ namespace SokoSolve.Core.Model
             }
 
             // Libraries
-            // TODO
+            // TODO: Update libraries
 
             // History
-            // TODO
+            // TODO: Convert History 
+
+            if (File.Exists(FileName))
+            {
+                File.Delete(FileName);
+            }
 
             using (FileStream stream = File.OpenWrite(FileName))
             {

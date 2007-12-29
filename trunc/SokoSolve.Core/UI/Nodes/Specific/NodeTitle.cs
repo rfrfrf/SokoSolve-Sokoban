@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 using SokoSolve.Common.Math;
+using SokoSolve.Core.Model.DataModel;
 using SokoSolve.Core.UI.Nodes.Actions;
 using SokoSolve.Core.UI.Nodes.Effects;
 
@@ -21,17 +22,11 @@ namespace SokoSolve.Core.UI.Nodes.Specific
         {
             secondLine = new NodeEffectText(myGameUI, myDepth - 1, "Sokoban rocks!", CurrentAbsolute.Add(0, 30));
             secondLine.Brush = new SolidBrush(secondLineColour);
+            secondLine.Font = new Font("Arial", 11f);
             secondLine.IsVisible = false;
 
-            lines = new string[]
-                {
-                    "Sokoban rocks!",
-                    myGameUI.Puzzle.Details.Name,
-                    myGameUI.Puzzle.Details.Description,
-                    "David S. Skinner",
-                    "http://sokosolve.sf.net/",
-                    DateTime.Now.ToLongDateString()
-                };
+            currentLine = 0;
+            lines = GetTextLines().ToArray();
 
             myGameUI.Add(secondLine);
 
@@ -43,6 +38,24 @@ namespace SokoSolve.Core.UI.Nodes.Specific
             chain.Add(new ActionRetartChain(chain));
 
             chain.Init();
+        }
+
+        List<string> GetTextLines()
+        {
+            List<string> txt = new List<string>();
+
+            GenericDescription desc = GameUI.Puzzle.Library.Consolidate(GameUI.Puzzle);
+
+            if (!string.IsNullOrEmpty(desc.Description)) txt.Add(desc.Description);
+            if (desc.DateSpecified) txt.Add(string.Format("Created: {0}", desc.Date.ToLongDateString()));
+            if (!string.IsNullOrEmpty(desc.Comments)) txt.Add(desc.Comments);
+            if (!string.IsNullOrEmpty(desc.License)) txt.Add("License: " +desc.License);
+            if (desc.Author != null)
+            {
+                if (!string.IsNullOrEmpty(desc.Author.Name)) txt.Add(desc.Author.Name);
+                if (!string.IsNullOrEmpty(desc.Author.Homepage)) txt.Add(desc.Author.Homepage);
+            }
+            return txt;
         }
 
         private Color secondLineColour = Color.Sienna;
@@ -60,9 +73,17 @@ namespace SokoSolve.Core.UI.Nodes.Specific
             return true;
         }
 
+        private readonly int maxSecondLineChars = 70;
+
         bool SelectNextMessage(Action current)
         {
-            secondLine.Text = RandomHelper.Select<string>(lines);
+            secondLine.Text = lines[currentLine];
+            if (secondLine.Text.Length > maxSecondLineChars)
+            {
+                secondLine.Text = secondLine.Text.Substring(0, maxSecondLineChars) + "...";
+            }
+            currentLine++;
+            if (currentLine >= lines.Length) currentLine = 0;
             return true;
         }
 
@@ -73,11 +94,15 @@ namespace SokoSolve.Core.UI.Nodes.Specific
             base.doStep();
 
             chain.PerformStep();
+
+            // Redock and Resize second line
+            secondLine.CurrentAbsolute = new VectorInt(GameUI.GameCoords.WindowRegion.TopMiddle.Subtract(secondLine.Size.Width/2,-30));
         }
 
         private ActionChain chain;
         private NodeEffectText secondLine;
         private string[] lines;
+        private int currentLine;
     }
 }
 

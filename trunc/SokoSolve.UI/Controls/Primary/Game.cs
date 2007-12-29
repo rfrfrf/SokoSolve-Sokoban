@@ -10,6 +10,9 @@ using SokoSolve.Common.Math;
 using SokoSolve.Core.Model;
 using SokoSolve.Core.Model.DataModel;
 using SokoSolve.Core.UI;
+using SokoSolve.Core.UI.Nodes;
+using SokoSolve.Core.UI.Nodes.Effects;
+using SokoSolve.Core.UI.Paths;
 using SokoSolve.UI.Controls.Secondary;
 
 namespace SokoSolve.UI.Controls.Primary
@@ -88,9 +91,10 @@ namespace SokoSolve.UI.Controls.Primary
         {
             try
             {
+                puzzleMap = map;
                 gameUI = new GameUI(puzzle, map.Map, new WindowsSoundSubSystem());
                 gameUI.OnExit += new EventHandler(gameUI_OnExit);
-                gameUI.OnGameWin += new EventHandler(gameUI_OnGameWin);
+                gameUI.OnGameWin += new EventHandler<NotificationEvent>(gameUI_OnGameWin);
                 Game_Resize(null, null);
                 timerAnimation.Enabled = true;
 
@@ -104,6 +108,8 @@ namespace SokoSolve.UI.Controls.Primary
             }
         }
 
+        
+
         /// <summary>
         /// Perform game step and drawing
         /// </summary>
@@ -115,9 +121,11 @@ namespace SokoSolve.UI.Controls.Primary
             {
                 if (gameUI != null)
                 {
-                    gameUI.InitDisplay(e.Graphics);
+                    
+                    gameUI.StartRender(e.Graphics);
                     gameUI.PerformStep();
                     gameUI.Render();
+                    gameUI.EndRender();
                 }
             }
             catch(Exception ex)
@@ -135,28 +143,77 @@ namespace SokoSolve.UI.Controls.Primary
             buttonDone_Click(sender, e);
         }
 
-        void gameUI_OnGameWin(object sender, EventArgs e)
+        void gameUI_OnGameWin(object sender, NotificationEvent e)
         {
-            gameUI.Active = false;
-
-            Cursor.Show();
-
-            timerAnimation.Enabled = false;
-
-            DialogResult res = MessageBox.Show("Congrats! You have solved the puzzle. Do you want to save your solution to the library?", "Well Done", MessageBoxButtons.OKCancel);
-            if(res == DialogResult.OK)
+            switch(e.Command)
             {
-                Solution sol = new Solution();
-                sol.FromGame(gameUI.Moves);
-                sol.Details = new GenericDescription();
-                sol.Details.Name = string.Format("'{0}' Solution", gameUI.Puzzle.Details.Name);
-                sol.Details.Date = DateTime.Now;
-                sol.Details.DateSpecified = true;
-                sol.Details.Comments = "Solution found from game player.";
-                gameUI.Puzzle.MasterMap.Solutions.Add(sol);
+                case ("Next"): PuzzleCompletedNext(); return;
+                case ("Cancel"): PuzzleCompletedCancel(); return;
+                case ("Save"): PuzzleCompletedSave(); return;
+                case ("Home"): PuzzleCompletedExit(); return;
+            }
+
+            throw new NotImplementedException();
+            
+        }
+
+        /// <summary>
+        /// Show a basic message in the center of the puzzle (with a background)
+        /// </summary>
+        /// <param name="message"></param>
+        private void ShowText(string message)
+        {
+            NodeEffectText node = new NodeEffectText(gameUI, 100000, message, gameUI.GameCoords.PuzzleRegion.Center);
+            node.BrushBackGround = new SolidBrush(Color.DarkSlateBlue);
+            node.Path = new StaticPath(node.CurrentAbsolute, 20);
+            gameUI.Add(node);
+        }
+
+        private void PuzzleCompletedExit()
+        {
+            buttonDone_Click(null, null);
+        }
+
+        private void PuzzleCompletedSave()
+        {
+            // Save
+            Solution sol = new Solution();
+            sol.FromGame(gameUI.Moves);
+            sol.Details = new GenericDescription();
+            sol.Details.Name = string.Format("'{0}' Solution", gameUI.Puzzle.Details.Name);
+            sol.Details.Date = DateTime.Now;
+            sol.Details.DateSpecified = true;
+            sol.Details.Comments = "Solution found from game player.";
+            gameUI.Puzzle.MasterMap.Solutions.Add(sol);   
+
+            // TODO: Save Way points
+
+            // Give feedback
+            ShowText("Solution Saved.");
+        }
+
+        private void PuzzleCompletedCancel()
+        {
+            StartGame(gameUI.Puzzle, puzzleMap);   
+        }
+
+        private void PuzzleCompletedNext()
+        {
+            SokoSolve.Core.Model.Library lib = gameUI.Puzzle.Library;
+            Puzzle next = lib.Next(gameUI.Puzzle);
+            if (next != null)
+            {
+                StartGame(next, next.MasterMap);    
+            }
+            else
+            {
+                // Give feedback
+                ShowText("There are no more puzzles");
+
+                // TODO: Find the next library from the profile
             }
         }
-        
+
 
         private void timerAnimation_Tick(object sender, EventArgs e)
         {
@@ -281,6 +338,7 @@ namespace SokoSolve.UI.Controls.Primary
 
         private GameUI gameUI;
         private FormMain.Modes returnMode = FormMain.Modes.Library;
+        private PuzzleMap puzzleMap;
 
         
 	}

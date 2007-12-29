@@ -93,6 +93,48 @@ namespace SokoSolve.Core.Model
         {
             return string.Format("{0} {1}", libraryID, details);
         }
+
+        /// <summary>
+        /// Get the next puzzle
+        /// </summary>
+        /// <param name="puzzle"></param>
+        /// <returns>null mean nothing next</returns>
+        public Puzzle Next(Puzzle puzzle)
+        {
+            SortByOrder();
+            int idx = puzzles.IndexOf(puzzle);
+            idx ++;
+            if (idx < puzzles.Count - 1) return puzzles[idx];
+            return null;
+        }
+
+        public void SortByOrder()
+        {
+            puzzles.Sort(delegate(Puzzle lhs, Puzzle rhs) { return lhs.Order.CompareTo((rhs.Order)); });
+        }
+
+        public GenericDescription Consolidate(Puzzle puzzle)
+        {
+            GenericDescription res = new GenericDescription(puzzle.Details);
+            if (string.IsNullOrEmpty(res.Name)) res.Name = details.Name;
+            if (string.IsNullOrEmpty(res.Description)) res.Description = details.Description;
+            if (string.IsNullOrEmpty(res.Comments)) res.Comments = details.Comments;
+            if (res.Author == null)
+            {
+                res.Author = details.Author;
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(res.Author.Name)) res.Author.Name = details.Author.Name;
+            }
+            if (!res.DateSpecified && details.DateSpecified)
+            {
+                res.DateSpecified = true;
+                res.Date = details.Date;
+            }
+
+            return res;
+        }
     }
 
 	

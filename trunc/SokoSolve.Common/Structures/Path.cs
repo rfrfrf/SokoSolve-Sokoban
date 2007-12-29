@@ -25,10 +25,10 @@ namespace SokoSolve.Common.Structures
         /// </summary>
         /// <param name="startLocation"></param>
         /// <param name="moves"></param>
-        public Path(VectorInt startLocation, List<Direction> moves)
+        public Path(VectorInt startLocation, IEnumerable<Direction> moves)
         {
             this.startLocation = startLocation;
-            this.moves = moves;
+            this.moves = new List<Direction>(moves);
         }
 
         /// <summary>

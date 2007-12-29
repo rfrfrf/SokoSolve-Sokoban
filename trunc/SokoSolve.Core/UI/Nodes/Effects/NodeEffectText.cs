@@ -31,6 +31,8 @@ namespace SokoSolve.Core.UI.Nodes.Effects
             brushShaddow = new SolidBrush(Color.FromArgb(80,80,80));
             Path = null;
             IsVisible = true;
+
+            UpdateSize();
         }
 
         /// <summary>
@@ -51,6 +53,8 @@ namespace SokoSolve.Core.UI.Nodes.Effects
             Path = new Linear(CurrentAbsolute, new VectorInt(20, 20), new VectorDouble(1, 1), false);
             text = RandomHelper.Select<string>(Text);
             IsVisible = true;
+
+            UpdateSize();
         }
 
         /// <summary>
@@ -72,6 +76,23 @@ namespace SokoSolve.Core.UI.Nodes.Effects
             IsVisible = true;
         }
 
+        private void UpdateSize()
+        {
+            if (text != null && font != null && GameUI.Graphics != null)
+            {
+                try
+                {
+                    SizeF sizeF = GameUI.Graphics.MeasureString(text, font);
+                    this.Size = new SizeInt((int)sizeF.Width, (int)sizeF.Height);
+                }
+                catch(Exception ex)
+                {
+                    this.Size = new SizeInt(400, 20);
+                    throw new Exception("This can only be called during a render phase, otherwise Graphics is not valid");
+                }
+            }
+        }
+
         /// <summary>
         /// Render the text
         /// </summary>
@@ -79,10 +100,19 @@ namespace SokoSolve.Core.UI.Nodes.Effects
         {
             if (!isVisible) return;
 
+            UpdateSize();
+
             if (CurrentAbsolute != null)
             {
+                if (brushBackGround != null)
+                {
+                    GameUI.Graphics.FillRectangle(brushBackGround, CurrentRect.ToDrawingRect());
+                }
+
                 if (brushShaddow != null)
+                {
                     GameUI.Graphics.DrawString(text, font, brushShaddow, CurrentAbsolute.X + 1, CurrentAbsolute.Y + 1, stringFormat);
+                }
                 GameUI.Graphics.DrawString(text, font, brush, CurrentAbsolute.X, CurrentAbsolute.Y, stringFormat);    
             }
         }
@@ -102,7 +132,7 @@ namespace SokoSolve.Core.UI.Nodes.Effects
         public Brush Brush
         {
             get { return brush; }
-            set { brush = value; }
+            set { brush = value;}
         }
         
         /// <summary>
@@ -112,6 +142,15 @@ namespace SokoSolve.Core.UI.Nodes.Effects
         {
             get { return brushShaddow; }
             set { brushShaddow = value; }
+        }
+
+        /// <summary>
+        /// If not null, draw a background rectangle of this color
+        /// </summary>
+        public Brush BrushBackGround
+        {
+            get { return brushBackGround; }
+            set { brushBackGround = value; }
         }
 
         /// <summary>
@@ -141,6 +180,7 @@ namespace SokoSolve.Core.UI.Nodes.Effects
 
         Brush brush;
         Brush brushShaddow;
+        private Brush brushBackGround;
         string text;
         Font font;
         StringFormat stringFormat = new StringFormat();

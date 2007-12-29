@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
 using SokoSolve.Common.Math;
+using SokoSolve.Common.Structures;
 using SokoSolve.Core.Model;
+using SokoSolve.Core.UI.Nodes;
 
 namespace SokoSolve.Core.Game
 {
@@ -18,18 +20,20 @@ namespace SokoSolve.Core.Game
         /// <param name="aMap"></param>
         public Game(Puzzle aPuzzle, SokobanMap aMap)
         {
-            if (aMap == null) throw new ArgumentNullException("aPuz");
+            if (aMap == null) throw new ArgumentNullException("aPuzzle");
             StringCollection sc = null;
             if (!aMap.isValid(out sc)) throw new Exception(sc[0]);
 
-            Puzzle = aPuzzle;
-            StartPuzzle = aMap;
-            Current = new SokobanMap(StartPuzzle);
-            Moves = new Stack<Move>();
+            puzzle = aPuzzle;
+            startPuzzle = aMap;
+            current = new SokobanMap(StartPuzzle);
+            moves = new Stack<Move>();
             
-            Stats = new Stats();
-            Stats.Start = DateTime.MinValue;
-            Stats.End = DateTime.MinValue;
+            stats = new Stats();
+            stats.Start = DateTime.MinValue;
+            stats.End = DateTime.MinValue;
+
+            bookmarks = new List<Bookmark>();
         }
 
 
@@ -187,11 +191,79 @@ namespace SokoSolve.Core.Game
             Moves = new Stack<Move>();
         }
 
-        public Puzzle Puzzle;
-        public SokobanMap StartPuzzle;
-        public SokobanMap Current;
-        public Stack<Move> Moves;
-        public Stats Stats;
-        public EventHandler OnGameWin;
+        /// <summary>
+        /// Reset to the start position
+        /// </summary>
+        public virtual void Reset(Bookmark bookMark)
+        {
+            Stats.Restarts++;
+            Stats.Moves = 0;
+            Stats.Pushes = 0;
+            Current = bookMark.Current;
+            Moves = new Stack<Move>();
+           
+            // Do not allow undo beyond this point
+        }
+
+        public Puzzle Puzzle
+        {
+            get { return puzzle; }
+            set { puzzle = value; }
+        }
+
+        public SokobanMap StartPuzzle
+        {
+            get { return startPuzzle; }
+            set { startPuzzle = value; }
+        }
+
+        public SokobanMap Current
+        {
+            get { return current; }
+            set { current = value; }
+        }
+
+        public Stack<Move> Moves
+        {
+            get { return moves; }
+            set { moves = value; }
+        }
+
+        public Stats Stats
+        {
+            get { return stats; }
+            set { stats = value; }
+        }
+
+        public void Add(Bookmark newBookmark)
+        {
+            bookmarks.Add(newBookmark);
+        }
+
+        public Bookmark MakeBookmark()
+        {
+            Bookmark bk = new Bookmark();
+            bk.Current = new SokobanMap(current);
+            bk.PlayerMoves = new Path(StartPuzzle.Player);
+            foreach(Move move in moves.ToArray())
+            {
+                bk.PlayerMoves.Add(move.MoveDirection);
+            }
+            return bk;
+        }
+
+
+        public List<Bookmark> Bookmarks
+        {
+            get { return bookmarks; }
+        }
+
+        Puzzle puzzle;
+        SokobanMap startPuzzle;
+        SokobanMap current;
+        Stack<Move> moves;
+        Stats stats;
+        private List<Bookmark> bookmarks;
+        public EventHandler<NotificationEvent> OnGameWin;
     }
 }
