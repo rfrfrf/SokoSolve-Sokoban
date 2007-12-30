@@ -159,6 +159,32 @@ namespace SokoSolve.Core.Game
             return MoveResult.Invalid;
         }
 
+        /// <summary>
+        /// Test a solution to see if it is valid
+        /// </summary>
+        /// <param name="aSolution"></param>
+        public bool Test(Solution aSolution, out string FirstError)
+        {
+            FirstError = null;
+            int cc = 0;
+            foreach (Direction move in aSolution.ToPath().Moves)
+            {
+                MoveResult res = Move(move);
+                if (res == MoveResult.Invalid)
+                {
+                    FirstError = string.Format("Invalid move at step {0}", cc);
+                    return false;
+                }
+                if (res == MoveResult.ValidPushWin) return true;
+
+                cc++;
+            }
+
+            FirstError = string.Format("Moves do not result in a solution. Check {0} moves.", cc);
+
+            return false;
+        }
+
 
         /// <summary>
         /// Undo one move

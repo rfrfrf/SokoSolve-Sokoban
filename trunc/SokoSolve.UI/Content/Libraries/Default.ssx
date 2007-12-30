@@ -38,7 +38,7 @@
     </Category>
   </Categories>
   <Puzzles>
-    <Puzzle Rating="Normal" PuzzleID="P4" CategoryREF="C1">
+    <Puzzle Rating="Normal" PuzzleID="P4" CategoryREF="C1" Order="0">
       <PuzzleDescription License="Creative Commons">
         <Name>Standard</Name>
         <Description>Source from Sasquatch</Description>
@@ -84,7 +84,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle PuzzleID="P7" CategoryREF="C1">
+    <Puzzle PuzzleID="P7" CategoryREF="C1" Order="0">
       <PuzzleDescription License="Creative Commons">
         <Name>Quick Solution</Name>
         <Description>Edit me...</Description>
@@ -110,6 +110,14 @@
               <SolutionDescription Date="2007-12-21T21:24:28.6779075+02:00">
                 <Name>'Quick Solution' Solution</Name>
                 <Comments>Solution found from game player.</Comments>
+              </SolutionDescription>
+            </Solution>
+            <Solution>
+              <Steps>ddldddrrrU</Steps>
+              <SolutionDescription License="Creative Commons" Date="2007-12-30T08:14:13.681344+02:00">
+                <Name>'Quick Solution' Solution</Name>
+                <Comments>Moves 10/10, Pushes 1/1, Undos 0, Restarts 0, Duration 00:00:00.5575815</Comments>
+                <Author Name="Anonymous@Sokoban.net" />
               </SolutionDescription>
             </Solution>
           </Solutions>

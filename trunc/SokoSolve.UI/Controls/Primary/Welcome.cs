@@ -11,6 +11,7 @@ using SokoSolve.Core;
 using SokoSolve.Core.Model;
 using SokoSolve.Core.Model.DataModel;
 using SokoSolve.Core.UI;
+using SokoSolve.UI.Controls.Secondary;
 using SokoSolve.UI.Controls.Web;
 using SokoSolve.UI.Section;
 
@@ -78,6 +79,7 @@ namespace SokoSolve.UI.Controls.Primary
             html = html.Replace("[Details]", leftpane.GetHTMLBody());
             html = html.Replace("[Image]", rightpane.GetHTMLBody());
             html = html.Replace("[BASEHREF]", FileManager.getContent("$html"));
+            html = html.Replace("[USERNAME]", ProfileController.Current.UserName);
             htmlView.SetHTML(html.ToString());
         }
 
@@ -123,6 +125,14 @@ namespace SokoSolve.UI.Controls.Primary
             if (e.Command.ToString().StartsWith("app://puzzle/"))
             {
                 Form.StartGame(Current, Current.MasterMap, FormMain.Modes.Welcome);
+                return;
+            }
+
+            if (e.Command == new Uri("app://Profile"))
+            {
+                FormProfileSettings settings = new FormProfileSettings();
+                settings.ShowDialog();
+                InitHTML();
                 return;
             }
         }

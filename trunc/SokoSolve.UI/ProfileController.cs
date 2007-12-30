@@ -40,6 +40,10 @@ namespace SokoSolve.UI
             else
             {
                 current = new Profile();
+                current.UserName = "Anonymous";
+                current.UserEmail = "anonymous@sokosolve.sourceforge.net";
+                current.UserHomepage = "http://sokosolve.sourceforge.net";
+                current.UserLicense = "Creative Commons";
 
                 string initLib = FileManager.getContent("$Libraries", "Sasquatch.ssx");
                 if (File.Exists(initLib))

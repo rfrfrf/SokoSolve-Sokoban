@@ -33,7 +33,7 @@ namespace SokoSolve.Core.UI.Nodes.Actions
         
 
         /// <summary>
-        /// Fire this delegate (note, not a event) after a Step for binding activities
+        /// Fire this delegate (not a event) after a Step for binding activities
         /// </summary>
         public ActionDelegate OnBind
         {

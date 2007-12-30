@@ -148,10 +148,6 @@ namespace SokoSolve.Core.Model.DataModel {
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public int Order;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool OrderSpecified;
     }
     
     /// <remarks/>
@@ -203,6 +199,14 @@ namespace SokoSolve.Core.Model.DataModel {
         
         /// <remarks/>
         public GenericDescription SolutionDescription;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int StartX;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int StartY;
     }
     
     /// <remarks/>

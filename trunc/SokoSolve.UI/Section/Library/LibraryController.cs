@@ -46,6 +46,10 @@ namespace SokoSolve.UI.Section.Library
             Register(new PuzzleClone(this, new object[] { view.tsbPuzzleClone }));
             Register(new PuzzlePlay(this, new object[] { view.tsbPuzzlePlay, view.mbPuzzlePlay }));
 
+            // Solution Commands
+            Register(new SolutionReplay(this, new object[] { view.tsbSolutionReplay }));
+            Register(new SolutionTest(this, new object[] { view.tsbSolutionTest }));
+
             // Extra Commands
             Register(new HelpAbout(this, new object[] { view.tsbHelpAbout }));
             Register(new HelpHowToPlay(this, new object[] { view.tsbHowToPlay }));

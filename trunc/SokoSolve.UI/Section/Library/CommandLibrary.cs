@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using SokoSolve.Common;
+using SokoSolve.Common.Math;
 using SokoSolve.Core;
 using SokoSolve.Core.IO;
 using SokoSolve.Core.Model;
@@ -81,7 +82,7 @@ namespace SokoSolve.UI.Section.Library
 
             Puzzle newPuz = new Puzzle(lib);
             newPuz.PuzzleID = lib.IdProvider.GetNextIDString("P{0}");
-            newPuz.Category = easy;
+            newPuz.Category = medium;
             newPuz.Details = new GenericDescription(lib.Details);
             newPuz.Details.Name = "Empty";
             newPuz.Details.Description = "Edit me...";
@@ -105,7 +106,7 @@ namespace SokoSolve.UI.Section.Library
 					                        "~#.....##~~",
 					                        "~#######~~~"
                                        });
-            Solution sol = new Solution();
+            Solution sol = new Solution(map, new VectorInt(10,10));
             sol.Details = new GenericDescription();
             sol.Details.Name = "Invalid sample solution";
             sol.Steps = "UUUDUDUDUUUDUDULLLLLRRRRRR";

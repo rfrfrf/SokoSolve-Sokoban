@@ -38,5 +38,15 @@ namespace SokoSolve.Core.Game
                 return new TimeSpan(0);
             }
         }
+
+        public override string ToString()
+        {
+            return string.Format("Moves {0}/{1}, Pushes {2}/{3}, Undos {4}, Restarts {5}, Duration {6}",
+                                 Moves, MovesTotal,
+                                 Pushes, PushesTotal,
+                                 Undos,
+                                 Restarts,
+                                 Duration.ToString());
+        }
     }
 }

@@ -38,16 +38,16 @@ namespace SokoSolve.UI.Controls.Primary
         private void htmlView_OnCommand(object sender, SokoSolve.UI.Controls.Web.UIBrowserEvent e)
         {
             FormMain main = FindForm() as FormMain;
-            if (main != null) return;
+            if (main == null) return;
 
-            if (e.Command.ToString() == "app://Controller/Done")
+            if (e.Command.ToString().ToLower() == "app://controller/done")
             {
                 main.Mode = FormMain.Modes.Library;
                 e.Completed = true;
                 return;
             }
 
-            if (e.Command.ToString() == "app://Controller/Home")
+            if (e.Command.ToString().ToLower() == "app://controller/home")
             {
                 Navigate(firstURL);
                 e.Completed = true;

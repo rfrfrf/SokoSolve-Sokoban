@@ -113,6 +113,7 @@
     <Compile Include="Section\Library\CommandPuzzle.cs" />
     <Compile Include="Section\Library\Commands.cs" />
     <Compile Include="Section\ContextLoggerEntry.cs" />
+    <Compile Include="Section\Library\CommandSolution.cs" />
     <Compile Include="Section\Library\Editor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -259,6 +260,11 @@
     <Content Include="Content\Graphics\Icons\Play.png" />
     <None Include="Content\Graphics\Icons\Print.png" />
     <None Include="Content\html\ReadMe.rtf" />
+    <Content Include="Content\Graphics\Tiles\Clean\WayPointButton1.png" />
+    <Content Include="Content\Graphics\Tiles\Clean\WayPointButton2.png" />
+    <Content Include="Content\Graphics\Tiles\Clean\WayPointButton3.png" />
+    <Content Include="Content\Graphics\Tiles\Clean\WayPointButton4.png" />
+    <Content Include="Content\Graphics\Tiles\Clean\WayPointButton5.png" />
     <Content Include="Content\Libraries\Default.ssx" />
     <Content Include="Content\Libraries\Microban.ssx" />
     <Content Include="Content\Libraries\Sasquatch.ssx" />

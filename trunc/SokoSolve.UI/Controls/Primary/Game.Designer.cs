@@ -43,8 +43,10 @@ namespace SokoSolve.UI.Controls.Primary
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CausesValidation = false;
             this.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.DoubleBuffered = true;
             this.Name = "Game";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Game_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Game_MouseMove);

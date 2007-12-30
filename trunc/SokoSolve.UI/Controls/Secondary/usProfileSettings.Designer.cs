@@ -29,9 +29,13 @@ namespace SokoSolve.UI.Controls.Secondary
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbEmail = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbLicense = new System.Windows.Forms.ComboBox();
+            this.tbHomePage = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -43,13 +47,13 @@ namespace SokoSolve.UI.Controls.Secondary
             this.label1.TabIndex = 0;
             this.label1.Text = "User Name (Author field)";
             // 
-            // textBox1
+            // tbName
             // 
-            this.textBox1.Location = new System.Drawing.Point(7, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(199, 20);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "Anonymouse User";
+            this.tbName.Location = new System.Drawing.Point(7, 21);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(332, 20);
+            this.tbName.TabIndex = 1;
+            this.tbName.Text = "Anonymouse User";
             // 
             // label2
             // 
@@ -60,23 +64,70 @@ namespace SokoSolve.UI.Controls.Secondary
             this.label2.TabIndex = 2;
             this.label2.Text = "Email Address (Author email)";
             // 
-            // textBox2
+            // tbEmail
             // 
-            this.textBox2.Location = new System.Drawing.Point(7, 61);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(199, 20);
-            this.textBox2.TabIndex = 3;
+            this.tbEmail.Location = new System.Drawing.Point(7, 61);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(332, 20);
+            this.tbEmail.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(4, 124);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(207, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "License (eg. GPL, Creative Commons, etc)";
+            // 
+            // cbLicense
+            // 
+            this.cbLicense.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbLicense.FormattingEnabled = true;
+            this.cbLicense.Items.AddRange(new object[] {
+            "GPL",
+            "L-GPL",
+            "BSD",
+            "Creative Commons",
+            "Public Domain",
+            "Acknowledgement Required",
+            "Commercial*"});
+            this.cbLicense.Location = new System.Drawing.Point(7, 140);
+            this.cbLicense.Name = "cbLicense";
+            this.cbLicense.Size = new System.Drawing.Size(332, 21);
+            this.cbLicense.TabIndex = 8;
+            // 
+            // tbHomePage
+            // 
+            this.tbHomePage.Location = new System.Drawing.Point(7, 101);
+            this.tbHomePage.Name = "tbHomePage";
+            this.tbHomePage.Size = new System.Drawing.Size(332, 20);
+            this.tbHomePage.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 85);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Home page";
             // 
             // usProfileSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tbHomePage);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cbLicense);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.tbEmail);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbName);
             this.Controls.Add(this.label1);
             this.Name = "usProfileSettings";
-            this.Size = new System.Drawing.Size(348, 122);
+            this.Size = new System.Drawing.Size(348, 204);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -85,8 +136,12 @@ namespace SokoSolve.UI.Controls.Secondary
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label3;
+        internal System.Windows.Forms.ComboBox cbLicense;
+        internal System.Windows.Forms.TextBox tbName;
+        internal System.Windows.Forms.TextBox tbEmail;
+        internal System.Windows.Forms.TextBox tbHomePage;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -80,14 +80,18 @@ namespace SokoSolve.Core.UI.Nodes
                         }
                         else if (res == Game.Game.MoveResult.ValidPushWin)
                         {
-                            NodeEffectText msg = new NodeEffectText(GameUI, 20, "Puzzle Complete!", CurrentCentre);
-                            msg.Path = new Paths.Spiral(CurrentCentre);
-                            GameUI.Add(msg);
-
-                            NodePuzzleWin win = new NodePuzzleWin(GameUI, 5000, GameUI.GameCoords.PuzzleRegion.Center);
-                            GameUI.Add(win);
-
                             
+                            if (GameUI.InitType == UI.GameUI.InitTypes.SolutionReplay)
+                            {
+                                NodeEffectText msg = new NodeEffectText(GameUI, 20, "Complete. ESC to exit.", CurrentCentre);
+                                msg.Path = new Paths.StaticPath(CurrentCentre);
+                                GameUI.Add(msg);
+                            }
+                            else
+                            {
+                                NodePuzzleWin win = new NodePuzzleWin(GameUI, 5000, GameUI.GameCoords.PuzzleRegion.Center);
+                                GameUI.Add(win);    
+                            }
                         }
                     }
                     

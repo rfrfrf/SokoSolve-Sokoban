@@ -43,8 +43,6 @@ namespace SokoSolve.UI.Controls.Primary
             // to the screen (the previous two styles are required for this to work)
             this.SetStyle(ControlStyles.DoubleBuffer, true);
 
-		    
-
             // Set coord size
 		    Game_Resize(null, null);
 		}
@@ -60,8 +58,6 @@ namespace SokoSolve.UI.Controls.Primary
         private void buttonDone_Click(object sender, EventArgs e)
         {
             gameUI.Active = false;
-
-            Cursor.Show();
 
             timerAnimation.Enabled = false;
             gameUI = null;
@@ -92,15 +88,37 @@ namespace SokoSolve.UI.Controls.Primary
             try
             {
                 puzzleMap = map;
-                gameUI = new GameUI(puzzle, map.Map, new WindowsSoundSubSystem());
+                gameUI = new GameUI(puzzle, map, new WindowsSoundSubSystem());
                 gameUI.OnExit += new EventHandler(gameUI_OnExit);
                 gameUI.OnGameWin += new EventHandler<NotificationEvent>(gameUI_OnGameWin);
                 Game_Resize(null, null);
                 timerAnimation.Enabled = true;
 
-                Cursor.Hide();
-
                 gameUI.Start();
+            }
+            catch (Exception ex)
+            {
+                HandleGameException("During Game Startup", ex);
+            }
+        }
+
+        /// <summary>
+        /// Start the game
+        /// </summary>
+        /// <param name="puzzle"></param>
+        /// <param name="map"></param>
+        public void StartGameSolution(Puzzle puzzle, PuzzleMap map, Solution solution)
+        {
+            try
+            {
+                puzzleMap = map;
+                gameUI = new GameUI(puzzle, map, solution);
+                gameUI.OnExit += new EventHandler(gameUI_OnExit);
+                gameUI.OnGameWin += new EventHandler<NotificationEvent>(gameUI_OnGameWin);
+                Game_Resize(null, null);
+                timerAnimation.Enabled = true;
+
+                gameUI.StartSolution();
             }
             catch (Exception ex)
             {
@@ -120,8 +138,7 @@ namespace SokoSolve.UI.Controls.Primary
             try
             {
                 if (gameUI != null)
-                {
-                    
+                {   
                     gameUI.StartRender(e.Graphics);
                     gameUI.PerformStep();
                     gameUI.Render();
@@ -177,13 +194,18 @@ namespace SokoSolve.UI.Controls.Primary
         private void PuzzleCompletedSave()
         {
             // Save
-            Solution sol = new Solution();
+            Solution sol = new Solution(gameUI.PuzzleMap,  gameUI.StartPuzzle.Player);
             sol.FromGame(gameUI.Moves);
             sol.Details = new GenericDescription();
             sol.Details.Name = string.Format("'{0}' Solution", gameUI.Puzzle.Details.Name);
             sol.Details.Date = DateTime.Now;
             sol.Details.DateSpecified = true;
-            sol.Details.Comments = "Solution found from game player.";
+            sol.Details.Comments = gameUI.Stats.ToString();
+            sol.Details.Author= new GenericDescriptionAuthor();
+            sol.Details.Author.Name = ProfileController.Current.UserName;
+            sol.Details.Author.Email = ProfileController.Current.UserEmail;
+            sol.Details.Author.Homepage = ProfileController.Current.UserHomepage;
+            sol.Details.License = ProfileController.Current.UserLicense;
             gameUI.Puzzle.MasterMap.Solutions.Add(sol);   
 
             // TODO: Save Way points

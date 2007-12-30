@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using SokoSolve.Common;
 using SokoSolve.Common.Math;
 using SokoSolve.Core.Game;
 using SokoSolve.Core.Model;
@@ -27,11 +28,17 @@ namespace SokoSolve.Core.UI
     public class GameUI : SokoSolve.Core.Game.Game
     {
         /// <summary>
-        /// Strong Construction. <see cref="Init"/>, then <see cref="InitFX"/>, then <see cref="StartRender"/>
+        /// Strong Construction. Start a 'Normal' game
+        /// <see cref="Init"/>, then <see cref="InitFX"/>, then <see cref="StartRender"/>
         /// </summary>
-        /// <param name="Map">Puzzle to play</param>
-        public GameUI(Puzzle aPuzzle, SokobanMap Map, ISoundSubSystem sfx) : base(aPuzzle, Map)
+        /// <param name="aMap">Puzzle to play</param>
+        public GameUI(Puzzle aPuzzle, PuzzleMap aMap, ISoundSubSystem sfx) : base(aPuzzle, aMap.Map)
         {
+            solution = null;
+            puzzleMap = aMap;
+
+            initType = InitTypes.NewGame;
+
             GameCoords = new GameCoords(this);
             StepCurrent = 0;
 
@@ -54,14 +61,61 @@ namespace SokoSolve.Core.UI
             Add((Bookmark)null);
             Add((Bookmark)null);
             Add((Bookmark)null);
-            
         }
 
+        /// <summary>
+        /// Strong Construction. Replay a solution
+        /// </summary>
+        /// <param name="aPuzzle"></param>
+        /// <param name="aMap"></param>
+        /// <param name="aSolution"></param>
+        public GameUI(Puzzle aPuzzle, PuzzleMap aMap, Solution aSolution) : base(aPuzzle, aMap.Map)
+        {
+            solution = aSolution;
+            puzzleMap = aMap;
+
+            initType = InitTypes.SolutionReplay;
+
+            GameCoords = new GameCoords(this);
+            StepCurrent = 0;
+
+            ResourceManager = ResourceFactory.Singleton.GetInstance("Default.GameTiles");
+            GameCoords.GlobalTileSize = new SizeInt(32, 32);
+
+            nodes = new List<NodeBase>();
+            nodesToRemove = new List<NodeBase>();
+            nodesToAdd = new List<NodeBase>();
+        }
+
+        /// <summary>
+        /// Start the game
+        /// </summary>
         public void Start()
         {
-            initType = InitType.NewGame;
+            initType = InitTypes.NewGame;
             Init();
             Active = true;
+        }
+
+        /// <summary>
+        /// Start the game
+        /// </summary>
+        public void StartSolution()
+        {
+            initType = InitTypes.SolutionReplay;
+            Init();
+            Active = true;
+
+            foreach (Direction dir in solution.ToPath().Moves)
+            {
+                Player.doMove(dir);
+            }
+        }
+
+
+        public PuzzleMap PuzzleMap
+        {
+            get { return puzzleMap; }
         }
 
         /// <summary>
@@ -73,6 +127,9 @@ namespace SokoSolve.Core.UI
             Graphics = aGraphics;
         }
 
+        /// <summary>
+        /// Shut down  the display or drawing system
+        /// </summary>
         public void EndRender()
         {
             Graphics = null;
@@ -161,9 +218,21 @@ namespace SokoSolve.Core.UI
 
             // Initialise additional non-game element
             InitFX();
+            
         }
 
-        public enum InitType
+        /// <summary>
+        /// Currently init game type
+        /// </summary>
+        public InitTypes InitType
+        {
+            get { return initType; }
+        }
+
+        /// <summary>
+        /// Ways in which the game can be initialised
+        /// </summary>
+        public enum InitTypes
         {
             NewGame,
             Restart,
@@ -176,10 +245,22 @@ namespace SokoSolve.Core.UI
         /// </summary>
         private void InitFX()
         {
+
+#if DEBUG
+            NodeDebug debug = new NodeDebug(this, int.MaxValue);
+            Add(debug);
+#endif
+
+            if (initType == InitTypes.SolutionReplay)
+            {
+                // Exit
+                return;
+            }
+
             cursor = new NodeCursor(this, int.MaxValue);
             Add(cursor);
 
-            if (initType == InitType.NewGame)
+            if (initType == InitTypes.NewGame)
             {
                 NodeEffectText start = new NodeEffectText(this, 10, "Welcome to SokoSolve, START!", Player.CurrentAbsolute);
                 start.Brush = new SolidBrush(Color.FromArgb(80, Color.White));
@@ -192,7 +273,7 @@ namespace SokoSolve.Core.UI
                 sound.PlayMusic(sound.GetHandle("Camokaze-Low.mp3"));
 
             }
-            else if (initType == InitType.Restart)
+            else if (initType == InitTypes.Restart)
             {
                 NodeEffectText start = new NodeEffectText(this, 10, "Starting again, eh?", Player.CurrentAbsolute);
                 start.Brush = new SolidBrush(Color.FromArgb(180, Color.Gold));
@@ -202,7 +283,7 @@ namespace SokoSolve.Core.UI
 
                 sound.PlaySound(sfxRestart);
             }
-            else if (initType == InitType.Undo)
+            else if (initType == InitTypes.Undo)
             {
                 NodeEffectText start = new NodeEffectText(this, 10, new string[] { "Hmmm", "Grrr", "Pity", "???"}, GameCoords.WindowRegion.Center);
                 start.Brush = new SolidBrush(Color.Cyan);
@@ -215,19 +296,15 @@ namespace SokoSolve.Core.UI
             NodeControllerStatus status = new NodeControllerStatus(this, 500);
             Add(status);
 
-            NodeControllerCommands commands = new NodeControllerCommands(this, 500);
+            NodeControllerCommands commands = new NodeControllerCommands(this, 501);
             Add(commands);
 
             NodeTitle title = new NodeTitle(this, 1000);
             Add(title);
 
-            NodeControllerBookmarks waypoint = new NodeControllerBookmarks(this, 500);
+            NodeControllerBookmarks waypoint = new NodeControllerBookmarks(this, 502);
             Add(waypoint);
 
-#if DEBUG
-            NodeDebug debug = new NodeDebug(this, int.MaxValue);
-            Add(debug);
-#endif
         }
 
         /// <summary>
@@ -265,7 +342,7 @@ namespace SokoSolve.Core.UI
         /// </summary>
         public override void Undo()
         {
-            initType = InitType.Undo;
+            initType = InitTypes.Undo;
             base.Undo();
             Init();
             
@@ -276,7 +353,7 @@ namespace SokoSolve.Core.UI
         /// </summary>
         public override void Reset()
         {
-            initType = InitType.Restart;
+            initType = InitTypes.Restart;
             base.Reset();
             Init();
         }
@@ -286,7 +363,7 @@ namespace SokoSolve.Core.UI
         /// </summary>
         public override void Reset(Bookmark bookMark)
         {
-            initType = InitType.Restart;
+            initType = InitTypes.Restart;
             base.Reset(bookMark);
             Init();
         }
@@ -401,12 +478,9 @@ namespace SokoSolve.Core.UI
             }
             catch(Exception ex)
             {
-                // Log me?
-                Debug.WriteLine(ex.Message);
-
                 // So that the render cycle does not get completely killed.
-                Graphics.DrawString(ex.Message, new Font("Arial", 10f), new SolidBrush(Color.Red), 2, 2);
-                
+                string txt = StringHelper.Report(ex);
+                Graphics.DrawString(txt, new Font("Arial", 10f), new SolidBrush(Color.Red), 2, 2);   
             }
         }
 
@@ -437,6 +511,7 @@ namespace SokoSolve.Core.UI
         /// </remarks>
         public bool SetCursor(int X, int Y, int ClickCount, MouseButtons Button, MouseClicks ClickType)
         {
+            if (cursor == null) return false;
             return cursor.SetCursor(X, Y, ClickCount, Button, ClickType);
         }
 
@@ -513,7 +588,10 @@ namespace SokoSolve.Core.UI
         private ISoundHandle sfxRestart;
         private ISoundHandle sfxWelcome;
 
-        private InitType initType;
+        private Solution solution;
+        private PuzzleMap puzzleMap;
+
+        private InitTypes initType;
 
         
     }

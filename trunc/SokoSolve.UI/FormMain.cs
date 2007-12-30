@@ -83,6 +83,18 @@ namespace SokoSolve.UI
             }
         }
 
+        public void StartGameSolution(Puzzle puzzle, PuzzleMap map, Solution solution, Modes returnMode)
+        {
+            Mode = Modes.Game;
+            if (gameControl != null)
+            {
+                gameControl.ReturnMode = returnMode;
+
+                ProfileController.Current.LibraryLastPuzzle = puzzle.PuzzleID;
+                gameControl.StartGameSolution(puzzle, map, solution);
+            }
+        }
+
         public void InitLibrary(SokoSolve.Core.Model.Library Current)
         {
             ProfileController.Current.LibraryLastPuzzle = Current.FileName;

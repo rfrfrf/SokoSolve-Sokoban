@@ -43,6 +43,30 @@ namespace SokoSolve.Core.Model
             set { simpleParams["LibraryLastPuzzle"] = value; }
         }
 
+        public string UserName
+        {
+            get { return GetGeneralParam("UserName"); }
+            set { simpleParams["UserName"] = value; }
+        }
+
+        public string UserEmail
+        {
+            get { return GetGeneralParam("UserEmail"); }
+            set { simpleParams["UserEmail"] = value; }
+        }
+
+        public string UserHomepage
+        {
+            get { return GetGeneralParam("UserHomepage"); }
+            set { simpleParams["UserHomepage"] = value; }
+        }
+
+        public string UserLicense
+        {
+            get { return GetGeneralParam("UserLicense"); }
+            set { simpleParams["UserLicense"] = value; }
+        }
+
         public void Register(SokoSolveProfileLibrary newLib)
         {
             currentXML.LibraryRepository = ListHelper.AddToArray<SokoSolveProfileLibrary>(currentXML.LibraryRepository, newLib);

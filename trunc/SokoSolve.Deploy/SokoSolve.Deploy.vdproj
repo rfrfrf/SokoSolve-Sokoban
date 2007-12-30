@@ -15,6 +15,18 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_029F082258F972239A9D009C0A20F68A"
+        "OwnerKey" = "8:_A1998136E81740C8A9DC917C61AB41D8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_42237E3BD1B602F757AB87F88121ED8A"
+        "OwnerKey" = "8:_029F082258F972239A9D009C0A20F68A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_660EFE022E140D8F7B4FCF145DB45A39"
         "OwnerKey" = "8:_A1998136E81740C8A9DC917C61AB41D8"
         "MsmSig" = "8:_UNDEFINED"
@@ -65,6 +77,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_660EFE022E140D8F7B4FCF145DB45A39"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_029F082258F972239A9D009C0A20F68A"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -157,11 +175,62 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_029F082258F972239A9D009C0A20F68A"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Interop.MediaPlayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_029F082258F972239A9D009C0A20F68A"
+                    {
+                    "Name" = "8:Interop.MediaPlayer.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Interop.MediaPlayer.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_AA1BE3CA7D6841B3B88009CD5A7D4BF7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_42237E3BD1B602F757AB87F88121ED8A"
+            {
+            "SourcePath" = "8:msdxm.tlb"
+            "TargetName" = "8:msdxm.tlb"
+            "Tag" = "8:"
+            "Folder" = "8:_AA1BE3CA7D6841B3B88009CD5A7D4BF7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:2"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_660EFE022E140D8F7B4FCF145DB45A39"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SokoSolve.Common, Version=1.2.0.39416, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:SokoSolve.Common, Version=1.2.0.22769, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_660EFE022E140D8F7B4FCF145DB45A39"
@@ -232,7 +301,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SokoSolve.Core, Version=1.2.0.39416, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:SokoSolve.Core, Version=1.2.0.22769, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_E54DA4E38055676570958B110D6F7267"

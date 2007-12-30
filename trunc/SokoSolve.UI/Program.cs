@@ -50,5 +50,10 @@ Please make sure you have the latest version, you can do this by clicking Help -
 			error.Exception = e.Exception;
 			error.ShowDialog();
 		}
+
+        public static string GetVersionString()
+        {
+            return "1.2.18-alpha";
+        }
 	}
 }

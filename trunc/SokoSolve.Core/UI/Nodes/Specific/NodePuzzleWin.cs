@@ -14,11 +14,9 @@ namespace SokoSolve.Core.UI.Nodes.Specific
         {
             CurrentAbsolute = pos;
             chain = new ActionChain();
-            chain.Add(new ActionCounter(0, 100, 1, ReSizeText));
+            chain.Add(new ActionCounter(0, 100, 2, ReSizeText));
 
             chain.Init();
-
-
 
             winner = new NodeEffectText(myGameUI, myDepth+1, "Congratz!!!", new Font("Arial", 10f), font, fontBK, pos);
             myGameUI.Add(winner);
