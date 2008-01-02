@@ -31,8 +31,6 @@ namespace SokoSolve.Common.Structures.Evaluation.Visualisation
 
             graphics.DrawRectangle(new Pen(Color.Black), windowRect.ToDrawingRect() );
 
-       
-
             foreach (List<TreeNode<T>> segment in segments.Segments)
             {
                 foreach (TreeNode<T> node in segment)
@@ -44,12 +42,23 @@ namespace SokoSolve.Common.Structures.Evaluation.Visualisation
             }
         }
 
+        /// <summary>
+        /// Get the drawing position for a node
+        /// </summary>
+        /// <param name="segment"></param>
+        /// <param name="node"></param>
+        /// <returns></returns>
         public VectorInt GetPixelFromLogical(List<TreeNode<T>> segment, TreeNode<T> node)
         {
             return new VectorInt( segment.IndexOf(node)*nodeSize.X + windowRect.TopLeft.X,
                                             segments.Segments.IndexOf(segment) * nodeSize.Y + windowRect.TopLeft.Y);
         }
 
+        /// <summary>
+        /// From a pixel position find the node
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns></returns>
         public TreeNode<T> GetNodeFromPixel(VectorInt position)
         {
             VectorInt rel = position.Subtract(windowRect.TopLeft);
@@ -103,7 +112,9 @@ namespace SokoSolve.Common.Structures.Evaluation.Visualisation
             return new Pen(Color.WhiteSmoke);
         }
 
-
+        /// <summary>
+        /// Initialise
+        /// </summary>
         private void Init()
         {
             segments = new SegmentTree<T>(tree, maxDepth, maxWidth);
@@ -114,7 +125,6 @@ namespace SokoSolve.Common.Structures.Evaluation.Visualisation
         {
             return GetNodeFromPixel(new VectorInt(x, y));
         }
-
 
         public RectangleInt WindowRect
         {
@@ -197,9 +207,7 @@ namespace SokoSolve.Common.Structures.Evaluation.Visualisation
             private int maxMembers;
             private int membersDiscarded;
             private int nodesProgressed;
-
         }
-
 
         private RectangleInt windowRect = new  RectangleInt(new VectorInt(0,0), new SizeInt(640, 480));
         private SizeInt nodeSize = new SizeInt(4, 4);   // with padding
@@ -209,7 +217,5 @@ namespace SokoSolve.Common.Structures.Evaluation.Visualisation
         private SegmentTree<T> segments;
         private int maxDepth = 50;
         private int maxWidth = 300;
-
-        
     }
 }

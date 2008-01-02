@@ -43,6 +43,7 @@
     <Compile Include="Analysis\MoveAnalysis.cs" />
     <Compile Include="Analysis\Solver\CodeTimer.cs" />
     <Compile Include="Analysis\Solver\CodeTimerStatistic.cs" />
+    <Compile Include="Analysis\Solver\SolverItterator.cs" />
     <Compile Include="Analysis\Solver\SolverLabel.cs" />
     <Compile Include="Analysis\Solver\SolverLabelList.cs" />
     <Compile Include="Analysis\Solver\SolverNodeEventArgs.cs" />

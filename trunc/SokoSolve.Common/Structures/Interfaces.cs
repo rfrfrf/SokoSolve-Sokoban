@@ -221,8 +221,8 @@ namespace SokoSolve.Common.Structures
         /// <summary>
         /// Add another node to evaluate
         /// </summary>
-        /// <param name="EvalNode"></param>
-        void Add(INode<T> EvalNode);
+        /// <param name="NewEvalNode"></param>
+        void Add(INode<T> NewEvalNode);
 
         /// <summary>
         /// Remove a node (it has been evaluated)

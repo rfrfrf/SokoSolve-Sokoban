@@ -68,6 +68,15 @@ namespace SokoSolve.Core.Analysis.Solver
         }
 
         /// <summary>
+        /// Helper for threading (allow the solver to be stopped)
+        /// </summary>
+        public bool IsEnabled
+        {
+            get { return isEnabled; }
+            set { isEnabled = value; }
+        }
+
+        /// <summary>
         /// Attempt to find a solution
         /// </summary>
         public EvalStatus Solve()
@@ -96,6 +105,7 @@ namespace SokoSolve.Core.Analysis.Solver
         private SolverStrategy strategy;
         private SolverStats stats;
         private Evaluator<SolverNode> evaluator;
+        private bool isEnabled;
 
         
     }

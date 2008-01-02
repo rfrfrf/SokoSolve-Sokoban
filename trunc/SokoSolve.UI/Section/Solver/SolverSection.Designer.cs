@@ -54,8 +54,9 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageNodeDetails = new System.Windows.Forms.TabPage();
             this.bitmapViewerNodeMaps = new SokoSolve.UI.Section.Solver.BitmapViewer();
             this.labelNodeDetails = new System.Windows.Forms.Label();
-            this.tabPageNodeUnused = new System.Windows.Forms.TabPage();
+            this.tabPageNodePuzzle = new System.Windows.Forms.TabPage();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.pictureBoxNodePuzzle = new System.Windows.Forms.PictureBox();
             this.toolStripMain.SuspendLayout();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
@@ -74,6 +75,8 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageStats.SuspendLayout();
             this.tabControlNode.SuspendLayout();
             this.tabPageNodeDetails.SuspendLayout();
+            this.tabPageNodePuzzle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNodePuzzle)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStripMain
@@ -312,7 +315,7 @@ namespace SokoSolve.UI.Section.Solver
             // tabControlNode
             // 
             this.tabControlNode.Controls.Add(this.tabPageNodeDetails);
-            this.tabControlNode.Controls.Add(this.tabPageNodeUnused);
+            this.tabControlNode.Controls.Add(this.tabPageNodePuzzle);
             this.tabControlNode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlNode.Location = new System.Drawing.Point(0, 0);
             this.tabControlNode.Name = "tabControlNode";
@@ -329,7 +332,7 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageNodeDetails.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageNodeDetails.Size = new System.Drawing.Size(263, 160);
             this.tabPageNodeDetails.TabIndex = 0;
-            this.tabPageNodeDetails.Text = "Node";
+            this.tabPageNodeDetails.Text = "Current Node Maps";
             this.tabPageNodeDetails.UseVisualStyleBackColor = true;
             // 
             // bitmapViewerNodeMaps
@@ -350,20 +353,30 @@ namespace SokoSolve.UI.Section.Solver
             this.labelNodeDetails.Size = new System.Drawing.Size(120, 154);
             this.labelNodeDetails.TabIndex = 1;
             // 
-            // tabPageNodeUnused
+            // tabPageNodePuzzle
             // 
-            this.tabPageNodeUnused.Location = new System.Drawing.Point(4, 22);
-            this.tabPageNodeUnused.Name = "tabPageNodeUnused";
-            this.tabPageNodeUnused.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageNodeUnused.Size = new System.Drawing.Size(263, 160);
-            this.tabPageNodeUnused.TabIndex = 1;
-            this.tabPageNodeUnused.Text = "Not used";
-            this.tabPageNodeUnused.UseVisualStyleBackColor = true;
+            this.tabPageNodePuzzle.Controls.Add(this.pictureBoxNodePuzzle);
+            this.tabPageNodePuzzle.Location = new System.Drawing.Point(4, 22);
+            this.tabPageNodePuzzle.Name = "tabPageNodePuzzle";
+            this.tabPageNodePuzzle.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageNodePuzzle.Size = new System.Drawing.Size(263, 160);
+            this.tabPageNodePuzzle.TabIndex = 1;
+            this.tabPageNodePuzzle.Text = "Current Puzzle";
+            this.tabPageNodePuzzle.UseVisualStyleBackColor = true;
             // 
             // timer
             // 
             this.timer.Interval = 3000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // pictureBoxNodePuzzle
+            // 
+            this.pictureBoxNodePuzzle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxNodePuzzle.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxNodePuzzle.Name = "pictureBoxNodePuzzle";
+            this.pictureBoxNodePuzzle.Size = new System.Drawing.Size(257, 154);
+            this.pictureBoxNodePuzzle.TabIndex = 0;
+            this.pictureBoxNodePuzzle.TabStop = false;
             // 
             // SolverSection
             // 
@@ -393,6 +406,8 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageStats.PerformLayout();
             this.tabControlNode.ResumeLayout(false);
             this.tabPageNodeDetails.ResumeLayout(false);
+            this.tabPageNodePuzzle.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNodePuzzle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -418,7 +433,7 @@ namespace SokoSolve.UI.Section.Solver
         private System.Windows.Forms.TabPage tabPageStats;
         private System.Windows.Forms.TabControl tabControlNode;
         private System.Windows.Forms.TabPage tabPageNodeDetails;
-        private System.Windows.Forms.TabPage tabPageNodeUnused;
+        private System.Windows.Forms.TabPage tabPageNodePuzzle;
         private System.Windows.Forms.Label labelNodeDetails;
         private BitmapViewer bitmapViewerNodeMaps;
         private System.Windows.Forms.Timer timer;
@@ -427,5 +442,6 @@ namespace SokoSolve.UI.Section.Solver
         private System.Windows.Forms.TabPage tabPageStaticImage;
         private System.Windows.Forms.PictureBox pictureBoxStaticImage;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.PictureBox pictureBoxNodePuzzle;
     }
 }

@@ -47,6 +47,7 @@ namespace SokoSolve.UI.Section.Solver
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.Controls.Add(this.labelStatus);
             this.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.DoubleBuffered = true;
             this.Name = "TreeViewer";
             this.Size = new System.Drawing.Size(640, 480);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TreeViewer_MouseDown);

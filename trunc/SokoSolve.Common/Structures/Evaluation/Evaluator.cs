@@ -25,7 +25,7 @@ namespace SokoSolve.Common.Structures.Evaluation
         /// </summary>
         /// <param name="evalStrategy"></param>
         /// <returns></returns>
-		public EvalStatus Evaluate(IEvaluationStrategy<T> evalStrategy)
+		public virtual EvalStatus Evaluate(IEvaluationStrategy<T> evalStrategy)
 		{
             // Initialise
             strategy = evalStrategy;

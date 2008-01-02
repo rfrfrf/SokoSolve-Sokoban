@@ -44,7 +44,7 @@ namespace SokoSolve.Core.Analysis.DeadMap
         /// <param name="crateMap">map be null</param>
         /// <param name="goalMap"></param>
         /// <param name="wallMap"></param>
-        public DeadMapState(Bitmap crateMap, Bitmap goalMap, Bitmap wallMap) : base("Dead Map", wallMap)
+        public DeadMapState(Bitmap crateMap, Bitmap goalMap, Bitmap wallMap) : base("Dead Map", wallMap.Size)
         {
             this.crateMap = crateMap;
             this.goalMap = goalMap;

@@ -7,7 +7,9 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using SokoSolve.Common;
+using SokoSolve.Common.Math;
 using SokoSolve.Common.Structures;
+using SokoSolve.Core;
 using SokoSolve.Core.Analysis.Solver;
 using SokoSolve.Core.Model;
 using SokoSolve.Core.UI;
@@ -19,8 +21,6 @@ namespace SokoSolve.UI.Section.Solver
     /// </summary>
     public partial class SolverSection : UserControl
     {
-      
-
         /// <summary>
         /// Default Constructor
         /// </summary>
@@ -28,10 +28,9 @@ namespace SokoSolve.UI.Section.Solver
         {
             InitializeComponent();
 
-            OnComplete = SolverCompelte;
+            OnComplete = SolverComplete;
             solverEvalStatus = EvalStatus.NotStarted;
         }
-
 
         /// <summary>
         /// The current map for solving
@@ -46,6 +45,11 @@ namespace SokoSolve.UI.Section.Solver
                 complete = false;
                 solver = null;
                 solverEvalStatus = EvalStatus.NotStarted;
+
+                  // This only happend once
+                bitmapViewerStatic.MapSize = map.Map.Size;
+                bitmapViewerNodeMaps.MapSize = map.Map.Size;
+            
 
                 if (map != null)
                 {
@@ -69,9 +73,9 @@ namespace SokoSolve.UI.Section.Solver
         {
             get
             {
-                if (complete) return "Complete -" + solverEvalStatus.ToString();
-                if (SolverActive) return "Working -" + solverEvalStatus.ToString();
-                return "Inactive -" + solverEvalStatus.ToString();
+                if (complete) return "Complete " + solverEvalStatus.ToString();
+                if (SolverActive) return "Working " + solverEvalStatus.ToString();
+                return "Inactive " + solverEvalStatus.ToString();
             }
         }
 
@@ -96,12 +100,12 @@ namespace SokoSolve.UI.Section.Solver
             Invoke(OnComplete);
         }
 
-        private Exception lastException;
+        
 
         /// <summary>
         /// Invoked (but back on the UI thread) on completeion of the solver
         /// </summary>
-        private void SolverCompelte()
+        private void SolverComplete()
         {
             try
             {
@@ -138,22 +142,31 @@ namespace SokoSolve.UI.Section.Solver
 
             tslStatus.Text = string.Format("{1} - {0}", Status, map.Puzzle.Details.Name);
 
-           // if (SolverActive || complete)
+            if (SolverActive || complete)
             {
                 if (solver != null && solver.Strategy != null && solver.Strategy.StaticAnalysis != null)
                 {
-                    if (!bitmapViewerStatic.HasBitmaps)
+
+                    if (!bitmapViewerStatic.HasLayers)
                     {
-                        bitmapViewerStatic.Add(solver.Strategy.StaticAnalysis.WallMap, new SolidBrush(Color.Gray));
-                        bitmapViewerStatic.Add(solver.Strategy.StaticAnalysis.FloorMap, new SolidBrush(Color.Green));
-                        bitmapViewerStatic.Add(solver.Strategy.StaticAnalysis.InitialCrateMap, new SolidBrush(Color.Blue));
-                        bitmapViewerStatic.Add(solver.Strategy.StaticAnalysis.DeadMap, new SolidBrush(Color.Brown));
-                        bitmapViewerStatic.Add(solver.Strategy.StaticAnalysis.BoundryMap, new SolidBrush(Color.LightGray));
-                        bitmapViewerStatic.Add(solver.Strategy.StaticAnalysis.GoalMap, new SolidBrush(Color.Yellow));
-                        bitmapViewerStatic.Add(solver.Strategy.StaticAnalysis.CornerMap, new SolidBrush(Color.Pink));
-                        bitmapViewerStatic.Add(solver.Strategy.StaticAnalysis.RecessMap, new SolidBrush(Color.Cyan));
-                        bitmapViewerStatic.Refresh();
+                        BitmapViewer.Layer mapLayer = new BitmapViewer.Layer();
+                        mapLayer.Order = 0;
+                        mapLayer.IsVisible = true;
+                        mapLayer.Map = solver.Map;
+                        mapLayer.Name = "Puzzle";
+                        bitmapViewerStatic.SetLayer(mapLayer);
+
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.WallMap, new SolidBrush(Color.FromArgb(120, Color.Gray)));
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.FloorMap, new SolidBrush(Color.FromArgb(120,Color.Green)));
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.InitialCrateMap, new SolidBrush(Color.FromArgb(120,Color.Blue)));
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.DeadMap, new SolidBrush(Color.FromArgb(120,Color.Brown)));
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.BoundryMap, new SolidBrush(Color.FromArgb(120,Color.LightGray)));
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.GoalMap, new SolidBrush(Color.FromArgb(120,Color.Yellow)));
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.CornerMap, new SolidBrush(Color.FromArgb(120,Color.Pink)));
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.RecessMap, new SolidBrush(Color.FromArgb(120,Color.Cyan)));
+                        bitmapViewerStatic.Render();
                     }
+                    
 
                     if (solver.Strategy.EvaluationTree != null)
                     {
@@ -200,6 +213,9 @@ namespace SokoSolve.UI.Section.Solver
         /// <param name="e"></param>
         private void tsbStart_Click(object sender, EventArgs e)
         {
+            bitmapViewerStatic.Clear();
+            bitmapViewerNodeMaps.Clear();
+
             if (!SolverActive)
             {
                 worker = new Thread(new ThreadStart(Solve));
@@ -251,36 +267,63 @@ namespace SokoSolve.UI.Section.Solver
         {
             if (e.Node == null) return;
 
-            bitmapViewerNodeMaps.Clear();
-            if (e.Node.Data.CrateMap != null)
+            SokobanMap build = BuildCurrentMap(e.Node.Data);
+            if (build != null)
             {
-                SolverBitmap crate = new SolverBitmap("Crate Map", e.Node.Data.CrateMap);
-                bitmapViewerNodeMaps.Add(crate, new SolidBrush(Color.Blue));
+                BitmapViewer.Layer puzzleLayer = new BitmapViewer.Layer();
+                puzzleLayer.Name = "Puzzle";
+                puzzleLayer.Map = build;
+                puzzleLayer.Order = 0;
+                puzzleLayer.IsVisible = true;
+                bitmapViewerNodeMaps.SetLayer(puzzleLayer);
             }
+            
 
             if (e.Node.Data.MoveMap != null)
             {
                 SolverBitmap move = new SolverBitmap("MoveMap", e.Node.Data.MoveMap);
-                bitmapViewerNodeMaps.Add(move, new SolidBrush(Color.Green));
+                bitmapViewerNodeMaps.SetLayer(move, new SolidBrush(Color.FromArgb(120, Color.Green)));
             }
 
             if (e.Node.Data.DeadMap != null)
             {
-                bitmapViewerNodeMaps.Add(e.Node.Data.DeadMap, new SolidBrush(Color.Black));
+                bitmapViewerNodeMaps.SetLayer(e.Node.Data.DeadMap, new SolidBrush(Color.FromArgb(120, Color.Black)));
             }
 
-            bitmapViewerNodeMaps.Add(solver.Strategy.StaticAnalysis.DeadMap, new SolidBrush(Color.DarkGray)); 
-
-
-            SolverBitmap player = new SolverBitmap("Player", new SokoSolve.Common.Structures.Bitmap(e.Node.Data.CrateMap.Size));
-            player[e.Node.Data.PlayerPosition] = true;
-            bitmapViewerNodeMaps.Add(player, new SolidBrush(Color.White));
 
             // Build details
             SolverLabelList txt = e.Node.Data.GetDisplayData();
             labelNodeDetails.Text = txt.ToString();
 
-            bitmapViewerNodeMaps.Refresh();
+            bitmapViewerNodeMaps.Render();
+        }
+
+        private SokobanMap BuildCurrentMap(SolverNode node)
+        {
+            SokobanMap result = new SokobanMap();
+            result.Init(node.CrateMap.Size);
+
+            for (int cx = 0; cx < result.Size.Width; cx++)
+                for (int cy = 0; cy < result.Size.Height; cy++)
+                {
+                    if (solver.Strategy.StaticAnalysis.WallMap[cx, cy]) result[cx, cy] = CellStates.Wall;
+                    if (solver.Strategy.StaticAnalysis.FloorMap[cx, cy]) result[cx, cy] = CellStates.Floor;
+                    if (solver.Strategy.StaticAnalysis.GoalMap[cx, cy]) result.setState(new VectorInt(cx, cy), Cell.Goal);
+                    if (node.CrateMap[cx, cy]) result.setState(new VectorInt(cx, cy), Cell.Crate);
+                    result.setState(node.PlayerPosition, Cell.Player);
+                }
+
+                return result;
+        }
+
+        /// <summary>
+        /// Move to clipboard
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tabPageStats_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(labelStats.Text);
         }
 
        
@@ -309,15 +352,8 @@ namespace SokoSolve.UI.Section.Solver
         private SolverController solver;
         private EvalStatus solverEvalStatus;
         private Thread worker;
+        private Exception lastException;
 
-        /// <summary>
-        /// Move to clipboard
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tabPageStats_Click(object sender, EventArgs e)
-        {
-            Clipboard.SetText(labelStats.Text);
-        }
+       
     }
 }

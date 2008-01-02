@@ -123,20 +123,17 @@ namespace SokoSolve.UI.Section.Solver
                             // Try something else
                             if (node.Data.Weighting != 0)
                             {
-                                return new SolidBrush(Color.FromArgb(0, (int) (node.Data.Weighting*50), 0));
+                                int green = 200 - (int)node.Data.Weighting*50;
+                                if (green > 250) green = 250;
+                                return new SolidBrush(Color.FromArgb(0, green, 0));
                             }
                             return new SolidBrush(Color.Cornsilk);
 
-                        case (SolverNodeStates.Duplicate):
-                            return new SolidBrush(Color.DarkGray);
-                        case (SolverNodeStates.Solution):
-                            return new SolidBrush(Color.LightYellow);
-                        case (SolverNodeStates.SolutionPath):
-                            return new SolidBrush(Color.Yellow);
-                        case (SolverNodeStates.Dead):
-                            return new SolidBrush(Color.Black);
-                        case (SolverNodeStates.DeadChildren):
-                            return new SolidBrush(Color.DarkRed);
+                        case (SolverNodeStates.Duplicate): return new SolidBrush(Color.DarkGray);
+                        case (SolverNodeStates.Solution):  return new SolidBrush(Color.Cyan);
+                        case (SolverNodeStates.SolutionPath): return new SolidBrush(Color.LightCyan);
+                        case (SolverNodeStates.Dead): return new SolidBrush(Color.Black);
+                        case (SolverNodeStates.DeadChildren): return new SolidBrush(Color.DarkRed);
                     }
                 }
                 return new SolidBrush(Color.Purple);

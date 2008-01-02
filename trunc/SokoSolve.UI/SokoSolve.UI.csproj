@@ -223,6 +223,10 @@
       <SubType>Designer</SubType>
       <DependentUpon>TreeViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Section\Solver\VisualisationContainer.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>VisualisationContainer.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -246,6 +250,8 @@
     <Compile Include="Section\Solver\BitmapViewer.Designer.cs">
       <DependentUpon>BitmapViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Section\Solver\BitmapViewerVisualisation.cs" />
+    <Compile Include="Section\Solver\GridVisualisation.cs" />
     <Compile Include="Section\Solver\SolverSection.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -257,6 +263,13 @@
     </Compile>
     <Compile Include="Section\Solver\TreeViewer.Designer.cs">
       <DependentUpon>TreeViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Section\Solver\Visualisation.cs" />
+    <Compile Include="Section\Solver\VisualisationContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Section\Solver\VisualisationContainer.Designer.cs">
+      <DependentUpon>VisualisationContainer.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -292,6 +305,7 @@
     <None Include="Content\Graphics\Icons\Print.png" />
     <None Include="Content\html\ReadMe.rtf" />
     <None Include="Content\Graphics\Icons\Stop.png" />
+    <None Include="Content\Graphics\Icons\Refresh.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton1.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton2.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton3.png" />

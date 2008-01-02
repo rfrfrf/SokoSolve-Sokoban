@@ -76,6 +76,16 @@ namespace SokoSolve.Core.UI
         }
 
         /// <summary>
+        /// Get a state image
+        /// </summary>
+        /// <param name="cellState"></param>
+        /// <returns></returns>
+        public Image GetImage(CellStates cellState)
+        {
+            return  tiles[(int) cellState];
+        }
+
+        /// <summary>
         /// Draw a puzzle
         /// </summary>
         /// <param name="Map"></param>

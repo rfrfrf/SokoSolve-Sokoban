@@ -87,37 +87,37 @@ namespace SokoSolve.Common.Structures.Evaluation
         /// <summary>
         /// Add another node to evaluate
         /// </summary>
-        /// <param name="EvalNode"></param>
-        public void Add(INode<T> EvalNode)
+        /// <param name="NewEvalNode"></param>
+        public virtual void Add(INode<T> NewEvalNode)
         {
             if (evaluationList.Count == 0)
             {
-                evaluationList.AddFirst(EvalNode);
+                evaluationList.AddFirst(NewEvalNode);
                 return;
             }
 
-            if (evaluationList.Contains(EvalNode)) return;
+            if (evaluationList.Contains(NewEvalNode)) return;
 
             LinkedListNode<INode<T>> current = evaluationList.First;
             while (current != null)
             {
-                if (GetDepth(EvalNode) < GetDepth(current.Value))
+                if (GetDepth(NewEvalNode) < GetDepth(current.Value))
                 {
-                    evaluationList.AddBefore(current, EvalNode);
+                    evaluationList.AddBefore(current, NewEvalNode);
                     return;
                 }
 
                 current = current.Next;
             }
 
-            evaluationList.AddLast(EvalNode);
+            evaluationList.AddLast(NewEvalNode);
         }
 
         /// <summary>
         /// Remove a node (it has been evaluated)
         /// </summary>
         /// <param name="EvalNode"></param>
-        public void Remove(INode<T> EvalNode)
+        public virtual void Remove(INode<T> EvalNode)
         {
             evaluationList.Remove(EvalNode);
         }
