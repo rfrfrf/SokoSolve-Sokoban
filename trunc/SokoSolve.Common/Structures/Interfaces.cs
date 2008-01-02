@@ -24,7 +24,7 @@ namespace SokoSolve.Common.Structures
         /// <summary>
         /// Human-readable ID.
         /// </summary>
-		string NodeID { get; }
+		string NodeID { get; set; }
 
         /// <summary>
         /// Has the initial evaluation been done

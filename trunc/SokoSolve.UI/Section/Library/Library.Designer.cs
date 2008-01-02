@@ -29,10 +29,9 @@ namespace SokoSolve.UI.Controls.Primary
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node0");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Library));
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node0");
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripDropDownButtonDebug = new System.Windows.Forms.ToolStripDropDownButton();
             this.tsLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -54,11 +53,8 @@ namespace SokoSolve.UI.Controls.Primary
             this.imageListSmall = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbLibraryNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbsLibraryOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbLibraryImport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbLibrarySave = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbLibrarySaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbLibraryReport = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbLibraryExport = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,13 +67,9 @@ namespace SokoSolve.UI.Controls.Primary
             this.tsbCategoryDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbCategoryProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.puzzleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbPuzzleNew = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbPuzzleEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbPuzzleClone = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbPuzzleDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbPuzzlePlay = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbPuzzleSolve = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbPuzzleReport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -108,19 +100,28 @@ namespace SokoSolve.UI.Controls.Primary
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.imageListIcon = new System.Windows.Forms.ImageList(this.components);
+            this.imageListThumbnail = new System.Windows.Forms.ImageList(this.components);
+            this.tsbLibraryNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbsLibraryOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbLibrarySave = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbPuzzleNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbPuzzleDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbPuzzlePlay = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbPuzzleSolve = new System.Windows.Forms.ToolStripMenuItem();
             this.mbLibraryNew = new System.Windows.Forms.ToolStripButton();
             this.mbSave = new System.Windows.Forms.ToolStripButton();
             this.mbLibraryOpen = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.mbEdit = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mbPuzzleEdit = new System.Windows.Forms.ToolStripButton();
             this.mbPuzzlePlay = new System.Windows.Forms.ToolStripButton();
             this.mbDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbReturn = new System.Windows.Forms.ToolStripButton();
-            this.imageListIcon = new System.Windows.Forms.ImageList(this.components);
-            this.imageListThumbnail = new System.Windows.Forms.ImageList(this.components);
+            this.tsmPuzzleSolve = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownButtonDebug = new System.Windows.Forms.ToolStripDropDownButton();
             this.statusStrip1.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -142,17 +143,6 @@ namespace SokoSolve.UI.Controls.Primary
             this.statusStrip1.Size = new System.Drawing.Size(601, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
-            // 
-            // toolStripDropDownButtonDebug
-            // 
-            this.toolStripDropDownButtonDebug.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripDropDownButtonDebug.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDropDownButtonDebug.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonDebug.Image")));
-            this.toolStripDropDownButtonDebug.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButtonDebug.Name = "toolStripDropDownButtonDebug";
-            this.toolStripDropDownButtonDebug.Size = new System.Drawing.Size(29, 20);
-            this.toolStripDropDownButtonDebug.Text = "Debug";
-            this.toolStripDropDownButtonDebug.Click += new System.EventHandler(this.toolStripDropDownButtonDebug_Click);
             // 
             // tsLabelStatus
             // 
@@ -203,10 +193,10 @@ namespace SokoSolve.UI.Controls.Primary
             this.treeViewLibrary.ImageList = this.imageListSmall;
             this.treeViewLibrary.Location = new System.Drawing.Point(0, 0);
             this.treeViewLibrary.Name = "treeViewLibrary";
-            treeNode2.Name = "Node0";
-            treeNode2.Text = "Node0";
+            treeNode1.Name = "Node0";
+            treeNode1.Text = "Node0";
             this.treeViewLibrary.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode1});
             this.treeViewLibrary.SelectedImageIndex = 0;
             this.treeViewLibrary.Size = new System.Drawing.Size(162, 280);
             this.treeViewLibrary.TabIndex = 0;
@@ -356,22 +346,6 @@ namespace SokoSolve.UI.Controls.Primary
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.fileToolStripMenuItem.Text = "&Library";
             // 
-            // tsbLibraryNew
-            // 
-            this.tsbLibraryNew.Enabled = false;
-            this.tsbLibraryNew.Image = ((System.Drawing.Image)(resources.GetObject("tsbLibraryNew.Image")));
-            this.tsbLibraryNew.Name = "tsbLibraryNew";
-            this.tsbLibraryNew.Size = new System.Drawing.Size(125, 22);
-            this.tsbLibraryNew.Text = "&New...";
-            // 
-            // tbsLibraryOpen
-            // 
-            this.tbsLibraryOpen.Enabled = false;
-            this.tbsLibraryOpen.Image = ((System.Drawing.Image)(resources.GetObject("tbsLibraryOpen.Image")));
-            this.tbsLibraryOpen.Name = "tbsLibraryOpen";
-            this.tbsLibraryOpen.Size = new System.Drawing.Size(125, 22);
-            this.tbsLibraryOpen.Text = "&Open...";
-            // 
             // tsbLibraryImport
             // 
             this.tsbLibraryImport.Enabled = false;
@@ -383,14 +357,6 @@ namespace SokoSolve.UI.Controls.Primary
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(122, 6);
-            // 
-            // tsbLibrarySave
-            // 
-            this.tsbLibrarySave.Enabled = false;
-            this.tsbLibrarySave.Image = ((System.Drawing.Image)(resources.GetObject("tsbLibrarySave.Image")));
-            this.tsbLibrarySave.Name = "tsbLibrarySave";
-            this.tsbLibrarySave.Size = new System.Drawing.Size(125, 22);
-            this.tsbLibrarySave.Text = "&Save";
             // 
             // tsbLibrarySaveAs
             // 
@@ -491,14 +457,6 @@ namespace SokoSolve.UI.Controls.Primary
             this.puzzleToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.puzzleToolStripMenuItem.Text = "Puzzle";
             // 
-            // tsbPuzzleNew
-            // 
-            this.tsbPuzzleNew.Enabled = false;
-            this.tsbPuzzleNew.Image = ((System.Drawing.Image)(resources.GetObject("tsbPuzzleNew.Image")));
-            this.tsbPuzzleNew.Name = "tsbPuzzleNew";
-            this.tsbPuzzleNew.Size = new System.Drawing.Size(135, 22);
-            this.tsbPuzzleNew.Text = "&New";
-            // 
             // tsbPuzzleEdit
             // 
             this.tsbPuzzleEdit.Enabled = false;
@@ -513,34 +471,10 @@ namespace SokoSolve.UI.Controls.Primary
             this.tsbPuzzleClone.Size = new System.Drawing.Size(135, 22);
             this.tsbPuzzleClone.Text = "Cl&one";
             // 
-            // tsbPuzzleDelete
-            // 
-            this.tsbPuzzleDelete.Enabled = false;
-            this.tsbPuzzleDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbPuzzleDelete.Image")));
-            this.tsbPuzzleDelete.Name = "tsbPuzzleDelete";
-            this.tsbPuzzleDelete.Size = new System.Drawing.Size(135, 22);
-            this.tsbPuzzleDelete.Text = "&Delete";
-            // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(132, 6);
-            // 
-            // tsbPuzzlePlay
-            // 
-            this.tsbPuzzlePlay.Enabled = false;
-            this.tsbPuzzlePlay.Image = ((System.Drawing.Image)(resources.GetObject("tsbPuzzlePlay.Image")));
-            this.tsbPuzzlePlay.Name = "tsbPuzzlePlay";
-            this.tsbPuzzlePlay.Size = new System.Drawing.Size(135, 22);
-            this.tsbPuzzlePlay.Text = "&Play";
-            // 
-            // tsbPuzzleSolve
-            // 
-            this.tsbPuzzleSolve.Enabled = false;
-            this.tsbPuzzleSolve.Image = ((System.Drawing.Image)(resources.GetObject("tsbPuzzleSolve.Image")));
-            this.tsbPuzzleSolve.Name = "tsbPuzzleSolve";
-            this.tsbPuzzleSolve.Size = new System.Drawing.Size(135, 22);
-            this.tsbPuzzleSolve.Text = "Solve..";
             // 
             // tsbPuzzleReport
             // 
@@ -771,11 +705,95 @@ namespace SokoSolve.UI.Controls.Primary
             this.mbPuzzlePlay,
             this.mbDelete,
             this.toolStripSeparator3,
-            this.tsbReturn});
+            this.tsbReturn,
+            this.tsmPuzzleSolve});
             this.toolStrip1.Location = new System.Drawing.Point(3, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(245, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(268, 25);
             this.toolStrip1.TabIndex = 1;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // imageListIcon
+            // 
+            this.imageListIcon.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageListIcon.ImageSize = new System.Drawing.Size(32, 32);
+            this.imageListIcon.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // imageListThumbnail
+            // 
+            this.imageListThumbnail.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageListThumbnail.ImageSize = new System.Drawing.Size(64, 64);
+            this.imageListThumbnail.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // tsbLibraryNew
+            // 
+            this.tsbLibraryNew.Enabled = false;
+            this.tsbLibraryNew.Image = ((System.Drawing.Image)(resources.GetObject("tsbLibraryNew.Image")));
+            this.tsbLibraryNew.Name = "tsbLibraryNew";
+            this.tsbLibraryNew.Size = new System.Drawing.Size(125, 22);
+            this.tsbLibraryNew.Text = "&New...";
+            // 
+            // tbsLibraryOpen
+            // 
+            this.tbsLibraryOpen.Enabled = false;
+            this.tbsLibraryOpen.Image = ((System.Drawing.Image)(resources.GetObject("tbsLibraryOpen.Image")));
+            this.tbsLibraryOpen.Name = "tbsLibraryOpen";
+            this.tbsLibraryOpen.Size = new System.Drawing.Size(125, 22);
+            this.tbsLibraryOpen.Text = "&Open...";
+            // 
+            // tsbLibrarySave
+            // 
+            this.tsbLibrarySave.Enabled = false;
+            this.tsbLibrarySave.Image = ((System.Drawing.Image)(resources.GetObject("tsbLibrarySave.Image")));
+            this.tsbLibrarySave.Name = "tsbLibrarySave";
+            this.tsbLibrarySave.Size = new System.Drawing.Size(125, 22);
+            this.tsbLibrarySave.Text = "&Save";
+            // 
+            // tsbPuzzleNew
+            // 
+            this.tsbPuzzleNew.Enabled = false;
+            this.tsbPuzzleNew.Image = ((System.Drawing.Image)(resources.GetObject("tsbPuzzleNew.Image")));
+            this.tsbPuzzleNew.Name = "tsbPuzzleNew";
+            this.tsbPuzzleNew.Size = new System.Drawing.Size(135, 22);
+            this.tsbPuzzleNew.Text = "&New";
+            // 
+            // tsbPuzzleDelete
+            // 
+            this.tsbPuzzleDelete.Enabled = false;
+            this.tsbPuzzleDelete.Image = ((System.Drawing.Image)(resources.GetObject("tsbPuzzleDelete.Image")));
+            this.tsbPuzzleDelete.Name = "tsbPuzzleDelete";
+            this.tsbPuzzleDelete.Size = new System.Drawing.Size(135, 22);
+            this.tsbPuzzleDelete.Text = "&Delete";
+            // 
+            // tsbPuzzlePlay
+            // 
+            this.tsbPuzzlePlay.Enabled = false;
+            this.tsbPuzzlePlay.Image = ((System.Drawing.Image)(resources.GetObject("tsbPuzzlePlay.Image")));
+            this.tsbPuzzlePlay.Name = "tsbPuzzlePlay";
+            this.tsbPuzzlePlay.Size = new System.Drawing.Size(135, 22);
+            this.tsbPuzzlePlay.Text = "&Play";
+            // 
+            // tsbPuzzleSolve
+            // 
+            this.tsbPuzzleSolve.Enabled = false;
+            this.tsbPuzzleSolve.Image = ((System.Drawing.Image)(resources.GetObject("tsbPuzzleSolve.Image")));
+            this.tsbPuzzleSolve.Name = "tsbPuzzleSolve";
+            this.tsbPuzzleSolve.Size = new System.Drawing.Size(135, 22);
+            this.tsbPuzzleSolve.Text = "Solve..";
             // 
             // mbLibraryNew
             // 
@@ -807,11 +825,6 @@ namespace SokoSolve.UI.Controls.Primary
             this.mbLibraryOpen.Size = new System.Drawing.Size(23, 22);
             this.mbLibraryOpen.Text = "Open";
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
             // mbEdit
             // 
             this.mbEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -821,11 +834,6 @@ namespace SokoSolve.UI.Controls.Primary
             this.mbEdit.Name = "mbEdit";
             this.mbEdit.Size = new System.Drawing.Size(23, 22);
             this.mbEdit.Text = "Edit";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // mbPuzzleEdit
             // 
@@ -857,11 +865,6 @@ namespace SokoSolve.UI.Controls.Primary
             this.mbDelete.Size = new System.Drawing.Size(23, 22);
             this.mbDelete.Text = "Delete";
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
             // tsbReturn
             // 
             this.tsbReturn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -872,17 +875,25 @@ namespace SokoSolve.UI.Controls.Primary
             this.tsbReturn.Size = new System.Drawing.Size(23, 22);
             this.tsbReturn.Text = "Return";
             // 
-            // imageListIcon
+            // tsmPuzzleSolve
             // 
-            this.imageListIcon.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageListIcon.ImageSize = new System.Drawing.Size(32, 32);
-            this.imageListIcon.TransparentColor = System.Drawing.Color.Transparent;
+            this.tsmPuzzleSolve.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsmPuzzleSolve.Image = global::SokoSolve.UI.Properties.Resources.Solve;
+            this.tsmPuzzleSolve.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsmPuzzleSolve.Name = "tsmPuzzleSolve";
+            this.tsmPuzzleSolve.Size = new System.Drawing.Size(23, 22);
+            this.tsmPuzzleSolve.Text = "Solve";
             // 
-            // imageListThumbnail
+            // toolStripDropDownButtonDebug
             // 
-            this.imageListThumbnail.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageListThumbnail.ImageSize = new System.Drawing.Size(64, 64);
-            this.imageListThumbnail.TransparentColor = System.Drawing.Color.Transparent;
+            this.toolStripDropDownButtonDebug.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripDropDownButtonDebug.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDropDownButtonDebug.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonDebug.Image")));
+            this.toolStripDropDownButtonDebug.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButtonDebug.Name = "toolStripDropDownButtonDebug";
+            this.toolStripDropDownButtonDebug.Size = new System.Drawing.Size(29, 20);
+            this.toolStripDropDownButtonDebug.Text = "Debug";
+            this.toolStripDropDownButtonDebug.Click += new System.EventHandler(this.toolStripDropDownButtonDebug_Click);
             // 
             // Library
             // 
@@ -1003,5 +1014,6 @@ namespace SokoSolve.UI.Controls.Primary
         internal System.Windows.Forms.ToolStripMenuItem tsbSolutionReplay;
         internal System.Windows.Forms.ToolStripMenuItem tsbSolutionOptimise;
         internal System.Windows.Forms.ToolStripMenuItem tsbSolutionDelete;
+        internal System.Windows.Forms.ToolStripButton tsmPuzzleSolve;
 	}
 }

@@ -27,6 +27,7 @@ namespace SokoSolve.Common.Structures.Evaluation
         /// <returns></returns>
 		public EvalStatus Evaluate(IEvaluationStrategy<T> evalStrategy)
 		{
+            // Initialise
             strategy = evalStrategy;
             strategy.Init();
 
@@ -37,19 +38,28 @@ namespace SokoSolve.Common.Structures.Evaluation
 				INode<T> current = strategy.GetNext(out nextStatus);
                 if (current == null) return nextStatus;
 
+                // Try to Evaluated first
 				if (!current.Data.IsStateEvaluated)
 				{
+                    // Evaluate
 					complete = (strategy.EvaluateState(current) == EvalStatus.CompleteSolution);
 
+                    // Check Solution
                     if (strategy.IsSolution(current))
-                    {
+                    {                        
                         solutions.Add(current);
                         if (stopOnSolution) return EvalStatus.CompleteSolution;
                     }
 				}
 				else if (!current.Data.IsChildrenEvaluated)
 				{
+                    // Eval all children
 					strategy.EvaluateChildren(current);
+				}
+                else
+				{
+				    // Warning, why is this in the eval list if it is fully evaluated?
+                    throw new InvalidOperationException("This node has already been processed");
 				}
 			}
 			return EvalStatus.CompleteNoSolution;

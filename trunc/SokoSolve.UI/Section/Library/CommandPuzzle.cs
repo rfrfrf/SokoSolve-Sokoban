@@ -324,4 +324,37 @@ namespace SokoSolve.UI.Section.Library
 
     }
 
+    //#################################################################
+    //#################################################################
+    //#################################################################
+
+
+    class PuzzleSolve : CommandLibraryBase
+    {
+        public PuzzleSolve(Controller<ExplorerItem> controller, object[] buttonControls)
+            : base(controller, buttonControls)
+        {
+            Init("Solve Puzzle", "Solve puzzle");
+        }
+
+        protected override void ExecuteImplementation(CommandInstance<ExplorerItem> instance)
+        {
+            ItemPuzzle puz = instance.Context[0] as ItemPuzzle;
+            if (puz != null)
+            {
+                FormMain form = Controller.Explorer.TreeView.FindForm() as FormMain;
+                if (form != null)
+                {
+                    form.Solve(puz.DomainData.MasterMap);
+                }
+            }
+        }
+
+        public override void UpdateForSelection(List<ExplorerItem> selection)
+        {
+            Enabled = ExplorerItem.SelectionHelper(selection, true, 1, 1, typeof(ItemPuzzle));
+        }
+
+    }
+
 }

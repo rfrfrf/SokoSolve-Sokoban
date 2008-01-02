@@ -211,6 +211,18 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Section\Solver\BitmapViewer.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BitmapViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Section\Solver\SolverSection.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SolverSection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Section\Solver\TreeViewer.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TreeViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -228,6 +240,24 @@
     </Compile>
     <Compile Include="Section\Controller.cs" />
     <Compile Include="Section\Library\LibraryExplorer.cs" />
+    <Compile Include="Section\Solver\BitmapViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Section\Solver\BitmapViewer.Designer.cs">
+      <DependentUpon>BitmapViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Section\Solver\SolverSection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Section\Solver\SolverSection.Designer.cs">
+      <DependentUpon>SolverSection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Section\Solver\TreeViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Section\Solver\TreeViewer.Designer.cs">
+      <DependentUpon>TreeViewer.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SokoSolve.Common\SokoSolve.Common.csproj">
@@ -257,9 +287,11 @@
     <Content Include="Content\Graphics\Icons\NewLibrary.png" />
     <Content Include="Content\Graphics\Icons\NewPuzzle.png" />
     <Content Include="Content\Graphics\Icons\Open.png" />
+    <None Include="Content\Graphics\Icons\Pause.png" />
     <Content Include="Content\Graphics\Icons\Play.png" />
     <None Include="Content\Graphics\Icons\Print.png" />
     <None Include="Content\html\ReadMe.rtf" />
+    <None Include="Content\Graphics\Icons\Stop.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton1.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton2.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton3.png" />

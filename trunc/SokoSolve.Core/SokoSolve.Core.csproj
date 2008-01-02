@@ -35,8 +35,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Analysis\CrateAnalysis.cs" />
+    <Compile Include="Analysis\DeadMap\BoxRule.cs" />
+    <Compile Include="Analysis\DeadMap\CornerRule.cs" />
+    <Compile Include="Analysis\DeadMap\DeadMapAnalysis.cs" />
+    <Compile Include="Analysis\DeadMap\RecessRule.cs" />
     <Compile Include="Analysis\MapAnalysis.cs" />
     <Compile Include="Analysis\MoveAnalysis.cs" />
+    <Compile Include="Analysis\Solver\CodeTimer.cs" />
+    <Compile Include="Analysis\Solver\CodeTimerStatistic.cs" />
+    <Compile Include="Analysis\Solver\SolverLabel.cs" />
+    <Compile Include="Analysis\Solver\SolverLabelList.cs" />
+    <Compile Include="Analysis\Solver\SolverNodeEventArgs.cs" />
+    <Compile Include="Analysis\Solver\SolverStats.cs" />
+    <Compile Include="Analysis\Solver\Statistic.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="Game\Game.cs" />
     <Compile Include="Game\Move.cs" />
@@ -67,6 +78,12 @@
     <Compile Include="Model\Solution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomHelper.cs" />
+    <Compile Include="Analysis\Solver\SolverAPI.cs" />
+    <Compile Include="Analysis\Solver\SolverBitmap.cs" />
+    <Compile Include="Analysis\Solver\SolverController.cs" />
+    <Compile Include="Analysis\Solver\SolverNode.cs" />
+    <Compile Include="Analysis\Solver\SolverStrategy.cs" />
+    <Compile Include="Analysis\Solver\StaticAnalysis.cs" />
     <Compile Include="UI\DockPoint.cs" />
     <Compile Include="UI\GameCoords.cs" />
     <Compile Include="UI\ISoundSubSystem.cs" />
@@ -132,6 +149,7 @@
     <None Include="Model\DataModel\SokoSolveProfile.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Analysis\Solver\Solver.cd" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />

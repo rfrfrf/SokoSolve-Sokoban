@@ -28,6 +28,7 @@ namespace SokoSolve.Common.Structures.Evaluation
 		public string NodeID
 		{
 			get { return nodeID; }
+            set { nodeID = value; }
 		}
 
 		public bool IsStateEvaluated

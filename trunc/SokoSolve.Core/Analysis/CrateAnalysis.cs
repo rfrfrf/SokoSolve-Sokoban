@@ -278,6 +278,7 @@ namespace SokoSolve.Core.Analysis
             public string NodeID
             {
                 get { return nodeID; }
+                set { nodeID = value; }
             }
 
             public bool IsStateEvaluated

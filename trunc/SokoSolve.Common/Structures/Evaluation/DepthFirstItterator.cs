@@ -62,7 +62,7 @@ namespace SokoSolve.Common.Structures.Evaluation
                 Status = exitStatus;
                 return null;
             }
-            if (currentMaxDepth++ > maxDepth)
+            if (currentMaxDepth > maxDepth)
             {
                 exitStatus = EvalStatus.ExitIncomplete;
                 Status = exitStatus;

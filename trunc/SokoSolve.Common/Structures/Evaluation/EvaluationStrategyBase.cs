@@ -8,7 +8,7 @@ namespace SokoSolve.Common.Structures.Evaluation
     /// Implement a basic (tree-based) evaluation strategy
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class EvaluationStrategyBase<T> : IEvaluationStrategy<T>
+    public abstract class EvaluationStrategyBase<T> : IEvaluationStrategy<T> where T : IEvaluationNode
     {
         /// <summary>
         /// Strong Constructor
@@ -86,10 +86,13 @@ namespace SokoSolve.Common.Structures.Evaluation
         /// <param name="NewChild"></param>
         protected void AddNodeForEval(INode<T> CurrentNode, T NewChild)
         {
+            if (NewChild.NodeID == null) NewChild.NodeID = GetNextNodeID();
+
             // Add it to the tree
             TreeNode<T> currentTreeNode = CurrentNode as TreeNode<T>;
             if (currentTreeNode == null) throw new InvalidCastException("Must be TreeNode<T>");
             TreeNode<T> newChildNode = currentTreeNode.Add(NewChild);
+
 
             // Add it to the eval list
             workList.Add(newChildNode);

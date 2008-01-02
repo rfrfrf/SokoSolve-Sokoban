@@ -11,6 +11,7 @@ namespace SokoSolve.Common.Structures
 	/// <remarks>
 	/// This is the central class for the solver and analysis of puzzles.
 	/// </remarks>
+	[Serializable]
 	public class Bitmap : IBitmap
 	{
 		/// <summary>
@@ -188,6 +189,14 @@ namespace SokoSolve.Common.Structures
 			}
 			return rep.ToString();
 		}
+
+        /// <summary>
+        /// Debug helper
+        /// </summary>
+	    public string AsString
+	    {
+            get { return ToString();  }
+	    }
 
 		/// <summary>
 		/// Comparison
@@ -371,11 +380,20 @@ namespace SokoSolve.Common.Structures
 			return BitwiseNOT(this);
 		}
 
+        /// <summary>
+        /// Helper for the copy constructor
+        /// </summary>
+        /// <returns></returns>
+        public Bitmap Clone()
+        {
+            return new Bitmap(this);
+        }
+
 		//##############################################################
 		//##############################################################
 		//##############################################################
 
-		uint[] map;
-		int sizeX;
+	    private uint[] map;
+	    private int sizeX;   
 	}
 }

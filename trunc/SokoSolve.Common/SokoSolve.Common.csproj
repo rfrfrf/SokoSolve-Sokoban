@@ -54,6 +54,9 @@
     <Compile Include="Structures\Evaluation\Evaluator.cs" />
     <Compile Include="Structures\Evaluation\FloodFill.cs" />
     <Compile Include="Structures\Evaluation\LocationNode.cs" />
+    <Compile Include="Structures\Evaluation\Strategy\StrategyPatternBase.cs" />
+    <Compile Include="Structures\Evaluation\Strategy\StrategyRuleBase.cs" />
+    <Compile Include="Structures\Evaluation\Visualisation\TreeRenderer.cs" />
     <Compile Include="Structures\Graph.cs" />
     <Compile Include="Structures\Interfaces.cs" />
     <Compile Include="Structures\ManagedCollection.cs" />

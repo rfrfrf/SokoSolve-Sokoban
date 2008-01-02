@@ -6,6 +6,7 @@ using SokoSolve.Common.Structures;
 using SokoSolve.Common.Structures.Evaluation;
 using SokoSolve.Core.Model;
 
+
 namespace SokoSolve.Core.Analysis
 {
     class MapAnalysis
@@ -70,6 +71,23 @@ namespace SokoSolve.Core.Analysis
             Bitmap result = Map.ToBitmap(CellStates.FloorCrate);
             result = result.BitwiseOR(Map.ToBitmap(CellStates.FloorGoalCrate));
             return result;
+        }
+
+        public static Bitmap GenerateWallMap(SokobanMap map)
+        {
+            Bitmap result = map.ToBitmap(CellStates.Wall);
+            return result;
+        }
+
+        public static IBitmap GenerateFloorMap(SokobanMap Map)
+        {
+            Bitmap boundry = Map.ToBitmap(CellStates.Floor);
+            boundry = boundry.BitwiseOR(Map.ToBitmap(CellStates.FloorCrate));
+            boundry = boundry.BitwiseOR(Map.ToBitmap(CellStates.FloorGoal));
+            boundry = boundry.BitwiseOR(Map.ToBitmap(CellStates.FloorGoalCrate));
+            boundry = boundry.BitwiseOR(Map.ToBitmap(CellStates.FloorGoalPlayer));
+            boundry = boundry.BitwiseOR(Map.ToBitmap(CellStates.FloorPlayer));
+            return boundry;
         }
     }
 }
