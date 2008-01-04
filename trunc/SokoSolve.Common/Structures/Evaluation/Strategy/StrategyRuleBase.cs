@@ -42,6 +42,15 @@ namespace SokoSolve.Common.Structures.Evaluation.Strategy
         /// <returns>true is an exit condition</returns>
         public abstract RuleResult Evaluate(TState StateContext);
 
+        /// <summary>
+        /// Strategy
+        /// </summary>
+        public StrategyPatternBase<TState> Strategy
+        {
+            get { return strategy; }
+            set { strategy = value; }
+        }
+
         private StrategyPatternBase<TState> strategy;
         private string name;
     }

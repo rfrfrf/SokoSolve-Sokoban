@@ -54,12 +54,15 @@ namespace SokoSolve.UI.Section.Solver
             set
             {
                 base.GridSize = value;
-                cells = new BitmapViewerVisualisationElement[value.Width, value.Height];
-                for(int cx=0; cx<value.Width; cx++)
-                    for (int cy=0; cy<value.Height; cy++)
-                    {
-                        cells[cx, cy] = new BitmapViewerVisualisationElement(this, new VectorInt(cx, cy));
-                    }
+                if (value != null)
+                {
+                    cells = new BitmapViewerVisualisationElement[value.Width,value.Height];
+                    for (int cx = 0; cx < value.Width; cx++)
+                        for (int cy = 0; cy < value.Height; cy++)
+                        {
+                            cells[cx, cy] = new BitmapViewerVisualisationElement(this, new VectorInt(cx, cy));
+                        }
+                }
             }
         }
 

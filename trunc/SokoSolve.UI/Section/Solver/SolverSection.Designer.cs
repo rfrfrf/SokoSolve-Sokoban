@@ -55,8 +55,8 @@ namespace SokoSolve.UI.Section.Solver
             this.bitmapViewerNodeMaps = new SokoSolve.UI.Section.Solver.BitmapViewer();
             this.labelNodeDetails = new System.Windows.Forms.Label();
             this.tabPageNodePuzzle = new System.Windows.Forms.TabPage();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.pictureBoxNodePuzzle = new System.Windows.Forms.PictureBox();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolStripMain.SuspendLayout();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
@@ -197,7 +197,7 @@ namespace SokoSolve.UI.Section.Solver
             this.treeViewer.Cursor = System.Windows.Forms.Cursors.Cross;
             this.treeViewer.Location = new System.Drawing.Point(1, 1);
             this.treeViewer.Name = "treeViewer";
-            this.treeViewer.Size = new System.Drawing.Size(1800, 480);
+            this.treeViewer.Size = new System.Drawing.Size(1800, 1800);
             this.treeViewer.TabIndex = 0;
             this.treeViewer.OnClickNode += new System.EventHandler<SokoSolve.Core.Analysis.Solver.SolverNodeEventArgs>(this.treeViewer_OnClickNode);
             // 
@@ -287,6 +287,7 @@ namespace SokoSolve.UI.Section.Solver
             this.bitmapViewerStatic.Cursor = System.Windows.Forms.Cursors.Cross;
             this.bitmapViewerStatic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bitmapViewerStatic.Location = new System.Drawing.Point(3, 3);
+            this.bitmapViewerStatic.MapSize = null;
             this.bitmapViewerStatic.Name = "bitmapViewerStatic";
             this.bitmapViewerStatic.Size = new System.Drawing.Size(286, 154);
             this.bitmapViewerStatic.TabIndex = 0;
@@ -341,6 +342,7 @@ namespace SokoSolve.UI.Section.Solver
             this.bitmapViewerNodeMaps.Cursor = System.Windows.Forms.Cursors.Cross;
             this.bitmapViewerNodeMaps.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bitmapViewerNodeMaps.Location = new System.Drawing.Point(3, 3);
+            this.bitmapViewerNodeMaps.MapSize = null;
             this.bitmapViewerNodeMaps.Name = "bitmapViewerNodeMaps";
             this.bitmapViewerNodeMaps.Size = new System.Drawing.Size(137, 154);
             this.bitmapViewerNodeMaps.TabIndex = 0;
@@ -364,11 +366,6 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageNodePuzzle.Text = "Current Puzzle";
             this.tabPageNodePuzzle.UseVisualStyleBackColor = true;
             // 
-            // timer
-            // 
-            this.timer.Interval = 3000;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
             // pictureBoxNodePuzzle
             // 
             this.pictureBoxNodePuzzle.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -377,6 +374,11 @@ namespace SokoSolve.UI.Section.Solver
             this.pictureBoxNodePuzzle.Size = new System.Drawing.Size(257, 154);
             this.pictureBoxNodePuzzle.TabIndex = 0;
             this.pictureBoxNodePuzzle.TabStop = false;
+            // 
+            // timer
+            // 
+            this.timer.Interval = 3000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // SolverSection
             // 

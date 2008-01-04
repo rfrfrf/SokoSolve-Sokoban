@@ -31,28 +31,79 @@ namespace SokoSolve.Common.Structures.Evaluation.Visualisation
 
             graphics.DrawRectangle(new Pen(Color.Black), windowRect.ToDrawingRect() );
 
-            foreach (List<TreeNode<T>> segment in segments.Segments)
+
+            foreach (SegmentRegion region in regions)
             {
-                foreach (TreeNode<T> node in segment)
+                foreach (TreeNode<T> node in region.nodes)
                 {
-                    VectorInt pos = GetPixelFromLogical(segment, node);
+                    VectorInt pos = GetPixelFromLogical(node);
                     RenderNode(pos.X, pos.Y, node);
-                    
                 }
+            }
+        }
+
+        class SegmentRegion
+        {
+            public int MaxRegionNodeWidth;
+            public List<TreeNode<T>> nodes;
+            public SizeInt Region;
+            public TreeRenderer<T> parent;
+
+            /// <summary>
+            /// Find the position within the region
+            /// </summary>
+            /// <param name="node"></param>
+            /// <returns></returns>
+            public VectorInt GetNodePosition(TreeNode<T> node)
+            {
+                int idx = nodes.IndexOf(node);
+                if (idx < 0) return null;
+                int layer = idx / MaxRegionNodeWidth;
+                int offset = idx % MaxRegionNodeWidth;
+                return new VectorInt(offset, layer);
+            }
+
+            /// <summary>
+            /// Find the position within the region
+            /// </summary>
+            /// <param name="node"></param>
+            /// <returns></returns>
+            public VectorInt GetNodePixelPosition(TreeNode<T> node)
+            {
+                VectorInt logical = GetNodePosition(node);
+                if (logical.Y == 0)
+                {
+                    return logical.Multiply(parent.nodeSize).Add(parent.globalOffset);
+                }
+                else
+                {
+                    return logical.Multiply(parent.nodeSize).Add(parent.globalOffset).Add(parent.indent*parent.nodeSize.Width, 0);
+                }
+                
             }
         }
 
         /// <summary>
         /// Get the drawing position for a node
         /// </summary>
-        /// <param name="segment"></param>
         /// <param name="node"></param>
         /// <returns></returns>
-        public VectorInt GetPixelFromLogical(List<TreeNode<T>> segment, TreeNode<T> node)
+        public VectorInt GetPixelFromLogical(TreeNode<T> node)
         {
-            return new VectorInt( segment.IndexOf(node)*nodeSize.X + windowRect.TopLeft.X,
-                                            segments.Segments.IndexOf(segment) * nodeSize.Y + windowRect.TopLeft.Y);
+            if (node.Depth >= regions.Count) return null;
+
+            SegmentRegion region = regions[node.Depth];
+            if (region == null) return null;
+
+            int height = 0;
+            for (int cc = 0; cc < node.Depth; cc++)
+            {
+                height += regions[cc].Region.Height;
+            }
+
+            return region.GetNodePixelPosition(node).Add(0, height);
         }
+
 
         /// <summary>
         /// From a pixel position find the node
@@ -117,8 +168,21 @@ namespace SokoSolve.Common.Structures.Evaluation.Visualisation
         /// </summary>
         private void Init()
         {
-            segments = new SegmentTree<T>(tree, maxDepth, maxWidth);
+            segments = new TreeSegmenter<T>(tree, maxDepth, 2000);
             segments.PerformSegment();   
+
+            regions = new List<SegmentRegion>(segments.Segments.Count);
+
+            foreach (List<TreeNode<T>> segment in segments.Segments)
+            {
+                SegmentRegion region = new SegmentRegion();
+                region.parent = this;
+                region.MaxRegionNodeWidth = maxWidth;
+                region.Region = new SizeInt(maxWidth*nodeSize.Width+ 50, (segment.Count / maxWidth)*nodeSize.Height);
+                region.nodes = segment;
+                
+                regions.Add(region);
+            }
         }
 
         public TreeNode<T> GetNode(int x, int y)
@@ -150,72 +214,18 @@ namespace SokoSolve.Common.Structures.Evaluation.Visualisation
             set { maxWidth = value; }
         }
 
-        /// <summary>
-        /// Segment a tree by depth
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        class SegmentTree<T>
-        {
-            public SegmentTree(Tree<T> tree, int maxDepth, int maxMembers)
-            {
-                this.tree = tree;
-                this.maxDepth = maxDepth;
-                this.maxMembers = maxMembers;
-            }
-
-            public void PerformSegment()
-            {
-                nodesProgressed = 0;
-                segments = new List<List<TreeNode<T>>>(maxDepth);
-
-                for(int cc=0; cc<maxDepth; cc++)
-                {
-                    segments.Add(new List<TreeNode<T>>(maxMembers));
-                }
-
-                tree.Root.ForEach(AssignNode, maxDepth);
-            }
-
-            public List<List<TreeNode<T>>> Segments
-            {
-                get { return segments; }
-            }
-
-            private void AssignNode(TreeNode<T> node)
-            {
-                nodesProgressed++;
-                if (node.Depth < segments.Count)
-                {
-                    if (segments[node.Depth].Count >= maxMembers)
-                    {
-                        membersDiscarded++;    
-                    }
-                    else
-                    {
-                        segments[node.Depth].Add(node);    
-                    }
-                }
-                else
-                {
-                    membersDiscarded++;
-                }
-            }
-
-            private Tree<T> tree;
-            private List<List<TreeNode<T>>> segments;
-            private int maxDepth;
-            private int maxMembers;
-            private int membersDiscarded;
-            private int nodesProgressed;
-        }
+        
 
         private RectangleInt windowRect = new  RectangleInt(new VectorInt(0,0), new SizeInt(640, 480));
         private SizeInt nodeSize = new SizeInt(4, 4);   // with padding
 
         private Tree<T> tree;
         protected Graphics graphics;
-        private SegmentTree<T> segments;
+        private TreeSegmenter<T> segments;
+        private List<SegmentRegion> regions;
         private int maxDepth = 50;
-        private int maxWidth = 300;
+        private int maxWidth = 150;
+        VectorInt globalOffset = new VectorInt(1,20);
+        private int indent = 3;
     }
 }

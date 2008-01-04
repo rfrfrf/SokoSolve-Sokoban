@@ -64,6 +64,7 @@
     <Compile Include="Structures\Tree.cs" />
     <Compile Include="Structures\TreeAssembler.cs" />
     <Compile Include="Structures\TreeNode.cs" />
+    <Compile Include="Structures\TreeSegmenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Structures\Interfaces.cd" />

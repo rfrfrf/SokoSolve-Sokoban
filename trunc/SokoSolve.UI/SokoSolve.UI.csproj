@@ -264,6 +264,7 @@
     <Compile Include="Section\Solver\TreeViewer.Designer.cs">
       <DependentUpon>TreeViewer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Section\Solver\TreeVisualisation.cs" />
     <Compile Include="Section\Solver\Visualisation.cs" />
     <Compile Include="Section\Solver\VisualisationContainer.cs">
       <SubType>UserControl</SubType>

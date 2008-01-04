@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="Analysis\CrateAnalysis.cs" />
     <Compile Include="Analysis\DeadMap\BoxRule.cs" />
+    <Compile Include="Analysis\DeadMap\CleanUpRule.cs" />
     <Compile Include="Analysis\DeadMap\CornerRule.cs" />
     <Compile Include="Analysis\DeadMap\DeadMapAnalysis.cs" />
     <Compile Include="Analysis\DeadMap\RecessRule.cs" />

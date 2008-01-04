@@ -44,7 +44,7 @@ namespace SokoSolve.Core.Analysis.Solver
         private void BuildDeadMap()
         {
             DeadMapAnalysis anal = new DeadMapAnalysis();
-            DeadMapState deadMapResult = anal.BuildDeadMap(null, goalMap, wallMap);
+            DeadMapState deadMapResult = anal.BuildDeadMap(null, goalMap, wallMap, this);
             deadMap = deadMapResult;
             cornerMap = deadMapResult.CornerMap;
             recessMap = deadMapResult.RecessMap;
