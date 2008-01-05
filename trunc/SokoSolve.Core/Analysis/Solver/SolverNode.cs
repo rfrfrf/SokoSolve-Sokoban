@@ -39,7 +39,12 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <summary>
         /// This node and all children nodes are dead
         /// </summary>
-        DeadChildren
+        DeadChildren,
+
+         /// <summary>
+        /// This node is dead as there are no further children nodes to analyse
+        /// </summary>
+        DeadExhausted
     }
 
 

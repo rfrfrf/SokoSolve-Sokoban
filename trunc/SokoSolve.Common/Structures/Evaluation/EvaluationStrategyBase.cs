@@ -48,6 +48,15 @@ namespace SokoSolve.Common.Structures.Evaluation
         }
 
         /// <summary>
+        /// Get the current itterator
+        /// </summary>
+        public IEvaluationStrategyItterator<T> EvaluationItterator
+        {
+            get { return workList; }
+            set { workList = value; }
+        }
+
+        /// <summary>
         /// Is the node a solution
         /// </summary>
         /// <param name="node"></param>

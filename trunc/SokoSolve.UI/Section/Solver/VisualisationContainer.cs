@@ -23,7 +23,7 @@ namespace SokoSolve.UI.Section.Solver
         public Visualisation Visualisation
         {
             get { return visualisation; }
-            set { visualisation = value; }
+            set { visualisation = value;  ClearImage(); }
         }
 
         /// <summary>
@@ -37,6 +37,34 @@ namespace SokoSolve.UI.Section.Solver
         }
 
         /// <summary>
+        /// Should the control render if a click is performed
+        /// </summary>
+        [Browsable(true)]
+        public bool RenderOnClick
+        {
+            get { return renderOnClick; }
+            set { renderOnClick = value; }
+        }
+
+        /// <summary>
+        /// Should the control render if a click is performed
+        /// </summary>
+        [Browsable(true)]
+        public ToolStrip ToolStrip
+        {
+            get { return toolStrip; }
+            set { toolStrip = value; }
+        }
+
+        /// <summary>
+        /// Clear/Remove the current image
+        /// </summary>
+        public void ClearImage()
+        {
+            pictureBoxPayload.Image = null;
+        }
+
+        /// <summary>
         /// Render the Visualisation
         /// </summary>
         public void Render()
@@ -45,15 +73,19 @@ namespace SokoSolve.UI.Section.Solver
             {
                 if (pictureBoxPayload.Image == null)
                 {
+                    if (visualisation.RenderCanvas == null) throw new Exception("RenderCanvas is not set");
                     pictureBoxPayload.Image = new Bitmap(visualisation.RenderCanvas.Size.Width, visualisation.RenderCanvas.Size.Height);
                 }
+
+                // Reset the size for scrolling
+                pictureBoxPayload.Size = pictureBoxPayload.Image.Size;
 
                 visualisation.Draw(Graphics.FromImage(pictureBoxPayload.Image));
                 pictureBoxPayload.Refresh();
             }
         }
 
-        private void pictureBoxPayload_MouseClick(object sender, MouseEventArgs e)
+        private void pictureBoxPayload_MouseClick_1(object sender, MouseEventArgs e)
         {
             if (visualisation != null)
             {
@@ -73,10 +105,13 @@ namespace SokoSolve.UI.Section.Solver
                     OnVisualisationClick(this, new VisEventArgs(visualisation, element, e));
                 }
                 
-                if (e.Clicks > 0) Render();
+                if (e.Clicks > 0 && renderOnClick) Render();
             }
         }
 
+        /// <summary>
+        /// When the visualisation is clicked
+        /// </summary>
         public EventHandler<VisEventArgs> OnVisualisationClick;
 
         private Visualisation visualisation;
@@ -86,6 +121,8 @@ namespace SokoSolve.UI.Section.Solver
             Render();
             tsLabel.Text = "Refreshed";
         }
+
+        private bool renderOnClick;
     }
 
     public class VisEventArgs : EventArgs

@@ -229,6 +229,12 @@ namespace SokoSolve.Common.Structures
         /// </summary>
         /// <param name="EvalNode"></param>
         void Remove(INode<T> EvalNode);
+
+        /// <summary>
+        /// Return a copy of the evaluation list
+        /// </summary>
+        /// <returns>A copy of the nodes</returns>
+        List<INode<T>> GetEvalList();
     }
 
     /// <summary>

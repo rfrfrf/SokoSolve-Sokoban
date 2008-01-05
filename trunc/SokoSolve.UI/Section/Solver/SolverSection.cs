@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -12,7 +13,9 @@ using SokoSolve.Common.Structures;
 using SokoSolve.Core;
 using SokoSolve.Core.Analysis.Solver;
 using SokoSolve.Core.Model;
+using SokoSolve.Core.Model.DataModel;
 using SokoSolve.Core.UI;
+using SokoSolve.UI.Controls.Secondary;
 
 namespace SokoSolve.UI.Section.Solver
 {
@@ -30,7 +33,15 @@ namespace SokoSolve.UI.Section.Solver
 
             OnComplete = SolverComplete;
             solverEvalStatus = EvalStatus.NotStarted;
+            treeViewer.OnVisualisationClick += new EventHandler<VisEventArgs>(OnVisualisationClick_TreeViewer);
+            visualisationContainerLocalNodes.OnVisualisationClick += new EventHandler<VisEventArgs>(OnVisualisationClick_LocalNode);
+            this.Disposed += new EventHandler(SolverSection_Disposed);
         }
+
+     
+
+
+        
 
         /// <summary>
         /// The current map for solving
@@ -87,6 +98,7 @@ namespace SokoSolve.UI.Section.Solver
             try
             {
                 complete = false;
+                solverEvalStatus = EvalStatus.InProgress;
                 solver = new SolverController(map);
                 solverEvalStatus = solver.Solve();
                 complete = true;    
@@ -94,13 +106,14 @@ namespace SokoSolve.UI.Section.Solver
             catch(Exception ex)
             {
                 lastException = ex;
-                return;
             }
             
-            Invoke(OnComplete);
+            Invoke(OnComplete); // Set to SolverComplete
+
+            int x = 10*21; // should exit here
+
         }
 
-        
 
         /// <summary>
         /// Invoked (but back on the UI thread) on completeion of the solver
@@ -109,6 +122,58 @@ namespace SokoSolve.UI.Section.Solver
         {
             try
             {
+                if (lastException != null)
+                {
+                    FormError error = new FormError();
+                    error.Exception = lastException;
+                    error.ShowDialog();
+                    return;
+                }
+
+                if (solver.Report != null)
+                {
+                    solver.Report.Build(solver);
+                }
+
+                if (solverEvalStatus == EvalStatus.CompleteSolution)
+                {
+                    if (MessageBox.Show("Solution found, do you want to save it? This will also include a report in the description.", "Solution Found", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        Solution sol = new Solution(Map, Map.Map.Player);
+                        sol.Details = new GenericDescription();
+                        sol.Details.Name = "SokoSolve Solution";
+
+                        
+                        sol.Details.Description = solver.Report.ToString();
+                        sol.Details.Author = new GenericDescriptionAuthor();
+                        sol.Details.Author.Name = ProfileController.Current.UserName;
+                        sol.Details.Author.Email = ProfileController.Current.UserEmail;
+                        sol.Details.Author.Homepage = ProfileController.Current.UserHomepage;
+                        sol.Details.License = ProfileController.Current.UserLicense;
+                        sol.Steps = "TODO";
+                        Map.Solutions.Add(sol);
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Solver failed: "+solverEvalStatus.ToString(), "No Solution Found", MessageBoxButtons.OK);
+                }
+            
+                // Build report
+                SolverReport report = new SolverReport();
+                report.AppendHeadingTwo("Puzzle");
+                report.AppendLabel("Library", solver.PuzzleMap.Puzzle.Library.Details.Name);
+                report.AppendLabel("LibraryID", solver.PuzzleMap.Puzzle.Library.LibraryID);
+                report.AppendLabel("Puzzle", solver.PuzzleMap.Puzzle.Details.Name);
+                report.AppendLabel("PuzzleID", solver.PuzzleMap.Puzzle.PuzzleID);
+                report.AppendHeadingTwo("Solver");
+                report.Build(solver);
+
+                // Save
+                string filename = "SolverReport-" +solver.PuzzleMap.Puzzle.Library.LibraryID+solver.PuzzleMap.Puzzle.PuzzleID+ "-" +DateTime.Now.Ticks.ToString() + ".html";
+                File.WriteAllText(FileManager.getContent("$Analysis", filename), report.ToString());
+
                 complete = true;
                 timer.Enabled = false;
                 worker = null;
@@ -121,21 +186,19 @@ namespace SokoSolve.UI.Section.Solver
             }
         }
 
-
-
         /// <summary>
         /// Update or Bind to the UI
         /// </summary>
         private void UpdateStatus()
         {
-            
             tsbStop.Enabled = SolverActive;
             tsbPause.Enabled = SolverActive;
             tsbStart.Enabled = !SolverActive;
 
             if (lastException != null)
             {
-                labelStats.Text = StringHelper.Report(lastException);
+                webBrowserGlobalStats.DocumentText = "<code style=\"font-size: 10pt\"><pre>" + StringHelper.Report(lastException) +
+                                                     "</pre></code>";
                 tslStatus.Text = lastException.Message;
                 return;
             }
@@ -170,7 +233,7 @@ namespace SokoSolve.UI.Section.Solver
 
                     if (solver.Strategy.EvaluationTree != null)
                     {
-                        treeViewer.Init(solver.Strategy.EvaluationTree);
+                        treeViewer.Init(solver);
                         treeViewer.Render();
                     }
                 }
@@ -179,8 +242,32 @@ namespace SokoSolve.UI.Section.Solver
                 if (solver != null && solver.Strategy != null)
                 {
                     SolverLabelList txt = solver.Stats.GetDisplayData();
-                    labelStats.Text = txt == null ? "" : txt.ToString();
+                    if (txt == null)
+                    {
+                        webBrowserGlobalStats.DocumentText = null;
+                    }
+                    else
+                    {
+                        webBrowserGlobalStats.DocumentText = txt.ToHTMLDocument();
+                    }
+
+                    UpdateEvalList();
                 }
+            }
+        }
+
+        private void UpdateEvalList()
+        {
+            return;
+
+            List<INode<SolverNode>> evalList =  solver.Strategy.EvaluationItterator.GetEvalList();
+            if (evalList != null)
+            {
+                NodeListVisualisation vis = new NodeListVisualisation(
+                    evalList.ConvertAll<SolverNode>(delegate(INode<SolverNode> item) { return item.Data; }), 
+                    new SizeInt(6, 6));
+                visualisationContainerEvalList.Visualisation = vis;
+                visualisationContainerEvalList.Render();
             }
         }
 
@@ -191,9 +278,18 @@ namespace SokoSolve.UI.Section.Solver
         /// <param name="e"></param>
         private void timer_Tick(object sender, EventArgs e)
         {
-            UpdateStatus();
+            //UpdateStatus();
         }
 
+        void SolverSection_Disposed(object sender, EventArgs e)
+        {
+            if (worker != null)
+            {
+                StopWorker(worker);
+            }
+            worker = null;
+            solver = null;
+        }
 
         /// <summary>
         /// Exit click
@@ -202,8 +298,27 @@ namespace SokoSolve.UI.Section.Solver
         /// <param name="e"></param>
         private void tsbExit_Click(object sender, EventArgs e)
         {
+            // Stop anything that has started
+            tsbStop_Click(sender, e);
+
+            if (worker != null)
+            {
+                StopWorker(worker);
+            }
+
+            solver = null;
+            worker = null;
+
+            // Set the library
             FormMain main = FindForm() as FormMain;
             main.Mode = FormMain.Modes.Library;
+        }
+
+        void StopWorker(Thread thread)
+        {
+            if (solver != null) solver.IsEnabled = false;
+            if (thread.IsAlive) thread.Join(2000);
+            if (thread.IsAlive) thread.Abort();
         }
 
         /// <summary>
@@ -214,18 +329,17 @@ namespace SokoSolve.UI.Section.Solver
         private void tsbStart_Click(object sender, EventArgs e)
         {
             bitmapViewerStatic.Clear();
+            bitmapViewerStatic.MapSize = map.Map.Size;
             bitmapViewerNodeMaps.Clear();
+            bitmapViewerNodeMaps.MapSize = map.Map.Size;
 
             if (!SolverActive)
             {
                 worker = new Thread(new ThreadStart(Solve));
                 timer.Enabled = true;
                 worker.Start();
+                Thread.Sleep(500);
                 UpdateStatus();
-            }
-            else
-            {
-                worker.Resume();
             }
         }
 
@@ -236,12 +350,9 @@ namespace SokoSolve.UI.Section.Solver
         /// <param name="e"></param>
         private void tsbStop_Click(object sender, EventArgs e)
         {
-            if (SolverActive)
-            {
-                worker.Abort();
-                worker = null;
-                UpdateStatus();
-            }
+            if (solver != null) solver.IsEnabled = false;
+            if (worker != null) worker.Join(5000);
+            if (solver != null) UpdateStatus();
         }
 
         /// <summary>
@@ -258,16 +369,35 @@ namespace SokoSolve.UI.Section.Solver
             }
         }
 
+
+        private void OnVisualisationClick_LocalNode(object sender, VisEventArgs e)
+        {
+            OnVisualisationClick_TreeViewer(sender, e);
+        }
+
         /// <summary>
         /// Select a node in the tree browser
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void treeViewer_OnClickNode(object sender, SolverNodeEventArgs e)
+        private void OnVisualisationClick_TreeViewer(object sender, VisEventArgs e)
         {
-            if (e.Node == null) return;
+            if (e.Element == null) return;
 
-            SokobanMap build = BuildCurrentMap(e.Node.Data);
+            SolverNode solverNode = null;
+
+            TreeVisualisationElement element = e.Element as TreeVisualisationElement;
+            if (element != null) solverNode = element.Data;
+
+            RootPathElement rele = e.Element as RootPathElement;
+            if (rele != null) solverNode = rele.Node;
+
+            if (solverNode == null) return;
+
+            
+
+
+            SokobanMap build = BuildCurrentMap(solverNode);
             if (build != null)
             {
                 BitmapViewer.Layer puzzleLayer = new BitmapViewer.Layer();
@@ -277,25 +407,35 @@ namespace SokoSolve.UI.Section.Solver
                 puzzleLayer.IsVisible = true;
                 bitmapViewerNodeMaps.SetLayer(puzzleLayer);
             }
-            
 
-            if (e.Node.Data.MoveMap != null)
+
+            if (solverNode.MoveMap != null)
             {
-                SolverBitmap move = new SolverBitmap("MoveMap", e.Node.Data.MoveMap);
+                SolverBitmap move = new SolverBitmap("MoveMap", solverNode.MoveMap);
                 bitmapViewerNodeMaps.SetLayer(move, new SolidBrush(Color.FromArgb(120, Color.Green)));
             }
 
-            if (e.Node.Data.DeadMap != null)
+            if (solverNode.DeadMap != null)
             {
-                bitmapViewerNodeMaps.SetLayer(e.Node.Data.DeadMap, new SolidBrush(Color.FromArgb(120, Color.Black)));
+                bitmapViewerNodeMaps.SetLayer(solverNode.DeadMap, new SolidBrush(Color.FromArgb(120, Color.Black)));
             }
 
 
             // Build details
-            SolverLabelList txt = e.Node.Data.GetDisplayData();
-            labelNodeDetails.Text = txt.ToString();
+            SolverLabelList txt = solverNode.GetDisplayData();
+            webBrowserNodeCurrent.DocumentText = txt.ToHTMLDocument();
 
             bitmapViewerNodeMaps.Render();
+
+            if (sender != visualisationContainerLocalNodes)
+            {
+                RootPathVisualisation localVis = new RootPathVisualisation(new SizeInt(10, 10), solver);
+                localVis.RenderCanvas = new RectangleInt(0, 0, visualisationContainerLocalNodes.Width - 30, visualisationContainerLocalNodes.Height - 30);
+                localVis.Init(solverNode);
+                visualisationContainerLocalNodes.ClearImage();
+                visualisationContainerLocalNodes.Visualisation = localVis;
+                visualisationContainerLocalNodes.Render();
+            }
         }
 
         private SokobanMap BuildCurrentMap(SolverNode node)
@@ -323,7 +463,13 @@ namespace SokoSolve.UI.Section.Solver
         /// <param name="e"></param>
         private void tabPageStats_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(labelStats.Text);
+            
+        }
+
+
+        private void tsbRefreshVis_Click(object sender, EventArgs e)
+        {
+            UpdateStatus();
         }
 
        
@@ -353,6 +499,7 @@ namespace SokoSolve.UI.Section.Solver
         private EvalStatus solverEvalStatus;
         private Thread worker;
         private Exception lastException;
+
 
        
     }

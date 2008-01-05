@@ -18,10 +18,8 @@ namespace SokoSolve.Core.Analysis.Solver
         /// Strong Contruction
         /// </summary>
         /// <param name="controller"></param>
-        public SolverStrategy(SolverController controller) : base(new DepthLastItterator<SolverNode>())
+        public SolverStrategy(SolverController controller) : base(new SolverItterator(controller))
         {
-            (workList as DepthLastItterator<SolverNode>).MaxDepth = 50;
-            (workList as DepthLastItterator<SolverNode>).MaxItterations = 100000;
             this.controller = controller;
         }
 
@@ -71,6 +69,9 @@ namespace SokoSolve.Core.Analysis.Solver
 
             // Make the root node
             SolverNode root = new SolverNode();
+            root.IsChildrenEvaluated = false;
+            root.IsStateEvaluated = false;
+            root.Weighting = 100;
             root.PlayerPosition = SokobanMap.Player;
             root.CrateMap = staticAnalysis.InitialCrateMap;
 
@@ -84,8 +85,7 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <returns></returns>
         public override bool IsSolution(INode<SolverNode> node)
         {
-            SolverNode snode = node.Data;
-            return (snode.CrateMap == staticAnalysis.GoalMap);
+            return node.Data.Status == SolverNodeStates.Solution;
         }
 
         /// <summary>
@@ -97,7 +97,8 @@ namespace SokoSolve.Core.Analysis.Solver
         {
             controller.Stats.Nodes.AddMeasure(1f);
 
-            if (IsSolution(node))
+            // Check if this is a solution
+            if (node.Data.CrateMap == staticAnalysis.GoalMap)
             {
                 node.Data.Status = SolverNodeStates.Solution;
                 node.Data.IsStateEvaluated = true;
@@ -123,7 +124,7 @@ namespace SokoSolve.Core.Analysis.Solver
             }
 
             // Set weighting
-            node.Data.Weighting = node.Data.CrateMap.BitwiseAND(staticAnalysis.GoalMap).Count;
+            node.Data.Weighting = WeightNode(node.Data);
 
             // Check for deadness
             DeadMapAnalysis deadChecker = new DeadMapAnalysis();
@@ -136,6 +137,9 @@ namespace SokoSolve.Core.Analysis.Solver
                 node.Data.IsStateEvaluated = true;
                 node.Data.IsChildrenEvaluated = true;
 
+                controller.Stats.DeadNodes.Increment();
+
+            
                 MarkEvalCompelete(node);
 
                 // Exit
@@ -156,7 +160,8 @@ namespace SokoSolve.Core.Analysis.Solver
                 {
                     if (CheckDuplicate(node))
                     {
-                        controller.Stats.Duplicates.AddMeasure(1f);
+                        controller.Stats.Duplicates.Increment();
+
                         node.Data.Status = SolverNodeStates.Duplicate;
                         node.Data.IsStateEvaluated = true;
                         node.Data.IsChildrenEvaluated = true;
@@ -174,6 +179,38 @@ namespace SokoSolve.Core.Analysis.Solver
             }
 
             return EvalStatus.InProgress;
+        }
+
+        /// <summary>
+        /// Create a weighting for this node (many different strategies may be used here)
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
+        private float WeightNode(SolverNode node)
+        {
+            // Building weighting
+            
+            // Start with crate map weighting
+            float weighting = new Matrix(node.CrateMap, 1f).Multiply(staticAnalysis.StaticCrateWeighting).Total();
+
+            // Add a movemap weighting
+            if (node.MoveMap != null) weighting += node.CrateMap.BitwiseAND(staticAnalysis.GoalMap).Count * 0.3f;
+
+            // Add a depth weight
+            weighting += node.TreeNode.Depth * -0.3f;
+
+            // Add a parent weighting
+            weighting += node.TreeNode.Parent == null ? 0 : node.TreeNode.Parent.Data.Weighting * 0.5f;
+
+            // Make sure we eval all beginning nodes
+            if (node.TreeNode.Depth < 2) weighting += 50;
+           
+            //  Record in stats
+            controller.Stats.WeightingAvg.AddMeasure(weighting);
+            if (controller.Stats.WeightingMin.ValueTotal > weighting) controller.Stats.WeightingMin.ValueTotal = weighting;
+            if (controller.Stats.WeightingMax.ValueTotal < weighting) controller.Stats.WeightingMax.ValueTotal = weighting;
+
+            return weighting;
         }
 
         /// <summary>
@@ -249,6 +286,7 @@ namespace SokoSolve.Core.Analysis.Solver
                 else
                 {
                     node.Data.Status = SolverNodeStates.Dead;
+                    controller.Stats.DeadNodes.Increment();
                 }
 
                 node.Data.IsChildrenEvaluated = true;
@@ -300,6 +338,12 @@ namespace SokoSolve.Core.Analysis.Solver
                         newChild.CrateMap[cratePos] = false;
                         newChild.CrateMap[newCratePos] = true;
                         newChild.PlayerPosition = cratePos; // Player ends up where the crate was
+                        
+                        if (node.Data.TreeNode.Parent != null)
+                        {
+                            newChild.Weighting = node.Data.TreeNode.Parent.Data.Weighting;
+                        }
+
                         AddNodeForEval(node, newChild);
                     }
                 }

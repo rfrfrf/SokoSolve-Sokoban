@@ -36,6 +36,7 @@ namespace SokoSolve.UI.Section.Solver
             this.visualisationContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.visualisationContainer.Location = new System.Drawing.Point(0, 0);
             this.visualisationContainer.Name = "visualisationContainer";
+            this.visualisationContainer.RenderOnClick = true;
             this.visualisationContainer.Size = new System.Drawing.Size(308, 150);
             this.visualisationContainer.Status = "Status";
             this.visualisationContainer.TabIndex = 0;

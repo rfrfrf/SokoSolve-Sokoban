@@ -14,11 +14,18 @@ namespace SokoSolve.Common.Structures.Evaluation
         /// <summary>
         /// Default Constructor
         /// </summary>
-        public Evaluator()
+        public Evaluator(bool StopOnSolution)
         {
-            stopOnSolution = false;
+            stopOnSolution = StopOnSolution;
             solutions = new List<INode<T>>();
         }
+
+        public Evaluator() : this(false)
+        {
+            
+        }
+
+
 
         /// <summary>
         /// Evaluate using a strategy
@@ -45,7 +52,7 @@ namespace SokoSolve.Common.Structures.Evaluation
 					complete = (strategy.EvaluateState(current) == EvalStatus.CompleteSolution);
 
                     // Check Solution
-                    if (strategy.IsSolution(current))
+                    if (complete || strategy.IsSolution(current))
                     {                        
                         solutions.Add(current);
                         if (stopOnSolution) return EvalStatus.CompleteSolution;

@@ -34,6 +34,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DebugReport.cs" />
+    <Compile Include="DebugReportFormatter.cs" />
+    <Compile Include="DebugReportHtmlFormatter.cs" />
     <Compile Include="FactoryPattern\Factory.cs" />
     <Compile Include="FactoryPattern\FactoryStrict.cs" />
     <Compile Include="FactoryPattern\FactoryStringNamespace.cs" />

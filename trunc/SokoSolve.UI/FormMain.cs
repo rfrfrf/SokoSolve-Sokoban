@@ -161,6 +161,15 @@ namespace SokoSolve.UI
             solverControl.Map = map;
         }
 
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (solverControl != null)
+            {
+                solverControl.Dispose();
+                solverControl = null;
+            }
+        }
+
 	    private Library libControl;
 	    private Game gameControl;
         private Panel profileControl;
@@ -168,5 +177,7 @@ namespace SokoSolve.UI
 	    private Welcome welcomeControl;
         private Modes mode;
         private SolverSection solverControl;
+
+       
 	}
 }

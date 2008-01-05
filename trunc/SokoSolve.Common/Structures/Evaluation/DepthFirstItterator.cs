@@ -114,6 +114,15 @@ namespace SokoSolve.Common.Structures.Evaluation
         }
 
         /// <summary>
+        /// Return a copy of the evaluation list
+        /// </summary>
+        /// <returns></returns>
+        public List<INode<T>> GetEvalList()
+        {
+            return new List<INode<T>>(evaluationList);
+        }
+
+        /// <summary>
         /// Remove a node (it has been evaluated)
         /// </summary>
         /// <param name="EvalNode"></param>

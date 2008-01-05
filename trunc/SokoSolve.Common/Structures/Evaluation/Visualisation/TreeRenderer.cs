@@ -122,7 +122,7 @@ namespace SokoSolve.Common.Structures.Evaluation.Visualisation
             if (segments.Segments[cell.Y] == null) return null;
             if (cell.X >= segments.Segments[cell.Y].Count) return null;
 
-            return segments.Segments[cell.Y][cell.X];
+            return segments.Segments[cell.Y].Nodes[cell.X];
         }
 
         /// <summary>
@@ -173,13 +173,13 @@ namespace SokoSolve.Common.Structures.Evaluation.Visualisation
 
             regions = new List<SegmentRegion>(segments.Segments.Count);
 
-            foreach (List<TreeNode<T>> segment in segments.Segments)
+            foreach (TreeSegmenter<T>.TreeSegment segment in segments.Segments)
             {
                 SegmentRegion region = new SegmentRegion();
                 region.parent = this;
                 region.MaxRegionNodeWidth = maxWidth;
                 region.Region = new SizeInt(maxWidth*nodeSize.Width+ 50, (segment.Count / maxWidth)*nodeSize.Height);
-                region.nodes = segment;
+                region.nodes = segment.Nodes;
                 
                 regions.Add(region);
             }
@@ -223,7 +223,7 @@ namespace SokoSolve.Common.Structures.Evaluation.Visualisation
         protected Graphics graphics;
         private TreeSegmenter<T> segments;
         private List<SegmentRegion> regions;
-        private int maxDepth = 50;
+        private int maxDepth = 150;
         private int maxWidth = 150;
         VectorInt globalOffset = new VectorInt(1,20);
         private int indent = 3;

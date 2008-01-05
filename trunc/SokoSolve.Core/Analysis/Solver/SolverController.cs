@@ -19,12 +19,14 @@ namespace SokoSolve.Core.Analysis.Solver
         public SolverController(PuzzleMap puzzleMap)
         {
             this.puzzleMap = puzzleMap;
+            report = new SolverReport();
             attempted = false;
             stats = new SolverStats(this);
 
             // TODO: This should be configured, perhaps via a factory pattern
             strategy = new SolverStrategy(this);
-            evaluator = new Evaluator<SolverNode>();
+            evaluator = new Evaluator<SolverNode>(true);
+
         }
         
         /// <summary>
@@ -83,22 +85,38 @@ namespace SokoSolve.Core.Analysis.Solver
         {
             CodeTimer solveTime = new CodeTimer();
             solveTime.Start();
+            
             try
             {
+                report.Append("Starting");
+                IsEnabled = true;
+                stats.Start();
                 if (attempted) throw new Exception("Solve cannot be re-run on a single instance, this may cause state corruption.");
                 attempted = true;
-                return evaluator.Evaluate(strategy);
+                EvalStatus result = evaluator.Evaluate(strategy);
+
+                report.AppendLabel("Complete", result.ToString());
+                return result;
             }
             catch (Exception ex)
             {
+                report.Append(ex.Message);
+                report.Append(ex.StackTrace);
                 throw new Exception("Solver failed.", ex);
             }
             finally
             {
+                
+                IsEnabled = false;
+                stats.Stop();
                 stats.EvaluationTime.AddMeasure(solveTime);
             }
         }
 
+        public SolverReport Report
+        {
+            get { return report; }
+        }
 
         private bool attempted;
         private PuzzleMap puzzleMap;
@@ -106,7 +124,9 @@ namespace SokoSolve.Core.Analysis.Solver
         private SolverStats stats;
         private Evaluator<SolverNode> evaluator;
         private bool isEnabled;
+        private SolverReport report;
 
         
     }
 }
+

@@ -33,6 +33,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\MatrixTest.cs" />
     <Compile Include="Common\Structures\BitmapTest.cs" />
     <Compile Include="Core\TestImporter.cs" />
     <Compile Include="Core\TestSolver.cs" />

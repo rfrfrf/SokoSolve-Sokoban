@@ -36,6 +36,33 @@ namespace SokoSolve.Core.Analysis.Solver
 
             // Make the dead map
             BuildDeadMap();
+
+            // Build Weighting matrix maps
+            BuildWeightingMap();
+        }
+
+        /// <summary>
+        /// Build the weighting maps
+        /// </summary>
+        private void BuildWeightingMap()
+        {
+            // All goal positions get a vaue of 10
+            staticCrateWeighting = new Matrix(goalMap, 10f);
+
+            // Corner goals get another 10
+            Bitmap cornerGoals = goalMap.BitwiseAND(cornerMap);
+            staticCrateWeighting = staticCrateWeighting.Add(new Matrix(cornerGoals, 10f));
+
+            // No crates will ever get onto a dead piece, but this will make the area around a dead cell less likely to be filled by crates
+            staticCrateWeighting = staticCrateWeighting.Add(new Matrix(deadMap, -2f));
+
+            staticCrateWeighting = staticCrateWeighting.Average();
+
+            // Player map
+            staticPlayerRating = new Matrix(controller.Map.Size);
+
+            // Leave the plaer map at zero for now
+            
         }
 
         /// <summary>
@@ -125,10 +152,19 @@ namespace SokoSolve.Core.Analysis.Solver
             get { return cornerMap; }
         }
 
-
         public SolverBitmap RecessMap
         {
             get { return recessMap; }
+        }
+
+        public Matrix StaticCrateWeighting
+        {
+            get { return staticCrateWeighting; }
+        }
+
+        public Matrix StaticPlayerRating
+        {
+            get { return staticPlayerRating; }
         }
 
         #endregion
@@ -140,7 +176,9 @@ namespace SokoSolve.Core.Analysis.Solver
         private SolverBitmap initialCrateMap;
         private SolverBitmap deadMap;
         private SolverBitmap cornerMap;
-        SolverBitmap recessMap;
+        private SolverBitmap recessMap;
+        private Matrix staticCrateWeighting;
+        private Matrix staticPlayerRating;
 
         private SolverController controller;
     }

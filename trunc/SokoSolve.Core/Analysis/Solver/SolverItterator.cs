@@ -11,11 +11,14 @@ namespace SokoSolve.Core.Analysis.Solver
     /// Custom evaluator (buildin og <see cref="DepthLastItterator{T}"/>) make a custom itterator 
     /// which can intergrate into the Solver implmentation with stats, weighting and multi-threading
     /// </summary>
-    class SolverItterator :  DepthLastItterator<SolverNode>
+    class SolverItterator : IEvaluationStrategyItterator<SolverNode>
     {
-        public SolverItterator(SolverController controller)
+        public SolverItterator(SolverController controller) 
         {
-            base.GetDepth = GetSolverNodeDepth;
+            evalList = new List<INode<SolverNode>>(10000);
+            //base.MaxDepth = 60;
+            //base.MaxItterations = 500000;
+            //base.GetDepth = GetSolverNodeDepth;
             this.controller = controller;
         }
 
@@ -23,12 +26,40 @@ namespace SokoSolve.Core.Analysis.Solver
         /// Get the next node to evaluate, based on depth-first.
         /// </summary>
         /// <returns></returns>
-        public override INode<SolverNode> GetNext(out EvalStatus Status)
+        public INode<SolverNode> GetNext(out EvalStatus Status)
         {
-            // Get the basic depth-last node
-            INode<SolverNode> depthNext =  base.GetNext(out Status);
+            if (!controller.IsEnabled)
+            {
+                exitStatus = EvalStatus.ExitIncomplete;
+                Status = exitStatus;
+                return null;
+            }
 
-            return depthNext;
+            controller.Stats.EvaluationItterations.Increment();
+            
+            if (evalList.Count == 0)
+            {
+                exitStatus = EvalStatus.CompleteNoSolution;
+                Status = exitStatus;
+                return null;
+            }
+            //if (currentMaxDepth > maxDepth)
+            //{
+            //    exitStatus = EvalStatus.ExitIncomplete;
+            //    Status = exitStatus;
+            //    return null;
+            //}
+            //if (currentItteration++ > maxItterations)
+            //{
+            //    exitStatus = EvalStatus.ExitIncomplete;
+            //    Status = exitStatus;
+            //    return null;
+            //}
+
+            INode<SolverNode> next = evalList[0];
+
+            Status = exitStatus;
+            return next;
         }
 
 
@@ -36,50 +67,45 @@ namespace SokoSolve.Core.Analysis.Solver
         /// Add another node to evaluate
         /// </summary>
         /// <param name="NewEvalNode"></param>
-        public override void Add(INode<SolverNode> NewEvalNode)
+        public void Add(INode<SolverNode> NewEvalNode)
         {
-            if (evaluationList.Count == 0)
-            {
-                evaluationList.AddFirst(NewEvalNode);
-                return;
-            }
+            controller.Stats.AvgEvalList.Increment();
 
-            if (evaluationList.Contains(NewEvalNode)) return;
+           evalList.Add(NewEvalNode);
 
-            LinkedListNode<INode<SolverNode>> current = evaluationList.First;
-
-            int depthNewEvalNode = GetDepth(NewEvalNode);
-            while (current != null)
-            {
-                int depthCurrentNode = GetDepth(current.Value);
-
-                if (depthNewEvalNode == depthCurrentNode)
-                {
-                    if (NewEvalNode.Data.Weighting > current.Value.Data.Weighting)
-                    {
-                        evaluationList.AddBefore(current, NewEvalNode);
-                        return;
-                    }
-                    return;
-                }
-
-                if (depthNewEvalNode < depthCurrentNode)
-                {
-                    evaluationList.AddBefore(current, NewEvalNode);
-                    return;
-                }
-
-                current = current.Next;
-            }
-
-            evaluationList.AddLast(NewEvalNode);
+           evalList.Sort(CompareNodes);
         }
 
-        private int GetSolverNodeDepth(INode<SolverNode> node)
+        static int CompareNodes(INode<SolverNode> lhs, INode<SolverNode> rhs)
         {
-            return node.Data.TreeNode.Depth;
+            return rhs.Data.Weighting.CompareTo(lhs.Data.Weighting);
         }
 
+
+        /// <summary>
+        /// Remove a node (it has been evaluated)
+        /// </summary>
+        /// <param name="EvalNode"></param>
+        public void Remove(INode<SolverNode> EvalNode)
+        {
+            controller.Stats.AvgEvalList.Decrement();
+
+            evalList.Remove(EvalNode);
+        }
+
+
+        /// <summary>
+        /// Return a copy of the evaluation list
+        /// </summary>
+        /// <returns>A copy of the nodes</returns>
+        public List<INode<SolverNode>> GetEvalList()
+        {
+            return new List<INode<SolverNode>>(evalList);
+        }
+
+
+        private List<INode<SolverNode>> evalList;
         private SolverController controller;
+        private EvalStatus exitStatus;
     }
 }

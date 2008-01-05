@@ -72,5 +72,38 @@ namespace SokoSolve.Core.Analysis.Solver
             }
             return sb.ToString();
         }
+
+        public string ToHTMLDocument()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<html><body >");
+            sb.Append(ToHTML());
+            sb.Append("</body></html>");
+            return sb.ToString();
+        }
+
+        public string ToHTML()
+        {
+            StringBuilder sb = new StringBuilder();
+            
+            sb.Append("<table style=\"font-family: Arial; font-size:8pt; \">");
+            foreach (SolverLabel label in this)
+            {
+                sb.Append("<tr><th>");
+                sb.Append(label.Name);
+                sb.Append("</th><td>");
+                if (label.Value != null) sb.Append(label.Value);
+                if (label.UnitOfMeasure != null)
+                {
+                    sb.Append(" ");
+                    sb.Append(label.UnitOfMeasure);
+                }
+                sb.Append("</td></tr");
+                sb.Append(Environment.NewLine);
+            }
+            sb.Append("</table>");
+            
+            return sb.ToString();
+        }
     }
 }

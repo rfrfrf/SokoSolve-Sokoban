@@ -11,9 +11,16 @@ namespace SokoSolve.UI.Section.Solver
 {
     internal class TreeVisualisation : Visualisation
     {
-        private SizeInt cellSize = new SizeInt(4, 4);
+        public TreeVisualisation(SolverController controller)
+        {
+            this.controller = controller;
+            this.tree = controller.Strategy.EvaluationTree;
+        }
+
+        internal SolverController controller;
+        private SizeInt cellSize = new SizeInt(8, 8);
         protected Graphics graphics;
-        private int maxDepth = 50;
+        private int maxDepth = 150;
         private int maxMembers = 5000;
         private int maxWidth = 150;
         private List<SegmentRegion> regions;
@@ -21,7 +28,7 @@ namespace SokoSolve.UI.Section.Solver
         private TreeSegmenter<SolverNode> segments;
         private Tree<SolverNode> tree;
         private RectangleInt windowRegion;
-        private int wrapIndent = 3;
+        private int summaryIndent = 50;
 
         /// <summary>
         /// Element cell size 4,4 by default
@@ -80,7 +87,7 @@ namespace SokoSolve.UI.Section.Solver
                 int height = 0;
                 for (int cc = 0; cc < elementDepth; cc++)
                 {
-                    height += regions[cc].Region.Height;
+                    height += regions[cc].RenderRegion.Height;
                 }
 
                 return new RectangleInt(region.GetNodePixelPosition(treeElement.Node).Add(0, height), cellSize);
@@ -114,14 +121,16 @@ namespace SokoSolve.UI.Section.Solver
         {
             Init();
 
+            graphics.FillRectangle(new SolidBrush(Color.DarkGray), RenderCanvas.ToDrawingRect());
             graphics.DrawRectangle(new Pen(Color.Black), RenderCanvas.ToDrawingRect());
 
             // Draw all nodes.
             // This is a very slow (but nicely genric) method; it may be faster to not make the wrapping GridVisualisationElement 
             // and just render directly. Then only use the wrapping GridVisualisationElement for mouse (selected) logic.
+            int cc = 0;
             foreach (SegmentRegion region in regions)
             {
-                foreach (TreeNode<SolverNode> node in region.nodes)
+                foreach (TreeNode<SolverNode> node in region.treeSegment.Nodes)
                 {
                     TreeVisualisationElement element = region[node];
                     if (element != null)
@@ -132,9 +141,46 @@ namespace SokoSolve.UI.Section.Solver
                         }
                     }
                 }
+
+                // Draw the region summaries
+                graphics.DrawLine(summaryPen,
+                                  region.RenderRegion.TopLeft.Add(summaryIndent - 5, 1).ToPoint(),
+                                  region.RenderRegion.BottomLeft.Add(summaryIndent - 5, -1).ToPoint());
+
+                string txt = region.treeSegment.Count.ToString();
+                if (region.treeSegment.Discarded > 0)
+                {
+                    txt += "+" + region.treeSegment.Discarded.ToString();
+                }
+
+                // Alternate text
+                if (cc%2 == 0)
+                {
+                    graphics.DrawString(txt, summaryFont, summaryBush, region.RenderRegion.TopLeft.ToPoint());
+                }
+                else
+                {
+                    SizeF txtSize = graphics.MeasureString(txt, summaryFont);
+                    VectorInt pos = region.RenderRegion.TopLeft.Add(summaryIndent - 7 - (int) txtSize.Width, 0);
+                    graphics.DrawString(txt, summaryFont, summaryBush, pos.ToPoint());
+                }
+
+
+            cc++;
             }
+
+            // Re-draw selected, so that it is on top
+            if (Selected != null)
+            {
+                Selected.Draw(graphics, GetDrawRegion(Selected));
+            }
+
+            
         }
 
+        private Font summaryFont = new Font("Arial Narrow", 7f);
+        private Brush summaryBush = new SolidBrush(Color.Black);
+        private Pen summaryPen = new Pen(new SolidBrush(Color.DimGray), 2f);
 
         /// <summary>
         /// Initialise
@@ -146,15 +192,20 @@ namespace SokoSolve.UI.Section.Solver
 
             regions = new List<SegmentRegion>(segments.Segments.Count);
 
-            foreach (List<TreeNode<SolverNode>> segment in segments.Segments)
+            int height = 0;
+            foreach (TreeSegmenter<SolverNode>.TreeSegment segment in segments.Segments)
             {
                 SegmentRegion region = new SegmentRegion();
                 region.owner = this;
                 region.MaxRegionNodeWidth = maxWidth;
-                region.Region = new SizeInt(maxWidth*CellSize.Width + 50, (segment.Count/maxWidth)*CellSize.Height);
-                region.nodes = segment;
+                SizeInt regionSize = new SizeInt(maxWidth*CellSize.Width + 50, (segment.Count/maxWidth +1)*CellSize.Height);
+                region.RenderRegion = new RectangleInt(renderCanvas.TopLeft.Add(0, height), regionSize);
+                region.treeSegment = segment;
+                region.treeSegment.Nodes.Sort(delegate(TreeNode<SolverNode> lhs, TreeNode<SolverNode> rhs) { return rhs.Data.Weighting.CompareTo(lhs.Data.Weighting); });
 
                 regions.Add(region);
+
+                height += regionSize.Height;
             }
         }
 
@@ -162,11 +213,15 @@ namespace SokoSolve.UI.Section.Solver
 
         private class SegmentRegion
         {
+            public SegmentRegion()
+            {
+                elements = new List<TreeVisualisationElement>();
+            }
+
             public int MaxRegionNodeWidth;
-            public List<TreeNode<SolverNode>> nodes;
+            public TreeSegmenter<SolverNode>.TreeSegment treeSegment;
             private List<TreeVisualisationElement> elements;
             public TreeVisualisation owner;
-            public SizeInt Region;
             public RectangleInt RenderRegion;
 
             /// <summary>
@@ -196,7 +251,7 @@ namespace SokoSolve.UI.Section.Solver
             /// <returns></returns>
             public VectorInt GetNodePosition(TreeNode<SolverNode> node)
             {
-                int idx = nodes.IndexOf(node);
+                int idx = treeSegment.Nodes.IndexOf(node);
                 if (idx < 0) return null;
                 int layer = idx/MaxRegionNodeWidth;
                 int offset = idx%MaxRegionNodeWidth;
@@ -211,16 +266,7 @@ namespace SokoSolve.UI.Section.Solver
             public VectorInt GetNodePixelPosition(TreeNode<SolverNode> node)
             {
                 VectorInt logical = GetNodePosition(node);
-                if (logical.Y == 0)
-                {
-                    return logical.Multiply(owner.CellSize).Add(owner.RenderCanvas.TopLeft);
-                }
-                else
-                {
-                    return
-                        logical.Multiply(owner.CellSize).Add(owner.RenderCanvas.TopLeft).Add(
-                            owner.wrapIndent*owner.CellSize.Width, 0);
-                }
+                return logical.Multiply(owner.CellSize).Add(owner.RenderCanvas.TopLeft).Add(owner.summaryIndent, 0);
             }
 
             /// <summary>
@@ -230,9 +276,9 @@ namespace SokoSolve.UI.Section.Solver
             /// <returns></returns>
             public VisualisationElement GetNodeFromPixelPosition(VectorInt pixelPosition)
             {
-                VectorInt logical = pixelPosition.Subtract(RenderRegion.TopLeft);
-                int idx = (pixelPosition.X / owner.cellSize.Width) + (pixelPosition.Y / owner.cellSize.Height) * MaxRegionNodeWidth;
-                if (idx < nodes.Count) return this[nodes[idx]];
+                VectorInt logical = pixelPosition.Subtract(RenderRegion.TopLeft).Subtract(owner.summaryIndent, 0);
+                int idx = (logical.X / owner.cellSize.Width) + (logical.Y / owner.cellSize.Height) * MaxRegionNodeWidth;
+                if (idx < treeSegment.Count) return this[treeSegment.Nodes[idx]];
                 return null; // Not found
             }
         }
@@ -276,12 +322,12 @@ namespace SokoSolve.UI.Section.Solver
 
         public override string GetName()
         {
-            return node.Data.NodeID;
+            return "ID "+node.Data.NodeID;
         }
 
         public override string GetDisplayData()
         {
-            return node.Data.NodeID;
+            return "NodeID: "+node.Data.NodeID;
         }
 
         public override void Draw(Graphics graphics, RectangleInt region)
@@ -312,20 +358,31 @@ namespace SokoSolve.UI.Section.Solver
                 switch (node.Data.Status)
                 {
                     case (SolverNodeStates.None):
-                        // Try something else
-                        if (node.Data.Weighting != 0)
+                        
+
+                        float weighting = node.Data.Weighting;
+                        if (weighting < 0)
                         {
-                            int green = 200 - (int)node.Data.Weighting * 50;
-                            if (green > 250) green = 250;
-                            return new SolidBrush(Color.FromArgb(0, green, 0));
+                            return new SolidBrush(Color.DarkGray);
+                        }
+                        if (weighting == 0)
+                        {
+                            new SolidBrush(Color.Cornsilk);
+                        }
+                        if (owner.controller.Stats.WeightingMax.ValueTotal > 0)
+                        {
+                            int min = 50;
+                            int max = 250;
+                            int value = Convert.ToInt32(weighting/owner.controller.Stats.WeightingMax.ValueTotal* (float)max);
+                            return new SolidBrush(Color.FromArgb(50, value, 50));
                         }
                         return new SolidBrush(Color.Cornsilk);
 
-                    case (SolverNodeStates.Duplicate): return new SolidBrush(Color.DarkGray);
-                    case (SolverNodeStates.Solution): return new SolidBrush(Color.Cyan);
-                    case (SolverNodeStates.SolutionPath): return new SolidBrush(Color.LightCyan);
-                    case (SolverNodeStates.Dead): return new SolidBrush(Color.Black);
-                    case (SolverNodeStates.DeadChildren): return new SolidBrush(Color.DarkRed);
+                    case (SolverNodeStates.Duplicate): return new SolidBrush(Color.Brown);
+                    case (SolverNodeStates.Solution): return new SolidBrush(Color.Red);
+                    case (SolverNodeStates.SolutionPath): return new SolidBrush(Color.Red);
+                    case (SolverNodeStates.Dead): return new SolidBrush(Color.Pink);
+                    case (SolverNodeStates.DeadChildren): return new SolidBrush(Color.Pink);
                 }
             }
             return new SolidBrush(Color.Purple);

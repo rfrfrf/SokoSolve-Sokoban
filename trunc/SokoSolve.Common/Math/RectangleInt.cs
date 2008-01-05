@@ -11,6 +11,11 @@ namespace SokoSolve.Common.Math
 		public VectorInt TopLeft;
 		public VectorInt BottomRight;
 
+        public RectangleInt(int x, int y, int width, int height) : this(new VectorInt(x, y), new SizeInt(width, height))
+        {
+            
+        }
+
 		public RectangleInt(VectorInt aTopLeft, SizeInt aSize)
         {
             TopLeft = aTopLeft;

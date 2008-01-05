@@ -81,6 +81,12 @@ namespace SokoSolve.UI.Section.Solver
             {
                 cell.Draw(graphics, GetDrawRegion(cell));
             }
+
+            // Re-draw selected, so that it is on top
+            if (Selected != null)
+            {
+                Selected.Draw(graphics, GetDrawRegion(Selected));
+            }
         }
 
         public List<BitmapViewer.Layer> DrawLayers
@@ -193,7 +199,7 @@ namespace SokoSolve.UI.Section.Solver
             if (this == owner.Selected)
             {
                 // Draw Selected cursor
-                graphics.DrawRectangle(new Pen(Color.Black, 3f), region.TopLeft.X - 2, region.TopLeft.Y - 2, region.Size.Width + 4, region.Size.Height + 4);
+                graphics.DrawRectangle(new Pen(Color.Yellow, 3f), region.TopLeft.X - 2, region.TopLeft.Y - 2, region.Size.Width + 4, region.Size.Height + 4);
             }
         }
     }

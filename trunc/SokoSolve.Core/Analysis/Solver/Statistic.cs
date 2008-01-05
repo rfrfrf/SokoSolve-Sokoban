@@ -21,11 +21,33 @@ namespace SokoSolve.Core.Analysis.Solver
             this.name = name;
         }
 
-
-        public Statistic(string name, string unitOfMeasure): this()
+        /// <summary>
+        /// Use a string.Format string to present the stat. Order is 
+        /// (1) ValueLast, (2) ValueTotal, (3) ValueTotal/Count, (4) Count, (5) UnitOfMeasure
+        /// </summary>
+        /// <param name="StringFormat">(1) ValueLast, (2) ValueTotal, (3) ValueTotal/Count, (4) Count, (5) UnitOfMeasure</param>
+        public Statistic(string name, string StringFormat): this()
         {
             this.name = name;
-            this.unitOfMeasure = unitOfMeasure;
+            this.stringFormat = StringFormat;
+        }
+
+        public float ValueLast
+        {
+            get { return valueLast; }
+            set { valueLast = value; }
+        }
+
+        public float ValueTotal
+        {
+            get { return valueTotal; }
+            set { valueTotal = value; }
+        }
+
+        public int Count
+        {
+            get { return count; }
+            set { count = value; }
         }
 
         /// <summary>
@@ -55,6 +77,18 @@ namespace SokoSolve.Core.Analysis.Solver
             set { unitOfMeasure = value; }
         }
 
+        public void Increment()
+        {
+            count++;
+            valueTotal += 1f;
+        }
+
+        public void Decrement()
+        {
+            count++;
+            valueTotal -= 1f;
+        }
+
         public void AddMeasure(float avalue)
         {
             count++;
@@ -76,8 +110,31 @@ namespace SokoSolve.Core.Analysis.Solver
             valueTotal += valueLast;
         }
 
+
+        /// <summary>
+        /// Use a string.Format string to present the stat. Order is 
+        /// (1) ValueLast, (2) ValueTotal, (3) ValueTotal/Count, (4) Count, (5) UnitOfMeasure
+        /// </summary>
+        public string StringFormat
+        {
+            get { return stringFormat; }
+            set { stringFormat = value; }
+        }
+
         public SolverLabel GetDisplayData()
         {
+            if (stringFormat != null)
+            {
+                return new SolverLabel(name,
+                   string.Format(stringFormat,
+                       valueLast,
+                       valueTotal,
+                       valueTotal / (float)count,
+                       count,
+                       unitOfMeasure),
+                    null);
+            }
+
             // Hint: Counter
             if (count == (int)valueTotal) return new SolverLabel(name, count.ToString(), null);
 
@@ -113,5 +170,6 @@ namespace SokoSolve.Core.Analysis.Solver
         private string name;
         private string description;
         private string unitOfMeasure;
+        private string stringFormat = "{1} {4}, avg {2} of {3}";
     }
 }

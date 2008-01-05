@@ -23,17 +23,59 @@ namespace SokoSolve.Common.Structures
             this.maxMembers = maxMembers;
         }
 
+        public class TreeSegment
+        {
+            public TreeSegment(List<TreeNode<T>> nodes, int discarded, int total)
+            {
+                this.nodes = nodes;
+                this.discarded = discarded;
+                this.total = total;
+            }
+
+            public List<TreeNode<T>> Nodes
+            {
+                get { return nodes; }
+                set { nodes = value; }
+            }
+
+            public int Discarded
+            {
+                get { return discarded; }
+                set { discarded = value; }
+            }
+
+            public int Total
+            {
+                get { return total; }
+                set { total = value; }
+            }
+
+            private List<TreeNode<T>> nodes;
+            private int discarded;
+            private int total;
+
+            public void Add(TreeNode<T> node)
+            {
+                nodes.Add(node);
+            }
+
+            public int Count
+            {
+                get { return nodes.Count;  }
+            }
+        }
+
         /// <summary>
         /// Segment the tree by depth
         /// </summary>
         public void PerformSegment()
         {
             nodesProgressed = 0;
-            segments = new List<List<TreeNode<T>>>(maxDepth);
+            segments = new List<TreeSegment>(maxDepth);
 
             for (int cc = 0; cc < maxDepth; cc++)
             {
-                segments.Add(new List<TreeNode<T>>(maxMembers));
+                segments.Add(new TreeSegment(new List<TreeNode<T>>(), 0, 0));
             }
 
             tree.Root.ForEach(AssignNode, maxDepth);
@@ -42,7 +84,7 @@ namespace SokoSolve.Common.Structures
         /// <summary>
         /// Segments as generated as <see cref="PerformSegment"/>
         /// </summary>
-        public List<List<TreeNode<T>>> Segments
+        public List<TreeSegment> Segments
         {
             get { return segments; }
         }
@@ -58,6 +100,7 @@ namespace SokoSolve.Common.Structures
             {
                 if (segments[node.Depth].Count >= maxMembers)
                 {
+                    segments[node.Depth].Discarded++;
                     membersDiscarded++;
                 }
                 else
@@ -72,7 +115,7 @@ namespace SokoSolve.Common.Structures
         }
 
         private Tree<T> tree;
-        private List<List<TreeNode<T>>> segments;
+        private List<TreeSegment> segments;
         private int maxDepth;
         private int maxMembers;
         private int membersDiscarded;

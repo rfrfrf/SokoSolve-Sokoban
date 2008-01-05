@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
 
 namespace SokoSolve.Common.Math
@@ -199,6 +200,24 @@ namespace SokoSolve.Common.Math
 			return new VectorDouble((double)X, (double)Y);
 		}
 
+        /// <summary>
+        /// Convert to a Drawing position
+        /// </summary>
+        /// <returns></returns>
+        public System.Drawing.Point ToPoint()
+        {
+            return new Point(x, y);
+        }
+
+        /// <summary>
+        /// Convert to a Drawing position
+        /// </summary>
+        /// <returns></returns>
+        public System.Drawing.PointF ToPointF()
+        {
+            return new PointF(x, y);
+        }
+
 		public VectorInt Offset(Direction dir)
 		{
 			switch (dir)
@@ -278,6 +297,6 @@ namespace SokoSolve.Common.Math
 		}
 
         
-	}
+    }
 
 }
