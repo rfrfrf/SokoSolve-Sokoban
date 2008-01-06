@@ -9,7 +9,7 @@ using SokoSolve.Core.Analysis.Solver;
 
 namespace SokoSolve.Core.Analysis.DeadMap
 {
-    class DeadMapAnalysis : StrategyPatternBase<DeadMapState>
+    public class DeadMapAnalysis : StrategyPatternBase<DeadMapState>
     {
         public DeadMapAnalysis() : base("DeadMap analysis")
         {
@@ -53,6 +53,8 @@ namespace SokoSolve.Core.Analysis.DeadMap
             this.wallMap = wallMap;
             this.strategy = strategy;
 
+            mapSize =wallMap.Size;
+
             if (goalMap == null) throw new ArgumentNullException("goalMap");
             if (wallMap == null) throw new ArgumentNullException("goalMap");
             if (strategy == null) throw new ArgumentNullException("strategy");
@@ -67,11 +69,17 @@ namespace SokoSolve.Core.Analysis.DeadMap
             get { return crateMap; }
         }
 
+        /// <summary>
+        /// Static
+        /// </summary>
         public Bitmap GoalMap
         {
             get { return goalMap; }
         }
 
+        /// <summary>
+        /// Static
+        /// </summary>
         public Bitmap WallMap
         {
             get { return wallMap; }
@@ -117,12 +125,21 @@ namespace SokoSolve.Core.Analysis.DeadMap
             get { return strategy.StaticAnalysis;  }
         }
 
+        /// <summary>
+        /// Cache. Helper to avoid costly size lookip
+        /// </summary>
+        public SizeInt MapSize
+        {
+            get { return mapSize; }
+        }
+
         private Bitmap crateMap;
         private Bitmap goalMap;
         private Bitmap wallMap;
         private SolverBitmap cornerMap;
         private SolverBitmap recessMap;
         private SolverStrategy strategy;
+        private SizeInt mapSize;
     }
   
     

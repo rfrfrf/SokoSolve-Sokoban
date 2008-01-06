@@ -21,6 +21,7 @@ namespace SokoSolve.Core.Analysis.Solver
         public StaticAnalysis(SolverController controller)
         {
             this.controller = controller;
+            deadMapAnalysis = new DeadMapAnalysis();
         }
 
         /// <summary>
@@ -70,8 +71,7 @@ namespace SokoSolve.Core.Analysis.Solver
         /// </summary>
         private void BuildDeadMap()
         {
-            DeadMapAnalysis anal = new DeadMapAnalysis();
-            DeadMapState deadMapResult = anal.BuildDeadMap(null, goalMap, wallMap, controller.Strategy);
+            DeadMapState deadMapResult = deadMapAnalysis.BuildDeadMap(null, goalMap, wallMap, controller.Strategy);
             deadMap = deadMapResult;
             cornerMap = deadMapResult.CornerMap;
             recessMap = deadMapResult.RecessMap;
@@ -167,6 +167,14 @@ namespace SokoSolve.Core.Analysis.Solver
             get { return staticPlayerRating; }
         }
 
+        /// <summary>
+        /// Rule Strategy to analyse static and dynamic dead maps
+        /// </summary>
+        public DeadMapAnalysis DeadMapAnalysis
+        {
+            get { return deadMapAnalysis; }
+        }
+
         #endregion
 
         private SolverBitmap wallMap;
@@ -181,6 +189,7 @@ namespace SokoSolve.Core.Analysis.Solver
         private Matrix staticPlayerRating;
 
         private SolverController controller;
+        private DeadMapAnalysis deadMapAnalysis;
     }
 }
 

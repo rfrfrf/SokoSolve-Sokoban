@@ -128,8 +128,7 @@ namespace SokoSolve.Core.Analysis.Solver
             node.Data.Weighting = WeightNode(node.Data);
 
             // Check for deadness
-            DeadMapAnalysis deadChecker = new DeadMapAnalysis();
-            node.Data.DeadMap = deadChecker.BuildDeadMap(node.Data.CrateMap, staticAnalysis.GoalMap, staticAnalysis.WallMap, this);
+            node.Data.DeadMap = staticAnalysis.DeadMapAnalysis.BuildDeadMap(node.Data.CrateMap, staticAnalysis.GoalMap, staticAnalysis.WallMap, this);
             node.Data.DeadMap.Name = "Dynamic Deadmap";
             if (node.Data.CrateMap.BitwiseAND(node.Data.DeadMap).Count > 0)
             {
