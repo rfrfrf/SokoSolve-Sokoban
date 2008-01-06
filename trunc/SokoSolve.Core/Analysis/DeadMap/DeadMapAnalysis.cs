@@ -16,6 +16,7 @@ namespace SokoSolve.Core.Analysis.DeadMap
             Register(new CornerRule(this));
             Register(new BoxRule(this));
             Register(new RecessRule(this));
+            Register(new HintsRule(this));
             Register(new CleanUpRule(this));
         }
 
@@ -26,9 +27,9 @@ namespace SokoSolve.Core.Analysis.DeadMap
         /// <param name="goalMap"></param>
         /// <param name="wallMap"></param>
         /// <returns></returns>
-        public DeadMapState BuildDeadMap(Bitmap crateMap, Bitmap goalMap, Bitmap wallMap, StaticAnalysis analysis)
+        public DeadMapState BuildDeadMap(Bitmap crateMap, Bitmap goalMap, Bitmap wallMap, SolverStrategy strategy)
         {
-            DeadMapState result = new DeadMapState(crateMap, goalMap, wallMap, analysis);
+            DeadMapState result = new DeadMapState(crateMap, goalMap, wallMap, strategy);
             Evaluate(result);
             return result;
         }
@@ -45,16 +46,16 @@ namespace SokoSolve.Core.Analysis.DeadMap
         /// <param name="crateMap">map be null</param>
         /// <param name="goalMap"></param>
         /// <param name="wallMap"></param>
-        public DeadMapState(Bitmap crateMap, Bitmap goalMap, Bitmap wallMap, StaticAnalysis anlaysis) : base("Dead Map", wallMap.Size)
+        public DeadMapState(Bitmap crateMap, Bitmap goalMap, Bitmap wallMap, SolverStrategy strategy) : base("Dead Map", wallMap.Size)
         {
             this.crateMap = crateMap;
             this.goalMap = goalMap;
             this.wallMap = wallMap;
-            this.analysis = anlaysis;
+            this.strategy = strategy;
 
             if (goalMap == null) throw new ArgumentNullException("goalMap");
             if (wallMap == null) throw new ArgumentNullException("goalMap");
-            if (analysis == null) throw new ArgumentNullException("analysis");
+            if (strategy == null) throw new ArgumentNullException("strategy");
         }
 
 
@@ -105,10 +106,15 @@ namespace SokoSolve.Core.Analysis.DeadMap
         /// <summary>
         /// Static Analysis
         /// </summary>
+        public SolverStrategy Strategy
+        {
+            get { return strategy; }
+            set { strategy = value; }
+        }
+
         public StaticAnalysis Analysis
         {
-            get { return analysis; }
-            set { analysis = value; }
+            get { return strategy.StaticAnalysis;  }
         }
 
         private Bitmap crateMap;
@@ -116,7 +122,7 @@ namespace SokoSolve.Core.Analysis.DeadMap
         private Bitmap wallMap;
         private SolverBitmap cornerMap;
         private SolverBitmap recessMap;
-        private StaticAnalysis analysis;
+        private SolverStrategy strategy;
     }
   
     

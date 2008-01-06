@@ -117,6 +117,26 @@ namespace SokoSolve.Core.Analysis.Solver
         }
 
         /// <summary>
+        /// Direction of the push resulting in the crate map
+        /// </summary>
+        public Direction PushDirection
+        {
+            get { return pushDirection; }
+            set { pushDirection = value; }
+        }
+
+        /// <summary>
+        /// <see cref="PlayerPosition"/> Position before the push
+        /// </summary>
+        public VectorInt PlayerPositionBeforePush
+        {
+            get
+            {
+                return playerPosition.Offset(VectorInt.Reverse(pushDirection));
+            }
+        }
+
+        /// <summary>
         /// The primary dead/solution status
         /// </summary>
         public SolverNodeStates Status
@@ -170,7 +190,9 @@ namespace SokoSolve.Core.Analysis.Solver
             txt.Add("Weighting", weighting);
             txt.Add("Player", playerPosition.ToString());
             txt.Add("Depth", backRef.Depth);
+            txt.Add("Total Depth", backRef.TotalDepth);
             txt.AddListSummary("Children", new List<SolverNode>(backRef.ChildrenData), delegate(SolverNode item) { return item.nodeID;  }, ", ");
+            txt.Add("Total Children", backRef.TotalChildCount);
             return txt;
         }
 
@@ -183,6 +205,7 @@ namespace SokoSolve.Core.Analysis.Solver
         private Bitmap crateMap;
         private Bitmap moveMap;
         private VectorInt playerPosition;
+        private Direction pushDirection;
 
         // Derrived meta-state
         private SolverNodeStates status;

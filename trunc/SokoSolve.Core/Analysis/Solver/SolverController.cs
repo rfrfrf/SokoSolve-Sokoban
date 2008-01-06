@@ -19,9 +19,10 @@ namespace SokoSolve.Core.Analysis.Solver
         public SolverController(PuzzleMap puzzleMap)
         {
             this.puzzleMap = puzzleMap;
-            report = new SolverReport();
+            debugReport = new SolverReport();
             attempted = false;
             stats = new SolverStats(this);
+            exitConditions = new ExitConditions();
 
             // TODO: This should be configured, perhaps via a factory pattern
             strategy = new SolverStrategy(this);
@@ -51,6 +52,14 @@ namespace SokoSolve.Core.Analysis.Solver
         public SolverStrategy Strategy
         {
             get { return strategy; }
+        }
+
+        /// <summary>
+        /// The conditions under which the solver should exit without solution
+        /// </summary>
+        public ExitConditions ExitConditions
+        {
+            get { return exitConditions; }
         }
 
         /// <summary>
@@ -88,20 +97,20 @@ namespace SokoSolve.Core.Analysis.Solver
             
             try
             {
-                report.Append("Starting");
+                debugReport.Append("Starting");
                 IsEnabled = true;
                 stats.Start();
                 if (attempted) throw new Exception("Solve cannot be re-run on a single instance, this may cause state corruption.");
                 attempted = true;
                 EvalStatus result = evaluator.Evaluate(strategy);
 
-                report.AppendLabel("Complete", result.ToString());
+                debugReport.AppendLabel("Complete", result.ToString());
                 return result;
             }
             catch (Exception ex)
             {
-                report.Append(ex.Message);
-                report.Append(ex.StackTrace);
+                debugReport.Append(ex.Message);
+                debugReport.Append(ex.StackTrace);
                 throw new Exception("Solver failed.", ex);
             }
             finally
@@ -113,9 +122,14 @@ namespace SokoSolve.Core.Analysis.Solver
             }
         }
 
-        public SolverReport Report
+        public void BuildReport()
         {
-            get { return report; }
+            
+        }
+
+        public SolverReport DebugReport
+        {
+            get { return debugReport; }
         }
 
         private bool attempted;
@@ -124,8 +138,8 @@ namespace SokoSolve.Core.Analysis.Solver
         private SolverStats stats;
         private Evaluator<SolverNode> evaluator;
         private bool isEnabled;
-        private SolverReport report;
-
+        private SolverReport debugReport;
+        private ExitConditions exitConditions;
         
     }
 }

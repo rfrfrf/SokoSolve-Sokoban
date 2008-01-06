@@ -24,6 +24,14 @@ table
 {
 	width: 100%;
 	border: solid 1px black;
+	font-family: Calibri, Verdana, Arial;
+	font-size: 11pt;
+}
+
+th
+{
+	background-color: #808080;
+	color: White;
 }
 
 a 
@@ -42,7 +50,6 @@ img
 {
 	width: 100%;
 	border-style: none;
-	
 }
 
 .tableformat td 
@@ -60,5 +67,33 @@ img
 	padding-right: 80px;
 	margin-left: 30px;
 }
+
+.tabledata 
+{
+	border: solid 1px black;
+	font-family: Calibri, Verdana, Arial;
+	font-size: 11pt;
+	border-collapse: collapse;
+	
+}
+
+.tabledata th
+{
+	background-color: #707070;
+	color: White;
+	text-align: right;
+	border: solid 1px #303030;
+	padding: 3 3 3 3;
+}
+
+.tabledata td
+{
+	background-color: #a0a0a0;
+	color: black;
+	text-align: left;
+	border: solid 1px #303030;
+	padding: 3 3 3 3;
+}
+
 
 

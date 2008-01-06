@@ -5,11 +5,11 @@
     <Position X="3.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <FileName>Analysis\Solver\SolverController.cs</FileName>
-      <HashCode>EBAAAAAQCBAAAAgAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <HashCode>EBAEAAAQGBAAAQgAAAEAAAAIAAAAAAAAIAAAADAABAA=</HashCode>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Strategy" />
       <Property Name="PuzzleMap" />
+      <Property Name="Strategy" />
       <Property Name="Stats" />
     </ShowAsAssociation>
     <Compartments>
@@ -24,7 +24,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SokoSolve.Core.Analysis.Solver.SolverBitmap">
-    <Position X="8" Y="0.5" Width="2" />
+    <Position X="3.25" Y="4.5" Width="2" />
     <TypeIdentifier>
       <FileName>Analysis\Solver\SolverBitmap.cs</FileName>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
@@ -37,7 +37,7 @@
     <Position X="8.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Analysis\Solver\StaticAnalysis.cs</FileName>
-      <HashCode>IAQCACIAAgIAAAEAEAAAgBAAAIAQAAAAkAAAAIAEAAA=</HashCode>
+      <HashCode>IgQCACIAIoaAACEAUAAAgBAAAICQAAAAkAAAAIAEAAA=</HashCode>
     </TypeIdentifier>
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
@@ -47,7 +47,7 @@
     <Position X="5.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <FileName>Analysis\Solver\SolverStrategy.cs</FileName>
-      <HashCode>AAAAAAAAAQAAQAEBAUAAAAAABAAAAAgAAAAIAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAQAAQEEBAUCAAUEDBAAAAAgAAAAIAAAAAKA=</HashCode>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="StaticAnalysis" />
@@ -67,17 +67,45 @@
     <Position X="0.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <FileName>Analysis\Solver\SolverStats.cs</FileName>
-      <HashCode>EBAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>ABAgAAEQMCAIgAFBAIAQACAQABAAAgQAIAAACAAAiAA=</HashCode>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="Stats" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="SokoSolve.Core.Analysis.Solver.Statistic">
-    <Position X="0.75" Y="4.5" Width="1.5" />
+    <Position X="0.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <FileName>Analysis\Solver\Statistic.cs</FileName>
-      <HashCode>AAAAIAAAAAAgAAAAIAAAAAQAAAAEAAAAAAAAAAAAACA=</HashCode>
+      <HashCode>AAIAIAIABAAiEAQEJAIAACQAAAAEIAAAAAAAAAAAACA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+  </Class>
+  <Class Name="SokoSolve.Core.Analysis.Solver.SolverItterator">
+    <Position X="8.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Analysis\Solver\SolverItterator.cs</FileName>
+      <HashCode>AAIAAAAAAAAAAQEAAAAABAQCAAAABAIAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SokoSolve.Core.Analysis.DeadMap.DeadMapAnalysis">
+    <Position X="6.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Analysis\DeadMap\DeadMapAnalysis.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SokoSolve.Core.Analysis.DeadMap.DeadMapState">
+    <Position X="3.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Analysis\DeadMap\DeadMapAnalysis.cs</FileName>
+      <HashCode>OCAAACAAIACAACAAAAAAgAAAAICAAAAAAAAABBgAAAA=</HashCode>
     </TypeIdentifier>
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />

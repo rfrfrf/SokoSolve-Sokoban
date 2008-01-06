@@ -50,6 +50,12 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\SokoSolve.Html\", "S
 		VWDPort = "49388"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SokoSolve.Console", "SokoSolve.Console\SokoSolve.Console.csproj", "{D382F62D-AEA9-4B16-8F4B-0876AD0ECD24}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
@@ -121,6 +127,16 @@ Global
 		{31F063CD-E29D-4917-A385-C3F016B4E531}.Release|Any CPU.ActiveCfg = Debug|.NET
 		{31F063CD-E29D-4917-A385-C3F016B4E531}.Release|Mixed Platforms.ActiveCfg = Debug|.NET
 		{31F063CD-E29D-4917-A385-C3F016B4E531}.Release|Mixed Platforms.Build.0 = Debug|.NET
+		{D382F62D-AEA9-4B16-8F4B-0876AD0ECD24}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{D382F62D-AEA9-4B16-8F4B-0876AD0ECD24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D382F62D-AEA9-4B16-8F4B-0876AD0ECD24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D382F62D-AEA9-4B16-8F4B-0876AD0ECD24}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D382F62D-AEA9-4B16-8F4B-0876AD0ECD24}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D382F62D-AEA9-4B16-8F4B-0876AD0ECD24}.Release|.NET.ActiveCfg = Release|Any CPU
+		{D382F62D-AEA9-4B16-8F4B-0876AD0ECD24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D382F62D-AEA9-4B16-8F4B-0876AD0ECD24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D382F62D-AEA9-4B16-8F4B-0876AD0ECD24}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D382F62D-AEA9-4B16-8F4B-0876AD0ECD24}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -363,6 +363,47 @@ namespace SokoSolve.Common.Structures
         }
 
         /// <summary>
+        /// Return the number of children nodes
+        /// </summary>
+	    public int Count
+	    {
+            get { return children.Count;  }
+	    }
+
+        /// <summary>
+        /// Get the total (recursive) number of children
+        /// </summary>
+	    public int TotalChildCount
+	    {
+	        get
+	        {
+	            int count = children.Count;
+	            foreach (TreeNode<T> node in children)
+	            {
+	                count += node.TotalChildCount;
+	            }
+	            return count;
+	        }
+	    }
+
+        /// <summary>
+        /// Get the total (recursive) number of children
+        /// </summary>
+        public int TotalDepth
+        {
+            get
+            {
+                int maxDepth = Depth;
+                foreach (TreeNode<T> node in children)
+                {
+                    int childDepth = node.TotalDepth;
+                    if (childDepth > maxDepth) maxDepth = childDepth;
+                }
+                return maxDepth;
+            }
+        }
+
+        /// <summary>
         /// Find a child by data value as an IMEDIATE child.
         /// </summary>
         /// <param name="childData">domain class T</param>

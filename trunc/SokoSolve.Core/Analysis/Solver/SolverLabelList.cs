@@ -84,9 +84,22 @@ namespace SokoSolve.Core.Analysis.Solver
 
         public string ToHTML()
         {
+            return ToHTML("font-family: Arial; font-size:8pt;", null);
+        }
+
+        public string ToHTML(string tableStyle, string tableClass)
+        {
             StringBuilder sb = new StringBuilder();
             
-            sb.Append("<table style=\"font-family: Arial; font-size:8pt; \">");
+            if (tableClass != null)
+            {
+                sb.AppendFormat("<table class=\"{0}\">", tableClass);
+            }
+            else
+            {
+                sb.AppendFormat("<table style=\"{0}\">", tableStyle);    
+            }
+            
             foreach (SolverLabel label in this)
             {
                 sb.Append("<tr><th>");

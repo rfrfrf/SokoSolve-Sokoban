@@ -113,6 +113,31 @@
                 <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
               </SolutionDescription>
             </Solution>
+            <Solution StartX="4" StartY="4">
+              <Steps>llurrrrrllldlddddrrruurruuruulddulldlluldddduuuurrrrrdrddllldddllllurrluuruulurrrrldllddldddrrruuurrruuldrdluuruuldlldllddlddrrlluuuuurrrrrdulldllddldddrrrullluuuuurrrrrdrddllrruuldrd</Steps>
+              <SolutionDescription License="Creative Commons" Date="2008-01-06T15:51:29.638888+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;17.000 sec&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;17 sec&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;12273 nodes&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;9526 nodes&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;6580 nodes&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;198 nodes&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;118&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.001 sec&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.006 sec&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.001 sec&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;-13&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;0.57 avg.&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;0 hits&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores. . Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.18-alpha&lt;/td&gt;&lt;/tr
+&lt;/table&gt;</Description>
+                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+              </SolutionDescription>
+            </Solution>
           </Solutions>
         </Map>
       </Maps>
@@ -173,6 +198,31 @@
 &lt;/table&gt;&lt;/p&gt;
 &lt;/body&gt;
 &lt;/html&gt;</Description>
+                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+              </SolutionDescription>
+            </Solution>
+            <Solution StartX="4" StartY="4">
+              <Steps>ruruuldldldldlddrruluurduurrllddrulurdrulururrddlulldrdldllddruluurrdluldurururrrdlullddrulu</Steps>
+              <SolutionDescription License="Creative Commons" Date="2008-01-06T15:48:27.5089435+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;228 nodes&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;129 nodes&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;29 nodes&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;0 nodes&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;147&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.014 sec&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.005 sec&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.002 sec&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;25.77 avg.&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;0 hits&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores. . Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.18-alpha&lt;/td&gt;&lt;/tr
+&lt;/table&gt;</Description>
                 <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
               </SolutionDescription>
             </Solution>
@@ -409,7 +459,16 @@
           <Row>~#..X.#~~</Row>
           <Row>~#..###~~</Row>
           <Row>~####~~~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="6" StartY="3">
+              <Steps>dlddLLrruuruuullllldRRRRurrddldlddlldlUUUUdddrrruururuulllllldRRurrrrddldlLLrrddllluUUdrrrruruulllldurrrrddlUlulldRullldRurrdRullldRlddddrUdrruulLdlUUUluRdddrrrdLLdlUrurrruruuLDlLuLLdRldDrrrrUdlllluuurrRlldlddrddlruuluuurrrdLulldRlddrrrruruuLLLrrrddldlllluurRllddrddlUUUdrrrruruullldlLrrurrDulldlluRdlddrrrrUruulDulLrrdulldllddrrrrUdlllluuuRRdllddrrrruruulDudLLulldddrrrrUdlllluuurrdrlulldddrrrruruLuLL</Steps>
+              <SolutionDescription License="Creative Commons" Date="2008-01-06T14:32:37.601914+02:00">
+                <Name>'Cold Nemosis' Solution</Name>
+                <Comments>Moves 403/768, Pushes 64/166, Undos 179, Restarts 1, Duration 00:12:52.5687165</Comments>
+                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -524,7 +583,41 @@
           <Row>#...##.#.#</Row>
           <Row>######...#</Row>
           <Row>~~~~~#####</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="4" StartY="4">
+              <Steps>ulruulldldddrrudlluuurrlldddrruuddlluuruurrrrdddllulrdrruuulllldldddrrurrruuulldurrdddrrddlludrruulluuulldrullldldddrrurudldlluuururrrrdulldulldrlldddrruuddlluurlddrrurrrudddrruulrddllu</Steps>
+              <SolutionDescription License="Creative Commons" Date="2008-01-06T12:55:38.5319755+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>&lt;html xmlns="http://www.w3.org/1999/xhtml" &gt;
+&lt;head&gt;
+    &lt;title&gt;Untitled Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body style="font-family: Arial; font-size: 10pt;"&gt;&lt;p style="text-indent: 0px;"&gt;Starting&lt;/p&gt;
+&lt;p style="text-indent: 0px;"&gt;&lt;b&gt;Complete&lt;/b&gt; : CompleteSolution&lt;/p&gt;
+&lt;h1&gt;SokoSolve Sokoban Solver Report&lt;/h1&gt;
+&lt;p style="text-indent: 15px;"&gt;&lt;b&gt;Generated&lt;/b&gt; : 06 January 2008&lt;/p&gt;
+&lt;p style="text-indent: 15px;"&gt;&lt;table style="font-family: Arial; font-size:8pt; "&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;5.000 sec&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;5 sec&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;4204 nodes&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;3108 nodes&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;1586 nodes&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;425 nodes&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;1391&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.013 sec&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.012 sec&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.002 sec&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;114&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;61.71 avg.&lt;/td&gt;&lt;/tr
+&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;0 hits&lt;/td&gt;&lt;/tr
+&lt;/table&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</Description>
+                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>

@@ -41,7 +41,6 @@ Please make sure you have the latest version, you can do this by clicking Help -
 			{
 				Application_ThreadException(null, new ThreadExceptionEventArgs(ex));
 			}
-			
 		}
 
 		static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
@@ -53,7 +52,7 @@ Please make sure you have the latest version, you can do this by clicking Help -
 
         public static string GetVersionString()
         {
-            return "1.2.18-alpha";
+            return "1.2.24-solver-baseline1";
         }
 	}
 }

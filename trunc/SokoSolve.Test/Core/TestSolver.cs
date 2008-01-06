@@ -5,10 +5,12 @@ using System.Drawing;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SokoSolve.Common.Math;
+using SokoSolve.Common.Structures;
 using SokoSolve.Common.Structures.Evaluation.Visualisation;
 using SokoSolve.Core.Analysis;
 using SokoSolve.Core.Analysis.Solver;
 using SokoSolve.Core.Model;
+using Bitmap=System.Drawing.Bitmap;
 
 namespace SokoSolve.Test.Core
 {
@@ -38,9 +40,10 @@ namespace SokoSolve.Test.Core
             pMap.Map = map;
 
             SolverAPI api = new SolverAPI();
-            Solution sol = api.Solve(pMap);
+            List<INode<SolverNode>> results = api.Solve(pMap);
 
-            Assert.IsNotNull(sol, "No solution found");
+            Assert.IsNotNull(results, "No solution found");
+            Assert.IsTrue(results.Count > 0, "No Solutions");
 
             Debug.WriteLine(map.ToString());
             

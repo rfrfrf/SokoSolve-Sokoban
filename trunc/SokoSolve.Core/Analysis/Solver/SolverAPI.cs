@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SokoSolve.Common.Structures;
 using SokoSolve.Core.Model;
 
 namespace SokoSolve.Core.Analysis.Solver
@@ -15,13 +16,13 @@ namespace SokoSolve.Core.Analysis.Solver
         /// </summary>
         /// <param name="Map">Puzzle to solve</param>
         /// <returns>null implies no solution, or failed attempt</returns>
-        public Solution Solve(PuzzleMap Map)
+        public List<INode<SolverNode>> Solve(PuzzleMap Map)
         {
             SolverController ctrl = new SolverController(Map);
             ctrl.Solve();
 
             // Convert solution 
-            return null;
+            return ctrl.Evaluator.Solutions;
         }
     }
 }

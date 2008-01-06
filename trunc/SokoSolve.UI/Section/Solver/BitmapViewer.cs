@@ -114,9 +114,16 @@ namespace SokoSolve.UI.Section.Solver
             Layer tmp = new Layer();
             tmp.Order = layers.Count;
             tmp.IsVisible = true;
-            tmp.Name = Bitmap.Name;
+            if (Bitmap == null)
+            {
+                tmp.Name = Bitmap.Name;
+                tmp.Bitmap = Bitmap;    
+            }
+            else
+            {
+                tmp.Name = "None";
+            }
             tmp.Brush = BrushColor;
-            tmp.Bitmap = Bitmap;
             SetLayer(tmp);
         }
 

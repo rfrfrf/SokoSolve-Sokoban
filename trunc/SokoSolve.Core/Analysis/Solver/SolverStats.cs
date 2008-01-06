@@ -17,7 +17,7 @@ namespace SokoSolve.Core.Analysis.Solver
 
             // Register all stats, for easy of use
             stats = new List<Statistic>();
-            stats.Add(TotalSecs);
+            stats.Add(CurrentEvalSecs);
             stats.Add(EvaluationTime);
             stats.Add(EvaluationItterations);
             stats.Add(Nodes);
@@ -31,6 +31,10 @@ namespace SokoSolve.Core.Analysis.Solver
             stats.Add(WeightingMin);
             stats.Add(WeightingMax);
             stats.Add(WeightingAvg);
+            stats.Add(HintsUsed);
+            stats.Add(MaxDepth);
+            
+            
         }
 
         public void Start()
@@ -48,7 +52,7 @@ namespace SokoSolve.Core.Analysis.Solver
         {
             if (controller.IsEnabled)
             {
-                TotalSecs.AddMeasure(1f);
+                CurrentEvalSecs.AddMeasure(1f);
             }
         }
 
@@ -76,8 +80,8 @@ namespace SokoSolve.Core.Analysis.Solver
 
         public Statistic EvaluationTime = new Statistic("Evaluation Time", "{1:0} sec");
         public Statistic EvaluationItterations = new Statistic("Evaluation Itterations", "{1:0} nodes");
-        public Statistic TotalSecs = new Statistic("Evaluation Total Seconds", "{1:0.000} sec");
-        public Statistic Nodes = new Statistic("Total Nodes", "{1} nodes");
+        public Statistic CurrentEvalSecs = new Statistic("Evaluation Total Seconds", "{1:0.000} sec");
+        public Statistic Nodes = new Statistic("Total Nodes", "{1:0} nodes");
         public Statistic AvgEvalList = new Statistic("Eval Worker List", "{1:0}");
         public Statistic MoveMapTime = new Statistic("MoveMapTime", "{1:0.000} sec");
         public Statistic EvalTime = new Statistic("EvalTime", "{1:0.000} sec");
@@ -88,5 +92,7 @@ namespace SokoSolve.Core.Analysis.Solver
         public Statistic WeightingMin = new Statistic("Weighting Min", "{1:0}");
         public Statistic WeightingMax = new Statistic("Weighting Max", "{1:0}");
         public Statistic WeightingAvg = new Statistic("Weighting Avg", "{2:0.00} avg.");
+        public Statistic HintsUsed = new Statistic("Hints Uses", "{1:0} hits");
+        public Statistic MaxDepth = new Statistic("Max Depth", "{1:0}");
     }
 }

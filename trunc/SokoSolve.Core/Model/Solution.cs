@@ -53,6 +53,29 @@ namespace SokoSolve.Core.Model
             set { startPosition = value; }
         }
 
+        /// <summary>
+        /// Set the solution from a path
+        /// </summary>
+        /// <param name="solutionPath"></param>
+        public void Set(Path solutionPath)
+        {
+            startPosition = solutionPath.StartLocation;
+            StringBuilder sb = new StringBuilder();
+            foreach (Direction move in solutionPath.Moves)
+            {
+                char moveChar = '?';
+                switch (move)
+                {
+                    case (Direction.Up): moveChar = 'u'; break;
+                    case (Direction.Down): moveChar = 'd'; break;
+                    case (Direction.Left): moveChar = 'l'; break;
+                    case (Direction.Right): moveChar = 'r'; break;
+                }
+                sb.Append(moveChar);
+            }
+            steps = sb.ToString();
+        }
+
         public override string ToString()
         {
             return string.Format("{0} {1}", Steps, details);

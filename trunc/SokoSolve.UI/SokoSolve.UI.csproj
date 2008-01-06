@@ -100,6 +100,7 @@
     <Compile Include="Controls\Web\UIBrowserEventArgs.cs" />
     <Compile Include="ImageFileCache.cs" />
     <Compile Include="ProfileController.cs" />
+    <Compile Include="ProgramCommandLine.cs" />
     <Compile Include="Section\AttachedCommand.cs" />
     <Compile Include="Section\Command.cs" />
     <Compile Include="Section\CommandInstance.cs" />
@@ -215,6 +216,10 @@
       <SubType>Designer</SubType>
       <DependentUpon>BitmapViewer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Section\Solver\ExitConditions.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ExitConditions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Section\Solver\SolverSection.resx">
       <SubType>Designer</SubType>
       <DependentUpon>SolverSection.cs</DependentUpon>
@@ -251,6 +256,12 @@
       <DependentUpon>BitmapViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Section\Solver\BitmapViewerVisualisation.cs" />
+    <Compile Include="Section\Solver\ExitConditions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Section\Solver\ExitConditions.Designer.cs">
+      <DependentUpon>ExitConditions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Section\Solver\GridVisualisation.cs" />
     <Compile Include="Section\Solver\NodeListVisualisation.cs" />
     <Compile Include="Section\Solver\RootPathVisualisation.cs" />

@@ -71,8 +71,9 @@ namespace SokoSolve.Core.Analysis.Solver
             SolverNode root = new SolverNode();
             root.IsChildrenEvaluated = false;
             root.IsStateEvaluated = false;
-            root.Weighting = 100;
+            root.Weighting = rootWeighting;
             root.PlayerPosition = SokobanMap.Player;
+            root.PushDirection = Direction.None;
             root.CrateMap = staticAnalysis.InitialCrateMap;
 
             return root;
@@ -128,7 +129,7 @@ namespace SokoSolve.Core.Analysis.Solver
 
             // Check for deadness
             DeadMapAnalysis deadChecker = new DeadMapAnalysis();
-            node.Data.DeadMap = deadChecker.BuildDeadMap(node.Data.CrateMap, staticAnalysis.GoalMap, staticAnalysis.WallMap, staticAnalysis);
+            node.Data.DeadMap = deadChecker.BuildDeadMap(node.Data.CrateMap, staticAnalysis.GoalMap, staticAnalysis.WallMap, this);
             node.Data.DeadMap.Name = "Dynamic Deadmap";
             if (node.Data.CrateMap.BitwiseAND(node.Data.DeadMap).Count > 0)
             {
@@ -182,6 +183,42 @@ namespace SokoSolve.Core.Analysis.Solver
         }
 
         /// <summary>
+        /// Build a player moves (steps) path, based on this node
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
+        public Path BuildPath(SolverNode node)
+        {
+            List<TreeNode<SolverNode>> nodePath = node.TreeNode.GetPathToRoot();
+
+            nodePath.Reverse();
+
+            Path result = new Path(controller.Map.Player);
+            VectorInt curentPos = null; 
+            for (int cc=0; cc<nodePath.Count-1; cc++)
+            {
+            
+               
+
+                Bitmap boundry = nodePath[cc].Data.CrateMap.BitwiseOR(staticAnalysis.BoundryMap);
+
+                // Find all positble moves for the player
+                FloodFillStrategy floodFill = new FloodFillStrategy(boundry, nodePath[cc].Data.PlayerPosition);
+                Evaluator<LocationNode> eval = new Evaluator<LocationNode>();
+                eval.Evaluate(floodFill);
+                List<LocationNode> shortestPath = floodFill.GetShortestPath(nodePath[cc+1].Data.PlayerPositionBeforePush);
+                if (shortestPath == null) throw new InvalidOperationException("New player position must be on the path. This should never happen");
+
+                foreach (LocationNode locationNode in shortestPath)
+                {
+                    result.Add(locationNode.Location);
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Create a weighting for this node (many different strategies may be used here)
         /// </summary>
         /// <param name="node"></param>
@@ -202,8 +239,11 @@ namespace SokoSolve.Core.Analysis.Solver
             // Add a parent weighting
             weighting += node.TreeNode.Parent == null ? 0 : node.TreeNode.Parent.Data.Weighting * 0.5f;
 
+            // Add a children (proliferation) weighting
+            weighting += node.TreeNode.Count * 1.6f;
+
             // Make sure we eval all beginning nodes
-            if (node.TreeNode.Depth < 2) weighting += 50;
+            if (node.TreeNode.Depth < 2) weighting = rootWeighting;
            
             //  Record in stats
             controller.Stats.WeightingAvg.AddMeasure(weighting);
@@ -289,6 +329,10 @@ namespace SokoSolve.Core.Analysis.Solver
                     controller.Stats.DeadNodes.Increment();
                 }
 
+                // Recalculate weighting
+                WeightNode(node.Data);
+
+                // Mark as complete
                 node.Data.IsChildrenEvaluated = true;
                 MarkEvalCompelete(node);
             }
@@ -338,10 +382,15 @@ namespace SokoSolve.Core.Analysis.Solver
                         newChild.CrateMap[cratePos] = false;
                         newChild.CrateMap[newCratePos] = true;
                         newChild.PlayerPosition = cratePos; // Player ends up where the crate was
+                        newChild.PushDirection = PushDirection;
                         
                         if (node.Data.TreeNode.Parent != null)
                         {
                             newChild.Weighting = node.Data.TreeNode.Parent.Data.Weighting;
+                        }
+                        else
+                        {
+                            newChild.Weighting = rootWeighting;
                         }
 
                         AddNodeForEval(node, newChild);
@@ -367,6 +416,11 @@ namespace SokoSolve.Core.Analysis.Solver
         }
 
         #endregion EvaluationStrategy
+
+        /// <summary>
+        /// Initial root node weighting
+        /// </summary>
+        private float rootWeighting = 100f;
 
 
         private StaticAnalysis staticAnalysis;

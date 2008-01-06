@@ -89,7 +89,7 @@ namespace SokoSolve.UI.Section.Solver
             // 
             // pictureBoxPayload
             // 
-            this.pictureBoxPayload.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.pictureBoxPayload.BackColor = System.Drawing.SystemColors.Control;
             this.pictureBoxPayload.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxPayload.Name = "pictureBoxPayload";
             this.pictureBoxPayload.Size = new System.Drawing.Size(100, 50);

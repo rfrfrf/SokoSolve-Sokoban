@@ -16,9 +16,7 @@ namespace SokoSolve.Core.Analysis.Solver
         public SolverItterator(SolverController controller) 
         {
             evalList = new List<INode<SolverNode>>(10000);
-            //base.MaxDepth = 60;
-            //base.MaxItterations = 500000;
-            //base.GetDepth = GetSolverNodeDepth;
+          
             this.controller = controller;
         }
 
@@ -28,6 +26,9 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <returns></returns>
         public INode<SolverNode> GetNext(out EvalStatus Status)
         {
+            // Check Exit conditions
+
+            // Stopped?
             if (!controller.IsEnabled)
             {
                 exitStatus = EvalStatus.ExitIncomplete;
@@ -35,32 +36,49 @@ namespace SokoSolve.Core.Analysis.Solver
                 return null;
             }
 
-            controller.Stats.EvaluationItterations.Increment();
-            
+            // Max Time
+            if ((int)controller.Stats.CurrentEvalSecs.ValueTotal >= controller.ExitConditions.MaxTimeSecs)
+            {
+                exitStatus = EvalStatus.ExitIncomplete;
+                Status = exitStatus;
+                return null;
+            }
+
+            // Max Depth
+            if ((int)controller.Stats.MaxDepth.ValueTotal >= controller.ExitConditions.MaxDepth)
+            {
+                exitStatus = EvalStatus.ExitIncomplete;
+                Status = exitStatus;
+                return null;
+            }
+
+            // Max itterations
+            if (controller.Stats.EvaluationItterations.ValueTotal >= controller.ExitConditions.MaxItterations)
+            {
+                exitStatus = EvalStatus.ExitIncomplete;
+                Status = exitStatus;
+                return null;
+            }
+
             if (evalList.Count == 0)
             {
                 exitStatus = EvalStatus.CompleteNoSolution;
                 Status = exitStatus;
                 return null;
             }
-            //if (currentMaxDepth > maxDepth)
-            //{
-            //    exitStatus = EvalStatus.ExitIncomplete;
-            //    Status = exitStatus;
-            //    return null;
-            //}
-            //if (currentItteration++ > maxItterations)
-            //{
-            //    exitStatus = EvalStatus.ExitIncomplete;
-            //    Status = exitStatus;
-            //    return null;
-            //}
 
+            controller.Stats.EvaluationItterations.Increment();
             INode<SolverNode> next = evalList[0];
 
+            // Check max depth
+            int currDepth = next.Data.TreeNode.Depth;
+            if (currDepth > (int)controller.Stats.MaxDepth.ValueTotal) controller.Stats.MaxDepth.ValueTotal = currDepth;
+
+            // Exit
             Status = exitStatus;
             return next;
         }
+
 
 
         /// <summary>

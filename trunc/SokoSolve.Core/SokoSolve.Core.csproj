@@ -39,11 +39,13 @@
     <Compile Include="Analysis\DeadMap\CleanUpRule.cs" />
     <Compile Include="Analysis\DeadMap\CornerRule.cs" />
     <Compile Include="Analysis\DeadMap\DeadMapAnalysis.cs" />
+    <Compile Include="Analysis\DeadMap\HintsRule.cs" />
     <Compile Include="Analysis\DeadMap\RecessRule.cs" />
     <Compile Include="Analysis\MapAnalysis.cs" />
     <Compile Include="Analysis\MoveAnalysis.cs" />
     <Compile Include="Analysis\Solver\CodeTimer.cs" />
     <Compile Include="Analysis\Solver\CodeTimerStatistic.cs" />
+    <Compile Include="Analysis\Solver\ExitConditions.cs" />
     <Compile Include="Analysis\Solver\SolverItterator.cs" />
     <Compile Include="Analysis\Solver\SolverLabel.cs" />
     <Compile Include="Analysis\Solver\SolverLabelList.cs" />

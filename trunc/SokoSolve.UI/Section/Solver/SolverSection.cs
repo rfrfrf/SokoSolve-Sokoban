@@ -16,6 +16,7 @@ using SokoSolve.Core.Model;
 using SokoSolve.Core.Model.DataModel;
 using SokoSolve.Core.UI;
 using SokoSolve.UI.Controls.Secondary;
+using Path=SokoSolve.Common.Structures.Path;
 
 namespace SokoSolve.UI.Section.Solver
 {
@@ -24,6 +25,23 @@ namespace SokoSolve.UI.Section.Solver
     /// </summary>
     public partial class SolverSection : UserControl
     {
+        /// <summary>
+        /// Is the solver completed?
+        /// </summary>
+        private bool complete;
+
+        private Exception lastException;
+        private PuzzleMap map;
+
+        /// <summary>
+        /// Target call-back for completion
+        /// </summary>
+        private OnCompleteDelegate OnComplete;
+
+        private SolverController solver;
+        private EvalStatus solverEvalStatus;
+        private Thread worker;
+
         /// <summary>
         /// Default Constructor
         /// </summary>
@@ -34,14 +52,11 @@ namespace SokoSolve.UI.Section.Solver
             OnComplete = SolverComplete;
             solverEvalStatus = EvalStatus.NotStarted;
             treeViewer.OnVisualisationClick += new EventHandler<VisEventArgs>(OnVisualisationClick_TreeViewer);
-            visualisationContainerLocalNodes.OnVisualisationClick += new EventHandler<VisEventArgs>(OnVisualisationClick_LocalNode);
+            visualisationContainerLocalNodes.OnVisualisationClick +=
+                new EventHandler<VisEventArgs>(OnVisualisationClick_LocalNode);
             this.Disposed += new EventHandler(SolverSection_Disposed);
         }
 
-     
-
-
-        
 
         /// <summary>
         /// The current map for solving
@@ -57,10 +72,10 @@ namespace SokoSolve.UI.Section.Solver
                 solver = null;
                 solverEvalStatus = EvalStatus.NotStarted;
 
-                  // This only happend once
+                // This only happend once
                 bitmapViewerStatic.MapSize = map.Map.Size;
                 bitmapViewerNodeMaps.MapSize = map.Map.Size;
-            
+
 
                 if (map != null)
                 {
@@ -100,18 +115,22 @@ namespace SokoSolve.UI.Section.Solver
                 complete = false;
                 solverEvalStatus = EvalStatus.InProgress;
                 solver = new SolverController(map);
+
+                solver.ExitConditions.StopOnSolution = exitConditions.cbStopOnSolution.Checked;
+                solver.ExitConditions.MaxDepth = (int)exitConditions.upMaxDepth.Value;
+                solver.ExitConditions.MaxNodes = (int)exitConditions.upMaxNodes.Value;
+                solver.ExitConditions.MaxItterations = (int)exitConditions.upMaxItter.Value;
+                solver.ExitConditions.MaxTimeSecs = (int)(exitConditions.upMaxTime.Value * 60);
+                
                 solverEvalStatus = solver.Solve();
-                complete = true;    
+                complete = true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 lastException = ex;
             }
-            
+
             Invoke(OnComplete); // Set to SolverComplete
-
-            int x = 10*21; // should exit here
-
         }
 
 
@@ -130,60 +149,85 @@ namespace SokoSolve.UI.Section.Solver
                     return;
                 }
 
-                if (solver.Report != null)
-                {
-                    solver.Report.Build(solver);
-                }
+                if (solver == null) return; // Thread Abort.
 
+                // Found a solutions?
                 if (solverEvalStatus == EvalStatus.CompleteSolution)
                 {
-                    if (MessageBox.Show("Solution found, do you want to save it? This will also include a report in the description.", "Solution Found", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    DialogResult result = MessageBox.Show(
+                        "Solution found, do you want to save it? This will also include a report in the description.",
+                        "Solution Found", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
                     {
+                        
+
                         Solution sol = new Solution(Map, Map.Map.Player);
                         sol.Details = new GenericDescription();
                         sol.Details.Name = "SokoSolve Solution";
-
-                        
-                        sol.Details.Description = solver.Report.ToString();
                         sol.Details.Author = new GenericDescriptionAuthor();
                         sol.Details.Author.Name = ProfileController.Current.UserName;
                         sol.Details.Author.Email = ProfileController.Current.UserEmail;
                         sol.Details.Author.Homepage = ProfileController.Current.UserHomepage;
                         sol.Details.License = ProfileController.Current.UserLicense;
-                        sol.Steps = "TODO";
-                        Map.Solutions.Add(sol);
+                        sol.Details.Date = DateTime.Now;
+                        sol.Details.DateSpecified = true;
 
+                        // Build a description
+                        SolverLabelList labels = solver.Stats.GetDisplayData();
+                        labels.Add("Machine", string.Format("{0} Running {1}.", DebugHelper.GetCPUDescription(), Environment.OSVersion));
+                        labels.Add("SokoSolve", Program.GetVersionString());
+                        sol.Details.Description = labels.ToHTML(null, "tabledata");
+
+                        Path path = solver.Strategy.BuildPath(solver.Evaluator.Solutions[0].Data);
+                        sol.Set(path);
+                        Map.Solutions.Add(sol);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Solver failed: "+solverEvalStatus.ToString(), "No Solution Found", MessageBoxButtons.OK);
+                    MessageBox.Show("Solver failed: " + solverEvalStatus.ToString(), "No Solution Found",
+                                    MessageBoxButtons.OK);
                 }
-            
-                // Build report
-                SolverReport report = new SolverReport();
-                report.AppendHeadingTwo("Puzzle");
-                report.AppendLabel("Library", solver.PuzzleMap.Puzzle.Library.Details.Name);
-                report.AppendLabel("LibraryID", solver.PuzzleMap.Puzzle.Library.LibraryID);
-                report.AppendLabel("Puzzle", solver.PuzzleMap.Puzzle.Details.Name);
-                report.AppendLabel("PuzzleID", solver.PuzzleMap.Puzzle.PuzzleID);
-                report.AppendHeadingTwo("Solver");
-                report.Build(solver);
 
-                // Save
-                string filename = "SolverReport-" +solver.PuzzleMap.Puzzle.Library.LibraryID+solver.PuzzleMap.Puzzle.PuzzleID+ "-" +DateTime.Now.Ticks.ToString() + ".html";
-                File.WriteAllText(FileManager.getContent("$Analysis", filename), report.ToString());
+                // Write a solver log report
+                BuildSolverLogReport();
 
                 complete = true;
                 timer.Enabled = false;
                 worker = null;
                 UpdateStatus();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 lastException = ex;
+                FormError error = new FormError();
+                error.Exception = lastException;
+                error.ShowDialog();
                 return;
             }
+        }
+
+        /// <summary>
+        /// Write a log report to the $Content/Analysis directory
+        /// </summary>
+        private void BuildSolverLogReport()
+        {
+            if (!Directory.Exists(FileManager.getContent("$Analysis"))) return;
+
+             // Build report
+            SolverReport report = new SolverReport();
+            report.AppendHeadingTwo("Puzzle");
+            report.AppendLabel("Library", solver.PuzzleMap.Puzzle.Library.Details.Name);
+            report.AppendLabel("LibraryID", solver.PuzzleMap.Puzzle.Library.LibraryID);
+            report.AppendLabel("Puzzle", solver.PuzzleMap.Puzzle.Details.Name);
+            report.AppendLabel("PuzzleID", solver.PuzzleMap.Puzzle.PuzzleID);
+            report.AppendHeadingTwo("Solver");
+            report.Build(solver);
+
+            // Save
+            string filename = "SolverReport-" + solver.PuzzleMap.Puzzle.Library.LibraryID +
+                              solver.PuzzleMap.Puzzle.PuzzleID + "-" + DateTime.Now.Ticks.ToString() + ".html";
+            File.WriteAllText(FileManager.getContent("$Analysis", filename), report.ToString());
         }
 
         /// <summary>
@@ -197,7 +241,8 @@ namespace SokoSolve.UI.Section.Solver
 
             if (lastException != null)
             {
-                webBrowserGlobalStats.DocumentText = "<code style=\"font-size: 10pt\"><pre>" + StringHelper.Report(lastException) +
+                webBrowserGlobalStats.DocumentText = "<code style=\"font-size: 10pt\"><pre>" +
+                                                     StringHelper.Report(lastException) +
                                                      "</pre></code>";
                 tslStatus.Text = lastException.Message;
                 return;
@@ -209,7 +254,6 @@ namespace SokoSolve.UI.Section.Solver
             {
                 if (solver != null && solver.Strategy != null && solver.Strategy.StaticAnalysis != null)
                 {
-
                     if (!bitmapViewerStatic.HasLayers)
                     {
                         BitmapViewer.Layer mapLayer = new BitmapViewer.Layer();
@@ -219,17 +263,25 @@ namespace SokoSolve.UI.Section.Solver
                         mapLayer.Name = "Puzzle";
                         bitmapViewerStatic.SetLayer(mapLayer);
 
-                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.WallMap, new SolidBrush(Color.FromArgb(120, Color.Gray)));
-                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.FloorMap, new SolidBrush(Color.FromArgb(120,Color.Green)));
-                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.InitialCrateMap, new SolidBrush(Color.FromArgb(120,Color.Blue)));
-                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.DeadMap, new SolidBrush(Color.FromArgb(120,Color.Brown)));
-                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.BoundryMap, new SolidBrush(Color.FromArgb(120,Color.LightGray)));
-                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.GoalMap, new SolidBrush(Color.FromArgb(120,Color.Yellow)));
-                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.CornerMap, new SolidBrush(Color.FromArgb(120,Color.Pink)));
-                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.RecessMap, new SolidBrush(Color.FromArgb(120,Color.Cyan)));
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.WallMap,
+                                                    new SolidBrush(Color.FromArgb(120, Color.Gray)));
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.FloorMap,
+                                                    new SolidBrush(Color.FromArgb(120, Color.Green)));
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.InitialCrateMap,
+                                                    new SolidBrush(Color.FromArgb(120, Color.Blue)));
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.DeadMap,
+                                                    new SolidBrush(Color.FromArgb(120, Color.Brown)));
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.BoundryMap,
+                                                    new SolidBrush(Color.FromArgb(120, Color.LightGray)));
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.GoalMap,
+                                                    new SolidBrush(Color.FromArgb(120, Color.Yellow)));
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.CornerMap,
+                                                    new SolidBrush(Color.FromArgb(120, Color.Pink)));
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.RecessMap,
+                                                    new SolidBrush(Color.FromArgb(120, Color.Cyan)));
                         bitmapViewerStatic.Render();
                     }
-                    
+
 
                     if (solver.Strategy.EvaluationTree != null)
                     {
@@ -260,11 +312,11 @@ namespace SokoSolve.UI.Section.Solver
         {
             return;
 
-            List<INode<SolverNode>> evalList =  solver.Strategy.EvaluationItterator.GetEvalList();
+            List<INode<SolverNode>> evalList = solver.Strategy.EvaluationItterator.GetEvalList();
             if (evalList != null)
             {
                 NodeListVisualisation vis = new NodeListVisualisation(
-                    evalList.ConvertAll<SolverNode>(delegate(INode<SolverNode> item) { return item.Data; }), 
+                    evalList.ConvertAll<SolverNode>(delegate(INode<SolverNode> item) { return item.Data; }),
                     new SizeInt(6, 6));
                 visualisationContainerEvalList.Visualisation = vis;
                 visualisationContainerEvalList.Render();
@@ -281,7 +333,7 @@ namespace SokoSolve.UI.Section.Solver
             //UpdateStatus();
         }
 
-        void SolverSection_Disposed(object sender, EventArgs e)
+        private void SolverSection_Disposed(object sender, EventArgs e)
         {
             if (worker != null)
             {
@@ -314,10 +366,10 @@ namespace SokoSolve.UI.Section.Solver
             main.Mode = FormMain.Modes.Library;
         }
 
-        void StopWorker(Thread thread)
+        private void StopWorker(Thread thread)
         {
             if (solver != null) solver.IsEnabled = false;
-            if (thread.IsAlive) thread.Join(2000);
+            if (thread.IsAlive) thread.Join(1000);
             if (thread.IsAlive) thread.Abort();
         }
 
@@ -333,13 +385,14 @@ namespace SokoSolve.UI.Section.Solver
             bitmapViewerNodeMaps.Clear();
             bitmapViewerNodeMaps.MapSize = map.Map.Size;
 
+            
+
             if (!SolverActive)
             {
                 worker = new Thread(new ThreadStart(Solve));
                 timer.Enabled = true;
                 worker.Start();
-                Thread.Sleep(500);
-                UpdateStatus();
+                tslStatus.Text = "Started";
             }
         }
 
@@ -394,8 +447,6 @@ namespace SokoSolve.UI.Section.Solver
 
             if (solverNode == null) return;
 
-            
-
 
             SokobanMap build = BuildCurrentMap(solverNode);
             if (build != null)
@@ -423,6 +474,7 @@ namespace SokoSolve.UI.Section.Solver
 
             // Build details
             SolverLabelList txt = solverNode.GetDisplayData();
+           
             webBrowserNodeCurrent.DocumentText = txt.ToHTMLDocument();
 
             bitmapViewerNodeMaps.Render();
@@ -430,7 +482,9 @@ namespace SokoSolve.UI.Section.Solver
             if (sender != visualisationContainerLocalNodes)
             {
                 RootPathVisualisation localVis = new RootPathVisualisation(new SizeInt(10, 10), solver);
-                localVis.RenderCanvas = new RectangleInt(0, 0, visualisationContainerLocalNodes.Width - 30, visualisationContainerLocalNodes.Height - 30);
+                localVis.RenderCanvas =
+                    new RectangleInt(0, 0, visualisationContainerLocalNodes.Width - 30,
+                                     visualisationContainerLocalNodes.Height - 30);
                 localVis.Init(solverNode);
                 visualisationContainerLocalNodes.ClearImage();
                 visualisationContainerLocalNodes.Visualisation = localVis;
@@ -448,12 +502,13 @@ namespace SokoSolve.UI.Section.Solver
                 {
                     if (solver.Strategy.StaticAnalysis.WallMap[cx, cy]) result[cx, cy] = CellStates.Wall;
                     if (solver.Strategy.StaticAnalysis.FloorMap[cx, cy]) result[cx, cy] = CellStates.Floor;
-                    if (solver.Strategy.StaticAnalysis.GoalMap[cx, cy]) result.setState(new VectorInt(cx, cy), Cell.Goal);
+                    if (solver.Strategy.StaticAnalysis.GoalMap[cx, cy])
+                        result.setState(new VectorInt(cx, cy), Cell.Goal);
                     if (node.CrateMap[cx, cy]) result.setState(new VectorInt(cx, cy), Cell.Crate);
                     result.setState(node.PlayerPosition, Cell.Player);
                 }
 
-                return result;
+            return result;
         }
 
         /// <summary>
@@ -463,7 +518,6 @@ namespace SokoSolve.UI.Section.Solver
         /// <param name="e"></param>
         private void tabPageStats_Click(object sender, EventArgs e)
         {
-            
         }
 
 
@@ -471,8 +525,6 @@ namespace SokoSolve.UI.Section.Solver
         {
             UpdateStatus();
         }
-
-       
 
         #region Nested type: OnCompleteDelegate
 
@@ -482,25 +534,5 @@ namespace SokoSolve.UI.Section.Solver
         private delegate void OnCompleteDelegate();
 
         #endregion
-
-        /// <summary>
-        /// Is the solver completed?
-        /// </summary>
-        private bool complete;
-
-        private PuzzleMap map;
-
-        /// <summary>
-        /// Target call-back for completion
-        /// </summary>
-        private OnCompleteDelegate OnComplete;
-
-        private SolverController solver;
-        private EvalStatus solverEvalStatus;
-        private Thread worker;
-        private Exception lastException;
-
-
-       
     }
 }
