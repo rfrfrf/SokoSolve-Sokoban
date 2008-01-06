@@ -1,0 +1,94 @@
+<VSPerformanceSession Version="1.00">
+  <Options>
+    <Solution>..\SokoSolve.sln</Solution>
+    <CollectionMethod>Instrumentation</CollectionMethod>
+    <AllocationMethod>Life</AllocationMethod>
+    <Reportname>PerformanceReports\Report.vsp</Reportname>
+    <AddReport>true</AddReport>
+    <UniqueReport>Timestamp</UniqueReport>
+    <SamplingMethod>Cycles</SamplingMethod>
+    <CycleCount>10000000</CycleCount>
+    <PageFaultCount>10</PageFaultCount>
+    <SysCallCount>10</SysCallCount>
+    <SamplingCounter PlatformID="00000000" CounterID="0000000000000000" ReloadValue="000000000000000a" />
+    <RelocateBinaries>false</RelocateBinaries>
+    <HardwareCounters EnableHWCounters="false" />
+    <EtwSettings />
+  </Options>
+  <PreinstrumentEvent>
+    <InstrEventExclude>false</InstrEventExclude>
+  </PreinstrumentEvent>
+  <PostinstrumentEvent>
+    <InstrEventExclude>false</InstrEventExclude>
+  </PostinstrumentEvent>
+  <Binaries>
+    <ProjBinary>
+      <Path>obj\Debug\SokoSolve.Console.exe</Path>
+      <ArgumentTimestamp>01/01/0001 00:00:00</ArgumentTimestamp>
+      <Instrument>true</Instrument>
+      <LaunchProject>true</LaunchProject>
+      <LaunchMethod>Executable</LaunchMethod>
+      <ExecutablePath>bin\Debug\SokoSolve.Console.exe</ExecutablePath>
+      <StartupDirectory>bin\Debug\</StartupDirectory>
+      <Arguments />
+      <NetAppHost>IIS</NetAppHost>
+      <PreinstrumentEvent>
+        <InstrEventExclude>false</InstrEventExclude>
+      </PreinstrumentEvent>
+      <PostinstrumentEvent>
+        <InstrEventExclude>false</InstrEventExclude>
+      </PostinstrumentEvent>
+      <ProjRef>{D382F62D-AEA9-4B16-8F4B-0876AD0ECD24}|SokoSolve.Console\SokoSolve.Console.csproj</ProjRef>
+      <ProjPath>SokoSolve.Console.csproj</ProjPath>
+      <ProjName>SokoSolve.Console</ProjName>
+    </ProjBinary>
+    <ProjBinary>
+      <Path>..\SokoSolve.Common\obj\Debug\SokoSolve.Common.dll</Path>
+      <ArgumentTimestamp>01/01/0001 00:00:00</ArgumentTimestamp>
+      <Instrument>true</Instrument>
+      <LaunchProject>true</LaunchProject>
+      <LaunchMethod>Executable</LaunchMethod>
+      <StartupDirectory>..\SokoSolve.Common\bin\Debug\</StartupDirectory>
+      <Arguments />
+      <NetAppHost>IIS</NetAppHost>
+      <PreinstrumentEvent>
+        <InstrEventExclude>false</InstrEventExclude>
+      </PreinstrumentEvent>
+      <PostinstrumentEvent>
+        <InstrEventExclude>false</InstrEventExclude>
+      </PostinstrumentEvent>
+      <ProjRef>{0DEBF03E-A3D8-445B-95C6-6F777F5A9970}|SokoSolve.Common\SokoSolve.Common.csproj</ProjRef>
+      <ProjPath>..\SokoSolve.Common\SokoSolve.Common.csproj</ProjPath>
+      <ProjName>SokoSolve.Common</ProjName>
+    </ProjBinary>
+    <ProjBinary>
+      <Path>..\SokoSolve.Core\obj\Debug\SokoSolve.Core.dll</Path>
+      <ArgumentTimestamp>01/01/0001 00:00:00</ArgumentTimestamp>
+      <Instrument>true</Instrument>
+      <LaunchProject>true</LaunchProject>
+      <LaunchMethod>Executable</LaunchMethod>
+      <StartupDirectory>..\SokoSolve.Core\bin\Debug\</StartupDirectory>
+      <Arguments />
+      <NetAppHost>IIS</NetAppHost>
+      <PreinstrumentEvent>
+        <InstrEventExclude>false</InstrEventExclude>
+      </PreinstrumentEvent>
+      <PostinstrumentEvent>
+        <InstrEventExclude>false</InstrEventExclude>
+      </PostinstrumentEvent>
+      <ProjRef>{1A95D7E8-F0B8-4596-85F1-57C100A5D754}|SokoSolve.Core\SokoSolve.Core.csproj</ProjRef>
+      <ProjPath>..\SokoSolve.Core\SokoSolve.Core.csproj</ProjPath>
+      <ProjName>SokoSolve.Core</ProjName>
+    </ProjBinary>
+  </Binaries>
+  <Reports>
+    <Report>
+      <Path>PerformanceReports\Report080106-Simple-BaseLine1.vsp</Path>
+    </Report>
+  </Reports>
+  <Launches>
+    <ProjBinary>
+      <Path>:PB:{D382F62D-AEA9-4B16-8F4B-0876AD0ECD24}|SokoSolve.Console\SokoSolve.Console.csproj</Path>
+    </ProjBinary>
+  </Launches>
+</VSPerformanceSession>

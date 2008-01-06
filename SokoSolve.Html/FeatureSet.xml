@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FeatureSet xmlns="http://sokosolve.sf.net/FeatureSet.xsd">
+	<Feature  FeatureID="Lib" Name="Sokoban Library" Status="InImplementation">
+		<Description>A library form to load, save and maintain sokoban libraries</Description>
+		<Author Name="Guy Langston" Email="guy@langston.org.za"/>
+		<Feature FeatureID="Lib.Cat" Name="Categories" Status="InImplementation"/>
+		<Feature FeatureID="L1" Name="Puzzle details" Status="InImplementation"/>
+		<Feature FeatureID="L2" Name="Map" Status="InImplementation">
+			<Feature FeatureID="L5" Name="Puzzle Editor" Status="InImplementation">
+				<Feature FeatureID="L5.1" Name="Mouse paint with palette" Status="Proposed"	/>
+				<Feature FeatureID="L5.2" Name="Alternate with text editing" Status="Proposed"	/>
+				<Feature FeatureID="L5.3" Name="Validate map" Status="Proposed"	/>
+			</Feature>		  
+			  </Feature>
+		<Feature FeatureID="L3" Name="Alternative Maps" Status="InImplementation"/>
+
+		<Feature FeatureID="L6" Name="Generic copy/cut/paste/move/properties functionality for library" Status="Proposed"/>
+		<Feature FeatureID="L7" Name="Create SVG logo" Status="Proposed"/>
+		<Feature FeatureID="Lib.Import" Name="Import SVL xml libraries" Status="Proposed"/>
+	</Feature>
+
+	<Feature FeatureID="Game" Name="Sokoban Game client" Status="Proposed">
+		<Feature FeatureID="Game.DirectX" Name="DirectX 2d animation system" Status="Proposed"/>
+	</Feature>
+
+	<Feature FeatureID="Solver" Name="Puzzle Solver logic" Status="Proposed">
+
+	</Feature>
+
+	<Feature FeatureID="Generator" Name="Level generator" Status="Proposed">
+
+	</Feature>
+</FeatureSet>

@@ -1,0 +1,99 @@
+body
+{
+	font-family: Calibri, Verdana, Arial;
+	font-size: 11pt;
+	padding: 0px 0px 0px 0px;
+}
+
+h1
+{
+	font-family: Calibri, 'Bookman Old Style' , Verdana;
+	width: 100%;
+	border-bottom: lightsteelblue 2px solid;
+	color: #003366;
+	padding-bottom: 1px;
+}
+
+h2 
+{
+	width: 100%;
+	border-bottom: solid 1px lightsteelblue;
+}
+
+table
+{
+	width: 100%;
+	border: solid 1px black;
+	font-family: Calibri, Verdana, Arial;
+	font-size: 11pt;
+}
+
+th
+{
+	background-color: #808080;
+	color: White;
+}
+
+a 
+{
+	color: #003366; 
+	border: none;
+}
+
+
+img
+{
+	border: none;
+}
+
+.tableformat 
+{
+	width: 100%;
+	border-style: none;
+}
+
+.tableformat td 
+{
+	vertical-align: top;
+}
+
+.quote
+{
+	font-family: Times New Roman;
+	font-size: 13pt;
+	border-left: solid 5px #909090;
+	background-color: #f0f0f0;
+	padding-left: 20px;
+	padding-right: 80px;
+	margin-left: 30px;
+}
+
+.tabledata 
+{
+	border: solid 1px black;
+	font-family: Calibri, Verdana, Arial;
+	font-size: 11pt;
+	border-collapse: collapse;
+	
+}
+
+.tabledata th
+{
+	background-color: #707070;
+	color: White;
+	text-align: right;
+	border: solid 1px #303030;
+	padding: 3 3 3 3;
+}
+
+.tabledata td
+{
+	background-color: #a0a0a0;
+	color: black;
+	text-align: left;
+	border: solid 1px #303030;
+	padding: 3 3 3 3;
+}
+
+
+

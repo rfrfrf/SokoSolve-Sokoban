@@ -1,0 +1,71 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D382F62D-AEA9-4B16-8F4B-0876AD0ECD24}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SokoSolve.Console</RootNamespace>
+    <AssemblyName>SokoSolve.Console</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SokoSolve.Common\SokoSolve.Common.csproj">
+      <Project>{0DEBF03E-A3D8-445B-95C6-6F777F5A9970}</Project>
+      <Name>SokoSolve.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SokoSolve.Core\SokoSolve.Core.csproj">
+      <Project>{1A95D7E8-F0B8-4596-85F1-57C100A5D754}</Project>
+      <Name>SokoSolve.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SokoSolve.Test\SokoSolve.Test.csproj">
+      <Project>{04E6AAA7-DB10-4F61-BC6C-5211D189D40A}</Project>
+      <Name>SokoSolve.Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SokoSolve.UI\SokoSolve.UI.csproj">
+      <Project>{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}</Project>
+      <Name>SokoSolve.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ConsoleBasic.psess" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="PerformanceReports\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
