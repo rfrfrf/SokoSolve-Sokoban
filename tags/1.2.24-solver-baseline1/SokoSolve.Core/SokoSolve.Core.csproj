@@ -1,0 +1,171 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1A95D7E8-F0B8-4596-85F1-57C100A5D754}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SokoSolve.Core</RootNamespace>
+    <AssemblyName>SokoSolve.Core</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Analysis\CrateAnalysis.cs" />
+    <Compile Include="Analysis\DeadMap\BoxRule.cs" />
+    <Compile Include="Analysis\DeadMap\CleanUpRule.cs" />
+    <Compile Include="Analysis\DeadMap\CornerRule.cs" />
+    <Compile Include="Analysis\DeadMap\DeadMapAnalysis.cs" />
+    <Compile Include="Analysis\DeadMap\HintsRule.cs" />
+    <Compile Include="Analysis\DeadMap\RecessRule.cs" />
+    <Compile Include="Analysis\MapAnalysis.cs" />
+    <Compile Include="Analysis\MoveAnalysis.cs" />
+    <Compile Include="Analysis\Solver\CodeTimer.cs" />
+    <Compile Include="Analysis\Solver\CodeTimerStatistic.cs" />
+    <Compile Include="Analysis\Solver\ExitConditions.cs" />
+    <Compile Include="Analysis\Solver\SolverItterator.cs" />
+    <Compile Include="Analysis\Solver\SolverLabel.cs" />
+    <Compile Include="Analysis\Solver\SolverLabelList.cs" />
+    <Compile Include="Analysis\Solver\SolverNodeEventArgs.cs" />
+    <Compile Include="Analysis\Solver\SolverReport.cs" />
+    <Compile Include="Analysis\Solver\SolverStats.cs" />
+    <Compile Include="Analysis\Solver\Statistic.cs" />
+    <Compile Include="Analysis\Solver\Matrix.cs" />
+    <Compile Include="FileManager.cs" />
+    <Compile Include="Game\Game.cs" />
+    <Compile Include="Game\Move.cs" />
+    <Compile Include="Game\Stats.cs" />
+    <Compile Include="Game\Bookmark.cs" />
+    <Compile Include="GlobalEnum.cs" />
+    <Compile Include="IO\Importer.cs" />
+    <Compile Include="IO\ImportSLC.cs" />
+    <Compile Include="IO\ImportTXT.cs" />
+    <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\DataModel\SokoSolveLibrary.cs">
+      <DependentUpon>SokoSolveLibrary.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataModel\SokoSolveLibraryExtension.cs" />
+    <Compile Include="Model\DataModel\SokoSolveProfile.cs">
+      <DependentUpon>SokoSolveProfile.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DataModel\XmlProvider.cs" />
+    <Compile Include="Model\Identity.cs" />
+    <Compile Include="Model\IDProvider.cs" />
+    <Compile Include="Model\Library.cs" />
+    <Compile Include="Model\NamerUtil.cs" />
+    <Compile Include="Model\Profile.cs" />
+    <Compile Include="Model\Puzzle.cs" />
+    <Compile Include="Analysis\PuzzleAnalysis.cs" />
+    <Compile Include="Model\PuzzleMap.cs" />
+    <Compile Include="Model\SokobanMap.cs" />
+    <Compile Include="Model\Solution.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomHelper.cs" />
+    <Compile Include="Analysis\Solver\SolverAPI.cs" />
+    <Compile Include="Analysis\Solver\SolverBitmap.cs" />
+    <Compile Include="Analysis\Solver\SolverController.cs" />
+    <Compile Include="Analysis\Solver\SolverNode.cs" />
+    <Compile Include="Analysis\Solver\SolverStrategy.cs" />
+    <Compile Include="Analysis\Solver\StaticAnalysis.cs" />
+    <Compile Include="UI\DockPoint.cs" />
+    <Compile Include="UI\GameCoords.cs" />
+    <Compile Include="UI\ISoundSubSystem.cs" />
+    <Compile Include="UI\NodeBase.cs" />
+    <Compile Include="UI\GameUI.cs" />
+    <Compile Include="UI\Nodes\Actions\ActionCounter.cs" />
+    <Compile Include="UI\Nodes\Actions\ActionMethod.cs" />
+    <Compile Include="UI\Nodes\Actions\ActionRetartChain.cs" />
+    <Compile Include="UI\Nodes\Complex\NodeControllerCommands.cs" />
+    <Compile Include="UI\Nodes\Complex\NodeControllerStatus.cs" />
+    <Compile Include="UI\Nodes\Complex\NodeControllerBookmarks.cs" />
+    <Compile Include="UI\Nodes\Complex\NodeCursorEventArgs.cs" />
+    <Compile Include="UI\Nodes\Actions\Action.cs" />
+    <Compile Include="UI\Nodes\Actions\ActionChain.cs" />
+    <Compile Include="UI\Nodes\Effects\NodeEffectImage.cs" />
+    <Compile Include="UI\Nodes\NotifcationEvent.cs" />
+    <Compile Include="UI\Nodes\Specific\NodeDebug.cs" />
+    <Compile Include="UI\Nodes\Specific\NodePuzzleWin.cs" />
+    <Compile Include="UI\Nodes\Specific\NodeUIDialogHelp.cs" />
+    <Compile Include="UI\Nodes\Specific\NodeUIDialogPuzzleWin.cs" />
+    <Compile Include="UI\Nodes\Specific\NodeTitle.cs" />
+    <Compile Include="UI\Nodes\UINodes\NodeUIDialog.cs" />
+    <Compile Include="UI\Paths\IPath.cs" />
+    <Compile Include="UI\Nodes\Effects\NodeEffect.cs" />
+    <Compile Include="UI\Nodes\Effects\NodeEffectCircle.cs" />
+    <Compile Include="UI\Nodes\Effects\NodeEffectText.cs" />
+    <Compile Include="UI\Nodes\Effects\NodeEffectTicker.cs" />
+    <Compile Include="UI\Nodes\NodeAnimation.cs" />
+    <Compile Include="UI\Nodes\NodeArtefact.cs" />
+    <Compile Include="UI\Nodes\NodeCell.cs" />
+    <Compile Include="UI\Nodes\Complex\NodeCursor.cs" />
+    <Compile Include="UI\Nodes\NodeDynamic.cs" />
+    <Compile Include="UI\Nodes\NodeDynamicCrate.cs" />
+    <Compile Include="UI\Nodes\NodeDynamicPlayer.cs" />
+    <Compile Include="UI\Nodes\NodeStaticCell.cs" />
+    <Compile Include="UI\Nodes\UINodes\NodeUI.cs" />
+    <Compile Include="UI\Nodes\UINodes\NodeUIButton.cs" />
+    <Compile Include="UI\Paths\Circle.cs" />
+    <Compile Include="UI\Paths\Counter.cs" />
+    <Compile Include="UI\Paths\Docked.cs" />
+    <Compile Include="UI\Paths\ICounter.cs" />
+    <Compile Include="UI\Paths\Linear.cs" />
+    <Compile Include="UI\Paths\Spiral.cs" />
+    <Compile Include="UI\Paths\StaticPath.cs" />
+    <Compile Include="UI\Resource.cs" />
+    <Compile Include="UI\ResourceFactory.cs" />
+    <Compile Include="UI\ResourceManager.cs" />
+    <Compile Include="UI\StaticImage.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SokoSolve.Common\SokoSolve.Common.csproj">
+      <Project>{0DEBF03E-A3D8-445B-95C6-6F777F5A9970}</Project>
+      <Name>SokoSolve.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Model\DataModel\Generate.bat" />
+    <None Include="Model\DataModel\SokoSolveLibrary.xsd">
+      <SubType>Designer</SubType>
+      <Generator>xsd.exe</Generator>
+      <CustomToolNamespace>SokoSolve.Core.Model.DataModel</CustomToolNamespace>
+    </None>
+    <None Include="Model\DataModel\SokoSolveProfile.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Analysis\Solver\Solver.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

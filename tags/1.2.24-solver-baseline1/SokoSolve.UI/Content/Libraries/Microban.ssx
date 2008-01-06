@@ -1,0 +1,3081 @@
+<?xml version="1.0"?>
+<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LibraryID="55024299-7627-4b44-8ad4-7359b14618ac" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
+  <Details License="Acknowledgement Required">
+    <Name>Microban</Name>
+    <Description>155 puzzles, revised April, 2000</Description>
+    <Comments>This is a good set for beginners and children. Most of the puzzles are small and illustrate a particular concept. More experienced players should also find them interesting, since they are as different from each other as I could make them given their size. Sokoholics could perhaps time themselves on completing the whole set. This set also contains puzzles which I thought were interesting but too easy to include in my regular sets.</Comments>
+    <Author Name="David W. Skinner " Email="sasquatch@bentonrea.com" Homepage="http://users.bentonrea.com/~sasquatch/" />
+  </Details>
+  <Categories>
+    <Category CategoryID="C0">
+      <CategoryDescription>
+        <Name>Master List</Name>
+      </CategoryDescription>
+    </Category>
+  </Categories>
+  <Puzzles>
+    <Puzzle Rating="142.9" PuzzleID="P1" CategoryREF="C0" Order="1">
+      <PuzzleDescription>
+        <Name>Grim Tunnel</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M2">
+          <Row>####~~</Row>
+          <Row>#.O#~~</Row>
+          <Row>#..###</Row>
+          <Row>#$P..#</Row>
+          <Row>#..X.#</Row>
+          <Row>#..###</Row>
+          <Row>####~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="157.9" PuzzleID="P3" CategoryREF="C0" Order="2">
+      <PuzzleDescription>
+        <Name>Tense Shower</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M4">
+          <Row>######</Row>
+          <Row>#....#</Row>
+          <Row>#.#P.#</Row>
+          <Row>#.X$.#</Row>
+          <Row>#.O$.#</Row>
+          <Row>#....#</Row>
+          <Row>######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="90.9" PuzzleID="P5" CategoryREF="C0" Order="3">
+      <PuzzleDescription>
+        <Name>Tight Morning</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M6">
+          <Row>~~####~~~</Row>
+          <Row>###..####</Row>
+          <Row>#.....X.#</Row>
+          <Row>#.#..#X.#</Row>
+          <Row>#.O.O#P.#</Row>
+          <Row>#########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="125.0" PuzzleID="P7" CategoryREF="C0" Order="4">
+      <PuzzleDescription>
+        <Name>Uptight Tower</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M8">
+          <Row>########</Row>
+          <Row>#......#</Row>
+          <Row>#.O$$XP#</Row>
+          <Row>#......#</Row>
+          <Row>#####..#</Row>
+          <Row>~~~~####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="133.3" PuzzleID="P9" CategoryREF="C0" Order="5">
+      <PuzzleDescription>
+        <Name>Slimy School</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M10">
+          <Row>~#######</Row>
+          <Row>~#.....#</Row>
+          <Row>~#.OXO.#</Row>
+          <Row>##.XPX.#</Row>
+          <Row>#..OXO.#</Row>
+          <Row>#......#</Row>
+          <Row>########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="103.4" PuzzleID="P11" CategoryREF="C0" Order="6">
+      <PuzzleDescription>
+        <Name>Nefarious Green Blanket</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M12">
+          <Row>######~#####</Row>
+          <Row>#....###...#</Row>
+          <Row>#.XX.....#P#</Row>
+          <Row>#.X.#OOO...#</Row>
+          <Row>#...########</Row>
+          <Row>#####~~~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="200.0" PuzzleID="P13" CategoryREF="C0" Order="7">
+      <PuzzleDescription>
+        <Name>Ghastly Gem</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M14">
+          <Row>#######</Row>
+          <Row>#.....#</Row>
+          <Row>#.OXO.#</Row>
+          <Row>#.XOX.#</Row>
+          <Row>#.OXO.#</Row>
+          <Row>#.XOX.#</Row>
+          <Row>#..P..#</Row>
+          <Row>#######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="46.5" PuzzleID="P15" CategoryREF="C0" Order="8">
+      <PuzzleDescription>
+        <Name>Dire Spider</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M16">
+          <Row>~~######</Row>
+          <Row>~~#.OOP#</Row>
+          <Row>~~#.XX.#</Row>
+          <Row>~~##.###</Row>
+          <Row>~~~#.#~~</Row>
+          <Row>~~~#.#~~</Row>
+          <Row>####.#~~</Row>
+          <Row>#....##~</Row>
+          <Row>#.#...#~</Row>
+          <Row>#...#.#~</Row>
+          <Row>###...#~</Row>
+          <Row>~~#####~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="105.3" PuzzleID="P17" CategoryREF="C0" Order="9">
+      <PuzzleDescription>
+        <Name>Edgy Shower</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M18">
+          <Row>#####~</Row>
+          <Row>#O..##</Row>
+          <Row>#PXX.#</Row>
+          <Row>##...#</Row>
+          <Row>~##..#</Row>
+          <Row>~~##O#</Row>
+          <Row>~~~###</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="66.7" PuzzleID="P19" CategoryREF="C0" Order="10">
+      <PuzzleDescription>
+        <Name>Dire School</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M20">
+          <Row>~~~~~~#####</Row>
+          <Row>~~~~~~#O..#</Row>
+          <Row>~~~~~~#O#.#</Row>
+          <Row>#######O#.#</Row>
+          <Row>#.P.X.X.X.#</Row>
+          <Row>#.#.#.#.###</Row>
+          <Row>#.......#~~</Row>
+          <Row>#########~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="64.5" PuzzleID="P21" CategoryREF="C0" Order="11">
+      <PuzzleDescription>
+        <Name>Big Nemosis</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M22">
+          <Row>~~######~</Row>
+          <Row>~~#....#~</Row>
+          <Row>~~#.##P##</Row>
+          <Row>###.#.X.#</Row>
+          <Row>#.OO#.X.#</Row>
+          <Row>#.......#</Row>
+          <Row>#..######</Row>
+          <Row>####~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="66.7" PuzzleID="P23" CategoryREF="C0" Order="12">
+      <PuzzleDescription>
+        <Name>Small Town</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M24">
+          <Row>#####~~~~</Row>
+          <Row>#...##~~~</Row>
+          <Row>#.X..#~~~</Row>
+          <Row>##.X.####</Row>
+          <Row>~###PO..#</Row>
+          <Row>~~#..O#.#</Row>
+          <Row>~~#.....#</Row>
+          <Row>~~#######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="125.0" PuzzleID="P25" CategoryREF="C0" Order="13">
+      <PuzzleDescription>
+        <Name>Delighted Tower</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M26">
+          <Row>####~~~</Row>
+          <Row>#O.##~~</Row>
+          <Row>#OP.#~~</Row>
+          <Row>#O.X#~~</Row>
+          <Row>##X.###</Row>
+          <Row>~#.X..#</Row>
+          <Row>~#....#</Row>
+          <Row>~#..###</Row>
+          <Row>~####~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="125.0" PuzzleID="P27" CategoryREF="C0" Order="14">
+      <PuzzleDescription>
+        <Name>Tepid Spider</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M28">
+          <Row>#######</Row>
+          <Row>#.....#</Row>
+          <Row>#.#.#.#</Row>
+          <Row>#O.X$P#</Row>
+          <Row>#...###</Row>
+          <Row>#####~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="62.5" PuzzleID="P29" CategoryREF="C0" Order="15">
+      <PuzzleDescription>
+        <Name>Wilma's Shower</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M30">
+          <Row>~~~~~###~</Row>
+          <Row>######P##</Row>
+          <Row>#....O$.#</Row>
+          <Row>#...#...#</Row>
+          <Row>#####X#.#</Row>
+          <Row>~~~~#...#</Row>
+          <Row>~~~~#####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="88.2" PuzzleID="P31" CategoryREF="C0" Order="16">
+      <PuzzleDescription>
+        <Name>Tepid Blanket</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M32">
+          <Row>~####~~~~~</Row>
+          <Row>~#..####~~</Row>
+          <Row>~#.....##~</Row>
+          <Row>##.##...#~</Row>
+          <Row>#O.O#.PX##</Row>
+          <Row>#...#.XX.#</Row>
+          <Row>#..O#....#</Row>
+          <Row>##########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="176.5" PuzzleID="P33" CategoryREF="C0" Order="17">
+      <PuzzleDescription>
+        <Name>Tricky Lagoon</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M34">
+          <Row>#####~</Row>
+          <Row>#.P.#~</Row>
+          <Row>#OOO#~</Row>
+          <Row>#XXX##</Row>
+          <Row>#....#</Row>
+          <Row>#....#</Row>
+          <Row>######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="71.4" PuzzleID="P35" CategoryREF="C0" Order="18">
+      <PuzzleDescription>
+        <Name>Tight Nemosis</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M36">
+          <Row>#######</Row>
+          <Row>#.....#</Row>
+          <Row>#O.O..#</Row>
+          <Row>#.##.##</Row>
+          <Row>#..X.#~</Row>
+          <Row>###X.#~</Row>
+          <Row>~~#P.#~</Row>
+          <Row>~~#..#~</Row>
+          <Row>~~####~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="64.5" PuzzleID="P37" CategoryREF="C0" Order="19">
+      <PuzzleDescription>
+        <Name>Uptight Grave</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M38">
+          <Row>########</Row>
+          <Row>#...OO.#</Row>
+          <Row>#..PXX.#</Row>
+          <Row>#####.##</Row>
+          <Row>~~~#..#~</Row>
+          <Row>~~~#..#~</Row>
+          <Row>~~~#..#~</Row>
+          <Row>~~~####~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="64.5" PuzzleID="P39" CategoryREF="C0" Order="20">
+      <PuzzleDescription>
+        <Name>Slimy Night</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M40">
+          <Row>#######~~</Row>
+          <Row>#.....###</Row>
+          <Row>#..PXXOO#</Row>
+          <Row>####.##.#</Row>
+          <Row>~~#.....#</Row>
+          <Row>~~#..####</Row>
+          <Row>~~#..#~~~</Row>
+          <Row>~~####~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="125.0" PuzzleID="P41" CategoryREF="C0" Order="21">
+      <PuzzleDescription>
+        <Name>Dastardly Tunnel</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M42">
+          <Row>####~~~</Row>
+          <Row>#..####</Row>
+          <Row>#.O.O.#</Row>
+          <Row>#.XX#P#</Row>
+          <Row>##....#</Row>
+          <Row>~######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="69.0" PuzzleID="P43" CategoryREF="C0" Order="22">
+      <PuzzleDescription>
+        <Name>Grand Tower</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M44">
+          <Row>#####~~</Row>
+          <Row>#...###</Row>
+          <Row>#O.O..#</Row>
+          <Row>#...#.#</Row>
+          <Row>##.#..#</Row>
+          <Row>~#PXX.#</Row>
+          <Row>~#....#</Row>
+          <Row>~#..###</Row>
+          <Row>~####~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="95.2" PuzzleID="P45" CategoryREF="C0" Order="23">
+      <PuzzleDescription>
+        <Name>Cat's Morning</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M46">
+          <Row>#######</Row>
+          <Row>#..$..#</Row>
+          <Row>#.....#</Row>
+          <Row>##.#.##</Row>
+          <Row>~#XPO#~</Row>
+          <Row>~#...#~</Row>
+          <Row>~#####~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="90.9" PuzzleID="P47" CategoryREF="C0" Order="24">
+      <PuzzleDescription>
+        <Name>Old Gem</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M48">
+          <Row>#~#####</Row>
+          <Row>~~#...#</Row>
+          <Row>###XXP#</Row>
+          <Row>#...###</Row>
+          <Row>#.....#</Row>
+          <Row>#.O.O.#</Row>
+          <Row>#######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="142.9" PuzzleID="P49" CategoryREF="C0" Order="25">
+      <PuzzleDescription>
+        <Name>Small Tunnel</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M50">
+          <Row>~####~~</Row>
+          <Row>~#..###</Row>
+          <Row>~#.XX.#</Row>
+          <Row>##OOO.#</Row>
+          <Row>#..PX.#</Row>
+          <Row>#...###</Row>
+          <Row>#####~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="130.4" PuzzleID="P51" CategoryREF="C0" Order="26">
+      <PuzzleDescription>
+        <Name>Big Cottage</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M52">
+          <Row>~#####</Row>
+          <Row>~#.P.#</Row>
+          <Row>~#...#</Row>
+          <Row>###X.#</Row>
+          <Row>#.OOO#</Row>
+          <Row>#.XX.#</Row>
+          <Row>###..#</Row>
+          <Row>~~####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="111.1" PuzzleID="P53" CategoryREF="C0" Order="27">
+      <PuzzleDescription>
+        <Name>Ghastly Hamlet</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M54">
+          <Row>######~</Row>
+          <Row>#...O#~</Row>
+          <Row>#.##.##</Row>
+          <Row>#..XXP#</Row>
+          <Row>#.#...#</Row>
+          <Row>#O..###</Row>
+          <Row>#####~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="105.3" PuzzleID="P55" CategoryREF="C0" Order="28">
+      <PuzzleDescription>
+        <Name>Slimy Spider</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M56">
+          <Row>#####~~</Row>
+          <Row>#...#~~</Row>
+          <Row>#.P.#~~</Row>
+          <Row>#.XX###</Row>
+          <Row>##O.O.#</Row>
+          <Row>~#....#</Row>
+          <Row>~######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="39.2" PuzzleID="P57" CategoryREF="C0" Order="29">
+      <PuzzleDescription>
+        <Name>Lucy's Cottage</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M58">
+          <Row>~~~~~#####~</Row>
+          <Row>~~~~~#...##</Row>
+          <Row>~~~~~#....#</Row>
+          <Row>~######...#</Row>
+          <Row>##.....#O.#</Row>
+          <Row>#.X.X.P..##</Row>
+          <Row>#.######O#~</Row>
+          <Row>#........#~</Row>
+          <Row>##########~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="176.5" PuzzleID="P59" CategoryREF="C0" Order="30">
+      <PuzzleDescription>
+        <Name>Slimy Estate</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M60">
+          <Row>####~~</Row>
+          <Row>#..###</Row>
+          <Row>#.XX.#</Row>
+          <Row>#OOO.#</Row>
+          <Row>#.PX.#</Row>
+          <Row>#...##</Row>
+          <Row>#####~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="130.4" PuzzleID="P61" CategoryREF="C0" Order="31">
+      <PuzzleDescription>
+        <Name>Funny Tunnel</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M62">
+          <Row>~~####~</Row>
+          <Row>~##..#~</Row>
+          <Row>##PXO##</Row>
+          <Row>#.XX..#</Row>
+          <Row>#.O.O.#</Row>
+          <Row>###...#</Row>
+          <Row>~~#####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="157.9" PuzzleID="P63" CategoryREF="C0" Order="32">
+      <PuzzleDescription>
+        <Name>Dastardly School</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M64">
+          <Row>~####~~</Row>
+          <Row>##..###</Row>
+          <Row>#.....#</Row>
+          <Row>#O$$XP#</Row>
+          <Row>#...###</Row>
+          <Row>##..#~~</Row>
+          <Row>~####~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="136.4" PuzzleID="P65" CategoryREF="C0" Order="33">
+      <PuzzleDescription>
+        <Name>Small Night</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M66">
+          <Row>#######</Row>
+          <Row>#O.#..#</Row>
+          <Row>#..X..#</Row>
+          <Row>#O.X#P#</Row>
+          <Row>#..X..#</Row>
+          <Row>#O.#..#</Row>
+          <Row>#######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="160.0" PuzzleID="P67" CategoryREF="C0" Order="34">
+      <PuzzleDescription>
+        <Name>Tight Estate</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M68">
+          <Row>~~####~~~</Row>
+          <Row>###..####</Row>
+          <Row>#.......#</Row>
+          <Row>#PX$$$O.#</Row>
+          <Row>#.......#</Row>
+          <Row>#########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="138.9" PuzzleID="P69" CategoryREF="C0" Order="35">
+      <PuzzleDescription>
+        <Name>Dastardly Blanket</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M70">
+          <Row>~~####~</Row>
+          <Row>~##..#~</Row>
+          <Row>~#O.X#~</Row>
+          <Row>~#OX.#~</Row>
+          <Row>~#OX.#~</Row>
+          <Row>~#OX.#~</Row>
+          <Row>~#O.X##</Row>
+          <Row>~#...P#</Row>
+          <Row>~##...#</Row>
+          <Row>~~#####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="178.6" PuzzleID="P71" CategoryREF="C0" Order="36">
+      <PuzzleDescription>
+        <Name>Exacting Tower</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M72">
+          <Row>####~~~~~~~~~~~</Row>
+          <Row>#..############</Row>
+          <Row>#.X.X.X.X.X.P.#</Row>
+          <Row>#.OOOOO.......#</Row>
+          <Row>###############</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="78.9" PuzzleID="P73" CategoryREF="C0" Order="37">
+      <PuzzleDescription>
+        <Name>Funny Night</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M74">
+          <Row>~~~~~~###</Row>
+          <Row>#####~#O#</Row>
+          <Row>#...###O#</Row>
+          <Row>#...X.#O#</Row>
+          <Row>#.X..X..#</Row>
+          <Row>#####P#.#</Row>
+          <Row>~~~~#...#</Row>
+          <Row>~~~~#####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="93.8" PuzzleID="P75" CategoryREF="C0" Order="38">
+      <PuzzleDescription>
+        <Name>Splendid Tunnel</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M76">
+          <Row>##########</Row>
+          <Row>#........#</Row>
+          <Row>#.##O###.#</Row>
+          <Row>#.#.XX.O.#</Row>
+          <Row>#.O.PX##.#</Row>
+          <Row>#####....#</Row>
+          <Row>~~~~######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="66.7" PuzzleID="P77" CategoryREF="C0" Order="39">
+      <PuzzleDescription>
+        <Name>Hot Green Gem</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M78">
+          <Row>#####~~~~~</Row>
+          <Row>#...####~~</Row>
+          <Row>#.#.#.O#~~</Row>
+          <Row>#....X.###</Row>
+          <Row>###.#XO..#</Row>
+          <Row>#...#P...#</Row>
+          <Row>#.#.######</Row>
+          <Row>#...#~~~~~</Row>
+          <Row>#####~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="166.7" PuzzleID="P79" CategoryREF="C0" Order="40">
+      <PuzzleDescription>
+        <Name>Cold Mountain</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M80">
+          <Row>~#####~</Row>
+          <Row>~#...#~</Row>
+          <Row>##...##</Row>
+          <Row>#.XXX.#</Row>
+          <Row>#.O*O.#</Row>
+          <Row>#######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="150.0" PuzzleID="P81" CategoryREF="C0" Order="41">
+      <PuzzleDescription>
+        <Name>Edgy Lagoon</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M82">
+          <Row>#######~</Row>
+          <Row>#.....#~</Row>
+          <Row>#PXXX.##</Row>
+          <Row>#..#OOO#</Row>
+          <Row>##....##</Row>
+          <Row>~######~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="107.1" PuzzleID="P83" CategoryREF="C0" Order="42">
+      <PuzzleDescription>
+        <Name>Exacting Cottage</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M84">
+          <Row>~~~####</Row>
+          <Row>~~~#..#</Row>
+          <Row>~~~#P.#</Row>
+          <Row>####XO#</Row>
+          <Row>#...XO#</Row>
+          <Row>#.#.XO#</Row>
+          <Row>#....##</Row>
+          <Row>######~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="71.4" PuzzleID="P85" CategoryREF="C0" Order="43">
+      <PuzzleDescription>
+        <Name>Slimy House</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M86">
+          <Row>~~~~~####</Row>
+          <Row>~~~~~#.P#</Row>
+          <Row>~~~~~#..#</Row>
+          <Row>######.O#</Row>
+          <Row>#...X..O#</Row>
+          <Row>#..XX#.O#</Row>
+          <Row>#....####</Row>
+          <Row>###..#~~~</Row>
+          <Row>~~####~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="333.3" PuzzleID="P87" CategoryREF="C0" Order="44">
+      <PuzzleDescription>
+        <Name>'Duh!'</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M88">
+          <Row>#####</Row>
+          <Row>#PXO#</Row>
+          <Row>#####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="166.7" PuzzleID="P89" CategoryREF="C0" Order="45">
+      <PuzzleDescription>
+        <Name>Cold Lagoon</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M90">
+          <Row>######</Row>
+          <Row>#OOO.#</Row>
+          <Row>#..X.#</Row>
+          <Row>#.#X##</Row>
+          <Row>#..X.#</Row>
+          <Row>#..P.#</Row>
+          <Row>######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="83.3" PuzzleID="P91" CategoryREF="C0" Order="46">
+      <PuzzleDescription>
+        <Name>Dire Town</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M92">
+          <Row>~######</Row>
+          <Row>##....#</Row>
+          <Row>#..##.#</Row>
+          <Row>#.#.X.#</Row>
+          <Row>#..$.O#</Row>
+          <Row>##.#P##</Row>
+          <Row>~#...#~</Row>
+          <Row>~#####~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="62.5" PuzzleID="P93" CategoryREF="C0" Order="47">
+      <PuzzleDescription>
+        <Name>Bob's Lagoon</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M94">
+          <Row>~~#######~~</Row>
+          <Row>###.....#~~</Row>
+          <Row>#.X.X...#~~</Row>
+          <Row>#.###.#####</Row>
+          <Row>#.P.O.O...#</Row>
+          <Row>#...###...#</Row>
+          <Row>#####~#####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="107.1" PuzzleID="P95" CategoryREF="C0" Order="48">
+      <PuzzleDescription>
+        <Name>Slimy House</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M96">
+          <Row>######~~</Row>
+          <Row>#..P.#~~</Row>
+          <Row>#..#.##~</Row>
+          <Row>#.O#..##</Row>
+          <Row>#.OXXX.#</Row>
+          <Row>#.O#...#</Row>
+          <Row>####...#</Row>
+          <Row>~~~#####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="90.9" PuzzleID="P97" CategoryREF="C0" Order="49">
+      <PuzzleDescription>
+        <Name>Tight Blanket</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M98">
+          <Row>######~~</Row>
+          <Row>#.P..#~~</Row>
+          <Row>#.X#.#~~</Row>
+          <Row>#.X..#~~</Row>
+          <Row>#.X.##~~</Row>
+          <Row>###.####</Row>
+          <Row>~#..#..#</Row>
+          <Row>~#OOO..#</Row>
+          <Row>~#.....#</Row>
+          <Row>~#######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="64.5" PuzzleID="P99" CategoryREF="C0" Order="50">
+      <PuzzleDescription>
+        <Name>Funny Toad</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M100">
+          <Row>~~####~~~~</Row>
+          <Row>###..#####</Row>
+          <Row>#..X..POO#</Row>
+          <Row>#.X....#.#</Row>
+          <Row>###.####.#</Row>
+          <Row>~~#......#</Row>
+          <Row>~~########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="87.0" PuzzleID="P101" CategoryREF="C0" Order="51">
+      <PuzzleDescription>
+        <Name>Grim Shower</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M102">
+          <Row>####~~~~</Row>
+          <Row>#..###~~</Row>
+          <Row>#....###</Row>
+          <Row>#..X$P.#</Row>
+          <Row>###.O#.#</Row>
+          <Row>~~#....#</Row>
+          <Row>~~######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="166.7" PuzzleID="P103" CategoryREF="C0" Order="52">
+      <PuzzleDescription>
+        <Name>Cold Hamlet</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M104">
+          <Row>~~####</Row>
+          <Row>###.P#</Row>
+          <Row>#..X.#</Row>
+          <Row>#..$O#</Row>
+          <Row>#..$O#</Row>
+          <Row>#..X.#</Row>
+          <Row>###..#</Row>
+          <Row>~~####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="181.8" PuzzleID="P105" CategoryREF="C0" Order="53">
+      <PuzzleDescription>
+        <Name>Hot Lagoon</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M106">
+          <Row>~#####~</Row>
+          <Row>##O.O##</Row>
+          <Row>#.$.$.#</Row>
+          <Row>#..#..#</Row>
+          <Row>#.X.X.#</Row>
+          <Row>##.P.##</Row>
+          <Row>~#####~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="81.6" PuzzleID="P107" CategoryREF="C0" Order="54">
+      <PuzzleDescription>
+        <Name>Splendid Cottage</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M108">
+          <Row>~~~~~~######</Row>
+          <Row>~~~~~~#....#</Row>
+          <Row>~~#####.O..#</Row>
+          <Row>###..###O..#</Row>
+          <Row>#.X..X..O.##</Row>
+          <Row>#.PXX.#.O.#~</Row>
+          <Row>##....#####~</Row>
+          <Row>~######~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="60.6" PuzzleID="P109" CategoryREF="C0" Order="55">
+      <PuzzleDescription>
+        <Name>Superb Mountain</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M110">
+          <Row>########~~</Row>
+          <Row>#.P.#..#~~</Row>
+          <Row>#......#~~</Row>
+          <Row>#####X.#~~</Row>
+          <Row>~~~~#..###</Row>
+          <Row>~##~#X.OO#</Row>
+          <Row>~##~#..###</Row>
+          <Row>~~~~####~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="111.1" PuzzleID="P111" CategoryREF="C0" Order="56">
+      <PuzzleDescription>
+        <Name>Grand Hovel</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M112">
+          <Row>#####~~</Row>
+          <Row>#...###</Row>
+          <Row>#..X..#</Row>
+          <Row>##$.O.#</Row>
+          <Row>~#...P#</Row>
+          <Row>~######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="60.6" PuzzleID="P113" CategoryREF="C0" Order="57">
+      <PuzzleDescription>
+        <Name>Hot Red Grave</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M114">
+          <Row>~~####~~</Row>
+          <Row>~~#..#~~</Row>
+          <Row>~~#P.#~~</Row>
+          <Row>~~#..#~~</Row>
+          <Row>###.####</Row>
+          <Row>#....$.#</Row>
+          <Row>#..X...#</Row>
+          <Row>#####O.#</Row>
+          <Row>~~~~####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="150.0" PuzzleID="P115" CategoryREF="C0" Order="58">
+      <PuzzleDescription>
+        <Name>Superb Grave</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M116">
+          <Row>####~~~</Row>
+          <Row>#..####</Row>
+          <Row>#O$X..#</Row>
+          <Row>#.OX#.#</Row>
+          <Row>##.P..#</Row>
+          <Row>~#...##</Row>
+          <Row>~#####~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="50.8" PuzzleID="P117" CategoryREF="C0" Order="59">
+      <PuzzleDescription>
+        <Name>Funny Nemosis</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M118">
+          <Row>############~</Row>
+          <Row>#..........#~</Row>
+          <Row>#.#######.P##</Row>
+          <Row>#.#.........#</Row>
+          <Row>#.#..X...#..#</Row>
+          <Row>#.XX.#####..#</Row>
+          <Row>###..#~#.OOO#</Row>
+          <Row>~~####~#....#</Row>
+          <Row>~~~~~~~######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="90.9" PuzzleID="P119" CategoryREF="C0" Order="60">
+      <PuzzleDescription>
+        <Name>Tepid Toad</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M120">
+          <Row>~#########</Row>
+          <Row>~#.......#</Row>
+          <Row>##P#####.#</Row>
+          <Row>#..#...#.#</Row>
+          <Row>#..#...XO#</Row>
+          <Row>#..##X##O#</Row>
+          <Row>##X##..#O#</Row>
+          <Row>#...X..#O#</Row>
+          <Row>#...#..###</Row>
+          <Row>########~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="105.3" PuzzleID="P121" CategoryREF="C0" Order="61">
+      <PuzzleDescription>
+        <Name>Superb Gem</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M122">
+          <Row>########~</Row>
+          <Row>#......#~</Row>
+          <Row>#.####.#~</Row>
+          <Row>#.#OOOP#~</Row>
+          <Row>#.###X###</Row>
+          <Row>#.#.....#</Row>
+          <Row>#..XX.X.#</Row>
+          <Row>####...##</Row>
+          <Row>~~~#O###~</Row>
+          <Row>~~~###~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="125.0" PuzzleID="P123" CategoryREF="C0" Order="62">
+      <PuzzleDescription>
+        <Name>Tepid Grave</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M124">
+          <Row>~~~##########</Row>
+          <Row>####....##..#</Row>
+          <Row>#..XXXOOOOXP#</Row>
+          <Row>#......###..#</Row>
+          <Row>#...####~####</Row>
+          <Row>#####~~~~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="43.5" PuzzleID="P125" CategoryREF="C0" Order="63">
+      <PuzzleDescription>
+        <Name>Big Tunnel</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M126">
+          <Row>#####~~~####~~~~~~~</Row>
+          <Row>#...#####.O#~~~~~~~</Row>
+          <Row>#.......X..########</Row>
+          <Row>###..####.OX....P.#</Row>
+          <Row>~~#..#~~#..####...#</Row>
+          <Row>~~####~~####~~#####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="102.6" PuzzleID="P127" CategoryREF="C0" Order="64">
+      <PuzzleDescription>
+        <Name>Splendid Toad</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M128">
+          <Row>~######~~~</Row>
+          <Row>##....#~~~</Row>
+          <Row>#...X.#~~~</Row>
+          <Row>#..XX.#~~~</Row>
+          <Row>###.O#####</Row>
+          <Row>~~##O#.P.#</Row>
+          <Row>~~~#O..X.#</Row>
+          <Row>~~~#O.####</Row>
+          <Row>~~~####~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="100.0" PuzzleID="P129" CategoryREF="C0" Order="65">
+      <PuzzleDescription>
+        <Name>Tense Blanket</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M130">
+          <Row>~~######~</Row>
+          <Row>~~#....#~</Row>
+          <Row>~~#..X.#~</Row>
+          <Row>~####X.#~</Row>
+          <Row>##.X.X.#~</Row>
+          <Row>#OOOO#.##</Row>
+          <Row>#.....P.#</Row>
+          <Row>##..#...#</Row>
+          <Row>~########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="50.0" PuzzleID="P131" CategoryREF="C0" Order="66">
+      <PuzzleDescription>
+        <Name>Tight Lagoon</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M132">
+          <Row>~~~###~~~</Row>
+          <Row>~~~#P#~~~</Row>
+          <Row>~###X###~</Row>
+          <Row>##..O..##</Row>
+          <Row>#..#.#..#</Row>
+          <Row>#.#...#.#</Row>
+          <Row>#.#...#.#</Row>
+          <Row>#.#...#.#</Row>
+          <Row>#..#.#..#</Row>
+          <Row>##.X.X.##</Row>
+          <Row>~##O.O##~</Row>
+          <Row>~~#...#~~</Row>
+          <Row>~~#...#~~</Row>
+          <Row>~~#####~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="125.0" PuzzleID="P133" CategoryREF="C0" Order="67">
+      <PuzzleDescription>
+        <Name>Dire Hamlet</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M134">
+          <Row>#####~~</Row>
+          <Row>#...##~</Row>
+          <Row>#.#..#~</Row>
+          <Row>#PX$O##</Row>
+          <Row>##..O.#</Row>
+          <Row>~#.X#.#</Row>
+          <Row>~##...#</Row>
+          <Row>~~#####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="120.0" PuzzleID="P135" CategoryREF="C0" Order="68">
+      <PuzzleDescription>
+        <Name>Big Blanket</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M136">
+          <Row>~####~~~~~</Row>
+          <Row>~#..######</Row>
+          <Row>##....X..#</Row>
+          <Row>#.O#.X...#</Row>
+          <Row>#.O#X#####</Row>
+          <Row>#.OP.#~~~~</Row>
+          <Row>######~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="73.2" PuzzleID="P137" CategoryREF="C0" Order="69">
+      <PuzzleDescription>
+        <Name>Cat's Toad</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M138">
+          <Row>####~~####~</Row>
+          <Row>#..####..#~</Row>
+          <Row>#..#..#..#~</Row>
+          <Row>#..#....X##</Row>
+          <Row>#..O.O#X..#</Row>
+          <Row>#P.##.#.X.#</Row>
+          <Row>#...O.#...#</Row>
+          <Row>###########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="111.1" PuzzleID="P139" CategoryREF="C0" Order="70">
+      <PuzzleDescription>
+        <Name>Funny Yellow Tunnel</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M140">
+          <Row>#####~~~</Row>
+          <Row>#.P.####</Row>
+          <Row>#......#</Row>
+          <Row>#.X.XX.#</Row>
+          <Row>##X##..#</Row>
+          <Row>#...####</Row>
+          <Row>#.OO..#~</Row>
+          <Row>##OO..#~</Row>
+          <Row>~###..#~</Row>
+          <Row>~~~####~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="38.5" PuzzleID="P141" CategoryREF="C0" Order="71">
+      <PuzzleDescription>
+        <Name>Dire Spider</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M142">
+          <Row>###########~~</Row>
+          <Row>#.....#...###</Row>
+          <Row>#.XPX.#.O..O#</Row>
+          <Row>#.##.###.##.#</Row>
+          <Row>#.#.......#.#</Row>
+          <Row>#.#...#...#.#</Row>
+          <Row>#.#########.#</Row>
+          <Row>#...........#</Row>
+          <Row>#############</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="71.4" PuzzleID="P143" CategoryREF="C0" Order="72">
+      <PuzzleDescription>
+        <Name>Edgy Grave</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M144">
+          <Row>~~####~~~~</Row>
+          <Row>~##..#####</Row>
+          <Row>~#..X..P.#</Row>
+          <Row>~#..X#...#</Row>
+          <Row>####.#####</Row>
+          <Row>#..#...#~~</Row>
+          <Row>#....X.#~~</Row>
+          <Row>#.OO#..#~~</Row>
+          <Row>#..O####~~</Row>
+          <Row>#..##~~~~~</Row>
+          <Row>####~~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="90.9" PuzzleID="P145" CategoryREF="C0" Order="73">
+      <PuzzleDescription>
+        <Name>Funny Cottage</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M146">
+          <Row>####~~~~</Row>
+          <Row>#..#####</Row>
+          <Row>#.XX.X.#</Row>
+          <Row>#......#</Row>
+          <Row>##.##.##</Row>
+          <Row>#OOO#P#~</Row>
+          <Row>#.###.##</Row>
+          <Row>#......#</Row>
+          <Row>#..#...#</Row>
+          <Row>########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="114.3" PuzzleID="P147" CategoryREF="C0" Order="74">
+      <PuzzleDescription>
+        <Name>Dire Night</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M148">
+          <Row>~####~~~~~~</Row>
+          <Row>~#..#######</Row>
+          <Row>~#X.P#...O#</Row>
+          <Row>##.#XX...O#</Row>
+          <Row>#..X..##OO#</Row>
+          <Row>#...#.#####</Row>
+          <Row>###...#~~~~</Row>
+          <Row>~~#####~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="121.2" PuzzleID="P149" CategoryREF="C0" Order="75">
+      <PuzzleDescription>
+        <Name>Dastardly Nemosis</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M150">
+          <Row>~#######~~</Row>
+          <Row>##.OOOO##~</Row>
+          <Row>#...######</Row>
+          <Row>#...X.X.P#</Row>
+          <Row>###..X.X.#</Row>
+          <Row>~~###....#</Row>
+          <Row>~~~~######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="63.8" PuzzleID="P151" CategoryREF="C0" Order="76">
+      <PuzzleDescription>
+        <Name>Dire Gem</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M152">
+          <Row>~#####~~~~</Row>
+          <Row>##...#~~~~</Row>
+          <Row>#....#####</Row>
+          <Row>#..#O#...#</Row>
+          <Row>#P.#O#.X.#</Row>
+          <Row>#..#O#..##</Row>
+          <Row>#....#..#~</Row>
+          <Row>##..##XX#~</Row>
+          <Row>~##.....#~</Row>
+          <Row>~~#..####~</Row>
+          <Row>~~####~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="121.2" PuzzleID="P153" CategoryREF="C0" Order="77">
+      <PuzzleDescription>
+        <Name>Small Mountain</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M154">
+          <Row>##########~</Row>
+          <Row>#.P.OOOO.#~</Row>
+          <Row>#...####X##</Row>
+          <Row>##.#..X.X.#</Row>
+          <Row>~#.X......#</Row>
+          <Row>~#...######</Row>
+          <Row>~#####~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="128.2" PuzzleID="P155" CategoryREF="C0" Order="78">
+      <PuzzleDescription>
+        <Name>Grim Grave</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M156">
+          <Row>~#######~~~</Row>
+          <Row>##.....##~~</Row>
+          <Row>#..X.X..#~~</Row>
+          <Row>#.X.X.X.#~~</Row>
+          <Row>##.###.####</Row>
+          <Row>~#P..OOOOO#</Row>
+          <Row>~##.....###</Row>
+          <Row>~~#######~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="107.1" PuzzleID="P157" CategoryREF="C0" Order="79">
+      <PuzzleDescription>
+        <Name>Old Night</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M158">
+          <Row>~#########</Row>
+          <Row>~#....#..#</Row>
+          <Row>##.X#X#..#</Row>
+          <Row>#..OXOP..#</Row>
+          <Row>#..O#....#</Row>
+          <Row>##########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="80.0" PuzzleID="P159" CategoryREF="C0" Order="80">
+      <PuzzleDescription>
+        <Name>Edgy School</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M160">
+          <Row>####~~~~~~</Row>
+          <Row>#..#######</Row>
+          <Row>#..O.##.O#</Row>
+          <Row>#.X#....O#</Row>
+          <Row>##.##.#.O#</Row>
+          <Row>~#....#..#</Row>
+          <Row>~####.#..#</Row>
+          <Row>~~#.PX.###</Row>
+          <Row>~~#.XX.#~~</Row>
+          <Row>~~#....#~~</Row>
+          <Row>~~######~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="115.4" PuzzleID="P161" CategoryREF="C0" Order="81">
+      <PuzzleDescription>
+        <Name>Grim Mountain</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M162">
+          <Row>~#####</Row>
+          <Row>~#...#</Row>
+          <Row>~#.O.#</Row>
+          <Row>##.$.#</Row>
+          <Row>#..$##</Row>
+          <Row>#..P##</Row>
+          <Row>##.X.#</Row>
+          <Row>~#...#</Row>
+          <Row>~#####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="120.0" PuzzleID="P163" CategoryREF="C0" Order="82">
+      <PuzzleDescription>
+        <Name>Big Tunnel</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M164">
+          <Row>#####~~~</Row>
+          <Row>#...###~</Row>
+          <Row>#.O...##</Row>
+          <Row>##$#X..#</Row>
+          <Row>#.O#.X.#</Row>
+          <Row>#.P##.##</Row>
+          <Row>#.....#~</Row>
+          <Row>#######~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="105.3" PuzzleID="P165" CategoryREF="C0" Order="83">
+      <PuzzleDescription>
+        <Name>Tricky Shower</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M166">
+          <Row>######~~</Row>
+          <Row>#....##~</Row>
+          <Row>#.X.X.##</Row>
+          <Row>##.XX..#</Row>
+          <Row>~#.#...#</Row>
+          <Row>~#.##.##</Row>
+          <Row>~#..O.O#</Row>
+          <Row>~#.PO.O#</Row>
+          <Row>~#..####</Row>
+          <Row>~####~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="62.5" PuzzleID="P167" CategoryREF="C0" Order="84">
+      <PuzzleDescription>
+        <Name>Exacting Grave</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M168">
+          <Row>########~~~~</Row>
+          <Row>#..OOO.#~~~~</Row>
+          <Row>#..###.##~~~</Row>
+          <Row>#..#.X..#~~~</Row>
+          <Row>##.#PX..#~~~</Row>
+          <Row>~#.#.X..#~~~</Row>
+          <Row>~#.###.#####</Row>
+          <Row>~#.........#</Row>
+          <Row>~#...###...#</Row>
+          <Row>~#####~#####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="53.6" PuzzleID="P169" CategoryREF="C0" Order="85">
+      <PuzzleDescription>
+        <Name>David's Tower</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M170">
+          <Row>~~~~~~~####</Row>
+          <Row>~#######..#</Row>
+          <Row>~#.X......#</Row>
+          <Row>~#...X.X..#</Row>
+          <Row>~#.########</Row>
+          <Row>##.#.O..#~~</Row>
+          <Row>#..#.#..#~~</Row>
+          <Row>#..P.O.##~~</Row>
+          <Row>##.#.#.#~~~</Row>
+          <Row>~#...O.#~~~</Row>
+          <Row>~#######~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="121.2" PuzzleID="P171" CategoryREF="C0" Order="86">
+      <PuzzleDescription>
+        <Name>Tepid Hovel</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M172">
+          <Row>~~~~####~</Row>
+          <Row>~~###..##</Row>
+          <Row>~##.X...#</Row>
+          <Row>##.X..#.#</Row>
+          <Row>#.P#XX..#</Row>
+          <Row>#.OO..###</Row>
+          <Row>#.OO###~~</Row>
+          <Row>#####~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="95.2" PuzzleID="P173" CategoryREF="C0" Order="87">
+      <PuzzleDescription>
+        <Name>Nefarious Gem</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M174">
+          <Row>~~~~~####</Row>
+          <Row>######..#</Row>
+          <Row>#.......#</Row>
+          <Row>#..OOO.O#</Row>
+          <Row>##X######</Row>
+          <Row>#.X..#~~~</Row>
+          <Row>#...X###~</Row>
+          <Row>##..X..#~</Row>
+          <Row>~##.P..#~</Row>
+          <Row>~~######~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="48.4" PuzzleID="P175" CategoryREF="C0" Order="88">
+      <PuzzleDescription>
+        <Name>Grim Blanket</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M176">
+          <Row>~~~~~####~~</Row>
+          <Row>~#~###..#~~</Row>
+          <Row>~#~#....#~~</Row>
+          <Row>~#~#..#.#~~</Row>
+          <Row>~#~#X.#O#~~</Row>
+          <Row>~#~#..#.#~#</Row>
+          <Row>~#~#X.#O#~#</Row>
+          <Row>~~~#..#.#~#</Row>
+          <Row>####X.#O#~#</Row>
+          <Row>#.P.....#~#</Row>
+          <Row>#...#..##~#</Row>
+          <Row>########~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="93.0" PuzzleID="P177" CategoryREF="C0" Order="89">
+      <PuzzleDescription>
+        <Name>Nefarious Spider</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M178">
+          <Row>##########</Row>
+          <Row>#...##...#</Row>
+          <Row>#.X..XP#.#</Row>
+          <Row>####.#.X.#</Row>
+          <Row>~~~#O#..##</Row>
+          <Row>~#~#O#.X#~</Row>
+          <Row>~#~#O...#~</Row>
+          <Row>~#~#O...#~</Row>
+          <Row>~~~######~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="121.2" PuzzleID="P179" CategoryREF="C0" Order="90">
+      <PuzzleDescription>
+        <Name>Tepid Hamlet</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M180">
+          <Row>~########~</Row>
+          <Row>~#..P...#~</Row>
+          <Row>~#.X..X.#~</Row>
+          <Row>###.##.###</Row>
+          <Row>#..XOOX..#</Row>
+          <Row>#...OO...#</Row>
+          <Row>##########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="173.9" PuzzleID="P181" CategoryREF="C0" Order="91">
+      <PuzzleDescription>
+        <Name>Ghastly Gem</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M182">
+          <Row>###########</Row>
+          <Row>#....O##..#</Row>
+          <Row>#.XXPOOXX.#</Row>
+          <Row>#...##O...#</Row>
+          <Row>###########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="37.5" PuzzleID="P183" CategoryREF="C0" Order="92">
+      <PuzzleDescription>
+        <Name>Grim School</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M184">
+          <Row>~~####~~~~~~~~~</Row>
+          <Row>~~#..#~~~~#####</Row>
+          <Row>~~#..#~~~~#...#</Row>
+          <Row>~~#..######O#.#</Row>
+          <Row>####..X....O..#</Row>
+          <Row>#...XX#.###O#.#</Row>
+          <Row>#...#...#~#...#</Row>
+          <Row>#########~#P.##</Row>
+          <Row>~~~~~~~~~~#..#~</Row>
+          <Row>~~~~~~~~~~####~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="119.4" PuzzleID="P185" CategoryREF="C0" Order="93">
+      <PuzzleDescription>
+        <Name>Splendid Estate</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M186">
+          <Row>~#########~</Row>
+          <Row>##...#...##</Row>
+          <Row>#....#....#</Row>
+          <Row>#..X.#.X..#</Row>
+          <Row>#...$O$...#</Row>
+          <Row>####OPO####</Row>
+          <Row>#...$O$...#</Row>
+          <Row>#..X.#.X..#</Row>
+          <Row>#....#....#</Row>
+          <Row>##...#...##</Row>
+          <Row>~#########~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="85.7" PuzzleID="P187" CategoryREF="C0" Order="94">
+      <PuzzleDescription>
+        <Name>Delighted Blanket</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M188">
+          <Row>#########</Row>
+          <Row>#.P.#...#</Row>
+          <Row>#.X.X...#</Row>
+          <Row>##X###.##</Row>
+          <Row>#..OOO..#</Row>
+          <Row>#...#...#</Row>
+          <Row>######..#</Row>
+          <Row>~~~~~####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="222.2" PuzzleID="P189" CategoryREF="C0" Order="95">
+      <PuzzleDescription>
+        <Name>Caroline's Lagoon</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M190">
+          <Row>########</Row>
+          <Row>#P.....#</Row>
+          <Row>#.OXXO.#</Row>
+          <Row>#.XOOX.#</Row>
+          <Row>#.XOOX.#</Row>
+          <Row>#.OXXO.#</Row>
+          <Row>#......#</Row>
+          <Row>########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="54.5" PuzzleID="P191" CategoryREF="C0" Order="96">
+      <PuzzleDescription>
+        <Name>Superb Mountain</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M192">
+          <Row>~~######~~~</Row>
+          <Row>~~#....#~~~</Row>
+          <Row>~~#....#~~~</Row>
+          <Row>#####..#~~~</Row>
+          <Row>#...#O#####</Row>
+          <Row>#...XPX...#</Row>
+          <Row>#####O#...#</Row>
+          <Row>~~~##.##.##</Row>
+          <Row>~~~#...XO#~</Row>
+          <Row>~~~#...###~</Row>
+          <Row>~~~#####~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="113.6" PuzzleID="P193" CategoryREF="C0" Order="97">
+      <PuzzleDescription>
+        <Name>David's Tunnel</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M194">
+          <Row>~~~####~~~~~~~</Row>
+          <Row>~~~#..########</Row>
+          <Row>####.X.XOOOOO#</Row>
+          <Row>#...X...######</Row>
+          <Row>#P###.###~~~~~</Row>
+          <Row>#..X..#~~~~~~~</Row>
+          <Row>#.X.#.#~~~~~~~</Row>
+          <Row>##.#..#~~~~~~~</Row>
+          <Row>~#....#~~~~~~~</Row>
+          <Row>~######~~~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="72.5" PuzzleID="P195" CategoryREF="C0" Order="98">
+      <PuzzleDescription>
+        <Name>Cold Night</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M196">
+          <Row>#####~~~~~~~~~~~</Row>
+          <Row>#...##~####~~~~~</Row>
+          <Row>#..X.###.O#~~~~~</Row>
+          <Row>#.X...X..O#~~~~~</Row>
+          <Row>##.X#####O#~####</Row>
+          <Row>#.X..#~#.O###..#</Row>
+          <Row>#....#~#.O#..P.#</Row>
+          <Row>###..#~#.......#</Row>
+          <Row>~~####~##.....##</Row>
+          <Row>~~~~~~~~#######~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="32.3" PuzzleID="P197" CategoryREF="C0" Order="99">
+      <PuzzleDescription>
+        <Name>Funny Blanket</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M198">
+          <Row>~~~~~~~~~~~~~~~#####~~</Row>
+          <Row>~~~~~~~~~~~~~~~#...#~~</Row>
+          <Row>#######~~#######.#.#~~</Row>
+          <Row>#.....#~~#..#......#~~</Row>
+          <Row>#..P..####..#.....####</Row>
+          <Row>#..#....OOOO##.####..#</Row>
+          <Row>#....#####.##.XX.X.X.#</Row>
+          <Row>######~~~#...........#</Row>
+          <Row>~~~~~~~~~#..##########</Row>
+          <Row>~~~~~~~~~####~~~~~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="142.9" PuzzleID="P199" CategoryREF="C0" Order="100">
+      <PuzzleDescription>
+        <Name>Tepid Mountain</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M200">
+          <Row>#######~</Row>
+          <Row>#.P#..#~</Row>
+          <Row>#OX...#~</Row>
+          <Row>#O.#.X##</Row>
+          <Row>#OX#...#</Row>
+          <Row>#O.#.X.#</Row>
+          <Row>#..#...#</Row>
+          <Row>########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="62.5" PuzzleID="P201" CategoryREF="C0" Order="101">
+      <PuzzleDescription>
+        <Name>'Lockdown'</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M202">
+          <Row>~~#####~~~~~~</Row>
+          <Row>~~#...#~~~~~~</Row>
+          <Row>~~#.#.#######</Row>
+          <Row>~~#..$..#...#</Row>
+          <Row>~~##.##...#.#</Row>
+          <Row>~~#.....#$..#</Row>
+          <Row>###.#.#.#.###</Row>
+          <Row>#..$#X*...#~~</Row>
+          <Row>#.#...##.##~~</Row>
+          <Row>#...#..$..#~~</Row>
+          <Row>#######.#.#~~</Row>
+          <Row>~~~~~~#...#~~</Row>
+          <Row>~~~~~~#####~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="83.3" PuzzleID="P203" CategoryREF="C0" Order="102">
+      <PuzzleDescription>
+        <Name>Tight Grave</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M204">
+          <Row>###########</Row>
+          <Row>#OOOO#....#</Row>
+          <Row>#..#...XX.#</Row>
+          <Row>#..P..##..#</Row>
+          <Row>#.....##X.#</Row>
+          <Row>######..X.#</Row>
+          <Row>~~~~~#....#</Row>
+          <Row>~~~~~######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="137.9" PuzzleID="P205" CategoryREF="C0" Order="103">
+      <PuzzleDescription>
+        <Name>Funny Yellow Estate</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M206">
+          <Row>~~#####~</Row>
+          <Row>~~#.O.##</Row>
+          <Row>###.X..#</Row>
+          <Row>#.O.X#P#</Row>
+          <Row>#.#X.O.#</Row>
+          <Row>#..X.###</Row>
+          <Row>##.O.#~~</Row>
+          <Row>~#####~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="68.2" PuzzleID="P207" CategoryREF="C0" Order="104">
+      <PuzzleDescription>
+        <Name>Cold Spider</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M208">
+          <Row>~~~~#####</Row>
+          <Row>#####...#</Row>
+          <Row>#....X..#</Row>
+          <Row>#..X#X#P#</Row>
+          <Row>###.#...#</Row>
+          <Row>~~#.OOO.#</Row>
+          <Row>~~###..##</Row>
+          <Row>~~~~#..#~</Row>
+          <Row>~~~~####~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="129.0" PuzzleID="P209" CategoryREF="C0" Order="105">
+      <PuzzleDescription>
+        <Name>Edgy Lagoon</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M210">
+          <Row>~####~####~</Row>
+          <Row>##..###..##</Row>
+          <Row>#...#.#...#</Row>
+          <Row>#..$O.O$..#</Row>
+          <Row>###X...X###</Row>
+          <Row>~#...P...#~</Row>
+          <Row>###X...X###</Row>
+          <Row>#..$O.O$..#</Row>
+          <Row>#...#.#...#</Row>
+          <Row>##..###..##</Row>
+          <Row>~####~####~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="106.4" PuzzleID="P211" CategoryREF="C0" Order="106">
+      <PuzzleDescription>
+        <Name>Old White Mountain</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M212">
+          <Row>~########~</Row>
+          <Row>~#......#~</Row>
+          <Row>~#P...X.#~</Row>
+          <Row>##.###X.#~</Row>
+          <Row>#.OOOOO###</Row>
+          <Row>#.X.X.X..#</Row>
+          <Row>######.#.#</Row>
+          <Row>~~~~~#...#</Row>
+          <Row>~~~~~#####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="305.6" PuzzleID="P213" CategoryREF="C0" Order="107">
+      <PuzzleDescription>
+        <Name>Hot Tunnel</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M214">
+          <Row>########</Row>
+          <Row>#......#</Row>
+          <Row>#.X$$$.#</Row>
+          <Row>#.$..$.#</Row>
+          <Row>#.$..$.#</Row>
+          <Row>#.$$$O.#</Row>
+          <Row>#.....P#</Row>
+          <Row>########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="70.2" PuzzleID="P215" CategoryREF="C0" Order="108">
+      <PuzzleDescription>
+        <Name>Small Night</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M216">
+          <Row>####~~~~~#####~</Row>
+          <Row>#..###~~~#...##</Row>
+          <Row>#....#~~~#X.X.#</Row>
+          <Row>#OO#.#####.#..#</Row>
+          <Row>#..P....#.X.X.#</Row>
+          <Row>#OO#.........##</Row>
+          <Row>##...#########~</Row>
+          <Row>~#####~~~~~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="94.3" PuzzleID="P217" CategoryREF="C0" Order="109">
+      <PuzzleDescription>
+        <Name>Big Blanket</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M218">
+          <Row>~~#######</Row>
+          <Row>#~#.....#</Row>
+          <Row>#~#.#.#.#</Row>
+          <Row>~~#.P.X.#</Row>
+          <Row>###.###.#</Row>
+          <Row>#...###.#</Row>
+          <Row>#.X..##O#</Row>
+          <Row>##.X..#O#</Row>
+          <Row>~##.X..O#</Row>
+          <Row>#.##.X#O#</Row>
+          <Row>##.##.#O#</Row>
+          <Row>###~#...#</Row>
+          <Row>###~#####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="111.1" PuzzleID="P219" CategoryREF="C0" Order="110">
+      <PuzzleDescription>
+        <Name>Dastardly Nemosis</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M220">
+          <Row>~~####~~~</Row>
+          <Row>~~#..#~~~</Row>
+          <Row>~~#.X####</Row>
+          <Row>###O.O..#</Row>
+          <Row>#.X.#.X.#</Row>
+          <Row>#..O.O###</Row>
+          <Row>####X.#~~</Row>
+          <Row>~~~#.P#~~</Row>
+          <Row>~~~####~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="98.4" PuzzleID="P221" CategoryREF="C0" Order="111">
+      <PuzzleDescription>
+        <Name>Leigh's House</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M222">
+          <Row>######~~~</Row>
+          <Row>#....####</Row>
+          <Row>#....OOO#</Row>
+          <Row>#....OOO#</Row>
+          <Row>######..#</Row>
+          <Row>~~#..#..#</Row>
+          <Row>~~#.XX.##</Row>
+          <Row>~~#.PX..#</Row>
+          <Row>~~#.XX..#</Row>
+          <Row>~~##.X#.#</Row>
+          <Row>~~~#....#</Row>
+          <Row>~~~######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="80.6" PuzzleID="P223" CategoryREF="C0" Order="112">
+      <PuzzleDescription>
+        <Name>Tense Tunnel</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M224">
+          <Row>~#####~~~~</Row>
+          <Row>##...####~</Row>
+          <Row>#..XXX..#~</Row>
+          <Row>#.#...X.#~</Row>
+          <Row>#...X##.##</Row>
+          <Row>###..#O..#</Row>
+          <Row>~~#..#...#</Row>
+          <Row>~#####.###</Row>
+          <Row>~#...#.##~</Row>
+          <Row>~#.POOOO#~</Row>
+          <Row>~#......#~</Row>
+          <Row>~#...#..#~</Row>
+          <Row>~########~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="44.0" PuzzleID="P225" CategoryREF="C0" Order="113">
+      <PuzzleDescription>
+        <Name>Bob's Hovel</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M226">
+          <Row>~~~#####~~~~~~</Row>
+          <Row>~~##...#~~~~~~</Row>
+          <Row>###..#.#~~~~~~</Row>
+          <Row>#....O.#~~~~~~</Row>
+          <Row>#..##.#####~~~</Row>
+          <Row>#..O.O.#..##~~</Row>
+          <Row>#..#.P.X...###</Row>
+          <Row>#####O.#..X..#</Row>
+          <Row>~~~~####..X..#</Row>
+          <Row>~~~~~~~##.X.##</Row>
+          <Row>~~~~~~~~#..##~</Row>
+          <Row>~~~~~~~~#..#~~</Row>
+          <Row>~~~~~~~~####~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="157.9" PuzzleID="P227" CategoryREF="C0" Order="114">
+      <PuzzleDescription>
+        <Name>Big Spider</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M228">
+          <Row>######~~~~~</Row>
+          <Row>#....###~~~</Row>
+          <Row>#..#.X.#~~~</Row>
+          <Row>#..X.P.#~~~</Row>
+          <Row>##.##.#####</Row>
+          <Row>#..#OOOOOO#</Row>
+          <Row>#.X.X.X.X.#</Row>
+          <Row>##...######</Row>
+          <Row>~#####~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="113.6" PuzzleID="P229" CategoryREF="C0" Order="115">
+      <PuzzleDescription>
+        <Name>Dastardly Nemosis</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M230">
+          <Row>~~~~#####~~~</Row>
+          <Row>#####...####</Row>
+          <Row>#.....#....#</Row>
+          <Row>#..#OOOOO..#</Row>
+          <Row>##..##.#.###</Row>
+          <Row>~#XXPXXX.#~~</Row>
+          <Row>~#.....###~~</Row>
+          <Row>~#######~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="135.1" PuzzleID="P231" CategoryREF="C0" Order="116">
+      <PuzzleDescription>
+        <Name>David's Night</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M232">
+          <Row>~~~~~#####</Row>
+          <Row>~~~###...#</Row>
+          <Row>####OOOOO#</Row>
+          <Row>#.PXXXXX.#</Row>
+          <Row>#.....#.##</Row>
+          <Row>#####...#~</Row>
+          <Row>~~~~#####~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="90.9" PuzzleID="P233" CategoryREF="C0" Order="117">
+      <PuzzleDescription>
+        <Name>Funny Hamlet</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M234">
+          <Row>~####~####~</Row>
+          <Row>~#..###..##</Row>
+          <Row>~#......P.#</Row>
+          <Row>##OO###...#</Row>
+          <Row>#......#..#</Row>
+          <Row>#OOO#X..#.#</Row>
+          <Row>#.##.XX.X.#</Row>
+          <Row>#..X....###</Row>
+          <Row>####..###~~</Row>
+          <Row>~~~####~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="88.9" PuzzleID="P235" CategoryREF="C0" Order="118">
+      <PuzzleDescription>
+        <Name>Nefarious Morning</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M236">
+          <Row>~#####~~~~</Row>
+          <Row>##...##~~~</Row>
+          <Row>#..X..##~~</Row>
+          <Row>#.X.X..##~</Row>
+          <Row>###X#.O.##</Row>
+          <Row>~~#.#.O..#</Row>
+          <Row>~##.##O..#</Row>
+          <Row>~#.P..O.##</Row>
+          <Row>~#...#..#~</Row>
+          <Row>~########~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="68.2" PuzzleID="P237" CategoryREF="C0" Order="119">
+      <PuzzleDescription>
+        <Name>Slimy Toad</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M238">
+          <Row>~~######~</Row>
+          <Row>~~#....##</Row>
+          <Row>~##.##..#</Row>
+          <Row>~#.XX.#.#</Row>
+          <Row>~#.PX.#.#</Row>
+          <Row>~#....#.#</Row>
+          <Row>####.#..#</Row>
+          <Row>#..OOO.##</Row>
+          <Row>#.....##~</Row>
+          <Row>#######~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="87.0" PuzzleID="P239" CategoryREF="C0" Order="120">
+      <PuzzleDescription>
+        <Name>Superb Tunnel</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M240">
+          <Row>~~~~~~####~</Row>
+          <Row>#######..#~</Row>
+          <Row>#.X......##</Row>
+          <Row>#.X#####..#</Row>
+          <Row>#..P#..#..#</Row>
+          <Row>##.##OO...#</Row>
+          <Row>#..#.OO####</Row>
+          <Row>#.X..###~~~</Row>
+          <Row>#.X###~~~~~</Row>
+          <Row>#..#~~~~~~~</Row>
+          <Row>####~~~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="108.7" PuzzleID="P241" CategoryREF="C0" Order="121">
+      <PuzzleDescription>
+        <Name>David's Grave</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M242">
+          <Row>~######~~~~</Row>
+          <Row>~#.O..#~~~~</Row>
+          <Row>##XO#.#~~~~</Row>
+          <Row>#..$..#~~~~</Row>
+          <Row>#.OO###~~~~</Row>
+          <Row>##X.#.#####</Row>
+          <Row>##.##.#...#</Row>
+          <Row>#..####.#.#</Row>
+          <Row>#...P.X.X.#</Row>
+          <Row>##..#.....#</Row>
+          <Row>~##########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="96.2" PuzzleID="P243" CategoryREF="C0" Order="122">
+      <PuzzleDescription>
+        <Name>Big Shower</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M244">
+          <Row>#####~~~~~~</Row>
+          <Row>#...###~~~~</Row>
+          <Row>#.#X..#~~~~</Row>
+          <Row>#.X...#~~~~</Row>
+          <Row>#.X.X.#~~~~</Row>
+          <Row>#.X#..#~~~~</Row>
+          <Row>#..P###~~~~</Row>
+          <Row>##.########</Row>
+          <Row>#......OOO#</Row>
+          <Row>#.........#</Row>
+          <Row>########OO#</Row>
+          <Row>~~~~~~~####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="61.7" PuzzleID="P245" CategoryREF="C0" Order="123">
+      <PuzzleDescription>
+        <Name>David's Estate</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M246">
+          <Row>########~~~~~~~</Row>
+          <Row>#......#~~~~~~~</Row>
+          <Row>#.X.XX.########</Row>
+          <Row>#####.P##O.O..#</Row>
+          <Row>~~~~#X..#.O...#</Row>
+          <Row>~~~~#...#O.O.##</Row>
+          <Row>~~~~#X#.##.#.#~</Row>
+          <Row>~~~~#........#~</Row>
+          <Row>~~~~#..###..##~</Row>
+          <Row>~~~~#..#~####~~</Row>
+          <Row>~~~~####~~~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="49.2" PuzzleID="P247" CategoryREF="C0" Order="124">
+      <PuzzleDescription>
+        <Name>Exacting School</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M248">
+          <Row>##############</Row>
+          <Row>#......#.....#</Row>
+          <Row>#.XPXX.#.O.OO#</Row>
+          <Row>##.##.###.##.#</Row>
+          <Row>~#.#.......#.#</Row>
+          <Row>~#.#...#...#.#</Row>
+          <Row>~#.#########.#</Row>
+          <Row>~#...........#</Row>
+          <Row>~#############</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="71.4" PuzzleID="P249" CategoryREF="C0" Order="125">
+      <PuzzleDescription>
+        <Name>Edgy Night</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M250">
+          <Row>~~~~~~#####~~</Row>
+          <Row>~~~~~~#...##~</Row>
+          <Row>~~~~~~#.X..#~</Row>
+          <Row>########.#P##</Row>
+          <Row>#.O..#.X.X..#</Row>
+          <Row>#........X#.#</Row>
+          <Row>#OOO#####...#</Row>
+          <Row>#####~~~#####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="194.4" PuzzleID="P251" CategoryREF="C0" Order="126">
+      <PuzzleDescription>
+        <Name>Exacting Yellow Blanket</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M252">
+          <Row>~###########</Row>
+          <Row>##OOOOOOO..#</Row>
+          <Row>#.XXXXXXXP.#</Row>
+          <Row>#...#.#.#.##</Row>
+          <Row>#.#.#.....#~</Row>
+          <Row>#...#######~</Row>
+          <Row>#####~~~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="111.1" PuzzleID="P253" CategoryREF="C0" Order="127">
+      <PuzzleDescription>
+        <Name>Delighted Night</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M254">
+          <Row>##~####~~~</Row>
+          <Row>####..####</Row>
+          <Row>~#.X.XO..#</Row>
+          <Row>##.#..OX.#</Row>
+          <Row>#...##O###</Row>
+          <Row>#..X..O.#~</Row>
+          <Row>#.P.#...#~</Row>
+          <Row>#..######~</Row>
+          <Row>####~~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="105.3" PuzzleID="P255" CategoryREF="C0" Order="128">
+      <PuzzleDescription>
+        <Name>Small Spider</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M256">
+          <Row>~~#########</Row>
+          <Row>###...#...#</Row>
+          <Row>#.$.X.O.O.#</Row>
+          <Row>#...X.##.##</Row>
+          <Row>####$#...#~</Row>
+          <Row>~#..P..###~</Row>
+          <Row>~#...###~~~</Row>
+          <Row>~#####~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="128.2" PuzzleID="P257" CategoryREF="C0" Order="129">
+      <PuzzleDescription>
+        <Name>Tepid Toad</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M258">
+          <Row>~~#########</Row>
+          <Row>###.P.#...#</Row>
+          <Row>#.$.X.$OO.#</Row>
+          <Row>#...X.#...#</Row>
+          <Row>####$#..###</Row>
+          <Row>~#.....##~~</Row>
+          <Row>~#...###~~~</Row>
+          <Row>~#####~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="95.2" PuzzleID="P259" CategoryREF="C0" Order="130">
+      <PuzzleDescription>
+        <Name>Tricky Shower</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M260">
+          <Row>#####~~#####</Row>
+          <Row>#...####OO.#</Row>
+          <Row>#.XXX......#</Row>
+          <Row>#...X#..OO.#</Row>
+          <Row>###.P#..##.#</Row>
+          <Row>~~#..##....#</Row>
+          <Row>~~##########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="121.2" PuzzleID="P261" CategoryREF="C0" Order="131">
+      <PuzzleDescription>
+        <Name>Grim Mountain</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M262">
+          <Row>#####~~</Row>
+          <Row>#...#~~</Row>
+          <Row>#.O.#~~</Row>
+          <Row>#OPO###</Row>
+          <Row>##O#..#</Row>
+          <Row>#..X..#</Row>
+          <Row>#.X...#</Row>
+          <Row>##XX..#</Row>
+          <Row>~#..###</Row>
+          <Row>~#..#~~</Row>
+          <Row>~####~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="133.3" PuzzleID="P263" CategoryREF="C0" Order="132">
+      <PuzzleDescription>
+        <Name>Tight Spider</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M264">
+          <Row>####~~~~~~</Row>
+          <Row>#.P###~~~~</Row>
+          <Row>#O$..#####</Row>
+          <Row>#OO#XX.X.#</Row>
+          <Row>##.......#</Row>
+          <Row>~#.#.##..#</Row>
+          <Row>~#...#####</Row>
+          <Row>~#####~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="128.2" PuzzleID="P265" CategoryREF="C0" Order="133">
+      <PuzzleDescription>
+        <Name>Ghastly Estate</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M266">
+          <Row>~#######~~</Row>
+          <Row>~#..O.O###</Row>
+          <Row>~#.O.O.O.#</Row>
+          <Row>###.####.#</Row>
+          <Row>#..PX..X.#</Row>
+          <Row>#..XX..X.#</Row>
+          <Row>####...###</Row>
+          <Row>~~~#####~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="64.5" PuzzleID="P267" CategoryREF="C0" Order="134">
+      <PuzzleDescription>
+        <Name>Superb Nemosis</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M268">
+          <Row>~~~~~~~~####</Row>
+          <Row>#########..#</Row>
+          <Row>#...##.X...#</Row>
+          <Row>#..X...##..#</Row>
+          <Row>###.#O.O#.##</Row>
+          <Row>~~#.#O.O#X##</Row>
+          <Row>~~#.#...#..#</Row>
+          <Row>~~#.P.X....#</Row>
+          <Row>~~#..#######</Row>
+          <Row>~~####~~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="114.3" PuzzleID="P269" CategoryREF="C0" Order="135">
+      <PuzzleDescription>
+        <Name>Funny Night</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M270">
+          <Row>#######~~~~</Row>
+          <Row>#.....#####</Row>
+          <Row>#.XX#P##OO#</Row>
+          <Row>#.#.......#</Row>
+          <Row>#..X.#.#..#</Row>
+          <Row>####.X..OO#</Row>
+          <Row>~~~########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="129.0" PuzzleID="P271" CategoryREF="C0" Order="136">
+      <PuzzleDescription>
+        <Name>David's Blanket</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M272">
+          <Row>~#######~</Row>
+          <Row>~#.....#~</Row>
+          <Row>##.###X##</Row>
+          <Row>#OX...P.#</Row>
+          <Row>#.OO.#X.#</Row>
+          <Row>#O##..X.#</Row>
+          <Row>#....####</Row>
+          <Row>######~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="64.5" PuzzleID="P273" CategoryREF="C0" Order="137">
+      <PuzzleDescription>
+        <Name>Tense Toad</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M274">
+          <Row>~~~~~~~####~~</Row>
+          <Row>~~~~~~##..###</Row>
+          <Row>####~~#..X..#</Row>
+          <Row>#..####.X.X.#</Row>
+          <Row>#...OO#.#X..#</Row>
+          <Row>#..#...P..###</Row>
+          <Row>##.#OO#.###~~</Row>
+          <Row>~#.##.#.#~~~~</Row>
+          <Row>~#......#~~~~</Row>
+          <Row>~########~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="82.0" PuzzleID="P275" CategoryREF="C0" Order="138">
+      <PuzzleDescription>
+        <Name>Old School</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M276">
+          <Row>~~####~~~~~~</Row>
+          <Row>###..#~~~~~~</Row>
+          <Row>#....###~~~~</Row>
+          <Row>#.#.O.O#~~~~</Row>
+          <Row>#.P.OOO####~</Row>
+          <Row>#.#.#.#...##</Row>
+          <Row>#...#.XX...#</Row>
+          <Row>#####..X.X.#</Row>
+          <Row>~~~~##X.#.##</Row>
+          <Row>~~~~~#....#~</Row>
+          <Row>~~~~~######~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="78.9" PuzzleID="P277" CategoryREF="C0" Order="139">
+      <PuzzleDescription>
+        <Name>Hot Tunnel</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M278">
+          <Row>~####~~~~~~~~~~~</Row>
+          <Row>##..####~~~~~~~~</Row>
+          <Row>#...OOO#~~~~~~~~</Row>
+          <Row>#...OOO#~~~~~~~~</Row>
+          <Row>#...#.##~~~~~~~~</Row>
+          <Row>#...#P.####~####</Row>
+          <Row>#####.X...###..#</Row>
+          <Row>~~~~#..##X.X...#</Row>
+          <Row>~~~###.....XX..#</Row>
+          <Row>~~~#.X..##...###</Row>
+          <Row>~~~#....######~~</Row>
+          <Row>~~~######~~~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="78.4" PuzzleID="P279" CategoryREF="C0" Order="140">
+      <PuzzleDescription>
+        <Name>Hot Mountain</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M280">
+          <Row>########~#####</Row>
+          <Row>#..#...###...#</Row>
+          <Row>#......##.X..#</Row>
+          <Row>#O#.P.##.X..##</Row>
+          <Row>#O#...#.X..##~</Row>
+          <Row>#O#....X..##~~</Row>
+          <Row>#O.##.#####~~~</Row>
+          <Row>##....#~~~~~~~</Row>
+          <Row>~######~~~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="127.7" PuzzleID="P281" CategoryREF="C0" Order="141">
+      <PuzzleDescription>
+        <Name>Tense Tower</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M282">
+          <Row>~~########</Row>
+          <Row>~~#..#.O.#</Row>
+          <Row>~~#...O$O#</Row>
+          <Row>~~#..#.$.#</Row>
+          <Row>####X##O##</Row>
+          <Row>#......X.#</Row>
+          <Row>#.X.##.X.#</Row>
+          <Row>#...P#...#</Row>
+          <Row>##########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="108.1" PuzzleID="P283" CategoryREF="C0" Order="142">
+      <PuzzleDescription>
+        <Name>Hot Mountain</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M284">
+          <Row>~~####~~~</Row>
+          <Row>~~#..#~~~</Row>
+          <Row>~~#..####</Row>
+          <Row>###XOX..#</Row>
+          <Row>#..OPO..#</Row>
+          <Row>#..XOX###</Row>
+          <Row>####..#~~</Row>
+          <Row>~~~#..#~~</Row>
+          <Row>~~~####~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="115.4" PuzzleID="P285" CategoryREF="C0" Order="143">
+      <PuzzleDescription>
+        <Name>Tepid Grave</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M286">
+          <Row>####~~~~~</Row>
+          <Row>#..####~~</Row>
+          <Row>#.X...#~~</Row>
+          <Row>#.O#..#~~</Row>
+          <Row>#.X#.##~~</Row>
+          <Row>#.O..#~~~</Row>
+          <Row>####.#~~~</Row>
+          <Row>~~~#.#~~~</Row>
+          <Row>~###.###~</Row>
+          <Row>~#..X..#~</Row>
+          <Row>##.#X#.##</Row>
+          <Row>#.X.P.X.#</Row>
+          <Row>#.OO#OO.#</Row>
+          <Row>###...###</Row>
+          <Row>~~#####~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="205.1" PuzzleID="P287" CategoryREF="C0" Order="144">
+      <PuzzleDescription>
+        <Name>Superb Town</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M288">
+          <Row>~~~####~~~~~</Row>
+          <Row>~###..#####~</Row>
+          <Row>~#.XX.#...#~</Row>
+          <Row>~#.X.O.OXX##</Row>
+          <Row>~#.OO.#O.X.#</Row>
+          <Row>###.#$$.O..#</Row>
+          <Row>#..O.$$#.###</Row>
+          <Row>#.X.O#.OO.#~</Row>
+          <Row>##XXOPO.X.#~</Row>
+          <Row>~#...#.XX.#~</Row>
+          <Row>~#####..###~</Row>
+          <Row>~~~~~####~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="187.5" PuzzleID="P289" CategoryREF="C0" Order="145">
+      <PuzzleDescription>
+        <Name>Big Blanket</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M290">
+          <Row>~~~#####~~~</Row>
+          <Row>~~~#.P.#~~~</Row>
+          <Row>~~##...##~~</Row>
+          <Row>###OXXXO###</Row>
+          <Row>#..XOOOX..#</Row>
+          <Row>#..XO#OX..#</Row>
+          <Row>#..XOOOX..#</Row>
+          <Row>###OXXXO###</Row>
+          <Row>~~##...##~~</Row>
+          <Row>~~~#...#~~~</Row>
+          <Row>~~~#####~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="255.3" PuzzleID="P291" CategoryREF="C0" Order="146">
+      <PuzzleDescription>
+        <Name>Grim Hamlet</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M292">
+          <Row>~#######~</Row>
+          <Row>##..O..##</Row>
+          <Row>#.OXXXO.#</Row>
+          <Row>#.XO.OX.#</Row>
+          <Row>#OX.P.XO#</Row>
+          <Row>#.XO.OX.#</Row>
+          <Row>#.OXXXO.#</Row>
+          <Row>##..O..##</Row>
+          <Row>~#######~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="53.6" PuzzleID="P293" CategoryREF="C0" Order="147">
+      <PuzzleDescription>
+        <Name>'reduction of (Mas Sasquatch 8)'</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M294">
+          <Row>~~~~~~~#####</Row>
+          <Row>########...#</Row>
+          <Row>#O...O..P#O#</Row>
+          <Row>#..###.....#</Row>
+          <Row>##.X..#....#</Row>
+          <Row>~#.X...#####</Row>
+          <Row>~#.X#..#~~~~</Row>
+          <Row>~##.#..#~~~~</Row>
+          <Row>~~#...##~~~~</Row>
+          <Row>~~#####~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="88.9" PuzzleID="P295" CategoryREF="C0" Order="148">
+      <PuzzleDescription>
+        <Name>'from (Original 18)'</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M296">
+          <Row>###########~~~~</Row>
+          <Row>#..O..#...#~~~~</Row>
+          <Row>#.#O..P...#~~~~</Row>
+          <Row>#..#OO#.#######</Row>
+          <Row>##..##.XX.X.X.#</Row>
+          <Row>~##...........#</Row>
+          <Row>~~#############</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="95.2" PuzzleID="P297" CategoryREF="C0" Order="149">
+      <PuzzleDescription>
+        <Name>'from (Boxxle 43)'</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M298">
+          <Row>~####~~~~~</Row>
+          <Row>##..###~~~</Row>
+          <Row>#PX...#~~~</Row>
+          <Row>###.X.#~~~</Row>
+          <Row>~#..######</Row>
+          <Row>~#..XOOOO#</Row>
+          <Row>~#..#.####</Row>
+          <Row>~##.#.#~~~</Row>
+          <Row>~#.X#.#~~~</Row>
+          <Row>~#....#~~~</Row>
+          <Row>~#..###~~~</Row>
+          <Row>~####~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="90.9" PuzzleID="P299" CategoryREF="C0" Order="150">
+      <PuzzleDescription>
+        <Name>'from (Original 47)'</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M300">
+          <Row>~~~~~####~~~~~~</Row>
+          <Row>~#####..#~~~~~~</Row>
+          <Row>~#.....X#######</Row>
+          <Row>##.##.OO#..OOO#</Row>
+          <Row>#.X.XX#X..P...#</Row>
+          <Row>#........###..#</Row>
+          <Row>#######..#~####</Row>
+          <Row>~~~~~~####~~~~~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="81.6" PuzzleID="P301" CategoryREF="C0" Order="151">
+      <PuzzleDescription>
+        <Name>'from (Original 47)'</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M302">
+          <Row>~~~####~~~~~</Row>
+          <Row>~~~#..#~~~~~</Row>
+          <Row>~###..#~~~~~</Row>
+          <Row>##..X.#~~~~~</Row>
+          <Row>#...#.#~~~~~</Row>
+          <Row>#.#XX.######</Row>
+          <Row>#.#...#...O#</Row>
+          <Row>#..X..P...O#</Row>
+          <Row>###..####OO#</Row>
+          <Row>~~####~~####</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="63.5" PuzzleID="P303" CategoryREF="C0" Order="152">
+      <PuzzleDescription>
+        <Name>'reduced (Mas Sasquatch 23)'</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M304">
+          <Row>######~####~~~~</Row>
+          <Row>#.....#....#~~~</Row>
+          <Row>#O##..#X##..#~~</Row>
+          <Row>#...#.....#..#~</Row>
+          <Row>#X..#.###..#..#</Row>
+          <Row>#.#......#..#.#</Row>
+          <Row>#.#.####..#.#.#</Row>
+          <Row>#O.P....X.$.O.#</Row>
+          <Row>###############</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="158.7" PuzzleID="P305" CategoryREF="C0" Order="153">
+      <PuzzleDescription>
+        <Name>'reduction of (Revenge 306)'</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M306">
+          <Row>#############</Row>
+          <Row>#O#.P#..#...#</Row>
+          <Row>#O#XX...#.X.#</Row>
+          <Row>#O#..#.X#...#</Row>
+          <Row>#O#.X#..#.X##</Row>
+          <Row>#O#..#.X#..#~</Row>
+          <Row>#O#.X#..#.X#~</Row>
+          <Row>#OO..#.X...#~</Row>
+          <Row>#OO..#..#..#~</Row>
+          <Row>############~</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="4.3" PuzzleID="P307" CategoryREF="C0" Order="154">
+      <PuzzleDescription>
+        <Name>'Take the long way home.'</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M308">
+          <Row>~############################</Row>
+          <Row>~#..........................#</Row>
+          <Row>~#.########################.#</Row>
+          <Row>~#.#......................#.#</Row>
+          <Row>~#.#.####################.#.#</Row>
+          <Row>~#.#.#..................#.#.#</Row>
+          <Row>~#.#.#.################.#.#.#</Row>
+          <Row>~#.#.#.#..............#.#.#.#</Row>
+          <Row>~#.#.#.#.############.#.#.#.#</Row>
+          <Row>~#.#.#.#.#............#.#.#.#</Row>
+          <Row>~#.#.#.#.#.############.#.#.#</Row>
+          <Row>~#.#.#.#.#..............#.#.#</Row>
+          <Row>~#.#.#.#.################.#.#</Row>
+          <Row>~#.#.#.#..................#.#</Row>
+          <Row>##X#.#.####################.#</Row>
+          <Row>#O.P.#......................#</Row>
+          <Row>#############################</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="42.1" PuzzleID="P309" CategoryREF="C0" Order="155">
+      <PuzzleDescription>
+        <Name>'The Dungeon'</Name>
+        <Description />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M310">
+          <Row>~~~~######~~~~~~~~~~~~~~~####~</Row>
+          <Row>#####$#..#################..##</Row>
+          <Row>#...###......................#</Row>
+          <Row>#........########..####..##..#</Row>
+          <Row>###.####.....#..####..####..##</Row>
+          <Row>#$#.#.O#.#.#.#.....#.....#...#</Row>
+          <Row>#$#.#..#.....#.##..#.##..##..#</Row>
+          <Row>###....###.###..#.##..#.##..##</Row>
+          <Row>~#...#.#$#......#.....#.#....#</Row>
+          <Row>~#...#.###..#####..####.#....#</Row>
+          <Row>~#####...#####..#######.######</Row>
+          <Row>~#...#.#.#$$#...............#~</Row>
+          <Row>##.#.#...#$$#..#######..##..#~</Row>
+          <Row>#....#########..#....#####.###</Row>
+          <Row>#.#.............#.X........#$#</Row>
+          <Row>#...#########..###.P#####..#$#</Row>
+          <Row>#####~~~~~~~####~####~~~######</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+  </Puzzles>
+</SokobanLibrary>
