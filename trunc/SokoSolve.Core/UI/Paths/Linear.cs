@@ -35,7 +35,7 @@ namespace SokoSolve.Core.UI.Paths
             }
             else
             {
-                if (_Current == _Target) return null;
+                if (_Current == _Target) return VectorInt.Empty;
                 return _Current.ToVectorInt();
             }
         }

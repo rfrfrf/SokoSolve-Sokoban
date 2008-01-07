@@ -18,7 +18,7 @@ namespace SokoSolve.Core.Analysis.Solver
             this.name = name;
         }
 
-        public SolverBitmap(string name, VectorInt aSize)
+        public SolverBitmap(string name, SizeInt aSize)
             : base(aSize)
         {
             this.name = name;

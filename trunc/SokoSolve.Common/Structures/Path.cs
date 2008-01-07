@@ -96,7 +96,7 @@ namespace SokoSolve.Common.Structures
                 List<VectorInt> result = new List<VectorInt>(moves.Count + 1);
                 result.Add(StartLocation);
 
-                VectorInt next = null;
+                VectorInt next = VectorInt.Empty;
                 VectorInt current = StartLocation;
                 foreach (Direction move in moves)
                 {

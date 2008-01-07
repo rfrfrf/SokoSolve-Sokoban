@@ -9,8 +9,14 @@ using SokoSolve.Core.Analysis.Solver;
 
 namespace SokoSolve.Core.Analysis.DeadMap
 {
+    /// <summary>
+    /// Analyse a map to see if it is solveable or unsolvable/dead
+    /// </summary>
     public class DeadMapAnalysis : StrategyPatternBase<DeadMapState>
     {
+        /// <summary>
+        /// Default Constructor. Register all strategy rules
+        /// </summary>
         public DeadMapAnalysis() : base("DeadMap analysis")
         {
             Register(new CornerRule(this));
@@ -36,7 +42,7 @@ namespace SokoSolve.Core.Analysis.DeadMap
     }
 
     /// <summary>
-    /// State for deadmap analysis
+    /// State Pattern for deadmap analysis
     /// </summary>
     public class DeadMapState : SolverBitmap
     {

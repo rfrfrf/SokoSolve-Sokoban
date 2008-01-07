@@ -45,10 +45,17 @@ namespace SokoSolve.Core.Analysis.DeadMap
                                                               "?OC?"
                                                           }, 3);
 
-            CreateHintRotations("Dead Corner", new string[]
+            CreateHintRotations("Dead Corner #1", new string[]
                                                    {
                                                        "WWW",
                                                        "WDC",
+                                                       "WO?"
+                                                   }, 3);
+
+            CreateHintRotations("Dead Corner #2", new string[]
+                                                   {
+                                                       "WWW",
+                                                       "WDO",
                                                        "WC?"
                                                    }, 3);
         }
@@ -210,8 +217,7 @@ namespace SokoSolve.Core.Analysis.DeadMap
                                 break;
                             case ('O'):
                                 if (
-                                    !(context.CrateMap[cx + hintX, cy + hintY] &&
-                                      context.GoalMap[cx + hintX, cy + hintY])) return;
+                                    !(context.CrateMap[cx + hintX, cy + hintY])) return;
                                 break;
                             case ('D'):
                                 // Static deadmap or dynamic dead map

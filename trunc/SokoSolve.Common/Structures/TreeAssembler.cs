@@ -26,7 +26,7 @@ namespace SokoSolve.Common.Structures
 			foreach(T item in source)
 			{
 				string ID = GetID(item);
-				if (ID == null) throw new ArgumentNullException("Must have ID");
+				if (ID == null) throw new ArgumentNullException("ID");
 
 				string parentID = GetREF(item);
 				if (parentID == null)
@@ -60,10 +60,13 @@ namespace SokoSolve.Common.Structures
 				}
 			}
 
-			foreach(TreeNode<T> kid in current.Children)
-			{
-				AddChildren<T>(kid, GetID, GetREF, source);
-			}
+            if (current.HasChildren)
+            {
+                foreach (TreeNode<T> kid in current.Children)
+                {
+                    AddChildren<T>(kid, GetID, GetREF, source);
+                }
+            }
 		}
 
 		

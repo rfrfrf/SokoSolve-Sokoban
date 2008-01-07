@@ -270,7 +270,7 @@ namespace SokoSolve.Core.Analysis.Solver
             Matrix rhs = obj as Matrix;
             if (rhs != null)
             {
-                if (this.Size != rhs.Size) return false;
+                if (this.Size.X != rhs.Size.X && this.Size.Y != rhs.Size.Y) return false;
 
                 int ccxSize = Math.Min(Width, rhs.Width);
                 int ccySize = Math.Min(Height, rhs.Height);

@@ -51,7 +51,7 @@ namespace SokoSolve.Common.Structures
 			this.parent = parent;
 			if (parent != null)  this.tree = parent.tree;
 			Data = data;
-			this.children = new ManagedCollection<TreeNode<T>>(ChildrenNotifications);
+		    this.children = null;
 		}
 
 		/// <summary>
@@ -103,6 +103,8 @@ namespace SokoSolve.Common.Structures
         {
             get
             {
+                if (!HasChildren) return null;
+
                 T[] ret = new T[Children.Count];
 
                 int cc = 0;
@@ -121,6 +123,10 @@ namespace SokoSolve.Common.Structures
 		/// <param name="child"></param>
 		public TreeNode<T> Add(T child)
 		{
+            // Lazy initlisation of children to save space
+            if (children == null) children  = new ManagedCollection<TreeNode<T>>(ChildrenNotifications);
+
+            // Add the node
 			TreeNode<T> node = new TreeNode<T>(this, child);
 			children.Add(node);
 			return node;
@@ -266,11 +272,14 @@ namespace SokoSolve.Common.Structures
 				{
 					if(searchDepth > currentDepth)
 					{
-						// Children
-						foreach(TreeNode<T> kid in children)
-						{
-							kid.ForEachInternal(action, searchDepth, currentDepth++);
-						}
+                        if (HasChildren)
+                        {
+                            // Children
+                            foreach (TreeNode<T> kid in children)
+                            {
+                                kid.ForEachInternal(action, searchDepth, currentDepth++);
+                            }
+                        }
 					}
 				}
 				else
@@ -295,12 +304,15 @@ namespace SokoSolve.Common.Structures
 				{
 					if (searchDepth > currentDepth)
 					{
-						// Children
-						foreach (TreeNode<T> kid in children)
-						{
-							TreeNode<T> recurse = kid.FindInternal(predicate, searchDepth, currentDepth++, results);
-							if (recurse != null) return recurse;
-						}
+                        if (HasChildren)
+                        {
+                            // Children
+                            foreach (TreeNode<T> kid in children)
+                            {
+                                TreeNode<T> recurse = kid.FindInternal(predicate, searchDepth, currentDepth++, results);
+                                if (recurse != null) return recurse;
+                            }
+                        }
 					}
 
 				}
@@ -336,7 +348,8 @@ namespace SokoSolve.Common.Structures
         /// <returns>null if not found</returns>
         public TreeNode<T> GetChild(T childData)
         {
-            foreach (TreeNode<T> child in Children)
+            if (children == null) return null;
+            foreach (TreeNode<T> child in children)
             {
                 if (object.Equals(child.Data, childData)) return child;
             }
@@ -354,9 +367,12 @@ namespace SokoSolve.Common.Structures
             // Add this;
             res.Add(data);
 
-            foreach (TreeNode<T> child in Children)
+            if (HasChildren)
             {
-                res.AddRange(child.ToList());
+                foreach (TreeNode<T> child in children)
+                {
+                    res.AddRange(child.ToList());
+                }
             }
 
             return res;
@@ -367,7 +383,11 @@ namespace SokoSolve.Common.Structures
         /// </summary>
 	    public int Count
 	    {
-            get { return children.Count;  }
+            get
+            {
+                if (children == null) return 0;
+                return children.Count;
+            }
 	    }
 
         /// <summary>
@@ -377,6 +397,7 @@ namespace SokoSolve.Common.Structures
 	    {
 	        get
 	        {
+                if (children == null) return 0;
 	            int count = children.Count;
 	            foreach (TreeNode<T> node in children)
 	            {
@@ -393,7 +414,9 @@ namespace SokoSolve.Common.Structures
         {
             get
             {
+                if (!HasChildren) return Depth;
                 int maxDepth = Depth;
+
                 foreach (TreeNode<T> node in children)
                 {
                     int childDepth = node.TotalDepth;

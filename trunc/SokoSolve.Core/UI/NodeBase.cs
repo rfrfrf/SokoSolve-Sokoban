@@ -52,7 +52,7 @@ namespace SokoSolve.Core.UI
         {
             get
             {
-                if (currentAbsolute == null) return null;
+                if (currentAbsolute == VectorInt.Empty) return VectorInt.Empty;
                 return currentAbsolute.Subtract(gameUI.GameCoords.GlobalOffset);
             }
             set
@@ -111,7 +111,7 @@ namespace SokoSolve.Core.UI
         /// </summary>
         public bool isNew
         {
-            get { return last == null; }
+            get { return last.IsNull; }
         }
 
         /// <summary>

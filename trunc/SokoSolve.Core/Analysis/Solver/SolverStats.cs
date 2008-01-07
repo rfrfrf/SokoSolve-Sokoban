@@ -78,9 +78,9 @@ namespace SokoSolve.Core.Analysis.Solver
         private List<Statistic> stats;
         private Timer threadingTimer;
 
-        public Statistic EvaluationTime = new Statistic("Evaluation Time", "{1:0} sec");
+        public Statistic EvaluationTime = new Statistic("Evaluation Time", "{1:0.000} sec");
         public Statistic EvaluationItterations = new Statistic("Evaluation Itterations", "{1:0} nodes");
-        public Statistic CurrentEvalSecs = new Statistic("Evaluation Total Seconds", "{1:0.000} sec");
+        public Statistic CurrentEvalSecs = new Statistic("Evaluation Total Seconds", "{1:0} sec");
         public Statistic Nodes = new Statistic("Total Nodes", "{1:0} nodes");
         public Statistic AvgEvalList = new Statistic("Eval Worker List", "{1:0}");
         public Statistic MoveMapTime = new Statistic("MoveMapTime", "{1:0.000} sec");

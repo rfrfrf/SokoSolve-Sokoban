@@ -142,8 +142,7 @@ namespace SokoSolve.Common.Structures
 		{
 			if (!currentState[pos] && !initialState[pos.X, pos.Y])
 			{
-				TreeNode<LocationNode> kid = new TreeNode<LocationNode>(treeNode, new LocationNode(pos));
-				treeNode.Children.Add(kid);
+                TreeNode<LocationNode> kid = treeNode.Add(new LocationNode(pos));
 				workList.Add(kid);
 				currentState[pos] = true;
 				kid.Data.IsStateEvaluated = true;

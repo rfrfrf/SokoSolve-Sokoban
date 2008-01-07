@@ -16,6 +16,7 @@ namespace SokoSolve.Core.Analysis.Solver
         public SolverItterator(SolverController controller) 
         {
             evalList = new List<INode<SolverNode>>(10000);
+            evalLinkedList = new LinkedList<INode<SolverNode>>();
           
             this.controller = controller;
         }
@@ -60,15 +61,35 @@ namespace SokoSolve.Core.Analysis.Solver
                 return null;
             }
 
-            if (evalList.Count == 0)
+          
+
+            
+
+           // INode<SolverNode> next = evalList[0];
+            INode<SolverNode> next = null;
+            if (useLinked)
             {
-                exitStatus = EvalStatus.CompleteNoSolution;
-                Status = exitStatus;
-                return null;
+                if (evalLinkedList.First == null)
+                {
+                    exitStatus = EvalStatus.CompleteNoSolution;
+                    Status = exitStatus;
+                    return null;
+                }
+                next = evalLinkedList.First.Value;
+            }
+            else
+            {
+                if (evalList.Count == 0)
+                {
+                    exitStatus = EvalStatus.CompleteNoSolution;
+                    Status = exitStatus;
+                    return null;
+                }
+                next = evalList[0];
             }
 
             controller.Stats.EvaluationItterations.Increment();
-            INode<SolverNode> next = evalList[0];
+
 
             // Check max depth
             int currDepth = next.Data.TreeNode.Depth;
@@ -89,10 +110,49 @@ namespace SokoSolve.Core.Analysis.Solver
         {
             controller.Stats.AvgEvalList.Increment();
 
-           evalList.Add(NewEvalNode);
+            if (useLinked)
+            {
+                if (evalLinkedList.First == null)
+                {
+                    // First
+                    evalLinkedList.AddFirst(NewEvalNode);
+                }
+                else
+                {
+                    LinkedListNode<INode<SolverNode>> current = evalLinkedList.First;
+                    while (current != null && CompareNodes(NewEvalNode, current.Value) > 0)
+                    {
+                        current = current.Next;
+                    } 
+                    if (current == null)
+                    {
+                        // Last
+                        evalLinkedList.AddLast(NewEvalNode);
+                    }
+                    else
+                    {
+                        evalLinkedList.AddBefore(current, NewEvalNode);
+                    }
+                }
 
-           evalList.Sort(CompareNodes);
+                // This implementation does not garentee sortedness, as the wieghting value may change after added
+                // As a work-around we should sort the list ever 100 (or some other number) of itterations
+                if (controller.Stats.AvgEvalList.ValueTotal % 100 == 0)
+                {
+                    INode<SolverNode>[] tmp = new INode<SolverNode>[evalLinkedList.Count];
+                    evalLinkedList.CopyTo(tmp, 0);
+                    Array.Sort(tmp, CompareNodes);
+                    evalLinkedList = new LinkedList<INode<SolverNode>>(tmp);
+                }
+            }
+            else
+            {
+                evalList.Add(NewEvalNode);
+                evalList.Sort(CompareNodes);
+            }
         }
+
+        private bool useLinked = true;
 
         static int CompareNodes(INode<SolverNode> lhs, INode<SolverNode> rhs)
         {
@@ -108,7 +168,15 @@ namespace SokoSolve.Core.Analysis.Solver
         {
             controller.Stats.AvgEvalList.Decrement();
 
-            evalList.Remove(EvalNode);
+            if (useLinked)
+            {
+                evalLinkedList.Remove(EvalNode);   
+            }
+            else
+            {
+                evalList.Remove(EvalNode);    
+            }
+            
         }
 
 
@@ -123,6 +191,7 @@ namespace SokoSolve.Core.Analysis.Solver
 
 
         private List<INode<SolverNode>> evalList;
+        private LinkedList<INode<SolverNode>> evalLinkedList;
         private SolverController controller;
         private EvalStatus exitStatus;
     }

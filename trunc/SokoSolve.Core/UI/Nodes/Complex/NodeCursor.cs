@@ -188,7 +188,7 @@ namespace SokoSolve.Core.UI.Nodes.Complex
                     if (path != null)
                     {
                         Pen cratePen = new Pen(Color.Yellow, 2f);
-                        VectorInt lastPos = null;
+                        VectorInt lastPos = VectorInt.Empty;
 
                         VectorInt startDrag = GameUI.GameCoords.PositionAbsoluteFromPuzzle(dragStartCellLocation);
 

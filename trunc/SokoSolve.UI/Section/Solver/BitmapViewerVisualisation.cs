@@ -54,7 +54,7 @@ namespace SokoSolve.UI.Section.Solver
             set
             {
                 base.GridSize = value;
-                if (value != null)
+                if (!value.Equals(SizeInt.Empty))
                 {
                     cells = new BitmapViewerVisualisationElement[value.Width,value.Height];
                     for (int cx = 0; cx < value.Width; cx++)
@@ -176,6 +176,11 @@ namespace SokoSolve.UI.Section.Solver
                         {
                             graphics.DrawImage(current.CellImage, region.ToDrawingRect());
                         }
+                        else if (current.Matrix != null)
+                        {
+                            Font matFont = new Font("Arial Narrow", 8f);
+                            graphics.DrawString(current.Matrix[logicalPosition].ToString("0.00"), matFont, current.Brush, region.ToDrawingRect());
+                        }
                         else
                         {
                             //Bitmap
@@ -191,6 +196,11 @@ namespace SokoSolve.UI.Section.Solver
                         Image tile = DrawingHelper.Images.GetImage(current.Map[logicalPosition]);
                         graphics.DrawImage(tile, region.ToDrawingRect());
                     }
+                    else if (current.Matrix != null)
+                    {
+                        float value = current.Matrix[logicalPosition];
+                        graphics.DrawString(ToStringSmall(value), current.Font, value >=0 ? current.Brush : current.BrushAlt, region.ToDrawingRect());
+                    }
                 }
 
                
@@ -201,6 +211,18 @@ namespace SokoSolve.UI.Section.Solver
                 // Draw Selected cursor
                 graphics.DrawRectangle(new Pen(Color.Yellow, 3f), region.TopLeft.X - 2, region.TopLeft.Y - 2, region.Size.Width + 4, region.Size.Height + 4);
             }
+        }
+
+        
+
+
+        string ToStringSmall(float value)
+        {
+            if (value == 0) return "0";
+            if (value > 0 && value < 1) return value.ToString("0.00").Remove(0, 1);
+            if (value < 0) return value.ToString("0.0").Remove(0, 1);
+
+            return value.ToString("0.0");
         }
     }
 }

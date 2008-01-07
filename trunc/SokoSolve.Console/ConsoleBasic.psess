@@ -2,7 +2,7 @@
   <Options>
     <Solution>..\SokoSolve.sln</Solution>
     <CollectionMethod>Instrumentation</CollectionMethod>
-    <AllocationMethod>Life</AllocationMethod>
+    <AllocationMethod>None</AllocationMethod>
     <Reportname>PerformanceReports\Report.vsp</Reportname>
     <AddReport>true</AddReport>
     <UniqueReport>Timestamp</UniqueReport>

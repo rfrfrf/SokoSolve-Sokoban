@@ -8,14 +8,24 @@ using SokoSolve.Core.Model;
 namespace SokoSolve.Core.Analysis.Solver
 {
     /// <summary>
-    /// Encapsule all aspects of the Solver process.
+    /// Encapsule all aspects of the Solver process. It is the root object and is responsible
+    /// for threading and coordinating the solver process.
     /// </summary>
     public class SolverController
     {
+        private bool attempted;
+        private SolverReport debugReport;
+        private Evaluator<SolverNode> evaluator;
+        private ExitConditions exitConditions;
+        private bool isEnabled;
+        private PuzzleMap puzzleMap;
+        private SolverStats stats;
+        private SolverStrategy strategy;
+
         /// <summary>
         /// Strong Contruction
         /// </summary>
-        /// <param name="puzzleMap"></param>
+        /// <param name="puzzleMap">Map to solve</param>
         public SolverController(PuzzleMap puzzleMap)
         {
             this.puzzleMap = puzzleMap;
@@ -27,9 +37,8 @@ namespace SokoSolve.Core.Analysis.Solver
             // TODO: This should be configured, perhaps via a factory pattern
             strategy = new SolverStrategy(this);
             evaluator = new Evaluator<SolverNode>(true);
-
         }
-        
+
         /// <summary>
         /// Map to solve with added information (Model)
         /// </summary>
@@ -88,13 +97,21 @@ namespace SokoSolve.Core.Analysis.Solver
         }
 
         /// <summary>
+        /// Debug report for the solver. 
+        /// </summary>
+        public SolverReport DebugReport
+        {
+            get { return debugReport; }
+        }
+
+        /// <summary>
         /// Attempt to find a solution
         /// </summary>
         public EvalStatus Solve()
         {
             CodeTimer solveTime = new CodeTimer();
             solveTime.Start();
-            
+
             try
             {
                 debugReport.Append("Starting");
@@ -115,32 +132,10 @@ namespace SokoSolve.Core.Analysis.Solver
             }
             finally
             {
-                
                 IsEnabled = false;
                 stats.Stop();
                 stats.EvaluationTime.AddMeasure(solveTime);
             }
         }
-
-        public void BuildReport()
-        {
-            
-        }
-
-        public SolverReport DebugReport
-        {
-            get { return debugReport; }
-        }
-
-        private bool attempted;
-        private PuzzleMap puzzleMap;
-        private SolverStrategy strategy;
-        private SolverStats stats;
-        private Evaluator<SolverNode> evaluator;
-        private bool isEnabled;
-        private SolverReport debugReport;
-        private ExitConditions exitConditions;
-        
     }
 }
-

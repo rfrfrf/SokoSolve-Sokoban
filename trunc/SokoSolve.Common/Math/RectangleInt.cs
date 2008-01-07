@@ -19,7 +19,7 @@ namespace SokoSolve.Common.Math
 		public RectangleInt(VectorInt aTopLeft, SizeInt aSize)
         {
             TopLeft = aTopLeft;
-            if (TopLeft != null) BottomRight = aTopLeft.Add(aSize);
+            BottomRight = aTopLeft.Add(aSize);
         }
 
 		public RectangleInt(VectorInt aTopLeft, VectorInt aBottomRight)

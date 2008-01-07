@@ -117,7 +117,7 @@ namespace SokoSolve.Core.Analysis
                         Evaluator<LocationNode> eval = new Evaluator<LocationNode>();
                         eval.Evaluate(floodFill);
 
-                        VectorInt playerPushPosition = null;
+                        VectorInt playerPushPosition = VectorInt.Empty;
                         if (cc < pathToRoot.Count-1)
                         {
                             playerPushPosition = pathToRoot[cc + 1].Data.PlayerPosition.Offset(VectorInt.Reverse(pathToRoot[cc + 1].Data.Direction));

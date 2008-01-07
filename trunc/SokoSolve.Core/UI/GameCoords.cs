@@ -85,7 +85,7 @@ namespace SokoSolve.Core.UI
             set
             {
                 windowRegion = value;
-                if (windowRegion.Size < PuzzleRegion.Size)
+                if (windowRegion.Size.ToVectorInt < PuzzleRegion.Size.ToVectorInt)
                 {
                     GlobalOffset = new VectorInt((windowRegion.Width - PuzzleRegion.Width) / 2, (windowRegion.Height - PuzzleRegion.Height) / 2);
                 }

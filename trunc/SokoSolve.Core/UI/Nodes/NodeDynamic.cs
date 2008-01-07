@@ -61,10 +61,10 @@ namespace SokoSolve.Core.UI.Nodes
             {
                 if (target != CurrentAbsolute)
                 {
-                    if (target.X > CurrentAbsolute.X) CurrentAbsolute.X += Speed;
-                    if (target.X < CurrentAbsolute.X) CurrentAbsolute.X -= Speed;
-                    if (target.Y > CurrentAbsolute.Y) CurrentAbsolute.Y += Speed;
-                    if (target.Y < CurrentAbsolute.Y) CurrentAbsolute.Y -= Speed;
+                    if (target.X > CurrentAbsolute.X) CurrentAbsolute = CurrentAbsolute.Add(Speed, 0);
+                    if (target.X < CurrentAbsolute.X) CurrentAbsolute = CurrentAbsolute.Subtract(Speed, 0);
+                    if (target.Y > CurrentAbsolute.Y) CurrentAbsolute = CurrentAbsolute.Add(0, Speed);
+                    if (target.Y < CurrentAbsolute.Y) CurrentAbsolute = CurrentAbsolute.Subtract(0, Speed);
                 }
             }
         }

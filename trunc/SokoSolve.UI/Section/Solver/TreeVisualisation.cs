@@ -252,7 +252,7 @@ namespace SokoSolve.UI.Section.Solver
             public VectorInt GetNodePosition(TreeNode<SolverNode> node)
             {
                 int idx = treeSegment.Nodes.IndexOf(node);
-                if (idx < 0) return null;
+                if (idx < 0) return VectorInt.Empty;
                 int layer = idx/MaxRegionNodeWidth;
                 int offset = idx%MaxRegionNodeWidth;
                 return new VectorInt(offset, layer);

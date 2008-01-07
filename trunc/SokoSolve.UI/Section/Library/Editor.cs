@@ -113,14 +113,14 @@ namespace SokoSolve.UI.Section.Library
         private void udWidth_ValueChanged(object sender, EventArgs e)
         {
             if (isInit) return;
-            map.Resize(new VectorInt((int)udWidth.Value, (int)udHeight.Value));
+            map.Resize(new SizeInt((int)udWidth.Value, (int)udHeight.Value));
             ReDraw();
         }
 
         private void udHeight_ValueChanged(object sender, EventArgs e)
         {
             if (isInit) return;
-            map.Resize(new VectorInt((int)udWidth.Value, (int)udHeight.Value));
+            map.Resize(new SizeInt((int)udWidth.Value, (int)udHeight.Value));
             ReDraw();
         }
 

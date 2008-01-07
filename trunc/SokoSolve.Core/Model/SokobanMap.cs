@@ -37,7 +37,7 @@ namespace SokoSolve.Core.Model
         /// </summary>
         public SokobanMap()
         {
-            Init(new VectorInt(10, 10));
+            Init(new SizeInt(10, 10));
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace SokoSolve.Core.Model
         {
             get
             {
-                VectorInt s = Size;
+                SizeInt s = Size;
                 for (int px = 0; px < s.X; px++)
                     for (int py = 0; py < s.Y; py++)
                     {
@@ -69,7 +69,7 @@ namespace SokoSolve.Core.Model
                             return new VectorInt(px, py);
                         }
                     }
-                return null;
+                return VectorInt.Empty;
             }
         }
         
@@ -82,7 +82,7 @@ namespace SokoSolve.Core.Model
         {
             get
             {
-                if (P == null) throw new ArgumentNullException("P");
+                if (P.IsNull) throw new ArgumentNullException("P");
                 if (!Rectangle.Contains(P)) throw new ArgumentOutOfRangeException("P");
                 return pMap[P.X, P.Y];
             }
@@ -90,7 +90,7 @@ namespace SokoSolve.Core.Model
             {
                 if (!Rectangle.Contains(P)) throw new ArgumentOutOfRangeException("P");
 
-                if ((value == CellStates.FloorPlayer || value == CellStates.FloorGoalPlayer) && Player != null)
+                if ((value == CellStates.FloorPlayer || value == CellStates.FloorGoalPlayer) && !Player.IsNull)
                 {
                     if (this[Player] == CellStates.FloorPlayer) this[Player] = CellStates.Floor;
                     else if (this[Player] == CellStates.FloorGoalPlayer) this[Player] = CellStates.FloorGoal;
@@ -234,7 +234,7 @@ namespace SokoSolve.Core.Model
         /// <remarks>
         /// Create an empty puzzle with a wall around the edges
         /// </remarks>
-        public void Init(VectorInt s)
+        public void Init(SizeInt s)
         {
             if (s.X <= 0 || s.Y <= 0) throw new ArgumentOutOfRangeException("s");
             pMap = new CellStates[s.X, s.Y];
@@ -374,14 +374,14 @@ namespace SokoSolve.Core.Model
         /// Resize the puzzle
         /// </summary>
         /// <param name="newSize"></param>
-        public void Resize(VectorInt newSize)
+        public void Resize(SizeInt newSize)
         {
-            if (newSize == Size) return;
+            if (newSize.Equals(Size)) return;
             CellStates[,] old = pMap;
             
 
             // Min common size
-            VectorInt minMap = VectorInt.Min(Size, newSize);
+            SizeInt minMap = SizeInt.Min(Size, newSize);
             Init(newSize);
 
             for (int cx=0; cx<minMap.X; cx++)
@@ -437,9 +437,9 @@ namespace SokoSolve.Core.Model
                 if (cleanRow.Length > maxx) maxx = cleanRow.Length;
                 InputMap.Add(cleanRow);
             }
-            
-            
-            VectorInt sz = new VectorInt(maxx, InputMap.Count);
+
+
+            SizeInt sz = new SizeInt(maxx, InputMap.Count);
             Init(sz);
 
             for(int cx=0; cx<sz.X; cx++)

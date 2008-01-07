@@ -193,7 +193,7 @@ namespace SokoSolve.Core.Analysis.Solver
             nodePath.Reverse();
 
             Path result = new Path(controller.Map.Player);
-            VectorInt curentPos = null; 
+            VectorInt curentPos = VectorInt.Empty; 
             for (int cc=0; cc<nodePath.Count-1; cc++)
             {
             
@@ -269,27 +269,32 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <returns></returns>
         private bool CheckDuplicateRecurse(TreeNode<SolverNode> current, TreeNode<SolverNode> searchFor )
         {
-
             if (!object.ReferenceEquals(current, searchFor))
             {
                 // Don't match against un-inited nodes
                 if (!current.Data.IsStateEvaluated) return false;
                 if (current.Data.MoveMap == null) return false;
 
-                // Check for match
-                if (searchFor.Data.CrateMap.Equals(current.Data.CrateMap) &&
-                    searchFor.Data.MoveMap.Equals(current.Data.MoveMap))
+                
+                if (searchFor.Data.CrateMap.Equals(current.Data.CrateMap))
                 {
-                    // Match found
-                    return true;
-                }    
-            }
+                    if (searchFor.Data.MoveMap.Equals(current.Data.MoveMap))
+                    {
+                        // Match found
+                        return true;
+                    }
+                }
 
-            // Recurse down
-            foreach (TreeNode<SolverNode> child in current.Children)
-            {
-                if (CheckDuplicateRecurse(child, searchFor)) return true;
+                // Recurse down
+                if (current.HasChildren)
+                {
+                    foreach (TreeNode<SolverNode> child in current.Children)
+                    {
+                        if (CheckDuplicateRecurse(child, searchFor)) return true;
+                    }
+                }
             }
+            
             return false;
         }
 

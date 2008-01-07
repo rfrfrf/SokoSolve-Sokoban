@@ -35,7 +35,7 @@ namespace SokoSolve.Common.Structures
         /// Overloaded Constructor
         /// </summary>
         /// <param name="aSize"></param>
-        public Bitmap(VectorInt aSize) : this(aSize.X, aSize.Y)
+        public Bitmap(SizeInt aSize) : this(aSize.X, aSize.Y)
         {
         }
 
@@ -208,13 +208,10 @@ namespace SokoSolve.Common.Structures
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            if (obj is Bitmap)
+            Bitmap rhs = obj as Bitmap;
+            if (rhs != null)
             {
-                Bitmap rhs = (Bitmap) obj;
-                if (rhs.Size != Size)
-                    throw new InvalidOperationException(
-                        string.Format("Bitmaps may only be compared it the are identical sizes lhs:{0}; rhs:{1}", Size,
-                                      rhs.Size));
+                if (map.Length != rhs.map.Length) return false;
 
                 for (int ccy = 0; ccy < map.Length; ccy++)
                 {
@@ -306,7 +303,7 @@ namespace SokoSolve.Common.Structures
         /// <returns></returns>
         public static Bitmap BitwiseOR(Bitmap lhs, Bitmap rhs)
         {
-            if (lhs.Size != rhs.Size)
+            if (lhs.Size.X != rhs.Size.X && lhs.Size.Y != rhs.Size.Y)
                 throw new InvalidOperationException(
                     string.Format("Bitmaps BitwiseOR may only be performed on identical sizes lhs:{0}; rhs:{1}",
                                   lhs.Size, rhs.Size));
@@ -329,7 +326,7 @@ namespace SokoSolve.Common.Structures
         /// <returns></returns>
         public static Bitmap BitwiseAND(Bitmap lhs, Bitmap rhs)
         {
-            if (lhs.Size != rhs.Size)
+            if (lhs.Size.X != rhs.Size.X && lhs.Size.Y != rhs.Size.Y)
                 throw new InvalidOperationException(
                     string.Format("Bitmaps BitwiseAND may only be performed on identical sizes lhs:{0}; rhs:{1}",
                                   lhs.Size, rhs.Size));

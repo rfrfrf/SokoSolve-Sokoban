@@ -191,7 +191,10 @@ namespace SokoSolve.Core.Analysis.Solver
             txt.Add("Player", playerPosition.ToString());
             txt.Add("Depth", backRef.Depth);
             txt.Add("Total Depth", backRef.TotalDepth);
-            txt.AddListSummary("Children", new List<SolverNode>(backRef.ChildrenData), delegate(SolverNode item) { return item.nodeID;  }, ", ");
+            if (backRef.HasChildren)
+            {
+                txt.AddListSummary("Children", new List<SolverNode>(backRef.ChildrenData), delegate(SolverNode item) { return item.nodeID;  }, ", ");
+            }
             txt.Add("Total Children", backRef.TotalChildCount);
             return txt;
         }

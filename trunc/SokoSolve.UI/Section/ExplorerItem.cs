@@ -33,6 +33,8 @@ namespace SokoSolve.UI.Section
         /// </summary>
         public virtual void SyncDomain()
         {
+            if (!TreeNode.HasChildren) return;
+
             // Sync children
             foreach (TreeNode<ExplorerItem> kid in TreeNode.Children)
             {
@@ -200,11 +202,14 @@ namespace SokoSolve.UI.Section
         /// <returns>true if found</returns>
         protected bool ExistsInUI(object currentData)
         {
-            foreach (TreeNode<ExplorerItem> childUI in TreeNode.Children)
+            if (TreeNode.HasChildren)
             {
-                if (object.Equals(childUI.Data.DataUnTyped, currentData))
+                foreach (TreeNode<ExplorerItem> childUI in TreeNode.Children)
                 {
-                    return true;
+                    if (object.Equals(childUI.Data.DataUnTyped, currentData))
+                    {
+                        return true;
+                    }
                 }
             }
             return false;
@@ -230,26 +235,28 @@ namespace SokoSolve.UI.Section
             // Remove old
             List<TreeNode<ExplorerItem>> removeList = new List<TreeNode<ExplorerItem>>();
 
-            foreach (TreeNode<ExplorerItem> existingUI in TreeNode.Children)
+            if (TreeNode.HasChildren)
             {
-                // Only compare exact types
-                if (existingUI.Data != null && existingUI.Data.DataUnTyped != null)
+                foreach (TreeNode<ExplorerItem> existingUI in TreeNode.Children)
                 {
-                    if (existingUI.Data.DataUnTyped.GetType() != typeof(T)) continue;
-                }
-
-                bool found = false;
-                foreach (T dataItem in Collection)
-                {
-
-                    if (object.ReferenceEquals(existingUI.Data.DataUnTyped, dataItem))
+                    // Only compare exact types
+                    if (existingUI.Data != null && existingUI.Data.DataUnTyped != null)
                     {
-                        found = true;
-                        break;
+                        if (existingUI.Data.DataUnTyped.GetType() != typeof (T)) continue;
                     }
-                }
 
-                if (!found) removeList.Add(existingUI);
+                    bool found = false;
+                    foreach (T dataItem in Collection)
+                    {
+                        if (object.ReferenceEquals(existingUI.Data.DataUnTyped, dataItem))
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    if (!found) removeList.Add(existingUI);
+                }
             }
 
             if (removeList.Count > 0)
@@ -257,18 +264,21 @@ namespace SokoSolve.UI.Section
                 foreach (TreeNode<ExplorerItem> remove in removeList)
                 {
                     // Remove from UI model
-                    TreeNode.Children.Remove(remove);
+                    TreeNode.RemoveChild(remove.Data);
                 }
             }
 
 
             // Add new
-            foreach (T dataItem in Collection)
+            if (Collection != null)
             {
-                if (!ExistsInUI(dataItem))
+                foreach (T dataItem in Collection)
                 {
-                    // Does not exist, so add
-                    TreeNode.Add(FactoryMethod(dataItem));
+                    if (!ExistsInUI(dataItem))
+                    {
+                        // Does not exist, so add
+                        TreeNode.Add(FactoryMethod(dataItem));
+                    }
                 }
             }
         }

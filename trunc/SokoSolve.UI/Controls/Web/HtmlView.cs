@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
+using SokoSolve.UI.Controls.Secondary;
 using SokoSolve.UI.Controls.Web;
 
 namespace SokoSolve.UI.Controls.Web
@@ -168,6 +169,9 @@ namespace SokoSolve.UI.Controls.Web
             catch(Exception ex)
             {
                 e.Cancel = true;
+                FormError error = new FormError();
+                error.Exception = ex;
+                error.ShowDialog();
             }
             
         }

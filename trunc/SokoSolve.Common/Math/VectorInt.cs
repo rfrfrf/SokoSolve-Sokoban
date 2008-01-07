@@ -5,144 +5,162 @@ using System.Text;
 
 namespace SokoSolve.Common.Math
 {
-	public enum Direction
-	{
-		None, Up, Down, Left, Right
-	}
+    public enum Direction
+    {
+        None,
+        Up,
+        Down,
+        Left,
+        Right
+    }
 
-	public enum DirectionDiagonals
-	{
-		None,
-		Up,
-		Down,
-		Left,
-		Right,
-		UpLeft,
-		UpRight,
-		DownLeft,
-		DownRight
-	}
+    public enum DirectionDiagonals
+    {
+        None,
+        Up,
+        Down,
+        Left,
+        Right,
+        UpLeft,
+        UpRight,
+        DownLeft,
+        DownRight
+    }
 
-	public class VectorInt
-	{
-		private int x;
-		private int y;
+    public struct VectorInt
+    {
+        public static readonly VectorInt Zero = new VectorInt(0, 0);
+        public static readonly VectorInt Empty = new VectorInt(int.MinValue, int.MinValue);
+        public static readonly VectorInt MinValue = new VectorInt(int.MinValue, int.MinValue);
+        public static readonly VectorInt MaxValue = new VectorInt(int.MaxValue, int.MaxValue);
+        private int x;
+        private int y;
 
-		public VectorInt(int x, int y)
-		{
-			this.x = x;
-			this.y = y;
-		}
-
-		public VectorInt(VectorInt copy)
-		{
-			this.x = copy.x;
-			this.y = copy.y;
-		}
-
-		public int X
-		{
-			get { return x; }
-			set { x = value; }
-		}
-
-		public int Y
-		{
-			get { return y; }
-			set { y = value; }
-		}
-
-		private static readonly VectorInt zero = new VectorInt(0, 0);
-
-		public static VectorInt Zero
-		{
-			get { return zero;  }
-		}
-
-        static public VectorInt MinValue
+        public VectorInt(int x, int y)
         {
-            get { return new VectorInt(int.MinValue, int.MinValue); }
+            this.x = x;
+            this.y = y;
         }
 
-		public VectorInt Add(VectorInt value)
-		{
-			return new VectorInt(x + value.X, y + value.Y);
-		}
+        public VectorInt(VectorInt copy)
+        {
+            this.x = copy.x;
+            this.y = copy.y;
+        }
 
-		public VectorInt Subtract(VectorInt value)
-		{
-			return new VectorInt(x - value.X, y - value.Y);
-		}
+        public int X
+        {
+            get { return x; }
+            set { x = value; }
+        }
 
-		public VectorInt Multiply(VectorInt value)
-		{
-			return new VectorInt(x * value.X, y * value.Y);
-		}
+        public int Y
+        {
+            get { return y; }
+            set { y = value; }
+        }
 
-		public VectorInt Divide(VectorInt value)
-		{
-			return new VectorInt(x / value.X, y / value.Y);
-		}
+       
 
-		public VectorInt Add(int aX, int aY)
-		{
-			return new VectorInt(x + aX, y + aY);
-		}
+        public VectorInt Add(VectorInt value)
+        {
+            return new VectorInt(x + value.X, y + value.Y);
+        }
 
-		public VectorInt Subtract(int aX, int aY)
-		{
-			return new VectorInt(x - aX, y - aY);
-		}
+        public VectorInt Add(SizeInt value)
+        {
+            return new VectorInt(x + value.X, y + value.Y);
+        }
 
-		public VectorInt Multiply(int aX, int aY)
-		{
-			return new VectorInt(x * aX, y * aY);
-		}
+        public VectorInt Subtract(VectorInt value)
+        {
+            return new VectorInt(x - value.X, y - value.Y);
+        }
 
-		public VectorInt Divide(int aX, int aY)
-		{
-			return new VectorInt(x / aX, y / aY);
-		}
+        public VectorInt Subtract(SizeInt value)
+        {
+            return new VectorInt(x - value.X, y - value.Y);
+        }
 
-		public static VectorInt operator+(VectorInt lhs, VectorInt rhs)
-		{
-			return lhs.Add(rhs);
-		}
+        public VectorInt Multiply(VectorInt value)
+        {
+            return new VectorInt(x*value.X, y*value.Y);
+        }
 
-		public static VectorInt operator-(VectorInt lhs, VectorInt rhs)
-		{
-			return lhs.Subtract(rhs);
-		}
+        public VectorInt Multiply(SizeInt value)
+        {
+            return new VectorInt(x * value.X, y * value.Y);
+        }
 
-		public static VectorInt operator*(VectorInt lhs, VectorInt rhs)
-		{
-			return lhs.Multiply(rhs);
-		}
+        public VectorInt Divide(VectorInt value)
+        {
+            return new VectorInt(x/value.X, y/value.Y);
+        }
 
-		public static VectorInt operator/(VectorInt lhs, VectorInt rhs)
-		{
-			return lhs.Divide(rhs);
-		}
+        public VectorInt Divide(SizeInt value)
+        {
+            return new VectorInt(x / value.X, y / value.Y);
+        }
 
-		public static VectorInt operator++(VectorInt lhs)
-		{
-			return lhs.Add(new VectorInt(1, 1));
-		}
+        public VectorInt Add(int aX, int aY)
+        {
+            return new VectorInt(x + aX, y + aY);
+        }
 
-		public static VectorInt operator--(VectorInt lhs)
-		{
-			return lhs.Subtract(new VectorInt(1, 1));
-		}
+        public VectorInt Subtract(int aX, int aY)
+        {
+            return new VectorInt(x - aX, y - aY);
+        }
 
-		public static bool operator==(VectorInt lhs, VectorInt rhs)
-		{
-			return GeneralHelper.StaticEqualityCheckHelper(lhs, rhs);
-		}
+        public VectorInt Multiply(int aX, int aY)
+        {
+            return new VectorInt(x*aX, y*aY);
+        }
 
-		public static bool operator !=(VectorInt lhs, VectorInt rhs)
-		{
-			return !GeneralHelper.StaticEqualityCheckHelper(lhs, rhs);
-		}
+        public VectorInt Divide(int aX, int aY)
+        {
+            return new VectorInt(x/aX, y/aY);
+        }
+
+        public static VectorInt operator +(VectorInt lhs, VectorInt rhs)
+        {
+            return lhs.Add(rhs);
+        }
+
+        public static VectorInt operator -(VectorInt lhs, VectorInt rhs)
+        {
+            return lhs.Subtract(rhs);
+        }
+
+        public static VectorInt operator *(VectorInt lhs, VectorInt rhs)
+        {
+            return lhs.Multiply(rhs);
+        }
+
+        public static VectorInt operator /(VectorInt lhs, VectorInt rhs)
+        {
+            return lhs.Divide(rhs);
+        }
+
+        public static VectorInt operator ++(VectorInt lhs)
+        {
+            return lhs.Add(new VectorInt(1, 1));
+        }
+
+        public static VectorInt operator --(VectorInt lhs)
+        {
+            return lhs.Subtract(new VectorInt(1, 1));
+        }
+
+        public static bool operator ==(VectorInt lhs, VectorInt rhs)
+        {
+            return lhs.Equals(rhs);
+        }
+
+        public static bool operator !=(VectorInt lhs, VectorInt rhs)
+        {
+            return !lhs.Equals(rhs);
+        }
 
 
         public static bool operator >(VectorInt lhs, VectorInt rhs)
@@ -152,53 +170,70 @@ namespace SokoSolve.Common.Math
 
         public static bool operator <(VectorInt lhs, VectorInt rhs)
         {
-            return lhs.X * lhs.Y > rhs.X * rhs.Y;
+            return lhs.X*lhs.Y > rhs.X*rhs.Y;
         }
 
         public static bool operator >=(VectorInt lhs, VectorInt rhs)
         {
-            return lhs.X * lhs.Y >= rhs.X * rhs.Y;
+            return lhs.X*lhs.Y >= rhs.X*rhs.Y;
         }
 
         public static bool operator <=(VectorInt lhs, VectorInt rhs)
         {
-            return lhs.X * lhs.Y >= rhs.X * rhs.Y;
+            return lhs.X*lhs.Y >= rhs.X*rhs.Y;
         }
 
-		public override bool Equals(object obj)
-		{
-			if (obj is VectorInt)
-			{
-				VectorInt rhs = (VectorInt)obj;
-				return x == rhs.X && y == rhs.Y;
-			}
-			return false;
-		}
 
-		public static VectorInt Min(VectorInt A, VectorInt B)
-		{
-			return new VectorInt(System.Math.Min(A.X, B.X), System.Math.Min(A.Y, B.Y));
-		}
+        public override bool Equals(object obj)
+        {
+            if (object.ReferenceEquals(obj, null))
+            {
+                return IsNull;
+            }
 
-		public static VectorInt Max(VectorInt A, VectorInt B)
-		{
-			return new VectorInt(System.Math.Max(A.X, B.X), System.Math.Max(A.Y, B.Y));
-		}
+            if (obj is VectorInt)
+            {
+                VectorInt rhs = (VectorInt)obj;
+                return x == rhs.X && y == rhs.Y;
+            }
 
-		public override int GetHashCode()
-		{
-			return x.GetHashCode() ^ y.GetHashCode();
-		}
+            if (obj is SizeInt)
+            {
+                SizeInt rhs = (SizeInt)obj;
+                return x == rhs.X && y == rhs.Y;
+            }
+            return false;
+        }
 
-		public override string ToString()
-		{
-			return string.Format("X:{0} Y:{1}", x, y);
-		}
+        public bool IsNull
+        {
+            get { return x == int.MinValue && y == int.MinValue; }
+        }
 
-		public VectorDouble ToVectorDouble()
-		{
-			return new VectorDouble((double)X, (double)Y);
-		}
+        public static VectorInt Min(VectorInt A, VectorInt B)
+        {
+            return new VectorInt(System.Math.Min(A.X, B.X), System.Math.Min(A.Y, B.Y));
+        }
+
+        public static VectorInt Max(VectorInt A, VectorInt B)
+        {
+            return new VectorInt(System.Math.Max(A.X, B.X), System.Math.Max(A.Y, B.Y));
+        }
+
+        public override int GetHashCode()
+        {
+            return x.GetHashCode() ^ y.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return string.Format("X:{0} Y:{1}", x, y);
+        }
+
+        public VectorDouble ToVectorDouble()
+        {
+            return new VectorDouble((double) X, (double) Y);
+        }
 
         /// <summary>
         /// Convert to a Drawing position
@@ -218,16 +253,36 @@ namespace SokoSolve.Common.Math
             return new PointF(x, y);
         }
 
-		public VectorInt Offset(Direction dir)
-		{
-			switch (dir)
-			{
-				case (Direction.Up): return this.Add(0, -1);
-				case (Direction.Down): return this.Add(0, 1);
-				case (Direction.Left): return this.Add(-1, 0);
-				case (Direction.Right): return this.Add(1, 0);
-			}
-			throw new InvalidOperationException();
+        public VectorInt Offset(Direction dir)
+        {
+            switch (dir)
+            {
+                case (Direction.Up):
+                    return this.Add(0, -1);
+                case (Direction.Down):
+                    return this.Add(0, 1);
+                case (Direction.Left):
+                    return this.Add(-1, 0);
+                case (Direction.Right):
+                    return this.Add(1, 0);
+            }
+            throw new InvalidOperationException();
+        }
+
+
+        /// <summary>
+        /// Geint FOUR offsets (Up, Down, Left, Right) as an array
+        /// </summary>
+        /// <returns></returns>
+        public VectorInt[] OffsetDirections()
+        {
+            return new VectorInt[]
+                {
+                    Offset(Direction.Up),
+                    Offset(Direction.Down),
+                    Offset(Direction.Left),
+                    Offset(Direction.Right)
+                };
         }
 
         #region DirectionReleatedHelpers
@@ -237,7 +292,7 @@ namespace SokoSolve.Common.Math
         /// </summary>
         /// <param name="B"></param>
         /// <returns></returns>
-        static private Direction IsAdjacentPlayer(VectorInt A, VectorInt B)
+        private static Direction IsAdjacentPlayer(VectorInt A, VectorInt B)
         {
             if (A.Offset(Direction.Up) == B) return Direction.Up;
             if (A.Offset(Direction.Down) == B) return Direction.Down;
@@ -256,10 +311,14 @@ namespace SokoSolve.Common.Math
         {
             switch (input)
             {
-                case (Direction.Up): return Direction.Down;
-                case (Direction.Down): return Direction.Up;
-                case (Direction.Left): return Direction.Right;
-                case (Direction.Right): return Direction.Left;
+                case (Direction.Up):
+                    return Direction.Down;
+                case (Direction.Down):
+                    return Direction.Up;
+                case (Direction.Left):
+                    return Direction.Right;
+                case (Direction.Right):
+                    return Direction.Left;
             }
             throw new InvalidOperationException();
         }
@@ -280,23 +339,5 @@ namespace SokoSolve.Common.Math
         }
 
         #endregion DirectionReleatedHelpers
-        
-
-		/// <summary>
-		/// Geint FOUR offsets (Up, Down, Left, Right) as an array
-		/// </summary>
-		/// <returns></returns>
-		public VectorInt[] OffsetDirections()
-		{
-			return new VectorInt[] {
-                Offset(Direction.Up),
-                Offset(Direction.Down),
-                Offset(Direction.Left),
-                Offset(Direction.Right)
-            };
-		}
-
-        
     }
-
 }

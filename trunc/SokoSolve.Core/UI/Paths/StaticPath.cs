@@ -39,7 +39,7 @@ namespace SokoSolve.Core.UI.Paths
              }
              else
              {
-                 return null;
+                 return VectorInt.Empty;
              }
         }
 

@@ -36,7 +36,7 @@ namespace SokoSolve.UI.Section.Solver
         public VectorInt GetLogicalPosition(SolverNode node)
         {
             int idx = nodes.IndexOf(node);
-            if (idx < 0) return null;
+            if (idx < 0) return VectorInt.Empty;
 
             return new VectorInt(idx % maxCellWidth, idx / maxCellWidth);
         }

@@ -44,7 +44,7 @@ namespace SokoSolve.UI.Section.Solver
         /// Set a Layer (updating and keeping state)
         /// </summary>
         /// <param name="layer"></param>
-        public void SetLayer(Layer layer)
+        public Layer SetLayer(Layer layer)
         {
             if (layers.ContainsKey(layer.Name))
             {
@@ -82,7 +82,7 @@ namespace SokoSolve.UI.Section.Solver
                 item.Click += new EventHandler(LayerButton_OnClick);
 
             }
-            
+            return layer;
         }
 
         void LayerButton_OnClick(object sender, EventArgs e)
@@ -109,12 +109,12 @@ namespace SokoSolve.UI.Section.Solver
         /// </summary>
         /// <param name="Bitmap"></param>
         /// <param name="BrushColor"></param>
-        public void SetLayer(SolverBitmap Bitmap, Brush BrushColor)
+        public Layer SetLayer(SolverBitmap Bitmap, Brush BrushColor)
         {
             Layer tmp = new Layer();
             tmp.Order = layers.Count;
             tmp.IsVisible = true;
-            if (Bitmap == null)
+            if (Bitmap != null)
             {
                 tmp.Name = Bitmap.Name;
                 tmp.Bitmap = Bitmap;    
@@ -124,7 +124,7 @@ namespace SokoSolve.UI.Section.Solver
                 tmp.Name = "None";
             }
             tmp.Brush = BrushColor;
-            SetLayer(tmp);
+            return SetLayer(tmp);
         }
 
 
@@ -171,8 +171,11 @@ namespace SokoSolve.UI.Section.Solver
             public Brush Brush;
             public Bitmap Bitmap;
             public SokobanMap Map;
+            public Matrix Matrix; 
             public Image CellImage;
             public bool IsVisible;
+            public Font Font;
+            public Brush BrushAlt;
         }
 
         private BitmapViewerVisualisation vis;

@@ -123,13 +123,16 @@ namespace SokoSolve.UI.Section.Solver
                 bands[currentDepth].Add(newElement);
 
                 // Add all children
-                foreach (SolverNode child in current.TreeNode.ChildrenData)
+                if (current.TreeNode.HasChildren)
                 {
-                    if (!Exists(child))
+                    foreach (SolverNode child in current.TreeNode.ChildrenData)
                     {
-                        RootPathElement childElement = new RootPathElement(this, child);
-                        elements.Add(childElement);
-                        bands[currentDepth + 1].Add(childElement);
+                        if (!Exists(child))
+                        {
+                            RootPathElement childElement = new RootPathElement(this, child);
+                            elements.Add(childElement);
+                            bands[currentDepth + 1].Add(childElement);
+                        }
                     }
                 }
                 if (current.TreeNode.Parent != null)

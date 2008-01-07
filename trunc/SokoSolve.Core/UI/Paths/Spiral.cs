@@ -31,7 +31,7 @@ namespace SokoSolve.Core.UI.Paths
         public VectorInt getNext()
         {
             // Exit condition
-            if (diameter.isComplete) return null;
+            if (diameter.isComplete) return VectorInt.Empty;
             if (angle.isComplete) angle.Reset();
 
             diameter.Next();

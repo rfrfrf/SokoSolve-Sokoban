@@ -55,6 +55,8 @@ namespace SokoSolve.UI.Section.Solver
             visualisationContainerLocalNodes.OnVisualisationClick +=
                 new EventHandler<VisEventArgs>(OnVisualisationClick_LocalNode);
             this.Disposed += new EventHandler(SolverSection_Disposed);
+
+            tsDropDown.SelectedIndex = 0;
         }
 
 
@@ -263,22 +265,25 @@ namespace SokoSolve.UI.Section.Solver
                         mapLayer.Name = "Puzzle";
                         bitmapViewerStatic.SetLayer(mapLayer);
 
-                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.WallMap,
-                                                    new SolidBrush(Color.FromArgb(120, Color.Gray)));
-                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.FloorMap,
-                                                    new SolidBrush(Color.FromArgb(120, Color.Green)));
-                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.InitialCrateMap,
-                                                    new SolidBrush(Color.FromArgb(120, Color.Blue)));
-                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.DeadMap,
-                                                    new SolidBrush(Color.FromArgb(120, Color.Brown)));
-                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.BoundryMap,
-                                                    new SolidBrush(Color.FromArgb(120, Color.LightGray)));
-                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.GoalMap,
-                                                    new SolidBrush(Color.FromArgb(120, Color.Yellow)));
-                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.CornerMap,
-                                                    new SolidBrush(Color.FromArgb(120, Color.Pink)));
-                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.RecessMap,
-                                                    new SolidBrush(Color.FromArgb(120, Color.Cyan)));
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.WallMap, new SolidBrush(Color.FromArgb(120, Color.Gray))).IsVisible = false;
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.FloorMap, new SolidBrush(Color.FromArgb(120, Color.Green))).IsVisible = false;
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.InitialCrateMap, new SolidBrush(Color.FromArgb(120, Color.Blue))).IsVisible = false;
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.DeadMap, new SolidBrush(Color.FromArgb(120, Color.Brown)));
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.BoundryMap, new SolidBrush(Color.FromArgb(120, Color.LightGray))).IsVisible = false;
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.GoalMap, new SolidBrush(Color.FromArgb(120, Color.Yellow))).IsVisible = false;
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.CornerMap, new SolidBrush(Color.FromArgb(120, Color.Pink)));
+                        bitmapViewerStatic.SetLayer(solver.Strategy.StaticAnalysis.RecessMap, new SolidBrush(Color.FromArgb(120, Color.Cyan)));
+
+                        BitmapViewer.Layer weightLayer = new BitmapViewer.Layer();
+                        weightLayer.Order = 10;
+                        weightLayer.IsVisible = true;
+                        weightLayer.Matrix = solver.Strategy.StaticAnalysis.StaticCrateWeighting;
+                        weightLayer.Name = "Weightings";
+                        weightLayer.Brush = new SolidBrush(Color.FromArgb(200, Color.Pink));
+                        weightLayer.BrushAlt = new SolidBrush(Color.FromArgb(200, Color.Red));
+                        weightLayer.Font = new Font("Arial Narrow", 7f);
+                        bitmapViewerStatic.SetLayer(weightLayer);
+
                         bitmapViewerStatic.Render();
                     }
 

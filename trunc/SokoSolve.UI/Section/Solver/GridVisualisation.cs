@@ -60,7 +60,7 @@ namespace SokoSolve.UI.Section.Solver
         {
             get
             {
-                return new RectangleInt(new VectorInt(0, 0), cellSize.Multiply(gridSize));
+                return new RectangleInt(new VectorInt(0, 0), new SizeInt(cellSize.Multiply(gridSize.ToVectorInt)));
             }
             set { throw new NotSupportedException(); }
         }

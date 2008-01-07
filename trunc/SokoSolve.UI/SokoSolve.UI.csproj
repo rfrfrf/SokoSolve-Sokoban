@@ -100,7 +100,6 @@
     <Compile Include="Controls\Web\UIBrowserEventArgs.cs" />
     <Compile Include="ImageFileCache.cs" />
     <Compile Include="ProfileController.cs" />
-    <Compile Include="ProgramCommandLine.cs" />
     <Compile Include="Section\AttachedCommand.cs" />
     <Compile Include="Section\Command.cs" />
     <Compile Include="Section\CommandInstance.cs" />

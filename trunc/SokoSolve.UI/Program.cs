@@ -6,6 +6,9 @@ using SokoSolve.UI.Controls.Secondary;
 
 namespace SokoSolve.UI
 {
+    /// <summary>
+    /// Program entry point
+    /// </summary>
 	static class Program
 	{
 		/// <summary>
@@ -43,6 +46,12 @@ Please make sure you have the latest version, you can do this by clicking Help -
 			}
 		}
 
+
+        /// <summary>
+        /// Handle application exceptions
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 		static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
 		{
 			FormError error = new FormError();
@@ -50,9 +59,13 @@ Please make sure you have the latest version, you can do this by clicking Help -
 			error.ShowDialog();
 		}
 
+        /// <summary>
+        /// Application version string
+        /// </summary>
+        /// <returns></returns>
         public static string GetVersionString()
         {
-            return "1.2.24-solver-baseline1";
+            return "1.2.24-solver-baseline2";
         }
 	}
 }
