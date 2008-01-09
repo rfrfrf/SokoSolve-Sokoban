@@ -37,6 +37,7 @@
     <Compile Include="Common\MatrixTest.cs" />
     <Compile Include="Common\Structures\BitmapTest.cs" />
     <Compile Include="Core\TestImporter.cs" />
+    <Compile Include="Core\TestReverseStrategy.cs" />
     <Compile Include="Core\TestSolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCPUType.cs" />

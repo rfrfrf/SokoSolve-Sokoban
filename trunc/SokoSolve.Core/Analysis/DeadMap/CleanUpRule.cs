@@ -27,7 +27,7 @@ namespace SokoSolve.Core.Analysis.DeadMap
                 for (int cy = 0; cy < StateContext.Size.Height; cy++)
                 {
                     // If it is a bounrdy then don't set it dead (this is unnesseary and will aid readability)
-                    if (StateContext.Analysis.BoundryMap[cx, cy])
+                    if (StateContext.StaticAnalysis.BoundryMap[cx, cy])
                         StateContext[cx, cy] = false;
                 }
 

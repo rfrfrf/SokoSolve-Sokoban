@@ -43,19 +43,20 @@ namespace SokoSolve.UI.Controls.Web
 
         public void Add(string fragmentFormat, params object[] parm)
         {
-            if (fragmentFormat == null) return;
+            if (string.IsNullOrEmpty(fragmentFormat)) return;
             Add(string.Format(fragmentFormat, parm));
         }
 
         public void AddLine(string fragmentFormat, params object[] parm)
         {
-            if (fragmentFormat == null) return;
+            if (string.IsNullOrEmpty(fragmentFormat)) return;
             Add(string.Format(fragmentFormat, parm)+"<br/>");
         }
 
         public void AddLabel(string label, string format, params object[] parm)
         {
             if (label == null) return;
+            if (string.IsNullOrEmpty(format)) return;
             Add("<b>{0}</b>: {1}<br/>{2}", label, format == null ? "" : string.Format(format, parm), Environment.NewLine);
         }
 

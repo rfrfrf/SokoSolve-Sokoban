@@ -226,10 +226,10 @@ namespace SokoSolve.UI.Controls.Secondary
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Panel2.Controls.Add(this.groupboxAuthor);
             this.splitContainer1.Panel2.Controls.Add(this.label7);
             this.splitContainer1.Panel2.Controls.Add(this.cbLicense);
+            this.splitContainer1.Panel2.Controls.Add(this.panel1);
             this.splitContainer1.Size = new System.Drawing.Size(703, 398);
             this.splitContainer1.SplitterDistance = 328;
             this.splitContainer1.TabIndex = 9;

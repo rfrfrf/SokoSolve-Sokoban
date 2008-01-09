@@ -12,6 +12,11 @@
         <Name>Master List</Name>
       </CategoryDescription>
     </Category>
+    <Category>
+      <CategoryDescription>
+        <Name>New Category</Name>
+      </CategoryDescription>
+    </Category>
   </Categories>
   <Puzzles>
     <Puzzle Rating="142.9" PuzzleID="P1" CategoryREF="C0" Order="1">

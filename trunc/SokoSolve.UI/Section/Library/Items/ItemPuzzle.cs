@@ -19,16 +19,12 @@ namespace SokoSolve.UI.Section.Library.Items
 
 		public override void SyncDomain()
 		{
-            if (DomainData.HasAlternatives)
-            {
-                SyncUICollectionWithData<PuzzleMap>(DomainData.Alternatives, delegate(PuzzleMap item) { return new ItemPuzzleMap(item); });
-            }
-
-            if (DomainData.MasterMap.HasSolution)
-            {
-                SyncUICollectionWithData<Solution>(DomainData.MasterMap.Solutions, delegate(Solution item) { return new ItemSolution(item); });
-            }
-
+            // Alternatives
+            SyncUICollectionWithData<PuzzleMap>(DomainData.Alternatives, delegate(PuzzleMap item) { return new ItemPuzzleMap(item); });
+            
+            // Solutons
+            SyncUICollectionWithData<Solution>(DomainData.MasterMap.Solutions, delegate(Solution item) { return new ItemSolution(item); });
+           
 		    base.SyncDomain();
 		}
 

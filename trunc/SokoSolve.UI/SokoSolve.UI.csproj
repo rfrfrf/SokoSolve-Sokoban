@@ -72,6 +72,12 @@
     <Compile Include="Controls\Secondary\FormError.designer.cs">
       <DependentUpon>FormError.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Secondary\FormImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Secondary\FormImport.Designer.cs">
+      <DependentUpon>FormImport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Secondary\FormProfileSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,12 @@
     </Compile>
     <Compile Include="Controls\Secondary\ucGenericDescription.Designer.cs">
       <DependentUpon>ucGenericDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Secondary\ucImport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Secondary\ucImport.Designer.cs">
+      <DependentUpon>ucImport.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Secondary\usProfileSettings.cs">
       <SubType>UserControl</SubType>
@@ -140,12 +152,6 @@
       <DependentUpon>Library.cs</DependentUpon>
     </Compile>
     <Compile Include="Section\Library\LibraryController.cs" />
-    <Compile Include="Controls\Primary\Solver.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\Primary\Solver.Designer.cs">
-      <DependentUpon>Solver.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,10 @@
       <DependentUpon>FormError.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Secondary\FormImport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormImport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Secondary\FormProfileSettings.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FormProfileSettings.cs</DependentUpon>
@@ -181,6 +191,10 @@
     <EmbeddedResource Include="Controls\Secondary\ucGenericDescription.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ucGenericDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Secondary\ucImport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ucImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Secondary\usProfileSettings.resx">
       <SubType>Designer</SubType>
@@ -325,6 +339,7 @@
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton3.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton4.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton5.png" />
+    <Content Include="Content\html\Solver.html" />
     <Content Include="Content\Libraries\Default.ssx" />
     <Content Include="Content\Libraries\Microban.ssx" />
     <Content Include="Content\Libraries\Sasquatch.ssx" />

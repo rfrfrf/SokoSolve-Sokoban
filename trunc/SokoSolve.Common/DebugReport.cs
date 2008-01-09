@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace SokoSolve.Common
 {
@@ -126,6 +127,25 @@ namespace SokoSolve.Common
 
 
 		#region ContentFormatters
+
+        public void AppendException(Exception ex)
+        {
+            Append(StringHelper.Report(ex));
+        }
+
+        public void AppendTimeStamp(string format, params object [] args)
+        {
+            if (string.IsNullOrEmpty(format)) return;
+
+            Append("{0} [{1}] {2}", DateTime.Now.ToString("s"), KeepLength(Thread.CurrentThread.Name, 3), string.Format(format, args));
+        }
+
+        string KeepLength(string source, int length)
+        {
+            if (source.Length == length) return source;
+            if (source.Length > length) return source.Substring(0, length);
+            return source.PadRight(length, ' ');
+        }
 
 		public void AppendTable(string [,] table)
 		{

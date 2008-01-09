@@ -42,6 +42,17 @@ namespace SokoSolve.Common.Structures
 			}
 		}
 
+        /// <summary>
+        /// A collection of ALL nodes
+        /// </summary>
+        public List<T> Nodes
+        {
+            get
+            {
+                return Root.ToList();
+            }
+        }
+
 		/// <summary>
 		/// Convert a list of nodes to a list of data payload T
 		/// </summary>
@@ -56,6 +67,36 @@ namespace SokoSolve.Common.Structures
 			}
 			return results;
 		}
+
+        /// <summary>
+        /// Move a node to another parent
+        /// </summary>
+        /// <param name="Node"></param>
+        /// <param name="NewParent">null means make it the new root node</param>
+        public void Move(TreeNode<T> Node, TreeNode<T> NewParent)
+        {
+            // Remove it from tree
+            if (!Node.IsRoot)
+            {
+                Node.Parent.RemoveChild(Node);
+            }
+            else
+            {
+                throw new NotSupportedException("Cannot move root node to sub-node");
+            }
+
+            // Add it to new parent
+            if (NewParent == null)
+            {
+                TreeNode<T> oldRoot = root;
+                root = Node;
+                Node.Add(oldRoot);
+            }
+            else
+            {
+                NewParent.Add(Node);    
+            }
+        }
 
 
 		#region ITree<T> Members

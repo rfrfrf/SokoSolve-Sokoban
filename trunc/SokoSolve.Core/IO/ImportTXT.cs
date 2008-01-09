@@ -94,6 +94,8 @@ See http://users.bentonrea.com/~sasquatch/sokoban/. ";
             lib.Puzzles.Add(puz);
         }
 
+     
+
         private NamerUtil namer = new NamerUtil();
     }
 }

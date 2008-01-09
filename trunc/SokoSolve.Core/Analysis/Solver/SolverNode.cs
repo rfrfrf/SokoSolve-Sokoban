@@ -22,6 +22,11 @@ namespace SokoSolve.Core.Analysis.Solver
         Duplicate,
 
         /// <summary>
+        /// Is a valid solution created from a join in the forward and reverse trees
+        /// </summary>
+        SolutionChain,
+
+        /// <summary>
         /// Is a valid solution
         /// </summary>
         Solution,
@@ -117,22 +122,22 @@ namespace SokoSolve.Core.Analysis.Solver
         }
 
         /// <summary>
-        /// Direction of the push resulting in the crate map
+        /// Direction of the push/pull resulting in the crate map
         /// </summary>
-        public Direction PushDirection
+        public Direction MoveDirection
         {
-            get { return pushDirection; }
-            set { pushDirection = value; }
+            get { return moveDirection; }
+            set { moveDirection = value; }
         }
 
         /// <summary>
         /// <see cref="PlayerPosition"/> Position before the push
         /// </summary>
-        public VectorInt PlayerPositionBeforePush
+        public VectorInt PlayerPositionBeforeMove
         {
             get
             {
-                return playerPosition.Offset(VectorInt.Reverse(pushDirection));
+                return playerPosition.Offset(VectorInt.Reverse(moveDirection));
             }
         }
 
@@ -208,7 +213,7 @@ namespace SokoSolve.Core.Analysis.Solver
         private Bitmap crateMap;
         private Bitmap moveMap;
         private VectorInt playerPosition;
-        private Direction pushDirection;
+        private Direction moveDirection;
 
         // Derrived meta-state
         private SolverNodeStates status;

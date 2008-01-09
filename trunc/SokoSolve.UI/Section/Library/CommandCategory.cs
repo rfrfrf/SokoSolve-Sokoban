@@ -28,6 +28,8 @@ namespace SokoSolve.UI.Section.Library
             if (cat != null)
             {
                 Category newCat = new Category();
+                newCat.CategoryID = Controller.Current.IdProvider.GetNextIDString("C{0}");
+                newCat.CategoryParentREF = cat.DomainData.CategoryID;
                 newCat.Details = new GenericDescription();
                 newCat.Details.Name = "New Category";
                 cat.DomainData.TreeNode.Add(newCat);

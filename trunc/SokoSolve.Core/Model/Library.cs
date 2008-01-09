@@ -79,14 +79,34 @@ namespace SokoSolve.Core.Model
             set { fileName = value; }
         }
 
+        /// <summary>
+        /// Provide new ID for sub-nodes in the library
+        /// </summary>
         public IDProvider IdProvider
         {
             get { return idProvider; }
         }
 
+        /// <summary>
+        /// Get a puzzle by its ID
+        /// </summary>
+        /// <param name="PuzzleID"></param>
+        /// <returns></returns>
         public Puzzle GetPuzzleByID(string PuzzleID)
         {
             return puzzles.Find(delegate(Puzzle item) { return item.PuzzleID == PuzzleID; });
+        }
+
+        /// <summary>
+        /// Get a Category by its ID
+        /// </summary>
+        /// <param name="CategoryID"></param>
+        /// <returns></returns>
+        public Category GetCategoryByID(string CategoryID)
+        {
+            TreeNode<Category> findC = categories.Root.Find(delegate(TreeNode<Category> item) { return item.Data.CategoryID == CategoryID; }, int.MaxValue);
+            if (findC == null) return null;
+            return findC.Data;
         }
 
         public override string ToString()

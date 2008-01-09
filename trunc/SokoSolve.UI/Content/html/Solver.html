@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>SokoSolve</title>
+		<link type="text/css" rel="Stylesheet" href="style.css" />
+	</head>
+	<body>
+	    <h1>SokoSolve | Solver</h1>
+	    <h2>Introduction</h2>
+	    <p>This is an automated solver for sokoban puzzles. In essence, the solver tries all possible moves until it stumbles apon the correct sequence for a puzzle solution.</p>
+	    
+	    <p>It is the general nature of automated solvers that small (few crates, constrained space) can be solved very quickly (sub second), while larger maps
+	    will take a very long time indeed.</p>
+	    
+	    <h2>Technical Architecture</h2>
+	    <p>Each node in the move tree is unique CrateMap (crate positions) and MoveMap (all possible player moves, without a push)</p>
+	    <ul>
+	        <li>Weighted Brute Force</li>
+	        <li>Forward & Reverse Searching</li>
+	        <li>Multi-Threaded</li>
+	        <li>Static Analysis for dead maps (unsolvable puzzle states)
+	            <ul>
+	                <li>Corner Analysis</li> 
+	                <li>4x4 Box searching</li>
+	                <li>Recess Analysis</li>
+	            </ul>
+	        </li>
+	        
+	    </ul>
+	    
+	    <a href="http://sourceforge.net"> <img src="http://sourceforge.net/sflogo.php?group_id=85742&type=5" width="210" height="62"  alt="SourceForge.net Logo" /></a> 
+	</body>
+</html>

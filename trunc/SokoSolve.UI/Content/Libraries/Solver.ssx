@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LibraryID="L1" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
-  <Details License="Acknowledgement Required">
-    <Name>Sasquatch</Name>
-    <Description>This is my first set. Scott Lindhurst describes them as generally of just the right difficulty to be fun: not too easy, but (usually) not so hard that you get frustrated.</Description>
-    <Comments>50 puzzles, released January, 1999</Comments>
-    <Author Name="David W. Skinner " Email="sasquatch@bentonrea.com" Homepage="http://users.bentonrea.com/~sasquatch/" />
+  <Details License="See individual puzzles">
+    <Name>Solver Puzzles</Name>
+    <Description>A set of puzzles used to test, extend and evaluate the SokSolve Solver.</Description>
+    <Comments>Puzzles organised according to how/if they are solvable</Comments>
+    <Author Name="SokoSolve" Email="bitwacker@users.sourceforge.net" Homepage="http://sokosolve.net" />
   </Details>
   <Categories>
     <Category CategoryID="C0">
@@ -12,7 +12,31 @@
         <Name>Master List</Name>
       </CategoryDescription>
     </Category>
-    <Category CategoryID="C1" CategoryParentREF="C0">
+    <Category CategoryID="C6" CategoryParentREF="C0">
+      <CategoryDescription License="Acknowledgement Required">
+        <Name>Sasquatch</Name>
+        <Description>See Sasquatch library (included with SokoSolve)</Description>
+        <Comments />
+        <Author Name="David W. Skinner" Email="" Homepage="" />
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C5" CategoryParentREF="C6">
+      <CategoryDescription License="">
+        <Name>Not Attempted</Name>
+        <Description />
+        <Comments />
+        <Author Name="" Email="" Homepage="" />
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C4" CategoryParentREF="C6">
+      <CategoryDescription License="">
+        <Name>Failed</Name>
+        <Description />
+        <Comments />
+        <Author Name="" Email="" Homepage="" />
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C1" CategoryParentREF="C6">
       <CategoryDescription License="">
         <Name>Solved</Name>
         <Description />
@@ -28,25 +52,9 @@
         <Author Name="" Email="" Homepage="" />
       </CategoryDescription>
     </Category>
-    <Category CategoryID="C3" CategoryParentREF="C0">
+    <Category CategoryID="C3" CategoryParentREF="C1">
       <CategoryDescription License="">
         <Name>Long</Name>
-        <Description />
-        <Comments />
-        <Author Name="" Email="" Homepage="" />
-      </CategoryDescription>
-    </Category>
-    <Category CategoryID="C4" CategoryParentREF="C0">
-      <CategoryDescription License="">
-        <Name>Failed</Name>
-        <Description />
-        <Comments />
-        <Author Name="" Email="" Homepage="" />
-      </CategoryDescription>
-    </Category>
-    <Category CategoryID="C5" CategoryParentREF="C0">
-      <CategoryDescription License="">
-        <Name>Not Attempted</Name>
         <Description />
         <Comments />
         <Author Name="" Email="" Homepage="" />
@@ -335,7 +343,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="214.8" PuzzleID="P9" CategoryREF="C5" Order="5">
+    <Puzzle Rating="214.8" PuzzleID="P9" CategoryREF="C4" Order="5">
       <PuzzleDescription>
         <Name>Tepid Gem</Name>
         <Description />
@@ -376,7 +384,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="147.7" PuzzleID="P11" CategoryREF="C5" Order="6">
+    <Puzzle Rating="147.7" PuzzleID="P11" CategoryREF="C4" Order="6">
       <PuzzleDescription>
         <Name>Tricky Spider</Name>
         <Description />
@@ -417,7 +425,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="71.4" PuzzleID="P13" CategoryREF="C5" Order="7">
+    <Puzzle Rating="71.4" PuzzleID="P13" CategoryREF="C4" Order="7">
       <PuzzleDescription>
         <Name>Dire Blanket</Name>
         <Description />
@@ -447,7 +455,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="89.7" PuzzleID="P15" CategoryREF="C4" Order="8">
+    <Puzzle Rating="89.7" PuzzleID="P15" CategoryREF="C3" Order="8">
       <PuzzleDescription>
         <Name>Ghastly House</Name>
         <Description />
@@ -621,7 +629,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="157.9" PuzzleID="P27" CategoryREF="C5" Order="14">
+    <Puzzle Rating="157.9" PuzzleID="P27" CategoryREF="C3" Order="14">
       <PuzzleDescription>
         <Name>Dastardly Black Morning</Name>
         <Description />
@@ -674,7 +682,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="107.7" PuzzleID="P29" CategoryREF="C5" Order="15">
+    <Puzzle Rating="107.7" PuzzleID="P29" CategoryREF="C4" Order="15">
       <PuzzleDescription>
         <Name>Tepid Estate</Name>
         <Description />
@@ -800,7 +808,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="225.0" PuzzleID="P39" CategoryREF="C5" Order="20">
+    <Puzzle Rating="225.0" PuzzleID="P39" CategoryREF="C3" Order="20">
       <PuzzleDescription>
         <Name>Dire Gem</Name>
         <Description />
@@ -846,7 +854,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="181.8" PuzzleID="P41" CategoryREF="C5" Order="21">
+    <Puzzle Rating="181.8" PuzzleID="P41" CategoryREF="C4" Order="21">
       <PuzzleDescription>
         <Name>Edgy Grave</Name>
         <Description />

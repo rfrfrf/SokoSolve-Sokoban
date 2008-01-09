@@ -123,6 +123,19 @@ namespace SokoSolve.UI.Section.Solver
         }
 
         private bool renderOnClick;
+
+        private void tsbSave_Click(object sender, EventArgs e)
+        {
+            if (pictureBoxPayload.Image != null)
+            {
+                SaveFileDialog save = new SaveFileDialog();
+                save.DefaultExt = "png";
+                if (save.ShowDialog() == DialogResult.OK)
+                {
+                    pictureBoxPayload.Image.Save(save.FileName);
+                }
+            }
+        }
     }
 
     public class VisEventArgs : EventArgs

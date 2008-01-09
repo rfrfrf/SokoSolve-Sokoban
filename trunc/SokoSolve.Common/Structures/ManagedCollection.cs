@@ -19,6 +19,7 @@ namespace SokoSolve.Common.Structures
 	{
 		internal List<T> inner;
 		private ManagedCollectionNotification<T> notification;
+	    private object locker = new object();
 
 
 		public ManagedCollection(ManagedCollectionNotification<T> notification)
@@ -53,10 +54,13 @@ namespace SokoSolve.Common.Structures
 		///<exception cref="T:System.ArgumentOutOfRangeException">index is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"></see>.</exception>
 		public void Insert(int index, T item)
 		{
-			if (notification(item, index, Notification.Add))
-			{
-				inner.Insert(index, item);
-			}
+            lock (locker)
+            {
+                if (notification(item, index, Notification.Add))
+                {
+                    inner.Insert(index, item);
+                }
+            }
 		}
 
 		///<summary>
@@ -68,10 +72,13 @@ namespace SokoSolve.Common.Structures
 		///<exception cref="T:System.ArgumentOutOfRangeException">index is not a valid index in the <see cref="T:System.Collections.Generic.IList`1"></see>.</exception>
 		public void RemoveAt(int index)
 		{
-			if (notification(default(T), index, Notification.Remove))
-			{
-				inner.RemoveAt(index);
-			}
+            lock (locker)
+            {
+                if (notification(default(T), index, Notification.Remove))
+                {
+                    inner.RemoveAt(index);
+                }
+            }
 		}
 
 		///<summary>
@@ -109,10 +116,13 @@ namespace SokoSolve.Common.Structures
 		///<exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.ICollection`1"></see> is read-only.</exception>
 		public void Add(T item)
 		{
-			if (notification(item, -1, Notification.Add))
-			{
-				inner.Add(item);
-			}
+            lock (locker)
+            {
+                if (notification(item, -1, Notification.Add))
+                {
+                    inner.Add(item);
+                }
+            }
 		}
 
 		///<summary>
@@ -122,10 +132,13 @@ namespace SokoSolve.Common.Structures
 		///<exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.ICollection`1"></see> is read-only. </exception>
 		public void Clear()
 		{
-			if (notification(default(T), -1, Notification.Clear))
-			{
-				inner.Clear();
-			}
+            lock (locker)
+            {
+                if (notification(default(T), -1, Notification.Clear))
+                {
+                    inner.Clear();
+                }
+            }
 		}
 
 		///<summary>
@@ -153,7 +166,10 @@ namespace SokoSolve.Common.Structures
 		///<exception cref="T:System.ArgumentException">array is multidimensional.-or-arrayIndex is equal to or greater than the length of array.-or-The number of elements in the source <see cref="T:System.Collections.Generic.ICollection`1"></see> is greater than the available space from arrayIndex to the end of the destination array.-or-Type T cannot be cast automatically to the type of the destination array.</exception>
 		public void CopyTo(T[] array, int arrayIndex)
 		{
-			inner.CopyTo(array, arrayIndex);
+            lock (locker)
+            {
+                inner.CopyTo(array, arrayIndex);
+            }
 		}
 
 		///<summary>
@@ -168,11 +184,14 @@ namespace SokoSolve.Common.Structures
 		///<exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.ICollection`1"></see> is read-only.</exception>
 		public bool Remove(T item)
 		{
-			if (notification(item, -1, Notification.Remove))
-			{
-				return inner.Remove(item);
-			}
-			return false;
+            lock (locker)
+            {
+                if (notification(item, -1, Notification.Remove))
+                {
+                    return inner.Remove(item);
+                }
+                return false;
+            }
 		}
 
 		///<summary>
@@ -215,7 +234,11 @@ namespace SokoSolve.Common.Structures
 		///<filterpriority>1</filterpriority>
 		IEnumerator<T> IEnumerable<T>.GetEnumerator()
 		{
-			return inner.GetEnumerator();
+            lock (locker)
+            {
+                List<T> buffer = new List<T>(inner);
+                return buffer.GetEnumerator();
+            }
 		}
 
 		#endregion
@@ -232,7 +255,11 @@ namespace SokoSolve.Common.Structures
 		///<filterpriority>2</filterpriority>
 		public IEnumerator GetEnumerator()
 		{
-			return inner.GetEnumerator();
+            lock (locker)
+            {
+                T[] buffer = inner.ToArray();
+                return buffer.GetEnumerator();
+            }
 		}
 
 		#endregion

@@ -30,8 +30,44 @@ namespace SokoSolve.UI
 		    browserControl = new InlineBrowser();
 		    welcomeControl = new Welcome();
             solverControl = new SolverSection();
+
+            libControl.Size = Size;
+            gameControl.Size = Size;
+            profileControl.Size = Size;
+            browserControl.Size = Size;
+            welcomeControl.Size = Size;
+            solverControl.Size = Size;
+
+            libControl.Dock = DockStyle.Fill;
+            gameControl.Dock = DockStyle.Fill;
+            profileControl.Dock = DockStyle.Fill;
+            browserControl.Dock = DockStyle.Fill;
+            welcomeControl.Dock = DockStyle.Fill;
+            solverControl.Dock = DockStyle.Fill;
+
+            SetNotVisible();
+
+            Controls.Add(libControl);
+            Controls.Add(gameControl);
+            Controls.Add(profileControl);
+            Controls.Add(browserControl);
+            Controls.Add(welcomeControl);
+            Controls.Add(solverControl);
+
+
 		    Mode = Modes.Welcome;
+
 		}
+
+        private void SetNotVisible()
+        {
+            libControl.Visible = false;
+            gameControl.Visible = false;
+            profileControl.Visible = false;
+            browserControl.Visible = false;
+            welcomeControl.Visible = false;
+            solverControl.Visible = false;
+        }
 
         /// <summary>
         /// List of payload modes
@@ -57,34 +93,29 @@ namespace SokoSolve.UI
 	            SuspendLayout();
 	            mode = value;
 
-	            Controls.Clear();
+	            SetNotVisible();
                 switch(mode)
                 {
                     case (Modes.Library):
-                        libControl.Dock = DockStyle.Fill;
-                        Controls.Add(libControl);
-                        libControl.Dock = DockStyle.Fill;
+                        libControl.Visible = true;
                         libControl.Refresh();
                         break;
                     case (Modes.Game):
-                        Controls.Add(gameControl);
-                        gameControl.Dock = DockStyle.Fill;
+                 
+                        gameControl.Visible = true;
                         gameControl.Focus();
                         break;
 
                     case (Modes.Browser):
-                        Controls.Add(browserControl);
-                        browserControl.Dock = DockStyle.Fill;
+                        browserControl.Visible = true;
                         break;
 
                     case (Modes.Welcome):
-                        Controls.Add(welcomeControl);
-                        welcomeControl.Dock = DockStyle.Fill;
+                        welcomeControl.Visible = true;
                         break;
 
                     case (Modes.Solver):
-                        Controls.Add(solverControl);
-                        solverControl.Dock = DockStyle.Fill;
+                        solverControl.Visible = true;
                         break;
                 }
 

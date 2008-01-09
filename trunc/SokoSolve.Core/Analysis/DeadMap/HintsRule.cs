@@ -221,7 +221,7 @@ namespace SokoSolve.Core.Analysis.DeadMap
                                 break;
                             case ('D'):
                                 // Static deadmap or dynamic dead map
-                                if (!context.Analysis.DeadMap[cx + hintX, cy + hintY] &&
+                                if (!context.StaticAnalysis.DeadMap[cx + hintX, cy + hintY] &&
                                     !context[cx + hintX, cy + hintY]) return;
                                 break;
                             case ('?'):

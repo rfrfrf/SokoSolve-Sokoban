@@ -52,11 +52,14 @@ namespace SokoSolve.UI.Section.Solver
             OnComplete = SolverComplete;
             solverEvalStatus = EvalStatus.NotStarted;
             treeViewer.OnVisualisationClick += new EventHandler<VisEventArgs>(OnVisualisationClick_TreeViewer);
-            visualisationContainerLocalNodes.OnVisualisationClick +=
-                new EventHandler<VisEventArgs>(OnVisualisationClick_LocalNode);
+            visualisationContainerLocalNodes.OnVisualisationClick += new EventHandler<VisEventArgs>(OnVisualisationClick_LocalNode);
+            visualisationContainerReverseTree.OnVisualisationClick += new EventHandler<VisEventArgs>(OnVisualisationClick_ReverseTree);
+
             this.Disposed += new EventHandler(SolverSection_Disposed);
 
             tsDropDown.SelectedIndex = 0;
+
+            inlineBrowserSolver.NavigateIncludedContent("$html\\Solver.html");
         }
 
 
@@ -256,6 +259,8 @@ namespace SokoSolve.UI.Section.Solver
             {
                 if (solver != null && solver.Strategy != null && solver.Strategy.StaticAnalysis != null)
                 {
+                    richTextBoxSolverReport.Text = solver.DebugReport.ToString(new DebugReportFormatter());
+
                     if (!bitmapViewerStatic.HasLayers)
                     {
                         BitmapViewer.Layer mapLayer = new BitmapViewer.Layer();
@@ -292,6 +297,14 @@ namespace SokoSolve.UI.Section.Solver
                     {
                         treeViewer.Init(solver);
                         treeViewer.Render();
+                    }
+
+                    if (solver.ReverseStrategy != null && solver.ReverseStrategy.EvaluationTree != null)
+                    {
+                        TreeVisualisation tresVisRev = new TreeVisualisation(solver.ReverseStrategy.EvaluationTree);
+                          tresVisRev.RenderCanvas = new RectangleInt(0, 0, 1800, 1800);
+                        visualisationContainerReverseTree.Visualisation = tresVisRev;
+                        visualisationContainerReverseTree.Render();
                     }
                 }
 
@@ -429,6 +442,11 @@ namespace SokoSolve.UI.Section.Solver
 
 
         private void OnVisualisationClick_LocalNode(object sender, VisEventArgs e)
+        {
+            OnVisualisationClick_TreeViewer(sender, e);
+        }
+
+        private void OnVisualisationClick_ReverseTree(object sender, VisEventArgs e)
         {
             OnVisualisationClick_TreeViewer(sender, e);
         }

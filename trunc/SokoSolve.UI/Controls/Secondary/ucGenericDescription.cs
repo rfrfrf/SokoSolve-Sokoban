@@ -13,9 +13,12 @@ namespace SokoSolve.UI.Controls.Secondary
 	{
 		public ucGenericDescription()
 		{
+            showOK = true;
+
 			InitializeComponent();
 		}
 
+        [Browsable(false)]
 		public GenericDescription Data
 		{
 			get
@@ -54,11 +57,40 @@ namespace SokoSolve.UI.Controls.Secondary
 			}
 		}
 
+        /// <summary>
+        /// Set the detail from the profile
+        /// </summary>
+        public void SetFromProfile()
+        {
+            if (Site != null) return;
+
+            tbAuthor.Text = ProfileController.Current.UserName;
+            tbEmail.Text = ProfileController.Current.UserEmail;
+            tbWeb.Text = ProfileController.Current.UserHomepage;
+            cbLicense.Text = ProfileController.Current.UserLicense;
+        }
+
+        [Browsable(true)]
+        public bool ShowButtons
+	    {
+	        get { return showOK; }
+            set 
+            { 
+                showOK = value;
+                buttonOk.Visible = showOK;
+                buttonCancel.Visible = showOK;
+            }
+	    }
+
+	    private bool showOK;
+
+        [Browsable(false)]
 	    public Button ButtonOK
 	    {
             get { return buttonOk; }
 	    }
 
+        [Browsable(false)]
         public Button ButtonCancel
         {
             get { return buttonCancel; }

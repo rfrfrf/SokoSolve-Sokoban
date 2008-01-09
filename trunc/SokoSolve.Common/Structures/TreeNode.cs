@@ -132,6 +132,20 @@ namespace SokoSolve.Common.Structures
 			return node;
 		}
 
+        /// <summary>
+        /// Add a new child payload to the tree
+        /// </summary>
+        /// <param name="child"></param>
+        public TreeNode<T> Add(TreeNode<T> child)
+        {
+            // Lazy initlisation of children to save space
+            if (children == null) children = new ManagedCollection<TreeNode<T>>(ChildrenNotifications);
+
+            // Add the node
+            children.Add(child);
+            return child;
+        }
+
 		/// <summary>
 		/// Helper Method. This this the root node (parent == null)
 		/// </summary>
@@ -433,9 +447,26 @@ namespace SokoSolve.Common.Structures
         /// <returns>null if not found</returns>
         public void RemoveChild(T childData)
         {
-            TreeNode<T> childNode = GetChild(childData);
-            if (childNode == null) throw new ArgumentNullException("Cannot find child node");
+            RemoveChild(GetChild(childData));
+        }
+
+        /// <summary>
+        /// Find a child by data value as an IMEDIATE child.
+        /// </summary>
+        /// <param name="childNode">node</param>
+        /// <returns>null if not found</returns>
+        public void RemoveChild(TreeNode<T> childNode)
+        {
+            if (childNode == null) throw new ArgumentNullException("childNode");
             Children.Remove(childNode);
+        }
+
+        /// <summary>
+        /// Removed all children
+        /// </summary>
+        public void Clear()
+        {
+            if (children != null) children.Clear();
         }
 
 		#region ITreeNode<T> Members
@@ -529,6 +560,7 @@ namespace SokoSolve.Common.Structures
 			return true;
 		}
 
-		
+
+	    
 	}
 }

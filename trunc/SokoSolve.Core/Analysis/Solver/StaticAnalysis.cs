@@ -21,7 +21,7 @@ namespace SokoSolve.Core.Analysis.Solver
         public StaticAnalysis(SolverController controller)
         {
             this.controller = controller;
-            deadMapAnalysis = new DeadMapAnalysis();
+            deadMapAnalysis = new DeadMapAnalysis(this);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace SokoSolve.Core.Analysis.Solver
         /// </summary>
         private void BuildDeadMap()
         {
-            DeadMapState deadMapResult = deadMapAnalysis.BuildDeadMap(null, goalMap, wallMap, controller.Strategy);
+            DeadMapState deadMapResult = deadMapAnalysis.BuildDeadMap(null, goalMap, wallMap);
             deadMap = deadMapResult;
             cornerMap = deadMapResult.CornerMap;
             recessMap = deadMapResult.RecessMap;

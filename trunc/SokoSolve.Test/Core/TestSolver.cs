@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SokoSolve.Common;
 using SokoSolve.Common.Math;
 using SokoSolve.Common.Structures;
 using SokoSolve.Common.Structures.Evaluation.Visualisation;
@@ -18,8 +19,7 @@ namespace SokoSolve.Test.Core
     public class TestSolver
     {
 
-        [TestMethod]
-        public  void TestSimplePuzzle()
+        private void SolveFromString(string[] puzzle)
         {
             CodeTimer timer = new CodeTimer();
             timer.Start();
@@ -27,24 +27,17 @@ namespace SokoSolve.Test.Core
             try
             {
                 SokobanMap map = new SokobanMap();
-                map.setFromStrings(new string[]
-		                           {
-         "~##~#####",
-          "##.##.O.#",
-          "#.##.XO.#",
-          "~##.X...#",
-          "##.XP.###",
-          "#.X..##~~",
-          "#OO.##.##",
-          "#...#~##~",
-          "#####~#~~"
-		                           });
+                map.setFromStrings(puzzle);
 
                 PuzzleMap pMap = new PuzzleMap(null);
                 pMap.Map = map;
 
-                SolverAPI api = new SolverAPI();
-                List<INode<SolverNode>> results = api.Solve(pMap);
+                SolverController controller = new SolverController(pMap);
+                controller.Solve();
+                List<INode<SolverNode>> results = controller.Evaluator.Solutions;
+
+                Console.WriteLine(controller.DebugReport.ToString(new DebugReportFormatter()));
+                
 
                 if (results == null || results.Count == 0)
                 {
@@ -58,17 +51,33 @@ namespace SokoSolve.Test.Core
             {
                 timer.Stop();
                 System.Console.WriteLine("Total Time: " + timer.Duration(1));
-                System.Console.WriteLine("No Solutions");
+                System.Console.WriteLine("---");
 
             }
+        }
+
+        [TestMethod]
+        public  void TestSimplePuzzle()
+        {
+          SolveFromString(new string[]
+		                           {
+         "~##~#####",
+          "##.##.O.#",
+          "#.##.XO.#",
+          "~##.X...#",
+          "##.XP.###",
+          "#.X..##~~",
+          "#OO.##.##",
+          "#...#~##~",
+          "#####~#~~"
+		                           });
 
         }
 
         [TestMethod]
         public void TestMediumPuzzle()
         {
-            SokobanMap map = new SokobanMap();
-            map.setFromStrings(new string[]
+            SolveFromString(new string[]
 		                           {
 "~~~###~~~~~",
 "~~##.#~####",
@@ -80,23 +89,8 @@ namespace SokoSolve.Test.Core
 "~##.##O#.##",
 "~#......##~",
 "~#.....##~~",
-"~#######~~~"
+"~#######~"
 		                           });
-
-            PuzzleMap pMap = new PuzzleMap(null);
-            pMap.Map = map;
-
-            SolverAPI api = new SolverAPI();
-            List<INode<SolverNode>> results = api.Solve(pMap);
-
-            Assert.IsNotNull(results, "No solution found");
-            Assert.IsTrue(results.Count > 0, "No Solutions");
-
-            Debug.WriteLine(map.ToString());
-            
-
-
-            Debug.WriteLine("done."); // Bug (last line does not display correctly)
         }
 
         [TestMethod]

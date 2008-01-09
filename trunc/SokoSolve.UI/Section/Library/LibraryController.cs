@@ -50,6 +50,8 @@ namespace SokoSolve.UI.Section.Library
             // Solution Commands
             Register(new SolutionReplay(this, new object[] { view.tsbSolutionReplay }));
             Register(new SolutionTest(this, new object[] { view.tsbSolutionTest }));
+            Register(new SolutionDelete(this, new object[] { view.tsbSolutionDelete}));
+            Register(new SolutionEdit(this, new object[] { view.tsbSolutionEdit }));
 
             // Extra Commands
             Register(new HelpAbout(this, new object[] { view.tsbHelpAbout }));
@@ -101,10 +103,6 @@ namespace SokoSolve.UI.Section.Library
         /// <param name="context"></param>
 		public override void UpdateUI(string context)
 		{
-            
-		    Logger.Add(this, "UpdateUI - {0}.", context);
-		    Logger.StartSection();
-
 			foreach (Command<ExplorerItem> cmd in commands)
 			{
 				AttachedCommand<ExplorerItem> attached = cmd as AttachedCommand<ExplorerItem>;
@@ -113,8 +111,6 @@ namespace SokoSolve.UI.Section.Library
 					attached.UpdateUI(context);
 				}
 			}
-
-            Logger.EndSection();
 		}
 
         /// <summary>

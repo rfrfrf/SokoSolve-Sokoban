@@ -116,7 +116,7 @@ namespace SokoSolve.Common.Structures.Evaluation
         /// Get the next ID in sequence
         /// </summary>
         /// <returns></returns>
-        protected string GetNextNodeID()
+        protected virtual string GetNextNodeID()
         {
             nextID++;
             return nextID.ToString();

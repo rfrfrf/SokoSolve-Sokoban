@@ -93,28 +93,28 @@ namespace SokoSolve.Core.Analysis.Solver
             
             if (tableClass != null)
             {
-                sb.AppendFormat("<table class=\"{0}\">", tableClass);
+                sb.AppendFormat("<table class=\"{0}\">\n", tableClass);
             }
             else
             {
-                sb.AppendFormat("<table style=\"{0}\">", tableStyle);    
+                sb.AppendFormat("<table style=\"{0}\">\n", tableStyle);    
             }
             
             foreach (SolverLabel label in this)
             {
-                sb.Append("<tr><th>");
+                sb.Append("<tr><th>\n");
                 sb.Append(label.Name);
-                sb.Append("</th><td>");
+                sb.Append("</th><td>\n");
                 if (label.Value != null) sb.Append(label.Value);
                 if (label.UnitOfMeasure != null)
                 {
                     sb.Append(" ");
                     sb.Append(label.UnitOfMeasure);
                 }
-                sb.Append("</td></tr");
+                sb.Append("</td></tr>\n");
                 sb.Append(Environment.NewLine);
             }
-            sb.Append("</table>");
+            sb.Append("</table>\n");
             
             return sb.ToString();
         }

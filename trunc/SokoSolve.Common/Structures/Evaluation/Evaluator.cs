@@ -12,7 +12,7 @@ namespace SokoSolve.Common.Structures.Evaluation
 	public class Evaluator<T> : IEvaluator<T> where T : IEvaluationNode
 	{
         /// <summary>
-        /// Default Constructor
+        /// Constructor
         /// </summary>
         public Evaluator(bool StopOnSolution)
         {
@@ -20,12 +20,13 @@ namespace SokoSolve.Common.Structures.Evaluation
             solutions = new List<INode<T>>();
         }
 
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
         public Evaluator() : this(false)
         {
             
         }
-
-
 
         /// <summary>
         /// Evaluate using a strategy
@@ -69,30 +70,47 @@ namespace SokoSolve.Common.Structures.Evaluation
                     throw new InvalidOperationException("This node has already been processed");
 				}
 			}
+            if (solutions.Count > 0) return EvalStatus.CompleteSolution;
 			return EvalStatus.CompleteNoSolution;
 		}
 
+        /// <summary>
+        /// Has a solution been found
+        /// </summary>
 	    public bool HasSolution
 	    {
             get { return solutions != null && solutions.Count > 0;  }
 	    }
 
+        /// <summary>
+        /// List of all solutions found
+        /// </summary>
 	    public List<INode<T>> Solutions
 	    {
 	        get { return solutions; }
 	    }
 
+        /// <summary>
+        /// Should the evaluator break/exit when a solution is found
+        /// </summary>
 	    public bool StopOnSolution
 	    {
 	        get { return stopOnSolution; }
 	        set { stopOnSolution = value; }
 	    }
 
+        /// <summary>
+        /// Strategy used
+        /// </summary>
         public IEvaluationStrategy<T> Strategy
         {
             get { return strategy; }
         }
 
+        /// <summary>
+        /// Simple debug-helper string override
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return string.Format("Evaluting. Solutions:{0} {1}", solutions.Count, strategy);

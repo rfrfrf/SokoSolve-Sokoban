@@ -42,6 +42,11 @@ namespace SokoSolve.UI.Section
             }
         }
 
+        /// <summary>
+        /// Syncronise two collections
+        /// </summary>
+        /// <param name="UIModel">null means empty</param>
+        /// <param name="UIControls"></param>
         void SyncCollections(IList<ExplorerItem> UIModel, TreeNodeCollection UIControls)
         {
             List<TreeNode> removeList = new List<TreeNode>();
@@ -55,7 +60,7 @@ namespace SokoSolve.UI.Section
                 }
                 else
                 {
-                    if (!UIModel.Contains(tag))
+                    if (UIModel == null  || !UIModel.Contains(tag))
                     {
                         removeList.Add(node);
                     }
@@ -232,6 +237,13 @@ namespace SokoSolve.UI.Section
         /// <param name="FactoryMethod">FactoryMethod to create the correct top type for ExplorerItem</param>
         protected void SyncUICollectionWithData<T>(IEnumerable<T> Collection, CreateExplorerItem<T> FactoryMethod)
         {
+            if (Collection == null)
+            {
+                // Remove all children and exit
+                treeNode.Clear();
+                return;
+            }
+
             // Remove old
             List<TreeNode<ExplorerItem>> removeList = new List<TreeNode<ExplorerItem>>();
 

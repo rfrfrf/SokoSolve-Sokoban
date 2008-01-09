@@ -57,6 +57,11 @@ namespace SokoSolve.Core.IO
             get { return errorReport; }
         }
 
+        public override string ToString()
+        {
+            return ImporterName;
+        }
+
         protected abstract Library ImportImplementation(string FileName);
 
         private string importerName;

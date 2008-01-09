@@ -17,6 +17,8 @@ namespace SokoSolve.Core.Analysis.Solver
         {
             evalList = new List<INode<SolverNode>>(10000);
             evalLinkedList = new LinkedList<INode<SolverNode>>();
+
+            useLinked = true;
           
             this.controller = controller;
         }
@@ -34,6 +36,7 @@ namespace SokoSolve.Core.Analysis.Solver
             {
                 exitStatus = EvalStatus.ExitIncomplete;
                 Status = exitStatus;
+                controller.DebugReport.AppendTimeStamp("Exiting - Controller not Enabled");
                 return null;
             }
 
@@ -42,6 +45,7 @@ namespace SokoSolve.Core.Analysis.Solver
             {
                 exitStatus = EvalStatus.ExitIncomplete;
                 Status = exitStatus;
+                controller.DebugReport.AppendTimeStamp("Exiting - Max Time exceeded");
                 return null;
             }
 
@@ -50,6 +54,7 @@ namespace SokoSolve.Core.Analysis.Solver
             {
                 exitStatus = EvalStatus.ExitIncomplete;
                 Status = exitStatus;
+                controller.DebugReport.AppendTimeStamp("Exiting - Max Depth exceeded");
                 return null;
             }
 
@@ -58,14 +63,11 @@ namespace SokoSolve.Core.Analysis.Solver
             {
                 exitStatus = EvalStatus.ExitIncomplete;
                 Status = exitStatus;
+                controller.DebugReport.AppendTimeStamp("Exiting - Max Itterations exceeded");
                 return null;
             }
 
-          
-
-            
-
-           // INode<SolverNode> next = evalList[0];
+            // INode<SolverNode> next = evalList[0];
             INode<SolverNode> next = null;
             if (useLinked)
             {
@@ -73,6 +75,7 @@ namespace SokoSolve.Core.Analysis.Solver
                 {
                     exitStatus = EvalStatus.CompleteNoSolution;
                     Status = exitStatus;
+                    controller.DebugReport.AppendTimeStamp("Exiting - Node worker list is empty. All possible moved exhausted?");
                     return null;
                 }
                 next = evalLinkedList.First.Value;
@@ -83,6 +86,7 @@ namespace SokoSolve.Core.Analysis.Solver
                 {
                     exitStatus = EvalStatus.CompleteNoSolution;
                     Status = exitStatus;
+                    controller.DebugReport.AppendTimeStamp("Exiting - Node worker list is empty. All possible moved exhausted?");
                     return null;
                 }
                 next = evalList[0];

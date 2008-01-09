@@ -246,19 +246,10 @@ namespace SokoSolve.UI.Section.Library
 
         protected override void ExecuteImplementation(CommandInstance<ExplorerItem> instance)
         {
-            OpenFileDialog open = new OpenFileDialog();
-
-            if (open.ShowDialog() == DialogResult.OK)
+            FormImport import = new FormImport();
+            if (import.ShowDialog() == DialogResult.OK)
             {
-                try
-                {
-                    ImportTXT txt = new ImportTXT();
-                    Controller.Current = txt.Import(open.FileName);
-                }
-                catch (Exception ex)
-                {
-                    FormDisplayText.ShowDialog("Error on import", StringHelper.Report(ex));
-                }
+                Controller.Current = import.ucImport.Library;
             }
         }
     }

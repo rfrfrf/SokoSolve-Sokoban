@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using SokoSolve.Common.Math;
@@ -127,7 +128,24 @@ namespace SokoSolve.Common.Structures
                 }
         }
 
-      
+        /// <summary>
+        /// Allow the bitmap to be itterated through for each true position in the bitmap.
+        /// This is provided for ease of use, it is a very slow mechanism in comparison to two for(;;) loops
+        /// </summary>
+        public IEnumerable<VectorInt> TruePositions
+        {
+            get
+            {
+                for (int yy = 0; yy < size.Y; yy++)
+                    for (int xx = 0; xx < size.X; xx++)
+                    {
+                        if (this[xx, yy])
+                        {
+                            yield return new VectorInt(xx, yy);
+                        }
+                    }    
+            }
+        }
 
         /// <summary>
         /// The number of On's (set bits)

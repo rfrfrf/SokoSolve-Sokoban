@@ -29,7 +29,7 @@ namespace SokoSolve.UI.Section.Solver
         private void InitializeComponent()
         {
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.tsbRefresh = new System.Windows.Forms.ToolStripButton();
             this.tsLabel = new System.Windows.Forms.ToolStripLabel();
             this.panelImage = new System.Windows.Forms.Panel();
@@ -43,7 +43,7 @@ namespace SokoSolve.UI.Section.Solver
             // 
             this.toolStrip.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
+            this.tsbSave,
             this.tsbRefresh,
             this.tsLabel});
             this.toolStrip.Location = new System.Drawing.Point(0, 206);
@@ -52,14 +52,16 @@ namespace SokoSolve.UI.Section.Solver
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // tsbSave
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::SokoSolve.UI.Properties.Resources.Save;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSave.Image = global::SokoSolve.UI.Properties.Resources.Save;
+            this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSave.Name = "tsbSave";
+            this.tsbSave.Size = new System.Drawing.Size(23, 22);
+            this.tsbSave.Text = "toolStripButton1";
+            this.tsbSave.ToolTipText = "Save to file";
+            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // tsbRefresh
             // 
@@ -116,7 +118,7 @@ namespace SokoSolve.UI.Section.Solver
 
         #endregion
 
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton tsbSave;
         private System.Windows.Forms.ToolStripButton tsbRefresh;
         private System.Windows.Forms.ToolStripLabel tsLabel;
         private System.Windows.Forms.Panel panelImage;
