@@ -55,3 +55,17 @@ td
 	
 	border: solid 1px gray;
 }
+
+.tableformat 
+{
+	width: 100%;
+	border-style: none;
+	background-color: White;
+}
+
+.tableformat td 
+{
+	vertical-align: top;
+	border-style: none;
+	background-color: White;
+}
