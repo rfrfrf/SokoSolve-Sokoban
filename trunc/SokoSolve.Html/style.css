@@ -37,24 +37,12 @@ p
 	padding:0 0 0 0;
 }
 
-table
-{
-	width: 100%;
-	border: solid 1px black;
-}
 
-th
-{
-	background-color: Gray;
-}
+
 
 a { color: #003366; }
 
-td
-{
-	
-	border: solid 1px gray;
-}
+
 
 .tableformat 
 {
@@ -68,4 +56,32 @@ td
 	vertical-align: top;
 	border-style: none;
 	background-color: White;
+}
+
+.tableinfo
+{
+	padding : 6px;
+	border-bottom: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	line-height : 14px;
+	font-size: 11px;
+	font-family: tahoma;
+	line-height : 15px;
+	color : #656565;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.tableinfo td {
+	border-top: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	padding: 6px;
+}
+.tableinfo th {
+	padding : 6px;
+	border-bottom: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	font-weight : bold;
+	background-color : #EEEEEE;
+	line-height : 16px;
 }
