@@ -282,7 +282,7 @@ namespace SokoSolve.UI.Section.Solver
                         BitmapViewer.Layer weightLayer = new BitmapViewer.Layer();
                         weightLayer.Order = 10;
                         weightLayer.IsVisible = true;
-                        weightLayer.Matrix = solver.Strategy.StaticAnalysis.StaticCrateWeighting;
+                        weightLayer.Matrix = solver.Strategy.StaticAnalysis.StaticForwardCrateWeighting;
                         weightLayer.Name = "Weightings";
                         weightLayer.Brush = new SolidBrush(Color.FromArgb(200, Color.Pink));
                         weightLayer.BrushAlt = new SolidBrush(Color.FromArgb(200, Color.Red));
@@ -301,8 +301,7 @@ namespace SokoSolve.UI.Section.Solver
 
                     if (solver.ReverseStrategy != null && solver.ReverseStrategy.EvaluationTree != null)
                     {
-                        TreeVisualisation tresVisRev = new TreeVisualisation(solver.ReverseStrategy.EvaluationTree);
-                          tresVisRev.RenderCanvas = new RectangleInt(0, 0, 1800, 1800);
+                        TreeVisualisation tresVisRev = new TreeVisualisation(solver.ReverseStrategy.EvaluationTree, new RectangleInt(0, 0, 1800, 1800), new SizeInt(8,8));
                         visualisationContainerReverseTree.Visualisation = tresVisRev;
                         visualisationContainerReverseTree.Render();
                     }
@@ -386,7 +385,7 @@ namespace SokoSolve.UI.Section.Solver
 
         private void StopWorker(Thread thread)
         {
-            if (solver != null) solver.IsEnabled = false;
+            if (solver != null) solver.State = SolverController.States.Cancelled;
             if (thread.IsAlive) thread.Join(1000);
             if (thread.IsAlive) thread.Abort();
         }
@@ -402,8 +401,6 @@ namespace SokoSolve.UI.Section.Solver
             bitmapViewerStatic.MapSize = map.Map.Size;
             bitmapViewerNodeMaps.Clear();
             bitmapViewerNodeMaps.MapSize = map.Map.Size;
-
-            
 
             if (!SolverActive)
             {
@@ -421,7 +418,7 @@ namespace SokoSolve.UI.Section.Solver
         /// <param name="e"></param>
         private void tsbStop_Click(object sender, EventArgs e)
         {
-            if (solver != null) solver.IsEnabled = false;
+            if (solver != null) solver.State = SolverController.States.Cancelled;
             if (worker != null) worker.Join(5000);
             if (solver != null) UpdateStatus();
         }

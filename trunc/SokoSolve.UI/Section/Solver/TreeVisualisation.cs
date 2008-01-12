@@ -11,7 +11,7 @@ namespace SokoSolve.UI.Section.Solver
 {
     internal class TreeVisualisation : Visualisation
     {
-        private SizeInt cellSize = new SizeInt(8, 8);
+        private SizeInt cellSize;
         protected Graphics graphics;
         private int maxDepth = 150;
         private int maxMembers = 5000;
@@ -30,10 +30,14 @@ namespace SokoSolve.UI.Section.Solver
         /// Strong COnstructoin
         /// </summary>
         /// <param name="sourceTree"></param>
-        public TreeVisualisation(Tree<SolverNode> sourceTree)
+        public TreeVisualisation(Tree<SolverNode> sourceTree, RectangleInt renderSize, SizeInt cellSize)
         {
             // this.controller = controller;
             this.tree = sourceTree;
+
+            // Calculate the render size
+            RenderCanvas = renderSize;
+            CellSize = cellSize;
         }
 
         /// <summary>
@@ -42,7 +46,11 @@ namespace SokoSolve.UI.Section.Solver
         public SizeInt CellSize
         {
             get { return cellSize; }
-            set { cellSize = value; }
+            set 
+            { 
+                cellSize = value; 
+                maxWidth = (renderCanvas.Width - summaryIndent) / cellSize.Width;
+            }
         }
 
         /// <summary>
@@ -127,8 +135,8 @@ namespace SokoSolve.UI.Section.Solver
         {
             Init();
 
-            graphics.FillRectangle(new SolidBrush(Color.DarkGray), RenderCanvas.ToDrawingRect());
-            graphics.DrawRectangle(new Pen(Color.Black), RenderCanvas.ToDrawingRect());
+            graphics.FillRectangle(SystemBrushes.ControlDark, RenderCanvas.ToDrawingRect());
+            graphics.DrawRectangle(new Pen(SystemBrushes.ControlLight, 2f), RenderCanvas.ToDrawingRect());
 
             // Draw all nodes.
             // This is a very slow (but nicely genric) method; it may be faster to not make the wrapping GridVisualisationElement 

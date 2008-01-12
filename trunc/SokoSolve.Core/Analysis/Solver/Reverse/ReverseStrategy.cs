@@ -12,6 +12,10 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
     /// </summary>
     public class ReverseStrategy : EvaluationStrategyBase<SolverNode>
     {
+        /// <summary>
+        /// Strong Constructor
+        /// </summary>
+        /// <param name="controller"></param>
         public ReverseStrategy(SolverController controller) : base(new SolverItterator(controller))
         {
             this.controller = controller;
@@ -58,6 +62,12 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
             return endposition;
         }
 
+        /// <summary>
+        /// Generate the end position for the player (by merging all possition end positions)
+        /// </summary>
+        /// <param name="endposition"></param>
+        /// <param name="crate"></param>
+        /// <param name="pullDirection"></param>
         private void CheckPosiblePlayerEndPosition(SolverNode endposition, VectorInt crate, Direction pullDirection)
         {
             VectorInt newCratePosition = crate.Offset(pullDirection);
@@ -263,12 +273,24 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
         /// <returns></returns>
         private float CalcWeighting(SolverNode solverNode)
         {
-            if (solverNode.TreeNode != null)
+            if (false)
             {
-                // Depth last search
-                return 100 - solverNode.TreeNode.Depth;    
+                // DEPTH only
+                if (solverNode.TreeNode != null)
+                {
+                    return 100 - solverNode.TreeNode.Depth;
+                }
+                return 0;
             }
+            else
+            {
 
+                // Start with crate map weighting
+                float weighting = new Matrix(solverNode.CrateMap, 1f).Multiply(staticAnalysis.StaticForwardCrateWeighting).Total();
+
+                return weighting;
+            }
+            
             return 0;
         }
 
@@ -321,6 +343,5 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
 
         private SolverController controller;
         private StaticAnalysis staticAnalysis;
-
     }
 }

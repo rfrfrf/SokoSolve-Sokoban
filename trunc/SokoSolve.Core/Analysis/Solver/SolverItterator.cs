@@ -32,7 +32,7 @@ namespace SokoSolve.Core.Analysis.Solver
             // Check Exit conditions
 
             // Stopped?
-            if (!controller.IsEnabled)
+            if (controller.State != SolverController.States.Running)
             {
                 exitStatus = EvalStatus.ExitIncomplete;
                 Status = exitStatus;

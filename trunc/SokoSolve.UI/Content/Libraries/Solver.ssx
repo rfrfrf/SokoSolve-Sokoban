@@ -577,7 +577,90 @@
           <Row>~##.......#</Row>
           <Row>~~####..###</Row>
           <Row>~~~~~####~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="4" StartY="2">
+              <Steps>drdddlluuddrrrruulrddlluuddrrrruulrddlllllluuudddrruululduruuldllddrluurrrddrddrrrruullddlluuluurrrddduuulllddrrlluurrrddrrddlluullddrdrulluuluurdduullllddrr</Steps>
+              <SolutionDescription License="Creative Commons" Date="2008-01-11T19:03:07.6847885+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>&lt;table class="tabledata"&gt;
+&lt;tr&gt;&lt;th&gt;
+Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;
+8 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Evaluation Time&lt;/th&gt;&lt;td&gt;
+8.133 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Evaluation Itterations&lt;/th&gt;&lt;td&gt;
+10527 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Total Nodes&lt;/th&gt;&lt;td&gt;
+3566 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Duplicates&lt;/th&gt;&lt;td&gt;
+2945 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+DeadNodes&lt;/th&gt;&lt;td&gt;
+2311 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Eval Worker List&lt;/th&gt;&lt;td&gt;
+7379&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+MoveMapTime&lt;/th&gt;&lt;td&gt;
+0.001 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+EvalTime&lt;/th&gt;&lt;td&gt;
+0.000 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+EvalChildTime&lt;/th&gt;&lt;td&gt;
+0.003 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+DuplicateCheckTime&lt;/th&gt;&lt;td&gt;
+0.001 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Weighting Min&lt;/th&gt;&lt;td&gt;
+0&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Weighting Max&lt;/th&gt;&lt;td&gt;
+113&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Weighting Avg&lt;/th&gt;&lt;td&gt;
+75.60 avg.&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Hints Uses&lt;/th&gt;&lt;td&gt;
+0 hits&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Max Depth&lt;/th&gt;&lt;td&gt;
+32&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Machine&lt;/th&gt;&lt;td&gt;
+Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+SokoSolve&lt;/th&gt;&lt;td&gt;
+1.2.24-solver-baseline2&lt;/td&gt;&lt;/tr&gt;
+
+&lt;/table&gt;
+</Description>
+                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -701,7 +784,90 @@
           <Row>~~~~#...#~~</Row>
           <Row>~~~~###O#~~</Row>
           <Row>~~~~~~###~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="4" StartY="1">
+              <Steps>ddldrddrdddrruuuuurrddlruulldddddlluuulldrullldrurrrrrdddlluuluuuldrddrddrruuullrruurrddlldddlluuluudrrrllluluurdrddrrdddlluuluuddrddrruuullulluururdddludrdrrdddlluuludrddrruuulldllulld</Steps>
+              <SolutionDescription License="Creative Commons" Date="2008-01-11T19:02:25.6386515+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>&lt;table class="tabledata"&gt;
+&lt;tr&gt;&lt;th&gt;
+Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;
+606 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Evaluation Time&lt;/th&gt;&lt;td&gt;
+606.872 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Evaluation Itterations&lt;/th&gt;&lt;td&gt;
+89514 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Total Nodes&lt;/th&gt;&lt;td&gt;
+31674 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Duplicates&lt;/th&gt;&lt;td&gt;
+33825 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+DeadNodes&lt;/th&gt;&lt;td&gt;
+14379 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Eval Worker List&lt;/th&gt;&lt;td&gt;
+35519&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+MoveMapTime&lt;/th&gt;&lt;td&gt;
+0.001 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+EvalTime&lt;/th&gt;&lt;td&gt;
+0.000 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+EvalChildTime&lt;/th&gt;&lt;td&gt;
+0.030 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+DuplicateCheckTime&lt;/th&gt;&lt;td&gt;
+0.011 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Weighting Min&lt;/th&gt;&lt;td&gt;
+0&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Weighting Max&lt;/th&gt;&lt;td&gt;
+130&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Weighting Avg&lt;/th&gt;&lt;td&gt;
+86.30 avg.&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Hints Uses&lt;/th&gt;&lt;td&gt;
+0 hits&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Max Depth&lt;/th&gt;&lt;td&gt;
+57&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Machine&lt;/th&gt;&lt;td&gt;
+Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+SokoSolve&lt;/th&gt;&lt;td&gt;
+1.2.24-solver-baseline2&lt;/td&gt;&lt;/tr&gt;
+
+&lt;/table&gt;
+</Description>
+                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -854,7 +1020,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="181.8" PuzzleID="P41" CategoryREF="C4" Order="21">
+    <Puzzle Rating="181.8" PuzzleID="P41" CategoryREF="C3" Order="21">
       <PuzzleDescription>
         <Name>Edgy Grave</Name>
         <Description />
@@ -867,7 +1033,90 @@
           <Row>##.X#.OO$.X..P#</Row>
           <Row>~#..X.O.###...#</Row>
           <Row>~########~#####</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="13" StartY="3">
+              <Steps>luulllddlururrrddllrruullldldlurrurrrddlllullddlluurrllllulldrrrrrllllddrulurrrddrrurrrrdrullllldlluullddrrurr</Steps>
+              <SolutionDescription License="Creative Commons" Date="2008-01-11T18:47:43.444139+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>&lt;table class="tabledata"&gt;
+&lt;tr&gt;&lt;th&gt;
+Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;
+102 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Evaluation Time&lt;/th&gt;&lt;td&gt;
+102.578 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Evaluation Itterations&lt;/th&gt;&lt;td&gt;
+35525 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Total Nodes&lt;/th&gt;&lt;td&gt;
+11208 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Duplicates&lt;/th&gt;&lt;td&gt;
+10221 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+DeadNodes&lt;/th&gt;&lt;td&gt;
+8786 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Eval Worker List&lt;/th&gt;&lt;td&gt;
+16449&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+MoveMapTime&lt;/th&gt;&lt;td&gt;
+0.001 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+EvalTime&lt;/th&gt;&lt;td&gt;
+0.000 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+EvalChildTime&lt;/th&gt;&lt;td&gt;
+0.012 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+DuplicateCheckTime&lt;/th&gt;&lt;td&gt;
+0.005 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Weighting Min&lt;/th&gt;&lt;td&gt;
+0&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Weighting Max&lt;/th&gt;&lt;td&gt;
+125&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Weighting Avg&lt;/th&gt;&lt;td&gt;
+85.73 avg.&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Hints Uses&lt;/th&gt;&lt;td&gt;
+0 hits&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Max Depth&lt;/th&gt;&lt;td&gt;
+46&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Machine&lt;/th&gt;&lt;td&gt;
+Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+SokoSolve&lt;/th&gt;&lt;td&gt;
+1.2.24-solver-baseline2&lt;/td&gt;&lt;/tr&gt;
+
+&lt;/table&gt;
+</Description>
+                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>

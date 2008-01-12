@@ -75,7 +75,7 @@ namespace SokoSolve.UI.Section.Solver
         /// <param name="graphics"></param>
         public override void Draw(Graphics graphics)
         {
-            graphics.FillRectangle(new SolidBrush(Color.LightGoldenrodYellow), renderCanvas.ToDrawingRect());
+            graphics.FillRectangle(SystemBrushes.ControlDark, renderCanvas.ToDrawingRect());
 
             int ccy = 0;
             int vspace = renderCanvas.Height / (bands.Count + 1);
@@ -233,8 +233,8 @@ namespace SokoSolve.UI.Section.Solver
         {
             this.region = region;
 
-            graphics.FillRectangle(GetBrush(node), region.ToDrawingRect());
-            graphics.DrawRectangle(GetPen(node), region.ToDrawingRect());
+            graphics.FillEllipse(GetBrush(node), region.ToDrawingRect());
+            graphics.DrawEllipse(GetPen(node), region.ToDrawingRect());
 
             // Draw path to parent
             if (node.TreeNode.Parent != null)
@@ -263,10 +263,10 @@ namespace SokoSolve.UI.Section.Solver
         {
             if (node != null)
             {
-                if (node.IsStateEvaluated) return new Pen(Color.Blue);
-                if (node.IsChildrenEvaluated) return new Pen(Color.Orange);
+                if (node.IsStateEvaluated) return new Pen(Color.Blue, 3f);
+                if (node.IsChildrenEvaluated) return new Pen(Color.Orange, 4f);
             }
-            return new Pen(Color.Gray);
+            return new Pen(Color.Gray, 3f);
         }
 
         protected Brush GetBrush(SolverNode node)

@@ -24,7 +24,7 @@ namespace SokoSolve.Core.Analysis.DeadMap
             Register(new CornerRule(this));
             Register(new BoxRule(this));
             Register(new RecessRule(this));
-            //Register(new HintsRule(this));
+            Register(new HintsRule(this));
             Register(new CleanUpRule(this));
         }
 

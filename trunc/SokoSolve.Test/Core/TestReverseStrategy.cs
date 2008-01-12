@@ -39,7 +39,6 @@ namespace SokoSolve.Test.Core
                 pMap.Map = map;
 
                 SolverController controller = new SolverController(pMap);
-                controller.IsEnabled = true;
                 ReverseStrategy rev = new ReverseStrategy(controller);
 
                 Evaluator<SolverNode> eval = new Evaluator<SolverNode>();

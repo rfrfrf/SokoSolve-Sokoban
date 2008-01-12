@@ -39,25 +39,38 @@ namespace SokoSolve.Core.Analysis.Solver
             BuildDeadMap();
 
             // Build Weighting matrix maps
-            BuildWeightingMap();
+            BuildForwardWeightingMap();
+            BuildReverseWeightingMap();
+        }
+
+        /// <summary>
+        /// Build the reverse weighting map
+        /// </summary>
+        private void BuildReverseWeightingMap()
+        {
+            // Set goals
+            staticReverseCrateWeighting = new Matrix(initialCrateMap, 10f);
+
+            // Average
+            staticReverseCrateWeighting = staticReverseCrateWeighting.Average();
         }
 
         /// <summary>
         /// Build the weighting maps
         /// </summary>
-        private void BuildWeightingMap()
+        private void BuildForwardWeightingMap()
         {
             // All goal positions get a vaue of 10
-            staticCrateWeighting = new Matrix(goalMap, 10f);
+            staticForwardCrateWeighting = new Matrix(goalMap, 10f);
 
             // Corner goals get another 10
             Bitmap cornerGoals = goalMap.BitwiseAND(cornerMap);
-            staticCrateWeighting = staticCrateWeighting.Add(new Matrix(cornerGoals, 10f));
+            staticForwardCrateWeighting = staticForwardCrateWeighting.Add(new Matrix(cornerGoals, 10f));
 
             // No crates will ever get onto a dead piece, but this will make the area around a dead cell less likely to be filled by crates
-            staticCrateWeighting = staticCrateWeighting.Add(new Matrix(deadMap, -2f));
+            staticForwardCrateWeighting = staticForwardCrateWeighting.Add(new Matrix(deadMap, -2f));
 
-            staticCrateWeighting = staticCrateWeighting.Average();
+            staticForwardCrateWeighting = staticForwardCrateWeighting.Average();
 
             // Player map
             staticPlayerRating = new Matrix(controller.Map.Size);
@@ -116,52 +129,81 @@ namespace SokoSolve.Core.Analysis.Solver
 
         #region Maps
 
+        /// <summary>
+        /// All wall positions
+        /// </summary>
         public SolverBitmap WallMap
         {
             get { return wallMap; }
         }
 
+        /// <summary>
+        /// All floor positions (including goals)
+        /// </summary>
         public SolverBitmap FloorMap
         {
             get { return floorMap; }
         }
 
+        /// <summary>
+        /// All goal positions
+        /// </summary>
         public SolverBitmap GoalMap
         {
             get { return goalMap; }
         }
 
+        /// <summary>
+        /// Boundry map (all wall and void) positions
+        /// </summary>
         public SolverBitmap BoundryMap
         {
             get { return boundryMap; }
         }
 
+        /// <summary>
+        /// Initial (start) crate positions
+        /// </summary>
         public SolverBitmap InitialCrateMap
         {
             get { return initialCrateMap; }
         }
 
+        /// <summary>
+        /// Deadmap, all positions on which a crate will make the puzzle unsolvable
+        /// </summary>
         public SolverBitmap DeadMap
         {
             get { return deadMap; }
         }
 
-
+        /// <summary>
+        /// All corner positions
+        /// </summary>
         public SolverBitmap CornerMap
         {
             get { return cornerMap; }
         }
 
+        /// <summary>
+        /// All recesses
+        /// </summary>
         public SolverBitmap RecessMap
         {
             get { return recessMap; }
         }
 
-        public Matrix StaticCrateWeighting
+        /// <summary>
+        /// Static forward weightings
+        /// </summary>
+        public Matrix StaticForwardCrateWeighting
         {
-            get { return staticCrateWeighting; }
+            get { return staticForwardCrateWeighting; }
         }
 
+        /// <summary>
+        /// Weighting for the player positions (not currently used)
+        /// </summary>
         public Matrix StaticPlayerRating
         {
             get { return staticPlayerRating; }
@@ -185,7 +227,8 @@ namespace SokoSolve.Core.Analysis.Solver
         private SolverBitmap deadMap;
         private SolverBitmap cornerMap;
         private SolverBitmap recessMap;
-        private Matrix staticCrateWeighting;
+        private Matrix staticForwardCrateWeighting;
+        private Matrix staticReverseCrateWeighting;
         private Matrix staticPlayerRating;
 
         private SolverController controller;

@@ -50,7 +50,7 @@ namespace SokoSolve.Core.Analysis.Solver
 
         private void TimerCallBack(object state)
         {
-            if (controller.IsEnabled)
+            if (controller.State != SolverController.States.Running)
             {
                 CurrentEvalSecs.AddMeasure(1f);
             }

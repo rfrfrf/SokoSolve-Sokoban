@@ -239,7 +239,8 @@ namespace SokoSolve.Core.Analysis.DeadMap
                         if (hint[hintY][hintX] == 'C') context[cx + hintX, cy + hintY] = true;
                     }
 
-                context.Strategy.Controller.Stats.HintsUsed.Increment();
+                
+                //context.Strategy.Controller.Stats.HintsUsed.Increment();
             }
         }
 

@@ -22,12 +22,12 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <param name="puzzleMap">Map to solve</param>
         public SolverController(PuzzleMap puzzleMap)
         {
+            this.state = States.NotStarted;
             this.puzzleMap = puzzleMap;
             debugReport = new SolverReport();
-            attempted = false;
             stats = new SolverStats(this);
             exitConditions = new ExitConditions();
-            isEnabled = true;
+            
 
             // TODO: This should be configured, perhaps via a factory pattern
             strategy = new SolverStrategy(this);
@@ -35,6 +35,21 @@ namespace SokoSolve.Core.Analysis.Solver
 
             reverseStrategy = new ReverseStrategy(this);
             reverseEvaluator = new Evaluator<SolverNode>(true);
+        }
+
+        /// <summary>
+        /// Controller internal states (used to controll threading, validation, etc)
+        /// This is similar to EvalStatus , but includes paused
+        /// </summary>
+        public enum States
+        {
+            NotStarted,
+            Paused,
+            Running,
+            Cancelled,
+            CompleteSolution,
+            CompleteNoSolution,
+            CompleteFailed
         }
 
         /// <summary>
@@ -95,12 +110,12 @@ namespace SokoSolve.Core.Analysis.Solver
         }
 
         /// <summary>
-        /// Helper for threading (allow the solver to be stopped)
+        /// The internal calculation state <see cref="States"/>
         /// </summary>
-        public bool IsEnabled
+        public States State
         {
-            get { return isEnabled; }
-            set { isEnabled = value; }
+            get { return state; }
+            set { state = value; }
         }
 
         /// <summary>
@@ -116,7 +131,7 @@ namespace SokoSolve.Core.Analysis.Solver
         /// </summary>
         public EvalStatus Solve()
         {
-            if (attempted) throw new Exception("Solve cannot be re-run on a single instance, this may cause state corruption.");
+            if (state != States.NotStarted) throw new Exception("Solve cannot be re-run on a single instance, this may cause state corruption.");
 
             CodeTimer solveTime = new CodeTimer();
             solveTime.Start();
@@ -126,9 +141,9 @@ namespace SokoSolve.Core.Analysis.Solver
                 debugReport.Append("Solver starting");
                 
                 // Init
-                IsEnabled = true;
+                state = States.Running;
                 stats.Start();
-                attempted = true;
+                
 
                 // Prepare forward
                 Thread.CurrentThread.Name = "FWD";
@@ -141,6 +156,10 @@ namespace SokoSolve.Core.Analysis.Solver
                 // Start forward
                 debugReport.AppendTimeStamp("Forward Started.");
                 EvalStatus result = evaluator.Evaluate(strategy);
+                if (result == EvalStatus.CompleteSolution)
+                {
+                    state = States.CompleteSolution;
+                }
 
                 debugReport.AppendTimeStamp("Forward Complete. Status:{0}", result);
 
@@ -157,12 +176,14 @@ namespace SokoSolve.Core.Analysis.Solver
             }
             catch (Exception ex)
             {
+                state = States.CompleteNoSolution;
                 debugReport.AppendException(ex);
                 throw new Exception("Solver failed.", ex);
             }
             finally
             {
-                IsEnabled = false;
+                if (state == States.Running) state = States.CompleteNoSolution;
+
                 stats.Stop();
                 stats.EvaluationTime.AddMeasure(solveTime);
             }
@@ -201,6 +222,7 @@ namespace SokoSolve.Core.Analysis.Solver
                 debugReport.Append("Found a forward chain {0}<->{1}", match.Data.NodeID, reverseNode.NodeID);
                 match.Data.Status = SolverNodeStates.SolutionChain;
                 reverseNode.Status = SolverNodeStates.SolutionChain;
+                state = States.CompleteSolution;
                 return true;
             }
             return false;
@@ -221,6 +243,7 @@ namespace SokoSolve.Core.Analysis.Solver
                 debugReport.Append("Found a reverse chain {0}<->{1}", match.Data.NodeID, forwardNode.NodeID);
                 match.Data.Status = SolverNodeStates.SolutionChain;
                 forwardNode.Status = SolverNodeStates.SolutionChain;
+                state = States.CompleteSolution;
                 return true;
             }
             return false;
@@ -241,11 +264,9 @@ namespace SokoSolve.Core.Analysis.Solver
             return (lhs.CrateMap == rhs.CrateMap && lhs.MoveMap == rhs.MoveMap && lhs.MoveMap != null);
         }
 
-        private bool attempted;
         private SolverReport debugReport;
         private Evaluator<SolverNode> evaluator;
         private ExitConditions exitConditions;
-        private bool isEnabled;
         private PuzzleMap puzzleMap;
         private SolverStats stats;
         private SolverStrategy strategy;
@@ -253,5 +274,9 @@ namespace SokoSolve.Core.Analysis.Solver
         private Evaluator<SolverNode> reverseEvaluator;
         private Thread reverseWorker;
         private Exception reverseWorkerException;
+        private States state;
+
+
+     
     }
 }

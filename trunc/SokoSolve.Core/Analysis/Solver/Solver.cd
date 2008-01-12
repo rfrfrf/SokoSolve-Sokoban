@@ -5,7 +5,7 @@
     <Position X="3.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <FileName>Analysis\Solver\SolverController.cs</FileName>
-      <HashCode>EBAAAAAQCBAAAQgAAAEAAAAIAAABAAAAIUAAADBABAA=</HashCode>
+      <HashCode>EBAAAAgQCBQIAAgAAAABAAKIAAABAAAEIUAABDBAAAI=</HashCode>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="PuzzleMap" />
@@ -15,6 +15,13 @@
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
+    <NestedTypes>
+      <Enum Name="SokoSolve.Core.Analysis.Solver.SolverController.States" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Analysis\Solver\SolverController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
   </Class>
   <Class Name="SokoSolve.Core.Analysis.Solver.SolverAPI">
     <Position X="1" Y="0.5" Width="1.5" />
@@ -24,7 +31,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SokoSolve.Core.Analysis.Solver.SolverBitmap">
-    <Position X="8.25" Y="6.25" Width="2" />
+    <Position X="8.25" Y="6.75" Width="2" />
     <TypeIdentifier>
       <FileName>Analysis\Solver\SolverBitmap.cs</FileName>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
@@ -47,10 +54,10 @@
     </Compartments>
   </Class>
   <Class Name="SokoSolve.Core.Analysis.Solver.SolverStrategy">
-    <Position X="5.75" Y="1.5" Width="1.5" />
+    <Position X="5.75" Y="1.5" Width="2" />
     <TypeIdentifier>
       <FileName>Analysis\Solver\SolverStrategy.cs</FileName>
-      <HashCode>AAAAAAAAAQAAQEEBAUCAAUEDBAAAAAgAAAAIAAAAAKA=</HashCode>
+      <HashCode>AAAAAAAAAQAEQEEBAUCAAUECBQAAAAgAAAAIAAAAACA=</HashCode>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="StaticAnalysis" />
@@ -110,14 +117,14 @@
     <Position X="11.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <FileName>Analysis\DeadMap\DeadMapAnalysis.cs</FileName>
-      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAABAAAAA=</HashCode>
+      <HashCode>EAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAgAAAABAAAAA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="SokoSolve.Core.Analysis.DeadMap.DeadMapState">
-    <Position X="11.25" Y="6.25" Width="1.5" />
+    <Position X="11.5" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <FileName>Analysis\DeadMap\DeadMapAnalysis.cs</FileName>
-      <HashCode>KCAAACAAIACAACAAAAAAgAAQAICCEAAAAgAABBgAAAA=</HashCode>
+      <HashCode>KCAAACAAIACAACAAAEAAgAAQAICCEAAAAgAAABgAAAA=</HashCode>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="DeadMapAnalysis" />

@@ -222,49 +222,54 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <returns></returns>
         private float CalcWeighting(SolverNode node)
         {
-            //################################
-            // Simple depth-last weighting
-            if (node.TreeNode != null)
+            if (false)
             {
-                return 100 - node.TreeNode.Depth;
+                //################################
+                // Simple depth-last weighting
+                //if (node.TreeNode != null)
+                //{
+                //    return 100 - node.TreeNode.Depth;
+                //}
+                //else
+                //{
+                //    return 0;
+                //}    
             }
             else
             {
-                return 0;
+                //################################
+                // Building weighting
+
+                // Start with crate map weighting
+                float weighting = new Matrix(node.CrateMap, 1f).Multiply(staticAnalysis.StaticForwardCrateWeighting).Total();
+
+                // Add a movemap weighting
+                if (node.MoveMap != null) weighting += node.CrateMap.BitwiseAND(staticAnalysis.GoalMap).Count * 0.3f;
+
+                // Tree related datd
+                if (node.TreeNode != null)
+                {
+                    // Add a depth weight
+                    weighting += node.TreeNode.Depth * -0.3f;
+
+                    // Add a parent weighting
+                    weighting += node.TreeNode.Parent == null ? 0 : node.TreeNode.Parent.Data.Weighting * 0.5f;
+
+                    // Add a children (proliferation) weighting
+                    weighting += node.TreeNode.Count * 1.6f;
+
+                    // Make sure we eval all beginning nodes
+                    if (node.TreeNode.Depth < 2) weighting = rootWeighting;
+                }
+
+
+                //  Record in stats
+                controller.Stats.WeightingAvg.AddMeasure(weighting);
+                if (controller.Stats.WeightingMin.ValueTotal > weighting) controller.Stats.WeightingMin.ValueTotal = weighting;
+                if (controller.Stats.WeightingMax.ValueTotal < weighting) controller.Stats.WeightingMax.ValueTotal = weighting;
+
+                return weighting;
             }
-
-            //################################
-            // Building weighting
-            
-            // Start with crate map weighting
-            float weighting = new Matrix(node.CrateMap, 1f).Multiply(staticAnalysis.StaticCrateWeighting).Total();
-
-            // Add a movemap weighting
-            if (node.MoveMap != null) weighting += node.CrateMap.BitwiseAND(staticAnalysis.GoalMap).Count * 0.3f;
-
-            // Tree related datd
-            if (node.TreeNode != null)
-            {
-                // Add a depth weight
-                weighting += node.TreeNode.Depth * -0.3f;
-
-                // Add a parent weighting
-                weighting += node.TreeNode.Parent == null ? 0 : node.TreeNode.Parent.Data.Weighting * 0.5f;
-
-                // Add a children (proliferation) weighting
-                weighting += node.TreeNode.Count * 1.6f;
-
-                // Make sure we eval all beginning nodes
-                if (node.TreeNode.Depth < 2) weighting = rootWeighting;
-            }
-
-         
-            //  Record in stats
-            controller.Stats.WeightingAvg.AddMeasure(weighting);
-            if (controller.Stats.WeightingMin.ValueTotal > weighting) controller.Stats.WeightingMin.ValueTotal = weighting;
-            if (controller.Stats.WeightingMax.ValueTotal < weighting) controller.Stats.WeightingMax.ValueTotal = weighting;
-
-            return weighting;
         }
 
         /// <summary>
