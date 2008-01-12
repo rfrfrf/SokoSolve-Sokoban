@@ -217,6 +217,14 @@ namespace SokoSolve.Core.Analysis.Solver
             get { return deadMapAnalysis; }
         }
 
+        /// <summary>
+        /// Controller class
+        /// </summary>
+        public SolverController Controller
+        {
+            get { return controller; }
+        }
+
         #endregion
 
         private SolverBitmap wallMap;

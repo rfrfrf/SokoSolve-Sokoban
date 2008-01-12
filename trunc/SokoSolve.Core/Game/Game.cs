@@ -167,12 +167,13 @@ namespace SokoSolve.Core.Game
         {
             FirstError = null;
             int cc = 0;
-            foreach (Direction move in aSolution.ToPath().Moves)
+            Direction[] moves = aSolution.ToPath().Moves;
+            foreach (Direction move in moves)
             {
                 MoveResult res = Move(move);
                 if (res == MoveResult.Invalid)
                 {
-                    FirstError = string.Format("Invalid move at step {0}", cc);
+                    FirstError = string.Format("Invalid move at step {0} of {1}", cc, moves.Length);
                     return false;
                 }
                 if (res == MoveResult.ValidPushWin) return true;

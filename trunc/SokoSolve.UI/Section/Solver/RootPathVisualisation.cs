@@ -8,14 +8,27 @@ using SokoSolve.Core.Analysis.Solver;
 
 namespace SokoSolve.UI.Section.Solver
 {
+    /// <summary>
+    /// Draw the path to the root, including all imediate children for each node on the path
+    /// </summary>
     class RootPathVisualisation : Visualisation
     {
+        /// <summary>
+        /// Strong constuctor
+        /// </summary>
+        /// <param name="cellSize"></param>
+        /// <param name="controller"></param>
         public RootPathVisualisation(SizeInt cellSize, SolverController controller)
         {
             this.cellSize = cellSize;
             this.controller = controller;
         }
 
+        /// <summary>
+        /// Retrive a display element for the corrosponding domain node
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
         public RootPathElement this[SolverNode node]
         {
             get { return elements.Find(delegate(RootPathElement item) { return item.Node == node; }); }
@@ -75,7 +88,7 @@ namespace SokoSolve.UI.Section.Solver
         /// <param name="graphics"></param>
         public override void Draw(Graphics graphics)
         {
-            graphics.FillRectangle(SystemBrushes.ControlDark, renderCanvas.ToDrawingRect());
+            graphics.FillRectangle(SystemBrushes.ControlLight, renderCanvas.ToDrawingRect());
 
             int ccy = 0;
             int vspace = renderCanvas.Height / (bands.Count + 1);
@@ -97,12 +110,14 @@ namespace SokoSolve.UI.Section.Solver
             }
         }
 
+        /// <summary>
+        /// Initialise the elements
+        /// </summary>
+        /// <param name="current"></param>
         public void Init(SolverNode current)
         {
             elements = new List<RootPathElement>();
             bands = new List<List<RootPathElement>>();
-            
-            
 
             int maxDepth = 0;
             int currentDepth = 10;
@@ -156,11 +171,7 @@ namespace SokoSolve.UI.Section.Solver
                     band.Remove(path);
                     band.Insert(band.Count/2, path);
                 }
-
             }
-
-            
-            
         }
 
         private bool Exists(SolverNode current)
@@ -174,7 +185,6 @@ namespace SokoSolve.UI.Section.Solver
         internal SolverController controller;
         private RectangleInt windowRegion;
         private RectangleInt renderCanvas;
-        
     }
 
     class RootPathElement : VisualisationElement

@@ -19,37 +19,41 @@ namespace SokoSolve.Test.Core
     public class TestSolver
     {
 
-        private void SolveFromString(string[] puzzle)
+        private int SolveFromString(string[] puzzle)
         {
             CodeTimer timer = new CodeTimer();
             timer.Start();
 
+            SokobanMap map = new SokobanMap();
+            map.setFromStrings(puzzle);
+
+            PuzzleMap pMap = new PuzzleMap(null);
+            pMap.Map = map;
+
+            SolverController controller = new SolverController(pMap);
+
             try
             {
-                SokobanMap map = new SokobanMap();
-                map.setFromStrings(puzzle);
+               
+                List<Solution> results = controller.Solve();
+                
 
-                PuzzleMap pMap = new PuzzleMap(null);
-                pMap.Map = map;
-
-                SolverController controller = new SolverController(pMap);
-                controller.Solve();
-                List<INode<SolverNode>> results = controller.Evaluator.Solutions;
-
-                Console.WriteLine(controller.DebugReport.ToString(new DebugReportFormatter()));
+            
                 
 
                 if (results == null || results.Count == 0)
                 {
                     System.Console.WriteLine("No Solutions found.");
-                    return;
+                    return 0;
                 }
 
                 System.Console.WriteLine("No Solutions");
+                return results.Count;
             }
             finally
             {
                 timer.Stop();
+                Console.WriteLine(controller.DebugReport.ToString(new DebugReportFormatter()));
                 System.Console.WriteLine("Total Time: " + timer.Duration(1));
                 System.Console.WriteLine("---");
 
@@ -59,38 +63,43 @@ namespace SokoSolve.Test.Core
         [TestMethod]
         public  void TestSimplePuzzle()
         {
-          SolveFromString(new string[]
-		                           {
-         "~##~#####",
-          "##.##.O.#",
-          "#.##.XO.#",
-          "~##.X...#",
-          "##.XP.###",
-          "#.X..##~~",
-          "#OO.##.##",
-          "#...#~##~",
-          "#####~#~~"
-		                           });
+            string[] puzzle = new string[]
+                {
+                    "~##~#####",
+                    "##.##.O.#",
+                    "#.##.XO.#",
+                    "~##.X...#",
+                    "##.XP.###",
+                    "#.X..##~~",
+                    "#OO.##.##",
+                    "#...#~##~",
+                    "#####~#~~"
+                };
 
+            int solutions = SolveFromString(puzzle);
+            Assert.IsTrue(solutions > 0, "Must find a solution");
         }
 
         [TestMethod]
         public void TestMediumPuzzle()
         {
-            SolveFromString(new string[]
-		                           {
-"~~~###~~~~~",
-"~~##.#~####",
-"~##..###..#",
-"##.X......#",
-"#...PX.#..#",
-"###.X###..#",
-"~~#..#OO..#",
-"~##.##O#.##",
-"~#......##~",
-"~#.....##~~",
-"~#######~"
-		                           });
+            string[] puzzle = new string[]
+                {
+                    "~~~###~~~~~",
+                    "~~##.#~####",
+                    "~##..###..#",
+                    "##.X......#",
+                    "#...PX.#..#",
+                    "###.X###..#",
+                    "~~#..#OO..#",
+                    "~##.##O#.##",
+                    "~#......##~",
+                    "~#.....##~~",
+                    "~#######~"
+                };
+
+            int solutions = SolveFromString(puzzle);
+            Assert.IsTrue(solutions > 0, "Must find a solution");
         }
 
         [TestMethod]

@@ -227,7 +227,7 @@ namespace SokoSolve.Common.Math
 
         public override string ToString()
         {
-            return string.Format("X:{0} Y:{1}", x, y);
+            return string.Format("({0},{1})", x, y);
         }
 
         public VectorDouble ToVectorDouble()

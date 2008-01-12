@@ -13,13 +13,20 @@ namespace SokoSolve.Core.Model
     /// </summary>
     public class Solution
     {
+        /// <summary>
+        /// Strong contructor
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="startPosition"></param>
         public Solution(PuzzleMap parent, VectorInt startPosition)
         {
             this.map = parent;
             this.startPosition = startPosition;
         }
 
-
+        /// <summary>
+        /// Map for which there is a solution
+        /// </summary>
         public PuzzleMap Map
         {
             get { return map; }
@@ -54,6 +61,16 @@ namespace SokoSolve.Core.Model
         }
 
         /// <summary>
+        /// Test the solution to see if indeed it results in a solution. <see cref="Game.Test"/>
+        /// </summary>
+        /// <remarks>True means a solution is valid</remarks>
+        public bool Test(out string firstError)
+        {
+            SokoSolve.Core.Game.Game coreGame = new SokoSolve.Core.Game.Game(map.Puzzle, map.Map);
+            return coreGame.Test(this, out firstError);
+        }
+
+        /// <summary>
         /// Set the solution from a path
         /// </summary>
         /// <param name="solutionPath"></param>
@@ -66,32 +83,55 @@ namespace SokoSolve.Core.Model
                 char moveChar = '?';
                 switch (move)
                 {
-                    case (Direction.Up): moveChar = 'u'; break;
-                    case (Direction.Down): moveChar = 'd'; break;
-                    case (Direction.Left): moveChar = 'l'; break;
-                    case (Direction.Right): moveChar = 'r'; break;
+                    case (Direction.Up):
+                        moveChar = 'u';
+                        break;
+                    case (Direction.Down):
+                        moveChar = 'd';
+                        break;
+                    case (Direction.Left):
+                        moveChar = 'l';
+                        break;
+                    case (Direction.Right):
+                        moveChar = 'r';
+                        break;
                 }
                 sb.Append(moveChar);
             }
             steps = sb.ToString();
         }
 
+        /// <summary>
+        /// Debug information
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return string.Format("{0} {1}", Steps, details);
         }
 
+        /// <summary>
+        /// Convert to a path
+        /// </summary>
+        /// <returns></returns>
         public Path ToPath()
         {
             Path res = new Path(startPosition);
             foreach (char c in steps)
             {
-                switch(Char.ToLower(c))
+                switch (Char.ToLower(c))
                 {
-                    case ('u'): res.Add(Direction.Up); break;
-                    case ('d'): res.Add(Direction.Down); break;
-                    case ('l'): res.Add(Direction.Left); break;
-                    case ('r'): res.Add(Direction.Right);
+                    case ('u'):
+                        res.Add(Direction.Up);
+                        break;
+                    case ('d'):
+                        res.Add(Direction.Down);
+                        break;
+                    case ('l'):
+                        res.Add(Direction.Left);
+                        break;
+                    case ('r'):
+                        res.Add(Direction.Right);
                         break;
                 }
             }
@@ -111,12 +151,20 @@ namespace SokoSolve.Core.Model
             foreach (Move move in moveArray)
             {
                 char moveChar = '?';
-                switch(move.MoveDirection)
+                switch (move.MoveDirection)
                 {
-                    case (Direction.Up): moveChar = 'u'; break;
-                    case (Direction.Down): moveChar = 'd'; break;
-                    case (Direction.Left): moveChar = 'l'; break;
-                    case (Direction.Right): moveChar = 'r'; break;
+                    case (Direction.Up):
+                        moveChar = 'u';
+                        break;
+                    case (Direction.Down):
+                        moveChar = 'd';
+                        break;
+                    case (Direction.Left):
+                        moveChar = 'l';
+                        break;
+                    case (Direction.Right):
+                        moveChar = 'r';
+                        break;
                 }
 
                 if (move.isPush) moveChar = char.ToUpper(moveChar);
@@ -128,8 +176,8 @@ namespace SokoSolve.Core.Model
         }
 
         private GenericDescription details;
-        private string steps;
-        private VectorInt startPosition;
         private PuzzleMap map;
+        private VectorInt startPosition;
+        private string steps;
     }
 }

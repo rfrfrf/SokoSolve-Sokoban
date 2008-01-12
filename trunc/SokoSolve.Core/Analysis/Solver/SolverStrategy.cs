@@ -194,16 +194,23 @@ namespace SokoSolve.Core.Analysis.Solver
             VectorInt curentPos = VectorInt.Empty; 
             for (int cc=0; cc<nodePath.Count-1; cc++)
             {
-            
-               
-
                 Bitmap boundry = nodePath[cc].Data.CrateMap.BitwiseOR(staticAnalysis.BoundryMap);
 
                 // Find all positble moves for the player
                 FloodFillStrategy floodFill = new FloodFillStrategy(boundry, nodePath[cc].Data.PlayerPosition);
                 Evaluator<LocationNode> eval = new Evaluator<LocationNode>();
                 eval.Evaluate(floodFill);
-                List<LocationNode> shortestPath = floodFill.GetShortestPath(nodePath[cc+1].Data.PlayerPositionBeforeMove);
+
+                VectorInt dest;
+                if (cc == nodePath.Count-2)
+                {
+                    dest = nodePath[cc + 1].Data.PlayerPositionBeforeMove;
+                }
+                else
+                {
+                    dest = nodePath[cc + 1].Data.PlayerPositionBeforeMove;
+                }
+                List<LocationNode> shortestPath = floodFill.GetShortestPath(dest);
                 if (shortestPath == null) throw new InvalidOperationException("New player position must be on the path. This should never happen");
 
                 foreach (LocationNode locationNode in shortestPath)
@@ -211,6 +218,9 @@ namespace SokoSolve.Core.Analysis.Solver
                     result.Add(locationNode.Location);
                 }
             }
+
+            // Add the last step
+            result.Add(nodePath[nodePath.Count - 1].Data.PlayerPosition);
 
             return result;
         }

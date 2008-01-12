@@ -110,9 +110,10 @@ namespace SokoSolve.Common
             if (source == null || source.Count == 0) return string.Empty;
 
             StringBuilder sb = new StringBuilder();
+            bool first = true;
             foreach (T item in source)
             {
-                if (!object.ReferenceEquals(item, source[0]))
+                if (!first)
                 {
                     sb.Append(sep);
                 }
@@ -125,6 +126,8 @@ namespace SokoSolve.Common
                 {
                     sb.Append(item.ToString());
                 }
+
+                first = false;
             }
             return sb.ToString();
         }

@@ -500,6 +500,84 @@
                 <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
               </SolutionDescription>
             </Solution>
+            <Solution StartX="1" StartY="4">
+              <Steps>drdrdrdrrrrruurlddlllllulululuurrrruurrrrddrduulullllddllllddrdrdrdrrrrrrrulruddlllllllulululuurrrruurrrrddrdddldrddluruuuuuulullllddrddlluruuurrrrddrdddddllllllulululuurrrlllddrdrdrdrrrrrruuuuuulullllddllldrurruurrrrddrdddddllllllulululur</Steps>
+              <SolutionDescription Date="2008-01-12T22:49:45.5163225+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>&lt;table class="tabledata"&gt;
+&lt;tr&gt;&lt;th&gt;
+Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;
+0 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Evaluation Time&lt;/th&gt;&lt;td&gt;
+0.000 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Evaluation Itterations&lt;/th&gt;&lt;td&gt;
+1988 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Total Nodes&lt;/th&gt;&lt;td&gt;
+454 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Duplicates&lt;/th&gt;&lt;td&gt;
+585 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+DeadNodes&lt;/th&gt;&lt;td&gt;
+589 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Eval Worker List&lt;/th&gt;&lt;td&gt;
+2200&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+MoveMapTime&lt;/th&gt;&lt;td&gt;
+0.001 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+EvalTime&lt;/th&gt;&lt;td&gt;
+0.000 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+EvalChildTime&lt;/th&gt;&lt;td&gt;
+0.006 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+DuplicateCheckTime&lt;/th&gt;&lt;td&gt;
+0.002 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Weighting Min&lt;/th&gt;&lt;td&gt;
+0&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Weighting Max&lt;/th&gt;&lt;td&gt;
+125&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Weighting Avg&lt;/th&gt;&lt;td&gt;
+92.95 avg.&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Hints Uses&lt;/th&gt;&lt;td&gt;
+0 hits&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Max Depth&lt;/th&gt;&lt;td&gt;
+17&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Machine&lt;/th&gt;&lt;td&gt;
+Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr&gt;
+
+&lt;/table&gt;
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
           </Solutions>
         </Map>
       </Maps>
@@ -1114,6 +1192,84 @@ SokoSolve&lt;/th&gt;&lt;td&gt;
 &lt;/table&gt;
 </Description>
                 <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+              </SolutionDescription>
+            </Solution>
+            <Solution StartX="13" StartY="3">
+              <Steps>luulllddlururrrddllrruullldldlurrurrrddlllullddlluullulldrddrrrllluurlddrrruurrrlllddllluurrrrrddlululllddrrruurdldllulurrrdrrrrrrdrrullllllrrrrruullldurrrddllluurrdrdluullddlruurrddll</Steps>
+              <SolutionDescription Date="2008-01-12T22:56:52.142337+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>&lt;table class="tabledata"&gt;
+&lt;tr&gt;&lt;th&gt;
+Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;
+0 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Evaluation Time&lt;/th&gt;&lt;td&gt;
+0.000 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Evaluation Itterations&lt;/th&gt;&lt;td&gt;
+20265 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Total Nodes&lt;/th&gt;&lt;td&gt;
+7437 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Duplicates&lt;/th&gt;&lt;td&gt;
+6665 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+DeadNodes&lt;/th&gt;&lt;td&gt;
+5770 nodes&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Eval Worker List&lt;/th&gt;&lt;td&gt;
+6302&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+MoveMapTime&lt;/th&gt;&lt;td&gt;
+0.000 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+EvalTime&lt;/th&gt;&lt;td&gt;
+0.000 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+EvalChildTime&lt;/th&gt;&lt;td&gt;
+0.006 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+DuplicateCheckTime&lt;/th&gt;&lt;td&gt;
+0.003 sec&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Weighting Min&lt;/th&gt;&lt;td&gt;
+0&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Weighting Max&lt;/th&gt;&lt;td&gt;
+125&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Weighting Avg&lt;/th&gt;&lt;td&gt;
+85.79 avg.&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Hints Uses&lt;/th&gt;&lt;td&gt;
+236 hits&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Max Depth&lt;/th&gt;&lt;td&gt;
+46&lt;/td&gt;&lt;/tr&gt;
+
+&lt;tr&gt;&lt;th&gt;
+Machine&lt;/th&gt;&lt;td&gt;
+Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr&gt;
+
+&lt;/table&gt;
+</Description>
+                <Author />
               </SolutionDescription>
             </Solution>
           </Solutions>

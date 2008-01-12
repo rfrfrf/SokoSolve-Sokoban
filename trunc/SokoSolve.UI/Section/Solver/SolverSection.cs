@@ -26,23 +26,6 @@ namespace SokoSolve.UI.Section.Solver
     public partial class SolverSection : UserControl
     {
         /// <summary>
-        /// Is the solver completed?
-        /// </summary>
-        private bool complete;
-
-        private Exception lastException;
-        private PuzzleMap map;
-
-        /// <summary>
-        /// Target call-back for completion
-        /// </summary>
-        private OnCompleteDelegate OnComplete;
-
-        private SolverController solver;
-        private EvalStatus solverEvalStatus;
-        private Thread worker;
-
-        /// <summary>
         /// Default Constructor
         /// </summary>
         public SolverSection()
@@ -50,7 +33,6 @@ namespace SokoSolve.UI.Section.Solver
             InitializeComponent();
 
             OnComplete = SolverComplete;
-            solverEvalStatus = EvalStatus.NotStarted;
             treeViewer.OnVisualisationClick += new EventHandler<VisEventArgs>(OnVisualisationClick_TreeViewer);
             visualisationContainerLocalNodes.OnVisualisationClick += new EventHandler<VisEventArgs>(OnVisualisationClick_LocalNode);
             visualisationContainerReverseTree.OnVisualisationClick += new EventHandler<VisEventArgs>(OnVisualisationClick_ReverseTree);
@@ -75,7 +57,7 @@ namespace SokoSolve.UI.Section.Solver
                 tsbStart.Enabled = map != null;
                 complete = false;
                 solver = null;
-                solverEvalStatus = EvalStatus.NotStarted;
+
 
                 // This only happend once
                 bitmapViewerStatic.MapSize = map.Map.Size;
@@ -94,7 +76,7 @@ namespace SokoSolve.UI.Section.Solver
         /// </summary>
         private bool SolverActive
         {
-            get { return (worker != null && worker.IsAlive); }
+            get { return (worker != null && worker.IsAlive && solver.State == SolverController.States.Running); }
         }
 
         /// <summary>
@@ -104,9 +86,32 @@ namespace SokoSolve.UI.Section.Solver
         {
             get
             {
-                if (complete) return "Complete " + solverEvalStatus.ToString();
-                if (SolverActive) return "Working " + solverEvalStatus.ToString();
-                return "Inactive " + solverEvalStatus.ToString();
+                switch(solver.State)
+                {
+                    case (SolverController.States.NotStarted):
+                        tslStatus.ForeColor = Color.Black;
+                        return "Not Started";
+                    case (SolverController.States.CompleteSolution):
+                        tslStatus.ForeColor = Color.Green;
+                        return "Solution found";
+                    case (SolverController.States.CompleteNoSolution):
+                        tslStatus.ForeColor = Color.OrangeRed;
+                        return "No solutions found";
+                    case (SolverController.States.Cancelled):
+                        tslStatus.ForeColor = Color.Gray;
+                        return "Cancelled";
+                    case (SolverController.States.Error):
+                        tslStatus.ForeColor = Color.Red;
+                        return "Error";
+                    case (SolverController.States.Paused):
+                        tslStatus.ForeColor = Color.Black;
+                        return "Paused";
+                    case (SolverController.States.Running):
+                        tslStatus.ForeColor = Color.Blue;
+                        return "Running";
+                    default:
+                        return "";
+                }
             }
         }
 
@@ -118,7 +123,7 @@ namespace SokoSolve.UI.Section.Solver
             try
             {
                 complete = false;
-                solverEvalStatus = EvalStatus.InProgress;
+
                 solver = new SolverController(map);
 
                 solver.ExitConditions.StopOnSolution = exitConditions.cbStopOnSolution.Checked;
@@ -127,7 +132,7 @@ namespace SokoSolve.UI.Section.Solver
                 solver.ExitConditions.MaxItterations = (int)exitConditions.upMaxItter.Value;
                 solver.ExitConditions.MaxTimeSecs = (int)(exitConditions.upMaxTime.Value * 60);
                 
-                solverEvalStatus = solver.Solve();
+                solutions = solver.Solve();
                 complete = true;
             }
             catch (Exception ex)
@@ -157,7 +162,7 @@ namespace SokoSolve.UI.Section.Solver
                 if (solver == null) return; // Thread Abort.
 
                 // Found a solutions?
-                if (solverEvalStatus == EvalStatus.CompleteSolution)
+                if (solutions != null && solutions.Count > 0)
                 {
                     DialogResult result = MessageBox.Show(
                         "Solution found, do you want to save it? This will also include a report in the description.",
@@ -166,32 +171,31 @@ namespace SokoSolve.UI.Section.Solver
                     {
                         
 
-                        Solution sol = new Solution(Map, Map.Map.Player);
-                        sol.Details = new GenericDescription();
-                        sol.Details.Name = "SokoSolve Solution";
-                        sol.Details.Author = new GenericDescriptionAuthor();
-                        sol.Details.Author.Name = ProfileController.Current.UserName;
-                        sol.Details.Author.Email = ProfileController.Current.UserEmail;
-                        sol.Details.Author.Homepage = ProfileController.Current.UserHomepage;
-                        sol.Details.License = ProfileController.Current.UserLicense;
-                        sol.Details.Date = DateTime.Now;
-                        sol.Details.DateSpecified = true;
+                        //Solution sol = new Solution(Map, Map.Map.Player);
+                        //sol.Details = new GenericDescription();
+                        //sol.Details.Name = "SokoSolve Solution";
+                        //sol.Details.Author = new GenericDescriptionAuthor();
+                        //sol.Details.Author.Name = ProfileController.Current.UserName;
+                        //sol.Details.Author.Email = ProfileController.Current.UserEmail;
+                        //sol.Details.Author.Homepage = ProfileController.Current.UserHomepage;
+                        //sol.Details.License = ProfileController.Current.UserLicense;
+                        //sol.Details.Date = DateTime.Now;
+                        //sol.Details.DateSpecified = true;
 
-                        // Build a description
-                        SolverLabelList labels = solver.Stats.GetDisplayData();
-                        labels.Add("Machine", string.Format("{0} Running {1}.", DebugHelper.GetCPUDescription(), Environment.OSVersion));
-                        labels.Add("SokoSolve", Program.GetVersionString());
-                        sol.Details.Description = labels.ToHTML(null, "tabledata");
+                        //// Build a description
+                        //SolverLabelList labels = solver.Stats.GetDisplayData();
+                        //labels.Add("Machine", string.Format("{0} Running {1}.", DebugHelper.GetCPUDescription(), Environment.OSVersion));
+                        //labels.Add("SokoSolve", Program.GetVersionString());
+                        //sol.Details.Description = labels.ToHTML(null, "tabledata");
 
-                        Path path = solver.Strategy.BuildPath(solver.Evaluator.Solutions[0].Data);
-                        sol.Set(path);
-                        Map.Solutions.Add(sol);
+                        //Path path = solver.Strategy.BuildPath(solver.Evaluator.Solutions[0].Data);
+                        //sol.Set(path);
+                        Map.Solutions.Add(solutions[0]);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Solver failed: " + solverEvalStatus.ToString(), "No Solution Found",
-                                    MessageBoxButtons.OK);
+                    MessageBox.Show("Solver failed." , "No Solution Found", MessageBoxButtons.OK);
                 }
 
                 // Write a solver log report
@@ -244,14 +248,25 @@ namespace SokoSolve.UI.Section.Solver
             tsbPause.Enabled = SolverActive;
             tsbStart.Enabled = !SolverActive;
 
+            richTextBoxSolverReport.Clear();
+
             if (lastException != null)
             {
-                webBrowserGlobalStats.DocumentText = "<code style=\"font-size: 10pt\"><pre>" +
-                                                     StringHelper.Report(lastException) +
-                                                     "</pre></code>";
+                richTextBoxSolverReport.AppendText("###########################################" + Environment.NewLine);
+                richTextBoxSolverReport.AppendText(StringHelper.Report(lastException));
+                richTextBoxSolverReport.AppendText(Environment.NewLine);
+                richTextBoxSolverReport.AppendText("###########################################" + Environment.NewLine);
+                if (solver != null && solver.DebugReport != null)
+                {
+                    richTextBoxSolverReport.AppendText(solver.DebugReport.ToString(new DebugReportFormatter()));    
+                }
+                richTextBoxSolverReport.AppendText("###########################################" + Environment.NewLine);
                 tslStatus.Text = lastException.Message;
+                tslStatus.ForeColor = Color.Red;
                 return;
             }
+
+            tslStatus.ForeColor = Color.Black;
 
             tslStatus.Text = string.Format("{1} - {0}", Status, map.Puzzle.Details.Name);
 
@@ -288,6 +303,7 @@ namespace SokoSolve.UI.Section.Solver
                         weightLayer.BrushAlt = new SolidBrush(Color.FromArgb(200, Color.Red));
                         weightLayer.Font = new Font("Arial Narrow", 7f);
                         bitmapViewerStatic.SetLayer(weightLayer);
+
 
                         bitmapViewerStatic.Render();
                     }
@@ -554,5 +570,25 @@ namespace SokoSolve.UI.Section.Solver
         private delegate void OnCompleteDelegate();
 
         #endregion
+
+        /// <summary>
+        /// Is the solver completed?
+        /// </summary>
+        private bool complete;
+
+        private Exception lastException;
+        private PuzzleMap map;
+
+        /// <summary>
+        /// Target call-back for completion
+        /// </summary>
+        private OnCompleteDelegate OnComplete;
+
+        private SolverController solver;
+
+        private Thread worker;
+
+
+        private List<Solution> solutions;
     }
 }

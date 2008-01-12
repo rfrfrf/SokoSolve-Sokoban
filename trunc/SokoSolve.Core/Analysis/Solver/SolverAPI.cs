@@ -16,13 +16,17 @@ namespace SokoSolve.Core.Analysis.Solver
         /// </summary>
         /// <param name="Map">Puzzle to solve</param>
         /// <returns>null implies no solution, or failed attempt</returns>
-        public List<INode<SolverNode>> Solve(PuzzleMap Map)
+        public SolverResult Solve(PuzzleMap Map)
         {
             SolverController ctrl = new SolverController(Map);
             ctrl.Solve();
 
+            throw new NotImplementedException();
+
             // Convert solution 
-            return ctrl.Evaluator.Solutions;
+            return null;
         }
     }
+
+   
 }

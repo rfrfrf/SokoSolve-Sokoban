@@ -60,6 +60,11 @@ namespace SokoSolve.UI.Section.Solver
             this.visualisationContainerLocalNodes = new SokoSolve.UI.Section.Solver.VisualisationContainer();
             this.tabPageStaticImage = new System.Windows.Forms.TabPage();
             this.pictureBoxStaticImage = new System.Windows.Forms.PictureBox();
+            this.tabPageBatchMode = new System.Windows.Forms.TabPage();
+            this.listViewBatch = new System.Windows.Forms.ListView();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.splitContainerBottom = new System.Windows.Forms.SplitContainer();
             this.tabControlStaticDetails = new System.Windows.Forms.TabControl();
             this.tabPageStaticMaps = new System.Windows.Forms.TabPage();
@@ -76,11 +81,6 @@ namespace SokoSolve.UI.Section.Solver
             this.bitmapViewerNodeMaps = new SokoSolve.UI.Section.Solver.BitmapViewer();
             this.webBrowserNodeCurrent = new System.Windows.Forms.WebBrowser();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.tabPageBatchMode = new System.Windows.Forms.TabPage();
-            this.listViewBatch = new System.Windows.Forms.ListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.toolStripMain.SuspendLayout();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
@@ -97,6 +97,7 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageLocalNodes.SuspendLayout();
             this.tabPageStaticImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStaticImage)).BeginInit();
+            this.tabPageBatchMode.SuspendLayout();
             this.splitContainerBottom.Panel1.SuspendLayout();
             this.splitContainerBottom.Panel2.SuspendLayout();
             this.splitContainerBottom.SuspendLayout();
@@ -110,7 +111,6 @@ namespace SokoSolve.UI.Section.Solver
             this.splitContainerCurrentNode.Panel1.SuspendLayout();
             this.splitContainerCurrentNode.Panel2.SuspendLayout();
             this.splitContainerCurrentNode.SuspendLayout();
-            this.tabPageBatchMode.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripMain
@@ -327,7 +327,6 @@ namespace SokoSolve.UI.Section.Solver
             this.richTextBoxSolverReport.Size = new System.Drawing.Size(386, 206);
             this.richTextBoxSolverReport.TabIndex = 0;
             this.richTextBoxSolverReport.Text = "";
-            this.richTextBoxSolverReport.WordWrap = false;
             // 
             // tabPageSolverBrowser
             // 
@@ -401,6 +400,48 @@ namespace SokoSolve.UI.Section.Solver
             this.pictureBoxStaticImage.Size = new System.Drawing.Size(157, 206);
             this.pictureBoxStaticImage.TabIndex = 0;
             this.pictureBoxStaticImage.TabStop = false;
+            // 
+            // tabPageBatchMode
+            // 
+            this.tabPageBatchMode.Controls.Add(this.listViewBatch);
+            this.tabPageBatchMode.Location = new System.Drawing.Point(4, 22);
+            this.tabPageBatchMode.Name = "tabPageBatchMode";
+            this.tabPageBatchMode.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageBatchMode.Size = new System.Drawing.Size(163, 212);
+            this.tabPageBatchMode.TabIndex = 3;
+            this.tabPageBatchMode.Text = "Batch Mode";
+            this.tabPageBatchMode.UseVisualStyleBackColor = true;
+            // 
+            // listViewBatch
+            // 
+            this.listViewBatch.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listViewBatch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listViewBatch.FullRowSelect = true;
+            this.listViewBatch.GridLines = true;
+            this.listViewBatch.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2});
+            this.listViewBatch.Location = new System.Drawing.Point(3, 3);
+            this.listViewBatch.Name = "listViewBatch";
+            this.listViewBatch.Size = new System.Drawing.Size(157, 206);
+            this.listViewBatch.TabIndex = 0;
+            this.listViewBatch.UseCompatibleStateImageBehavior = false;
+            this.listViewBatch.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Library";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Puzzle";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Status";
             // 
             // splitContainerBottom
             // 
@@ -579,48 +620,6 @@ namespace SokoSolve.UI.Section.Solver
             this.timer.Interval = 3000;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // tabPageBatchMode
-            // 
-            this.tabPageBatchMode.Controls.Add(this.listViewBatch);
-            this.tabPageBatchMode.Location = new System.Drawing.Point(4, 22);
-            this.tabPageBatchMode.Name = "tabPageBatchMode";
-            this.tabPageBatchMode.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageBatchMode.Size = new System.Drawing.Size(163, 212);
-            this.tabPageBatchMode.TabIndex = 3;
-            this.tabPageBatchMode.Text = "Batch Mode";
-            this.tabPageBatchMode.UseVisualStyleBackColor = true;
-            // 
-            // listViewBatch
-            // 
-            this.listViewBatch.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3});
-            this.listViewBatch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listViewBatch.FullRowSelect = true;
-            this.listViewBatch.GridLines = true;
-            this.listViewBatch.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2});
-            this.listViewBatch.Location = new System.Drawing.Point(3, 3);
-            this.listViewBatch.Name = "listViewBatch";
-            this.listViewBatch.Size = new System.Drawing.Size(157, 206);
-            this.listViewBatch.TabIndex = 0;
-            this.listViewBatch.UseCompatibleStateImageBehavior = false;
-            this.listViewBatch.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Library";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Puzzle";
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Status";
-            // 
             // SolverSection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -646,6 +645,7 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageLocalNodes.ResumeLayout(false);
             this.tabPageStaticImage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStaticImage)).EndInit();
+            this.tabPageBatchMode.ResumeLayout(false);
             this.splitContainerBottom.Panel1.ResumeLayout(false);
             this.splitContainerBottom.Panel2.ResumeLayout(false);
             this.splitContainerBottom.ResumeLayout(false);
@@ -660,7 +660,6 @@ namespace SokoSolve.UI.Section.Solver
             this.splitContainerCurrentNode.Panel1.ResumeLayout(false);
             this.splitContainerCurrentNode.Panel2.ResumeLayout(false);
             this.splitContainerCurrentNode.ResumeLayout(false);
-            this.tabPageBatchMode.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

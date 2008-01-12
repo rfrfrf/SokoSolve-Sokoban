@@ -135,8 +135,8 @@ namespace SokoSolve.UI.Section.Solver
         {
             Init();
 
-            graphics.FillRectangle(SystemBrushes.ControlDark, RenderCanvas.ToDrawingRect());
-            graphics.DrawRectangle(new Pen(SystemBrushes.ControlLight, 2f), RenderCanvas.ToDrawingRect());
+            graphics.FillRectangle(SystemBrushes.ControlLight, RenderCanvas.ToDrawingRect());
+            graphics.DrawRectangle(new Pen(SystemBrushes.ControlDark, 2f), RenderCanvas.ToDrawingRect());
 
             // Draw all nodes.
             // This is a very slow (but nicely genric) method; it may be faster to not make the wrapping GridVisualisationElement 

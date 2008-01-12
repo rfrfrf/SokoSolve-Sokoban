@@ -130,6 +130,18 @@ namespace SokoSolve.Common.Structures
         /// <summary>
         /// Add a move to the path
         /// </summary>
+        /// <param name="aPath"></param>
+        public void Add(Path aPath)
+        {
+            foreach (Direction dir in aPath.Moves)
+            {
+                Add(dir);
+            }
+        }
+
+        /// <summary>
+        /// Add a move to the path
+        /// </summary>
         /// <param name="nextPosition"></param>
         public void Add(VectorInt nextPosition)
         {

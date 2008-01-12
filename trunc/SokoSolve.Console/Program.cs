@@ -33,9 +33,9 @@ namespace SokoSolve.Console
                 pMap.Map = map;
 
                 SolverAPI api = new SolverAPI();
-                List<INode<SolverNode>> results = api.Solve(pMap);
+                SolverResult results = api.Solve(pMap);
 
-                if (results == null || results.Count == 0)
+                if (!results.HasSolution)
                 {
                     System.Console.WriteLine("No Solutions found.");
                     return -1;

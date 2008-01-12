@@ -58,9 +58,13 @@ namespace SokoSolve.Core.Analysis.Solver
     /// </summary>
     public class SolverNode : IEvaluationNode, ITreeNodeBackReference<SolverNode>
     {
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public SolverNode()
         {
             status = SolverNodeStates.None;
+            playerPosition = VectorInt.Empty;
         }
 
         #region IEvaluationNode Members
@@ -118,7 +122,11 @@ namespace SokoSolve.Core.Analysis.Solver
         public VectorInt PlayerPosition
         {
             get { return playerPosition; }
-            set { playerPosition = value; }
+            set
+            {
+                if (value.IsNull) throw new ArgumentNullException("value", "PlayerPosition cannot be null");
+                playerPosition = value;
+            }
         }
 
         /// <summary>
@@ -159,18 +167,53 @@ namespace SokoSolve.Core.Analysis.Solver
             set { weighting = value; }
         }
 
+        /// <summary>
+        /// Provide a 'back-ref' to the tree node information
+        /// </summary>
         public TreeNode<SolverNode> TreeNode
         {
             get { return backRef; }
             set { backRef = value; }
         }
 
+        /// <summary>
+        /// Dynamic dead node map
+        /// </summary>
         public SolverBitmap DeadMap
         {
             get { return deadMap; }
             set { deadMap = value; }
         }
 
+        /// <summary>
+        /// The matching node in the forward/reverse chain
+        /// </summary>
+        public SolverNode ChainSolutionLink
+        {
+            get { return chainSolutionLink; }
+            set { chainSolutionLink = value; }
+        }
+
+        /// <summary>
+        /// This this a forward node
+        /// </summary>
+        public bool IsForward
+        {
+            get { return nodeID[0] == 'F';  }
+        }
+
+        /// <summary>
+        /// This this a reverse node
+        /// </summary>
+        public bool IsReverse
+        {
+            get { return !IsForward;  }
+        }
+
+        /// <summary>
+        /// Debug information
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return string.Format("[{0}] {1} {2} {3} {4} p{5}",
@@ -193,7 +236,7 @@ namespace SokoSolve.Core.Analysis.Solver
             txt.Add("Evaluated Children", isChildrenEvaluated);
             txt.Add("Status", status.ToString());
             txt.Add("Weighting", weighting);
-            txt.Add("Player", playerPosition.ToString());
+            txt.Add("Player", string.Format("{0} {1} -> {2}", PlayerPositionBeforeMove, MoveDirection, playerPosition));
             txt.Add("Depth", backRef.Depth);
             txt.Add("Total Depth", backRef.TotalDepth);
             if (backRef.HasChildren)
@@ -218,7 +261,10 @@ namespace SokoSolve.Core.Analysis.Solver
         // Derrived meta-state
         private SolverNodeStates status;
         private SolverBitmap deadMap;
+        private SolverNode chainSolutionLink;
         private float weighting;
         private TreeNode<SolverNode> backRef;
+
+      
     }
 }

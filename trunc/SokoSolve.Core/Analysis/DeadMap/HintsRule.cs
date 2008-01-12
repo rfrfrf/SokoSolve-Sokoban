@@ -22,15 +22,15 @@ namespace SokoSolve.Core.Analysis.DeadMap
     /// </remarks>
     internal class HintsRule : StrategyRule<DeadMapState>
     {
-        private List<Hint> hints;
-
-        public HintsRule(StrategyPatternBase<DeadMapState> strategy)
-            : base(strategy, "Sead the deadmap with common senarios, outside of  the generic rules")
+        /// <summary>
+        /// Standard Constructor
+        /// </summary>
+        /// <param name="strategy"></param>
+        public HintsRule(StrategyPatternBase<DeadMapState> strategy) : base(strategy, "Sead the deadmap with common senarios, outside of  the generic rules")
         {
             hints = new List<Hint>();
 
             // Apply the hint any any of the four directions
-
             CreateHintRotations("Recess Hovering #1", new string[]
                                                           {
                                                               "?WW?",
@@ -183,11 +183,19 @@ namespace SokoSolve.Core.Analysis.DeadMap
         {
             public string[] hint;
             public string name;
+            public bool IsForward;
 
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="name"></param>
+            /// <param name="hint"></param>
             public Hint(string name, string[] hint)
             {
                 this.name = name;
                 this.hint = hint;
+                this.IsForward = true;
             }
 
             /// <summary>
@@ -239,11 +247,14 @@ namespace SokoSolve.Core.Analysis.DeadMap
                         if (hint[hintY][hintX] == 'C') context[cx + hintX, cy + hintY] = true;
                     }
 
-                
-                //context.Strategy.Controller.Stats.HintsUsed.Increment();
+               
+                // Increase the hints
+               context.DeadMapAnalysis.StaticAnalysis.Controller.Stats.HintsUsed.Increment();
             }
         }
 
         #endregion
+
+        private List<Hint> hints;
     }
 }

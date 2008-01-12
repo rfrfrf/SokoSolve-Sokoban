@@ -53,6 +53,7 @@
     <Compile Include="Analysis\Solver\SolverLabelList.cs" />
     <Compile Include="Analysis\Solver\SolverNodeEventArgs.cs" />
     <Compile Include="Analysis\Solver\SolverReport.cs" />
+    <Compile Include="Analysis\Solver\SolverResult.cs" />
     <Compile Include="Analysis\Solver\SolverStats.cs" />
     <Compile Include="Analysis\Solver\Statistic.cs" />
     <Compile Include="Analysis\Solver\Matrix.cs" />

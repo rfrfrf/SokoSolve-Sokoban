@@ -36,7 +36,7 @@ namespace SokoSolve.Core.Analysis.Solver
             {
                 exitStatus = EvalStatus.ExitIncomplete;
                 Status = exitStatus;
-                controller.DebugReport.AppendTimeStamp("Exiting - Controller not Enabled");
+                controller.DebugReport.AppendTimeStamp("Exiting - Controller not running");
                 return null;
             }
 

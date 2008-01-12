@@ -13,8 +13,11 @@ namespace SokoSolve.Core.Analysis.DeadMap
     /// </summary>
     class CornerRule : StrategyRule<DeadMapState>
     {
-        public CornerRule(StrategyPatternBase<DeadMapState> strategy) : 
-            base(strategy, "Corner Rule: For any position are there wall positions on either diagonal side")
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="strategy"></param>
+        public CornerRule(StrategyPatternBase<DeadMapState> strategy) :  base(strategy, "Corner Rule: For any position are there wall positions on either diagonal side")
         {
         }
 
@@ -51,6 +54,12 @@ namespace SokoSolve.Core.Analysis.DeadMap
             return RuleResult.Success;
         }
 
+        /// <summary>
+        /// Check an individual node
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="checkCell"></param>
+        /// <returns></returns>
         private bool CheckCorner(DeadMapState context, VectorInt checkCell)
         {
             // Check to see if this if a floor. As we do not have an explicit floor map use the wall map implicitly

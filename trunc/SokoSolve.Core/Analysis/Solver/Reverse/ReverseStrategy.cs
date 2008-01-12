@@ -39,12 +39,13 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
             staticAnalysis.Analyse();
            
             SolverNode endposition = new SolverNode();
+            endposition.NodeID = "R0";
 
             // Crate map is the goal map
             endposition.CrateMap = staticAnalysis.GoalMap;
 
             // We do not know that the player position is at the end
-            endposition.PlayerPosition = VectorInt.Empty; 
+            //endposition.PlayerPosition = VectorInt.Empty; 
 
             // Similarly, we do not know what the final move map is.
             // We need to merge all posible end move maps.
@@ -220,6 +221,49 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
         }
 
         /// <summary>
+        /// For a given node (normally a solution) build the player moves
+        /// </summary>
+        /// <param name="reverse"></param>
+        /// <returns></returns>
+        public Path BuildPath(SolverNode reverse)
+        {
+            List<TreeNode<SolverNode>> nodePath = reverse.TreeNode.GetPathToRoot();
+
+
+            Path result = new Path(nodePath[0].Data.ChainSolutionLink.PlayerPosition);
+
+            VectorInt startPos = result.StartLocation;
+            
+            for (int cc = 0; cc < nodePath.Count-1; cc++)
+            {
+                SolverNode node = nodePath[cc].Data;
+
+                Bitmap boundry = node.CrateMap.BitwiseOR(staticAnalysis.BoundryMap);
+
+                // Find all positble moves for the player
+                FloodFillStrategy floodFill = new FloodFillStrategy(boundry, startPos);
+                Evaluator<LocationNode> eval = new Evaluator<LocationNode>();
+                eval.Evaluate(floodFill);
+
+                VectorInt destPos = node.PlayerPosition;
+                List<LocationNode> shortestPath = floodFill.GetShortestPath(destPos);
+                if (shortestPath == null) throw new InvalidOperationException("New player position must be on the path. This should never happen");
+
+                foreach (LocationNode locationNode in shortestPath)
+                {
+                    result.Add(locationNode.Location);
+                }
+
+                startPos = node.PlayerPositionBeforeMove;
+                                
+            }
+
+            result.Add(VectorInt.Reverse(nodePath[nodePath.Count-2].Data.MoveDirection));
+
+            return result;
+        }
+
+        /// <summary>
         /// Prefix nodes with R for reverse
         /// </summary>
         /// <returns></returns>
@@ -343,5 +387,7 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
 
         private SolverController controller;
         private StaticAnalysis staticAnalysis;
+
+       
     }
 }

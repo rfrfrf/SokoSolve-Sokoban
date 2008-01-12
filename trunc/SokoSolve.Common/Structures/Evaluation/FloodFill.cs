@@ -18,6 +18,7 @@ namespace SokoSolve.Common.Structures
         /// <param name="startLocation"></param>
 		public FloodFillStrategy(IBitmap initialState, VectorInt startLocation)
 		{
+            if (startLocation.IsNull) throw new ArgumentException("Cannot be null", "startLocation");
 			this.initialState = initialState;
 			this.currentState = new Bitmap(initialState.Size);
 			this.startLocation = startLocation;
