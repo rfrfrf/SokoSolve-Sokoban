@@ -52,7 +52,7 @@ namespace SokoSolve.Common.Math
         #region Vector
 
         public  static readonly SizeInt Zero = new SizeInt(0, 0);
-        public  static readonly SizeInt Empty = new SizeInt(0, 0);
+        public  static readonly SizeInt Null = new SizeInt(0, 0);
         private int x;
         private int y;
 
@@ -75,6 +75,8 @@ namespace SokoSolve.Common.Math
         {
             get { return new SizeInt(int.MinValue, int.MinValue); }
         }
+
+        
 
         public VectorInt Add(VectorInt value)
         {
@@ -161,7 +163,7 @@ namespace SokoSolve.Common.Math
 
         public override string ToString()
         {
-            return string.Format("X:{0} Y:{1}", x, y);
+            return string.Format("{0}x{1}", x, y);
         }
 
         public VectorDouble ToVectorDouble()

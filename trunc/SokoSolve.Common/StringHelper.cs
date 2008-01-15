@@ -207,7 +207,37 @@ namespace SokoSolve.Common
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Provide a clean, intelligent string representation
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string ToString(float value)
+        {
+            return value.ToString("0.00");
+        }
 
+        public static string ToString(TimeSpan value)
+        {
+            if (value.TotalMilliseconds  < 1000)
+            {
+                return value.TotalMilliseconds.ToString("0")+ " ms";
+            }
+            if (value.TotalSeconds < 60)
+            {
+                return value.TotalSeconds.ToString("0.00") + " sec";
+            }
+            if (value.TotalMinutes < 60)
+            {
+                return string.Format("{0:00}m{1:00}s",  value.Minutes, value.Seconds);
+            }
+            if (value.TotalHours < 60)
+            {
+                return string.Format("{0:00}h{1:00}m", value.Hours, value.Minutes, value.Seconds);
+            }
+            return value.ToString();
+
+        }
 	
     }
 }

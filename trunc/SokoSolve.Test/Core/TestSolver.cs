@@ -35,20 +35,21 @@ namespace SokoSolve.Test.Core
             try
             {
                
-                List<Solution> results = controller.Solve();
+                
+                SolverResult results = controller.Solve();
                 
 
             
                 
 
-                if (results == null || results.Count == 0)
+                if (!results.HasSolution)
                 {
                     System.Console.WriteLine("No Solutions found.");
                     return 0;
                 }
 
                 System.Console.WriteLine("No Solutions");
-                return results.Count;
+                return results.Solutions.Count;
             }
             finally
             {

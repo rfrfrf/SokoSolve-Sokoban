@@ -30,7 +30,7 @@ namespace SokoSolve.Common.Math
     public struct VectorInt
     {
         public static readonly VectorInt Zero = new VectorInt(0, 0);
-        public static readonly VectorInt Empty = new VectorInt(int.MinValue, int.MinValue);
+        public static readonly VectorInt Null = new VectorInt(int.MinValue, int.MinValue);
         public static readonly VectorInt MinValue = new VectorInt(int.MinValue, int.MinValue);
         public static readonly VectorInt MaxValue = new VectorInt(int.MaxValue, int.MaxValue);
         private int x;

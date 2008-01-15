@@ -29,6 +29,11 @@ namespace SokoSolve.Core.Analysis.Solver
         {
             this.name = name;
         }
+
+        public SolverBitmap(SolverBitmap copy) : this(copy.name, new Bitmap(copy))
+        {
+            
+        }
         #endregion
 
        

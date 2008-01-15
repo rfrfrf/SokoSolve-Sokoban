@@ -27,7 +27,16 @@ namespace SokoSolve.Core.Model.Analysis
         /// <returns></returns>
         static public double CalcRating(SokobanMap Map)
         {
-            return (double)Map.Count(Cell.Goal) / (double)Map.Count(Cell.Floor) * 1000;
+            double result = 0;
+            result += Map.Count(Cell.Crate) * 1.0;
+            result += Map.Count(CellStates.FloorCrate) * 0.2;
+
+            if (PercentageComplete(Map) > 50)
+            {
+                // Counter-intuitive map
+                result *= 1.15;
+            }
+            return result;
         }
     }
 }

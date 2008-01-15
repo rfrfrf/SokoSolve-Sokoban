@@ -102,7 +102,7 @@ namespace SokoSolve.Core.UI.Nodes.Effects
 
             UpdateSize();
 
-            if (CurrentAbsolute != null)
+            if (!CurrentAbsolute.IsNull)
             {
                 if (brushBackGround != null)
                 {

@@ -33,6 +33,13 @@ namespace SokoSolve.UI.Section.Solver
             }
         }
 
+        [Browsable(false)]
+        public SolverController Controller
+        {
+            get { return treeRenderer.Controller; }
+            set { treeRenderer.Controller = value; }
+        }
+
         public void Init(SolverController controller)
         {
             treeRenderer = new TreeVisualisation(controller.Strategy.EvaluationTree, new RectangleInt(0, 0, 1800, 1800), new SizeInt(8, 8));

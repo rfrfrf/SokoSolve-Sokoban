@@ -52,6 +52,18 @@ namespace SokoSolve.UI.Section
             get { return detailPayload; }
         }
 
+        public void SetPayload(Control newControl)
+        {
+            if (!detailPayload.Controls.Contains(newControl))
+            {
+                detailPayload.SuspendLayout();
+                detailPayload.Controls.Clear();
+                newControl.Dock = DockStyle.Fill;
+                detailPayload.Controls.Add(newControl);
+                detailPayload.ResumeLayout();
+            }
+        }
+
         /// <summary>
         /// Refresh the entire UI 'explorer' sub-system.
         /// <list type="">

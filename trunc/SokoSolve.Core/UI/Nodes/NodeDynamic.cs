@@ -23,10 +23,9 @@ namespace SokoSolve.Core.UI.Nodes
         /// <param name="myCell"></param>
         /// <param name="myPuzzleLocation"></param>
         /// <param name="myDepth"></param>
-        public NodeDynamic(GameUI myGameUI, Cell myCell, VectorInt myPuzzleLocation, int myDepth)
-            : base(myGameUI, myCell, myPuzzleLocation, myDepth)
+        public NodeDynamic(GameUI myGameUI, Cell myCell, VectorInt myPuzzleLocation, int myDepth): base(myGameUI, myCell, myPuzzleLocation, myDepth)
         {
-            
+            target = VectorInt.Null;   
         }
 
         /// <summary>
@@ -51,7 +50,7 @@ namespace SokoSolve.Core.UI.Nodes
         /// </summary>
         public override void doStep()
         {
-            if (target == null) return;
+            if (target.IsNull) return;
 
             if (!Animate)
             {
@@ -71,6 +70,6 @@ namespace SokoSolve.Core.UI.Nodes
 
         protected bool Animate = false;
         protected int Speed = 16;
-        protected VectorInt  target;     
+        protected VectorInt  target =  VectorInt.Null;
     }
 }

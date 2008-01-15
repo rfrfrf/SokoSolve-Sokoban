@@ -130,24 +130,35 @@ namespace SokoSolve.Core.Analysis.Solver
         }
 
         /// <summary>
+        /// Cancel the current solver
+        /// </summary>
+        public void Cancel()
+        {
+            state = States.Cancelled;
+        }
+
+        /// <summary>
         /// Attempt to find a solution
         /// </summary>
         /// <returns>Solution class, or null which means no solution found</returns>
-        public List<Solution> Solve()
+        public SolverResult Solve()
         {
             if (state != States.NotStarted) throw new Exception("Solve cannot be re-run on a single instance, this may cause state corruption.");
+
+            SolverResult solverResult = new SolverResult();
 
             CodeTimer solveTime = new CodeTimer();
             solveTime.Start();
 
+            
             try
             {
                 debugReport.Append("Solver starting");
-                List<Solution> solutions = null;
                 
                 // Init
                 state = States.Running;
-                stats.Start();
+                // Start the stats timer (per sec)
+                stats.Start(); 
                 
                 // Prepare forward
                 if (Thread.CurrentThread.Name == null)
@@ -180,24 +191,30 @@ namespace SokoSolve.Core.Analysis.Solver
 
                 if (state == States.CompleteSolution)
                 {
-                    solutions = BuildSolutionPath();
+                    solverResult.Solutions = BuildSolutionPath();
                 }
 
                 // Exit
-                return solutions;
+               
             }
             catch (Exception ex)
             {
                 state = States.Error;
                 debugReport.AppendException(ex);
-                throw new Exception("Solver failed.", ex);
+                solverResult.Exception = ex;
             }
             finally
             {
                 if (state == States.Running) state = States.CompleteNoSolution;
+                // Stop the timer
                 stats.Stop();
                 stats.EvaluationTime.AddMeasure(solveTime);
             }
+
+            solverResult.ControllerResult = state;
+            solverResult.BuildSummary();
+
+            return solverResult;
         }
 
         /// <summary>

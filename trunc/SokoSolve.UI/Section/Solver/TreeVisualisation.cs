@@ -25,6 +25,7 @@ namespace SokoSolve.UI.Section.Solver
         private Pen summaryPen = new Pen(new SolidBrush(Color.DimGray), 2f);
         private Tree<SolverNode> tree;
         private RectangleInt windowRegion;
+        private SolverController controller;
 
         /// <summary>
         /// Strong COnstructoin
@@ -38,6 +39,15 @@ namespace SokoSolve.UI.Section.Solver
             // Calculate the render size
             RenderCanvas = renderSize;
             CellSize = cellSize;
+        }
+
+        /// <summary>
+        /// May be null
+        /// </summary>
+        public SolverController Controller
+        {
+            get { return controller; }
+            set { controller = value; }
         }
 
         /// <summary>
@@ -262,7 +272,7 @@ namespace SokoSolve.UI.Section.Solver
             public VectorInt GetNodePosition(TreeNode<SolverNode> node)
             {
                 int idx = treeSegment.Nodes.IndexOf(node);
-                if (idx < 0) return VectorInt.Empty;
+                if (idx < 0) return VectorInt.Null;
                 int layer = idx/MaxRegionNodeWidth;
                 int offset = idx%MaxRegionNodeWidth;
                 return new VectorInt(offset, layer);
@@ -365,7 +375,29 @@ namespace SokoSolve.UI.Section.Solver
         {
             get
             {
-                return 100;
+                if (owner.Controller == null)
+                {
+                    return 100;
+                }
+                else
+                {
+                    return owner.Controller.Stats.WeightingMax.ValueTotal;
+                }
+            }
+        }
+
+        public float MinWeighting
+        {
+            get
+            {
+                if (owner.Controller == null)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return owner.Controller.Stats.WeightingMin.ValueTotal;
+                }
             }
         }
 
@@ -377,24 +409,26 @@ namespace SokoSolve.UI.Section.Solver
                 {
                     case (SolverNodeStates.None):
 
+                        // Color Scale 0-255 Blue then 0-255 Green (0-512 color range)
+                        // This is match on scale to MinWeighting=0, MaxWeighting=512
+                        float colourIndexMin = 0;
+                        float colourIndexMax = 255*2;
 
-                        float weighting = node.Data.Weighting;
-                        if (weighting < 0)
-                        {
-                            return new SolidBrush(Color.DarkGray);
-                        }
-                        if (weighting == 0)
-                        {
-                            new SolidBrush(Color.Cornsilk);
-                        }
-                        if (MaxWeighting > 0)
-                        {
-                            int min = 50;
-                            int max = 250;
-                            int value = Convert.ToInt32(weighting/MaxWeighting*(float) max) % 255;
-                            return new SolidBrush(Color.FromArgb(50, value, 50));
-                        }
-                        return new SolidBrush(Color.Cornsilk);
+                        // Range 0-max in weightings
+                        float absrange = MaxWeighting - MinWeighting;
+                        
+                        // scale to colour index range
+                        float weightrange = (node.Data.Weighting - MinWeighting) /absrange;
+                        int colourIndex =  Convert.ToInt32(weightrange * (colourIndexMax - colourIndexMin) + colourIndexMin);
+                        
+                        // Convert to RGB
+                        int r=0, g=0, b=0;
+
+                        if (colourIndex < 255) g = (colourIndex % 255);
+                            else g = 255;
+                        if (colourIndex > 255) b = (colourIndex-255) % 255;
+
+                        return new SolidBrush(Color.FromArgb(r, g, b));
 
                     case (SolverNodeStates.Duplicate):
                         return new SolidBrush(Color.Brown);

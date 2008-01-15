@@ -69,7 +69,7 @@ namespace SokoSolve.Core.Model
                             return new VectorInt(px, py);
                         }
                     }
-                return VectorInt.Empty;
+                return VectorInt.Null;
             }
         }
         

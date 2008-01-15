@@ -29,7 +29,7 @@ namespace SokoSolve.UI
 		    profileControl = new Panel();
 		    browserControl = new InlineBrowser();
 		    welcomeControl = new Welcome();
-            solverControl = new SolverSection();
+            solverControl = new SolverSectionController();
 
             libControl.Size = Size;
             gameControl.Size = Size;
@@ -187,12 +187,22 @@ namespace SokoSolve.UI
             }
         }
 
+        /// <summary>
+        /// Start the solver controller on a map
+        /// </summary>
+        /// <param name="map"></param>
         public void Solve(PuzzleMap map)
         {
             Mode = Modes.Solver;
-            solverControl.Map = map;
+            solverControl.Library = map.Puzzle.Library;
+            solverControl.Puzzle = map.Puzzle;
         }
 
+        /// <summary>
+        /// Cleanup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (solverControl != null)
@@ -208,7 +218,7 @@ namespace SokoSolve.UI
         private InlineBrowser browserControl;
 	    private Welcome welcomeControl;
         private Modes mode;
-        private SolverSection solverControl;
+        private SolverSectionController solverControl;
 
        
 	}

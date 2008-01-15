@@ -190,7 +190,15 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <returns>A copy of the nodes</returns>
         public List<INode<SolverNode>> GetEvalList()
         {
-            return new List<INode<SolverNode>>(evalList);
+            if (useLinked)
+            {
+                return new List<INode<SolverNode>>(evalLinkedList);
+            }
+            else
+            {
+                return new List<INode<SolverNode>>(evalList);    
+            }
+            
         }
 
 

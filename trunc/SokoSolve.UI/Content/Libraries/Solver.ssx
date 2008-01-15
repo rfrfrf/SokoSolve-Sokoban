@@ -7,12 +7,12 @@
     <Author Name="SokoSolve" Email="bitwacker@users.sourceforge.net" Homepage="http://sokosolve.net" />
   </Details>
   <Categories>
-    <Category CategoryID="C0">
+    <Category CategoryID="C0" >
       <CategoryDescription>
         <Name>Master List</Name>
       </CategoryDescription>
     </Category>
-    <Category CategoryID="C6" CategoryParentREF="C0">
+    <Category CategoryID="C6" CategoryParentREF="C0" Order="1">
       <CategoryDescription License="Acknowledgement Required">
         <Name>Sasquatch</Name>
         <Description>See Sasquatch library (included with SokoSolve)</Description>
@@ -20,7 +20,7 @@
         <Author Name="David W. Skinner" Email="" Homepage="" />
       </CategoryDescription>
     </Category>
-    <Category CategoryID="C5" CategoryParentREF="C6">
+    <Category CategoryID="C5" CategoryParentREF="C6" Order="10">
       <CategoryDescription License="">
         <Name>Not Attempted</Name>
         <Description />
@@ -28,7 +28,7 @@
         <Author Name="" Email="" Homepage="" />
       </CategoryDescription>
     </Category>
-    <Category CategoryID="C4" CategoryParentREF="C6">
+    <Category CategoryID="C4" CategoryParentREF="C6" Order="9">
       <CategoryDescription License="">
         <Name>Failed</Name>
         <Description />
@@ -36,7 +36,7 @@
         <Author Name="" Email="" Homepage="" />
       </CategoryDescription>
     </Category>
-    <Category CategoryID="C1" CategoryParentREF="C6">
+    <Category CategoryID="C1" CategoryParentREF="C6" Order="8">
       <CategoryDescription License="">
         <Name>Solved</Name>
         <Description />
@@ -44,7 +44,7 @@
         <Author Name="" Email="" Homepage="" />
       </CategoryDescription>
     </Category>
-    <Category CategoryID="C2" CategoryParentREF="C1">
+    <Category CategoryID="C2" CategoryParentREF="C1" Order="6">
       <CategoryDescription License="">
         <Name>Quick</Name>
         <Description />
@@ -52,7 +52,7 @@
         <Author Name="" Email="" Homepage="" />
       </CategoryDescription>
     </Category>
-    <Category CategoryID="C3" CategoryParentREF="C1">
+    <Category CategoryID="C3" CategoryParentREF="C1" Order="7">
       <CategoryDescription License="">
         <Name>Long</Name>
         <Description />

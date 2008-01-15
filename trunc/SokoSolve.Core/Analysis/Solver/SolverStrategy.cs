@@ -97,6 +97,7 @@ namespace SokoSolve.Core.Analysis.Solver
         public override EvalStatus EvaluateState(INode<SolverNode> node)
         {
             controller.Stats.Nodes.AddMeasure(1f);
+            controller.Stats.NodesPerSecond.AddMeasure(1f);
 
             // Check if this is a solution
             if (node.Data.CrateMap.Equals(staticAnalysis.GoalMap))
@@ -191,7 +192,7 @@ namespace SokoSolve.Core.Analysis.Solver
             nodePath.Reverse();
 
             Path result = new Path(controller.Map.Player);
-            VectorInt curentPos = VectorInt.Empty; 
+            VectorInt curentPos = VectorInt.Null; 
             for (int cc=0; cc<nodePath.Count-1; cc++)
             {
                 Bitmap boundry = nodePath[cc].Data.CrateMap.BitwiseOR(staticAnalysis.BoundryMap);

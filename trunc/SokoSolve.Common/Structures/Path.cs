@@ -44,7 +44,7 @@ namespace SokoSolve.Common.Structures
         /// </summary>
         public bool IsValid
         {
-            get { return startLocation != null && moves != null; }
+            get { return !startLocation.IsNull && moves != null; }
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace SokoSolve.Common.Structures
                 List<VectorInt> result = new List<VectorInt>(moves.Count + 1);
                 result.Add(StartLocation);
 
-                VectorInt next = VectorInt.Empty;
+                VectorInt next = VectorInt.Null;
                 VectorInt current = StartLocation;
                 foreach (Direction move in moves)
                 {

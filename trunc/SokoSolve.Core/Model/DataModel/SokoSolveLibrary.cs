@@ -116,6 +116,10 @@ namespace SokoSolve.Core.Model.DataModel {
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(DataType="IDREF")]
         public string CategoryParentREF;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int Order;
     }
     
     /// <remarks/>

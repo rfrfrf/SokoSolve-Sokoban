@@ -27,7 +27,7 @@ namespace SokoSolve.Core.UI.Nodes
             Size = GameUI.GameCoords.GlobalTileSize;
 
             CurrentAbsolute = GameUI.GameCoords.PositionAbsoluteFromPuzzle(puzzleLocation);
-            if (CurrentAbsolute == null) throw new InvalidOperationException();
+            if (CurrentAbsolute.IsNull) throw new InvalidOperationException();
 
            
             DockPoint = DockPoint.TopLeft;
@@ -129,7 +129,7 @@ namespace SokoSolve.Core.UI.Nodes
 
       
         private Cell cell;
-        private VectorInt puzzleLocation;
+        private VectorInt puzzleLocation = VectorInt.Null;
         protected Image tileImage;
     }
 }

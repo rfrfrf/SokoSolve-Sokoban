@@ -23,7 +23,7 @@ namespace SokoSolve.Core.UI.Nodes.Effects
         {
 			VectorInt next = Path.getNext();
 
-            if (next == null)
+            if (next.IsNull)
             {
                 GameUI.Remove(this);
             }

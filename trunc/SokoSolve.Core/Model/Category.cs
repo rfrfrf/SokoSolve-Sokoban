@@ -12,6 +12,7 @@ namespace SokoSolve.Core.Model
         private string categoryID;
         private string categoryParentREF;
         private TreeNode<Category> treeNode;
+        private int order;
 
 
         public Category()
@@ -25,6 +26,21 @@ namespace SokoSolve.Core.Model
             set { details = value; }
         }
 
+
+        public int Order
+        {
+            get { return order; }
+            set { order = value; }
+        }
+
+        public string NestedOrder
+        {
+            get 
+            {
+                if (treeNode.IsRoot) return order.ToString("00");
+                else return treeNode.Parent.Data.NestedOrder + "." + order.ToString("00");
+             }
+        }
 
         public string CategoryID
         {

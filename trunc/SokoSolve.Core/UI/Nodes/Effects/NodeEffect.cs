@@ -27,8 +27,14 @@ namespace SokoSolve.Core.UI.Nodes.Effects
             {
                 VectorInt nextPos = path.getNext();
 
-                if (nextPos == null) Remove();
-                    else CurrentAbsolute = nextPos;
+                if (nextPos.IsNull)
+                {
+                    Remove();
+                }
+                else
+                {
+                    CurrentAbsolute = nextPos;
+                }
             }
         }
 

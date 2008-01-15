@@ -11,6 +11,10 @@ namespace SokoSolve.Core.Analysis.Solver
     /// </summary>
     public class SolverStats
     {
+        /// <summary>
+        /// Strong constuctor, also 'registers' all available stats
+        /// </summary>
+        /// <param name="controller"></param>
         public SolverStats(SolverController controller)
         {
             this.controller = controller;
@@ -21,6 +25,7 @@ namespace SokoSolve.Core.Analysis.Solver
             stats.Add(EvaluationTime);
             stats.Add(EvaluationItterations);
             stats.Add(Nodes);
+            stats.Add(NodesPerSecond);
             stats.Add(Duplicates);
             stats.Add(DeadNodes);
             stats.Add(AvgEvalList);
@@ -33,15 +38,19 @@ namespace SokoSolve.Core.Analysis.Solver
             stats.Add(WeightingAvg);
             stats.Add(HintsUsed);
             stats.Add(MaxDepth);
-            
-            
         }
 
+        /// <summary>
+        /// Start the stats per/sec counter
+        /// </summary>
         public void Start()
         {
             threadingTimer = new Timer(TimerCallBack, null, 1000, 1000);
         }
 
+        /// <summary>
+        /// Stop the stats timer
+        /// </summary>
         public void Stop()
         {
             threadingTimer.Dispose();
@@ -50,9 +59,17 @@ namespace SokoSolve.Core.Analysis.Solver
 
         private void TimerCallBack(object state)
         {
-            if (controller.State != SolverController.States.Running)
+            try
             {
                 CurrentEvalSecs.AddMeasure(1f);
+                foreach (Statistic stat in stats)
+                {
+                    stat.SecondTick();
+                }     
+            }
+            catch(Exception ex)
+            {
+                //TODO: Thread-safe bubbling
             }
         }
 
@@ -94,5 +111,6 @@ namespace SokoSolve.Core.Analysis.Solver
         public Statistic WeightingAvg = new Statistic("Weighting Avg", "{2:0.00} avg.");
         public Statistic HintsUsed = new Statistic("Hints Uses", "{1:0} hits");
         public Statistic MaxDepth = new Statistic("Max Depth", "{1:0}");
+        public StatisticRollingAverage NodesPerSecond = new StatisticRollingAverage("Node per second");
     }
 }

@@ -52,7 +52,7 @@ namespace SokoSolve.Core.UI
         {
             get
             {
-                if (currentAbsolute == VectorInt.Empty) return VectorInt.Empty;
+                if (currentAbsolute.IsNull) return VectorInt.Null;
                 return currentAbsolute.Subtract(gameUI.GameCoords.GlobalOffset);
             }
             set
@@ -68,7 +68,7 @@ namespace SokoSolve.Core.UI
         {
             get
             {
-                if (currentAbsolute == null) return null;
+                if (currentAbsolute.IsNull) return null;
                 return new RectangleInt(currentAbsolute, size);
             }
         }
@@ -163,7 +163,9 @@ namespace SokoSolve.Core.UI
             set { dockPoint = value; }
         }
 
-
+        /// <summary>
+        /// Has this node been removed from the animation subsystem (marked for deletion)
+        /// </summary>
         public bool IsRemoved
         {
             get { return isRemoved; }
@@ -173,9 +175,9 @@ namespace SokoSolve.Core.UI
         private int depth;
         private GameUI gameUI;
         private DockPoint dockPoint;
-        private VectorInt currentAbsolute;
-        private SizeInt size;
-        private VectorInt last;
+        private VectorInt currentAbsolute = VectorInt.Null;
+        private SizeInt size = SizeInt.Null;
+        private VectorInt last = VectorInt.Null;
         private bool isRemoved;
     }
 }

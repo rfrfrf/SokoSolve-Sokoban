@@ -1,14 +1,16 @@
 body
 {
 	font-family: Calibri, Verdana, Arial;
-	font-size: 11pt;
-	padding: 0px 0px 0px 0px;
+	font-size: 10.5pt;
+	padding: 0 0 0 0 ;
+	margin: 0 6 6 6;
 }
 
 h1
 {
 	font-family: Calibri, 'Bookman Old Style' , Verdana;
 	width: 100%;
+	font-size: 14pt;
 	border-bottom: lightsteelblue 2px solid;
 	color: #003366;
 	padding-bottom: 1px;
@@ -17,7 +19,8 @@ h1
 h2 
 {
 	width: 100%;
-	border-bottom: solid 1px lightsteelblue;
+	font-size: 12pt;
+	border-bottom: solid 1px lightgray;
 }
 
 table

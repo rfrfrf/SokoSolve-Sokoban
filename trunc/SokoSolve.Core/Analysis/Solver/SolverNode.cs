@@ -64,7 +64,32 @@ namespace SokoSolve.Core.Analysis.Solver
         public SolverNode()
         {
             status = SolverNodeStates.None;
-            playerPosition = VectorInt.Empty;
+            playerPosition = VectorInt.Null;
+        }
+
+        /// <summary>
+        /// Deep copy constructor -- Allows state to be preseved current state (but not treenode)
+        /// </summary>
+        public SolverNode(SolverNode rhs)
+        {
+           // Group: Base Eval items
+            nodeID = rhs.nodeID;
+            isStateEvaluated = rhs.isStateEvaluated;
+            isChildrenEvaluated = rhs.isChildrenEvaluated;
+        
+
+            // Basic state
+            if (rhs.crateMap != null) crateMap = new  Bitmap(rhs.crateMap);
+            if (rhs.moveMap != null) moveMap = new Bitmap(rhs.moveMap);
+            playerPosition = rhs.playerPosition;
+            moveDirection= rhs.moveDirection;
+
+            // Derrived meta-state
+            status = rhs.status;
+            if (rhs.deadMap!= null) deadMap = new SolverBitmap(rhs.deadMap);
+            if (rhs.chainSolutionLink != null) chainSolutionLink = new SolverNode(rhs.chainSolutionLink);
+            weighting = rhs.weighting;
+            backRef = rhs.backRef;
         }
 
         #region IEvaluationNode Members

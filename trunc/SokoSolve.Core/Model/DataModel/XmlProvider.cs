@@ -77,6 +77,7 @@ namespace SokoSolve.Core.Model.DataModel
                 SokobanLibraryCategory result = new SokobanLibraryCategory();
                 result.CategoryID = source.CategoryID;
                 result.CategoryDescription = source.Details;
+                result.Order = source.Order;
                 result.CategoryParentREF = source.CategoryParentREF;
                 return result;
             }
@@ -138,6 +139,7 @@ namespace SokoSolve.Core.Model.DataModel
                 cat.Details = xmlCategory.CategoryDescription;
                 cat.CategoryID = xmlCategory.CategoryID;
                 cat.CategoryParentREF = xmlCategory.CategoryParentREF;
+                cat.Order = xmlCategory.Order;
                 return cat;
             }
 

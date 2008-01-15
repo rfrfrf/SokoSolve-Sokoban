@@ -57,7 +57,7 @@ namespace SokoSolve.Common.Structures.Evaluation.Visualisation
             public VectorInt GetNodePosition(TreeNode<T> node)
             {
                 int idx = nodes.IndexOf(node);
-                if (idx < 0) return VectorInt.Empty;
+                if (idx < 0) return VectorInt.Null;
                 int layer = idx / MaxRegionNodeWidth;
                 int offset = idx % MaxRegionNodeWidth;
                 return new VectorInt(offset, layer);
@@ -90,10 +90,10 @@ namespace SokoSolve.Common.Structures.Evaluation.Visualisation
         /// <returns></returns>
         public VectorInt GetPixelFromLogical(TreeNode<T> node)
         {
-            if (node.Depth >= regions.Count) return VectorInt.Empty;
+            if (node.Depth >= regions.Count) return VectorInt.Null;
 
             SegmentRegion region = regions[node.Depth];
-            if (region == null) return VectorInt.Empty; 
+            if (region == null) return VectorInt.Null; 
 
             int height = 0;
             for (int cc = 0; cc < node.Depth; cc++)

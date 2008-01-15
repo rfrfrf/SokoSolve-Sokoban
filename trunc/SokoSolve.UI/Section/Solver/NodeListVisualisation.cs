@@ -18,12 +18,17 @@ namespace SokoSolve.UI.Section.Solver
         private List<NodeListVisualisationElement> elements;
 
 
+        /// <summary>
+        /// Strong constructor
+        /// </summary>
+        /// <param name="nodes"></param>
+        /// <param name="cellSize"></param>
         public NodeListVisualisation(List<SolverNode> nodes, SizeInt cellSize)
         {
             this.nodes = nodes;
             this.cellSize = cellSize;
 
-            int maxH = ((nodes.Count + 1)/maxCellWidth)*cellSize.Height;
+            int maxH = ((nodes.Count + 1)/maxCellWidth+1)*cellSize.Height;
             renderCanvas = new RectangleInt(0,0, cellSize.Width*maxCellWidth, maxH);
             windowRegion = renderCanvas;
         }
@@ -36,7 +41,7 @@ namespace SokoSolve.UI.Section.Solver
         public VectorInt GetLogicalPosition(SolverNode node)
         {
             int idx = nodes.IndexOf(node);
-            if (idx < 0) return VectorInt.Empty;
+            if (idx < 0) return VectorInt.Null;
 
             return new VectorInt(idx % maxCellWidth, idx / maxCellWidth);
         }

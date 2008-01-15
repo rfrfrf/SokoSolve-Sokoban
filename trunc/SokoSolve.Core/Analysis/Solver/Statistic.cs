@@ -38,7 +38,7 @@ namespace SokoSolve.Core.Analysis.Solver
             set { valueLast = value; }
         }
 
-        public float ValueTotal
+        public virtual float ValueTotal
         {
             get { return valueTotal; }
             set { valueTotal = value; }
@@ -110,6 +110,14 @@ namespace SokoSolve.Core.Analysis.Solver
             valueTotal += valueLast;
         }
 
+        /// <summary>
+        /// Perform any logic needed for a second tick
+        /// </summary>
+        public virtual void SecondTick()
+        {
+            
+        }
+
 
         /// <summary>
         /// Use a string.Format string to present the stat. Order is 
@@ -121,7 +129,7 @@ namespace SokoSolve.Core.Analysis.Solver
             set { stringFormat = value; }
         }
 
-        public SolverLabel GetDisplayData()
+        public virtual SolverLabel GetDisplayData()
         {
             if (stringFormat != null)
             {
@@ -163,13 +171,13 @@ namespace SokoSolve.Core.Analysis.Solver
             return value.ToString("0");
         }
 
-        private float valueLast;
-        private float valueTotal;
-        private int count;
+        protected float valueLast;
+        protected float valueTotal;
+        protected int count;
    
-        private string name;
-        private string description;
-        private string unitOfMeasure;
-        private string stringFormat = "{1} {4}, avg {2} of {3}";
+        protected string name;
+        protected string description;
+        protected string unitOfMeasure;
+        protected string stringFormat = "{1} {4}, avg {2} of {3}";
     }
 }

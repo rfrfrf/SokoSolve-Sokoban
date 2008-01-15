@@ -96,6 +96,12 @@
     <Compile Include="Controls\Secondary\ucImport.Designer.cs">
       <DependentUpon>ucImport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Secondary\ucPuzzleList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Secondary\ucPuzzleList.Designer.cs">
+      <DependentUpon>ucPuzzleList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Secondary\usProfileSettings.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -145,6 +151,12 @@
     <Compile Include="Section\Library\Items\ItemPuzzleMap.cs" />
     <Compile Include="Section\Library\Items\ItemPuzzle.cs" />
     <Compile Include="Section\Library\Items\ItemSolution.cs" />
+    <Compile Include="Section\Library\Items\PayloadLibrary.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Section\Library\Items\PayloadLibrary.Designer.cs">
+      <DependentUpon>PayloadLibrary.cs</DependentUpon>
+    </Compile>
     <Compile Include="Section\Library\Library.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -196,6 +208,10 @@
       <SubType>Designer</SubType>
       <DependentUpon>ucImport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Secondary\ucPuzzleList.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ucPuzzleList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Secondary\usProfileSettings.resx">
       <SubType>Designer</SubType>
       <DependentUpon>usProfileSettings.cs</DependentUpon>
@@ -211,6 +227,10 @@
     <EmbeddedResource Include="Section\Library\GenericPayload.resx">
       <SubType>Designer</SubType>
       <DependentUpon>GenericPayload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Section\Library\Items\PayloadLibrary.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PayloadLibrary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Section\Library\Library.resx">
       <SubType>Designer</SubType>
@@ -233,9 +253,17 @@
       <SubType>Designer</SubType>
       <DependentUpon>ExitConditions.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Section\Solver\SolverSection.resx">
+    <EmbeddedResource Include="Section\Solver\FormSolverVisualisation.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>SolverSection.cs</DependentUpon>
+      <DependentUpon>FormSolverVisualisation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Section\Solver\SolverSectionVisualisation.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SolverSectionVisualisation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Section\Solver\SolverSectionController.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SolverSectionController.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Section\Solver\TreeViewer.resx">
       <SubType>Designer</SubType>
@@ -275,14 +303,26 @@
     <Compile Include="Section\Solver\ExitConditions.Designer.cs">
       <DependentUpon>ExitConditions.cs</DependentUpon>
     </Compile>
+    <Compile Include="Section\Solver\FormSolverVisualisation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Section\Solver\FormSolverVisualisation.Designer.cs">
+      <DependentUpon>FormSolverVisualisation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Section\Solver\GridVisualisation.cs" />
     <Compile Include="Section\Solver\NodeListVisualisation.cs" />
     <Compile Include="Section\Solver\RootPathVisualisation.cs" />
-    <Compile Include="Section\Solver\SolverSection.cs">
+    <Compile Include="Section\Solver\SolverSectionVisualisation.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Section\Solver\SolverSection.Designer.cs">
-      <DependentUpon>SolverSection.cs</DependentUpon>
+    <Compile Include="Section\Solver\SolverSectionVisualisation.Designer.cs">
+      <DependentUpon>SolverSectionVisualisation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Section\Solver\SolverSectionController.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Section\Solver\SolverSectionController.Designer.cs">
+      <DependentUpon>SolverSectionController.cs</DependentUpon>
     </Compile>
     <Compile Include="Section\Solver\TreeViewer.cs">
       <SubType>UserControl</SubType>
@@ -320,6 +360,7 @@
     <Content Include="Content\Graphics\Icons\Edit.png" />
     <Content Include="Content\Graphics\Icons\Exit.png" />
     <Content Include="Content\Graphics\Icons\folderopen.ico" />
+    <None Include="Content\Graphics\Icons\Graph.png" />
     <Content Include="Content\Graphics\Icons\Help.png" />
     <None Include="Content\Graphics\Icons\Home.png" />
     <Content Include="Content\Graphics\Icons\Left.png" />
@@ -334,6 +375,7 @@
     <None Include="Content\Graphics\Icons\Stop.png" />
     <None Include="Content\Graphics\Icons\Refresh.png" />
     <None Include="Content\Libraries\Solver.ssx" />
+    <None Include="Content\Graphics\Icons\Report.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton1.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton2.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton3.png" />

@@ -174,7 +174,7 @@ namespace SokoSolve.Core.UI.Nodes.Complex
         {
             // Mark the current puzzle cell
             VectorInt cellPos = GameUI.GameCoords.PuzzleFromPositionAbs(CurrentAbsolute);
-            if (cellPos != null && GameUI.Current.Rectangle.Contains(cellPos))
+            if (!cellPos.IsNull && GameUI.Current.Rectangle.Contains(cellPos))
             {
                 VectorInt cellStartAbs = GameUI.GameCoords.PositionAbsoluteFromPuzzle(cellPos);
                 GameUI.Graphics.FillRectangle(brushCellMarker, cellStartAbs.X, cellStartAbs.Y, GameUI.GameCoords.GlobalTileSize.X, GameUI.GameCoords.GlobalTileSize.Y);    
@@ -188,7 +188,7 @@ namespace SokoSolve.Core.UI.Nodes.Complex
                     if (path != null)
                     {
                         Pen cratePen = new Pen(Color.Yellow, 2f);
-                        VectorInt lastPos = VectorInt.Empty;
+                        VectorInt lastPos = VectorInt.Null;
 
                         VectorInt startDrag = GameUI.GameCoords.PositionAbsoluteFromPuzzle(dragStartCellLocation);
 
@@ -204,7 +204,7 @@ namespace SokoSolve.Core.UI.Nodes.Complex
                             VectorInt cratePosPixelCenter = cratePosPixel.Add(GameUI.GameCoords.GlobalTileSize.Divide(2, 2));
 
                             //GameUI.Graphics.DrawRectangle(cratePen, cratePosPixelCenter.X -3, cratePosPixelCenter.Y -3, 6, 6);
-                            if (lastPos != null)
+                            if (!lastPos.IsNull)
                             {
                                 GameUI.Graphics.DrawLine(cratePen, lastPos.X, lastPos.Y, cratePosPixelCenter.X, cratePosPixelCenter.Y);
                             }

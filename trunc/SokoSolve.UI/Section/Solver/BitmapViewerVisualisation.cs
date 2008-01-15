@@ -54,7 +54,7 @@ namespace SokoSolve.UI.Section.Solver
             set
             {
                 base.GridSize = value;
-                if (!value.Equals(SizeInt.Empty))
+                if (!value.Equals(SizeInt.Null))
                 {
                     cells = new BitmapViewerVisualisationElement[value.Width,value.Height];
                     for (int cx = 0; cx < value.Width; cx++)

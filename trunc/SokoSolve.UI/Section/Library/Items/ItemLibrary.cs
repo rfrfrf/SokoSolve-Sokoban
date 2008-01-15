@@ -70,20 +70,24 @@ namespace SokoSolve.UI.Section.Library.Items
             }
             else
             {
-                if (!Explorer.DetailPayload.Controls.Contains(html))
-                {
-                    Explorer.DetailPayload.Controls.Clear();
-                    Explorer.DetailPayload.Controls.Add(html);
-                }
+                //if (!Explorer.DetailPayload.Controls.Contains(html))
+                //{
+                //    Explorer.DetailPayload.Controls.Clear();
+                //    Explorer.DetailPayload.Controls.Add(html);
+                //}
+
+                Explorer.SetPayload(payload);
 
                 if (DomainData != null)
                 {
-                    html.Dock = DockStyle.Fill;
-                    html.SetHTML( HtmlReporter.Report(DomainData).GetHTMLPage() );
+                    payload.ucPuzzleList.Library = DomainData;
+                    payload.htmlView1.SetHTML( HtmlReporter.Report(DomainData).GetHTMLPage() );
                 }
                 return html;
             }
 		}
+
+        private PayloadLibrary payload = new PayloadLibrary();
 
 
         void html_OnCommand(object sender, UIBrowserEvent e)

@@ -57,6 +57,7 @@
     <Compile Include="Analysis\Solver\SolverStats.cs" />
     <Compile Include="Analysis\Solver\Statistic.cs" />
     <Compile Include="Analysis\Solver\Matrix.cs" />
+    <Compile Include="Analysis\Solver\StatisticRollingAverage.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="Game\Game.cs" />
     <Compile Include="Game\Move.cs" />
