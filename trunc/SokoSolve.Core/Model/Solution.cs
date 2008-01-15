@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using SokoSolve.Common;
 using SokoSolve.Common.Math;
 using SokoSolve.Common.Structures;
 using SokoSolve.Core.Game;
@@ -108,6 +109,11 @@ namespace SokoSolve.Core.Model
         public override string ToString()
         {
             return string.Format("{0} {1}", Steps, details);
+        }
+
+        public string ToStringDisplay(string sep)
+        {
+            return StringHelper.Join(StringHelper.SplitOnLength(Steps, 60), sep);
         }
 
         /// <summary>

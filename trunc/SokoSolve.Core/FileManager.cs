@@ -17,6 +17,12 @@ namespace SokoSolve.Core
 				baseloc = AppDomain.CurrentDomain.SetupInformation.ApplicationBase.Replace("\\bin\\Debug", "") + "Content";
 			}
 
+            if (!Directory.Exists(baseloc))
+            {
+                // Assume we are in unit tests
+                baseloc = @"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content";
+            }
+
 			if (!Directory.Exists(baseloc))
 			{
 				throw new Exception("Cannot find the application content directory");

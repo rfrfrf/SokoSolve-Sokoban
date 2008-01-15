@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="Common\MatrixTest.cs" />
     <Compile Include="Common\Structures\BitmapTest.cs" />
+    <Compile Include="Core\Reporting\TestReporting.cs" />
     <Compile Include="Core\TestImporter.cs" />
     <Compile Include="Core\TestReverseStrategy.cs" />
     <Compile Include="Core\TestSolver.cs" />
@@ -57,6 +58,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Core\Mas Microban.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Core\Reporting\Sasquatch.ssx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
 </Project>

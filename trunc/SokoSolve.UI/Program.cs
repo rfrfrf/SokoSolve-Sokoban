@@ -59,13 +59,6 @@ Please make sure you have the latest version, you can do this by clicking Help -
 			error.ShowDialog();
 		}
 
-        /// <summary>
-        /// Application version string
-        /// </summary>
-        /// <returns></returns>
-        public static string GetVersionString()
-        {
-            return "1.3.32-beta";
-        }
+      
 	}
 }

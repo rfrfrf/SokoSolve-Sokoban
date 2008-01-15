@@ -53,6 +53,7 @@ namespace SokoSolve.Core.Analysis.Solver
             Cancelled,
             CompleteSolution,
             CompleteNoSolution,
+            CompleteNoSolutionInConstaints,
             Error
         }
 
@@ -146,6 +147,7 @@ namespace SokoSolve.Core.Analysis.Solver
             if (state != States.NotStarted) throw new Exception("Solve cannot be re-run on a single instance, this may cause state corruption.");
 
             SolverResult solverResult = new SolverResult();
+            solverResult.DebugReport = debugReport;
 
             CodeTimer solveTime = new CodeTimer();
             solveTime.Start();
@@ -194,6 +196,11 @@ namespace SokoSolve.Core.Analysis.Solver
                     solverResult.Solutions = BuildSolutionPath();
                 }
 
+                if (state == States.Running)
+                {
+                    state = States.CompleteNoSolutionInConstaints;
+                }
+
                 // Exit
                
             }
@@ -205,14 +212,14 @@ namespace SokoSolve.Core.Analysis.Solver
             }
             finally
             {
-                if (state == States.Running) state = States.CompleteNoSolution;
+               
                 // Stop the timer
                 stats.Stop();
                 stats.EvaluationTime.AddMeasure(solveTime);
             }
 
             solverResult.ControllerResult = state;
-            solverResult.BuildSummary();
+            solverResult.Build(this);
 
             return solverResult;
         }

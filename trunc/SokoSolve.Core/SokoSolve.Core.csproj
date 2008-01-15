@@ -94,6 +94,8 @@
     <Compile Include="Analysis\Solver\SolverNode.cs" />
     <Compile Include="Analysis\Solver\SolverStrategy.cs" />
     <Compile Include="Analysis\Solver\StaticAnalysis.cs" />
+    <Compile Include="Reporting\LibraryReport.cs" />
+    <Compile Include="Reporting\SolverResultHTML.cs" />
     <Compile Include="UI\DockPoint.cs" />
     <Compile Include="UI\GameCoords.cs" />
     <Compile Include="UI\ISoundSubSystem.cs" />

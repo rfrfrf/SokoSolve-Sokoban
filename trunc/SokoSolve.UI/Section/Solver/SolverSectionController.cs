@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Data;
 using System.Text;
@@ -9,6 +10,7 @@ using System.Windows.Forms;
 using SokoSolve.Core.Analysis.Solver;
 using SokoSolve.Core.Model;
 using SokoSolve.Common;
+using SokoSolve.Core.Reporting;
 
 namespace SokoSolve.UI.Section.Solver
 {
@@ -294,29 +296,31 @@ namespace SokoSolve.UI.Section.Solver
             target.Group = listViewResults.Groups[3];
             if (workItem.Result != null)
             {
-                target.SubItems[1].Text = workItem.Result.ControllerResult.ToString();
-                target.SubItems[2].Text = string.Format("{0}, in {1:0.00} sec and {2:0} nodes",
-                                                        workItem.Result.Summary,
-                                                        workItem.Controller.Stats.EvaluationTime.ValueLast,
-                                                        workItem.Controller.Stats.Nodes.ValueTotal);
+                target.SubItems[1].Text = workItem.Result.StatusString;
+                target.SubItems[2].Text = workItem.Result.Summary;
 
+                switch(workItem.Result.Status)
+                {
+                    case(SolverResult.CalculationResult.Cancelled):
+                    case (SolverResult.CalculationResult.Error):
+                        target.ImageIndex = 3; // red cross icon
+                        target.Group = listViewResults.Groups[2]; // Failed
+                        break;
 
-                if (workItem.Result.HasSolution)
-                {
-                    target.ImageIndex = 4; // Tick icon 
-                    target.Group = listViewResults.Groups[0]; // Solved
-                }
-                else
-                {
-                    target.SubItems[1].Text = "No Solution";
-                    target.ImageIndex = 3; // red cross icon
-                    target.Group = listViewResults.Groups[1]; // Failed
-                }
+                    case (SolverResult.CalculationResult.GaveUp):
+                        target.ImageIndex = 3; // red cross icon
+                        target.Group = listViewResults.Groups[1]; // Failed
+                        break;
 
-                if (workItem.Exception != null || workItem.Result.Exception != null)
-                {
-                    target.SubItems[1].Text = "Exception";
-                    target.Group = listViewResults.Groups[2]; // Failed
+                    case (SolverResult.CalculationResult.SolutionFound):
+                    case (SolverResult.CalculationResult.NoSolution):
+                        target.ImageIndex = 4; // Tick icon 
+                        target.Group = listViewResults.Groups[0]; // Solved
+                        break;
+
+                    default:
+                        target.Group = listViewResults.Groups[3];
+                        break;
                 }
             }
             else
@@ -559,6 +563,20 @@ namespace SokoSolve.UI.Section.Solver
                 formVis.Show();    
             }
             
+        }
+
+        private void tsbSaveHTML_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog save = new SaveFileDialog();
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                List<SolverResult> results = workerList.ConvertAll<SolverResult>(delegate(WorkItem item) { return item.Result; });
+                SolverResultHTML report = new SolverResultHTML(results);
+                report.BuildReport();
+                report.Save(save.FileName);
+
+                Process.Start(save.FileName);
+            }
         }
     }
 }
