@@ -43,25 +43,6 @@
       <ProjName>SokoSolve.Console</ProjName>
     </ProjBinary>
     <ProjBinary>
-      <Path>..\SokoSolve.Common\obj\Debug\SokoSolve.Common.dll</Path>
-      <ArgumentTimestamp>01/01/0001 00:00:00</ArgumentTimestamp>
-      <Instrument>true</Instrument>
-      <LaunchProject>true</LaunchProject>
-      <LaunchMethod>Executable</LaunchMethod>
-      <StartupDirectory>..\SokoSolve.Common\bin\Debug\</StartupDirectory>
-      <Arguments />
-      <NetAppHost>IIS</NetAppHost>
-      <PreinstrumentEvent>
-        <InstrEventExclude>false</InstrEventExclude>
-      </PreinstrumentEvent>
-      <PostinstrumentEvent>
-        <InstrEventExclude>false</InstrEventExclude>
-      </PostinstrumentEvent>
-      <ProjRef>{0DEBF03E-A3D8-445B-95C6-6F777F5A9970}|SokoSolve.Common\SokoSolve.Common.csproj</ProjRef>
-      <ProjPath>..\SokoSolve.Common\SokoSolve.Common.csproj</ProjPath>
-      <ProjName>SokoSolve.Common</ProjName>
-    </ProjBinary>
-    <ProjBinary>
       <Path>..\SokoSolve.Core\obj\Debug\SokoSolve.Core.dll</Path>
       <ArgumentTimestamp>01/01/0001 00:00:00</ArgumentTimestamp>
       <Instrument>true</Instrument>
@@ -83,7 +64,7 @@
   </Binaries>
   <Reports>
     <Report>
-      <Path>PerformanceReports\Report080106-Simple-BaseLine1.vsp</Path>
+      <Path>PerformanceReports\Report080118.vsp</Path>
     </Report>
   </Reports>
   <Launches>

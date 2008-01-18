@@ -128,5 +128,23 @@ namespace SokoSolve.UI.Controls.Primary
                 }
             }
         }
+
+        private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (treeViewLibrary.SelectedNode != null)
+            {
+
+                ItemPuzzle puzzle = treeViewLibrary.SelectedNode.Tag as ItemPuzzle;
+                if (puzzle != null)
+                {
+                    Clipboard.SetText(puzzle.DomainData.MasterMap.Map.ToString(), TextDataFormat.UnicodeText);   
+                    return;
+                }
+
+                Clipboard.SetText("<html><body><p>SokoSolve not implemented</p></body></html>", TextDataFormat.Html);
+                return;
+
+            }
+        }
 	}
 }

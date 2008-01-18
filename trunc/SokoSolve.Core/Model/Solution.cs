@@ -12,7 +12,7 @@ namespace SokoSolve.Core.Model
     /// <summary>
     /// Encapsulate a Sokoban puzzle solution
     /// </summary>
-    public class Solution
+    public class Solution : IComparable<Solution>
     {
         /// <summary>
         /// Strong contructor
@@ -181,9 +181,54 @@ namespace SokoSolve.Core.Model
             Steps = sb.ToString();
         }
 
+        /// <summary>
+        /// Find the best solution
+        /// </summary>
+        /// <param name="solutions"></param>
+        /// <returns></returns>
+        public static Solution FindBest(IEnumerable<Solution> solutions)
+        {
+            Solution best = null;
+            foreach (Solution solution in solutions)
+            {
+                if (best == null)
+                {
+                    best = solution;
+                } 
+                else
+                {
+                    if (best.CompareTo(solution) < 0)
+                    {
+                        best = solution;
+                    }
+                }
+            }
+            return best;
+        }
+
+
         private GenericDescription details;
         private PuzzleMap map;
         private VectorInt startPosition;
         private string steps;
+
+        #region IComparable<Solution> Members
+
+        ///<summary>
+        ///Compares the current object with another object of the same type.
+        ///</summary>
+        ///
+        ///<returns>
+        ///A 32-bit signed integer that indicates the relative order of the objects being compared. The return value has the following meanings: Value Meaning Less than zero This object is less than the other parameter.Zero This object is equal to other. Greater than zero This object is greater than other. 
+        ///</returns>
+        ///
+        ///<param name="other">An object to compare with this object.</param>
+        public int CompareTo(Solution other)
+        {
+            // Short is better
+            return steps.CompareTo(other.steps) * -1;
+        }
+
+        #endregion
     }
 }

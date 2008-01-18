@@ -11,12 +11,15 @@ namespace SokoSolve.Core.Model
             {
                 "Big", "Small", "Tense", "Tight", "Exacting", "Tricky", "Slimy", "Nefarious", "Ghastly", "Grim", "Funny",
                 "Delighted", "Dastardly","Hot", "Cold", "Tepid", "Splendid", "Superb", "Grand", "Old", "Ghastly", "Dire", 
-                "Edgy", "Uptight"
+                "Edgy", "Uptight", "Dark", "Light", "Clogged", "Broken", "Bashed", "Convoluted", "Elaborate", "Intricate", "Windy", 
+                "Stormy", "Heavenly", "Saintly", "Sad", "Happy"
+
             };
         public string[] Nouns = new string[]
             {
                 "Nemosis", "Tower", "Grave","Tunnel", "School", "Mountain", "Gem", "Spider", "Toad", "Estate",
-                "Night", "Morning", "House", "Lagoon", "Blanket", "Hovel", "Hamlet", "Town", "Cottage", "Shower"
+                "Night", "Morning", "House", "Lagoon", "Blanket", "Hovel", "Hamlet", "Town", "Cottage", "Shower",
+                "Quagmire", "Knot", "Quandary", "Dilemma", "Impasse", "Gridlock", "Congestion"
             };
 
         public string[] Names = new string[]

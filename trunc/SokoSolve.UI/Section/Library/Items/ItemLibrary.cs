@@ -21,17 +21,14 @@ namespace SokoSolve.UI.Section.Library.Items
 		{
             if (DomainData != null)
             {
-                List<Category> wrapper = new List<Category>();
-
                 if (DomainData.Categories.Root.Count > 0 && DomainData.Categories.Root.Data.GetPuzzles(DomainData).Count == 0)
                 {
                     SyncUICollectionWithData<Category>(DomainData.Categories.Root.ChildrenData, delegate(Category item) { return new ItemCategory(item); });
                 }
                 else
                 {
-                    // Show the master list
-                    wrapper.Add(DomainData.Categories.Root.Data);
-                    SyncUICollectionWithData<Category>(wrapper, delegate(Category item) { return new ItemCategory(item); });
+                    // Show the master list's puzzle only (not the list itself)
+                    SyncUICollectionWithData<Puzzle>(DomainData.Categories.Root.Data.GetPuzzles(Controller.Current), delegate(Puzzle item) { return new ItemPuzzle(item); });
                 }
 
                 base.SyncDomain();

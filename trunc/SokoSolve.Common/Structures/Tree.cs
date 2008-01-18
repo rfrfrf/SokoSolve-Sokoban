@@ -18,9 +18,20 @@ namespace SokoSolve.Common.Structures
 		/// </summary>
 		public Tree()
 		{
-			this.root = new TreeNode<T>(null);
+			this.root = new TreeNode<T>(this);
 			this.root.Tree = this;
 		}
+
+
+        /// <summary>
+        /// Allow centralised controll of the children collections.
+        /// </summary>
+        /// <param name="notification"></param>
+        /// <returns></returns>
+        protected internal ManagedCollection<TreeNode<T>> ManagedCollectionFactory(ManagedCollectionNotification<TreeNode<T>> notification)
+        {
+            return new ManagedCollection<TreeNode<T>>(notification);
+        }
 
 		
 		/// <summary>

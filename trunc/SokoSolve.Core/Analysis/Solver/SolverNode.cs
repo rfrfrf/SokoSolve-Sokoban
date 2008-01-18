@@ -56,7 +56,7 @@ namespace SokoSolve.Core.Analysis.Solver
     /// <summary>
     /// The domain knowledge for a puzzle node
     /// </summary>
-    public class SolverNode : IEvaluationNode, ITreeNodeBackReference<SolverNode>
+    public class SolverNode : IEvaluationNode, ITreeNodeBackReference<SolverNode>, IEquatable<SolverNode>
     {
         /// <summary>
         /// Default constructor
@@ -65,6 +65,7 @@ namespace SokoSolve.Core.Analysis.Solver
         {
             status = SolverNodeStates.None;
             playerPosition = VectorInt.Null;
+            cachedHashCode = int.MinValue;
         }
 
         /// <summary>
@@ -90,6 +91,47 @@ namespace SokoSolve.Core.Analysis.Solver
             if (rhs.chainSolutionLink != null) chainSolutionLink = new SolverNode(rhs.chainSolutionLink);
             weighting = rhs.weighting;
             backRef = rhs.backRef;
+
+            Init();
+        }
+
+        private void Init()
+        {
+            if (crateMap != null && moveMap != null)
+            {
+                cachedHashCode = crateMap.GetHashCode() ^ moveMap.GetHashCode();    
+            }
+            else
+            {
+                cachedHashCode = int.MinValue;
+            }
+        }
+
+        public bool Equals(SolverNode rhs)
+        {
+            if (rhs == null) return false;
+            if (cachedHashCode != rhs.GetHashCode()) return false;
+
+            if (crateMap == null || rhs.crateMap == null) return false;
+            if (moveMap == null || rhs.moveMap == null) return false;
+
+            return crateMap.Equals(rhs.crateMap) && moveMap.Equals(rhs.moveMap);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(this, obj)) return true;
+            return Equals(obj as SolverNode);
+        }
+
+        /// <summary>
+        /// Be very carefull with this. We cache GetHashCode, so Init must be call on *ALL* method that may affect Equals(...)
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            if (cachedHashCode == int.MinValue) throw new InvalidOperationException("CrateMap and MoveMap required");
+            return cachedHashCode;
         }
 
         #region IEvaluationNode Members
@@ -129,7 +171,7 @@ namespace SokoSolve.Core.Analysis.Solver
         public Bitmap CrateMap
         {
             get { return crateMap; }
-            set { crateMap = value; }
+            set { crateMap = value; Init(); }
         }
 
         /// <summary>
@@ -138,7 +180,7 @@ namespace SokoSolve.Core.Analysis.Solver
         public Bitmap MoveMap
         {
             get { return moveMap; }
-            set { moveMap = value; }
+            set { moveMap = value; Init(); }
         }
 
         /// <summary>
@@ -289,6 +331,9 @@ namespace SokoSolve.Core.Analysis.Solver
         private SolverNode chainSolutionLink;
         private float weighting;
         private TreeNode<SolverNode> backRef;
+        
+        // Optimisation
+        int cachedHashCode;
 
       
     }

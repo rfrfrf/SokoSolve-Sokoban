@@ -171,6 +171,7 @@ namespace SokoSolve.Core.Analysis.Solver
                 // Prepare and start reverse
                 reverseWorker = new Thread(new ThreadStart(StartReverseWorker));
                 reverseWorker.Name = "REV";
+                reverseWorker.Priority = Thread.CurrentThread.Priority;
                 reverseWorker.Start();
 
                 // Start forward
@@ -259,7 +260,7 @@ namespace SokoSolve.Core.Analysis.Solver
                     SolverLabelList labels = Stats.GetDisplayData();
                     labels.Add("Machine", string.Format("{0} Running {1}.", DebugHelper.GetCPUDescription(), Environment.OSVersion));
 
-                    simpleForward.Details.Description = labels.ToHTML(null, "tabledata");
+                    simpleForward.Details.Description = labels.ToString();
 
                     results.Add(simpleForward);
                 }
@@ -311,7 +312,7 @@ namespace SokoSolve.Core.Analysis.Solver
                     SolverLabelList labels = Stats.GetDisplayData();
                     labels.Add("Machine", string.Format("{0} Running {1}.", DebugHelper.GetCPUDescription(), Environment.OSVersion));
 
-                    solution.Details.Description = labels.ToHTML(null, "tabledata");
+                    solution.Details.Description = labels.ToString();
 
                     results.Add(solution);
                 }
@@ -353,18 +354,18 @@ namespace SokoSolve.Core.Analysis.Solver
         public bool CheckChainForward(SolverNode reverseNode)
         {
             if (strategy == null) return false;
-            
-            TreeNode<SolverNode> match = strategy.EvaluationTree.Root.Find(delegate(TreeNode<SolverNode> item) { return ChainMatch(reverseNode, item.Data); }, int.MaxValue);
+
+            SolverNode match = strategy.CheckDuplicate(reverseNode);
             if (match != null)
             {
-                debugReport.Append("Found a forward chain {0}<->{1}", match.Data.NodeID, reverseNode.NodeID);
-                match.Data.Status = SolverNodeStates.SolutionChain;
+                debugReport.Append("Found a forward chain {0}<->{1}", match.NodeID, reverseNode.NodeID);
+                match.Status = SolverNodeStates.SolutionChain;
                 reverseNode.Status = SolverNodeStates.SolutionChain;
                 state = States.CompleteSolution;
 
                 // Set the link property
-                reverseNode.ChainSolutionLink = match.Data;
-                match.Data.ChainSolutionLink = reverseNode;
+                reverseNode.ChainSolutionLink = match;
+                match.ChainSolutionLink = reverseNode;
                 return true;
             }
             return false;
@@ -379,17 +380,17 @@ namespace SokoSolve.Core.Analysis.Solver
         {
             if (reverseStrategy == null) return false;
 
-            TreeNode<SolverNode> match = reverseStrategy.EvaluationTree.Root.Find(delegate(TreeNode<SolverNode> item) { return ChainMatch(forwardNode, item.Data); }, int.MaxValue);
+            SolverNode match = reverseStrategy.CheckDuplicate(forwardNode);
             if (match != null)
             {
-                debugReport.Append("Found a reverse chain {0}<->{1}", match.Data.NodeID, forwardNode.NodeID);
-                match.Data.Status = SolverNodeStates.SolutionChain;
+                debugReport.Append("Found a reverse chain {0}<->{1}", match.NodeID, forwardNode.NodeID);
+                match.Status = SolverNodeStates.SolutionChain;
                 forwardNode.Status = SolverNodeStates.SolutionChain;
                 state = States.CompleteSolution;
 
                 // Set the link property
-                forwardNode.ChainSolutionLink = match.Data;
-                match.Data.ChainSolutionLink = forwardNode;
+                forwardNode.ChainSolutionLink = match;
+                match.ChainSolutionLink = forwardNode;
                 return true;
             }
             return false;

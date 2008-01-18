@@ -32,6 +32,8 @@ namespace SokoSolve.UI.Controls.Secondary
 			    desc.Author.Email = tbEmail.Text;
 			    desc.Author.Homepage = tbWeb.Text;
 			    desc.License = cbLicense.Text;
+                desc.Date = dateTimePickerCreated.Value;
+                desc.DateSpecified = true;
 				return desc;
 			}
 			set
@@ -53,6 +55,14 @@ namespace SokoSolve.UI.Controls.Secondary
 					tbEmail.Text = value.Author.Email;
 					tbWeb.Text = value.Author.Homepage;
 				}
+                if (value.DateSpecified)
+                {
+                    dateTimePickerCreated.Value = value.Date;
+                }
+                else
+                {
+                    dateTimePickerCreated.Value = DateTime.Now;
+                }
 				
 			}
 		}

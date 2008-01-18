@@ -1,13 +1,77 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>SokoSolve</title>
+		<title>SokoSolve | Solver</title>
 		<link type="text/css" rel="Stylesheet" href="style.css" />
 	</head>
 	<body>
 	    <h1>SokoSolve | Solver</h1>
-	    <p>As of 1.2.0 the solver has been removed -- it will be re-added once the Library and Game components are mature.</p>
+	    <h2>Introduction</h2>
+	    <p>This is an automated solver for sokoban puzzles. In essence, the solver tries all possible moves until it 
+	    stumbles apon the correct sequence for a puzzle solution.</p>
 	    
+	    <p>It is the general nature of automated solvers that small (few crates, constrained space) can be solved 
+	    very quickly (sub second), while larger maps will take a very long time indeed.</p>
+	    
+	    <p>The solver was removed from the 1.2.* release series for a complete rewrite, it has been re-introduced 
+	    in 1.3.*.</p>
+	    
+	    <h2>Technical Architecture</h2>
+	    <p>Each node in the move tree is unique CrateMap (crate positions) and MoveMap (all possible player moves, without a push)</p>
+	    <ul>
+	        <li>Weighted Brute Force</li>
+	        <li>Forward & Reverse Searching</li>
+	        <li>Multi-Threaded - Optimised for dual-core processors</li>
+	        <li>Static Analysis for dead maps (unsolvable puzzle states)
+	            <ul>
+	                <li>Corner Analysis</li> 
+	                <li>4x4 Box searching</li>
+	                <li>Recess Analysis</li>
+	            </ul>
+	        </li>
+	        <li>Visualisations - I have put more effort into the graphical display of the solver, than into the solver itself
+	            <ul>
+	                <li>Depth-first banded node display with colour coded state and weightings</li> 
+	                <li>Path to root, with immediate children</li> 
+	                <li>Bitmaps, with overlays</li>
+	                <li>Weighting map</li>
+	                <li>Outstanding evaluation list, at time of capture (entire node list is cloned)</li>
+	            </ul>
+	        </li>
+	        
+	    </ul>
+	    <p>As of 1.3.33 I have not used any external sokoban knowledge, I have tried to stay away from any accepted wisdom (in part for the fun or it
+	    in part to see if I come up with anything fresh), no double much to my cost. This was easy as I had to implement all the basics anyway. I am quickly 
+	    finding that additional improvements are requiring much more effort.</p>
+	    
+	    <h3>An unstructured list of C# optimisation findings</h3>
+	    <ul>
+	        <li>Converted atomic classes VectorInt, SizeInt from class to struct for huge memory and to a lesser degree speed savings.</li>
+	        <li>Baselined (history snapshot) each major improvement:
+	                <ol>
+	                    <li><a href="solver/baseline1.html">Baseline I</a> (v1.2.24)</li>
+	                    <li><a href="solver/Baseline2-GL-Laptop-First10.html">Baseline II</a> (v1.3.33)</li>
+	                </ol>
+	        </li>
+	        <li>Ubiquitous use of the strategy and factory pattern have made innovation very easy</li>
+	        <li>Abstraction of the SolverController allowed an easy transition to multi-threading</li>
+	        <li>Regular Microsoft Performance analysis (Tools &gt; Performance Tools &gt; Performance Wizard) has yielded unexpected 
+	        and easy performance optimisations</li>
+	        <li>Multi-threading has been a great boon, but has required agressive locking on SolverNode. This greatly offsets the 
+	        advantage of leveraging the second Core.</li>
+	    </ul>
+	    
+	    <h2>Resources &amp; References</h2>
+	    <ul>
+            <li><a href="http://www.geocities.com/erimsever/sokoban5.htm">Erim Sever: &nbsp;Sokoban Solver Information</a></li>
+            <li><a href="http://www.cs.ualberta.ca/~games/Sokoban/">Sokoban at University of Alberta</a></li>
+            <li><a href="http://www.ic-net.or.jp/home/takaken/e/soko/index.html">"Sokoban Automatic Solver" for windows</a>&nbsp; -- (Thanks Matthias)</li>
+        </ul>
+        
+        <h4>Author &amp; Appologies</h4>
+        <p>Appologies... I am in the guts of the solver implementation, I will come back to this page and proof read. I promise. :-;</p>
+        <p>Guy Langston (Bitwacker), last updated Jan 2008.</p>
+	 
 	    <!-- ########### FOOTER ############## -->
 	    <!-- SourceForge -->
 	    <a href="http://sourceforge.net"> <img src="http://sourceforge.net/sflogo.php?group_id=85742&type=5" width="210" height="62"  alt="SourceForge.net Logo" /></a> 

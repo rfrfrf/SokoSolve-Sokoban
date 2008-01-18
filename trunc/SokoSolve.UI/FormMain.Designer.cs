@@ -38,7 +38,7 @@ namespace SokoSolve.UI
             this.ClientSize = new System.Drawing.Size(884, 565);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
-            this.Text = "SokoSolve - Sokoban library, game and solver";
+            this.Text = "SokoSolve | Sokoban Game | The Sokoban Enthusiasts Home";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.ResumeLayout(false);
 

@@ -21,6 +21,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\SokoSolve.UI.XML</DocumentationFile>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -355,6 +356,8 @@
     <Content Include="Content\Graphics\Icons\CircleGreen.png" />
     <Content Include="Content\Graphics\Icons\CircleOrange.png" />
     <Content Include="Content\Graphics\Icons\CircleRed.png" />
+    <None Include="Content\Graphics\Icons\Copy.png" />
+    <None Include="Content\Graphics\Icons\Cut.png" />
     <Content Include="Content\Graphics\Icons\Delete.png" />
     <Content Include="Content\Graphics\Icons\Down.png" />
     <Content Include="Content\Graphics\Icons\Edit.png" />
@@ -369,6 +372,7 @@
     <Content Include="Content\Graphics\Icons\NewPuzzle.png" />
     <Content Include="Content\Graphics\Icons\Open.png" />
     <None Include="Content\Graphics\Icons\Pause.png" />
+    <None Include="Content\Graphics\Icons\Paste.png" />
     <Content Include="Content\Graphics\Icons\Play.png" />
     <None Include="Content\Graphics\Icons\Print.png" />
     <None Include="Content\html\ReadMe.rtf" />

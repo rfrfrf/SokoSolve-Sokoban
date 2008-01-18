@@ -1,27 +1,22 @@
 <?xml version="1.0"?>
-<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LibraryID="55024299-7627-4b44-8ad4-7359b14618ac" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
-  <Details License="Acknowledgement Required">
+<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LibraryID="de4a0575-090b-46a4-a2e8-0cbf4e989acf" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
+  <Details License="Acknowledgement Required" Date="2000-04-01T17:23:46">
     <Name>Microban</Name>
-    <Description>155 puzzles, revised April, 2000</Description>
-    <Comments>This is a good set for beginners and children. Most of the puzzles are small and illustrate a particular concept. More experienced players should also find them interesting, since they are as different from each other as I could make them given their size. Sokoholics could perhaps time themselves on completing the whole set. This set also contains puzzles which I thought were interesting but too easy to include in my regular sets.</Comments>
+    <Description>This is a good set for beginners and children. Most of the puzzles are small and illustrate a particular concept. More experienced players should also find them interesting, since they are as different from each other as I could make them given their size. Sokoholics could perhaps time themselves on completing the whole set. This set also contains puzzles which I thought were interesting but too easy to include in my regular sets.</Description>
+    <Comments>155 puzzles, revised April, 2000</Comments>
     <Author Name="David W. Skinner " Email="sasquatch@bentonrea.com" Homepage="http://users.bentonrea.com/~sasquatch/" />
   </Details>
   <Categories>
-    <Category CategoryID="C0">
+    <Category CategoryID="C0" Order="0">
       <CategoryDescription>
         <Name>Master List</Name>
       </CategoryDescription>
     </Category>
-    <Category>
-      <CategoryDescription>
-        <Name>New Category</Name>
-      </CategoryDescription>
-    </Category>
   </Categories>
   <Puzzles>
-    <Puzzle Rating="142.9" PuzzleID="P1" CategoryREF="C0" Order="1">
+    <Puzzle Rating="3.1" PuzzleID="P1" CategoryREF="C0" Order="1">
       <PuzzleDescription>
-        <Name>Grim Tunnel</Name>
+        <Name>Dastardly Lagoon</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -33,40 +28,13 @@
           <Row>#..X.#</Row>
           <Row>#..###</Row>
           <Row>####~~</Row>
-          <Solutions>
-            <Solution StartX="2" StartY="3">
-              <Steps>dlurrrdlullddruluruuldrddrruldlu</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-07T10:18:10.0477632+02:00">
-                <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0.007 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;37 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;25 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;5 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;7 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;4&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;47.39 avg.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;5 hits&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Max Depth&lt;/th&gt;&lt;td&gt;8&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.24-solver-baseline1&lt;/td&gt;&lt;/tr
-&lt;/table&gt;</Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="157.9" PuzzleID="P3" CategoryREF="C0" Order="2">
+    <Puzzle Rating="5.2" PuzzleID="P3" CategoryREF="C0" Order="2">
       <PuzzleDescription>
-        <Name>Tense Shower</Name>
+        <Name>Superb Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -78,40 +46,13 @@
           <Row>#.O$.#</Row>
           <Row>#....#</Row>
           <Row>######</Row>
-          <Solutions>
-            <Solution StartX="3" StartY="2">
-              <Steps>rddlruulduulldd</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-07T10:18:20.3967102+02:00">
-                <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0.005 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;25 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;18 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;8 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;2 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;58.93 avg.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;0 hits&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Max Depth&lt;/th&gt;&lt;td&gt;6&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.24-solver-baseline1&lt;/td&gt;&lt;/tr
-&lt;/table&gt;</Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="90.9" PuzzleID="P5" CategoryREF="C0" Order="3">
+    <Puzzle Rating="3.9" PuzzleID="P5" CategoryREF="C0" Order="3">
       <PuzzleDescription>
-        <Name>Tight Morning</Name>
+        <Name>Funny Hamlet</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -122,40 +63,13 @@
           <Row>#.#..#X.#</Row>
           <Row>#.O.O#P.#</Row>
           <Row>#########</Row>
-          <Solutions>
-            <Solution StartX="6" StartY="4">
-              <Steps>ruullluldrrrrddlurulllddllluurrdrdluuurd</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-07T10:18:26.1102117+02:00">
-                <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0.038 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;181 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;109 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;27 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;9 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;23&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;-6&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;14.46 avg.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;8 hits&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Max Depth&lt;/th&gt;&lt;td&gt;14&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.24-solver-baseline1&lt;/td&gt;&lt;/tr
-&lt;/table&gt;</Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="125.0" PuzzleID="P7" CategoryREF="C0" Order="4">
+    <Puzzle Rating="5.9" PuzzleID="P7" CategoryREF="C0" Order="4">
       <PuzzleDescription>
-        <Name>Uptight Tower</Name>
+        <Name>Hot Town</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -166,40 +80,13 @@
           <Row>#......#</Row>
           <Row>#####..#</Row>
           <Row>~~~~####</Row>
-          <Solutions>
-            <Solution StartX="6" StartY="2">
-              <Steps>uldrdlllrruuldldrurrddlurullulllddrrrurrddluru</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-07T10:18:32.3383287+02:00">
-                <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0.037 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;141 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;102 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;42 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;20 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;64&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;-1&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;32.87 avg.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;0 hits&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Max Depth&lt;/th&gt;&lt;td&gt;17&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.24-solver-baseline1&lt;/td&gt;&lt;/tr
-&lt;/table&gt;</Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="133.3" PuzzleID="P9" CategoryREF="C0" Order="5">
+    <Puzzle Rating="6.3" PuzzleID="P9" CategoryREF="C0" Order="5">
       <PuzzleDescription>
-        <Name>Slimy School</Name>
+        <Name>Cold Grave</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -215,9 +102,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="103.4" PuzzleID="P11" CategoryREF="C0" Order="6">
+    <Puzzle Rating="5.4" PuzzleID="P11" CategoryREF="C0" Order="6">
       <PuzzleDescription>
-        <Name>Nefarious Green Blanket</Name>
+        <Name>Ghastly Hamlet</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -228,40 +115,13 @@
           <Row>#.X.#OOO...#</Row>
           <Row>#...########</Row>
           <Row>#####~~~~~~~</Row>
-          <Solutions>
-            <Solution StartX="10" StartY="2">
-              <Steps>ulldlllluldulldrrrrrrdrrruulldurrddllllulllllddrrudlluuurrrdlullddrlurrrrrrdrrruulldurrddlllulllllddrulurrrrrdrrruulldurrddl</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-07T10:19:31.2349497+02:00">
-                <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0.130 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;403 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;275 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;135 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;11 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;75&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;-7&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;17.86 avg.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;0 hits&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Max Depth&lt;/th&gt;&lt;td&gt;31&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.24-solver-baseline1&lt;/td&gt;&lt;/tr
-&lt;/table&gt;</Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="200.0" PuzzleID="P13" CategoryREF="C0" Order="7">
+    <Puzzle Rating="7.9" PuzzleID="P13" CategoryREF="C0" Order="7">
       <PuzzleDescription>
-        <Name>Ghastly Gem</Name>
+        <Name>Edgy Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -274,40 +134,13 @@
           <Row>#.XOX.#</Row>
           <Row>#..P..#</Row>
           <Row>#######</Row>
-          <Solutions>
-            <Solution StartX="3" StartY="6">
-              <Steps>lluurudlddruluuuurrdrrdddllruudddlllurrdrullluurrduuurrdd</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-07T10:19:38.4893682+02:00">
-                <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0.816 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;1792 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;1243 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;589 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;104 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;2675&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.001 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.001 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;128&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;95.56 avg.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;0 hits&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Max Depth&lt;/th&gt;&lt;td&gt;21&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.24-solver-baseline1&lt;/td&gt;&lt;/tr
-&lt;/table&gt;</Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="46.5" PuzzleID="P15" CategoryREF="C0" Order="8">
+    <Puzzle Rating="6.2" PuzzleID="P15" CategoryREF="C0" Order="8">
       <PuzzleDescription>
-        <Name>Dire Spider</Name>
+        <Name>Hot House</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -324,40 +157,13 @@
           <Row>#...#.#~</Row>
           <Row>###...#~</Row>
           <Row>~~#####~</Row>
-          <Solutions>
-            <Solution StartX="6" StartY="1">
-              <Steps>llddddddldddrruuluuuuuuurrdlulddddddlllddrruddrruulrddllulluurrllddrrdrruuluuuuuuddddddrddlluurulruuuuulurdddddddldlluurrdruuuuu</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-07T10:19:46.1050917+02:00">
-                <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0.101 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;269 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;161 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;42 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;10 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;14&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;-14&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;-0.81 avg.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;1 hits&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Max Depth&lt;/th&gt;&lt;td&gt;34&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.24-solver-baseline1&lt;/td&gt;&lt;/tr
-&lt;/table&gt;</Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="105.3" PuzzleID="P17" CategoryREF="C0" Order="9">
+    <Puzzle Rating="3.5" PuzzleID="P17" CategoryREF="C0" Order="9">
       <PuzzleDescription>
-        <Name>Edgy Shower</Name>
+        <Name>Hot Toad</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -369,40 +175,13 @@
           <Row>~##..#</Row>
           <Row>~~##O#</Row>
           <Row>~~~###</Row>
-          <Solutions>
-            <Solution StartX="1" StartY="2">
-              <Steps>urrdulldrdrluurdrddluruldluru</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-07T10:19:53.7969822+02:00">
-                <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0.006 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;31 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;17 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;0 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;2 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;3&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;38.33 avg.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;0 hits&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Max Depth&lt;/th&gt;&lt;td&gt;10&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.24-solver-baseline1&lt;/td&gt;&lt;/tr
-&lt;/table&gt;</Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="66.7" PuzzleID="P19" CategoryREF="C0" Order="10">
+    <Puzzle Rating="7.2" PuzzleID="P19" CategoryREF="C0" Order="10">
       <PuzzleDescription>
-        <Name>Dire School</Name>
+        <Name>Big Spider</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -415,40 +194,13 @@
           <Row>#.#.#.#.###</Row>
           <Row>#.......#~~</Row>
           <Row>#########~~</Row>
-          <Solutions>
-            <Solution StartX="2" StartY="4">
-              <Steps>rddrruullddrrrruuuuurrdddlruuulldddllddrruuuuddddlllluurrrlddrruuudddlllllluurrrrrlddrru</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-07T10:20:00.3590622+02:00">
-                <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0.071 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;209 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;137 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;46 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;18 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;44&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;-3&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;29.08 avg.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;0 hits&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Max Depth&lt;/th&gt;&lt;td&gt;21&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.24-solver-baseline1&lt;/td&gt;&lt;/tr
-&lt;/table&gt;</Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="64.5" PuzzleID="P21" CategoryREF="C0" Order="11">
+    <Puzzle Rating="4.9" PuzzleID="P21" CategoryREF="C0" Order="11">
       <PuzzleDescription>
-        <Name>Big Nemosis</Name>
+        <Name>Big Night</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -461,40 +213,13 @@
           <Row>#.......#</Row>
           <Row>#..######</Row>
           <Row>####~~~~~</Row>
-          <Solutions>
-            <Solution StartX="6" StartY="2">
-              <Steps>ulllddddrrrrululdrdllluuuurrrddlddllullddrulurdrrrrrululdrdlllullddrurrruuruullld</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-07T10:20:07.3429902+02:00">
-                <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0.073 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;248 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;166 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;77 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;6 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;29&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;-11&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;5.81 avg.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;0 hits&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Max Depth&lt;/th&gt;&lt;td&gt;23&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.24-solver-baseline1&lt;/td&gt;&lt;/tr
-&lt;/table&gt;</Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="66.7" PuzzleID="P23" CategoryREF="C0" Order="12">
+    <Puzzle Rating="4.8" PuzzleID="P23" CategoryREF="C0" Order="12">
       <PuzzleDescription>
-        <Name>Small Town</Name>
+        <Name>Tight Gem</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -507,40 +232,13 @@
           <Row>~~#..O#.#</Row>
           <Row>~~#.....#</Row>
           <Row>~~#######</Row>
-          <Solutions>
-            <Solution StartX="4" StartY="4">
-              <Steps>uululldrdrluurdrddrddllurdrulurluulldrurddrddllurdrrruu</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-07T10:20:14.3874612+02:00">
-                <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0.018 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;71 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;39 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;6 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;0 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;6&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;18.00 avg.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;0 hits&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Max Depth&lt;/th&gt;&lt;td&gt;14&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.24-solver-baseline1&lt;/td&gt;&lt;/tr
-&lt;/table&gt;</Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="125.0" PuzzleID="P25" CategoryREF="C0" Order="13">
+    <Puzzle Rating="4.9" PuzzleID="P25" CategoryREF="C0" Order="13">
       <PuzzleDescription>
-        <Name>Delighted Tower</Name>
+        <Name>Grand Nemosis</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -554,40 +252,13 @@
           <Row>~#....#</Row>
           <Row>~#..###</Row>
           <Row>~####~~</Row>
-          <Solutions>
-            <Solution StartX="2" StartY="2">
-              <Steps>rdlddrdrruldldluuuurulddddrrululuurddldruulludrddrdrruldldlurudluuurdlddrruldluruuuldrddluru</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-07T10:20:20.4339492+02:00">
-                <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0.152 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;550 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;374 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;159 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;38 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;88&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;-4&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;25.20 avg.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;32 hits&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Max Depth&lt;/th&gt;&lt;td&gt;29&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.24-solver-baseline1&lt;/td&gt;&lt;/tr
-&lt;/table&gt;</Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="125.0" PuzzleID="P27" CategoryREF="C0" Order="14">
+    <Puzzle Rating="3.3" PuzzleID="P27" CategoryREF="C0" Order="14">
       <PuzzleDescription>
-        <Name>Tepid Spider</Name>
+        <Name>Ghastly Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -598,40 +269,13 @@
           <Row>#O.X$P#</Row>
           <Row>#...###</Row>
           <Row>#####~~</Row>
-          <Solutions>
-            <Solution StartX="5" StartY="3">
-              <Steps>uulllldddrrulluurrrrddlllrrruulldurrddlldllurruull</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-07T10:20:28.3016097+02:00">
-                <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0.008 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;38 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;25 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;10 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;1 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;27.88 avg.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;0 hits&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Max Depth&lt;/th&gt;&lt;td&gt;11&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.24-solver-baseline1&lt;/td&gt;&lt;/tr
-&lt;/table&gt;</Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="62.5" PuzzleID="P29" CategoryREF="C0" Order="15">
+    <Puzzle Rating="5.1" PuzzleID="P29" CategoryREF="C0" Order="15">
       <PuzzleDescription>
-        <Name>Wilma's Shower</Name>
+        <Name>Superb Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -647,9 +291,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="88.2" PuzzleID="P31" CategoryREF="C0" Order="16">
+    <Puzzle Rating="6.0" PuzzleID="P31" CategoryREF="C0" Order="16">
       <PuzzleDescription>
-        <Name>Tepid Blanket</Name>
+        <Name>Edgy Lagoon</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -662,40 +306,13 @@
           <Row>#...#.XX.#</Row>
           <Row>#..O#....#</Row>
           <Row>##########</Row>
-          <Solutions>
-            <Solution StartX="6" StartY="4">
-              <Steps>lddrudrrulluluurdrdulldrddluuddrrrulluurdlddrrulullurulddrrddludlurruulullluldrrrdrdrddlluruuulllldurrrdrdddrruldluruulldurrddluluulllddlddruruluurrrrddrddlludruudluudrrululdduulrddrddluuruulllulddurrrdduulllddrddlluruuurrrddrddluuruullllddddruluuurrrrddlurulllulddddld</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-07T10:20:47.7193122+02:00">
-                <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0.565 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;1558 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;1076 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;500 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;93 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;510&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;-21&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;0.84 avg.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;10 hits&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Max Depth&lt;/th&gt;&lt;td&gt;63&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.24-solver-baseline1&lt;/td&gt;&lt;/tr
-&lt;/table&gt;</Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="176.5" PuzzleID="P33" CategoryREF="C0" Order="17">
+    <Puzzle Rating="4.1" PuzzleID="P33" CategoryREF="C0" Order="17">
       <PuzzleDescription>
-        <Name>Tricky Lagoon</Name>
+        <Name>Dastardly Grave</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -707,40 +324,13 @@
           <Row>#....#</Row>
           <Row>#....#</Row>
           <Row>######</Row>
-          <Solutions>
-            <Solution StartX="2" StartY="1">
-              <Steps>drdulldrddrruldlluuddrruuddlu</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-07T10:20:55.3067172+02:00">
-                <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0.015 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;91 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;63 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;18 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;16 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;27&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;30.84 avg.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;0 hits&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Max Depth&lt;/th&gt;&lt;td&gt;12&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.24-solver-baseline1&lt;/td&gt;&lt;/tr
-&lt;/table&gt;</Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="71.4" PuzzleID="P35" CategoryREF="C0" Order="18">
+    <Puzzle Rating="4.5" PuzzleID="P35" CategoryREF="C0" Order="18">
       <PuzzleDescription>
-        <Name>Tight Nemosis</Name>
+        <Name>Bob's Cottage</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -758,9 +348,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="64.5" PuzzleID="P37" CategoryREF="C0" Order="19">
+    <Puzzle Rating="4.9" PuzzleID="P37" CategoryREF="C0" Order="19">
       <PuzzleDescription>
-        <Name>Uptight Grave</Name>
+        <Name>Tricky Estate</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -777,9 +367,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="64.5" PuzzleID="P39" CategoryREF="C0" Order="20">
+    <Puzzle Rating="4.9" PuzzleID="P39" CategoryREF="C0" Order="20">
       <PuzzleDescription>
-        <Name>Slimy Night</Name>
+        <Name>Ghastly Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -796,9 +386,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="125.0" PuzzleID="P41" CategoryREF="C0" Order="21">
+    <Puzzle Rating="3.2" PuzzleID="P41" CategoryREF="C0" Order="21">
       <PuzzleDescription>
-        <Name>Dastardly Tunnel</Name>
+        <Name>Tepid House</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -813,9 +403,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="69.0" PuzzleID="P43" CategoryREF="C0" Order="22">
+    <Puzzle Rating="4.6" PuzzleID="P43" CategoryREF="C0" Order="22">
       <PuzzleDescription>
-        <Name>Grand Tower</Name>
+        <Name>Dastardly Hovel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -833,9 +423,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="95.2" PuzzleID="P45" CategoryREF="C0" Order="23">
+    <Puzzle Rating="3.9" PuzzleID="P45" CategoryREF="C0" Order="23">
       <PuzzleDescription>
-        <Name>Cat's Morning</Name>
+        <Name>Delighted School</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -851,9 +441,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="90.9" PuzzleID="P47" CategoryREF="C0" Order="24">
+    <Puzzle Rating="3.9" PuzzleID="P47" CategoryREF="C0" Order="24">
       <PuzzleDescription>
-        <Name>Old Gem</Name>
+        <Name>Edgy School</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -869,9 +459,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="142.9" PuzzleID="P49" CategoryREF="C0" Order="25">
+    <Puzzle Rating="4.5" PuzzleID="P49" CategoryREF="C0" Order="25">
       <PuzzleDescription>
-        <Name>Small Tunnel</Name>
+        <Name>Grim Spider</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -887,9 +477,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="130.4" PuzzleID="P51" CategoryREF="C0" Order="26">
+    <Puzzle Rating="4.8" PuzzleID="P51" CategoryREF="C0" Order="26">
       <PuzzleDescription>
-        <Name>Big Cottage</Name>
+        <Name>Big School</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -906,9 +496,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="111.1" PuzzleID="P53" CategoryREF="C0" Order="27">
+    <Puzzle Rating="3.4" PuzzleID="P53" CategoryREF="C0" Order="27">
       <PuzzleDescription>
-        <Name>Ghastly Hamlet</Name>
+        <Name>Uptight Night</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -924,9 +514,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="105.3" PuzzleID="P55" CategoryREF="C0" Order="28">
+    <Puzzle Rating="3.5" PuzzleID="P55" CategoryREF="C0" Order="28">
       <PuzzleDescription>
-        <Name>Slimy Spider</Name>
+        <Name>Edgy Hovel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -942,9 +532,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="39.2" PuzzleID="P57" CategoryREF="C0" Order="29">
+    <Puzzle Rating="7.1" PuzzleID="P57" CategoryREF="C0" Order="29">
       <PuzzleDescription>
-        <Name>Lucy's Cottage</Name>
+        <Name>Exacting Spider</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -962,9 +552,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="176.5" PuzzleID="P59" CategoryREF="C0" Order="30">
+    <Puzzle Rating="4.1" PuzzleID="P59" CategoryREF="C0" Order="30">
       <PuzzleDescription>
-        <Name>Slimy Estate</Name>
+        <Name>Exacting School</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -980,9 +570,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="130.4" PuzzleID="P61" CategoryREF="C0" Order="31">
+    <Puzzle Rating="4.8" PuzzleID="P61" CategoryREF="C0" Order="31">
       <PuzzleDescription>
-        <Name>Funny Tunnel</Name>
+        <Name>Tepid White House</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -998,9 +588,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="157.9" PuzzleID="P63" CategoryREF="C0" Order="32">
+    <Puzzle Rating="5.2" PuzzleID="P63" CategoryREF="C0" Order="32">
       <PuzzleDescription>
-        <Name>Dastardly School</Name>
+        <Name>Nefarious Morning</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1016,9 +606,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="136.4" PuzzleID="P65" CategoryREF="C0" Order="33">
+    <Puzzle Rating="4.7" PuzzleID="P65" CategoryREF="C0" Order="33">
       <PuzzleDescription>
-        <Name>Small Night</Name>
+        <Name>Wilma's Toad</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1030,40 +620,13 @@
           <Row>#..X..#</Row>
           <Row>#O.#..#</Row>
           <Row>#######</Row>
-          <Solutions>
-            <Solution StartX="5" StartY="3">
-              <Steps>dllrruullldlurrdllddruluurrrrddlllruullddrru</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-07T10:21:21.4456692+02:00">
-                <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0.162 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;674 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;454 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;202 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;31 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;279&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.001 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;-4&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;24.98 avg.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;0 hits&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Max Depth&lt;/th&gt;&lt;td&gt;13&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.24-solver-baseline1&lt;/td&gt;&lt;/tr
-&lt;/table&gt;</Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="160.0" PuzzleID="P67" CategoryREF="C0" Order="34">
+    <Puzzle Rating="7.0" PuzzleID="P67" CategoryREF="C0" Order="34">
       <PuzzleDescription>
-        <Name>Tight Estate</Name>
+        <Name>Tight Lagoon</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1074,40 +637,13 @@
           <Row>#PX$$$O.#</Row>
           <Row>#.......#</Row>
           <Row>#########</Row>
-          <Solutions>
-            <Solution StartX="1" StartY="3">
-              <Steps>drrrudrruulldrdlllluurrurdrddllurdlllurrdrrrruulllul</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-07T10:21:28.3065582+02:00">
-                <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0.194 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;693 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;542 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;284 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;106 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;262&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;43.98 avg.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;126 hits&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Max Depth&lt;/th&gt;&lt;td&gt;13&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.24-solver-baseline1&lt;/td&gt;&lt;/tr
-&lt;/table&gt;</Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="138.9" PuzzleID="P69" CategoryREF="C0" Order="35">
+    <Puzzle Rating="7.8" PuzzleID="P69" CategoryREF="C0" Order="35">
       <PuzzleDescription>
-        <Name>Dastardly Blanket</Name>
+        <Name>Ghastly School</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1122,40 +658,13 @@
           <Row>~#...P#</Row>
           <Row>~##...#</Row>
           <Row>~~#####</Row>
-          <Solutions>
-            <Solution StartX="5" StartY="7">
-              <Steps>lluluurdrdlddruluuuluurdlddrddlururdlddrruldluuluuurrddlddruluurduulddddruudlluruurdduuluurdldddrdlddrruldluruluuruddddlluruuuuurdddddlddrruldluru</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-07T10:21:36.8206617+02:00">
-                <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;&lt;tr&gt;&lt;th&gt;Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;0 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Time&lt;/th&gt;&lt;td&gt;0.425 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Evaluation Itterations&lt;/th&gt;&lt;td&gt;1217 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Total Nodes&lt;/th&gt;&lt;td&gt;906 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Duplicates&lt;/th&gt;&lt;td&gt;283 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DeadNodes&lt;/th&gt;&lt;td&gt;311 nodes&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Eval Worker List&lt;/th&gt;&lt;td&gt;568&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;MoveMapTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;EvalChildTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;DuplicateCheckTime&lt;/th&gt;&lt;td&gt;0.000 sec&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Min&lt;/th&gt;&lt;td&gt;-2&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Max&lt;/th&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Weighting Avg&lt;/th&gt;&lt;td&gt;33.35 avg.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Hints Uses&lt;/th&gt;&lt;td&gt;64 hits&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Max Depth&lt;/th&gt;&lt;td&gt;42&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
-&lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.24-solver-baseline1&lt;/td&gt;&lt;/tr
-&lt;/table&gt;</Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="178.6" PuzzleID="P71" CategoryREF="C0" Order="36">
+    <Puzzle Rating="6.9" PuzzleID="P71" CategoryREF="C0" Order="36">
       <PuzzleDescription>
-        <Name>Exacting Tower</Name>
+        <Name>Exacting Yellow Toad</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1169,9 +678,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="78.9" PuzzleID="P73" CategoryREF="C0" Order="37">
+    <Puzzle Rating="6.4" PuzzleID="P73" CategoryREF="C0" Order="37">
       <PuzzleDescription>
-        <Name>Funny Night</Name>
+        <Name>Cold Mountain</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1188,9 +697,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="93.8" PuzzleID="P75" CategoryREF="C0" Order="38">
+    <Puzzle Rating="5.8" PuzzleID="P75" CategoryREF="C0" Order="38">
       <PuzzleDescription>
-        <Name>Splendid Tunnel</Name>
+        <Name>Big Hovel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1206,9 +715,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="66.7" PuzzleID="P77" CategoryREF="C0" Order="39">
+    <Puzzle Rating="4.8" PuzzleID="P77" CategoryREF="C0" Order="39">
       <PuzzleDescription>
-        <Name>Hot Green Gem</Name>
+        <Name>Dire School</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1226,9 +735,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="166.7" PuzzleID="P79" CategoryREF="C0" Order="40">
+    <Puzzle Rating="4.3" PuzzleID="P79" CategoryREF="C0" Order="40">
       <PuzzleDescription>
-        <Name>Cold Mountain</Name>
+        <Name>Nefarious Hamlet</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1243,9 +752,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="150.0" PuzzleID="P81" CategoryREF="C0" Order="41">
+    <Puzzle Rating="4.4" PuzzleID="P81" CategoryREF="C0" Order="41">
       <PuzzleDescription>
-        <Name>Edgy Lagoon</Name>
+        <Name>Hot Toad</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1260,9 +769,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="107.1" PuzzleID="P83" CategoryREF="C0" Order="42">
+    <Puzzle Rating="5.3" PuzzleID="P83" CategoryREF="C0" Order="42">
       <PuzzleDescription>
-        <Name>Exacting Cottage</Name>
+        <Name>Dire Estate</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1279,9 +788,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="71.4" PuzzleID="P85" CategoryREF="C0" Order="43">
+    <Puzzle Rating="6.9" PuzzleID="P85" CategoryREF="C0" Order="43">
       <PuzzleDescription>
-        <Name>Slimy House</Name>
+        <Name>Small House</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1299,7 +808,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="333.3" PuzzleID="P87" CategoryREF="C0" Order="44">
+    <Puzzle Rating="1.0" PuzzleID="P87" CategoryREF="C0" Order="44">
       <PuzzleDescription>
         <Name>'Duh!'</Name>
         <Description />
@@ -1313,9 +822,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="166.7" PuzzleID="P89" CategoryREF="C0" Order="45">
+    <Puzzle Rating="4.2" PuzzleID="P89" CategoryREF="C0" Order="45">
       <PuzzleDescription>
-        <Name>Cold Lagoon</Name>
+        <Name>Cold Hamlet</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1331,9 +840,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="83.3" PuzzleID="P91" CategoryREF="C0" Order="46">
+    <Puzzle Rating="4.2" PuzzleID="P91" CategoryREF="C0" Order="46">
       <PuzzleDescription>
-        <Name>Dire Town</Name>
+        <Name>Dire Grave</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1350,9 +859,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="62.5" PuzzleID="P93" CategoryREF="C0" Order="47">
+    <Puzzle Rating="5.0" PuzzleID="P93" CategoryREF="C0" Order="47">
       <PuzzleDescription>
-        <Name>Bob's Lagoon</Name>
+        <Name>Neville's Nemosis</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1368,9 +877,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="107.1" PuzzleID="P95" CategoryREF="C0" Order="48">
+    <Puzzle Rating="5.3" PuzzleID="P95" CategoryREF="C0" Order="48">
       <PuzzleDescription>
-        <Name>Slimy House</Name>
+        <Name>Tepid Hovel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1387,9 +896,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="90.9" PuzzleID="P97" CategoryREF="C0" Order="49">
+    <Puzzle Rating="5.9" PuzzleID="P97" CategoryREF="C0" Order="49">
       <PuzzleDescription>
-        <Name>Tight Blanket</Name>
+        <Name>Delighted Estate</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1408,9 +917,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="64.5" PuzzleID="P99" CategoryREF="C0" Order="50">
+    <Puzzle Rating="4.9" PuzzleID="P99" CategoryREF="C0" Order="50">
       <PuzzleDescription>
-        <Name>Funny Toad</Name>
+        <Name>Grim White Nemosis</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1426,9 +935,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="87.0" PuzzleID="P101" CategoryREF="C0" Order="51">
+    <Puzzle Rating="4.1" PuzzleID="P101" CategoryREF="C0" Order="51">
       <PuzzleDescription>
-        <Name>Grim Shower</Name>
+        <Name>Edgy Cottage</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1444,9 +953,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="166.7" PuzzleID="P103" CategoryREF="C0" Order="52">
+    <Puzzle Rating="5.9" PuzzleID="P103" CategoryREF="C0" Order="52">
       <PuzzleDescription>
-        <Name>Cold Hamlet</Name>
+        <Name>Grand Shower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1463,9 +972,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="181.8" PuzzleID="P105" CategoryREF="C0" Order="53">
+    <Puzzle Rating="5.7" PuzzleID="P105" CategoryREF="C0" Order="53">
       <PuzzleDescription>
-        <Name>Hot Lagoon</Name>
+        <Name>Ghastly Spider</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1481,9 +990,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="81.6" PuzzleID="P107" CategoryREF="C0" Order="54">
+    <Puzzle Rating="8.4" PuzzleID="P107" CategoryREF="C0" Order="54">
       <PuzzleDescription>
-        <Name>Splendid Cottage</Name>
+        <Name>Dastardly Cottage</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1500,9 +1009,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="60.6" PuzzleID="P109" CategoryREF="C0" Order="55">
+    <Puzzle Rating="5.1" PuzzleID="P109" CategoryREF="C0" Order="55">
       <PuzzleDescription>
-        <Name>Superb Mountain</Name>
+        <Name>Old House</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1519,9 +1028,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="111.1" PuzzleID="P111" CategoryREF="C0" Order="56">
+    <Puzzle Rating="3.5" PuzzleID="P111" CategoryREF="C0" Order="56">
       <PuzzleDescription>
-        <Name>Grand Hovel</Name>
+        <Name>Edgy Town</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1536,9 +1045,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="60.6" PuzzleID="P113" CategoryREF="C0" Order="57">
+    <Puzzle Rating="5.2" PuzzleID="P113" CategoryREF="C0" Order="57">
       <PuzzleDescription>
-        <Name>Hot Red Grave</Name>
+        <Name>Bob's Tunnel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1556,9 +1065,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="150.0" PuzzleID="P115" CategoryREF="C0" Order="58">
+    <Puzzle Rating="4.5" PuzzleID="P115" CategoryREF="C0" Order="58">
       <PuzzleDescription>
-        <Name>Superb Grave</Name>
+        <Name>Bob's School</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1574,9 +1083,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="50.8" PuzzleID="P117" CategoryREF="C0" Order="59">
+    <Puzzle Rating="8.7" PuzzleID="P117" CategoryREF="C0" Order="59">
       <PuzzleDescription>
-        <Name>Funny Nemosis</Name>
+        <Name>Uptight Morning</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1594,9 +1103,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="90.9" PuzzleID="P119" CategoryREF="C0" Order="60">
+    <Puzzle Rating="7.9" PuzzleID="P119" CategoryREF="C0" Order="60">
       <PuzzleDescription>
-        <Name>Tepid Toad</Name>
+        <Name>Grim Shower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1615,9 +1124,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="105.3" PuzzleID="P121" CategoryREF="C0" Order="61">
+    <Puzzle Rating="7.2" PuzzleID="P121" CategoryREF="C0" Order="61">
       <PuzzleDescription>
-        <Name>Superb Gem</Name>
+        <Name>Slimy Nemosis</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1636,9 +1145,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="125.0" PuzzleID="P123" CategoryREF="C0" Order="62">
+    <Puzzle Rating="6.5" PuzzleID="P123" CategoryREF="C0" Order="62">
       <PuzzleDescription>
-        <Name>Tepid Grave</Name>
+        <Name>Old Toad</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1653,9 +1162,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="43.5" PuzzleID="P125" CategoryREF="C0" Order="63">
+    <Puzzle Rating="6.5" PuzzleID="P125" CategoryREF="C0" Order="63">
       <PuzzleDescription>
-        <Name>Big Tunnel</Name>
+        <Name>Edgy Morning</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1670,9 +1179,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="102.6" PuzzleID="P127" CategoryREF="C0" Order="64">
+    <Puzzle Rating="7.3" PuzzleID="P127" CategoryREF="C0" Order="64">
       <PuzzleDescription>
-        <Name>Splendid Toad</Name>
+        <Name>Cold Grave</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1690,9 +1199,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="100.0" PuzzleID="P129" CategoryREF="C0" Order="65">
+    <Puzzle Rating="7.4" PuzzleID="P129" CategoryREF="C0" Order="65">
       <PuzzleDescription>
-        <Name>Tense Blanket</Name>
+        <Name>Susan's House</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1710,9 +1219,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="50.0" PuzzleID="P131" CategoryREF="C0" Order="66">
+    <Puzzle Rating="8.8" PuzzleID="P131" CategoryREF="C0" Order="66">
       <PuzzleDescription>
-        <Name>Tight Lagoon</Name>
+        <Name>Cat's Hovel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1735,9 +1244,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="125.0" PuzzleID="P133" CategoryREF="C0" Order="67">
+    <Puzzle Rating="5.0" PuzzleID="P133" CategoryREF="C0" Order="67">
       <PuzzleDescription>
-        <Name>Dire Hamlet</Name>
+        <Name>Old Toad</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1754,9 +1263,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="120.0" PuzzleID="P135" CategoryREF="C0" Order="68">
+    <Puzzle Rating="5.0" PuzzleID="P135" CategoryREF="C0" Order="68">
       <PuzzleDescription>
-        <Name>Big Blanket</Name>
+        <Name>Grim Night</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1772,9 +1281,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="73.2" PuzzleID="P137" CategoryREF="C0" Order="69">
+    <Puzzle Rating="6.7" PuzzleID="P137" CategoryREF="C0" Order="69">
       <PuzzleDescription>
-        <Name>Cat's Toad</Name>
+        <Name>Dastardly Blanket</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1791,9 +1300,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="111.1" PuzzleID="P139" CategoryREF="C0" Order="70">
+    <Puzzle Rating="7.0" PuzzleID="P139" CategoryREF="C0" Order="70">
       <PuzzleDescription>
-        <Name>Funny Yellow Tunnel</Name>
+        <Name>Ghastly Cottage</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1812,9 +1321,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="38.5" PuzzleID="P141" CategoryREF="C0" Order="71">
+    <Puzzle Rating="7.2" PuzzleID="P141" CategoryREF="C0" Order="71">
       <PuzzleDescription>
-        <Name>Dire Spider</Name>
+        <Name>Small House</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1832,9 +1341,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="71.4" PuzzleID="P143" CategoryREF="C0" Order="72">
+    <Puzzle Rating="6.9" PuzzleID="P143" CategoryREF="C0" Order="72">
       <PuzzleDescription>
-        <Name>Edgy Grave</Name>
+        <Name>Tense Morning</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1854,9 +1363,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="90.9" PuzzleID="P145" CategoryREF="C0" Order="73">
+    <Puzzle Rating="5.9" PuzzleID="P145" CategoryREF="C0" Order="73">
       <PuzzleDescription>
-        <Name>Funny Cottage</Name>
+        <Name>Lucy's Cottage</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1875,9 +1384,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="114.3" PuzzleID="P147" CategoryREF="C0" Order="74">
+    <Puzzle Rating="6.9" PuzzleID="P147" CategoryREF="C0" Order="74">
       <PuzzleDescription>
-        <Name>Dire Night</Name>
+        <Name>Ghastly Night</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1894,9 +1403,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="121.2" PuzzleID="P149" CategoryREF="C0" Order="75">
+    <Puzzle Rating="6.6" PuzzleID="P149" CategoryREF="C0" Order="75">
       <PuzzleDescription>
-        <Name>Dastardly Nemosis</Name>
+        <Name>Delighted Cottage</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1912,9 +1421,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="63.8" PuzzleID="P151" CategoryREF="C0" Order="76">
+    <Puzzle Rating="7.4" PuzzleID="P151" CategoryREF="C0" Order="76">
       <PuzzleDescription>
-        <Name>Dire Gem</Name>
+        <Name>Exacting School</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1934,9 +1443,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="121.2" PuzzleID="P153" CategoryREF="C0" Order="77">
+    <Puzzle Rating="6.6" PuzzleID="P153" CategoryREF="C0" Order="77">
       <PuzzleDescription>
-        <Name>Small Mountain</Name>
+        <Name>Small Gem</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1952,9 +1461,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="128.2" PuzzleID="P155" CategoryREF="C0" Order="78">
+    <Puzzle Rating="8.1" PuzzleID="P155" CategoryREF="C0" Order="78">
       <PuzzleDescription>
-        <Name>Grim Grave</Name>
+        <Name>Grim Yellow Lagoon</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1971,9 +1480,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="107.1" PuzzleID="P157" CategoryREF="C0" Order="79">
+    <Puzzle Rating="5.3" PuzzleID="P157" CategoryREF="C0" Order="79">
       <PuzzleDescription>
-        <Name>Old Night</Name>
+        <Name>Superb Blanket</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -1988,9 +1497,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="80.0" PuzzleID="P159" CategoryREF="C0" Order="80">
+    <Puzzle Rating="8.5" PuzzleID="P159" CategoryREF="C0" Order="80">
       <PuzzleDescription>
-        <Name>Edgy School</Name>
+        <Name>Tricky Shower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2010,9 +1519,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="115.4" PuzzleID="P161" CategoryREF="C0" Order="81">
+    <Puzzle Rating="6.1" PuzzleID="P161" CategoryREF="C0" Order="81">
       <PuzzleDescription>
-        <Name>Grim Mountain</Name>
+        <Name>Ghastly Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2030,9 +1539,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="120.0" PuzzleID="P163" CategoryREF="C0" Order="82">
+    <Puzzle Rating="5.1" PuzzleID="P163" CategoryREF="C0" Order="82">
       <PuzzleDescription>
-        <Name>Big Tunnel</Name>
+        <Name>Small Nemosis</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2049,9 +1558,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="105.3" PuzzleID="P165" CategoryREF="C0" Order="83">
+    <Puzzle Rating="7.2" PuzzleID="P165" CategoryREF="C0" Order="83">
       <PuzzleDescription>
-        <Name>Tricky Shower</Name>
+        <Name>Tepid Estate</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2070,9 +1579,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="62.5" PuzzleID="P167" CategoryREF="C0" Order="84">
+    <Puzzle Rating="7.5" PuzzleID="P167" CategoryREF="C0" Order="84">
       <PuzzleDescription>
-        <Name>Exacting Grave</Name>
+        <Name>Cat's Lagoon</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2091,9 +1600,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="53.6" PuzzleID="P169" CategoryREF="C0" Order="85">
+    <Puzzle Rating="8.4" PuzzleID="P169" CategoryREF="C0" Order="85">
       <PuzzleDescription>
-        <Name>David's Tower</Name>
+        <Name>Cold House</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2113,9 +1622,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="121.2" PuzzleID="P171" CategoryREF="C0" Order="86">
+    <Puzzle Rating="6.6" PuzzleID="P171" CategoryREF="C0" Order="86">
       <PuzzleDescription>
-        <Name>Tepid Hovel</Name>
+        <Name>Dastardly Night</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2132,9 +1641,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="95.2" PuzzleID="P173" CategoryREF="C0" Order="87">
+    <Puzzle Rating="7.6" PuzzleID="P173" CategoryREF="C0" Order="87">
       <PuzzleDescription>
-        <Name>Nefarious Gem</Name>
+        <Name>Tricky Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2153,9 +1662,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="48.4" PuzzleID="P175" CategoryREF="C0" Order="88">
+    <Puzzle Rating="9.1" PuzzleID="P175" CategoryREF="C0" Order="88">
       <PuzzleDescription>
-        <Name>Grim Blanket</Name>
+        <Name>Grand Gem</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2176,9 +1685,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="93.0" PuzzleID="P177" CategoryREF="C0" Order="89">
+    <Puzzle Rating="7.7" PuzzleID="P177" CategoryREF="C0" Order="89">
       <PuzzleDescription>
-        <Name>Nefarious Spider</Name>
+        <Name>Edgy Cottage</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2196,9 +1705,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="121.2" PuzzleID="P179" CategoryREF="C0" Order="90">
+    <Puzzle Rating="6.6" PuzzleID="P179" CategoryREF="C0" Order="90">
       <PuzzleDescription>
-        <Name>Tepid Hamlet</Name>
+        <Name>Tight Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2214,9 +1723,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="173.9" PuzzleID="P181" CategoryREF="C0" Order="91">
+    <Puzzle Rating="5.5" PuzzleID="P181" CategoryREF="C0" Order="91">
       <PuzzleDescription>
-        <Name>Ghastly Gem</Name>
+        <Name>Nefarious White Hamlet</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2230,9 +1739,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="37.5" PuzzleID="P183" CategoryREF="C0" Order="92">
+    <Puzzle Rating="11.0" PuzzleID="P183" CategoryREF="C0" Order="92">
       <PuzzleDescription>
-        <Name>Grim School</Name>
+        <Name>Splendid Cottage</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2251,9 +1760,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="119.4" PuzzleID="P185" CategoryREF="C0" Order="93">
+    <Puzzle Rating="13.9" PuzzleID="P185" CategoryREF="C0" Order="93">
       <PuzzleDescription>
-        <Name>Splendid Estate</Name>
+        <Name>Tense Spider</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2273,9 +1782,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="85.7" PuzzleID="P187" CategoryREF="C0" Order="94">
+    <Puzzle Rating="6.1" PuzzleID="P187" CategoryREF="C0" Order="94">
       <PuzzleDescription>
-        <Name>Delighted Blanket</Name>
+        <Name>Nefarious Grave</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2292,9 +1801,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="222.2" PuzzleID="P189" CategoryREF="C0" Order="95">
+    <Puzzle Rating="10.1" PuzzleID="P189" CategoryREF="C0" Order="95">
       <PuzzleDescription>
-        <Name>Caroline's Lagoon</Name>
+        <Name>Tricky Tunnel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2311,9 +1820,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="54.5" PuzzleID="P191" CategoryREF="C0" Order="96">
+    <Puzzle Rating="8.3" PuzzleID="P191" CategoryREF="C0" Order="96">
       <PuzzleDescription>
-        <Name>Superb Mountain</Name>
+        <Name>Edgy Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2333,9 +1842,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="113.6" PuzzleID="P193" CategoryREF="C0" Order="97">
+    <Puzzle Rating="8.6" PuzzleID="P193" CategoryREF="C0" Order="97">
       <PuzzleDescription>
-        <Name>David's Tunnel</Name>
+        <Name>Tricky Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2354,9 +1863,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="72.5" PuzzleID="P195" CategoryREF="C0" Order="98">
+    <Puzzle Rating="11.4" PuzzleID="P195" CategoryREF="C0" Order="98">
       <PuzzleDescription>
-        <Name>Cold Night</Name>
+        <Name>Hot Estate</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2375,9 +1884,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="32.3" PuzzleID="P197" CategoryREF="C0" Order="99">
+    <Puzzle Rating="16.7" PuzzleID="P197" CategoryREF="C0" Order="99">
       <PuzzleDescription>
-        <Name>Funny Blanket</Name>
+        <Name>Delighted Spider</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2396,9 +1905,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="142.9" PuzzleID="P199" CategoryREF="C0" Order="100">
+    <Puzzle Rating="6.1" PuzzleID="P199" CategoryREF="C0" Order="100">
       <PuzzleDescription>
-        <Name>Tepid Mountain</Name>
+        <Name>Dire Estate</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2415,7 +1924,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="62.5" PuzzleID="P201" CategoryREF="C0" Order="101">
+    <Puzzle Rating="15.1" PuzzleID="P201" CategoryREF="C0" Order="101">
       <PuzzleDescription>
         <Name>'Lockdown'</Name>
         <Description />
@@ -2439,9 +1948,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="83.3" PuzzleID="P203" CategoryREF="C0" Order="102">
+    <Puzzle Rating="8.3" PuzzleID="P203" CategoryREF="C0" Order="102">
       <PuzzleDescription>
-        <Name>Tight Grave</Name>
+        <Name>Grand Hovel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2458,9 +1967,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="137.9" PuzzleID="P205" CategoryREF="C0" Order="103">
+    <Puzzle Rating="6.2" PuzzleID="P205" CategoryREF="C0" Order="103">
       <PuzzleDescription>
-        <Name>Funny Yellow Estate</Name>
+        <Name>Tight Night</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2477,9 +1986,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="68.2" PuzzleID="P207" CategoryREF="C0" Order="104">
+    <Puzzle Rating="7.1" PuzzleID="P207" CategoryREF="C0" Order="104">
       <PuzzleDescription>
-        <Name>Cold Spider</Name>
+        <Name>Slimy Tunnel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2497,9 +2006,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="129.0" PuzzleID="P209" CategoryREF="C0" Order="105">
+    <Puzzle Rating="13.4" PuzzleID="P209" CategoryREF="C0" Order="105">
       <PuzzleDescription>
-        <Name>Edgy Lagoon</Name>
+        <Name>Uptight Tunnel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2519,9 +2028,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="106.4" PuzzleID="P211" CategoryREF="C0" Order="106">
+    <Puzzle Rating="9.0" PuzzleID="P211" CategoryREF="C0" Order="106">
       <PuzzleDescription>
-        <Name>Old White Mountain</Name>
+        <Name>Uptight Shower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2539,9 +2048,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="305.6" PuzzleID="P213" CategoryREF="C0" Order="107">
+    <Puzzle Rating="15.6" PuzzleID="P213" CategoryREF="C0" Order="107">
       <PuzzleDescription>
-        <Name>Hot Tunnel</Name>
+        <Name>Big Hamlet</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2558,9 +2067,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="70.2" PuzzleID="P215" CategoryREF="C0" Order="108">
+    <Puzzle Rating="9.3" PuzzleID="P215" CategoryREF="C0" Order="108">
       <PuzzleDescription>
-        <Name>Small Night</Name>
+        <Name>Ghastly Estate</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2577,9 +2086,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="94.3" PuzzleID="P217" CategoryREF="C0" Order="109">
+    <Puzzle Rating="9.6" PuzzleID="P217" CategoryREF="C0" Order="109">
       <PuzzleDescription>
-        <Name>Big Blanket</Name>
+        <Name>Nefarious Nemosis</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2601,9 +2110,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="111.1" PuzzleID="P219" CategoryREF="C0" Order="110">
+    <Puzzle Rating="7.0" PuzzleID="P219" CategoryREF="C0" Order="110">
       <PuzzleDescription>
-        <Name>Dastardly Nemosis</Name>
+        <Name>Tepid Gem</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2621,9 +2130,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="98.4" PuzzleID="P221" CategoryREF="C0" Order="111">
+    <Puzzle Rating="11.3" PuzzleID="P221" CategoryREF="C0" Order="111">
       <PuzzleDescription>
-        <Name>Leigh's House</Name>
+        <Name>Bob's Toad</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2644,9 +2153,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="80.6" PuzzleID="P223" CategoryREF="C0" Order="112">
+    <Puzzle Rating="10.6" PuzzleID="P223" CategoryREF="C0" Order="112">
       <PuzzleDescription>
-        <Name>Tense Tunnel</Name>
+        <Name>Superb Toad</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2668,9 +2177,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="44.0" PuzzleID="P225" CategoryREF="C0" Order="113">
+    <Puzzle Rating="13.0" PuzzleID="P225" CategoryREF="C0" Order="113">
       <PuzzleDescription>
-        <Name>Bob's Hovel</Name>
+        <Name>Funny Morning</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2692,9 +2201,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="157.9" PuzzleID="P227" CategoryREF="C0" Order="114">
+    <Puzzle Rating="8.8" PuzzleID="P227" CategoryREF="C0" Order="114">
       <PuzzleDescription>
-        <Name>Big Spider</Name>
+        <Name>Slimy Nemosis</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2712,9 +2221,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="113.6" PuzzleID="P229" CategoryREF="C0" Order="115">
+    <Puzzle Rating="8.6" PuzzleID="P229" CategoryREF="C0" Order="115">
       <PuzzleDescription>
-        <Name>Dastardly Nemosis</Name>
+        <Name>Edgy Spider</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2731,9 +2240,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="135.1" PuzzleID="P231" CategoryREF="C0" Order="116">
+    <Puzzle Rating="7.9" PuzzleID="P231" CategoryREF="C0" Order="116">
       <PuzzleDescription>
-        <Name>David's Night</Name>
+        <Name>Edgy Nemosis</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2749,9 +2258,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="90.9" PuzzleID="P233" CategoryREF="C0" Order="117">
+    <Puzzle Rating="9.8" PuzzleID="P233" CategoryREF="C0" Order="117">
       <PuzzleDescription>
-        <Name>Funny Hamlet</Name>
+        <Name>Neville's House</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2770,9 +2279,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="88.9" PuzzleID="P235" CategoryREF="C0" Order="118">
+    <Puzzle Rating="8.0" PuzzleID="P235" CategoryREF="C0" Order="118">
       <PuzzleDescription>
-        <Name>Nefarious Morning</Name>
+        <Name>Delighted School</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2791,9 +2300,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="68.2" PuzzleID="P237" CategoryREF="C0" Order="119">
+    <Puzzle Rating="7.1" PuzzleID="P237" CategoryREF="C0" Order="119">
       <PuzzleDescription>
-        <Name>Slimy Toad</Name>
+        <Name>Tricky Lagoon</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2812,9 +2321,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="87.0" PuzzleID="P239" CategoryREF="C0" Order="120">
+    <Puzzle Rating="8.1" PuzzleID="P239" CategoryREF="C0" Order="120">
       <PuzzleDescription>
-        <Name>Superb Tunnel</Name>
+        <Name>Exacting Grave</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2834,9 +2343,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="108.7" PuzzleID="P241" CategoryREF="C0" Order="121">
+    <Puzzle Rating="9.0" PuzzleID="P241" CategoryREF="C0" Order="121">
       <PuzzleDescription>
-        <Name>David's Grave</Name>
+        <Name>Exacting Town</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2856,9 +2365,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="96.2" PuzzleID="P243" CategoryREF="C0" Order="122">
+    <Puzzle Rating="9.5" PuzzleID="P243" CategoryREF="C0" Order="122">
       <PuzzleDescription>
-        <Name>Big Shower</Name>
+        <Name>Big School</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2879,9 +2388,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="61.7" PuzzleID="P245" CategoryREF="C0" Order="123">
+    <Puzzle Rating="12.7" PuzzleID="P245" CategoryREF="C0" Order="123">
       <PuzzleDescription>
-        <Name>David's Estate</Name>
+        <Name>Edgy Red Gem</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2901,9 +2410,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="49.2" PuzzleID="P247" CategoryREF="C0" Order="124">
+    <Puzzle Rating="8.9" PuzzleID="P247" CategoryREF="C0" Order="124">
       <PuzzleDescription>
-        <Name>Exacting School</Name>
+        <Name>Superb Tunnel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2921,9 +2430,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="71.4" PuzzleID="P249" CategoryREF="C0" Order="125">
+    <Puzzle Rating="9.2" PuzzleID="P249" CategoryREF="C0" Order="125">
       <PuzzleDescription>
-        <Name>Edgy Night</Name>
+        <Name>Ghastly Hovel</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2940,9 +2449,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="194.4" PuzzleID="P251" CategoryREF="C0" Order="126">
+    <Puzzle Rating="9.3" PuzzleID="P251" CategoryREF="C0" Order="126">
       <PuzzleDescription>
-        <Name>Exacting Yellow Blanket</Name>
+        <Name>Wilma's Blanket</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2958,9 +2467,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="111.1" PuzzleID="P253" CategoryREF="C0" Order="127">
+    <Puzzle Rating="7.0" PuzzleID="P253" CategoryREF="C0" Order="127">
       <PuzzleDescription>
-        <Name>Delighted Night</Name>
+        <Name>Small Spider</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2978,9 +2487,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="105.3" PuzzleID="P255" CategoryREF="C0" Order="128">
+    <Puzzle Rating="7.4" PuzzleID="P255" CategoryREF="C0" Order="128">
       <PuzzleDescription>
-        <Name>Small Spider</Name>
+        <Name>Tense Hamlet</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -2997,9 +2506,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="128.2" PuzzleID="P257" CategoryREF="C0" Order="129">
+    <Puzzle Rating="9.7" PuzzleID="P257" CategoryREF="C0" Order="129">
       <PuzzleDescription>
-        <Name>Tepid Toad</Name>
+        <Name>Splendid Cottage</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -3016,9 +2525,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="95.2" PuzzleID="P259" CategoryREF="C0" Order="130">
+    <Puzzle Rating="7.6" PuzzleID="P259" CategoryREF="C0" Order="130">
       <PuzzleDescription>
-        <Name>Tricky Shower</Name>
+        <Name>Hot Blanket</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -3034,9 +2543,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="121.2" PuzzleID="P261" CategoryREF="C0" Order="131">
+    <Puzzle Rating="6.6" PuzzleID="P261" CategoryREF="C0" Order="131">
       <PuzzleDescription>
-        <Name>Grim Mountain</Name>
+        <Name>Cat's Gem</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -3056,9 +2565,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="133.3" PuzzleID="P263" CategoryREF="C0" Order="132">
+    <Puzzle Rating="6.4" PuzzleID="P263" CategoryREF="C0" Order="132">
       <PuzzleDescription>
-        <Name>Tight Spider</Name>
+        <Name>Grim Town</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -3075,9 +2584,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="128.2" PuzzleID="P265" CategoryREF="C0" Order="133">
+    <Puzzle Rating="8.1" PuzzleID="P265" CategoryREF="C0" Order="133">
       <PuzzleDescription>
-        <Name>Ghastly Estate</Name>
+        <Name>Dastardly Night</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -3094,9 +2603,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="64.5" PuzzleID="P267" CategoryREF="C0" Order="134">
+    <Puzzle Rating="9.8" PuzzleID="P267" CategoryREF="C0" Order="134">
       <PuzzleDescription>
-        <Name>Superb Nemosis</Name>
+        <Name>Neville's Hamlet</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -3115,9 +2624,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="114.3" PuzzleID="P269" CategoryREF="C0" Order="135">
+    <Puzzle Rating="6.9" PuzzleID="P269" CategoryREF="C0" Order="135">
       <PuzzleDescription>
-        <Name>Funny Night</Name>
+        <Name>Edgy Estate</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -3133,9 +2642,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="129.0" PuzzleID="P271" CategoryREF="C0" Order="136">
+    <Puzzle Rating="6.4" PuzzleID="P271" CategoryREF="C0" Order="136">
       <PuzzleDescription>
-        <Name>David's Blanket</Name>
+        <Name>Tricky Lagoon</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -3152,9 +2661,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="64.5" PuzzleID="P273" CategoryREF="C0" Order="137">
+    <Puzzle Rating="9.8" PuzzleID="P273" CategoryREF="C0" Order="137">
       <PuzzleDescription>
-        <Name>Tense Toad</Name>
+        <Name>Dire Grave</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -3173,9 +2682,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="82.0" PuzzleID="P275" CategoryREF="C0" Order="138">
+    <Puzzle Rating="10.5" PuzzleID="P275" CategoryREF="C0" Order="138">
       <PuzzleDescription>
-        <Name>Old School</Name>
+        <Name>Exacting Toad</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -3195,9 +2704,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="78.9" PuzzleID="P277" CategoryREF="C0" Order="139">
+    <Puzzle Rating="12.9" PuzzleID="P277" CategoryREF="C0" Order="139">
       <PuzzleDescription>
-        <Name>Hot Tunnel</Name>
+        <Name>Hot Toad</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -3218,9 +2727,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="78.4" PuzzleID="P279" CategoryREF="C0" Order="140">
+    <Puzzle Rating="8.6" PuzzleID="P279" CategoryREF="C0" Order="140">
       <PuzzleDescription>
-        <Name>Hot Mountain</Name>
+        <Name>Superb Mountain</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -3238,9 +2747,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="127.7" PuzzleID="P281" CategoryREF="C0" Order="141">
+    <Puzzle Rating="10.0" PuzzleID="P281" CategoryREF="C0" Order="141">
       <PuzzleDescription>
-        <Name>Tense Tower</Name>
+        <Name>Ghastly House</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -3258,9 +2767,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="108.1" PuzzleID="P283" CategoryREF="C0" Order="142">
+    <Puzzle Rating="7.1" PuzzleID="P283" CategoryREF="C0" Order="142">
       <PuzzleDescription>
-        <Name>Hot Mountain</Name>
+        <Name>Big Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -3278,9 +2787,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="115.4" PuzzleID="P285" CategoryREF="C0" Order="143">
+    <Puzzle Rating="10.3" PuzzleID="P285" CategoryREF="C0" Order="143">
       <PuzzleDescription>
-        <Name>Tepid Grave</Name>
+        <Name>Slimy Estate</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -3304,9 +2813,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="205.1" PuzzleID="P287" CategoryREF="C0" Order="144">
+    <Puzzle Rating="21.4" PuzzleID="P287" CategoryREF="C0" Order="144">
       <PuzzleDescription>
-        <Name>Superb Town</Name>
+        <Name>Leigh's Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -3327,9 +2836,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="187.5" PuzzleID="P289" CategoryREF="C0" Order="145">
+    <Puzzle Rating="16.3" PuzzleID="P289" CategoryREF="C0" Order="145">
       <PuzzleDescription>
-        <Name>Big Blanket</Name>
+        <Name>Ghastly Tower</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -3349,9 +2858,9 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="255.3" PuzzleID="P291" CategoryREF="C0" Order="146">
+    <Puzzle Rating="14.4" PuzzleID="P291" CategoryREF="C0" Order="146">
       <PuzzleDescription>
-        <Name>Grim Hamlet</Name>
+        <Name>Cold School</Name>
         <Description />
       </PuzzleDescription>
       <Maps>
@@ -3369,7 +2878,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="53.6" PuzzleID="P293" CategoryREF="C0" Order="147">
+    <Puzzle Rating="8.4" PuzzleID="P293" CategoryREF="C0" Order="147">
       <PuzzleDescription>
         <Name>'reduction of (Mas Sasquatch 8)'</Name>
         <Description />
@@ -3390,7 +2899,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="88.9" PuzzleID="P295" CategoryREF="C0" Order="148">
+    <Puzzle Rating="8.0" PuzzleID="P295" CategoryREF="C0" Order="148">
       <PuzzleDescription>
         <Name>'from (Original 18)'</Name>
         <Description />
@@ -3408,7 +2917,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="95.2" PuzzleID="P297" CategoryREF="C0" Order="149">
+    <Puzzle Rating="7.6" PuzzleID="P297" CategoryREF="C0" Order="149">
       <PuzzleDescription>
         <Name>'from (Boxxle 43)'</Name>
         <Description />
@@ -3431,7 +2940,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="90.9" PuzzleID="P299" CategoryREF="C0" Order="150">
+    <Puzzle Rating="9.8" PuzzleID="P299" CategoryREF="C0" Order="150">
       <PuzzleDescription>
         <Name>'from (Original 47)'</Name>
         <Description />
@@ -3450,7 +2959,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="81.6" PuzzleID="P301" CategoryREF="C0" Order="151">
+    <Puzzle Rating="8.4" PuzzleID="P301" CategoryREF="C0" Order="151">
       <PuzzleDescription>
         <Name>'from (Original 47)'</Name>
         <Description />
@@ -3471,7 +2980,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="63.5" PuzzleID="P303" CategoryREF="C0" Order="152">
+    <Puzzle Rating="10.1" PuzzleID="P303" CategoryREF="C0" Order="152">
       <PuzzleDescription>
         <Name>'reduced (Mas Sasquatch 23)'</Name>
         <Description />
@@ -3491,7 +3000,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="158.7" PuzzleID="P305" CategoryREF="C0" Order="153">
+    <Puzzle Rating="14.6" PuzzleID="P305" CategoryREF="C0" Order="153">
       <PuzzleDescription>
         <Name>'reduction of (Revenge 306)'</Name>
         <Description />
@@ -3512,7 +3021,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="4.3" PuzzleID="P307" CategoryREF="C0" Order="154">
+    <Puzzle Rating="26.1" PuzzleID="P307" CategoryREF="C0" Order="154">
       <PuzzleDescription>
         <Name>'Take the long way home.'</Name>
         <Description />
@@ -3540,7 +3049,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="42.1" PuzzleID="P309" CategoryREF="C0" Order="155">
+    <Puzzle Rating="44.0" PuzzleID="P309" CategoryREF="C0" Order="155">
       <PuzzleDescription>
         <Name>'The Dungeon'</Name>
         <Description />

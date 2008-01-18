@@ -19,11 +19,20 @@ namespace SokoSolve.Core.Reporting
         {
             Body.AppendChild(CreateContentTag("h1", "SokoSolve | Automated Solver Report"));
 
+            Body.AppendChild(CreateContentTag("p", 
+                string.Format("SokoSolve Automated Solver Report, created {0:R} by SokoSolve v{1} on a {2}", 
+                    DateTime.Now, ProgramVersion.VersionString, DebugHelper.GetCPUDescription())));
+
+
             XmlElement table = report.CreateElement("table");
             table.SetAttribute("class", "tableinfo");
             table.InnerXml += string.Format("<tr><th>Puzzle</th><th>Status</th><th>Summary</th></tr>");
             foreach (SolverResult result in results)
             {
+                if (result == null) continue;
+                if (result.Map ==null) continue;
+                if (result.Map.Puzzle == null) continue;
+                if (result.Map.Puzzle.Details == null) continue;
                 table.InnerXml += string.Format("<tr><td>({3}) {0}</td><td>{1}</td><td>{2}</td></tr>", 
                     result.Map.Puzzle.Details.Name, 
                     result.StatusString, 
@@ -35,6 +44,11 @@ namespace SokoSolve.Core.Reporting
 
              foreach (SolverResult result in results)
              {
+                 if (result == null) continue;
+                 if (result.Map == null) continue;
+                 if (result.Map.Puzzle == null) continue;
+                 if (result.Map.Puzzle.Details == null) continue;
+
                  Body.AppendChild(CreateContentTag("h2", string.Format("({0}) {1}", result.Map.Puzzle.PuzzleID, result.Map.Puzzle.Details.Name)));
 
                  XmlElement tabledtl = report.CreateElement("table");
@@ -61,9 +75,12 @@ namespace SokoSolve.Core.Reporting
                  }
                  tabledtl.InnerXml += string.Format("<tr><th>{0}</th><td>{1}</td></tr>", "Misc Details", sb);
 
-                 foreach (Solution solution in result.Solutions)
+                 if (result.HasSolution)
                  {
-                     tabledtl.InnerXml += string.Format("<tr><th>{0}</th><td><pre>{1}</pre></td></tr>", "Solution", solution.ToStringDisplay("<br/>"));        
+                     foreach (Solution solution in result.Solutions)
+                     {
+                         tabledtl.InnerXml += string.Format("<tr><th>{0}</th><td><pre>{1}</pre></td></tr>", "Solution", solution.ToStringDisplay("<br/>"));
+                     }
                  }
              
 

@@ -93,7 +93,7 @@ namespace SokoSolve.Common.Structures.Evaluation
         /// </summary>
         /// <param name="CurrentNode"></param>
         /// <param name="NewChild"></param>
-        protected void AddNodeForEval(INode<T> CurrentNode, T NewChild)
+        protected virtual void AddNodeForEval(INode<T> CurrentNode, T NewChild)
         {
             if (NewChild.NodeID == null) NewChild.NodeID = GetNextNodeID();
 
@@ -107,9 +107,23 @@ namespace SokoSolve.Common.Structures.Evaluation
             workList.Add(newChildNode);
         }
 
-        protected void MarkEvalCompelete(INode<T> CurrentNode)
+        /// <summary>
+        /// Once the evaluation is complete, remove it from the worker list
+        /// </summary>
+        /// <param name="CurrentNode"></param>
+        protected virtual void MarkEvalCompelete(INode<T> CurrentNode)
         {
             workList.Remove(CurrentNode);
+        }
+
+        /// <summary>
+        /// For completeness, in the unlikely event of a node (previously added) that is now redunant and is removed from the
+        /// search/solution tree
+        /// </summary>
+        /// <param name="CurrentNode"></param>
+        protected virtual void RemoveRedundantNode(INode<T> CurrentNode)
+        {
+            // Nothing
         }
 
         /// <summary>

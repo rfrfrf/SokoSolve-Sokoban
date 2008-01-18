@@ -273,7 +273,7 @@ namespace SokoSolve.Common.Structures
         {
             uint result = 0;
             for (int ccy = 0; ccy < map.Length; ccy++)
-                result += (uint) ccy*map[ccy];
+                result = result ^ map[ccy];
 
             return (int) result;
         }

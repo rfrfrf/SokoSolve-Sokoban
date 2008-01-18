@@ -12,14 +12,15 @@ namespace SokoSolve.Core.Reporting
 {
     public class LibraryReport : ReportXHTML
     {
-        private string directory = @"C:\junk\";
+        private string directory;
         private Library library;
         StaticImage staticImage;
 
-        public LibraryReport(Library library, StaticImage drawing) : base(library.Details.Name)
+        public LibraryReport(Library library, StaticImage drawing, string directory) : base(library.Details.Name)
         {
             this.library = library;
             staticImage = drawing;
+            this.directory = directory;
         }
 
         public void BuildReport()
@@ -86,7 +87,7 @@ namespace SokoSolve.Core.Reporting
 
             Image pic = staticImage.Draw(puzzle.MasterMap.Map);
             string picFileName = string.Format("{0}-{1}.png", library.LibraryID, puzzle.PuzzleID);
-            string picFullFileName = directory + picFileName;
+            string picFullFileName = directory + "\\" + picFileName;
             pic.Save(picFullFileName);
 
             XmlElement img = report.CreateElement("img");

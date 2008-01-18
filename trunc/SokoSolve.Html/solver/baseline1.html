@@ -1,11 +1,26 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>SokoSolve</title>
+		<title>SokoSolve | Solver - baseline 1</title>
 		<link type="text/css" rel="Stylesheet" href="style.css" />
 	</head>
-	<body>
+	<body >
 	    <h1>SokoSolve | Sokoban Game</h1>
+	    <p>The first base line did not have any of the automated reporting. Times were captured manually or in the solver
+	     reports. See <a href="http://sokosolve.svn.sourceforge.net/viewvc/sokosolve/tags/1.2.24-solver-baseline1/">code</a>.</p>
+	     <h2>Pre-Optimisations</h2>
+	     <ul>
+	        <li>TestSimple unit test: 0.30038 sec</li>
+	        <li>TestMedium unit test: 14.1133 sec</li>
+	     </ul>
+	     
+	     <h2>Post-Optimisations</h2>
+	     <ul>
+	        <li>TestSimple unit test: 0.18247 sec</li>
+	        <li>TestSimple unit test: 0.3095 sec (Added thread-locking)</li>
+	     </ul>
+	     
+	     <p>TestSimple is Sasquatch Level 2, TestMedium is Sasquatch Level 1</p>
 	    
 	    <!-- ########### FOOTER ############## -->
 	    <!-- SourceForge -->

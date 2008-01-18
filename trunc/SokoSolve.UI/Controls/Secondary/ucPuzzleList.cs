@@ -16,7 +16,8 @@ namespace SokoSolve.UI.Controls.Secondary
         public ucPuzzleList()
         {
             InitializeComponent();
-            
+
+            currentSort = SortOrder;
         }
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace SokoSolve.UI.Controls.Secondary
                 }
 
                 List<Puzzle> puzzles = library.Puzzles;    // TODO: Extract out and sort
-                puzzles.Sort(delegate(Puzzle lhs, Puzzle rhs) { return lhs.Order.CompareTo(rhs.Order); });
+                puzzles.Sort(currentSort);
 
                 foreach (Puzzle puzzle in puzzles)
                 {
@@ -116,6 +117,25 @@ namespace SokoSolve.UI.Controls.Secondary
                     
                 }
             }
+        }
+
+        Comparison<Puzzle> currentSort;
+
+        int SortOrder(Puzzle lhs, Puzzle rhs)
+        {
+            return lhs.Order.CompareTo(rhs.Order);
+        }
+
+        int SortRating(Puzzle lhs, Puzzle rhs)
+        {
+
+            return lhs.AutomatedRating.CompareTo(rhs.AutomatedRating);    
+ 
+        }
+
+        int SortName(Puzzle lhs, Puzzle rhs)
+        {
+            return lhs.Details.Name.CompareTo(rhs.Details.Name);
         }
 
         /// <summary>
@@ -221,7 +241,37 @@ namespace SokoSolve.UI.Controls.Secondary
             }      
         }
 
+        private void listViewPuzzles_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            switch(e.Column)
+            {
+                case (0): currentSort = SortName;
+                    break;
+
+                case (1): currentSort = SortOrder;
+                    break;
+
+                case (2): currentSort = SortRating;
+                    break;
 
 
+                default: currentSort = SortOrder; break;
+            }
+
+            Bind();
+        }
+
+
+        /// <summary>
+        /// Select everything
+        /// </summary>
+        public void SelectAll()
+        {
+                foreach (ListViewItem item in listViewPuzzles.Items)
+                {
+                    if (UseCheckBoxes) item.Checked = true;
+                    else item.Selected = true;
+                } 
+        }
     }
 }

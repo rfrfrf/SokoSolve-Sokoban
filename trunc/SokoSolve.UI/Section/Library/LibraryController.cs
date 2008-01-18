@@ -33,6 +33,7 @@ namespace SokoSolve.UI.Section.Library
 		    Register(new LibraryEdit(this, new object[] {view.mbEdit, view.tsbLibraryProperties}));
             Register(new LibraryImport(this, new object[] { view.tsbLibraryImport }));
             Register(new LibraryRefresh(this, new object[] { view.tsbLibraryRefresh }));
+            Register(new LibraryReportHTML(this, new object[] { view.tsbLibraryReport }));
 
             // Category Commands
             Register(new CategoryNew(this, new object[] { view.tsbCategoryNew }));

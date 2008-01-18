@@ -30,15 +30,26 @@ namespace SokoSolve.Common.Structures
 		private T data;
 		private Tree<T> tree;
 
+
+        /// <summary>
+        /// Default constructor, a leaf node (cannot be root)
+        /// </summary>
+        /// <param name="root">Controlling Tree</param>
+        public TreeNode(Tree<T> root)
+        {
+            this.parent = parent;
+            this.tree = root;
+        }
+
 		/// <summary>
-		/// Default constructor
+		/// Default constructor, a leaf node (cannot be root)
 		/// </summary>
 		/// <param name="parent"></param>
 		public TreeNode(TreeNode<T> parent)
 		{
+            if (parent == null) throw new ArgumentNullException("parent");
 			this.parent = parent;
-			if (parent != null) this.tree = parent.tree;
-			this.children = new ManagedCollection<TreeNode<T>>(ChildrenNotifications);
+			this.tree = parent.tree;
 		}
 
 		/// <summary>
@@ -46,12 +57,9 @@ namespace SokoSolve.Common.Structures
 		/// </summary>
 		/// <param name="parent"></param>
 		/// <param name="data"></param>
-		public TreeNode(TreeNode<T> parent, T data)
-		{
-			this.parent = parent;
-			if (parent != null)  this.tree = parent.tree;
-			Data = data;
-		    this.children = null;
+		public TreeNode(TreeNode<T> parent, T data) : this (parent)
+		{	
+        	Data = data;   
 		}
 
 		/// <summary>
@@ -124,7 +132,7 @@ namespace SokoSolve.Common.Structures
 		public TreeNode<T> Add(T child)
 		{
             // Lazy initlisation of children to save space
-            if (children == null) children  = new ManagedCollection<TreeNode<T>>(ChildrenNotifications);
+            if (children == null) children  = tree.ManagedCollectionFactory(ChildrenNotifications);
 
             // Add the node
 			TreeNode<T> node = new TreeNode<T>(this, child);
@@ -139,7 +147,7 @@ namespace SokoSolve.Common.Structures
         public TreeNode<T> Add(TreeNode<T> child)
         {
             // Lazy initlisation of children to save space
-            if (children == null) children = new ManagedCollection<TreeNode<T>>(ChildrenNotifications);
+            if (children == null) children = tree.ManagedCollectionFactory(ChildrenNotifications);
 
             // Add the node
             children.Add(child);

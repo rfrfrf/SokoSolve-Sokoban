@@ -23,19 +23,7 @@ namespace SokoSolve.UI.Controls.Web
 
 		    HtmlBuilder sb = new HtmlBuilder();
 
-		    if (desc.Name != null) sb.AddSection(desc.Name);
-
-		    sb.AddLine(desc.Description);
-            if (desc.DateSpecified) sb.AddLabel("Created", desc.Date.ToString());
-            if (desc.License != null) sb.AddLabel("License", desc.License);
-			if (desc.Author != null)
-			{
-                if (desc.Author.Name != null) sb.AddLabel("Author", desc.Author.Name);
-                if (desc.Author.Email != null) sb.AddLabel("Email", desc.Author.Email);
-                if (desc.Author.Homepage != null) sb.AddLabel("Web", string.Format("<a href=\"{0}\">{0}</a>", desc.Author.Homepage));
-			}
-			sb.AddLine(desc.Comments);
-            if (desc.Name != null)  sb.EndSection();
+            Report(sb, desc);
 
 		    return sb;
 		}
@@ -48,8 +36,8 @@ namespace SokoSolve.UI.Controls.Web
 
             if (desc.Name != null) sb.AddSection(desc.Name);
 
-            sb.AddLine(desc.Description);
-            if (desc.DateSpecified) sb.AddLabel("Created", desc.Date.ToString());
+            if (!string.IsNullOrEmpty(desc.Description))  sb.AddLine(desc.Description.Replace("\n", "<br/>\n"));
+            if (desc.DateSpecified) sb.AddLabel("Created", desc.Date.ToString("R"));
             if (!string.IsNullOrEmpty(desc.License)) sb.AddLabel("License", desc.License);
             if (desc.Author != null)
             {
@@ -57,7 +45,7 @@ namespace SokoSolve.UI.Controls.Web
                 if (!string.IsNullOrEmpty(desc.Author.Email)) sb.AddLabel("Email", desc.Author.Email);
                 if (!string.IsNullOrEmpty(desc.Author.Homepage)) sb.AddLabel("Web", string.Format("<a href=\"{0}\">{0}</a>", desc.Author.Homepage));
             }
-            sb.AddLine(desc.Comments);
+            if (!string.IsNullOrEmpty(desc.Comments)) sb.AddLine(desc.Comments.Replace("\n", "<br/>\n"));
             if (desc.Name != null) sb.EndSection();
 
             return sb;

@@ -14,6 +14,9 @@ namespace SokoSolve.UI.Controls.Secondary
 {
     public partial class ucImport : UserControl
     {
+        private List<Importer> importers;
+        private Library library;
+
         public ucImport()
         {
             InitializeComponent();
@@ -28,7 +31,6 @@ namespace SokoSolve.UI.Controls.Secondary
 
             cbFileFormat.Items.AddRange(importers.ToArray());
             cbFileFormat.SelectedIndex = 0;
-
         }
 
         /// <summary>
@@ -51,15 +53,10 @@ namespace SokoSolve.UI.Controls.Secondary
         }
 
 
-
         private void cbFileFormat_SelectedIndexChanged(object sender, EventArgs e)
         {
             richTextBoxDetails.Text = Importer.Description;
         }
-
-
-        private List<Importer> importers;
-        private Library library;
 
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -75,6 +72,8 @@ namespace SokoSolve.UI.Controls.Secondary
 
             // Store the new directory in profile
             ProfileController.Current.LibraryCurrentImportDir = Path.GetDirectoryName(openF.FileName);
+
+            Importer.Details = ucGenericDescription1.Data;
 
             library = Importer.Import(tbFileName.Text);
             if (library != null && Importer.LastError == null)

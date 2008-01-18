@@ -21,6 +21,7 @@ namespace SokoSolve.Core.Analysis.Solver
         public SolverStrategy(SolverController controller) : base(new SolverItterator(controller))
         {
             this.controller = controller;
+            cachedNodes = new SolverNodeCollection();
         }
 
         /// <summary>
@@ -148,28 +149,31 @@ namespace SokoSolve.Core.Analysis.Solver
                 }
 
                 // Check Duplicate
-                using (CodeTimerStatistic timer = new CodeTimerStatistic(controller.Stats.DuplicateCheckTime))
+                if (CheckDuplicate(node.Data) != null)
                 {
-                    if (CheckDuplicate(node))
-                    {
-                        controller.Stats.Duplicates.Increment();
+                    controller.Stats.Duplicates.Increment();
 
-                        node.Data.Status = SolverNodeStates.Duplicate;
-                        node.Data.IsStateEvaluated = true;
-                        node.Data.IsChildrenEvaluated = true;
+                    node.Data.Status = SolverNodeStates.Duplicate;
+                    node.Data.IsStateEvaluated = true;
+                    node.Data.IsChildrenEvaluated = true;
 
-                        MarkEvalCompelete(node);
+                    MarkEvalCompelete(node);
 
-                        // Remove duplicate from tree
-                        node.Data.TreeNode.Parent.RemoveChild(node.Data);
+                    // Remove duplicate from tree
+                    node.Data.TreeNode.Parent.RemoveChild(node.Data);
 
-                        // Exit
-                        return EvalStatus.InProgress;
-                    }
+                    // Exit
+                    return EvalStatus.InProgress;
                 }
+                else
+                {
+                    cachedNodes.Add(node.Data);
+                }
+                
             }
 
             node.Data.IsStateEvaluated = true;
+           
 
             // Check to chain match (forward and reverse)
             if (controller.CheckChainBack(node.Data))
@@ -287,46 +291,19 @@ namespace SokoSolve.Core.Analysis.Solver
         /// Check to see if this node already exists in the search tree
         /// </summary>
         /// <param name="node"></param>
-        /// <returns></returns>
-        private bool CheckDuplicate(INode<SolverNode> node)
+        /// <returns>duplicate</returns>
+        public SolverNode CheckDuplicate(SolverNode node)
         {
-            return CheckDuplicateRecurse(evaluation.Root, node as TreeNode<SolverNode>);
-        }
-        /// <summary>
-        /// Helper Recurse Method. <see cref="CheckDuplicate"/>
-        /// Check to see if this node already exists in the search tree
-        /// </summary>
-        /// <param name="searchFor">Target Search</param>
-        /// <returns></returns>
-        private bool CheckDuplicateRecurse(TreeNode<SolverNode> current, TreeNode<SolverNode> searchFor )
-        {
-            if (!object.ReferenceEquals(current, searchFor))
+            List<SolverNode> matches = cachedNodes.GetMatch(node);
+            if (matches == null || matches.Count == 0) return null;
+            if (matches.Count > 1)
             {
-                // Don't match against un-inited nodes
-                if (!current.Data.IsStateEvaluated) return false;
-                if (current.Data.MoveMap == null) return false;
-
-                
-                if (searchFor.Data.CrateMap.Equals(current.Data.CrateMap))
-                {
-                    if (searchFor.Data.MoveMap.Equals(current.Data.MoveMap))
-                    {
-                        // Match found
-                        return true;
-                    }
-                }
-
-                // Recurse down
-                if (current.HasChildren)
-                {
-                    foreach (TreeNode<SolverNode> child in current.Children)
-                    {
-                        if (CheckDuplicateRecurse(child, searchFor)) return true;
-                    }
-                }
+                throw new NotImplementedException();
             }
-            
-            return false;
+            else
+            {
+                return matches[0];   
+            }
         }
 
         /// <summary>
@@ -454,6 +431,22 @@ namespace SokoSolve.Core.Analysis.Solver
             return false;
         }
 
+        protected override void AddNodeForEval(INode<SolverNode> CurrentNode, SolverNode NewChild)
+        {
+            base.AddNodeForEval(CurrentNode, NewChild);
+        }
+
+        protected override void MarkEvalCompelete(INode<SolverNode> CurrentNode)
+        {
+            base.MarkEvalCompelete(CurrentNode);
+        }
+
+        protected override void RemoveRedundantNode(INode<SolverNode> CurrentNode)
+        {
+            // Remove from cache
+            cachedNodes.Remove(CurrentNode.Data);
+        }
+
         #endregion EvaluationStrategy
 
         /// <summary>
@@ -464,5 +457,6 @@ namespace SokoSolve.Core.Analysis.Solver
 
         private StaticAnalysis staticAnalysis;
         private SolverController controller;
+        private SolverNodeCollection cachedNodes;   
     }
 }

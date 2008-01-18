@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
@@ -9,6 +10,8 @@ using SokoSolve.Core;
 using SokoSolve.Core.IO;
 using SokoSolve.Core.Model;
 using SokoSolve.Core.Model.DataModel;
+using SokoSolve.Core.Reporting;
+using SokoSolve.Core.UI;
 using SokoSolve.UI.Controls.Secondary;
 using SokoSolve.UI.Section.Library.Items;
 
@@ -371,6 +374,37 @@ namespace SokoSolve.UI.Section.Library
         protected override void ExecuteImplementation(CommandInstance<ExplorerItem> instance)
         {
             Controller.Explorer.Refresh();
+        }
+    }
+
+    //#################################################################
+    //#################################################################
+    //#################################################################
+
+    class LibraryReportHTML : CommandLibraryBase
+    {
+        public LibraryReportHTML(Controller<ExplorerItem> controller, object[] buttonControls)
+            : base(controller, buttonControls)
+        {
+            Init("Report (HTML)", "Generate and XHTML puzzle report");
+        }
+
+        protected override void ExecuteImplementation(CommandInstance<ExplorerItem> instance)
+        {
+            SaveFileDialog save = new SaveFileDialog();
+            save.FileName = Controller.Current.Details.Name + ".html";
+            if (save.ShowDialog() == DialogResult.OK)
+            {
+                LibraryReport rpt = new LibraryReport(Controller.Current, DrawingHelper.Images,  Path.GetDirectoryName(save.FileName));
+                rpt.BuildReport();
+                rpt.Save(save.FileName);
+            }
+        }
+
+        public override void UpdateForSelection(List<ExplorerItem> selection)
+        {
+            // Enable only when there is exact 1 item of type ItemLibrary
+            Enabled = ExplorerItem.SelectionHelper(selection, true, 1, 1, typeof(ItemLibrary));
         }
     }
 

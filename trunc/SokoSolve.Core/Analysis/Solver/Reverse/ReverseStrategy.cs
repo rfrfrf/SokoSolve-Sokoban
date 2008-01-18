@@ -19,6 +19,7 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
         public ReverseStrategy(SolverController controller) : base(new SolverItterator(controller))
         {
             this.controller = controller;
+            cachedNodes = new SolverNodeCollection();
         }
 
         /// <summary>
@@ -156,6 +157,8 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
 
             node.Data.IsStateEvaluated = true;
 
+            
+
             // Check to chain match (forward and reverse)
             if (controller.CheckChainForward(node.Data))
             {
@@ -163,7 +166,7 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
             }
 
             // Check for duplicates
-            if (CheckDuplicate(node))
+            if (CheckDuplicate(node.Data) != null)
             {
                 controller.Stats.Duplicates.Increment();
 
@@ -181,6 +184,8 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
             }
             else
             {
+                cachedNodes.Add(node.Data);
+
                 node.Data.IsStateEvaluated = true;
                 return EvalStatus.InProgress;
             }
@@ -347,49 +352,40 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
-        private bool CheckDuplicate(INode<SolverNode> node)
+        public SolverNode CheckDuplicate(SolverNode node)
         {
-            return CheckDuplicateRecurse(evaluation.Root, node as TreeNode<SolverNode>);
-        }
-        /// <summary>
-        /// Helper Recurse Method. <see cref="CheckDuplicate"/>
-        /// Check to see if this node already exists in the search tree
-        /// </summary>
-        /// <param name="searchFor">Target Search</param>
-        /// <returns></returns>
-        private bool CheckDuplicateRecurse(TreeNode<SolverNode> current, TreeNode<SolverNode> searchFor)
-        {
-            if (!object.ReferenceEquals(current, searchFor))
+            List<SolverNode> matches = cachedNodes.GetMatch(node);
+            if (matches == null || matches.Count == 0) return null;
+            if (matches.Count > 1)
             {
-                // Don't match against un-inited nodes
-                if (!current.Data.IsStateEvaluated) return false;
-                if (current.Data.MoveMap == null) return false;
-
-
-                if (searchFor.Data.CrateMap.Equals(current.Data.CrateMap))
-                {
-                    if (searchFor.Data.MoveMap.Equals(current.Data.MoveMap))
-                    {
-                        // Match found
-                        return true;
-                    }
-                }
-
-                // Recurse down
-                if (current.HasChildren)
-                {
-                    foreach (TreeNode<SolverNode> child in current.Children)
-                    {
-                        if (CheckDuplicateRecurse(child, searchFor)) return true;
-                    }
-                }
+                throw new NotImplementedException();
             }
+            else
+            {
+                return matches[0];
+            }
+        }
+      
 
-            return false;
+        protected override void AddNodeForEval(INode<SolverNode> CurrentNode, SolverNode NewChild)
+        {
+            base.AddNodeForEval(CurrentNode, NewChild);
+        }
+
+        protected override void MarkEvalCompelete(INode<SolverNode> CurrentNode)
+        {
+            base.MarkEvalCompelete(CurrentNode);
+        }
+
+        protected override void RemoveRedundantNode(INode<SolverNode> CurrentNode)
+        {
+            // Remove from cache
+            cachedNodes.Remove(CurrentNode.Data);
         }
 
         private SolverController controller;
         private StaticAnalysis staticAnalysis;
+        private SolverNodeCollection cachedNodes;   
 
        
     }

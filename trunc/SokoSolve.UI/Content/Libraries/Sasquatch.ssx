@@ -7,7 +7,7 @@
     <Author Name="David W. Skinner " Email="sasquatch@bentonrea.com" Homepage="http://users.bentonrea.com/~sasquatch/" />
   </Details>
   <Categories>
-    <Category CategoryID="C0">
+    <Category CategoryID="C0" Order="0">
       <CategoryDescription>
         <Name>Master List</Name>
       </CategoryDescription>
@@ -39,6 +39,32 @@
                 <Name>'Superb Gem' Solution</Name>
                 <Comments>Moves 180/180, Pushes 32/32, Undos 0, Restarts 0, Duration 00:00:19.8717750</Comments>
                 <Author Name="Anonymous" Email="anonymous@sokosolve.sourceforge.net" Homepage="http://sokosolve.sourceforge.net" />
+              </SolutionDescription>
+            </Solution>
+            <Solution StartX="4" StartY="4">
+              <Steps>llurrrrrllldlddddrrruurruuruulddulldlluldddduuuurrrrrdrddllldddllllurrluuruulurrrrldllddldddrrruuurrruulduruuldlldllddlddrrdrullluuuuurrrrrrdddllruruulddrdl</Steps>
+              <SolutionDescription Date="2008-01-17T14:50:18.214665+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 2486 nodes
+Total Nodes : 1691 nodes
+Node per second :  
+Duplicates : 887 nodes
+DeadNodes : 331 nodes
+Eval Worker List : 455
+MoveMapTime : 0.001 sec
+EvalTime : 0.000 sec
+EvalChildTime : 0.007 sec
+DuplicateCheckTime : 0.001 sec
+Weighting Min : -16
+Weighting Max : 100
+Weighting Avg : 5.53 avg.
+Hints Uses : 0 hits
+Max Depth : 31
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
               </SolutionDescription>
             </Solution>
           </Solutions>

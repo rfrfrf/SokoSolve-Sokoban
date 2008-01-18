@@ -23,13 +23,13 @@ namespace SokoSolve.Core.Model.Analysis
         /// <summary>
         /// Calculate an automated Rating map
         /// </summary>
-        /// <param name="Map"></param>
+        /// <param name="Map">Sokoban Map (Initial condition)</param>
         /// <returns></returns>
         static public double CalcRating(SokobanMap Map)
         {
             double result = 0;
             result += Map.Count(Cell.Crate) * 1.0;
-            result += Map.Count(CellStates.FloorCrate) * 0.2;
+            result += Map.Count(CellStates.Floor) * 0.11;
 
             if (PercentageComplete(Map) > 50)
             {

@@ -54,7 +54,7 @@ namespace SokoSolve.UI.Controls.Secondary
             this.Name = "FormImport";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FormImport";
+            this.Text = "SokoSolve | Puzzle Library Import Wizard";
             this.ResumeLayout(false);
 
         }

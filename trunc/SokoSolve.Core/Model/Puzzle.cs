@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
+using SokoSolve.Core.Model.Analysis;
 using SokoSolve.Core.Model.DataModel;
 
 namespace SokoSolve.Core.Model
@@ -90,6 +91,18 @@ namespace SokoSolve.Core.Model
     		get { return rating; }
     		set { rating = value; }
     	}
+
+        public double AutomatedRating
+        {
+            get
+            {
+                if (MasterMap != null)
+                {
+                    return PuzzleAnalysis.CalcRating(MasterMap.Map);
+                }
+                return 0;
+            }
+        }
 
         public PuzzleMap MasterMap
         {

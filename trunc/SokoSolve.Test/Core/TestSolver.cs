@@ -48,7 +48,7 @@ namespace SokoSolve.Test.Core
                     return 0;
                 }
 
-                System.Console.WriteLine("No Solutions");
+                System.Console.WriteLine("Solutions " + results.Solutions.Count);
                 return results.Solutions.Count;
             }
             finally

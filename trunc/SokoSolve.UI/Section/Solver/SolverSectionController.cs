@@ -61,6 +61,14 @@ namespace SokoSolve.UI.Section.Solver
             UpdateUI();
 
             Disposed += new EventHandler(SolverSectionController_Disposed);
+
+            cbThreadPriority.Items.Clear();
+            cbThreadPriority.Items.Add(ThreadPriority.Highest);
+            cbThreadPriority.Items.Add(ThreadPriority.AboveNormal);
+            cbThreadPriority.Items.Add(ThreadPriority.Normal);
+            cbThreadPriority.Items.Add(ThreadPriority.BelowNormal);
+            cbThreadPriority.Items.Add(ThreadPriority.Lowest);
+            cbThreadPriority.SelectedIndex = 2;
         }
 
         void SolverSectionController_Disposed(object sender, EventArgs e)
@@ -177,7 +185,7 @@ namespace SokoSolve.UI.Section.Solver
                     tsbStop.Enabled = false;
                     tsbSaveHTML.Enabled = true;
 
-                    tsbSaveXML.Enabled = true;
+                    //tsbSaveXML.Enabled = true;
                     listViewResults.Enabled = true;
                     ucPuzzleList1.Enabled = true;
 
@@ -276,6 +284,11 @@ namespace SokoSolve.UI.Section.Solver
                         target.Items.Add(item);
                     }
                 }
+            }
+
+            foreach (ColumnHeader col in target.Columns)
+            {
+                col.Width = -2;
             }
 
 
@@ -404,6 +417,7 @@ namespace SokoSolve.UI.Section.Solver
 
             solverThread = new Thread(new ThreadStart(ProcessWorkerList));
             solverThread.Name = "SolverBatcher";
+            solverThread.Priority = (ThreadPriority)cbThreadPriority.SelectedItem;
             solverThread.Start();
         }
 
@@ -436,11 +450,56 @@ namespace SokoSolve.UI.Section.Solver
                 }
             }
 
+            // Move any solutions into library
+            AddSolutions();
+
             currentWorkItem = null;
             complete = DateTime.Now;
 
             // Complete, call back
             this.Invoke(new SimpleDelegate(ProcessWorkerListComplete));
+        }
+
+        /// <summary>
+        /// Add any solutions
+        /// </summary>
+        private void AddSolutions()
+        {
+            if (rbDontAdd.Checked) return;
+
+            foreach (WorkItem item in workerList)
+            {
+                if (item == null) continue;
+                if (item.Result == null) continue; 
+
+                if (item.Result.HasSolution)
+                {
+                    if (rbAddBetter.Checked)
+                    {
+                        if (item.Map.HasSolution)
+                        {
+                            Solution bestNew = Solution.FindBest(item.Result.Solutions);
+                            Solution bestExisting = Solution.FindBest(item.Map.Solutions);
+                            if (bestNew != null && bestExisting != null && bestExisting.CompareTo(bestNew) < 0)
+                            {
+                                item.Map.Solutions.Add(bestNew);
+                            }    
+                        }
+                        else
+                        {
+                            Solution bestNew = Solution.FindBest(item.Result.Solutions);
+                            item.Map.Solutions.Add(bestNew);
+                        }
+                    }
+                    else if (rbAlwaysAdd.Checked)
+                    {
+                        foreach (Solution sol in item.Result.Solutions)
+                        {
+                            item.Map.Solutions.Add(sol);
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -577,6 +636,11 @@ namespace SokoSolve.UI.Section.Solver
 
                 Process.Start(save.FileName);
             }
+        }
+
+        private void tsbSelectAll_Click(object sender, EventArgs e)
+        {
+            ucPuzzleList1.SelectAll();
         }
     }
 }

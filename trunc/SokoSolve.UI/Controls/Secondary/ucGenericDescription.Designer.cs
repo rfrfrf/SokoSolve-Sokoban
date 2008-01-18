@@ -29,7 +29,6 @@ namespace SokoSolve.UI.Controls.Secondary
 		private void InitializeComponent()
 		{
             this.tbName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbDescription = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,6 +46,9 @@ namespace SokoSolve.UI.Controls.Secondary
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOk = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dateTimePickerCreated = new System.Windows.Forms.DateTimePicker();
             this.groupboxAuthor.SuspendLayout();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -62,15 +64,6 @@ namespace SokoSolve.UI.Controls.Secondary
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(299, 20);
             this.tbName.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Name:";
             // 
             // label2
             // 
@@ -226,6 +219,8 @@ namespace SokoSolve.UI.Controls.Secondary
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.dateTimePickerCreated);
+            this.splitContainer1.Panel2.Controls.Add(this.label8);
             this.splitContainer1.Panel2.Controls.Add(this.groupboxAuthor);
             this.splitContainer1.Panel2.Controls.Add(this.label7);
             this.splitContainer1.Panel2.Controls.Add(this.cbLicense);
@@ -262,6 +257,33 @@ namespace SokoSolve.UI.Controls.Secondary
             this.buttonOk.Text = "&Ok";
             this.buttonOk.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Name:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(20, 264);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(47, 13);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Created:";
+            // 
+            // dateTimePickerCreated
+            // 
+            this.dateTimePickerCreated.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePickerCreated.Location = new System.Drawing.Point(20, 281);
+            this.dateTimePickerCreated.Name = "dateTimePickerCreated";
+            this.dateTimePickerCreated.Size = new System.Drawing.Size(299, 20);
+            this.dateTimePickerCreated.TabIndex = 10;
+            // 
             // ucGenericDescription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -283,8 +305,7 @@ namespace SokoSolve.UI.Controls.Secondary
 
 		#endregion
 
-		private System.Windows.Forms.TextBox tbName;
-		private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbName;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.TextBox tbDescription;
 		private System.Windows.Forms.Label label3;
@@ -302,5 +323,8 @@ namespace SokoSolve.UI.Controls.Secondary
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonOk;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerCreated;
+        private System.Windows.Forms.Label label8;
 	}
 }

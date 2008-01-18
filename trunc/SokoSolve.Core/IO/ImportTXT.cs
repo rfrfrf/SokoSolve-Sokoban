@@ -16,7 +16,22 @@ namespace SokoSolve.Core.IO
             ImporterName = "Import TXT Puzzles";
             Description = @"Import TXT Puzzles. 
 This is a very basic format that allow names,  descriptions, and puzzles only. 
-See http://users.bentonrea.com/~sasquatch/sokoban/. ";
+See http://users.bentonrea.com/~sasquatch/sokoban/. 
+Example:
+
+; '#1 First level in Sasquatch'
+
+   ###
+  ## # ####
+ ##  ###  #
+## $      #
+#   @$ #  #
+### $###  
+  #  #..  #
+ ## ##.#
+ #      ##
+ #     ##
+ #######";
         }
 
         protected override Library ImportImplementation(string FileName)
@@ -28,6 +43,16 @@ See http://users.bentonrea.com/~sasquatch/sokoban/. ";
             lib.Details.Date = new FileInfo(FileName).CreationTime;
             lib.Details.DateSpecified = true;
             lib.Details.License = "Unknown";
+
+            if (Details  != null)
+            {
+                lib.Details = Details;
+            }
+
+            if (string.IsNullOrEmpty(lib.Details.Name))
+            {
+                lib.Details.Name = Path.GetFileNameWithoutExtension(FileName);
+            }
 
             List<string> block = new List<string>();
             using (StreamReader reader = File.OpenText(FileName))
@@ -67,7 +92,16 @@ See http://users.bentonrea.com/~sasquatch/sokoban/. ";
         {
             if (block.Count < 3) return;// Skip
 
-            int order = int.Parse(block[0].Remove(0, 2).Trim());
+            int order = 0;
+            try
+            {
+                order = int.Parse(block[0].Remove(0, 2).Trim());    
+            }
+            catch(Exception)
+            {
+                // Nothing
+            }
+            
             string name = block[1].Trim();
             if (name.Length == 0) name = namer.MakeName();
             

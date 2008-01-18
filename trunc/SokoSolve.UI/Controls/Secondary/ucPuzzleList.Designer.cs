@@ -74,6 +74,7 @@ namespace SokoSolve.UI.Controls.Secondary
             this.listViewPuzzles.TabIndex = 0;
             this.listViewPuzzles.UseCompatibleStateImageBehavior = false;
             this.listViewPuzzles.View = System.Windows.Forms.View.Details;
+            this.listViewPuzzles.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewPuzzles_ColumnClick);
             this.listViewPuzzles.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listViewPuzzles_ItemSelectionChanged);
             // 
             // columnHeader3
