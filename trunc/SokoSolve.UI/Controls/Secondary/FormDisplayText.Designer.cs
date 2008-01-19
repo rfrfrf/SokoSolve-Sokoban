@@ -37,7 +37,7 @@ namespace SokoSolve.UI.Controls.Secondary
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.Location = new System.Drawing.Point(658, 330);
+            this.button1.Location = new System.Drawing.Point(668, 391);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -48,7 +48,7 @@ namespace SokoSolve.UI.Controls.Secondary
             // 
             this.buttonOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOk.Location = new System.Drawing.Point(577, 330);
+            this.buttonOk.Location = new System.Drawing.Point(587, 391);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 1;
@@ -63,7 +63,7 @@ namespace SokoSolve.UI.Controls.Secondary
             this.richTextBox1.Font = new System.Drawing.Font("Courier New", 8F);
             this.richTextBox1.Location = new System.Drawing.Point(12, 12);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(721, 312);
+            this.richTextBox1.Size = new System.Drawing.Size(731, 373);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "Sample Text. This will be replaced at runtime";
             this.richTextBox1.WordWrap = false;
@@ -73,7 +73,7 @@ namespace SokoSolve.UI.Controls.Secondary
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(745, 365);
+            this.ClientSize = new System.Drawing.Size(755, 426);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.button1);

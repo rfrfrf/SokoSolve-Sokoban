@@ -55,6 +55,7 @@ namespace SokoSolve.UI.Section.Solver
             this.tslStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageSolverQueue = new System.Windows.Forms.TabPage();
+            this.ucPuzzleList1 = new SokoSolve.UI.Controls.Secondary.ucPuzzleList();
             this.tabPageResults = new System.Windows.Forms.TabPage();
             this.listViewResults = new System.Windows.Forms.ListView();
             this.chPuzzle = new System.Windows.Forms.ColumnHeader();
@@ -62,15 +63,14 @@ namespace SokoSolve.UI.Section.Solver
             this.chSummary = new System.Windows.Forms.ColumnHeader();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabPageSettings = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbAlwaysAdd = new System.Windows.Forms.RadioButton();
+            this.rbAddBetter = new System.Windows.Forms.RadioButton();
+            this.rbDontAdd = new System.Windows.Forms.RadioButton();
             this.cbThreadPriority = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.timerUpdater = new System.Windows.Forms.Timer(this.components);
-            this.ucPuzzleList1 = new SokoSolve.UI.Controls.Secondary.ucPuzzleList();
             this.exitConditions1 = new SokoSolve.UI.Section.Solver.ExitConditions();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rbDontAdd = new System.Windows.Forms.RadioButton();
-            this.rbAddBetter = new System.Windows.Forms.RadioButton();
-            this.rbAlwaysAdd = new System.Windows.Forms.RadioButton();
+            this.timerUpdater = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -238,6 +238,16 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageSolverQueue.Text = "Solver Queue";
             this.tabPageSolverQueue.UseVisualStyleBackColor = true;
             // 
+            // ucPuzzleList1
+            // 
+            this.ucPuzzleList1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucPuzzleList1.Library = null;
+            this.ucPuzzleList1.Location = new System.Drawing.Point(3, 3);
+            this.ucPuzzleList1.Name = "ucPuzzleList1";
+            this.ucPuzzleList1.Size = new System.Drawing.Size(564, 367);
+            this.ucPuzzleList1.TabIndex = 0;
+            this.ucPuzzleList1.UseCheckBoxes = true;
+            // 
             // tabPageResults
             // 
             this.tabPageResults.Controls.Add(this.listViewResults);
@@ -282,6 +292,7 @@ namespace SokoSolve.UI.Section.Solver
             this.listViewResults.TabIndex = 0;
             this.listViewResults.UseCompatibleStateImageBehavior = false;
             this.listViewResults.View = System.Windows.Forms.View.Details;
+            this.listViewResults.DoubleClick += new System.EventHandler(this.listViewResults_DoubleClick);
             // 
             // chPuzzle
             // 
@@ -323,6 +334,50 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageSettings.Text = "Settings";
             this.tabPageSettings.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rbAlwaysAdd);
+            this.groupBox2.Controls.Add(this.rbAddBetter);
+            this.groupBox2.Controls.Add(this.rbDontAdd);
+            this.groupBox2.Location = new System.Drawing.Point(297, 111);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 100);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Add solutions to library";
+            // 
+            // rbAlwaysAdd
+            // 
+            this.rbAlwaysAdd.AutoSize = true;
+            this.rbAlwaysAdd.Location = new System.Drawing.Point(7, 68);
+            this.rbAlwaysAdd.Name = "rbAlwaysAdd";
+            this.rbAlwaysAdd.Size = new System.Drawing.Size(79, 17);
+            this.rbAlwaysAdd.TabIndex = 2;
+            this.rbAlwaysAdd.Text = "Always add";
+            this.rbAlwaysAdd.UseVisualStyleBackColor = true;
+            // 
+            // rbAddBetter
+            // 
+            this.rbAddBetter.AutoSize = true;
+            this.rbAddBetter.Checked = true;
+            this.rbAddBetter.Location = new System.Drawing.Point(7, 44);
+            this.rbAddBetter.Name = "rbAddBetter";
+            this.rbAddBetter.Size = new System.Drawing.Size(82, 17);
+            this.rbAddBetter.TabIndex = 1;
+            this.rbAddBetter.TabStop = true;
+            this.rbAddBetter.Text = "Add if better";
+            this.rbAddBetter.UseVisualStyleBackColor = true;
+            // 
+            // rbDontAdd
+            // 
+            this.rbDontAdd.AutoSize = true;
+            this.rbDontAdd.Location = new System.Drawing.Point(7, 20);
+            this.rbDontAdd.Name = "rbDontAdd";
+            this.rbDontAdd.Size = new System.Drawing.Size(71, 17);
+            this.rbDontAdd.TabIndex = 0;
+            this.rbDontAdd.Text = "Don\'t add";
+            this.rbDontAdd.UseVisualStyleBackColor = true;
+            // 
             // cbThreadPriority
             // 
             this.cbThreadPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -341,21 +396,6 @@ namespace SokoSolve.UI.Section.Solver
             this.label1.TabIndex = 1;
             this.label1.Text = "Thread Priority:";
             // 
-            // timerUpdater
-            // 
-            this.timerUpdater.Interval = 10000;
-            this.timerUpdater.Tick += new System.EventHandler(this.timerUpdater_Tick);
-            // 
-            // ucPuzzleList1
-            // 
-            this.ucPuzzleList1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucPuzzleList1.Library = null;
-            this.ucPuzzleList1.Location = new System.Drawing.Point(3, 3);
-            this.ucPuzzleList1.Name = "ucPuzzleList1";
-            this.ucPuzzleList1.Size = new System.Drawing.Size(564, 367);
-            this.ucPuzzleList1.TabIndex = 0;
-            this.ucPuzzleList1.UseCheckBoxes = true;
-            // 
             // exitConditions1
             // 
             this.exitConditions1.Location = new System.Drawing.Point(6, 6);
@@ -363,49 +403,10 @@ namespace SokoSolve.UI.Section.Solver
             this.exitConditions1.Size = new System.Drawing.Size(267, 346);
             this.exitConditions1.TabIndex = 0;
             // 
-            // groupBox2
+            // timerUpdater
             // 
-            this.groupBox2.Controls.Add(this.rbAlwaysAdd);
-            this.groupBox2.Controls.Add(this.rbAddBetter);
-            this.groupBox2.Controls.Add(this.rbDontAdd);
-            this.groupBox2.Location = new System.Drawing.Point(297, 111);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 100);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Add solutions to library";
-            // 
-            // rbDontAdd
-            // 
-            this.rbDontAdd.AutoSize = true;
-            this.rbDontAdd.Location = new System.Drawing.Point(7, 20);
-            this.rbDontAdd.Name = "rbDontAdd";
-            this.rbDontAdd.Size = new System.Drawing.Size(71, 17);
-            this.rbDontAdd.TabIndex = 0;
-            this.rbDontAdd.Text = "Don\'t add";
-            this.rbDontAdd.UseVisualStyleBackColor = true;
-            // 
-            // rbAddBetter
-            // 
-            this.rbAddBetter.AutoSize = true;
-            this.rbAddBetter.Checked = true;
-            this.rbAddBetter.Location = new System.Drawing.Point(7, 44);
-            this.rbAddBetter.Name = "rbAddBetter";
-            this.rbAddBetter.Size = new System.Drawing.Size(82, 17);
-            this.rbAddBetter.TabIndex = 1;
-            this.rbAddBetter.TabStop = true;
-            this.rbAddBetter.Text = "Add if better";
-            this.rbAddBetter.UseVisualStyleBackColor = true;
-            // 
-            // rbAlwaysAdd
-            // 
-            this.rbAlwaysAdd.AutoSize = true;
-            this.rbAlwaysAdd.Location = new System.Drawing.Point(7, 68);
-            this.rbAlwaysAdd.Name = "rbAlwaysAdd";
-            this.rbAlwaysAdd.Size = new System.Drawing.Size(79, 17);
-            this.rbAlwaysAdd.TabIndex = 2;
-            this.rbAlwaysAdd.Text = "Always add";
-            this.rbAlwaysAdd.UseVisualStyleBackColor = true;
+            this.timerUpdater.Interval = 10000;
+            this.timerUpdater.Tick += new System.EventHandler(this.timerUpdater_Tick);
             // 
             // SolverSectionController
             // 

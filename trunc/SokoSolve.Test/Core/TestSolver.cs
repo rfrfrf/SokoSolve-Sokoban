@@ -11,6 +11,7 @@ using SokoSolve.Common.Structures.Evaluation.Visualisation;
 using SokoSolve.Core.Analysis;
 using SokoSolve.Core.Analysis.Solver;
 using SokoSolve.Core.Model;
+using SokoSolve.Core.Model.DataModel;
 using Bitmap=System.Drawing.Bitmap;
 
 namespace SokoSolve.Test.Core
@@ -21,8 +22,7 @@ namespace SokoSolve.Test.Core
 
         private int SolveFromString(string[] puzzle)
         {
-            CodeTimer timer = new CodeTimer();
-            timer.Start();
+            
 
             SokobanMap map = new SokobanMap();
             map.setFromStrings(puzzle);
@@ -30,17 +30,26 @@ namespace SokoSolve.Test.Core
             PuzzleMap pMap = new PuzzleMap(null);
             pMap.Map = map;
 
-            SolverController controller = new SolverController(pMap);
+            return Solve(pMap);
+        }
+
+        private int Solve(PuzzleMap puzzle)
+        {
+            CodeTimer timer = new CodeTimer();
+            timer.Start();
+
+
+            SolverController controller = new SolverController(puzzle);
 
             try
             {
-               
-                
-                SolverResult results = controller.Solve();
-                
 
-            
-                
+
+                SolverResult results = controller.Solve();
+
+
+
+
 
                 if (!results.HasSolution)
                 {
@@ -135,5 +144,19 @@ namespace SokoSolve.Test.Core
 
             bm.Save(@"C:\junk\tree.png");
         }
+
+
+        [TestMethod]
+        public void TestHoverHint()
+        {
+            XmlProvider xml = new XmlProvider();
+            Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\Solver.ssx");
+            Puzzle puz = lib.GetPuzzleByID("P2");
+
+            int solutions = Solve(puz.MasterMap);
+            Assert.IsTrue(solutions > 0, "Must find a solution");
+        }
     }
+
+
 }

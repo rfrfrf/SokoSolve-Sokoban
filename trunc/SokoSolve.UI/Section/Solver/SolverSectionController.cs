@@ -11,6 +11,7 @@ using SokoSolve.Core.Analysis.Solver;
 using SokoSolve.Core.Model;
 using SokoSolve.Common;
 using SokoSolve.Core.Reporting;
+using SokoSolve.UI.Controls.Secondary;
 
 namespace SokoSolve.UI.Section.Solver
 {
@@ -641,6 +642,36 @@ namespace SokoSolve.UI.Section.Solver
         private void tsbSelectAll_Click(object sender, EventArgs e)
         {
             ucPuzzleList1.SelectAll();
+        }
+
+        private void listViewResults_DoubleClick(object sender, EventArgs e)
+        {
+            if (listViewResults.SelectedItems.Count > 0)
+            {
+                WorkItem item = listViewResults.SelectedItems[0].Tag as WorkItem;
+                if (item != null)
+                {
+                    if (item.Exception != null)
+                    {
+                        FormError error = new FormError();
+                        error.Exception = item.Exception;
+                        error.ShowDialog();
+                        return;
+                    }
+
+                    if (item.Result != null)
+                    {
+                        List<SolverResult> results = new List<SolverResult>();
+                        results.Add(item.Result);
+                        SolverResultHTML report = new SolverResultHTML(results);
+                        report.BuildReport();
+
+                        FormBrowser browser = new FormBrowser();
+                        browser.SetHTML(report.ToString());
+                        browser.ShowDialog();
+                    }
+                }
+            }
         }
     }
 }

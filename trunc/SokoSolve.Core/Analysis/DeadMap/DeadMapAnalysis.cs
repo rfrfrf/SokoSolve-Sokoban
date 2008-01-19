@@ -24,7 +24,8 @@ namespace SokoSolve.Core.Analysis.DeadMap
             Register(new CornerRule(this));
             Register(new BoxRule(this));
             Register(new RecessRule(this));
-            Register(new HintsRule(this));
+            hintsRule = new HintsRule(this, staticAnalysis);
+            Register(hintsRule);
             Register(new CleanUpRule(this));
         }
 
@@ -42,6 +43,11 @@ namespace SokoSolve.Core.Analysis.DeadMap
             return result;
         }
 
+        public void LateRuleInit()
+        {
+            hintsRule.ProcessHints();
+        }
+
         /// <summary>
         /// Static Analysis class
         /// </summary>
@@ -53,6 +59,7 @@ namespace SokoSolve.Core.Analysis.DeadMap
             }
         }
 
+        HintsRule hintsRule;
         private SolverStrategy strategy;
         private StaticAnalysis staticAnalysis;
     }

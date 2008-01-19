@@ -47,7 +47,7 @@ namespace SokoSolve.Core.Analysis.DeadMap
                         // Dead if not already dead and not a goal
                         if (!StateContext[cx, cy] && !StateContext.GoalMap[cx,cy])
                         {
-                            StateContext[cx, cy] = true; // This is a corner and is deaed
+                            StateContext[cx, cy] = true; // This is a corner and is dead
                         }
                     }
                 }

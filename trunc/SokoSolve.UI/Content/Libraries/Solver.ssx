@@ -7,7 +7,7 @@
     <Author Name="SokoSolve" Email="bitwacker@users.sourceforge.net" Homepage="http://sokosolve.net" />
   </Details>
   <Categories>
-    <Category CategoryID="C0" >
+    <Category CategoryID="C0" Order="0">
       <CategoryDescription>
         <Name>Master List</Name>
       </CategoryDescription>
@@ -60,8 +60,68 @@
         <Author Name="" Email="" Homepage="" />
       </CategoryDescription>
     </Category>
+    <Category CategoryID="C8" CategoryParentREF="C6" Order="0">
+      <CategoryDescription License="Creative Commons" Date="2008-01-19T12:12:43.7756371+02:00">
+        <Name>Mini Senarios</Name>
+        <Description>Mini Senarios highlighting individual solver problems</Description>
+        <Comments />
+        <Author Name="Guy Langston" Email="bitwacker@users.sourceforge.net" Homepage="http://sokosolve/net" />
+      </CategoryDescription>
+    </Category>
   </Categories>
   <Puzzles>
+    <Puzzle PuzzleID="P2" CategoryREF="C8" Order="0">
+      <PuzzleDescription License="" Date="2008-01-19T12:17:59.9809846+02:00">
+        <Name>RecessHover</Name>
+        <Description>The recess location is statically dead, however the solver will not realise the 'hovering' crate before this positions is also head.
+
+Added lost of space to make the search slower.</Description>
+        <Comments />
+        <Author Name="" Email="" Homepage="" />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M3">
+          <Row>##########</Row>
+          <Row>#...O...O#</Row>
+          <Row>#.......##</Row>
+          <Row>#........#</Row>
+          <Row>#........#</Row>
+          <Row>#........#</Row>
+          <Row>#.X..X..O#</Row>
+          <Row>#...X...##</Row>
+          <Row>####.P####</Row>
+          <Row>##########</Row>
+          <Solutions>
+            <Solution StartX="5" StartY="8">
+              <Steps>uruulldrrrdlldluuuuuudddllldrrdrulurrrdruuuulur</Steps>
+              <SolutionDescription Date="2008-01-19T13:49:43.0076746+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 1140 nodes
+Total Nodes : 815 nodes
+Node per second :  
+Duplicates : 479 nodes
+DeadNodes : 194 nodes
+Eval Worker List : 1408
+MoveMapTime : 0.002 sec
+EvalTime : 0.000 sec
+EvalChildTime : 0.006 sec
+DuplicateCheckTime : 0.000 sec
+Weighting Min : 0
+Weighting Max : 100
+Weighting Avg : 35.60 avg.
+Hints Uses : 8 hits
+Max Depth : 11
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
+        </Map>
+      </Maps>
+    </Puzzle>
     <Puzzle Rating="51.7" PuzzleID="P1" CategoryREF="C2" Order="1">
       <PuzzleDescription>
         <Name>Superb Gem</Name>
@@ -1094,6 +1154,32 @@ SokoSolve&lt;/th&gt;&lt;td&gt;
                 <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
               </SolutionDescription>
             </Solution>
+            <Solution StartX="3" StartY="4">
+              <Steps>ulldddrrrllluuurrdrlulldddrrrrlllluuurrdrdululldddrrrllluurlddrudrrurruldldllurrllluurrdulldddrrruruulrddldllurururdrrulruuldrddlllldlluurdrrrrruuldrdlllurrdlllddlluuurrrrlllldrrlldruurrrdrrudllurllldrrrllllddrulurrrllddrulur</Steps>
+              <SolutionDescription Date="2008-01-19T13:58:22.0027771+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 362 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 317327 nodes
+Total Nodes : 264307 nodes
+Node per second : avg 539.0, last 394 
+Duplicates : 175628 nodes
+DeadNodes : 69470 nodes
+Eval Worker List : 18185
+MoveMapTime : 0.001 sec
+EvalTime : 0.000 sec
+EvalChildTime : 0.020 sec
+DuplicateCheckTime : 0.000 sec
+Weighting Min : 0
+Weighting Max : 186
+Weighting Avg : 114.17 avg.
+Hints Uses : 4726 hits
+Max Depth : 46
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
           </Solutions>
         </Map>
       </Maps>
@@ -1268,6 +1354,32 @@ Machine&lt;/th&gt;&lt;td&gt;
 Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr&gt;
 
 &lt;/table&gt;
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+            <Solution StartX="13" StartY="3">
+              <Steps>luulllddlururrrddllrruullldldlurrurrrddlllullddlluullulldrddrrrllluurlddrrruurrrlllddllluurrrrrddlululllddrrrllulurddrruurdldlluurrdrrrrrrdrrullllllrrrrruullldurrrddllluurrdrdluullddlruurrddll</Steps>
+              <SolutionDescription Date="2008-01-19T13:51:15.1482616+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 10 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 40609 nodes
+Total Nodes : 27935 nodes
+Node per second : avg 2647.0, last 6351 
+Duplicates : 13830 nodes
+DeadNodes : 6754 nodes
+Eval Worker List : 9668
+MoveMapTime : 0.000 sec
+EvalTime : 0.000 sec
+EvalChildTime : 0.011 sec
+DuplicateCheckTime : 0.000 sec
+Weighting Min : 0
+Weighting Max : 125
+Weighting Avg : 83.86 avg.
+Hints Uses : 262 hits
+Max Depth : 47
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
 </Description>
                 <Author />
               </SolutionDescription>

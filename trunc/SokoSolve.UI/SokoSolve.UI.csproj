@@ -61,6 +61,12 @@
     <Compile Include="Controls\Primary\WindowsSoundSubSystem.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Controls\Secondary\FormBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Secondary\FormBrowser.Designer.cs">
+      <DependentUpon>FormBrowser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Secondary\FormDisplayText.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +190,10 @@
     <EmbeddedResource Include="Controls\Primary\Welcome.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Welcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Secondary\FormBrowser.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormBrowser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Secondary\FormDisplayText.resx">
       <SubType>Designer</SubType>

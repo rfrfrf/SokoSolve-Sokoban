@@ -21,7 +21,7 @@ namespace SokoSolve.Core.Analysis.Solver
         public StaticAnalysis(SolverController controller)
         {
             this.controller = controller;
-            deadMapAnalysis = new DeadMapAnalysis(this);
+           
         }
 
         /// <summary>
@@ -35,8 +35,13 @@ namespace SokoSolve.Core.Analysis.Solver
             // Build boundry map
             BuildBoundryMap();
 
+            
+
             // Make the dead map
             BuildDeadMap();
+
+           
+            
 
             // Build Weighting matrix maps
             BuildForwardWeightingMap();
@@ -84,10 +89,13 @@ namespace SokoSolve.Core.Analysis.Solver
         /// </summary>
         private void BuildDeadMap()
         {
+            deadMapAnalysis = new DeadMapAnalysis(this);
             DeadMapState deadMapResult = deadMapAnalysis.BuildDeadMap(null, goalMap, wallMap);
             deadMap = deadMapResult;
             cornerMap = deadMapResult.CornerMap;
             recessMap = deadMapResult.RecessMap;
+
+            DeadMapAnalysis.LateRuleInit();
         }
 
         /// <summary>

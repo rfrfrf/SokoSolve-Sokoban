@@ -218,5 +218,10 @@ namespace SokoSolve.Core.Reporting
         {
             report.Save(filename);
         }
+
+        public override string ToString()
+        {
+            return report.OuterXml;
+        }
     }
 }
