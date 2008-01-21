@@ -9,6 +9,9 @@ namespace SokoSolve.Core.Model
     /// </summary>
     public class IDProvider
     {
+        private object locker = new object();
+        private int maxID = 0;
+
         /// <summary>
         /// Strong Constructor
         /// </summary>
@@ -18,17 +21,32 @@ namespace SokoSolve.Core.Model
             this.maxID = maxID;
         }
 
-        private int maxID = 0;
-        private object locker = new object();
+        /// <summary>
+        /// Rather user GetNextID for assigning values
+        /// </summary>
+        /// <returns></returns>
+        public int GetCurrentID()
+        {
+            return maxID;
+        }
 
+        /// <summary>
+        /// Get the next valid ID
+        /// </summary>
+        /// <returns></returns>
         public int GetNextID()
         {
-            lock(locker)
+            lock (locker)
             {
-                return maxID++;    
+                return maxID++;
             }
         }
 
+        /// <summary>
+        /// The the next ID and use a string.format layout. Ex "XX{0}" will give an XX prefix to the number
+        /// </summary>
+        /// <param name="prefix"></param>
+        /// <returns></returns>
         public string GetNextIDString(string prefix)
         {
             return prefix == null ? GetNextID().ToString() : string.Format(prefix, GetNextID());

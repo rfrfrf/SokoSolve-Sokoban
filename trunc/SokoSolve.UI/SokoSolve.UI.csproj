@@ -21,7 +21,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\SokoSolve.UI.XML</DocumentationFile>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -390,6 +390,7 @@
     <None Include="Content\Graphics\Icons\Refresh.png" />
     <None Include="Content\Libraries\Solver.ssx" />
     <None Include="Content\Graphics\Icons\Report.png" />
+    <None Include="Content\Graphics\Icons\Rotate.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton1.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton2.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton3.png" />

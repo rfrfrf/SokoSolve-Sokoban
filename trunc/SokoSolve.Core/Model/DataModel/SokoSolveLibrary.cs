@@ -42,6 +42,10 @@ namespace SokoSolve.Core.Model.DataModel {
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string Rating;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int MaxID;
     }
     
     /// <remarks/>

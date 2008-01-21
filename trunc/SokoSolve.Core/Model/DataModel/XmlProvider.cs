@@ -9,6 +9,9 @@ using SokoSolve.Common.Structures;
 
 namespace SokoSolve.Core.Model.DataModel
 {
+    /// <summary>
+    /// Provide the XML IO persistance features for the library
+    /// </summary>
     public class XmlProvider
     {
         #region Save
@@ -34,8 +37,8 @@ namespace SokoSolve.Core.Model.DataModel
                 res.Rating = source.Rating;
                 res.Details = source.Details;
                 res.Puzzles = source.Puzzles.ConvertAll<SokobanLibraryPuzzle>(Convert).ToArray();
-                res.Categories = source.Categories.Root.ToList().ConvertAll<SokobanLibraryCategory>(Convert).ToArray();
-
+                res.Categories = source.Categories.ConvertAll<SokobanLibraryCategory>(Convert).ToArray();
+                res.MaxID = source.IdProvider.GetCurrentID();
                 return res;
             }
 
@@ -104,17 +107,21 @@ namespace SokoSolve.Core.Model.DataModel
             converter.model.Details = xmlLib.Details;
             converter.model.Rating = xmlLib.Rating;
             converter.model.LibraryID = xmlLib.LibraryID;
+            converter.model.IdProvider = new IDProvider(xmlLib.MaxID);
 
             List<Category> categories =
                 new List<SokobanLibraryCategory>(xmlLib.Categories).ConvertAll<Category>(ModelToXml.ConvertCategory);
 
-            converter.model.Categories = TreeAssembler.Create<Category>(categories, ModelToXml.GetID, ModelToXml.GetFK);
+            converter.model.CategoryTree = TreeAssembler.Create<Category>(categories, ModelToXml.GetID, ModelToXml.GetFK);
 
             converter.model.Puzzles =
                 new List<SokobanLibraryPuzzle>(xmlLib.Puzzles).ConvertAll<Puzzle>(converter.ConvertPuzzle);
 
             // Keep track of where this came from
             converter.model.FileName = fileName;
+
+            // Make sure order is unique
+            converter.model.EnsureOrder();
 
             return converter.model;
         }
@@ -154,11 +161,8 @@ namespace SokoSolve.Core.Model.DataModel
                 current.Details = xmlPuzzle.PuzzleDescription;
                 current.Order = xmlPuzzle.Order;
                 current.Rating = xmlPuzzle.Rating;
-                TreeNode<Category> myCat =
-                    model.Categories.Root.Find(
-                        delegate(TreeNode<Category> item) { return item.Data.CategoryID == xmlPuzzle.CategoryREF; },
-                        int.MaxValue);
-                if (myCat != null) current.Category = myCat.Data;
+                Category myCat = model.GetCategoryByID(xmlPuzzle.CategoryREF);
+                if (myCat != null) current.Category = myCat;
                 current.Maps = new List<SokobanLibraryPuzzleMap>(xmlPuzzle.Maps).ConvertAll<PuzzleMap>(ConvertPuzzleMap);
                 return current;
             }
@@ -170,7 +174,7 @@ namespace SokoSolve.Core.Model.DataModel
                 currentMap.Details = xmlPuzzleMap.MapDetails;
                 currentMap.Rating = xmlPuzzleMap.Rating;
                 currentMap.Map = new SokobanMap();
-                currentMap.Map.setFromStrings(xmlPuzzleMap.Row);
+                currentMap.Map.SetFromStrings(xmlPuzzleMap.Row);
                 currentMap.Solutions =
                     new List<SokobanLibraryPuzzleMapSolution>(xmlPuzzleMap.Solutions).ConvertAll<Solution>(
                         ConvertSolution);

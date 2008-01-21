@@ -25,9 +25,9 @@ namespace SokoSolve.Test.Core
             
 
             SokobanMap map = new SokobanMap();
-            map.setFromStrings(puzzle);
+            map.SetFromStrings(puzzle);
 
-            PuzzleMap pMap = new PuzzleMap(null);
+            PuzzleMap pMap = new PuzzleMap((Puzzle)null);
             pMap.Map = map;
 
             return Solve(pMap);
@@ -116,7 +116,7 @@ namespace SokoSolve.Test.Core
         public void TestVis()
         {
             SokobanMap map = new SokobanMap();
-            map.setFromStrings(new string[]
+            map.SetFromStrings(new string[]
                                    {
                                        "~~~###~~~~~",
                                        "~~##.#~####",
@@ -131,7 +131,7 @@ namespace SokoSolve.Test.Core
                                        "~#######~~~"
                                    });
 
-            PuzzleMap pMap = new PuzzleMap(null);
+            PuzzleMap pMap = new PuzzleMap((Puzzle)null);
             pMap.Map = map;
 
             SolverController ctrl = new SolverController(pMap);
@@ -147,7 +147,7 @@ namespace SokoSolve.Test.Core
 
 
         [TestMethod]
-        public void TestHoverHint()
+        public void TestRecessHoverHint()
         {
             XmlProvider xml = new XmlProvider();
             Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\Solver.ssx");
@@ -155,6 +155,17 @@ namespace SokoSolve.Test.Core
 
             int solutions = Solve(puz.MasterMap);
             Assert.IsTrue(solutions > 0, "Must find a solution");
+        }
+
+        [TestMethod]
+        public void TestCornerHoverHint()
+        {
+            XmlProvider xml = new XmlProvider();
+            Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\Solver.ssx");
+            Puzzle puz = lib.GetPuzzleByID("P0");
+
+            int solutions = Solve(puz.MasterMap);
+            Assert.IsTrue(solutions == 0, "Must not find a solution");
         }
     }
 

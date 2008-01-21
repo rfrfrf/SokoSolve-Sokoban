@@ -7,7 +7,7 @@ using SokoSolve.Common.Structures.Evaluation;
 
 namespace SokoSolve.Core.Model.Analysis
 {
-    class PuzzleAnalysis
+    public class PuzzleAnalysis
     {
         /// <summary>
         /// Calculate the percentage complete for a map
@@ -16,8 +16,13 @@ namespace SokoSolve.Core.Model.Analysis
         /// <returns>1 = 1%</returns>
         static public int PercentageComplete(SokobanMap Map)
         {
+            int crategoals = Map.Count(CellStates.FloorGoalCrate);
+            int goals = Map.Count(Cell.Goal);
+
+            if (goals == 0) return 0;
+            
             // This is not 100% correct, as some goal positiona may not be needed
-            return (Map.Count(CellStates.FloorGoalCrate)*100)/(Map.Count(Cell.Goal));
+            return (crategoals*100)/goals;
         }
 
         /// <summary>

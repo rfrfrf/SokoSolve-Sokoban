@@ -69,7 +69,7 @@ namespace SokoSolve.UI.Section.Solver
             cbThreadPriority.Items.Add(ThreadPriority.Normal);
             cbThreadPriority.Items.Add(ThreadPriority.BelowNormal);
             cbThreadPriority.Items.Add(ThreadPriority.Lowest);
-            cbThreadPriority.SelectedIndex = 2;
+            cbThreadPriority.SelectedIndex = 3;
         }
 
         void SolverSectionController_Disposed(object sender, EventArgs e)

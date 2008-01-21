@@ -66,22 +66,22 @@ namespace SokoSolve.UI.Section.Library
             easy.CategoryID = lib.IdProvider.GetNextIDString("C{0}");
             easy.Details = new GenericDescription(lib.Details);
             easy.Details.Name = "Easy";
-            easy.CategoryParentREF = lib.Categories.Root.Data.CategoryID;
-            lib.Categories.Root.Add(easy);
+            easy.CategoryParentREF = lib.CategoryTree.Root.Data.CategoryID;
+            lib.CategoryTree.Root.Add(easy);
 
             Category medium = new Category();
             medium.CategoryID = lib.IdProvider.GetNextIDString("C{0}");
             medium.Details = new GenericDescription(lib.Details);
             medium.Details.Name = "Medium";
-            medium.CategoryParentREF = lib.Categories.Root.Data.CategoryID;
-            lib.Categories.Root.Add(medium);
+            medium.CategoryParentREF = lib.CategoryTree.Root.Data.CategoryID;
+            lib.CategoryTree.Root.Add(medium);
 
             Category hard = new Category();
             hard.CategoryID = lib.IdProvider.GetNextIDString("C{0}");
             hard.Details = new GenericDescription(lib.Details);
             hard.Details.Name = "Hard";
-            hard.CategoryParentREF = lib.Categories.Root.Data.CategoryID;
-            lib.Categories.Root.Add(hard);
+            hard.CategoryParentREF = lib.CategoryTree.Root.Data.CategoryID;
+            lib.CategoryTree.Root.Add(hard);
 
             Puzzle newPuz = new Puzzle(lib);
             newPuz.PuzzleID = lib.IdProvider.GetNextIDString("P{0}");
@@ -95,7 +95,7 @@ namespace SokoSolve.UI.Section.Library
             PuzzleMap map = new PuzzleMap(newPuz);
             map.MapID = lib.IdProvider.GetNextIDString("M{0}");
             map.Map = new SokobanMap();
-            map.Map.setFromStrings(new string[]
+            map.Map.SetFromStrings(new string[]
                                        {
                                            	"~~~###~~~~~",
 					                        "~~##.#~####",
@@ -121,7 +121,7 @@ namespace SokoSolve.UI.Section.Library
             mapAlt.Details.Name = "Easier Alternative";
             mapAlt.MapID = lib.IdProvider.GetNextIDString("M{0}");
             mapAlt.Map = new SokobanMap();
-            mapAlt.Map.setFromStrings(new string[]
+            mapAlt.Map.SetFromStrings(new string[]
                                        {
                                            	"~~~###~~~~~",
 					                        "~~#..#~####",

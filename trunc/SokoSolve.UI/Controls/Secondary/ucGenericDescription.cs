@@ -23,6 +23,9 @@ namespace SokoSolve.UI.Controls.Secondary
 		{
 			get
 			{
+                // Skip if in editor mode
+                if (Site != null) return null;
+
 			    GenericDescription desc = new GenericDescription();
 			    desc.Name = tbName.Text;
 			    desc.Description = tbDescription.Text;
@@ -38,6 +41,10 @@ namespace SokoSolve.UI.Controls.Secondary
 			}
 			set
 			{
+                // Skip if in editor mode
+                if (Site != null) return;
+                if (value == null) return;
+
 				tbName.Text = "";
 				tbDescription.Text = "";
 				tbComments.Text = "";

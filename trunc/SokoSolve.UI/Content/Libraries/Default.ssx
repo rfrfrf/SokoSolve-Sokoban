@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LibraryID="e94cc831-432f-4269-aae9-639f500030cc" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
+<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"  MaxID="1000" LibraryID="e94cc831-432f-4269-aae9-639f500030cc" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
   <Details License="GPL">
     <Name>Development Library</Name>
     <Description>A simple test library for development. The puzzles included are not for human consumption. ;-)</Description>

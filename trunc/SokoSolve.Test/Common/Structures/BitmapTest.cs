@@ -59,7 +59,7 @@ namespace SokoSolve.Test.Common.Structures
          
 
              SokobanMap map = new SokobanMap();
-		    map.setFromStrings(new string[]
+		    map.SetFromStrings(new string[]
 		                           {
 "~~~###~~~~~",
 "~~##.#~####",
@@ -88,7 +88,7 @@ namespace SokoSolve.Test.Common.Structures
 
 
             SokobanMap map = new SokobanMap();
-            map.setFromStrings(new string[]
+            map.SetFromStrings(new string[]
 		                           {
 "~~~###~~~~~",
 "~~##.#~####",
@@ -132,7 +132,7 @@ namespace SokoSolve.Test.Common.Structures
 ~####~~~~~~~~~~~";
 
             SokobanMap map = new SokobanMap();
-            map.setFromString(mapString);
+            map.SetFromString(mapString);
 
             CrateAnalysis.ShortestCratePath result = CrateAnalysis.FindCratePath(map, new VectorInt(10, 7), new VectorInt(7, 5));
             Assert.IsNull(result, "There is not cratemovepath to from position 10,7 to 7,5");

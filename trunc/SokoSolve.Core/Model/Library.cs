@@ -49,14 +49,28 @@ namespace SokoSolve.Core.Model
         public List<Puzzle> Puzzles
     	{
     		get { return puzzles; }
-    		set { puzzles = value; }
+    		set
+    		{
+    		    puzzles = value;
+                puzzles.Sort(delegate(Puzzle lhs, Puzzle rhs) { return lhs.Order.CompareTo(rhs.Order); });
+    		}
     	}
 
-    	public Tree<Category> Categories
+    	public Tree<Category> CategoryTree
     	{
     		get { return categories; }
     		set { categories = value; }
     	}
+
+        public List<Category> Categories
+        {
+            get
+            {
+                 List<Category> cats = categories.Nodes;
+                 cats.Sort(delegate(Category lhs, Category rhs) { return lhs.NestedOrder.CompareTo(rhs.NestedOrder); });
+                return cats;
+            }
+        }
 
     	public GenericDescription Details
     	{
@@ -85,6 +99,7 @@ namespace SokoSolve.Core.Model
         public IDProvider IdProvider
         {
             get { return idProvider; }
+            set { idProvider = value; }
         }
 
         /// <summary>
@@ -128,9 +143,34 @@ namespace SokoSolve.Core.Model
             return null;
         }
 
+        /// <summary>
+        /// Make sure all puzzles have a unique order
+        /// </summary>
+        public void EnsureOrder()
+        {
+            SortByOrder();
+            int cc = 1;
+            foreach (Puzzle puzzle in puzzles)
+            {
+                puzzle.Order = cc++;
+            }
+
+            List<Category> cats = categories.Nodes;
+            cats.Sort(delegate(Category lhs, Category rhs) { return lhs.NestedOrder.CompareTo(rhs.NestedOrder); });
+            cc =1;
+            foreach (Category cat in cats)
+            {
+                cat.Order = cc++;
+            }
+        }
+
+        /// <summary>
+        /// Sort all puzzles by order
+        /// </summary>
         public void SortByOrder()
         {
             puzzles.Sort(delegate(Puzzle lhs, Puzzle rhs) { return lhs.Order.CompareTo((rhs.Order)); });
+            
         }
 
         public GenericDescription Consolidate(Puzzle puzzle)

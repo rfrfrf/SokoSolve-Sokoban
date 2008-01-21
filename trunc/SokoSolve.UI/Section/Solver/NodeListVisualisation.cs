@@ -40,10 +40,20 @@ namespace SokoSolve.UI.Section.Solver
         /// <returns></returns>
         public VectorInt GetLogicalPosition(SolverNode node)
         {
-            int idx = nodes.IndexOf(node);
+            int idx = IndexOf(nodes, node);
             if (idx < 0) return VectorInt.Null;
 
             return new VectorInt(idx % maxCellWidth, idx / maxCellWidth);
+        }
+
+        int IndexOf(List<SolverNode> list, SolverNode node)
+        {
+            
+            for (int cc=0; cc<list.Count; cc++)
+            {
+                if (object.ReferenceEquals(list[cc], node)) return cc;
+            }
+            return -1;
         }
 
         /// <summary>

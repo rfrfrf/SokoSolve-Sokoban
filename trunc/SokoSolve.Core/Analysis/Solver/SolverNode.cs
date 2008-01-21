@@ -99,7 +99,7 @@ namespace SokoSolve.Core.Analysis.Solver
         {
             if (crateMap != null && moveMap != null)
             {
-                cachedHashCode = crateMap.GetHashCode() ^ moveMap.GetHashCode();    
+                cachedHashCode = crateMap.GetHashCode() + moveMap.GetHashCode();    
             }
             else
             {

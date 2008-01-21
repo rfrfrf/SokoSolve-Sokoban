@@ -34,6 +34,7 @@ namespace SokoSolve.UI.Section.Solver
             // 
             // solverSectionVisualisation1
             // 
+            this.solverSectionVisualisation1.Controller = null;
             this.solverSectionVisualisation1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.solverSectionVisualisation1.Location = new System.Drawing.Point(0, 0);
             this.solverSectionVisualisation1.Name = "solverSectionVisualisation1";
@@ -49,7 +50,6 @@ namespace SokoSolve.UI.Section.Solver
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormSolverVisualisation";
             this.Text = "Solver Visualisation";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }

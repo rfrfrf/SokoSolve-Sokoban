@@ -82,7 +82,7 @@ namespace SokoSolve.UI.Controls.Primary
                     if (sourceCat != null)
                     {
                         // Remove from cat
-                        controller.Current.Categories.Move(sourceCat.TreeNode, targetCat.DomainData.TreeNode);
+                        controller.Current.CategoryTree.Move(sourceCat.TreeNode, targetCat.DomainData.TreeNode);
                         sourceCat.CategoryParentREF =  targetCat.DomainData.CategoryID;
 
                         explorer.Refresh();

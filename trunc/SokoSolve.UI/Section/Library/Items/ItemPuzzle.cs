@@ -46,27 +46,7 @@ namespace SokoSolve.UI.Section.Library.Items
         {
             if (IsEditable)
             {
-                if (showProps)
-                {
-                    if (!Explorer.DetailPayload.Controls.Contains(properties))
-                    {
-                        Explorer.DetailPayload.SuspendLayout();
-
-                        Explorer.DetailPayload.Controls.Clear();
-                        Explorer.DetailPayload.Controls.Add(properties);
-                        properties.Dock = DockStyle.Fill;
-
-                        properties.Data = DomainData.Details;
-
-                        Explorer.DetailPayload.ResumeLayout();
-
-                        properties.Data = DomainData.Details;
-                    }
-
-                    return properties;
-                }
-                else
-                {
+               
                     if (!Explorer.DetailPayload.Controls.Contains(puzzleEditor))
                     {
                         Explorer.DetailPayload.SuspendLayout();
@@ -77,11 +57,11 @@ namespace SokoSolve.UI.Section.Library.Items
 
                         Explorer.DetailPayload.ResumeLayout();
 
-                        puzzleEditor.Map = DomainData.MasterMap.Map;
+                        puzzleEditor.PuzzleMap = DomainData.MasterMap;
                     }
 
                     return puzzleEditor;
-                }
+                
             }
             else
             {
@@ -109,18 +89,11 @@ namespace SokoSolve.UI.Section.Library.Items
             return HtmlReporter.Report(DomainData, DrawingHelper.Images);
         }
 
-        /// <summary>
-        /// Show the details instead of the map editor
-        /// </summary>
-	    public bool ShowProps
-	    {
-	        get { return showProps; }
-	        set { showProps = value; }
-	    }
+       
 
 	    private static HtmlView browser = new HtmlView();
         private Editor puzzleEditor = new Editor();
-        private static ucGenericDescription properties = new ucGenericDescription();
-	    private bool showProps = false;
+
+	    
 	}
 }

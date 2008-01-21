@@ -11,6 +11,7 @@ namespace SokoSolve.Core.Model
         private Puzzle puzzle;
         private SokobanMap map;
         private string rating;
+        bool? isMasterMap;
 
         private GenericDescription details;
         private List<Solution> solutions;
@@ -20,6 +21,18 @@ namespace SokoSolve.Core.Model
             puzzle = owner;
             map = new SokobanMap();
             solutions = new List<Solution>();
+            isMasterMap = null;
+        }
+
+        public PuzzleMap(PuzzleMap clone)
+        {
+            puzzle = clone.puzzle;
+            map = new SokobanMap(clone.map);
+            solutions = new List<Solution>(clone.solutions);
+            details = new GenericDescription(clone.details);
+            rating = clone.rating;
+            mapID = clone.mapID;
+            isMasterMap = clone.IsMasterMap;
         }
 
         public string MapID
@@ -60,6 +73,18 @@ namespace SokoSolve.Core.Model
         public bool HasSolution
         {
             get { return solutions != null && solutions.Count > 0;  }
+        }
+
+        /// <summary>
+        /// Is this the master map?
+        /// </summary>
+        public bool IsMasterMap
+        {
+            get
+            {
+                if (isMasterMap != null) return isMasterMap.Value;
+                return object.ReferenceEquals(puzzle.MasterMap, this);
+            }
         }
 
         public override string ToString()

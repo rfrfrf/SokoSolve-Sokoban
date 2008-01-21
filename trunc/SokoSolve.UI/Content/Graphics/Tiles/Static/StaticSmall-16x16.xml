@@ -20,5 +20,5 @@ public enum CellStates
 	<Resource ID="4" Name="FloorGoal" Filename="SimpleGoal16x16.png"/>
 	<Resource ID="5" Name="FloorGoalCrate" Filename="SimpleCrateGoal16x16.png"/>
 	<Resource ID="6" Name="FloorPlayer" Filename="SimplePlayer16x16.png"/>
-	<Resource ID="7" Name="FloorGoalPlayer" Filename="SimplePlayer16x16.png"/>
+	<Resource ID="7" Name="FloorGoalPlayer" Filename="SimplePlayerGoal16x16.png"/>
 </Resources>

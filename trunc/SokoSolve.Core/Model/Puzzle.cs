@@ -23,6 +23,10 @@ namespace SokoSolve.Core.Model
         private string puzzleID;
         private Library library; // simple back reference
 
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        /// <param name="myLibrary"></param>
     	public Puzzle(Library myLibrary)
     	{
     		maps = new List<PuzzleMap>();
@@ -47,18 +51,27 @@ namespace SokoSolve.Core.Model
             get { return library; }
         }
 
+        /// <summary>
+        /// Member category
+        /// </summary>
         public Category Category
 		{
 			get { return category; }
 			set { category = value; }
 		}
 
+        /// <summary>
+        /// Order (independant of category)
+        /// </summary>
     	public int Order
     	{
     		get { return order; }
     		set { order = value; }
     	}
 
+        /// <summary>
+        /// List of all maps in the puzzle
+        /// </summary>
     	public List<PuzzleMap> Maps
     	{
     		get { return maps; }
@@ -79,19 +92,27 @@ namespace SokoSolve.Core.Model
             }
         }
 
+        /// <summary>
+        /// Puzzle generic details, name, author etc.
+        /// </summary>
     	public GenericDescription Details
     	{
     		get { return details; }
     		set { details = value; }
     	}
 
-
+        /// <summary>
+        /// Rating String
+        /// </summary>
     	public string Rating
     	{
     		get { return rating; }
     		set { rating = value; }
     	}
 
+        /// <summary>
+        /// Calculate an automated rating for the puzzle
+        /// </summary>
         public double AutomatedRating
         {
             get
@@ -104,6 +125,9 @@ namespace SokoSolve.Core.Model
             }
         }
 
+        /// <summary>
+        /// Master/Primary map for the puzzle
+        /// </summary>
         public PuzzleMap MasterMap
         {
             get
@@ -137,11 +161,13 @@ namespace SokoSolve.Core.Model
             }
         }
 
+        /// <summary>
+        /// Debug string helper
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return string.Format("{0} {1}", puzzleID, details);
         }
-
-
     }
 }

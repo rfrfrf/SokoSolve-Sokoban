@@ -67,6 +67,38 @@ namespace SokoSolve.Core.Model
             set { simpleParams["UserLicense"] = value; }
         }
 
+        /// <summary>
+        /// Get the default author
+        /// </summary>
+        public GenericDescriptionAuthor UserAsGenericAuthor
+        {
+            get
+            {
+                GenericDescriptionAuthor author = new GenericDescriptionAuthor();
+                author.Name = UserName;
+                author.Email = UserEmail;
+                author.Homepage = UserHomepage;
+                return author;
+            }
+        }
+
+
+        /// <summary>
+        /// Get the default author
+        /// </summary>
+        public GenericDescription GenericDescription
+        {
+            get
+            {
+                GenericDescription desc = new GenericDescription();
+                desc.DateSpecified = true;
+                desc.Date = DateTime.Now;
+                desc.License = UserLicense;
+                desc.Author = UserAsGenericAuthor;
+                return desc;
+            }
+        }
+
         public void Register(SokoSolveProfileLibrary newLib)
         {
             currentXML.LibraryRepository = ListHelper.AddToArray<SokoSolveProfileLibrary>(currentXML.LibraryRepository, newLib);
@@ -139,6 +171,7 @@ namespace SokoSolve.Core.Model
 
         private Dictionary<string, string> simpleParams;
         private SokoSolveProfile currentXML;
+
     }
 }
 

@@ -22,7 +22,7 @@ namespace SokoSolve.Test.Core
             try
             {
                 SokobanMap map = new SokobanMap();
-                map.setFromStrings(new string[]
+                map.SetFromStrings(new string[]
 		                           {
          "~##~#####",
           "##.##.O.#",
@@ -35,7 +35,7 @@ namespace SokoSolve.Test.Core
           "#####~#~~"
 		                           });
 
-                PuzzleMap pMap = new PuzzleMap(null);
+                PuzzleMap pMap = new PuzzleMap((Puzzle)null);
                 pMap.Map = map;
 
                 SolverController controller = new SolverController(pMap);

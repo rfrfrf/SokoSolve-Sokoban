@@ -21,14 +21,14 @@ namespace SokoSolve.UI.Section.Library.Items
 		{
             if (DomainData != null)
             {
-                if (DomainData.Categories.Root.Count > 0 && DomainData.Categories.Root.Data.GetPuzzles(DomainData).Count == 0)
+                if (DomainData.Categories.Count > 0 && DomainData.CategoryTree.Root.Data.GetPuzzles(DomainData).Count == 0)
                 {
-                    SyncUICollectionWithData<Category>(DomainData.Categories.Root.ChildrenData, delegate(Category item) { return new ItemCategory(item); });
+                    SyncUICollectionWithData<Category>(DomainData.CategoryTree.Root.ChildrenData, delegate(Category item) { return new ItemCategory(item); });
                 }
                 else
                 {
                     // Show the master list's puzzle only (not the list itself)
-                    SyncUICollectionWithData<Puzzle>(DomainData.Categories.Root.Data.GetPuzzles(Controller.Current), delegate(Puzzle item) { return new ItemPuzzle(item); });
+                    SyncUICollectionWithData<Puzzle>(DomainData.CategoryTree.Root.Data.GetPuzzles(Controller.Current), delegate(Puzzle item) { return new ItemPuzzle(item); });
                 }
 
                 base.SyncDomain();
@@ -77,8 +77,8 @@ namespace SokoSolve.UI.Section.Library.Items
 
                 if (DomainData != null)
                 {
-                    payload.ucPuzzleList.Library = DomainData;
-                    payload.htmlView1.SetHTML( HtmlReporter.Report(DomainData).GetHTMLPage() );
+                    payload.Library = DomainData;
+                    
                 }
                 return html;
             }

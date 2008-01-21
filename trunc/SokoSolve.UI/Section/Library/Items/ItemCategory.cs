@@ -35,7 +35,9 @@ namespace SokoSolve.UI.Section.Library.Items
         /// </summary>
 		public override void SyncDomain()
 		{
-            SyncUICollectionWithData<Category>(DomainData.Children, delegate(Category item) { return new ItemCategory(item); });
+            List<Category> cats = DomainData.Children == null ? null : new List<Category>(DomainData.Children);
+            if (cats != null) cats.Sort(delegate(Category lhs, Category rhs) { return lhs.NestedOrder.CompareTo(rhs.NestedOrder); });
+            SyncUICollectionWithData<Category>(cats, delegate(Category item) { return new ItemCategory(item); });
 
             // Add puzzles
             LibraryController libCont = Explorer.Controller as LibraryController;

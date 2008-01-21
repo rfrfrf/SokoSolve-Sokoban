@@ -66,7 +66,7 @@ namespace SokoSolve.UI.Section.Solver
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.upMaxDepth.Location = new System.Drawing.Point(7, 55);
             this.upMaxDepth.Maximum = new decimal(new int[] {
-            1000,
+            2000,
             0,
             0,
             0});

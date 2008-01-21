@@ -13,6 +13,7 @@ namespace SokoSolve.UI.Section.Solver
         public ExitConditions()
         {
             InitializeComponent();
+            cbProfiles.SelectedIndex = 0;
         }
 
         private void cbProfiles_SelectedIndexChanged(object sender, EventArgs e)
@@ -23,22 +24,22 @@ namespace SokoSolve.UI.Section.Solver
                 case (2):
                     upMaxDepth.Value = 2000;
                     upMaxNodes.Value = 400000;
-                    upMaxItter.Value = 800000;
+                    upMaxItter.Value = 1000000;
                     upMaxTime.Value = 10m;
                     cbStopOnSolution.Checked = true;
                     break;
                 case(1):
                     upMaxDepth.Value = 200;
-                    upMaxNodes.Value = 40000;
-                    upMaxItter.Value = 80000;
+                    upMaxNodes.Value = 200000;
+                    upMaxItter.Value = 5000000;
                     upMaxTime.Value = 5m;
                     cbStopOnSolution.Checked = true;
                     break;
                 case(0):
                 default :
                     upMaxDepth.Value = 100;
-                    upMaxNodes.Value = 20000;
-                    upMaxItter.Value = 40000;
+                    upMaxNodes.Value = 30000;
+                    upMaxItter.Value = 80000;
                     upMaxTime.Value = 2.5m;
                     cbStopOnSolution.Checked = true;
                     break;

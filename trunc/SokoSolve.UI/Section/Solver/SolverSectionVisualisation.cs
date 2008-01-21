@@ -38,16 +38,7 @@ namespace SokoSolve.UI.Section.Solver
             visualisationContainerLocalNodes.OnVisualisationClick +=
                 new EventHandler<VisEventArgs>(OnVisualisationClick_LocalNode);
             visualisationContainerReverseTree.OnVisualisationClick +=
-                new EventHandler<VisEventArgs>(OnVisualisationClick_ReverseTree);
-
-
-
-            if (Site == null)
-            {
-                //inlineBrowserSolver.NavigateIncludedContent("$html\\Solver.html");    
-            }
-
-            
+                new EventHandler<VisEventArgs>(OnVisualisationClick_ReverseTree);            
         }
 
 
@@ -58,12 +49,15 @@ namespace SokoSolve.UI.Section.Solver
             set
             {
                 controller = value;
-                bitmapViewerStatic.MapSize = Map.Map.Size;
-                bitmapViewerNodeMaps.MapSize = Map.Map.Size;
-
-                if (Map != null)
+                if (controller != null)
                 {
-                    pictureBoxStaticImage.Image = DrawingHelper.DrawPuzzle(Map);
+                    bitmapViewerStatic.MapSize = Map.Map.Size;
+                    bitmapViewerNodeMaps.MapSize = Map.Map.Size;
+
+                    if (Map != null)
+                    {
+                        pictureBoxStaticImage.Image = DrawingHelper.DrawPuzzle(Map);
+                    }
                 }
             }
         }
@@ -73,7 +67,11 @@ namespace SokoSolve.UI.Section.Solver
         /// </summary>
         public PuzzleMap Map
         {
-            get { return controller.PuzzleMap; }
+            get
+            {
+                if (controller == null) return null;
+                return controller.PuzzleMap;
+            }
             //set
             //{
             //    map = value;

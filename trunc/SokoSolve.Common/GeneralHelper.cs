@@ -56,5 +56,27 @@ namespace SokoSolve.Common
             // Neither are null, and they are not the same memory reference...Do a value comparison
             return null;
         }
+
+        /// <summary>
+        /// Rotate an array left-to-right by 90deg
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static T[,] Rotate<T>(T[,] source)
+        {
+            int sizeX = source.GetLength(0);
+            int sizeY = source.GetLength(1);
+            T[,] result = new T[sizeY, sizeX]; // swap dimensions
+
+            for (int cx = 0; cx < sizeX; cx++)
+            {
+                for (int cy = 0; cy < sizeY; cy++)
+                {
+                    result[sizeY - cy - 1, cx] = source[cx, cy];
+                }
+            }
+
+            return result;
+        }
     }
 }

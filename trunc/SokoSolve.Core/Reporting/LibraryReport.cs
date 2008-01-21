@@ -29,7 +29,7 @@ namespace SokoSolve.Core.Reporting
 
             Body.AppendChild(CreateGenericDescriptionTable(library.Details, false));
 
-            foreach (Category category in library.Categories.Nodes)
+            foreach (Category category in library.Categories)
             {
                 List<Puzzle> puzzles = category.GetPuzzles(library);
                 Body.AppendChild(CreateContentTag("h2", category.Details.Name));

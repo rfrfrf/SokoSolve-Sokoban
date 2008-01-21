@@ -32,6 +32,7 @@ namespace SokoSolve.UI.Section.Library
                 newCat.CategoryParentREF = cat.DomainData.CategoryID;
                 newCat.Details = new GenericDescription();
                 newCat.Details.Name = "New Category";
+                newCat.Order = cat.DomainData.TreeNode.Tree.Nodes.Count + 1;
                 cat.DomainData.TreeNode.Add(newCat);
 
                 // Select new cat, set to edit...

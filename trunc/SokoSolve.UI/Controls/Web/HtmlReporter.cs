@@ -116,7 +116,7 @@ namespace SokoSolve.UI.Controls.Web
 	        report.AddLabel("Rating", library.Rating);
             report.AddLabel("Puzzles", library.Puzzles.Count.ToString());
 
-	        foreach (Category category in library.Categories.Root.ToList())
+	        foreach (Category category in library.Categories)
 	        {
 	            report.Add(Report(category, library));
 	        }

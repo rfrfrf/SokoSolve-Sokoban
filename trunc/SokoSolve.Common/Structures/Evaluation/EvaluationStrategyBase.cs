@@ -81,7 +81,7 @@ namespace SokoSolve.Common.Structures.Evaluation
         /// Get the next node for evaluation. <see cref="IEvaluationStrategyItterator<T>"/>
         /// </summary>
         /// <returns></returns>
-        public INode<T> GetNext(out EvalStatus Status)
+        public virtual INode<T> GetNext(out EvalStatus Status)
         {
             return workList.GetNext(out Status);
         }

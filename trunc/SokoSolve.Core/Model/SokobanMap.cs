@@ -30,7 +30,10 @@ namespace SokoSolve.Core.Model
         /// </summary>
 		public readonly string StandardEncodeCharsV1 = "~#.xoXpP";
 
-		CellStates[,] pMap;
+        /// <summary>
+        /// Map array
+        /// </summary>
+		CellStates[,] map;
 
         /// <summary>
         /// Default Construction
@@ -38,6 +41,9 @@ namespace SokoSolve.Core.Model
         public SokobanMap()
         {
             Init(new SizeInt(10, 10));
+            this[3, 3] = CellStates.FloorPlayer;
+            this[4, 4] = CellStates.FloorGoal;
+            this[5, 5] = CellStates.FloorCrate;
         }
 
         /// <summary>
@@ -46,7 +52,7 @@ namespace SokoSolve.Core.Model
         /// <param name="copy"></param>
         public SokobanMap(SokobanMap copy)
         {
-            pMap = new CellStates[copy.Size.X, copy.Size.Y];
+            map = new CellStates[copy.Size.X, copy.Size.Y];
             for (int px = 0; px < Size.X; px++)
                 for (int py = 0; py < Size.Y; py++)
                     this[new VectorInt(px, py)] = copy[new VectorInt(px, py)];
@@ -84,18 +90,33 @@ namespace SokoSolve.Core.Model
             {
                 if (P.IsNull) throw new ArgumentNullException("P");
                 if (!Rectangle.Contains(P)) throw new ArgumentOutOfRangeException("P");
-                return pMap[P.X, P.Y];
+                return map[P.X, P.Y];
             }
             set
             {
                 if (!Rectangle.Contains(P)) throw new ArgumentOutOfRangeException("P");
 
+                // Remove the other player position is it exists
                 if ((value == CellStates.FloorPlayer || value == CellStates.FloorGoalPlayer) && !Player.IsNull)
                 {
-                    if (this[Player] == CellStates.FloorPlayer) this[Player] = CellStates.Floor;
-                    else if (this[Player] == CellStates.FloorGoalPlayer) this[Player] = CellStates.FloorGoal;
+                    // Remove the old player
+                    if (this[Player] == CellStates.FloorPlayer)
+                    {
+                        this[Player] = CellStates.Floor;
+                    }
+                    else if (this[Player] == CellStates.FloorGoalPlayer) 
+                    {
+                        this[Player] = CellStates.FloorGoal;
+                    }
+                   
+                    // Set the new state
+                    map[P.X, P.Y] = value;  
                 }
-                pMap[P.X, P.Y] = value;
+                else
+                {
+                    map[P.X, P.Y] = value;    
+                }
+                
             }
         }
 
@@ -106,7 +127,7 @@ namespace SokoSolve.Core.Model
         {
             get
             {
-                return pMap[pX, pY];
+                return map[pX, pY];
             }
             set
             {
@@ -119,7 +140,7 @@ namespace SokoSolve.Core.Model
         /// </summary>
         public SizeInt Size
         {
-            get { return new SizeInt(pMap.GetLength(0), pMap.GetLength(1)); }
+            get { return new SizeInt(map.GetLength(0), map.GetLength(1)); }
         }
 
         /// <summary>
@@ -151,7 +172,8 @@ namespace SokoSolve.Core.Model
                 else this[P] = CellStates.FloorCrate;
 
             if (aCell == Cell.Goal)
-                if (this[P] == CellStates.FloorCrate) this[P] = CellStates.FloorGoalCrate;
+                if (this[P] == CellStates.FloorPlayer) this[P] = CellStates.FloorGoalPlayer;
+                else if (this[P] == CellStates.FloorCrate) this[P] = CellStates.FloorGoalCrate;
                 else this[P] = CellStates.FloorGoal;
 
             if (aCell == Cell.Player)
@@ -237,7 +259,7 @@ namespace SokoSolve.Core.Model
         public void Init(SizeInt s)
         {
             if (s.X <= 0 || s.Y <= 0) throw new ArgumentOutOfRangeException("s");
-            pMap = new CellStates[s.X, s.Y];
+            map = new CellStates[s.X, s.Y];
             Fill(CellStates.Floor);
             FillBox(Rectangle, CellStates.Wall);
         }
@@ -377,7 +399,7 @@ namespace SokoSolve.Core.Model
         public void Resize(SizeInt newSize)
         {
             if (newSize.Equals(Size)) return;
-            CellStates[,] old = pMap;
+            CellStates[,] old = map;
             
 
             // Min common size
@@ -391,18 +413,21 @@ namespace SokoSolve.Core.Model
                 }
         }
 
-        public void setFromString(string LinesWithBreaks)
+        /// <summary>
+        /// Init the puzzle from a simple string map, with the default cell chars
+        /// </summary>
+        public void SetFromString(string LinesWithBreaks)
         {
-            setFromStrings(StringHelper.Split(LinesWithBreaks, Environment.NewLine));
+            SetFromStrings(StringHelper.Split(LinesWithBreaks, Environment.NewLine));
         }
 
         /// <summary>
         /// Init the puzzle from a simple string map, with the default cell chars
         /// </summary>
         /// <param name="InputMap"></param>
-        public void setFromStrings(string[] InputMap)
+        public void SetFromStrings(string[] InputMap)
         {
-            setFromStrings(InputMap, StandardEncodeChars);
+            SetFromStrings(InputMap, StandardEncodeChars);
         }
 
         /// <summary>
@@ -410,20 +435,20 @@ namespace SokoSolve.Core.Model
         /// </summary>
         /// <param name="InputMap"></param>
         /// <param name="ValidChars">Void, Wall, Floor, Crate, Goal, CrateAndGoal, Player, PlayerAndGoal</param>
-        public void setFromStrings(string[] InputMap, string ValidChars)
+        public void SetFromStrings(string[] InputMap, string ValidChars)
         {
             int size = 8;
             string[] simple = new string[size];
             for(int c=0; c<CellStatesClass.Size; c++)
                 simple[c] = new string(ValidChars[c], 1);
 
-            setFromStrings(InputMap, simple);
+            SetFromStrings(InputMap, simple);
         }
 
         /// <summary>
         /// Init the puzzle from a simple string map
         /// </summary>
-        public void setFromStrings(string[] StrMap, string[] ValidChars)
+        public void SetFromStrings(string[] StrMap, string[] ValidChars)
         {
             int maxx = 0;
 
@@ -470,14 +495,14 @@ namespace SokoSolve.Core.Model
         /// <param name="ColY"></param>
         /// <param name="StateChars"></param>
         /// <returns></returns>
-        public string encodeRow(int ColY, string StateChars)
+        public string EncodeRow(int ColY, string StateChars)
         {
             if (StateChars.Length != Enum.GetValues(typeof(CellStates)).Length) throw new ArgumentException("StateChars");
 
             StringBuilder sb = new StringBuilder(Size.X);
             for (int cx = 0; cx < Size.X; cx++)
             {
-                sb.Append(StateChars[(int)pMap[cx, ColY]]);
+                sb.Append(StateChars[(int)map[cx, ColY]]);
             }
             return sb.ToString();
         }
@@ -497,7 +522,7 @@ namespace SokoSolve.Core.Model
         /// </summary>
         /// <param name="Messages"></param>
         /// <returns></returns>
-        public bool isValid(out StringCollection Messages)
+        public bool IsValid(out StringCollection Messages)
         {
             // Init.
             Messages = new StringCollection();
@@ -569,6 +594,14 @@ namespace SokoSolve.Core.Model
         }
 
         /// <summary>
+        /// Rotate the puzzle by 90degrees
+        /// </summary>
+        public void Rotate()
+        {
+            map = GeneralHelper.Rotate<CellStates>(map);
+        }
+
+        /// <summary>
         /// Show the map as a string seperated with line breaks
         /// </summary>
         /// <returns></returns>
@@ -577,7 +610,7 @@ namespace SokoSolve.Core.Model
 			StringBuilder sb = new StringBuilder();
 			for(int cc=0; cc<Size.Y; cc++)
 			{
-				sb.Append(encodeRow(cc, this.StandardEncodeChars));
+				sb.Append(EncodeRow(cc, this.StandardEncodeChars));
 				sb.Append(Environment.NewLine);
 			}
 			return sb.ToString();
@@ -592,7 +625,7 @@ namespace SokoSolve.Core.Model
             List<string> res = new List<string>();
             for (int cc = 0; cc < Size.Y; cc++)
             {
-                res.Add(encodeRow(cc, this.StandardEncodeChars));
+                res.Add(EncodeRow(cc, this.StandardEncodeChars));
             }
             return res.ToArray();
         }

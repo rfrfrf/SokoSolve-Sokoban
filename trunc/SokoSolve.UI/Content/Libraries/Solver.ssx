@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LibraryID="L1" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
+<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LibraryID="L1" MaxID="1001" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
   <Details License="See individual puzzles">
     <Name>Solver Puzzles</Name>
     <Description>A set of puzzles used to test, extend and evaluate the SokSolve Solver.</Description>
@@ -7,12 +7,12 @@
     <Author Name="SokoSolve" Email="bitwacker@users.sourceforge.net" Homepage="http://sokosolve.net" />
   </Details>
   <Categories>
-    <Category CategoryID="C0" Order="0">
+    <Category CategoryID="C0" Order="1">
       <CategoryDescription>
         <Name>Master List</Name>
       </CategoryDescription>
     </Category>
-    <Category CategoryID="C6" CategoryParentREF="C0" Order="1">
+    <Category CategoryID="C6" CategoryParentREF="C0" Order="2">
       <CategoryDescription License="Acknowledgement Required">
         <Name>Sasquatch</Name>
         <Description>See Sasquatch library (included with SokoSolve)</Description>
@@ -20,47 +20,7 @@
         <Author Name="David W. Skinner" Email="" Homepage="" />
       </CategoryDescription>
     </Category>
-    <Category CategoryID="C5" CategoryParentREF="C6" Order="10">
-      <CategoryDescription License="">
-        <Name>Not Attempted</Name>
-        <Description />
-        <Comments />
-        <Author Name="" Email="" Homepage="" />
-      </CategoryDescription>
-    </Category>
-    <Category CategoryID="C4" CategoryParentREF="C6" Order="9">
-      <CategoryDescription License="">
-        <Name>Failed</Name>
-        <Description />
-        <Comments />
-        <Author Name="" Email="" Homepage="" />
-      </CategoryDescription>
-    </Category>
-    <Category CategoryID="C1" CategoryParentREF="C6" Order="8">
-      <CategoryDescription License="">
-        <Name>Solved</Name>
-        <Description />
-        <Comments />
-        <Author Name="" Email="" Homepage="" />
-      </CategoryDescription>
-    </Category>
-    <Category CategoryID="C2" CategoryParentREF="C1" Order="6">
-      <CategoryDescription License="">
-        <Name>Quick</Name>
-        <Description />
-        <Comments />
-        <Author Name="" Email="" Homepage="" />
-      </CategoryDescription>
-    </Category>
-    <Category CategoryID="C3" CategoryParentREF="C1" Order="7">
-      <CategoryDescription License="">
-        <Name>Long</Name>
-        <Description />
-        <Comments />
-        <Author Name="" Email="" Homepage="" />
-      </CategoryDescription>
-    </Category>
-    <Category CategoryID="C8" CategoryParentREF="C6" Order="0">
+    <Category CategoryID="C8" CategoryParentREF="C6" Order="3">
       <CategoryDescription License="Creative Commons" Date="2008-01-19T12:12:43.7756371+02:00">
         <Name>Mini Senarios</Name>
         <Description>Mini Senarios highlighting individual solver problems</Description>
@@ -68,9 +28,49 @@
         <Author Name="Guy Langston" Email="bitwacker@users.sourceforge.net" Homepage="http://sokosolve/net" />
       </CategoryDescription>
     </Category>
+    <Category CategoryID="C1" CategoryParentREF="C6" Order="4">
+      <CategoryDescription License="">
+        <Name>Solved</Name>
+        <Description />
+        <Comments />
+        <Author Name="" Email="" Homepage="" />
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C2" CategoryParentREF="C1" Order="5">
+      <CategoryDescription License="">
+        <Name>Quick</Name>
+        <Description />
+        <Comments />
+        <Author Name="" Email="" Homepage="" />
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C3" CategoryParentREF="C1" Order="6">
+      <CategoryDescription License="">
+        <Name>Long</Name>
+        <Description />
+        <Comments />
+        <Author Name="" Email="" Homepage="" />
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C4" CategoryParentREF="C6" Order="7">
+      <CategoryDescription License="">
+        <Name>Failed</Name>
+        <Description />
+        <Comments />
+        <Author Name="" Email="" Homepage="" />
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C5" CategoryParentREF="C6" Order="8">
+      <CategoryDescription License="">
+        <Name>Not Attempted</Name>
+        <Description />
+        <Comments />
+        <Author Name="" Email="" Homepage="" />
+      </CategoryDescription>
+    </Category>
   </Categories>
   <Puzzles>
-    <Puzzle PuzzleID="P2" CategoryREF="C8" Order="0">
+    <Puzzle PuzzleID="P2" CategoryREF="C8" Order="1">
       <PuzzleDescription License="" Date="2008-01-19T12:17:59.9809846+02:00">
         <Name>RecessHover</Name>
         <Description>The recess location is statically dead, however the solver will not realise the 'hovering' crate before this positions is also head.
@@ -122,7 +122,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="51.7" PuzzleID="P1" CategoryREF="C2" Order="1">
+    <Puzzle PuzzleID="P1000" CategoryREF="C8" Order="2">
+      <PuzzleDescription License="" Date="2008-01-21T10:14:05.824963+02:00">
+        <Name>Corner Rule (Dead Map)</Name>
+        <Description />
+        <Comments />
+        <Author Name="" Email="" Homepage="" />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M1001">
+          <Row>##########</Row>
+          <Row>#........#</Row>
+          <Row>#O.......#</Row>
+          <Row>#........#</Row>
+          <Row>#......P.#</Row>
+          <Row>#........#</Row>
+          <Row>#........#</Row>
+          <Row>#X.......#</Row>
+          <Row>#.X...O..#</Row>
+          <Row>##########</Row>
+          <Solutions />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle Rating="51.7" PuzzleID="P1" CategoryREF="C2" Order="3">
       <PuzzleDescription>
         <Name>Superb Gem</Name>
         <Description />
@@ -236,7 +259,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="117.6" PuzzleID="P3" CategoryREF="C2" Order="2">
+    <Puzzle Rating="117.6" PuzzleID="P3" CategoryREF="C2" Order="4">
       <PuzzleDescription>
         <Name>Slimy Grave</Name>
         <Description />
@@ -324,7 +347,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="81.3" PuzzleID="P5" CategoryREF="C4" Order="3">
+    <Puzzle Rating="81.3" PuzzleID="P5" CategoryREF="C4" Order="5">
       <PuzzleDescription>
         <Name>Grim Town</Name>
         <Description />
@@ -367,7 +390,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="157.9" PuzzleID="P7" CategoryREF="C4" Order="4">
+    <Puzzle Rating="157.9" PuzzleID="P7" CategoryREF="C4" Order="6">
       <PuzzleDescription>
         <Name>Bob's Cottage</Name>
         <Description />
@@ -403,7 +426,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="214.8" PuzzleID="P9" CategoryREF="C4" Order="5">
+    <Puzzle Rating="214.8" PuzzleID="P9" CategoryREF="C4" Order="7">
       <PuzzleDescription>
         <Name>Tepid Gem</Name>
         <Description />
@@ -444,7 +467,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="147.7" PuzzleID="P11" CategoryREF="C4" Order="6">
+    <Puzzle Rating="147.7" PuzzleID="P11" CategoryREF="C4" Order="8">
       <PuzzleDescription>
         <Name>Tricky Spider</Name>
         <Description />
@@ -485,7 +508,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="71.4" PuzzleID="P13" CategoryREF="C4" Order="7">
+    <Puzzle Rating="71.4" PuzzleID="P13" CategoryREF="C4" Order="9">
       <PuzzleDescription>
         <Name>Dire Blanket</Name>
         <Description />
@@ -515,7 +538,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="89.7" PuzzleID="P15" CategoryREF="C3" Order="8">
+    <Puzzle Rating="89.7" PuzzleID="P15" CategoryREF="C3" Order="10">
       <PuzzleDescription>
         <Name>Ghastly House</Name>
         <Description />
@@ -642,7 +665,7 @@ Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="135.1" PuzzleID="P17" CategoryREF="C4" Order="9">
+    <Puzzle Rating="135.1" PuzzleID="P17" CategoryREF="C4" Order="11">
       <PuzzleDescription>
         <Name>Cold Nemosis</Name>
         <Description />
@@ -671,7 +694,7 @@ Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="71.0" PuzzleID="P19" CategoryREF="C5" Order="10">
+    <Puzzle Rating="71.0" PuzzleID="P19" CategoryREF="C5" Order="12">
       <PuzzleDescription>
         <Name>Old Town</Name>
         <Description />
@@ -699,7 +722,7 @@ Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="130.4" PuzzleID="P21" CategoryREF="C4" Order="11">
+    <Puzzle Rating="130.4" PuzzleID="P21" CategoryREF="C4" Order="13">
       <PuzzleDescription>
         <Name>Slimy Gem</Name>
         <Description />
@@ -802,7 +825,7 @@ SokoSolve&lt;/th&gt;&lt;td&gt;
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="86.2" PuzzleID="P23" CategoryREF="C5" Order="12">
+    <Puzzle Rating="86.2" PuzzleID="P23" CategoryREF="C5" Order="14">
       <PuzzleDescription>
         <Name>Old School</Name>
         <Description />
@@ -825,7 +848,7 @@ SokoSolve&lt;/th&gt;&lt;td&gt;
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="107.5" PuzzleID="P25" CategoryREF="C5" Order="13">
+    <Puzzle Rating="107.5" PuzzleID="P25" CategoryREF="C5" Order="15">
       <PuzzleDescription>
         <Name>Tepid Blanket</Name>
         <Description />
@@ -850,7 +873,7 @@ SokoSolve&lt;/th&gt;&lt;td&gt;
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="157.9" PuzzleID="P27" CategoryREF="C3" Order="14">
+    <Puzzle Rating="157.9" PuzzleID="P27" CategoryREF="C3" Order="16">
       <PuzzleDescription>
         <Name>Dastardly Black Morning</Name>
         <Description />
@@ -903,7 +926,7 @@ SokoSolve&lt;/th&gt;&lt;td&gt;
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="107.7" PuzzleID="P29" CategoryREF="C4" Order="15">
+    <Puzzle Rating="107.7" PuzzleID="P29" CategoryREF="C4" Order="17">
       <PuzzleDescription>
         <Name>Tepid Estate</Name>
         <Description />
@@ -1009,7 +1032,7 @@ SokoSolve&lt;/th&gt;&lt;td&gt;
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="87.3" PuzzleID="P31" CategoryREF="C5" Order="16">
+    <Puzzle Rating="87.3" PuzzleID="P31" CategoryREF="C5" Order="18">
       <PuzzleDescription>
         <Name>Cold Tower</Name>
         <Description />
@@ -1037,7 +1060,7 @@ SokoSolve&lt;/th&gt;&lt;td&gt;
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="85.5" PuzzleID="P33" CategoryREF="C5" Order="17">
+    <Puzzle Rating="85.5" PuzzleID="P33" CategoryREF="C5" Order="19">
       <PuzzleDescription>
         <Name>Caroline's Gem</Name>
         <Description />
@@ -1060,7 +1083,7 @@ SokoSolve&lt;/th&gt;&lt;td&gt;
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="324.3" PuzzleID="P35" CategoryREF="C5" Order="18">
+    <Puzzle Rating="324.3" PuzzleID="P35" CategoryREF="C5" Order="20">
       <PuzzleDescription>
         <Name>Grand House</Name>
         <Description />
@@ -1086,7 +1109,7 @@ SokoSolve&lt;/th&gt;&lt;td&gt;
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="62.5" PuzzleID="P37" CategoryREF="C5" Order="19">
+    <Puzzle Rating="62.5" PuzzleID="P37" CategoryREF="C5" Order="21">
       <PuzzleDescription>
         <Name>Grim Grave</Name>
         <Description />
@@ -1112,7 +1135,7 @@ SokoSolve&lt;/th&gt;&lt;td&gt;
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="225.0" PuzzleID="P39" CategoryREF="C3" Order="20">
+    <Puzzle Rating="225.0" PuzzleID="P39" CategoryREF="C3" Order="22">
       <PuzzleDescription>
         <Name>Dire Gem</Name>
         <Description />
@@ -1184,7 +1207,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="181.8" PuzzleID="P41" CategoryREF="C3" Order="21">
+    <Puzzle Rating="181.8" PuzzleID="P41" CategoryREF="C3" Order="23">
       <PuzzleDescription>
         <Name>Edgy Grave</Name>
         <Description />
@@ -1388,7 +1411,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="72.1" PuzzleID="P43" CategoryREF="C5" Order="22">
+    <Puzzle Rating="72.1" PuzzleID="P43" CategoryREF="C5" Order="24">
       <PuzzleDescription>
         <Name>Cold Toad</Name>
         <Description />
@@ -1413,7 +1436,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="172.8" PuzzleID="P45" CategoryREF="C5" Order="23">
+    <Puzzle Rating="172.8" PuzzleID="P45" CategoryREF="C5" Order="25">
       <PuzzleDescription>
         <Name>Neville's Toad</Name>
         <Description />
@@ -1433,7 +1456,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="126.2" PuzzleID="P47" CategoryREF="C5" Order="24">
+    <Puzzle Rating="126.2" PuzzleID="P47" CategoryREF="C5" Order="26">
       <PuzzleDescription>
         <Name>Tight Toad</Name>
         <Description />
@@ -1458,7 +1481,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="146.2" PuzzleID="P49" CategoryREF="C5" Order="25">
+    <Puzzle Rating="146.2" PuzzleID="P49" CategoryREF="C5" Order="27">
       <PuzzleDescription>
         <Name>Tepid Mountain</Name>
         <Description />
@@ -1483,7 +1506,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="122.4" PuzzleID="P51" CategoryREF="C5" Order="26">
+    <Puzzle Rating="122.4" PuzzleID="P51" CategoryREF="C5" Order="28">
       <PuzzleDescription>
         <Name>Delighted Hamlet</Name>
         <Description />
@@ -1505,7 +1528,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="57.1" PuzzleID="P53" CategoryREF="C5" Order="27">
+    <Puzzle Rating="57.1" PuzzleID="P53" CategoryREF="C5" Order="29">
       <PuzzleDescription>
         <Name>Big Cottage</Name>
         <Description />
@@ -1532,7 +1555,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="130.8" PuzzleID="P55" CategoryREF="C5" Order="28">
+    <Puzzle Rating="130.8" PuzzleID="P55" CategoryREF="C5" Order="30">
       <PuzzleDescription>
         <Name>Grim Nemosis</Name>
         <Description />
@@ -1556,7 +1579,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="110.4" PuzzleID="P57" CategoryREF="C5" Order="29">
+    <Puzzle Rating="110.4" PuzzleID="P57" CategoryREF="C5" Order="31">
       <PuzzleDescription>
         <Name>Edgy Blanket</Name>
         <Description />
@@ -1583,7 +1606,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="76.9" PuzzleID="P59" CategoryREF="C5" Order="30">
+    <Puzzle Rating="76.9" PuzzleID="P59" CategoryREF="C5" Order="32">
       <PuzzleDescription>
         <Name>Dastardly Lagoon</Name>
         <Description />
@@ -1608,7 +1631,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="120.5" PuzzleID="P61" CategoryREF="C5" Order="31">
+    <Puzzle Rating="120.5" PuzzleID="P61" CategoryREF="C5" Order="33">
       <PuzzleDescription>
         <Name>Dastardly Mountain</Name>
         <Description />
@@ -1635,7 +1658,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="74.9" PuzzleID="P63" CategoryREF="C5" Order="32">
+    <Puzzle Rating="74.9" PuzzleID="P63" CategoryREF="C5" Order="34">
       <PuzzleDescription>
         <Name>Uptight Night</Name>
         <Description />
@@ -1662,7 +1685,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="116.6" PuzzleID="P65" CategoryREF="C5" Order="33">
+    <Puzzle Rating="116.6" PuzzleID="P65" CategoryREF="C5" Order="35">
       <PuzzleDescription>
         <Name>Grand Grave</Name>
         <Description />
@@ -1690,7 +1713,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="68.3" PuzzleID="P67" CategoryREF="C5" Order="34">
+    <Puzzle Rating="68.3" PuzzleID="P67" CategoryREF="C5" Order="36">
       <PuzzleDescription>
         <Name>Funny Tower</Name>
         <Description />
@@ -1718,7 +1741,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="133.0" PuzzleID="P69" CategoryREF="C5" Order="35">
+    <Puzzle Rating="133.0" PuzzleID="P69" CategoryREF="C5" Order="37">
       <PuzzleDescription>
         <Name>Slimy Spider</Name>
         <Description />
@@ -1746,7 +1769,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="64.7" PuzzleID="P71" CategoryREF="C5" Order="36">
+    <Puzzle Rating="64.7" PuzzleID="P71" CategoryREF="C5" Order="38">
       <PuzzleDescription>
         <Name>Grim Hovel</Name>
         <Description />
@@ -1772,7 +1795,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="108.7" PuzzleID="P73" CategoryREF="C5" Order="37">
+    <Puzzle Rating="108.7" PuzzleID="P73" CategoryREF="C5" Order="39">
       <PuzzleDescription>
         <Name>Superb Green Tunnel</Name>
         <Description />
@@ -1800,7 +1823,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="94.0" PuzzleID="P75" CategoryREF="C5" Order="38">
+    <Puzzle Rating="94.0" PuzzleID="P75" CategoryREF="C5" Order="40">
       <PuzzleDescription>
         <Name>Tricky Toad</Name>
         <Description />
@@ -1829,7 +1852,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="116.3" PuzzleID="P77" CategoryREF="C5" Order="39">
+    <Puzzle Rating="116.3" PuzzleID="P77" CategoryREF="C5" Order="41">
       <PuzzleDescription>
         <Name>Uptight Blanket</Name>
         <Description />
@@ -1857,7 +1880,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="139.5" PuzzleID="P79" CategoryREF="C5" Order="40">
+    <Puzzle Rating="139.5" PuzzleID="P79" CategoryREF="C5" Order="42">
       <PuzzleDescription>
         <Name>Uptight Hovel</Name>
         <Description />
@@ -1883,7 +1906,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="96.4" PuzzleID="P81" CategoryREF="C5" Order="41">
+    <Puzzle Rating="96.4" PuzzleID="P81" CategoryREF="C5" Order="43">
       <PuzzleDescription>
         <Name>Ghastly Town</Name>
         <Description />
@@ -1908,7 +1931,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="91.5" PuzzleID="P83" CategoryREF="C5" Order="42">
+    <Puzzle Rating="91.5" PuzzleID="P83" CategoryREF="C5" Order="44">
       <PuzzleDescription>
         <Name>Tense Tower</Name>
         <Description />
@@ -1936,7 +1959,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="89.4" PuzzleID="P85" CategoryREF="C5" Order="43">
+    <Puzzle Rating="89.4" PuzzleID="P85" CategoryREF="C5" Order="45">
       <PuzzleDescription>
         <Name>Uptight Grave</Name>
         <Description />
@@ -1965,7 +1988,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="100.4" PuzzleID="P87" CategoryREF="C5" Order="44">
+    <Puzzle Rating="100.4" PuzzleID="P87" CategoryREF="C5" Order="46">
       <PuzzleDescription>
         <Name>Old Nemosis</Name>
         <Description />
@@ -1994,7 +2017,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="90.5" PuzzleID="P89" CategoryREF="C5" Order="45">
+    <Puzzle Rating="90.5" PuzzleID="P89" CategoryREF="C5" Order="47">
       <PuzzleDescription>
         <Name>Ghastly Shower</Name>
         <Description />
@@ -2023,7 +2046,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="103.8" PuzzleID="P91" CategoryREF="C5" Order="46">
+    <Puzzle Rating="103.8" PuzzleID="P91" CategoryREF="C5" Order="48">
       <PuzzleDescription>
         <Name>Tricky Hovel</Name>
         <Description />
@@ -2052,7 +2075,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="186.4" PuzzleID="P93" CategoryREF="C5" Order="47">
+    <Puzzle Rating="186.4" PuzzleID="P93" CategoryREF="C5" Order="49">
       <PuzzleDescription>
         <Name>Ghastly Hovel</Name>
         <Description />
@@ -2077,7 +2100,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="73.5" PuzzleID="P95" CategoryREF="C5" Order="48">
+    <Puzzle Rating="73.5" PuzzleID="P95" CategoryREF="C5" Order="50">
       <PuzzleDescription>
         <Name>Exacting Spider</Name>
         <Description />
@@ -2105,7 +2128,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="44.2" PuzzleID="P97" CategoryREF="C5" Order="49">
+    <Puzzle Rating="44.2" PuzzleID="P97" CategoryREF="C5" Order="51">
       <PuzzleDescription>
         <Name>'Parallel Logic'</Name>
         <Description />
@@ -2129,7 +2152,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="125.4" PuzzleID="P99" CategoryREF="C5" Order="50">
+    <Puzzle Rating="125.4" PuzzleID="P99" CategoryREF="C5" Order="52">
       <PuzzleDescription>
         <Name>'Particle Theory'</Name>
         <Description />

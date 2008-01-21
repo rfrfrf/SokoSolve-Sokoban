@@ -22,7 +22,7 @@ namespace SokoSolve.Core.Game
         {
             if (aMap == null) throw new ArgumentNullException("aPuzzle");
             StringCollection sc = null;
-            if (!aMap.isValid(out sc)) throw new Exception(sc[0]);
+            if (!aMap.IsValid(out sc)) throw new Exception(sc[0]);
 
             puzzle = aPuzzle;
             startPuzzle = aMap;

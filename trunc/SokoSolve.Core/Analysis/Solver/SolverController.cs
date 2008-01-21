@@ -177,10 +177,22 @@ namespace SokoSolve.Core.Analysis.Solver
                 // Start forward
                 debugReport.AppendTimeStamp("Forward Started.");
                 EvalStatus result = evaluator.Evaluate(strategy);
-                if (result == EvalStatus.CompleteSolution)
+                if (state == States.Running)
                 {
-                    state = States.CompleteSolution;
+                    if (result == EvalStatus.CompleteSolution)
+                    {
+                        state = States.CompleteSolution;
+                    }
+                    else if (result == EvalStatus.CompleteNoSolution)
+                    {
+                        state = States.CompleteNoSolution;
+                    }
+                    else
+                    {
+                        state = States.CompleteNoSolutionInConstaints;
+                    }
                 }
+                
 
                 debugReport.AppendTimeStamp("Forward Complete. Status:{0}", result);
 
@@ -337,6 +349,21 @@ namespace SokoSolve.Core.Analysis.Solver
             {
                 debugReport.AppendTimeStamp("Reverse Starting. ");  
                 EvalStatus revStatus = reverseEvaluator.Evaluate(reverseStrategy);
+                if (state == States.Running)
+                {
+                    if (revStatus == EvalStatus.CompleteSolution)
+                    {
+                        state = States.CompleteSolution;
+                    }
+                    else if (revStatus == EvalStatus.CompleteNoSolution)
+                    {
+                        state = States.CompleteNoSolution;
+                    }
+                    else
+                    {
+                        state = States.CompleteNoSolutionInConstaints;
+                    }
+                }
                 debugReport.AppendTimeStamp("Reverse Complete. Status: {0} ", revStatus);  
             }
             catch(Exception ex)

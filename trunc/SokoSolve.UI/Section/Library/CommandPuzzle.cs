@@ -31,11 +31,12 @@ namespace SokoSolve.UI.Section.Library
                 // Create a new puzzle with a valid number etc.
                 Puzzle newPuz = new Puzzle(Controller.Current);
                 newPuz.PuzzleID = Controller.Current.IdProvider.GetNextIDString("P{0}");
-                newPuz.Details = new GenericDescription();
+                newPuz.Details = ProfileController.Current.GenericDescription;
                 newPuz.Details.Name = string.Format("New Puzzle #{0}", Controller.Current.Puzzles.Count+1);
                 newPuz.Category = category.DomainData;
                 newPuz.MasterMap = new PuzzleMap(newPuz);
                 newPuz.MasterMap.MapID = Controller.Current.IdProvider.GetNextIDString("M{0}");
+                newPuz.Order = Controller.Current.Puzzles.Count + 1;
 
                 Controller.Current.Puzzles.Add(newPuz);
 
@@ -90,7 +91,7 @@ namespace SokoSolve.UI.Section.Library
                         editor.Tag = instance;
                         editor.ClearCommandsEvents();
                         editor.Commands += new Editor.SimpleCommand(editor_Commands);
-                        editor.Map = new SokobanMap((item.DataUnTyped as Puzzle).MasterMap.Map);
+                        editor.PuzzleMap = new PuzzleMap((item.DataUnTyped as Puzzle).MasterMap);
                     }
                 }
                 return;
@@ -103,7 +104,7 @@ namespace SokoSolve.UI.Section.Library
                     Editor editor = item.ShowDetail() as Editor;
                     Puzzle puz = item.DataUnTyped as Puzzle;
 
-                    puz.MasterMap.Map = editor.Map;
+                    puz.MasterMap = editor.PuzzleMap;
 
                     item.IsEditable = false;
                     item.ShowDetail();
@@ -117,28 +118,12 @@ namespace SokoSolve.UI.Section.Library
                     return;
                 }
 
-                if (instance.Param != null && instance.Param.ToString() == "Editor.Props")
-                {
-                    ItemPuzzle iPuz = item as ItemPuzzle;
-                    iPuz.ShowProps = true;
-                    item.IsEditable = true;
-                    Control implUI = item.ShowDetail();
-                    ucGenericDescription details = implUI as ucGenericDescription;
-                    if (details != null)
-                    {
-                        details.Tag = instance;
-                        details.ButtonOK.Tag = instance;
-                        details.ButtonOK.Click += new EventHandler(ButtonOK_Click);
-                        details.ButtonCancel.Tag = instance;
-                        details.ButtonCancel.Click += new EventHandler(ButtonCancel_Click);
-                    }
-                    return;
-                }
+                
 
                 if (instance.Param != null && instance.Param.ToString() == "Details.Cancel")
                 {
                     ItemPuzzle iPuz = item as ItemPuzzle;
-                    iPuz.ShowProps = false;
+                
                     item.ShowDetail();
                     return;
                 }
@@ -153,8 +138,32 @@ namespace SokoSolve.UI.Section.Library
                     puzMap.Details = editControl.Data;
 
                     ItemPuzzle iPuz = item as ItemPuzzle;
-                    iPuz.ShowProps = false;
+                
                     iPuz.ShowDetail();
+                    return;
+                }
+
+                if (instance.Param != null && instance.Param.ToString() == "Editor.Copy")
+                {
+                    Puzzle puzMap = (Puzzle)item.DataUnTyped;
+
+                    Clipboard.SetText(puzMap.MasterMap.ToString(), TextDataFormat.Text);
+                    return;
+                }
+
+                if (instance.Param != null && instance.Param.ToString() == "Editor.Paste")
+                {
+                    Puzzle puzMap = (Puzzle)item.DataUnTyped;
+
+                    Clipboard.SetText(puzMap.MasterMap.ToString(), TextDataFormat.Text);
+                    return;
+                }
+
+                if (instance.Param != null && instance.Param.ToString() == "Editor.Rotate")
+                {
+                    Puzzle puzMap = (Puzzle)item.DataUnTyped;
+
+                    puzMap.MasterMap.Map.Rotate();
                     return;
                 }
             }

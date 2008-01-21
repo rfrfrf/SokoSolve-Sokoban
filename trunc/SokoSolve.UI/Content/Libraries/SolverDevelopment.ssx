@@ -1,0 +1,282 @@
+<?xml version="1.0"?>
+<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LibraryID="bf448fa3-5461-4e18-ac08-40a34d3d2666" MaxID="30" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
+  <Details License="GPL" Date="2008-01-21T12:20:42.9100075+02:00">
+    <Name>Solver Development Library</Name>
+    <Description>A collections of specific solver problems</Description>
+    <Comments>This is intended for solver development and not human play, although it is interresting to understand what the solver stuggles with.</Comments>
+    <Author Name="Guy Langston" Email="bitwacker@user.sourceforge.net" Homepage="http://sokosolve.sourceforge.net" />
+  </Details>
+  <Categories>
+    <Category CategoryID="C0" Order="1">
+      <CategoryDescription>
+        <Name>Master List</Name>
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C1" CategoryParentREF="C0" Order="2">
+      <CategoryDescription License="GPL" Date="2008-01-21T11:15:42.4565275+02:00">
+        <Name>Dead Map Collection</Name>
+        <Description>A collection is dead maps (no solutions)</Description>
+        <Comments>This is used to automated unit tests, and as a testbed for the solver block</Comments>
+        <Author Name="Guy Langston" Email="bitwacker@users.sourceforge.net" Homepage="http://sokosolve.sourceforge.net" />
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C2" CategoryParentREF="C1" Order="4">
+      <CategoryDescription License="Creative Commons" Date="2008-01-21T12:29:49.518577+02:00">
+        <Name>Advanced</Name>
+        <Description>Skeleton new library</Description>
+        <Comments>This is a skeleton sokoban library. ALL RIGHTS RESERVED.</Comments>
+        <Author Name="Unknown author" Email="noreply@sokosolve.sourceforge.net" Homepage="http://sokosolve.sourceforge.net" />
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C25" CategoryParentREF="C2" Order="7">
+      <CategoryDescription License="" Date="2008-01-21T16:04:38.810797+02:00">
+        <Name>Room Analysis</Name>
+        <Description />
+        <Comments />
+        <Author Name="" Email="" Homepage="" />
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C3" CategoryParentREF="C1" Order="5">
+      <CategoryDescription License="Creative Commons" Date="2008-01-21T12:30:09.3444565+02:00">
+        <Name>Complex</Name>
+        <Description>Skeleton new library</Description>
+        <Comments>This is a skeleton sokoban library. ALL RIGHTS RESERVED.</Comments>
+        <Author Name="Unknown author" Email="noreply@sokosolve.sourceforge.net" Homepage="http://sokosolve.sourceforge.net" />
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C24" CategoryParentREF="C1" Order="3">
+      <CategoryDescription License="" Date="2008-01-21T13:35:30.8473705+02:00">
+        <Name>Basic</Name>
+        <Description />
+        <Comments />
+        <Author Name="" Email="" Homepage="" />
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C15" CategoryParentREF="C1" Order="6">
+      <CategoryDescription License="" Date="2008-01-21T12:40:45.0479095+02:00">
+        <Name>Unit Tests</Name>
+        <Description />
+        <Comments />
+        <Author Name="" Email="" Homepage="" />
+      </CategoryDescription>
+    </Category>
+  </Categories>
+  <Puzzles>
+    <Puzzle PuzzleID="P28" CategoryREF="C25" Order="0">
+      <PuzzleDescription License="Creative Commons" Date="2008-01-21T16:04:50.00344+02:00">
+        <Name>Door Blocked #2</Name>
+        <Description />
+        <Comments />
+        <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M29">
+          <Row>##########</Row>
+          <Row>#........#</Row>
+          <Row>#.......O#</Row>
+          <Row>#..P.....#</Row>
+          <Row>#...O....#</Row>
+          <Row>##X##X...#</Row>
+          <Row>#...#..O.#</Row>
+          <Row>#.X.#....#</Row>
+          <Row>#...#....#</Row>
+          <Row>##########</Row>
+          <Solutions />
+          <MapDetails />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle PuzzleID="P7" CategoryREF="C24" Order="1">
+      <PuzzleDescription License="Creative Commons" Date="2008-01-21T11:15:36.5057365+02:00">
+        <Name>Corner Hover</Name>
+        <Description />
+        <Comments />
+        <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M8">
+          <Row>##########</Row>
+          <Row>#........#</Row>
+          <Row>#O.......#</Row>
+          <Row>#..P.....#</Row>
+          <Row>#...O....#</Row>
+          <Row>#....X...#</Row>
+          <Row>#........#</Row>
+          <Row>#X.......#</Row>
+          <Row>#.X.....O#</Row>
+          <Row>##########</Row>
+          <Solutions />
+          <MapDetails />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle PuzzleID="P9" CategoryREF="C24" Order="2">
+      <PuzzleDescription License="GPL" Date="2008-01-21T12:22:15.3669805+02:00">
+        <Name>Recess Hover</Name>
+        <Description />
+        <Comments />
+        <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M10">
+          <Row>##########</Row>
+          <Row>#O......O#</Row>
+          <Row>#........#</Row>
+          <Row>#..P.....#</Row>
+          <Row>#...O....#</Row>
+          <Row>#....X...#</Row>
+          <Row>#........#</Row>
+          <Row>#...XX...#</Row>
+          <Row>####..####</Row>
+          <Row>##########</Row>
+          <Solutions />
+          <MapDetails />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle PuzzleID="P11" CategoryREF="C24" Order="3">
+      <PuzzleDescription License="GPL" Date="2008-01-21T12:23:43.8046795+02:00">
+        <Name>Recess Hover #2</Name>
+        <Description />
+        <Comments />
+        <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M12">
+          <Row>##########</Row>
+          <Row>#.......O#</Row>
+          <Row>#.X......#</Row>
+          <Row>#..P.....#</Row>
+          <Row>#...O....#</Row>
+          <Row>#........#</Row>
+          <Row>########.#</Row>
+          <Row>#.X...O..#</Row>
+          <Row>#..X..O..#</Row>
+          <Row>##########</Row>
+          <Solutions />
+          <MapDetails />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle PuzzleID="P18" CategoryREF="C24" Order="4">
+      <PuzzleDescription License="Creative Commons" Date="2008-01-21T12:38:47.195101+02:00">
+        <Name>Crate on Wall Count</Name>
+        <Description />
+        <Comments />
+        <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M19">
+          <Row>##########</Row>
+          <Row>#.O......#</Row>
+          <Row>#........#</Row>
+          <Row>#.XP..X.O#</Row>
+          <Row>##########</Row>
+          <Solutions />
+          <MapDetails />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle PuzzleID="P13" CategoryREF="C24" Order="5">
+      <PuzzleDescription License="Creative Commons" Date="2008-01-21T12:25:14.7226885+02:00">
+        <Name>Wall Cycle </Name>
+        <Description>Group of Four</Description>
+        <Comments />
+        <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M14">
+          <Row>##########</Row>
+          <Row>#......O.#</Row>
+          <Row>#.....O..#</Row>
+          <Row>#..P.O...#</Row>
+          <Row>#...O....#</Row>
+          <Row>#..O.X...#</Row>
+          <Row>#........#</Row>
+          <Row>#..XX....#</Row>
+          <Row>#..X.X...#</Row>
+          <Row>##########</Row>
+          <Solutions />
+          <MapDetails />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle PuzzleID="P16" CategoryREF="C2" Order="6">
+      <PuzzleDescription License="Creative Commons" Date="2008-01-21T12:30:44.3012035+02:00">
+        <Name>Mutually Dependant Cycle</Name>
+        <Description />
+        <Comments />
+        <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M17">
+          <Row>##########</Row>
+          <Row>#..X....O#</Row>
+          <Row>#..X.P..O#</Row>
+          <Row>#..X....O#</Row>
+          <Row>##########</Row>
+          <Solutions />
+          <MapDetails />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle PuzzleID="P20" CategoryREF="C15" Order="7">
+      <PuzzleDescription License="Creative Commons" Date="2008-01-21T12:40:53.67724+02:00">
+        <Name>Atomic Solutions</Name>
+        <Description />
+        <Comments />
+        <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M21">
+          <Row>#####</Row>
+          <Row>#PXO#</Row>
+          <Row>#####</Row>
+          <Solutions />
+          <MapDetails />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle PuzzleID="P22" CategoryREF="C15" Order="8">
+      <PuzzleDescription License="Creative Commons" Date="2008-01-21T12:42:12.004258+02:00">
+        <Name>Atomic No Solutions</Name>
+        <Description />
+        <Comments />
+        <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M23">
+          <Row>#####</Row>
+          <Row>#.X*#</Row>
+          <Row>#####</Row>
+          <Solutions />
+          <MapDetails />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle PuzzleID="P26" CategoryREF="C25" Order="9">
+      <PuzzleDescription License="Creative Commons" Date="2008-01-21T16:04:50.00344+02:00">
+        <Name>Door Blocked #1</Name>
+        <Description />
+        <Comments />
+        <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M27">
+          <Row>##########</Row>
+          <Row>#......O.#</Row>
+          <Row>#.......O#</Row>
+          <Row>#..P.....#</Row>
+          <Row>#...O....#</Row>
+          <Row>##X##X...#</Row>
+          <Row>#.X.#....#</Row>
+          <Row>#...#....#</Row>
+          <Row>#...#....#</Row>
+          <Row>##########</Row>
+          <Solutions />
+          <MapDetails />
+        </Map>
+      </Maps>
+    </Puzzle>
+  </Puzzles>
+</SokobanLibrary>

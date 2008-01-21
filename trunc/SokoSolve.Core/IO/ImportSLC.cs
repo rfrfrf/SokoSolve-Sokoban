@@ -52,7 +52,7 @@ namespace SokoSolve.Core.IO
                 lib.Details.Author.Homepage = import.DocumentElement["Url"].InnerText;
             }
 
-            lib.Categories.Root.Data.Details = new GenericDescription(lib.Details);
+            lib.CategoryTree.Root.Data.Details = new GenericDescription(lib.Details);
 
 
             if (import.DocumentElement["LevelCollection"] != null)
@@ -70,7 +70,7 @@ namespace SokoSolve.Core.IO
                         newPuzzle.Details = new GenericDescription();
                         newPuzzle.Details.Name = string.Format("Puzzle No. {0}", lib.Puzzles.Count);
                         newPuzzle.Details.Description = string.Format("Imported SLV puzzle");
-                        newPuzzle.Category = lib.Categories.Root.Data;
+                        newPuzzle.Category = lib.CategoryTree.Root.Data;
                         newPuzzle.Order = levelcount++;
 
                         PuzzleMap newMap = new PuzzleMap(newPuzzle);
@@ -83,7 +83,7 @@ namespace SokoSolve.Core.IO
                             rows.Add(xmlRow.InnerText);
                         }
                         newMap.Map = new SokobanMap();
-                        newMap.Map.setFromStrings(rows.ToArray(), "?# $.*@+");
+                        newMap.Map.SetFromStrings(rows.ToArray(), "?# $.*@+");
 
                         newMap.Map.ApplyVoidCells();
 

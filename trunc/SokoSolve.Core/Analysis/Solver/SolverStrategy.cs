@@ -141,12 +141,11 @@ namespace SokoSolve.Core.Analysis.Solver
 
             if (node.Data.MoveMap == null)
             {
-                using(CodeTimerStatistic timer = new CodeTimerStatistic(controller.Stats.MoveMapTime))
-                {
+                
                     // Generate MoveMap
                     node.Data.MoveMap = MapAnalysis.GenerateMoveMap(staticAnalysis.BoundryMap, node.Data.CrateMap,
                                                     node.Data.PlayerPosition);
-                }
+                
 
                 // Check Duplicate
                 if (CheckDuplicate(node.Data) != null)
@@ -363,7 +362,6 @@ namespace SokoSolve.Core.Analysis.Solver
             return "F" + base.GetNextNodeID();
         }
       
-
         /// <summary>
         /// See if there is a crate in a direction to push, checking validity
         /// </summary>
@@ -405,8 +403,6 @@ namespace SokoSolve.Core.Analysis.Solver
                         
                         // Take the parents current weighting
                         newChild.Weighting = CalcWeighting(newChild);
-
-                       
 
                         return 1;
                     }

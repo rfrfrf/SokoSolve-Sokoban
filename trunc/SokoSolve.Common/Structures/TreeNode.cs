@@ -568,7 +568,15 @@ namespace SokoSolve.Common.Structures
 			return true;
 		}
 
-
-	    
+        /// <summary>
+        /// Are two nodes siblings
+        /// </summary>
+        /// <param name="node"></param>
+        /// <returns></returns>
+	    public bool IsSibling(TreeNode<T> node)
+	    {
+	        if (IsRoot) return false;
+            return parent.children.Contains(node);
+	    }
 	}
 }

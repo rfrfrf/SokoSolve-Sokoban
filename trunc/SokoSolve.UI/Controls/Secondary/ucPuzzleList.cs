@@ -47,8 +47,7 @@ namespace SokoSolve.UI.Controls.Secondary
 
                 // Add categories
                 Dictionary<Category, ListViewGroup> categories = new Dictionary<Category, ListViewGroup>();
-                List<Category> cats = new List<Category>(library.Categories.Nodes);
-                cats.Sort(delegate(Category lhs, Category rhs) { return lhs.NestedOrder.CompareTo(rhs.NestedOrder); });
+                List<Category> cats = library.Categories;
                 foreach (Category category in cats)
                 {
                     ListViewGroup grp = new ListViewGroup();
@@ -97,6 +96,40 @@ namespace SokoSolve.UI.Controls.Secondary
                 library = value;
                 Bind(); 
             }
+        }
+
+        /// <summary>
+        /// Show the preview pane
+        /// </summary>
+        [Browsable(true)]
+        public bool ShowPreview
+        {
+            get
+            {
+                return !this.splitContainer.Panel2Collapsed;
+            }
+            set
+            {
+                this.splitContainer.Panel2Collapsed = !value;
+            }
+            
+        }
+
+        /// <summary>
+        /// Show the groupings
+        /// </summary>
+        [Browsable(true)]
+        public bool ShowGroups
+        {
+            get
+            {
+                return listViewPuzzles.ShowGroups;
+            }
+            set
+            {
+                listViewPuzzles.ShowGroups = value;
+            }
+
         }
 
         public void Select(Puzzle puzzle)
