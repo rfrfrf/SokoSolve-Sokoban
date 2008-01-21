@@ -20,15 +20,7 @@
         <Author Name="David W. Skinner" Email="" Homepage="" />
       </CategoryDescription>
     </Category>
-    <Category CategoryID="C8" CategoryParentREF="C6" Order="3">
-      <CategoryDescription License="Creative Commons" Date="2008-01-19T12:12:43.7756371+02:00">
-        <Name>Mini Senarios</Name>
-        <Description>Mini Senarios highlighting individual solver problems</Description>
-        <Comments />
-        <Author Name="Guy Langston" Email="bitwacker@users.sourceforge.net" Homepage="http://sokosolve/net" />
-      </CategoryDescription>
-    </Category>
-    <Category CategoryID="C1" CategoryParentREF="C6" Order="4">
+    <Category CategoryID="C1" CategoryParentREF="C6" Order="3">
       <CategoryDescription License="">
         <Name>Solved</Name>
         <Description />
@@ -36,7 +28,7 @@
         <Author Name="" Email="" Homepage="" />
       </CategoryDescription>
     </Category>
-    <Category CategoryID="C2" CategoryParentREF="C1" Order="5">
+    <Category CategoryID="C2" CategoryParentREF="C1" Order="4">
       <CategoryDescription License="">
         <Name>Quick</Name>
         <Description />
@@ -44,7 +36,7 @@
         <Author Name="" Email="" Homepage="" />
       </CategoryDescription>
     </Category>
-    <Category CategoryID="C3" CategoryParentREF="C1" Order="6">
+    <Category CategoryID="C3" CategoryParentREF="C1" Order="5">
       <CategoryDescription License="">
         <Name>Long</Name>
         <Description />
@@ -52,7 +44,7 @@
         <Author Name="" Email="" Homepage="" />
       </CategoryDescription>
     </Category>
-    <Category CategoryID="C4" CategoryParentREF="C6" Order="7">
+    <Category CategoryID="C4" CategoryParentREF="C6" Order="6">
       <CategoryDescription License="">
         <Name>Failed</Name>
         <Description />
@@ -60,7 +52,7 @@
         <Author Name="" Email="" Homepage="" />
       </CategoryDescription>
     </Category>
-    <Category CategoryID="C5" CategoryParentREF="C6" Order="8">
+    <Category CategoryID="C5" CategoryParentREF="C6" Order="7">
       <CategoryDescription License="">
         <Name>Not Attempted</Name>
         <Description />
@@ -70,7 +62,7 @@
     </Category>
   </Categories>
   <Puzzles>
-    <Puzzle PuzzleID="P2" CategoryREF="C8" Order="1">
+    <Puzzle PuzzleID="P2" Order="1">
       <PuzzleDescription License="" Date="2008-01-19T12:17:59.9809846+02:00">
         <Name>RecessHover</Name>
         <Description>The recess location is statically dead, however the solver will not realise the 'hovering' crate before this positions is also head.
@@ -122,7 +114,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle PuzzleID="P1000" CategoryREF="C8" Order="2">
+    <Puzzle PuzzleID="P1000" Order="2">
       <PuzzleDescription License="" Date="2008-01-21T10:14:05.824963+02:00">
         <Name>Corner Rule (Dead Map)</Name>
         <Description />
@@ -683,11 +675,29 @@ Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft
           <Row>~####~~~~</Row>
           <Solutions>
             <Solution StartX="6" StartY="3">
-              <Steps>dlddLLrruuruuullllldRRRRurrddldlddlldlUUUUdddrrruururuulllllldRRurrrrddldlLLrrddllluUUdrrrruruulllldurrrrddlUlulldRullldRurrdRullldRlddddrUdrruulLdlUUUluRdddrrrdLLdlUrurrruruuLDlLuLLdRldDrrrrUdlllluuurrRlldlddrddlruuluuurrrdLulldRlddrrrruruuLLLrrrddldlllluurRllddrddlUUUdrrrruruullldlLrrurrDulldlluRdlddrrrrUruulDulLrrdulldllddrrrrUdlllluuuRRdllddrrrruruulDudLLulldddrrrrUdlllluuurrdrlulldddrrrruruLuLL</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-06T14:32:37.601914+02:00">
-                <Name>'Cold Nemosis' Solution</Name>
-                <Comments>Moves 403/768, Pushes 64/166, Undos 179, Restarts 1, Duration 00:12:52.5687165</Comments>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+              <Steps>uullllldrurrdrrddllldluuulurddddddruluurrrddllulurdddluruuluurrllurrrldllddrddluuudddrrruulldluddrrururuululldrullldrddrdrruruurullldrurrddldldlluluurrllddrddluuuddrrrururuullldllurdldddrrrulldluuurulrrdllddrrrruruuldllulldddrrrrurulull</Steps>
+              <SolutionDescription Date="2008-01-21T20:53:12.628872+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 15 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 78721 nodes
+Total Nodes : 63030 nodes
+Node per second : avg 3498.8, last 4306 
+Duplicates : 41891 nodes
+DeadNodes : 12144 nodes
+Eval Worker List : 5691
+MoveMapTime : 0.000 sec
+EvalTime : 0.000 sec
+EvalChildTime : 0.005 sec
+DuplicateCheckTime : 0.000 sec
+Weighting Min : 0
+Weighting Max : 119
+Weighting Avg : 54.25 avg.
+Hints Uses : 2242 hits
+Max Depth : 43
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
               </SolutionDescription>
             </Solution>
           </Solutions>
@@ -740,85 +750,29 @@ Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft
           <Row>~~~~~####~~</Row>
           <Solutions>
             <Solution StartX="4" StartY="2">
-              <Steps>drdddlluuddrrrruulrddlluuddrrrruulrddlllllluuudddrruululduruuldllddrluurrrddrddrrrruullddlluuluurrrddduuulllddrrlluurrrddrrddlluullddrdrulluuluurdduullllddrr</Steps>
-              <SolutionDescription License="Creative Commons" Date="2008-01-11T19:03:07.6847885+02:00">
+              <Steps>drdddrruuddlllluuddrrrruulrddlluuddrrrruullddlllluuudddrruululduruuldllddrluurrrrrrdduulllddrudddrrrruulllrrrddlllluuluulllddrrrrddrrrruulluullrrddrrddlllluulllluurrurdrddllurdllluurrurdrrrddrrddlllllluuddrrrrrruullduuullllllddrrrrrllllluurrrdurrrddlllrrrrrddlllruullluulllddrrddrrlluuudddrrrdrurruulllllulduruuld</Steps>
+              <SolutionDescription Date="2008-01-21T20:56:40.717116+02:00">
                 <Name>SokoSolve Solution</Name>
-                <Description>&lt;table class="tabledata"&gt;
-&lt;tr&gt;&lt;th&gt;
-Evaluation Total Seconds&lt;/th&gt;&lt;td&gt;
-8 sec&lt;/td&gt;&lt;/tr&gt;
-
-&lt;tr&gt;&lt;th&gt;
-Evaluation Time&lt;/th&gt;&lt;td&gt;
-8.133 sec&lt;/td&gt;&lt;/tr&gt;
-
-&lt;tr&gt;&lt;th&gt;
-Evaluation Itterations&lt;/th&gt;&lt;td&gt;
-10527 nodes&lt;/td&gt;&lt;/tr&gt;
-
-&lt;tr&gt;&lt;th&gt;
-Total Nodes&lt;/th&gt;&lt;td&gt;
-3566 nodes&lt;/td&gt;&lt;/tr&gt;
-
-&lt;tr&gt;&lt;th&gt;
-Duplicates&lt;/th&gt;&lt;td&gt;
-2945 nodes&lt;/td&gt;&lt;/tr&gt;
-
-&lt;tr&gt;&lt;th&gt;
-DeadNodes&lt;/th&gt;&lt;td&gt;
-2311 nodes&lt;/td&gt;&lt;/tr&gt;
-
-&lt;tr&gt;&lt;th&gt;
-Eval Worker List&lt;/th&gt;&lt;td&gt;
-7379&lt;/td&gt;&lt;/tr&gt;
-
-&lt;tr&gt;&lt;th&gt;
-MoveMapTime&lt;/th&gt;&lt;td&gt;
-0.001 sec&lt;/td&gt;&lt;/tr&gt;
-
-&lt;tr&gt;&lt;th&gt;
-EvalTime&lt;/th&gt;&lt;td&gt;
-0.000 sec&lt;/td&gt;&lt;/tr&gt;
-
-&lt;tr&gt;&lt;th&gt;
-EvalChildTime&lt;/th&gt;&lt;td&gt;
-0.003 sec&lt;/td&gt;&lt;/tr&gt;
-
-&lt;tr&gt;&lt;th&gt;
-DuplicateCheckTime&lt;/th&gt;&lt;td&gt;
-0.001 sec&lt;/td&gt;&lt;/tr&gt;
-
-&lt;tr&gt;&lt;th&gt;
-Weighting Min&lt;/th&gt;&lt;td&gt;
-0&lt;/td&gt;&lt;/tr&gt;
-
-&lt;tr&gt;&lt;th&gt;
-Weighting Max&lt;/th&gt;&lt;td&gt;
-113&lt;/td&gt;&lt;/tr&gt;
-
-&lt;tr&gt;&lt;th&gt;
-Weighting Avg&lt;/th&gt;&lt;td&gt;
-75.60 avg.&lt;/td&gt;&lt;/tr&gt;
-
-&lt;tr&gt;&lt;th&gt;
-Hints Uses&lt;/th&gt;&lt;td&gt;
-0 hits&lt;/td&gt;&lt;/tr&gt;
-
-&lt;tr&gt;&lt;th&gt;
-Max Depth&lt;/th&gt;&lt;td&gt;
-32&lt;/td&gt;&lt;/tr&gt;
-
-&lt;tr&gt;&lt;th&gt;
-Machine&lt;/th&gt;&lt;td&gt;
-Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr&gt;
-
-&lt;tr&gt;&lt;th&gt;
-SokoSolve&lt;/th&gt;&lt;td&gt;
-1.2.24-solver-baseline2&lt;/td&gt;&lt;/tr&gt;
-
-&lt;/table&gt;
+                <Description>Evaluation Total Seconds : 1 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 8524 nodes
+Total Nodes : 5889 nodes
+Node per second : avg 5172.0, last 5172 
+Duplicates : 2720 nodes
+DeadNodes : 1606 nodes
+Eval Worker List : 4505
+MoveMapTime : 0.000 sec
+EvalTime : 0.000 sec
+EvalChildTime : 0.006 sec
+DuplicateCheckTime : 0.000 sec
+Weighting Min : 0
+Weighting Max : 109
+Weighting Avg : 75.02 avg.
+Hints Uses : 82 hits
+Max Depth : 37
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
 </Description>
-                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+                <Author />
               </SolutionDescription>
             </Solution>
           </Solutions>
@@ -1026,6 +980,32 @@ SokoSolve&lt;/th&gt;&lt;td&gt;
 &lt;/table&gt;
 </Description>
                 <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+              </SolutionDescription>
+            </Solution>
+            <Solution StartX="4" StartY="1">
+              <Steps>ddldrddrdddrruuuuurrddlruulldddddlluuulldrullldrruruuldrdrrrdddlluuddrruuulldluuluurdrddrrdddlluuddrruuulldllulldrurruddrddrruuullrruurrddlldddlluululldrurrdddrruuulluuudddlruuuluurdddddrrdddlluuulldllurdrruruuddrrdddlluulurrldlllurdrruuuuluurdldldduururdddludrdrrdddlluuluuddrddrruuulldlurrruurrddllll</Steps>
+              <SolutionDescription Date="2008-01-21T20:59:34.789959+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 118 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 80220 nodes
+Total Nodes : 58729 nodes
+Node per second : avg 282.4, last 224 
+Duplicates : 32185 nodes
+DeadNodes : 12737 nodes
+Eval Worker List : 28404
+MoveMapTime : 0.000 sec
+EvalTime : 0.000 sec
+EvalChildTime : 0.023 sec
+DuplicateCheckTime : 0.000 sec
+Weighting Min : 0
+Weighting Max : 129
+Weighting Avg : 82.81 avg.
+Hints Uses : 2218 hits
+Max Depth : 67
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
               </SolutionDescription>
             </Solution>
           </Solutions>

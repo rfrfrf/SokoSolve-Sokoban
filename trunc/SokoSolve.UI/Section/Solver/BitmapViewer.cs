@@ -64,8 +64,10 @@ namespace SokoSolve.UI.Section.Solver
 
             if (layerButton == null)
             {
-                layerButton = new ToolStripDropDownButton("Layers");
-                visualisationContainer.toolStrip.Items.Add(layerButton);
+                layerButton = toolStripDropDownButton1;
+                Controls.Remove(toolStrip1);
+                visualisationContainer.toolStripContainer.BottomToolStripPanel.Controls.Add(toolStrip1);
+                
             }
 
             layerButton.DropDownItems.Clear();

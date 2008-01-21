@@ -23,8 +23,9 @@ namespace SokoSolve.UI.Section.Solver
         /// </summary>
         /// <param name="nodes"></param>
         /// <param name="cellSize"></param>
-        public NodeListVisualisation(List<SolverNode> nodes, SizeInt cellSize)
+        public NodeListVisualisation(SolverController controller, List<SolverNode> nodes, SizeInt cellSize)
         {
+            Display = new CommonDisplay(controller);
             this.nodes = nodes;
             this.cellSize = cellSize;
 
@@ -164,8 +165,8 @@ namespace SokoSolve.UI.Section.Solver
 
         public override void Draw(Graphics graphics, RectangleInt region)
         {
-            graphics.FillRectangle(GetBrush(node), region.ToDrawingRect());
-            graphics.DrawRectangle(GetPen(node), region.ToDrawingRect());
+            graphics.FillRectangle(owner.Display.GetBrush(node.TreeNode), region.ToDrawingRect());
+            graphics.DrawRectangle(owner.Display.GetPen(node.TreeNode), region.ToDrawingRect());
 
             if (owner.Selected == this)
             {
@@ -173,39 +174,6 @@ namespace SokoSolve.UI.Section.Solver
             }
         }
 
-        protected Pen GetPen(SolverNode node)
-        {
-            if (node!= null)
-            {
-                if (node.IsStateEvaluated) return new Pen(Color.Blue);
-                if (node.IsChildrenEvaluated) return new Pen(Color.Orange);
-            }
-            return new Pen(Color.Gray);
-        }
-
-        protected Brush GetBrush(SolverNode node)
-        {
-            if (node != null)
-            {
-                switch (node.Status)
-                {
-                    case (SolverNodeStates.None):
-                        // Try something else
-                        if (node.Weighting != 0)
-                        {
-                            int green = (int)(node.Weighting * 50);
-                            return new SolidBrush(Color.FromArgb(0, green % 255, 0));
-                        }
-                        return new SolidBrush(Color.Cornsilk);
-
-                    case (SolverNodeStates.Duplicate): return new SolidBrush(Color.DarkGray);
-                    case (SolverNodeStates.Solution): return new SolidBrush(Color.Cyan);
-                    case (SolverNodeStates.SolutionPath): return new SolidBrush(Color.LightCyan);
-                    case (SolverNodeStates.Dead): return new SolidBrush(Color.Black);
-                    case (SolverNodeStates.DeadChildren): return new SolidBrush(Color.DarkRed);
-                }
-            }
-            return new SolidBrush(Color.Purple);
-        }
+       
     }
 }

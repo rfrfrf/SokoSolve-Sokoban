@@ -23,5 +23,10 @@ namespace SokoSolve.UI.Section.Solver
             set { solverSectionVisualisation1.Controller = value; }
         }
 
+        private void solverSectionVisualisation1_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

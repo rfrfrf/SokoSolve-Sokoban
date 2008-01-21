@@ -46,14 +46,16 @@ namespace SokoSolve.UI.Controls.Secondary
                 listViewPuzzles.BeginUpdate();
 
                 // Add categories
-                Dictionary<Category, ListViewGroup> categories = new Dictionary<Category, ListViewGroup>();
+                Dictionary<string, ListViewGroup> categories = new Dictionary<string, ListViewGroup>();
                 List<Category> cats = library.Categories;
+                listViewPuzzles.Groups.Clear();
                 foreach (Category category in cats)
                 {
                     ListViewGroup grp = new ListViewGroup();
                     grp.Header = string.Format("Category: {0} ({1} puzzles)", category.Details.Name, category.GetPuzzles(library).Count, category.NestedOrder);
                     grp.Tag = category;
-                    categories.Add(category, grp);listViewPuzzles.Groups.Add(grp);
+                    categories.Add(category.CategoryID, grp);
+                    listViewPuzzles.Groups.Add(grp);
                 }
 
                 List<Puzzle> puzzles = library.Puzzles;    // TODO: Extract out and sort
@@ -64,7 +66,8 @@ namespace SokoSolve.UI.Controls.Secondary
                     ListViewItem item = new ListViewItem();
                     item.Tag = puzzle;
                     item.Text = puzzle.Details.Name;
-                    item.Group = categories[puzzle.Category];
+                    if (puzzle.Category != null)
+                        item.Group = categories[puzzle.Category.CategoryID];
                     item.SubItems.Add(puzzle.Order.ToString());
                     item.SubItems.Add(puzzle.Rating);
                     item.SubItems.Add(BuildDescription(puzzle));

@@ -441,6 +441,7 @@ namespace SokoSolve.UI.Section.Solver
                     workItem.Controller.ExitConditions.MaxNodes = (int) exitConditions1.upMaxNodes.Value;
                     workItem.Controller.ExitConditions.MaxItterations = (int) exitConditions1.upMaxItter.Value;
                     workItem.Controller.ExitConditions.MaxTimeSecs = (int) (exitConditions1.upMaxTime.Value*60);
+                    this.Invoke(new SimpleDelegate(ProcessWorkerListItemUpdate));
                     workItem.Result = workItem.Controller.Solve();
                     this.Invoke(new SimpleDelegate(ProcessWorkerListItemUpdate));
                 }

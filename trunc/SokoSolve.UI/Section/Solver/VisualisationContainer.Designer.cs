@@ -34,21 +34,25 @@ namespace SokoSolve.UI.Section.Solver
             this.tsLabel = new System.Windows.Forms.ToolStripLabel();
             this.panelImage = new System.Windows.Forms.Panel();
             this.pictureBoxPayload = new System.Windows.Forms.PictureBox();
+            this.toolStripContainer = new System.Windows.Forms.ToolStripContainer();
             this.toolStrip.SuspendLayout();
             this.panelImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPayload)).BeginInit();
+            this.toolStripContainer.BottomToolStripPanel.SuspendLayout();
+            this.toolStripContainer.ContentPanel.SuspendLayout();
+            this.toolStripContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip
             // 
-            this.toolStrip.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.toolStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbSave,
             this.tsbRefresh,
             this.tsLabel});
-            this.toolStrip.Location = new System.Drawing.Point(0, 206);
+            this.toolStrip.Location = new System.Drawing.Point(3, 0);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(277, 25);
+            this.toolStrip.Size = new System.Drawing.Size(96, 25);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -82,16 +86,17 @@ namespace SokoSolve.UI.Section.Solver
             // panelImage
             // 
             this.panelImage.AutoScroll = true;
+            this.panelImage.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panelImage.Controls.Add(this.pictureBoxPayload);
             this.panelImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelImage.Location = new System.Drawing.Point(0, 0);
             this.panelImage.Name = "panelImage";
-            this.panelImage.Size = new System.Drawing.Size(277, 206);
+            this.panelImage.Size = new System.Drawing.Size(277, 181);
             this.panelImage.TabIndex = 1;
             // 
             // pictureBoxPayload
             // 
-            this.pictureBoxPayload.BackColor = System.Drawing.SystemColors.Control;
+            this.pictureBoxPayload.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.pictureBoxPayload.Location = new System.Drawing.Point(0, 0);
             this.pictureBoxPayload.Name = "pictureBoxPayload";
             this.pictureBoxPayload.Size = new System.Drawing.Size(100, 50);
@@ -99,20 +104,43 @@ namespace SokoSolve.UI.Section.Solver
             this.pictureBoxPayload.TabStop = false;
             this.pictureBoxPayload.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBoxPayload_MouseClick_1);
             // 
+            // toolStripContainer
+            // 
+            // 
+            // toolStripContainer.BottomToolStripPanel
+            // 
+            this.toolStripContainer.BottomToolStripPanel.Controls.Add(this.toolStrip);
+            // 
+            // toolStripContainer.ContentPanel
+            // 
+            this.toolStripContainer.ContentPanel.Controls.Add(this.panelImage);
+            this.toolStripContainer.ContentPanel.Size = new System.Drawing.Size(277, 181);
+            this.toolStripContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStripContainer.LeftToolStripPanelVisible = false;
+            this.toolStripContainer.Location = new System.Drawing.Point(0, 0);
+            this.toolStripContainer.Name = "toolStripContainer";
+            this.toolStripContainer.RightToolStripPanelVisible = false;
+            this.toolStripContainer.Size = new System.Drawing.Size(277, 231);
+            this.toolStripContainer.TabIndex = 2;
+            this.toolStripContainer.Text = "toolStripContainer1";
+            // 
             // VisualisationContainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panelImage);
-            this.Controls.Add(this.toolStrip);
+            this.Controls.Add(this.toolStripContainer);
             this.Name = "VisualisationContainer";
             this.Size = new System.Drawing.Size(277, 231);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             this.panelImage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPayload)).EndInit();
+            this.toolStripContainer.BottomToolStripPanel.ResumeLayout(false);
+            this.toolStripContainer.BottomToolStripPanel.PerformLayout();
+            this.toolStripContainer.ContentPanel.ResumeLayout(false);
+            this.toolStripContainer.ResumeLayout(false);
+            this.toolStripContainer.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -123,6 +151,7 @@ namespace SokoSolve.UI.Section.Solver
         private System.Windows.Forms.ToolStripLabel tsLabel;
         private System.Windows.Forms.Panel panelImage;
         private System.Windows.Forms.PictureBox pictureBoxPayload;
-        public System.Windows.Forms.ToolStrip toolStrip;
+        private System.Windows.Forms.ToolStrip toolStrip;
+        public System.Windows.Forms.ToolStripContainer toolStripContainer;
     }
 }

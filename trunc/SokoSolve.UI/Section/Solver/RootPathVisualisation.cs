@@ -11,8 +11,15 @@ namespace SokoSolve.UI.Section.Solver
     /// <summary>
     /// Draw the path to the root, including all imediate children for each node on the path
     /// </summary>
-    class RootPathVisualisation : Visualisation
+    internal class RootPathVisualisation : Visualisation
     {
+        private List<List<RootPathElement>> bands;
+        private SizeInt cellSize;
+        internal SolverController controller;
+        private List<RootPathElement> elements;
+        private RectangleInt renderCanvas;
+        private RectangleInt windowRegion;
+
         /// <summary>
         /// Strong constuctor
         /// </summary>
@@ -22,6 +29,7 @@ namespace SokoSolve.UI.Section.Solver
         {
             this.cellSize = cellSize;
             this.controller = controller;
+            this.Display = new CommonDisplay(controller);
         }
 
         /// <summary>
@@ -32,30 +40,6 @@ namespace SokoSolve.UI.Section.Solver
         public RootPathElement this[SolverNode node]
         {
             get { return elements.Find(delegate(RootPathElement item) { return item.Node == node; }); }
-        }
-
-        /// <summary>
-        /// Find the absolute pixel postition for an element
-        /// </summary>
-        /// <param name="Element"></param>
-        /// <returns></returns>
-        public override RectangleInt GetDrawRegion(VisualisationElement Element)
-        {
-            return (Element as RootPathElement).Region;
-        }
-
-        /// <summary>
-        /// Find the Element at a pixel location
-        /// </summary>
-        /// <param name="PixelPosition"></param>
-        /// <returns>Null - not found or out of range</returns>
-        public override VisualisationElement GetElement(VectorInt PixelPosition)
-        {
-            foreach (RootPathElement element in elements)
-            {
-                if (element.Region.Contains(PixelPosition)) return element;
-            }
-            return null;
         }
 
         /// <summary>
@@ -83,22 +67,48 @@ namespace SokoSolve.UI.Section.Solver
         }
 
         /// <summary>
+        /// Find the absolute pixel postition for an element
+        /// </summary>
+        /// <param name="Element"></param>
+        /// <returns></returns>
+        public override RectangleInt GetDrawRegion(VisualisationElement Element)
+        {
+            return (Element as RootPathElement).Region;
+        }
+
+        /// <summary>
+        /// Find the Element at a pixel location
+        /// </summary>
+        /// <param name="PixelPosition"></param>
+        /// <returns>Null - not found or out of range</returns>
+        public override VisualisationElement GetElement(VectorInt PixelPosition)
+        {
+            foreach (RootPathElement element in elements)
+            {
+                if (element.Region.Contains(PixelPosition)) return element;
+            }
+            return null;
+        }
+
+        /// <summary>
         /// Draw the entire scene
         /// </summary>
         /// <param name="graphics"></param>
         public override void Draw(Graphics graphics)
         {
-            graphics.FillRectangle(SystemBrushes.ControlLight, renderCanvas.ToDrawingRect());
+            graphics.FillRectangle(SystemBrushes.ControlLightLight, renderCanvas.ToDrawingRect());
 
             int ccy = 0;
-            int vspace = renderCanvas.Height / (bands.Count + 1);
+            int vspace = renderCanvas.Height/(bands.Count + 1);
             foreach (List<RootPathElement> band in bands)
             {
                 int hspace = renderCanvas.Width/(band.Count + 1);
                 int ccx = 0;
                 foreach (RootPathElement node in band)
                 {
-                    node.Region = new RectangleInt(hspace*(ccx+1) -cellSize.Width/2, vspace*(ccy+1)-cellSize.Height/2, cellSize.Width, cellSize.Height);
+                    node.Region =
+                        new RectangleInt(hspace*(ccx + 1) - cellSize.Width/2, vspace*(ccy + 1) - cellSize.Height/2,
+                                         cellSize.Width, cellSize.Height);
                     ccx++;
                 }
                 ccy++;
@@ -123,14 +133,13 @@ namespace SokoSolve.UI.Section.Solver
             int currentDepth = 10;
             List<RootPathElement> currentBand;
 
-            for (int cc = 0; cc < currentDepth + 2; cc++ )
+            for (int cc = 0; cc < currentDepth + 2; cc++)
             {
                 bands.Add(new List<RootPathElement>());
             }
 
             while (currentDepth >= maxDepth && current != null)
             {
-
                 // Add
                 RootPathElement newElement = new RootPathElement(this, current);
                 newElement.OnPath = true;
@@ -159,7 +168,6 @@ namespace SokoSolve.UI.Section.Solver
                     current = null;
                 }
                 currentDepth--;
-
             }
 
             foreach (List<RootPathElement> band in bands)
@@ -178,17 +186,15 @@ namespace SokoSolve.UI.Section.Solver
         {
             return this[current] != null;
         }
-
-        private List<RootPathElement> elements;
-        private List<List<RootPathElement>> bands;
-        private SizeInt cellSize;
-        internal SolverController controller;
-        private RectangleInt windowRegion;
-        private RectangleInt renderCanvas;
     }
 
-    class RootPathElement : VisualisationElement
+    internal class RootPathElement : VisualisationElement
     {
+        private SolverNode node;
+        private bool onPath;
+        private RootPathVisualisation owner;
+        private RectangleInt region;
+
         public RootPathElement(RootPathVisualisation owner, SolverNode node)
         {
             this.owner = owner;
@@ -220,11 +226,6 @@ namespace SokoSolve.UI.Section.Solver
             set { onPath = value; }
         }
 
-        private RootPathVisualisation owner;
-        private RectangleInt region;
-        private SolverNode node;
-        private bool onPath;
-
         public override string GetID()
         {
             return node.NodeID;
@@ -237,14 +238,15 @@ namespace SokoSolve.UI.Section.Solver
 
         public override string GetDisplayData()
         {
-            return "ID"+node.NodeID + " ("+node.TreeNode.Depth.ToString()+")";
+            return "ID" + node.NodeID + " (" + node.TreeNode.Depth.ToString() + ")";
         }
+
         public override void Draw(Graphics graphics, RectangleInt region)
         {
             this.region = region;
 
-            graphics.FillEllipse(GetBrush(node), region.ToDrawingRect());
-            graphics.DrawEllipse(GetPen(node), region.ToDrawingRect());
+            graphics.FillEllipse(owner.Display.GetBrush(node.TreeNode), region.ToDrawingRect());
+            graphics.DrawEllipse(owner.Display.GetPen(node.TreeNode), region.ToDrawingRect());
 
             // Draw path to parent
             if (node.TreeNode.Parent != null)
@@ -254,11 +256,13 @@ namespace SokoSolve.UI.Section.Solver
                 {
                     if (onPath)
                     {
-                        graphics.DrawLine(new Pen(Color.Black, 3f), region.TopMiddle.ToPoint(), owner.GetDrawRegion(parent).BottomMiddle.ToPoint());
+                        graphics.DrawLine(new Pen(Color.Black, 2f), region.TopMiddle.ToPoint(),
+                                          owner.GetDrawRegion(parent).BottomMiddle.ToPoint());
                     }
                     else
                     {
-                        graphics.DrawLine(new Pen(Color.LightGray), region.TopMiddle.ToPoint(), owner.GetDrawRegion(parent).BottomMiddle.ToPoint() );
+                        graphics.DrawLine(new Pen(Color.Black), region.TopMiddle.ToPoint(),
+                                          owner.GetDrawRegion(parent).BottomMiddle.ToPoint());
                     }
                 }
             }
@@ -269,51 +273,6 @@ namespace SokoSolve.UI.Section.Solver
             }
         }
 
-        protected Pen GetPen(SolverNode node)
-        {
-            if (node != null)
-            {
-                if (node.IsStateEvaluated) return new Pen(Color.Blue, 3f);
-                if (node.IsChildrenEvaluated) return new Pen(Color.Orange, 4f);
-            }
-            return new Pen(Color.Gray, 3f);
-        }
-
-        protected Brush GetBrush(SolverNode node)
-        {
-            if (node != null)
-            {
-                switch (node.Status)
-                {
-                    case (SolverNodeStates.None):
-
-
-                        float weighting = node.Weighting;
-                        if (weighting < 0)
-                        {
-                            return new SolidBrush(Color.DarkGray);
-                        }
-                        if (weighting == 0)
-                        {
-                            new SolidBrush(Color.Cornsilk);
-                        }
-                        if (owner.controller.Stats.WeightingMax.ValueTotal > 0)
-                        {
-                            int min = 50;
-                            int max = 250;
-                            int value = Convert.ToInt32(weighting / owner.controller.Stats.WeightingMax.ValueTotal * (float)max);
-                            return new SolidBrush(Color.FromArgb(50, value, 50));
-                        }
-                        return new SolidBrush(Color.Cornsilk);
-
-                    case (SolverNodeStates.Duplicate): return new SolidBrush(Color.Brown);
-                    case (SolverNodeStates.Solution): return new SolidBrush(Color.Red);
-                    case (SolverNodeStates.SolutionPath): return new SolidBrush(Color.Red);
-                    case (SolverNodeStates.Dead): return new SolidBrush(Color.Pink);
-                    case (SolverNodeStates.DeadChildren): return new SolidBrush(Color.Pink);
-                }
-            }
-            return new SolidBrush(Color.Purple);
-        }
+    
     }
 }

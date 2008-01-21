@@ -308,6 +308,7 @@
       <DependentUpon>BitmapViewer.cs</DependentUpon>
     </Compile>
     <Compile Include="Section\Solver\BitmapViewerVisualisation.cs" />
+    <Compile Include="Section\Solver\CommonDisplay.cs" />
     <Compile Include="Section\Solver\ExitConditions.cs">
       <SubType>UserControl</SubType>
     </Compile>

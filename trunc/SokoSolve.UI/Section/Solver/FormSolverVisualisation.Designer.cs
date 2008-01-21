@@ -40,6 +40,7 @@ namespace SokoSolve.UI.Section.Solver
             this.solverSectionVisualisation1.Name = "solverSectionVisualisation1";
             this.solverSectionVisualisation1.Size = new System.Drawing.Size(729, 493);
             this.solverSectionVisualisation1.TabIndex = 0;
+            this.solverSectionVisualisation1.Load += new System.EventHandler(this.solverSectionVisualisation1_Load);
             // 
             // FormSolverVisualisation
             // 

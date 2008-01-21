@@ -43,6 +43,7 @@ namespace SokoSolve.UI.Section.Solver
         public void Init(SolverController controller)
         {
             treeRenderer = new TreeVisualisation(controller.Strategy.EvaluationTree, new RectangleInt(0, 0, 1800, 1800), new SizeInt(8, 8));
+            treeRenderer.Controller = controller;
 
             treeVis.Visualisation = treeRenderer;
         }

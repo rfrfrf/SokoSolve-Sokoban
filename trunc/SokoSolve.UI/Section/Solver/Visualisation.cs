@@ -53,6 +53,15 @@ namespace SokoSolve.UI.Section.Solver
             set { selected = value; }
         }
 
+
+        public CommonDisplay Display
+        {
+            get { return display; }
+            set { display = value; }
+        }
+
+        CommonDisplay display;
+
         private VisualisationElement selected;
     }
 

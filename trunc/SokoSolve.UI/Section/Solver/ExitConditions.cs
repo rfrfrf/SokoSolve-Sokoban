@@ -37,9 +37,9 @@ namespace SokoSolve.UI.Section.Solver
                     break;
                 case(0):
                 default :
-                    upMaxDepth.Value = 100;
-                    upMaxNodes.Value = 30000;
-                    upMaxItter.Value = 80000;
+                    upMaxDepth.Value = 150;
+                    upMaxNodes.Value = 40000;
+                    upMaxItter.Value = 400000;
                     upMaxTime.Value = 2.5m;
                     cbStopOnSolution.Checked = true;
                     break;

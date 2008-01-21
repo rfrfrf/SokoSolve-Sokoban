@@ -33,7 +33,11 @@ namespace SokoSolve.UI.Section.Solver
         public string Status
         {
             get { return tsLabel.Text;  }
-            set { tsLabel.Text = value; }
+            set
+            {
+                if (string.IsNullOrEmpty(value)) return;
+                tsLabel.Text = value;
+            }
         }
 
         /// <summary>
@@ -92,18 +96,20 @@ namespace SokoSolve.UI.Section.Solver
                 VisualisationElement element = visualisation.GetElement(new VectorInt(e.X, e.Y));
                 if (element != null)
                 {
-                    tsLabel.Text = element.GetDisplayData();
+                    Status = element.GetDisplayData();
                     visualisation.Selected = element;
+
+                    if (OnVisualisationClick != null)
+                    {
+                        OnVisualisationClick(this, new VisEventArgs(visualisation, element, e));
+                    }
                 }
                 else
                 {
-                    tsLabel.Text = string.Format("Nothing at ({0}, {1})", e.X, e.Y);
+                    Status = string.Format("Nothing at ({0}, {1})", e.X, e.Y);
                 }
 
-                if (OnVisualisationClick != null)
-                {
-                    OnVisualisationClick(this, new VisEventArgs(visualisation, element, e));
-                }
+               
                 
                 if (e.Clicks > 0 && renderOnClick) Render();
             }

@@ -47,7 +47,7 @@ namespace SokoSolve.UI.Section.Solver
         public SolverController Controller
         {
             get { return controller; }
-            set { controller = value; }
+            set { controller = value; Display = new CommonDisplay(controller); }
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace SokoSolve.UI.Section.Solver
         {
             Init();
 
-            graphics.FillRectangle(SystemBrushes.ControlLight, RenderCanvas.ToDrawingRect());
+            graphics.FillRectangle(SystemBrushes.ControlLightLight, RenderCanvas.ToDrawingRect());
             graphics.DrawRectangle(new Pen(SystemBrushes.ControlDark, 2f), RenderCanvas.ToDrawingRect());
 
             // Draw all nodes.
@@ -352,101 +352,13 @@ namespace SokoSolve.UI.Section.Solver
 
         public override void Draw(Graphics graphics, RectangleInt region)
         {
-            graphics.FillRectangle(GetBrush(node), region.ToDrawingRect());
-            graphics.DrawRectangle(GetPen(node), region.ToDrawingRect());
+            graphics.FillRectangle(owner.Display.GetBrush(node), region.ToDrawingRect());
+            graphics.DrawRectangle(owner.Display.GetPen(node), region.ToDrawingRect());
 
             if (owner.Selected == this)
             {
                 graphics.DrawRectangle(new Pen(Color.Yellow, 2f), region.ToDrawingRect());
             }
-        }
-
-        protected Pen GetPen(TreeNode<SolverNode> node)
-        {
-            if (node.Data != null)
-            {
-                if (node.Data.IsStateEvaluated) return new Pen(Color.Blue);
-                if (node.Data.IsChildrenEvaluated) return new Pen(Color.Orange);
-            }
-            return new Pen(Color.Gray);
-        }
-
-        public float MaxWeighting
-        {
-            get
-            {
-                if (owner.Controller == null)
-                {
-                    return 100;
-                }
-                else
-                {
-                    return owner.Controller.Stats.WeightingMax.ValueTotal;
-                }
-            }
-        }
-
-        public float MinWeighting
-        {
-            get
-            {
-                if (owner.Controller == null)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return owner.Controller.Stats.WeightingMin.ValueTotal;
-                }
-            }
-        }
-
-        protected Brush GetBrush(TreeNode<SolverNode> node)
-        {
-            if (node.Data != null)
-            {
-                switch (node.Data.Status)
-                {
-                    case (SolverNodeStates.None):
-
-                        // Color Scale 0-255 Blue then 0-255 Green (0-512 color range)
-                        // This is match on scale to MinWeighting=0, MaxWeighting=512
-                        float colourIndexMin = 0;
-                        float colourIndexMax = 255*2;
-
-                        // Range 0-max in weightings
-                        float absrange = MaxWeighting - MinWeighting;
-                        
-                        // scale to colour index range
-                        float weightrange = (node.Data.Weighting - MinWeighting) /absrange;
-                        int colourIndex =  Convert.ToInt32(weightrange * (colourIndexMax - colourIndexMin) + colourIndexMin);
-                        
-                        // Convert to RGB
-                        int r=0, g=0, b=0;
-
-                        if (colourIndex < 255) g = (colourIndex % 255);
-                            else g = 255;
-                        if (colourIndex > 255) b = (colourIndex-255) % 255;
-
-                        return new SolidBrush(Color.FromArgb(r, g, b));
-
-                    case (SolverNodeStates.Duplicate):
-                        return new SolidBrush(Color.Brown);
-                    case (SolverNodeStates.Solution):
-                        return new SolidBrush(Color.Red);
-                    case (SolverNodeStates.SolutionPath):
-                        return new SolidBrush(Color.Red);
-                    case (SolverNodeStates.SolutionChain):
-                        return
-                            new System.Drawing.Drawing2D.HatchBrush(System.Drawing.Drawing2D.HatchStyle.DottedGrid,
-                                                                    Color.Yellow, Color.Blue);
-                    case (SolverNodeStates.Dead):
-                        return new SolidBrush(Color.Pink);
-                    case (SolverNodeStates.DeadChildren):
-                        return new SolidBrush(Color.LightPink);
-                }
-            }
-            return new SolidBrush(Color.Purple);
-        }
+        }        
     }
 }

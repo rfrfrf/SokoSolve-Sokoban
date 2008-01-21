@@ -146,7 +146,7 @@ namespace SokoSolve.UI.Section.Solver
 
         public override string GetDisplayData()
         {
-            return StringHelper.Join(GetTrueValues(), delegate(BitmapViewer.Layer item) { return item.Name; }, ", ");
+            return string.Format("{0} has {1}", logicalPosition, StringHelper.Join(GetTrueValues(), delegate(BitmapViewer.Layer item) { return item.Name; }, ", "));
         }
 
         public override void Draw(Graphics graphics, RectangleInt region)

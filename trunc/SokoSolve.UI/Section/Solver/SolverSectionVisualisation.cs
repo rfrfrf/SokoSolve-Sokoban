@@ -38,7 +38,7 @@ namespace SokoSolve.UI.Section.Solver
             visualisationContainerLocalNodes.OnVisualisationClick +=
                 new EventHandler<VisEventArgs>(OnVisualisationClick_LocalNode);
             visualisationContainerReverseTree.OnVisualisationClick +=
-                new EventHandler<VisEventArgs>(OnVisualisationClick_ReverseTree);            
+                new EventHandler<VisEventArgs>(OnVisualisationClick_ReverseTree);
         }
 
 
@@ -72,28 +72,6 @@ namespace SokoSolve.UI.Section.Solver
                 if (controller == null) return null;
                 return controller.PuzzleMap;
             }
-            //set
-            //{
-            //    map = value;
-
-            //    solverSectionController1.Library = map.Puzzle.Library;
-            //    solverSectionController1.Puzzle = map.Puzzle;
-                
-            //    complete = false;
-            //    controller = null;
-
-
-            //    // This only happend once
-            //    bitmapViewerStatic.MapSize = map.Map.Size;
-            //    bitmapViewerNodeMaps.MapSize = map.Map.Size;
-
-                
-
-            //    if (map != null)
-            //    {
-            //        pictureBoxStaticImage.Image = DrawingHelper.DrawPuzzle(map);
-            //    }
-            //}
         }
 
         /// <summary>
@@ -104,10 +82,7 @@ namespace SokoSolve.UI.Section.Solver
             get { return controller.State == SolverController.States.Running; }
         }
 
-       
 
-
-      
         /// <summary>
         /// Write a log report to the $Content/Analysis directory
         /// </summary>
@@ -136,7 +111,6 @@ namespace SokoSolve.UI.Section.Solver
         /// </summary>
         private void UpdateStatus()
         {
-     
             richTextBoxSolverReport.Clear();
 
             //if (lastException != null)
@@ -150,92 +124,88 @@ namespace SokoSolve.UI.Section.Solver
             //        richTextBoxSolverReport.AppendText(controller.DebugReport.ToString(new DebugReportFormatter()));
             //    }
             //    richTextBoxSolverReport.AppendText("###########################################" + Environment.NewLine);
-               
+
             //    return;
             //}
 
-            
 
-            if (SolverActive)
+            if (controller != null && controller.Strategy != null && controller.Strategy.StaticAnalysis != null)
             {
-                if (controller != null && controller.Strategy != null && controller.Strategy.StaticAnalysis != null)
+                richTextBoxSolverReport.Text = controller.DebugReport.ToString(new DebugReportFormatter());
+
+                if (!bitmapViewerStatic.HasLayers)
                 {
-                    richTextBoxSolverReport.Text = controller.DebugReport.ToString(new DebugReportFormatter());
+                    BitmapViewer.Layer mapLayer = new BitmapViewer.Layer();
+                    mapLayer.Order = 0;
+                    mapLayer.IsVisible = true;
+                    mapLayer.Map = controller.Map;
+                    mapLayer.Name = "Puzzle";
+                    bitmapViewerStatic.SetLayer(mapLayer);
 
-                    if (!bitmapViewerStatic.HasLayers)
-                    {
-                        BitmapViewer.Layer mapLayer = new BitmapViewer.Layer();
-                        mapLayer.Order = 0;
-                        mapLayer.IsVisible = true;
-                        mapLayer.Map = controller.Map;
-                        mapLayer.Name = "Puzzle";
-                        bitmapViewerStatic.SetLayer(mapLayer);
+                    bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.WallMap,
+                                                new SolidBrush(Color.FromArgb(120, Color.Gray))).IsVisible = false;
+                    bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.FloorMap,
+                                                new SolidBrush(Color.FromArgb(120, Color.Green))).IsVisible = false;
+                    bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.InitialCrateMap,
+                                                new SolidBrush(Color.FromArgb(120, Color.Blue))).IsVisible = false;
+                    bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.DeadMap,
+                                                new SolidBrush(Color.FromArgb(120, Color.Brown)));
+                    bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.BoundryMap,
+                                                new SolidBrush(Color.FromArgb(120, Color.LightGray))).IsVisible =
+                        false;
+                    bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.GoalMap,
+                                                new SolidBrush(Color.FromArgb(120, Color.Yellow))).IsVisible = false;
+                    bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.CornerMap,
+                                                new SolidBrush(Color.FromArgb(120, Color.Pink)));
+                    bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.RecessMap,
+                                                new SolidBrush(Color.FromArgb(120, Color.Cyan)));
 
-                        bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.WallMap,
-                                                    new SolidBrush(Color.FromArgb(120, Color.Gray))).IsVisible = false;
-                        bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.FloorMap,
-                                                    new SolidBrush(Color.FromArgb(120, Color.Green))).IsVisible = false;
-                        bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.InitialCrateMap,
-                                                    new SolidBrush(Color.FromArgb(120, Color.Blue))).IsVisible = false;
-                        bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.DeadMap,
-                                                    new SolidBrush(Color.FromArgb(120, Color.Brown)));
-                        bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.BoundryMap,
-                                                    new SolidBrush(Color.FromArgb(120, Color.LightGray))).IsVisible =
-                            false;
-                        bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.GoalMap,
-                                                    new SolidBrush(Color.FromArgb(120, Color.Yellow))).IsVisible = false;
-                        bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.CornerMap,
-                                                    new SolidBrush(Color.FromArgb(120, Color.Pink)));
-                        bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.RecessMap,
-                                                    new SolidBrush(Color.FromArgb(120, Color.Cyan)));
-
-                        BitmapViewer.Layer weightLayer = new BitmapViewer.Layer();
-                        weightLayer.Order = 10;
-                        weightLayer.IsVisible = true;
-                        weightLayer.Matrix = controller.Strategy.StaticAnalysis.StaticForwardCrateWeighting;
-                        weightLayer.Name = "Weightings";
-                        weightLayer.Brush = new SolidBrush(Color.FromArgb(200, Color.Pink));
-                        weightLayer.BrushAlt = new SolidBrush(Color.FromArgb(200, Color.Red));
-                        weightLayer.Font = new Font("Arial Narrow", 7f);
-                        bitmapViewerStatic.SetLayer(weightLayer);
+                    BitmapViewer.Layer weightLayer = new BitmapViewer.Layer();
+                    weightLayer.Order = 10;
+                    weightLayer.IsVisible = true;
+                    weightLayer.Matrix = controller.Strategy.StaticAnalysis.StaticForwardCrateWeighting;
+                    weightLayer.Name = "Weightings";
+                    weightLayer.Brush = new SolidBrush(Color.FromArgb(200, Color.Pink));
+                    weightLayer.BrushAlt = new SolidBrush(Color.FromArgb(200, Color.Red));
+                    weightLayer.Font = new Font("Arial Narrow", 7f);
+                    bitmapViewerStatic.SetLayer(weightLayer);
 
 
-                        bitmapViewerStatic.Render();
-                    }
-
-
-                    if (controller.Strategy.EvaluationTree != null)
-                    {
-                        treeViewer.Init(controller);
-                        treeViewer.Controller = controller;
-                        treeViewer.Render();
-                    }
-
-                    if (controller.ReverseStrategy != null && controller.ReverseStrategy.EvaluationTree != null)
-                    {
-                        TreeVisualisation tresVisRev =
-                            new TreeVisualisation(controller.ReverseStrategy.EvaluationTree,
-                                                  new RectangleInt(0, 0, 1800, 1800), new SizeInt(8, 8));
-                        visualisationContainerReverseTree.Visualisation = tresVisRev;
-                        visualisationContainerReverseTree.Render();
-                    }
+                    bitmapViewerStatic.Render();
                 }
 
-                // Stats
-                if (controller != null && controller.Strategy != null)
-                {
-                    SolverLabelList txt = controller.Stats.GetDisplayData();
-                    if (txt == null)
-                    {
-                        webBrowserGlobalStats.DocumentText = null;
-                    }
-                    else
-                    {
-                        webBrowserGlobalStats.DocumentText = txt.ToHTMLDocument();
-                    }
 
-                    UpdateEvalList();
+                if (controller.Strategy.EvaluationTree != null)
+                {
+                    treeViewer.Init(controller);
+                    treeViewer.Controller = controller;
+                    treeViewer.Render();
                 }
+
+                if (controller.ReverseStrategy != null && controller.ReverseStrategy.EvaluationTree != null)
+                {
+                    TreeVisualisation tresVisRev =
+                        new TreeVisualisation(controller.ReverseStrategy.EvaluationTree,
+                                              new RectangleInt(0, 0, 1800, 1800), new SizeInt(8, 8));
+                    visualisationContainerReverseTree.Visualisation = tresVisRev;
+                    visualisationContainerReverseTree.Render();
+                }
+            }
+
+            // Stats
+            if (controller != null && controller.Strategy != null)
+            {
+                SolverLabelList txt = controller.Stats.GetDisplayData();
+                if (txt == null)
+                {
+                    webBrowserGlobalStats.DocumentText = null;
+                }
+                else
+                {
+                    webBrowserGlobalStats.DocumentText = txt.ToHTMLDocument();
+                }
+
+                UpdateEvalList();
             }
         }
 
@@ -254,7 +224,7 @@ namespace SokoSolve.UI.Section.Solver
 
             if (deepClone.Count > 0)
             {
-                NodeListVisualisation vis = new NodeListVisualisation(deepClone, new SizeInt(6, 6));
+                NodeListVisualisation vis = new NodeListVisualisation(controller, deepClone, new SizeInt(6, 6));
                 visualisationContainerEvalList.Visualisation = vis;
                 visualisationContainerEvalList.Render();
             }
@@ -270,7 +240,6 @@ namespace SokoSolve.UI.Section.Solver
             //UpdateStatus();
         }
 
-       
 
         /// <summary>
         /// Exit click
@@ -282,14 +251,17 @@ namespace SokoSolve.UI.Section.Solver
             FindForm().Close();
         }
 
-      
-
-    
-
 
         private void OnVisualisationClick_LocalNode(object sender, VisEventArgs e)
         {
-            OnVisualisationClick_TreeViewer(sender, e);
+            if (e.Mouse.Clicks > 1)
+            {
+                OnVisualisationClick_TreeViewer(sender, e);
+            }
+            else
+            {
+                OnVisualisationClick_TreeViewer(sender, e);
+            }
         }
 
         private void OnVisualisationClick_ReverseTree(object sender, VisEventArgs e)
@@ -297,25 +269,9 @@ namespace SokoSolve.UI.Section.Solver
             OnVisualisationClick_TreeViewer(sender, e);
         }
 
-        /// <summary>
-        /// Select a node in the tree browser
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnVisualisationClick_TreeViewer(object sender, VisEventArgs e)
+        private void BindNode(SolverNode solverNode)
         {
-            if (e.Element == null) return;
-
-            SolverNode solverNode = null;
-
-            TreeVisualisationElement element = e.Element as TreeVisualisationElement;
-            if (element != null) solverNode = element.Data;
-
-            RootPathElement rele = e.Element as RootPathElement;
-            if (rele != null) solverNode = rele.Node;
-
             if (solverNode == null) return;
-
 
             SokobanMap build = BuildCurrentMap(solverNode);
             if (build != null)
@@ -348,17 +304,37 @@ namespace SokoSolve.UI.Section.Solver
 
             bitmapViewerNodeMaps.Render();
 
-            if (sender != visualisationContainerLocalNodes)
-            {
-                RootPathVisualisation localVis = new RootPathVisualisation(new SizeInt(10, 10), controller);
-                localVis.RenderCanvas =
-                    new RectangleInt(0, 0, visualisationContainerLocalNodes.Width - 30,
-                                     visualisationContainerLocalNodes.Height - 30);
-                localVis.Init(solverNode);
-                visualisationContainerLocalNodes.ClearImage();
-                visualisationContainerLocalNodes.Visualisation = localVis;
-                visualisationContainerLocalNodes.Render();
-            }
+
+            RootPathVisualisation localVis = new RootPathVisualisation(new SizeInt(16, 16), controller);
+            localVis.RenderCanvas =
+                new RectangleInt(0, 0, visualisationContainerLocalNodes.Width - 30,
+                                 visualisationContainerLocalNodes.Height - 30);
+            localVis.Init(solverNode);
+            visualisationContainerLocalNodes.ClearImage();
+            visualisationContainerLocalNodes.Visualisation = localVis;
+            visualisationContainerLocalNodes.Render();
+        }
+
+        /// <summary>
+        /// Select a node in the tree browser
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnVisualisationClick_TreeViewer(object sender, VisEventArgs e)
+        {
+            if (e.Element == null) return;
+
+            SolverNode solverNode = null;
+
+            TreeVisualisationElement element = e.Element as TreeVisualisationElement;
+            if (element != null) solverNode = element.Data;
+
+            RootPathElement rele = e.Element as RootPathElement;
+            if (rele != null) solverNode = rele.Node;
+
+            if (solverNode == null) return;
+
+            BindNode(solverNode);
         }
 
         private SokobanMap BuildCurrentMap(SolverNode node)
@@ -395,15 +371,6 @@ namespace SokoSolve.UI.Section.Solver
             UpdateStatus();
         }
 
-        #region Nested type: OnCompleteDelegate
-
-        /// <summary>
-        /// Target call-back for completion
-        /// </summary>
-        private delegate void OnCompleteDelegate();
-
-        #endregion
-
         private void solverSectionController1_OnUserFinished(object sender, EventArgs e)
         {
             // Set the library
@@ -415,5 +382,14 @@ namespace SokoSolve.UI.Section.Solver
         {
             UpdateStatus();
         }
+
+        #region Nested type: OnCompleteDelegate
+
+        /// <summary>
+        /// Target call-back for completion
+        /// </summary>
+        private delegate void OnCompleteDelegate();
+
+        #endregion
     }
 }
