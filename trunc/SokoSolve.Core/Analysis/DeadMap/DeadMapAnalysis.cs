@@ -36,9 +36,9 @@ namespace SokoSolve.Core.Analysis.DeadMap
         /// <param name="goalMap"></param>
         /// <param name="wallMap"></param>
         /// <returns></returns>
-        public DeadMapState BuildDeadMap(Bitmap crateMap, Bitmap goalMap, Bitmap wallMap)
+        public DeadMapState BuildDeadMap(Bitmap moveMap, Bitmap crateMap, Bitmap goalMap, Bitmap wallMap)
         {
-            DeadMapState result = new DeadMapState(crateMap, goalMap, wallMap, this);
+            DeadMapState result = new DeadMapState(moveMap, crateMap, goalMap, wallMap, this);
             Evaluate(result);
             return result;
         }
@@ -73,10 +73,12 @@ namespace SokoSolve.Core.Analysis.DeadMap
         /// Strong Constructor. Start with the dead map including all walls.
         /// </summary>
         /// <param name="crateMap">map be null</param>
+        /// <param name="currentMoveMap">map be null</param>
         /// <param name="goalMap"></param>
         /// <param name="wallMap"></param>
-        public DeadMapState(Bitmap crateMap, Bitmap goalMap, Bitmap wallMap, DeadMapAnalysis deadMapAnalysis) : base("Dead Map", wallMap.Size)
+        public DeadMapState(Bitmap currentMoveMap, Bitmap crateMap, Bitmap goalMap, Bitmap wallMap, DeadMapAnalysis deadMapAnalysis) : base("Dead Map", wallMap.Size)
         {
+            this.moveMap = currentMoveMap;
             this.crateMap = crateMap;
             this.goalMap = goalMap;
             this.wallMap = wallMap;
@@ -90,11 +92,19 @@ namespace SokoSolve.Core.Analysis.DeadMap
         }
 
         /// <summary>
-        /// May be null
+        /// May be null for static
         /// </summary>
         public Bitmap CrateMap
         {
             get { return crateMap; }
+        }
+
+        /// <summary>
+        /// May be null for static
+        /// </summary>
+        public Bitmap MoveMap
+        {
+            get { return moveMap; }
         }
 
         /// <summary>
@@ -162,6 +172,7 @@ namespace SokoSolve.Core.Analysis.DeadMap
             get { return mapSize; }
         }
 
+        private Bitmap moveMap;
         private Bitmap crateMap;
         private Bitmap goalMap;
         private Bitmap wallMap;

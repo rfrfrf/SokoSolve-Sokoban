@@ -253,18 +253,20 @@ namespace SokoSolve.Common.Math
             return new PointF(x, y);
         }
 
+        /// <summary>
+        /// Find the position in a particular direction
+        /// </summary>
+        /// <param name="dir"></param>
+        /// <returns></returns>
         public VectorInt Offset(Direction dir)
         {
             switch (dir)
             {
-                case (Direction.Up):
-                    return this.Add(0, -1);
-                case (Direction.Down):
-                    return this.Add(0, 1);
-                case (Direction.Left):
-                    return this.Add(-1, 0);
-                case (Direction.Right):
-                    return this.Add(1, 0);
+                case (Direction.Up): return this.Add(0, -1);
+                case (Direction.Down): return this.Add(0, 1);
+                case (Direction.Left): return this.Add(-1, 0);
+                case (Direction.Right): return this.Add(1, 0);
+                case (Direction.None): return this;
             }
             throw new InvalidOperationException();
         }

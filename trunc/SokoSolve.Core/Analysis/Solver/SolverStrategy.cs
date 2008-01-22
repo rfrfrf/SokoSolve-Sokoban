@@ -120,24 +120,7 @@ namespace SokoSolve.Core.Analysis.Solver
             // Set weighting
             node.Data.Weighting = CalcWeighting(node.Data);
 
-            // Check for deadness
-            node.Data.DeadMap = staticAnalysis.DeadMapAnalysis.BuildDeadMap(node.Data.CrateMap, staticAnalysis.GoalMap, staticAnalysis.WallMap);
-            node.Data.DeadMap.Name = "Dynamic Deadmap";
-            if (node.Data.CrateMap.BitwiseAND(node.Data.DeadMap).Count > 0)
-            {
-                // Dead
-                node.Data.Status = SolverNodeStates.Dead;
-                node.Data.IsStateEvaluated = true;
-                node.Data.IsChildrenEvaluated = true;
-
-                controller.Stats.DeadNodes.Increment();
-
-            
-                MarkEvalCompelete(node);
-
-                // Exit
-                return EvalStatus.InProgress;
-            }
+          
 
             if (node.Data.MoveMap == null)
             {
@@ -170,6 +153,25 @@ namespace SokoSolve.Core.Analysis.Solver
                     cachedNodes.Add(node.Data);
                 }
                 
+            }
+
+            // Check for deadness
+            node.Data.DeadMap = staticAnalysis.DeadMapAnalysis.BuildDeadMap(node.Data.MoveMap, node.Data.CrateMap, staticAnalysis.GoalMap, staticAnalysis.WallMap);
+            node.Data.DeadMap.Name = "Dynamic Deadmap";
+            if (node.Data.CrateMap.BitwiseAND(node.Data.DeadMap).Count > 0)
+            {
+                // Dead
+                node.Data.Status = SolverNodeStates.Dead;
+                node.Data.IsStateEvaluated = true;
+                node.Data.IsChildrenEvaluated = true;
+
+                controller.Stats.DeadNodes.Increment();
+
+
+                MarkEvalCompelete(node);
+
+                // Exit
+                return EvalStatus.InProgress;
             }
 
             node.Data.IsStateEvaluated = true;

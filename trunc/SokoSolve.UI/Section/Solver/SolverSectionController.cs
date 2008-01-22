@@ -167,7 +167,6 @@ namespace SokoSolve.UI.Section.Solver
                     tsbStart.Enabled = false;
                     tsbStop.Enabled = true;
                     tsbSaveHTML.Enabled = false;
-
                     tsbSaveXML.Enabled = false;
                     listViewResults.Enabled = true;
                     ucPuzzleList1.Enabled = true;
@@ -175,7 +174,7 @@ namespace SokoSolve.UI.Section.Solver
                     tsgProgress.Visible = true;
 
                     tslStatus.Text = "Working";
-                    tslTime.Text = StringHelper.ToString(DateTime.Now.Subtract(started));
+                    tslTime.Text = "Elapsed "+StringHelper.ToString(DateTime.Now.Subtract(started));
                     tsgProgress.Enabled = true;
                     tsgProgress.Value = CountPercentageComplete();
 
@@ -195,7 +194,7 @@ namespace SokoSolve.UI.Section.Solver
                     tsgProgress.Visible = false;
 
                     tslStatus.Text = "Completed";
-                    tslTime.Text = StringHelper.ToString(complete.Subtract(started));
+                    tslTime.Text = "Complete in "+StringHelper.ToString(complete.Subtract(started));
                     tsgProgress.Enabled = true;
                     tsgProgress.Value = CountPercentageComplete();
 
@@ -212,6 +211,7 @@ namespace SokoSolve.UI.Section.Solver
                     listViewResults.Enabled = false;
                     ucPuzzleList1.Enabled = true;
                     tslStatus.Text = "Pending";
+                    tslTime.Text = "";
                     tsgProgress.Enabled = false;
                     return;
             }
@@ -445,6 +445,11 @@ namespace SokoSolve.UI.Section.Solver
                     workItem.Controller.ExitConditions.MaxTimeSecs = (int) (exitConditions1.upMaxTime.Value*60);
                     this.Invoke(new SimpleDelegate(ProcessWorkerListItemUpdate));
                     workItem.Result = workItem.Controller.Solve();
+                    if (!cbRetainHistory.Checked)
+                    {
+                        workItem.Controller.Dispose();
+                        workItem.Controller = null;
+                    }
                     this.Invoke(new SimpleDelegate(ProcessWorkerListItemUpdate));
                 }
                 catch (Exception ex)

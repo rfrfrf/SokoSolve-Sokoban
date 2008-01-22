@@ -20,10 +20,8 @@ namespace SokoSolve.Test.Core
     public class TestSolver
     {
 
-        private int SolveFromString(string[] puzzle)
+        private SolverResult SolveFromString(string[] puzzle)
         {
-            
-
             SokobanMap map = new SokobanMap();
             map.SetFromStrings(puzzle);
 
@@ -33,17 +31,15 @@ namespace SokoSolve.Test.Core
             return Solve(pMap);
         }
 
-        private int Solve(PuzzleMap puzzle)
+        private SolverResult Solve(PuzzleMap puzzle)
         {
             CodeTimer timer = new CodeTimer();
             timer.Start();
 
-
             SolverController controller = new SolverController(puzzle);
-
             try
             {
-
+                System.Console.WriteLine(puzzle.Map.ToString());
 
                 SolverResult results = controller.Solve();
 
@@ -52,17 +48,7 @@ namespace SokoSolve.Test.Core
                     // Bubble up
                     throw results.Exception;
                 }
-
-
-
-                if (!results.HasSolution)
-                {
-                    System.Console.WriteLine("No Solutions found.");
-                    return 0;
-                }
-
-                System.Console.WriteLine("Solutions " + results.Solutions.Count);
-                return results.Solutions.Count;
+                return results;
             }
             finally
             {
@@ -70,8 +56,20 @@ namespace SokoSolve.Test.Core
                 Console.WriteLine(controller.DebugReport.ToString(new DebugReportFormatter()));
                 System.Console.WriteLine("Total Time: " + timer.Duration(1));
                 System.Console.WriteLine("---");
-
             }
+        }
+
+        private int SolveForSolutions(PuzzleMap puzzle)
+        {
+            SolverResult results = Solve(puzzle);
+            if (!results.HasSolution)
+            {
+                System.Console.WriteLine("No Solutions found.");
+                return 0;
+            }
+
+            System.Console.WriteLine("Solutions " + results.Solutions.Count);
+            return results.Solutions.Count;
         }
 
         [TestMethod]
@@ -90,7 +88,7 @@ namespace SokoSolve.Test.Core
                     "#####~#~~"
                 };
 
-            int solutions = SolveFromString(puzzle);
+            int solutions = SolveFromString(puzzle).Solutions.Count;
             Assert.IsTrue(solutions > 0, "Must find a solution");
         }
 
@@ -112,41 +110,8 @@ namespace SokoSolve.Test.Core
                     "~#######~"
                 };
 
-            int solutions = SolveFromString(puzzle);
+            int solutions = SolveFromString(puzzle).Solutions.Count;
             Assert.IsTrue(solutions > 0, "Must find a solution");
-        }
-
-        [TestMethod]
-        public void TestVis()
-        {
-            SokobanMap map = new SokobanMap();
-            map.SetFromStrings(new string[]
-                                   {
-                                       "~~~###~~~~~",
-                                       "~~##.#~####",
-                                       "~##..###..#",
-                                       "##.X......#",
-                                       "#...PX.#..#",
-                                       "###.X###..#",
-                                       "~~#..#OO..#",
-                                       "~##.##O#.##",
-                                       "~#......##~",
-                                       "~#.....##~~",
-                                       "~#######~~~"
-                                   });
-
-            PuzzleMap pMap = new PuzzleMap((Puzzle)null);
-            pMap.Map = map;
-
-            SolverController ctrl = new SolverController(pMap);
-            Console.WriteLine(ctrl.Solve().ToString());
-
-            Bitmap bm = new Bitmap(800, 600);
-
-            TreeRenderer<SolverNode> draw = new TreeRenderer<SolverNode>(ctrl.Strategy.EvaluationTree, Graphics.FromImage(bm)); 
-            draw.Draw();
-
-            bm.Save(@"C:\junk\tree.png");
         }
 
 
@@ -157,7 +122,7 @@ namespace SokoSolve.Test.Core
             Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\Solver.ssx");
             Puzzle puz = lib.GetPuzzleByID("P2");
 
-            int solutions = Solve(puz.MasterMap);
+            int solutions = SolveForSolutions(puz.MasterMap);
             Assert.IsTrue(solutions > 0, "Must find a solution");
         }
 
@@ -168,7 +133,7 @@ namespace SokoSolve.Test.Core
             Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\Solver.ssx");
             Puzzle puz = lib.GetPuzzleByID("P0");
 
-            int solutions = Solve(puz.MasterMap);
+            int solutions = SolveForSolutions(puz.MasterMap);
             Assert.IsTrue(solutions == 0, "Must not find a solution");
         }
 
@@ -180,7 +145,7 @@ namespace SokoSolve.Test.Core
             Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\SolverDevelopment.ssx");
             Puzzle puz = lib.GetPuzzleByID("P20");
 
-            int solutions = Solve(puz.MasterMap);
+            int solutions = SolveForSolutions(puz.MasterMap);
             Assert.IsTrue(solutions > 0, "Must find a solution");
         }
 
@@ -191,7 +156,7 @@ namespace SokoSolve.Test.Core
             Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\SolverDevelopment.ssx");
             Puzzle puz = lib.GetPuzzleByID("P31");
 
-            int solutions = Solve(puz.MasterMap);
+            int solutions = SolveForSolutions(puz.MasterMap);
             Assert.IsTrue(solutions > 0, "Must find a solution");
         }
 
@@ -202,7 +167,7 @@ namespace SokoSolve.Test.Core
             Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\SolverDevelopment.ssx");
             Puzzle puz = lib.GetPuzzleByID("P33");
 
-            int solutions = Solve(puz.MasterMap);
+            int solutions = SolveForSolutions(puz.MasterMap);
             Assert.IsTrue(solutions > 0, "Must find a solution");
         }
 
@@ -214,8 +179,53 @@ namespace SokoSolve.Test.Core
             Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\SolverDevelopment.ssx");
             Puzzle puz = lib.GetPuzzleByID("P35");
 
-            int solutions = Solve(puz.MasterMap);
+            int solutions = SolveForSolutions(puz.MasterMap);
             Assert.IsTrue(solutions > 0, "Must find a solution");
+        }
+
+        [TestMethod]
+        public void TestInvalidRecessHoverHint()
+        {
+            string[] puzzle = new string[]
+                {
+"#############",
+"#O#.P#..#...#",
+"#O#XX...#.X.#",
+"#O#..#.X#...#",
+"#O#.X#..#.X##",
+"#O#..#.X#..#~",
+"#O#.X#..#.X#~",
+"#OO..#.X...#~",
+"#OO..#..#..#~",
+"############~"
+                };
+
+            int solutions = SolveFromString(puzzle).Solutions.Count;
+            Assert.IsTrue(solutions > 0, "Must find a solution");
+        }
+
+          [TestMethod]
+        public void TestDead_InvalidCornerHoverHint()
+        {
+            string[] puzzle = new string[]
+                {
+"~####~~~~~~~~~~~",
+"##..####~~~~~~~~",
+"...OOO#~~~~~~~~",
+"#...OOO#~~~~~~~~",
+"#...#.##~~~~~~~~",
+"#...#P.####~####",
+"#####...X.###..#",
+"~~~~#..##X.X...#",
+"~~~###.....XX..#",
+"~~~#.X..##...###",
+"~~~#....######~~",
+"~~~######~~~~~~~"
+                    };
+
+            SolverResult result = SolveFromString(puzzle);
+            Assert.IsFalse(result.HasSolution, "Must be Dead, but has solutions");
+            Assert.AreEqual(1, result.Info.TotalNodes, "Must be Dead, but has more than one eval node");
         }
     }
 

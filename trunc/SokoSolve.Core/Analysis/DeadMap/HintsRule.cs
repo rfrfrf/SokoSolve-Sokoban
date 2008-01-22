@@ -351,6 +351,8 @@ namespace SokoSolve.Core.Analysis.DeadMap
                                 if (!(context.CrateMap[cx + hintX, cy + hintY])) return false;
                                 break;
                             case (HintCell.DeadStatic):
+                                // Dead cannot be in the move map
+                                if (context.MoveMap[cx + hintX, cy + hintY]) return false;
                                 // Static deadmap or dynamic dead map
                                 if (!context.StaticAnalysis.DeadMap[cx + hintX, cy + hintY] &&
                                     !context[cx + hintX, cy + hintY]) return false;

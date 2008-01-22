@@ -23,7 +23,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\SokoSolve.Html\", "S
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "49323"
+		VWDPort = "50270"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SokoSolve.Console", "SokoSolve.Console\SokoSolve.Console.csproj", "{D382F62D-AEA9-4B16-8F4B-0876AD0ECD24}"

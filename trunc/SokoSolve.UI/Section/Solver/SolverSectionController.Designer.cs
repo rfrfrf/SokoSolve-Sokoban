@@ -55,6 +55,7 @@ namespace SokoSolve.UI.Section.Solver
             this.tslStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageSolverQueue = new System.Windows.Forms.TabPage();
+            this.ucPuzzleList1 = new SokoSolve.UI.Controls.Secondary.ucPuzzleList();
             this.tabPageResults = new System.Windows.Forms.TabPage();
             this.listViewResults = new System.Windows.Forms.ListView();
             this.chPuzzle = new System.Windows.Forms.ColumnHeader();
@@ -68,9 +69,11 @@ namespace SokoSolve.UI.Section.Solver
             this.rbDontAdd = new System.Windows.Forms.RadioButton();
             this.cbThreadPriority = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.timerUpdater = new System.Windows.Forms.Timer(this.components);
-            this.ucPuzzleList1 = new SokoSolve.UI.Controls.Secondary.ucPuzzleList();
             this.exitConditions1 = new SokoSolve.UI.Section.Solver.ExitConditions();
+            this.timerUpdater = new System.Windows.Forms.Timer(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbRetainHistory = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -78,6 +81,7 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageResults.SuspendLayout();
             this.tabPageSettings.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -244,6 +248,18 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageSolverQueue.Text = "Solver Queue";
             this.tabPageSolverQueue.UseVisualStyleBackColor = true;
             // 
+            // ucPuzzleList1
+            // 
+            this.ucPuzzleList1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucPuzzleList1.Library = null;
+            this.ucPuzzleList1.Location = new System.Drawing.Point(3, 3);
+            this.ucPuzzleList1.Name = "ucPuzzleList1";
+            this.ucPuzzleList1.ShowGroups = true;
+            this.ucPuzzleList1.ShowPreview = true;
+            this.ucPuzzleList1.Size = new System.Drawing.Size(564, 367);
+            this.ucPuzzleList1.TabIndex = 0;
+            this.ucPuzzleList1.UseCheckBoxes = true;
+            // 
             // tabPageResults
             // 
             this.tabPageResults.Controls.Add(this.listViewResults);
@@ -319,6 +335,7 @@ namespace SokoSolve.UI.Section.Solver
             // 
             // tabPageSettings
             // 
+            this.tabPageSettings.Controls.Add(this.groupBox1);
             this.tabPageSettings.Controls.Add(this.groupBox2);
             this.tabPageSettings.Controls.Add(this.cbThreadPriority);
             this.tabPageSettings.Controls.Add(this.label1);
@@ -338,7 +355,7 @@ namespace SokoSolve.UI.Section.Solver
             this.groupBox2.Controls.Add(this.rbDontAdd);
             this.groupBox2.Location = new System.Drawing.Point(297, 111);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(200, 100);
+            this.groupBox2.Size = new System.Drawing.Size(249, 100);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Add solutions to library";
@@ -393,29 +410,46 @@ namespace SokoSolve.UI.Section.Solver
             this.label1.TabIndex = 1;
             this.label1.Text = "Thread Priority:";
             // 
-            // timerUpdater
-            // 
-            this.timerUpdater.Interval = 10000;
-            this.timerUpdater.Tick += new System.EventHandler(this.timerUpdater_Tick);
-            // 
-            // ucPuzzleList1
-            // 
-            this.ucPuzzleList1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucPuzzleList1.Library = null;
-            this.ucPuzzleList1.Location = new System.Drawing.Point(3, 3);
-            this.ucPuzzleList1.Name = "ucPuzzleList1";
-            this.ucPuzzleList1.ShowGroups = true;
-            this.ucPuzzleList1.ShowPreview = true;
-            this.ucPuzzleList1.Size = new System.Drawing.Size(564, 367);
-            this.ucPuzzleList1.TabIndex = 0;
-            this.ucPuzzleList1.UseCheckBoxes = true;
-            // 
             // exitConditions1
             // 
             this.exitConditions1.Location = new System.Drawing.Point(6, 6);
             this.exitConditions1.Name = "exitConditions1";
             this.exitConditions1.Size = new System.Drawing.Size(267, 346);
             this.exitConditions1.TabIndex = 0;
+            // 
+            // timerUpdater
+            // 
+            this.timerUpdater.Interval = 10000;
+            this.timerUpdater.Tick += new System.EventHandler(this.timerUpdater_Tick);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.cbRetainHistory);
+            this.groupBox1.Location = new System.Drawing.Point(297, 218);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(249, 100);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Retain History";
+            // 
+            // cbRetainHistory
+            // 
+            this.cbRetainHistory.Location = new System.Drawing.Point(9, 15);
+            this.cbRetainHistory.Name = "cbRetainHistory";
+            this.cbRetainHistory.Size = new System.Drawing.Size(236, 34);
+            this.cbRetainHistory.TabIndex = 0;
+            this.cbRetainHistory.Text = "Allow visualisations for each item in the work list.";
+            this.cbRetainHistory.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(6, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(237, 56);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "* WARNING * This will keep each solver attempt in memory, and will consume large " +
+                "amounts of memory for large work lists.";
             // 
             // SolverSectionController
             // 
@@ -437,6 +471,7 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageSettings.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -477,5 +512,8 @@ namespace SokoSolve.UI.Section.Solver
         private System.Windows.Forms.RadioButton rbAlwaysAdd;
         private System.Windows.Forms.RadioButton rbAddBetter;
         private System.Windows.Forms.RadioButton rbDontAdd;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox cbRetainHistory;
+        private System.Windows.Forms.Label label2;
     }
 }

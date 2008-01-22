@@ -23,6 +23,8 @@ namespace SokoSolve.Common.Structures
 			this.currentState = new Bitmap(initialState.Size);
 			this.startLocation = startLocation;
             workList = new DepthLastItterator<LocationNode>(GetLocationNodeDepth);
+            workList.MaxDepth = 1000;
+            workList.MaxItterations = 100000;
 
             // Mark the start location as true
             //currentState[startLocation] = true;

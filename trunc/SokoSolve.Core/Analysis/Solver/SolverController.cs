@@ -18,7 +18,7 @@ namespace SokoSolve.Core.Analysis.Solver
     /// Encapsule all aspects of the Solver process. It is the root object and is responsible
     /// for threading and coordinating the solver process.
     /// </summary>
-    public class SolverController
+    public class SolverController : IDisposable
     {
         /// <summary>
         /// Strong Contruction
@@ -152,7 +152,6 @@ namespace SokoSolve.Core.Analysis.Solver
             CodeTimer solveTime = new CodeTimer();
             solveTime.Start();
 
-            
             try
             {
                 debugReport.Append("Solver starting");
@@ -473,5 +472,18 @@ namespace SokoSolve.Core.Analysis.Solver
         private Thread reverseWorker;
         private Exception reverseWorkerException;
         private States state;
+
+        #region IDisposable Members
+
+        ///<summary>
+        ///Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        ///</summary>
+        ///<filterpriority>2</filterpriority>
+        public void Dispose()
+        {
+            
+        }
+
+        #endregion
     }
 }
