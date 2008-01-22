@@ -32,20 +32,28 @@ namespace SokoSolve.Core.Analysis.Solver
             // Set the simple maps, walls, etc
             SetSimpleMaps();
 
+
             // Build boundry map
             BuildBoundryMap();
+
+            // Build the initial player move map
+            BuildInitialMoveMap();
+
 
             
 
             // Make the dead map
             BuildDeadMap();
-
-           
-            
+ 
 
             // Build Weighting matrix maps
             BuildForwardWeightingMap();
             BuildReverseWeightingMap();
+        }
+
+        private void BuildInitialMoveMap()
+        {
+            initialMoveMap = new SolverBitmap("Initial Move Map", MapAnalysis.GenerateMoveMap(boundryMap, initialCrateMap, controller.Map.Player));
         }
 
         /// <summary>
@@ -178,6 +186,15 @@ namespace SokoSolve.Core.Analysis.Solver
         }
 
         /// <summary>
+        /// Player's Initial move map
+        /// </summary>
+        public SolverBitmap InitialMoveMap
+        {
+            get { return initialMoveMap; }
+        
+        }
+
+        /// <summary>
         /// Deadmap, all positions on which a crate will make the puzzle unsolvable
         /// </summary>
         public SolverBitmap DeadMap
@@ -240,12 +257,15 @@ namespace SokoSolve.Core.Analysis.Solver
         private SolverBitmap goalMap;
         private SolverBitmap boundryMap;
         private SolverBitmap initialCrateMap;
+        private SolverBitmap initialMoveMap;
         private SolverBitmap deadMap;
         private SolverBitmap cornerMap;
         private SolverBitmap recessMap;
+
         private Matrix staticForwardCrateWeighting;
         private Matrix staticReverseCrateWeighting;
         private Matrix staticPlayerRating;
+        
 
         private SolverController controller;
         private DeadMapAnalysis deadMapAnalysis;

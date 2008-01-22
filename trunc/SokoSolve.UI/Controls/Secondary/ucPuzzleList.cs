@@ -11,6 +11,9 @@ using SokoSolve.UI.Section;
 
 namespace SokoSolve.UI.Controls.Secondary
 {
+    /// <summary>
+    /// Provide a basic type-strong list of puzzles (sortable)
+    /// </summary>
     public partial class ucPuzzleList : UserControl
     {
         public ucPuzzleList()
@@ -58,7 +61,7 @@ namespace SokoSolve.UI.Controls.Secondary
                     listViewPuzzles.Groups.Add(grp);
                 }
 
-                List<Puzzle> puzzles = library.Puzzles;    // TODO: Extract out and sort
+                List<Puzzle> puzzles = library.Puzzles;  
                 puzzles.Sort(currentSort);
 
                 foreach (Puzzle puzzle in puzzles)
@@ -69,7 +72,7 @@ namespace SokoSolve.UI.Controls.Secondary
                     if (puzzle.Category != null)
                         item.Group = categories[puzzle.Category.CategoryID];
                     item.SubItems.Add(puzzle.Order.ToString());
-                    item.SubItems.Add(puzzle.Rating);
+                    item.SubItems.Add(puzzle.AutomatedRating.ToString("0.0"));
                     item.SubItems.Add(BuildDescription(puzzle));
                     listViewPuzzles.Items.Add(item);
                 }
@@ -82,10 +85,11 @@ namespace SokoSolve.UI.Controls.Secondary
 
         private string BuildDescription(Puzzle puzzle)
         {
-            return string.Format("{0}, {1} crates, {2} solutions.", 
+            return string.Format("{0}, {1} crates, {2} solutions. Rating '{3}'", 
                 puzzle.MasterMap.Map.Size, 
                 puzzle.MasterMap.Map.Count(Cell.Crate), 
-                puzzle.MasterMap.Solutions.Count);
+                puzzle.MasterMap.Solutions.Count,
+                puzzle.Rating);
         }
 
         /// <summary>

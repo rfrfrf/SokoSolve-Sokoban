@@ -59,7 +59,7 @@ namespace SokoSolve.UI.Controls.Secondary
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.Text = "FormBrowser";
+            this.Text = "HTML Viewer";
             this.ResumeLayout(false);
 
         }

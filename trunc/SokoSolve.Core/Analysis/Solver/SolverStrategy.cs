@@ -141,12 +141,13 @@ namespace SokoSolve.Core.Analysis.Solver
 
             if (node.Data.MoveMap == null)
             {
+                // Generate MoveMap
+                node.Data.MoveMap = MapAnalysis.GenerateMoveMap(staticAnalysis.BoundryMap, node.Data.CrateMap, node.Data.PlayerPosition);
+                if (node.Data.TreeNode.IsRoot)
+                {
+                    node.Data.MoveMap[node.Data.PlayerPosition] = true;
+                }
                 
-                    // Generate MoveMap
-                    node.Data.MoveMap = MapAnalysis.GenerateMoveMap(staticAnalysis.BoundryMap, node.Data.CrateMap,
-                                                    node.Data.PlayerPosition);
-                
-
                 // Check Duplicate
                 if (CheckDuplicate(node.Data) != null)
                 {

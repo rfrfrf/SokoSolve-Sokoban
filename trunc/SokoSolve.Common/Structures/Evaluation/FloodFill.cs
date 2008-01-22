@@ -24,6 +24,9 @@ namespace SokoSolve.Common.Structures
 			this.startLocation = startLocation;
             workList = new DepthLastItterator<LocationNode>(GetLocationNodeDepth);
 
+            // Mark the start location as true
+            //currentState[startLocation] = true;
+
 			// Add the start location
 			searchTree = new Tree<LocationNode>();
 			TreeNode<LocationNode> startNode = searchTree.Root;
@@ -86,6 +89,7 @@ namespace SokoSolve.Common.Structures
 
 		public EvalStatus EvaluateState(INode<LocationNode> node)
 		{
+            
 			node.Data.IsStateEvaluated = true;
 			// Nothing to do, we only evaluate children
             return EvalStatus.InProgress;

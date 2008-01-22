@@ -168,10 +168,19 @@ namespace SokoSolve.Core.Reporting
     {
         protected XmlDocument report;
 
-        public ReportXHTML(string title)
+        public ReportXHTML(string title) : this(title, null)
         {
+           
+        }
+
+        public ReportXHTML(string title, string inlineCSS)
+        {
+            
             report = new XmlDocument();
-            report.LoadXml(
+
+            if (inlineCSS == null)
+            {
+                report.LoadXml(
                 string.Format(
                     @"<html xmlns=""http://www.w3.org/1999/xhtml"">
 	<head>
@@ -183,6 +192,22 @@ namespace SokoSolve.Core.Reporting
 	</body>
 </html>",
                     title));
+            }
+            else
+            {
+                report.LoadXml(
+                    string.Format(
+                        @"<html xmlns=""http://www.w3.org/1999/xhtml"">
+	<head>
+		<title>{0}</title>
+		<style type=""text/css"">{1}</style>
+	</head>
+	<body>
+	    
+	</body>
+</html>",
+                        title, inlineCSS));
+            }
         }
 
         protected XmlElement Body

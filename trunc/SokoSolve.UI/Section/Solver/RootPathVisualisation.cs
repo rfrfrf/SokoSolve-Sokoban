@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Text;
 using SokoSolve.Common.Math;
 using SokoSolve.Common.Structures;
@@ -96,6 +97,7 @@ namespace SokoSolve.UI.Section.Solver
         /// <param name="graphics"></param>
         public override void Draw(Graphics graphics)
         {
+            graphics.SmoothingMode = SmoothingMode.AntiAlias;
             graphics.FillRectangle(SystemBrushes.ControlLightLight, renderCanvas.ToDrawingRect());
 
             int ccy = 0;

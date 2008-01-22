@@ -68,7 +68,7 @@ namespace SokoSolve.UI.Section.Library
             this.tabPageTXT = new System.Windows.Forms.TabPage();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.tbSokobanChars = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
@@ -493,7 +493,7 @@ namespace SokoSolve.UI.Section.Library
             // 
             this.tabPageTXT.Controls.Add(this.label17);
             this.tabPageTXT.Controls.Add(this.label16);
-            this.tabPageTXT.Controls.Add(this.textBox10);
+            this.tabPageTXT.Controls.Add(this.tbSokobanChars);
             this.tabPageTXT.Controls.Add(this.textBox9);
             this.tabPageTXT.Controls.Add(this.label15);
             this.tabPageTXT.Controls.Add(this.textBox8);
@@ -538,12 +538,12 @@ namespace SokoSolve.UI.Section.Library
             this.label16.TabIndex = 20;
             this.label16.Text = "QuickSet:";
             // 
-            // textBox10
+            // tbSokobanChars
             // 
-            this.textBox10.Location = new System.Drawing.Point(14, 313);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(166, 20);
-            this.textBox10.TabIndex = 19;
+            this.tbSokobanChars.Location = new System.Drawing.Point(14, 313);
+            this.tbSokobanChars.Name = "tbSokobanChars";
+            this.tbSokobanChars.Size = new System.Drawing.Size(166, 20);
+            this.tbSokobanChars.TabIndex = 19;
             // 
             // textBox9
             // 
@@ -702,6 +702,7 @@ namespace SokoSolve.UI.Section.Library
             this.tbLines.Name = "tbLines";
             this.tbLines.Size = new System.Drawing.Size(474, 226);
             this.tbLines.TabIndex = 0;
+            this.tbLines.TextChanged += new System.EventHandler(this.tbLines_TextChanged);
             // 
             // tabPageProperties
             // 
@@ -866,7 +867,7 @@ namespace SokoSolve.UI.Section.Library
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox tbSokobanChars;
         private System.Windows.Forms.TabPage tabPageProperties;
         private SokoSolve.UI.Controls.Secondary.ucGenericDescription ucGenericDescription1;
         private System.Windows.Forms.TextBox tbAutoRating;

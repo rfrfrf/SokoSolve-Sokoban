@@ -184,9 +184,9 @@ namespace SokoSolve.UI.Section.Solver
 
                 if (controller.ReverseStrategy != null && controller.ReverseStrategy.EvaluationTree != null)
                 {
-                    TreeVisualisation tresVisRev =
-                        new TreeVisualisation(controller.ReverseStrategy.EvaluationTree,
+                    TreeVisualisation tresVisRev = new TreeVisualisation(controller.ReverseStrategy.EvaluationTree,
                                               new RectangleInt(0, 0, 1800, 1800), new SizeInt(8, 8));
+                    tresVisRev.Controller = controller;
                     visualisationContainerReverseTree.Visualisation = tresVisRev;
                     visualisationContainerReverseTree.Render();
                 }

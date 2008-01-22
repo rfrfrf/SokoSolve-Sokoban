@@ -37,6 +37,8 @@ namespace SokoSolve.UI.Controls.Web
             this.tsbPrint = new System.Windows.Forms.ToolStripButton();
             this.tsbDone = new System.Windows.Forms.ToolStripButton();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
+            this.tsbSave = new System.Windows.Forms.ToolStripButton();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.statusStrip.SuspendLayout();
             this.toolStripCommands.SuspendLayout();
             this.SuspendLayout();
@@ -64,6 +66,7 @@ namespace SokoSolve.UI.Controls.Web
             this.tsbForward,
             this.tsbHome,
             this.tsbPrint,
+            this.tsbSave,
             this.tsbDone});
             this.toolStripCommands.Location = new System.Drawing.Point(0, 0);
             this.toolStripCommands.Name = "toolStripCommands";
@@ -127,6 +130,22 @@ namespace SokoSolve.UI.Controls.Web
             this.webBrowser.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser_Navigated);
             this.webBrowser.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.webBrowser_Navigating);
             // 
+            // tsbSave
+            // 
+            this.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSave.Image = global::SokoSolve.UI.Properties.Resources.Save;
+            this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSave.Name = "tsbSave";
+            this.tsbSave.Size = new System.Drawing.Size(23, 22);
+            this.tsbSave.Text = "Save";
+            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
+            // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.DefaultExt = "html";
+            this.saveFileDialog.RestoreDirectory = true;
+            this.saveFileDialog.Title = "Save HTML";
+            // 
             // HtmlView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -156,5 +175,7 @@ namespace SokoSolve.UI.Controls.Web
         private System.Windows.Forms.WebBrowser webBrowser;
         private System.Windows.Forms.ToolStripButton tsbDone;
         private System.Windows.Forms.ToolStripStatusLabel tsLabelStatus;
+        private System.Windows.Forms.ToolStripButton tsbSave;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }

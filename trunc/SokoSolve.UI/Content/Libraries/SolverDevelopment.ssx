@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LibraryID="bf448fa3-5461-4e18-ac08-40a34d3d2666" MaxID="30" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
+<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LibraryID="bf448fa3-5461-4e18-ac08-40a34d3d2666" MaxID="37" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
   <Details License="GPL" Date="2008-01-21T12:20:42.9100075+02:00">
     <Name>Solver Development Library</Name>
     <Description>A collections of specific solver problems</Description>
@@ -20,30 +20,6 @@
         <Author Name="Guy Langston" Email="bitwacker@users.sourceforge.net" Homepage="http://sokosolve.sourceforge.net" />
       </CategoryDescription>
     </Category>
-    <Category CategoryID="C2" CategoryParentREF="C1" Order="4">
-      <CategoryDescription License="Creative Commons" Date="2008-01-21T12:29:49.518577+02:00">
-        <Name>Advanced</Name>
-        <Description>Skeleton new library</Description>
-        <Comments>This is a skeleton sokoban library. ALL RIGHTS RESERVED.</Comments>
-        <Author Name="Unknown author" Email="noreply@sokosolve.sourceforge.net" Homepage="http://sokosolve.sourceforge.net" />
-      </CategoryDescription>
-    </Category>
-    <Category CategoryID="C25" CategoryParentREF="C2" Order="7">
-      <CategoryDescription License="" Date="2008-01-21T16:04:38.810797+02:00">
-        <Name>Room Analysis</Name>
-        <Description />
-        <Comments />
-        <Author Name="" Email="" Homepage="" />
-      </CategoryDescription>
-    </Category>
-    <Category CategoryID="C3" CategoryParentREF="C1" Order="5">
-      <CategoryDescription License="Creative Commons" Date="2008-01-21T12:30:09.3444565+02:00">
-        <Name>Complex</Name>
-        <Description>Skeleton new library</Description>
-        <Comments>This is a skeleton sokoban library. ALL RIGHTS RESERVED.</Comments>
-        <Author Name="Unknown author" Email="noreply@sokosolve.sourceforge.net" Homepage="http://sokosolve.sourceforge.net" />
-      </CategoryDescription>
-    </Category>
     <Category CategoryID="C24" CategoryParentREF="C1" Order="3">
       <CategoryDescription License="" Date="2008-01-21T13:35:30.8473705+02:00">
         <Name>Basic</Name>
@@ -52,7 +28,31 @@
         <Author Name="" Email="" Homepage="" />
       </CategoryDescription>
     </Category>
-    <Category CategoryID="C15" CategoryParentREF="C1" Order="6">
+    <Category CategoryID="C2" CategoryParentREF="C1" Order="4">
+      <CategoryDescription License="Creative Commons" Date="2008-01-21T12:29:49.518577+02:00">
+        <Name>Advanced</Name>
+        <Description>Skeleton new library</Description>
+        <Comments>This is a skeleton sokoban library. ALL RIGHTS RESERVED.</Comments>
+        <Author Name="Unknown author" Email="noreply@sokosolve.sourceforge.net" Homepage="http://sokosolve.sourceforge.net" />
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C25" CategoryParentREF="C2" Order="5">
+      <CategoryDescription License="" Date="2008-01-21T16:04:38.810797+02:00">
+        <Name>Room Analysis</Name>
+        <Description />
+        <Comments />
+        <Author Name="" Email="" Homepage="" />
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C3" CategoryParentREF="C1" Order="6">
+      <CategoryDescription License="Creative Commons" Date="2008-01-21T12:30:09.3444565+02:00">
+        <Name>Complex</Name>
+        <Description>Skeleton new library</Description>
+        <Comments>This is a skeleton sokoban library. ALL RIGHTS RESERVED.</Comments>
+        <Author Name="Unknown author" Email="noreply@sokosolve.sourceforge.net" Homepage="http://sokosolve.sourceforge.net" />
+      </CategoryDescription>
+    </Category>
+    <Category CategoryID="C15" CategoryParentREF="C1" Order="7">
       <CategoryDescription License="" Date="2008-01-21T12:40:45.0479095+02:00">
         <Name>Unit Tests</Name>
         <Description />
@@ -60,9 +60,17 @@
         <Author Name="" Email="" Homepage="" />
       </CategoryDescription>
     </Category>
+    <Category CategoryID="C30" CategoryParentREF="C15" Order="8">
+      <CategoryDescription License="" Date="2008-01-22T11:36:30.117292+02:00">
+        <Name>Regression</Name>
+        <Description />
+        <Comments />
+        <Author Name="" Email="" Homepage="" />
+      </CategoryDescription>
+    </Category>
   </Categories>
   <Puzzles>
-    <Puzzle PuzzleID="P28" CategoryREF="C25" Order="0">
+    <Puzzle PuzzleID="P28" CategoryREF="C25" Order="1">
       <PuzzleDescription License="Creative Commons" Date="2008-01-21T16:04:50.00344+02:00">
         <Name>Door Blocked #2</Name>
         <Description />
@@ -86,7 +94,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle PuzzleID="P7" CategoryREF="C24" Order="1">
+    <Puzzle PuzzleID="P7" CategoryREF="C24" Order="2">
       <PuzzleDescription License="Creative Commons" Date="2008-01-21T11:15:36.5057365+02:00">
         <Name>Corner Hover</Name>
         <Description />
@@ -110,7 +118,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle PuzzleID="P9" CategoryREF="C24" Order="2">
+    <Puzzle PuzzleID="P9" CategoryREF="C24" Order="3">
       <PuzzleDescription License="GPL" Date="2008-01-21T12:22:15.3669805+02:00">
         <Name>Recess Hover</Name>
         <Description />
@@ -134,7 +142,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle PuzzleID="P11" CategoryREF="C24" Order="3">
+    <Puzzle PuzzleID="P11" CategoryREF="C24" Order="4">
       <PuzzleDescription License="GPL" Date="2008-01-21T12:23:43.8046795+02:00">
         <Name>Recess Hover #2</Name>
         <Description />
@@ -158,7 +166,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle PuzzleID="P18" CategoryREF="C24" Order="4">
+    <Puzzle PuzzleID="P18" CategoryREF="C24" Order="5">
       <PuzzleDescription License="Creative Commons" Date="2008-01-21T12:38:47.195101+02:00">
         <Name>Crate on Wall Count</Name>
         <Description />
@@ -177,7 +185,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle PuzzleID="P13" CategoryREF="C24" Order="5">
+    <Puzzle PuzzleID="P13" CategoryREF="C24" Order="6">
       <PuzzleDescription License="Creative Commons" Date="2008-01-21T12:25:14.7226885+02:00">
         <Name>Wall Cycle </Name>
         <Description>Group of Four</Description>
@@ -201,7 +209,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle PuzzleID="P16" CategoryREF="C2" Order="6">
+    <Puzzle PuzzleID="P16" CategoryREF="C2" Order="7">
       <PuzzleDescription License="Creative Commons" Date="2008-01-21T12:30:44.3012035+02:00">
         <Name>Mutually Dependant Cycle</Name>
         <Description />
@@ -220,7 +228,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle PuzzleID="P20" CategoryREF="C15" Order="7">
+    <Puzzle PuzzleID="P20" CategoryREF="C15" Order="8">
       <PuzzleDescription License="Creative Commons" Date="2008-01-21T12:40:53.67724+02:00">
         <Name>Atomic Solutions</Name>
         <Description />
@@ -237,7 +245,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle PuzzleID="P22" CategoryREF="C15" Order="8">
+    <Puzzle PuzzleID="P22" CategoryREF="C15" Order="9">
       <PuzzleDescription License="Creative Commons" Date="2008-01-21T12:42:12.004258+02:00">
         <Name>Atomic No Solutions</Name>
         <Description />
@@ -254,7 +262,7 @@
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle PuzzleID="P26" CategoryREF="C25" Order="9">
+    <Puzzle PuzzleID="P26" CategoryREF="C25" Order="10">
       <PuzzleDescription License="Creative Commons" Date="2008-01-21T16:04:50.00344+02:00">
         <Name>Door Blocked #1</Name>
         <Description />
@@ -274,6 +282,142 @@
           <Row>#...#....#</Row>
           <Row>##########</Row>
           <Solutions />
+          <MapDetails />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle PuzzleID="P31" CategoryREF="C30" Order="11">
+      <PuzzleDescription License="Creative Commons" Date="2008-01-22T11:36:40.7875075+02:00">
+        <Name>Microban failure</Name>
+        <Description />
+        <Comments>Exception: System.Exception
+Message: Sanity Check Failed. Solution is not valid: Invalid move at step 21 of 23
+Stack:
+    at SokoSolve.Core.Analysis.Solver.SolverController.BuildSolutionPath() in C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.Core\Analysis\Solver\SolverController.cs:line 337
+   at SokoSolve.Core.Analysis.Solver.SolverController.Solve() in C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.Core\Analysis\Solver\SolverController.cs:line 209</Comments>
+        <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M32">
+          <Row>~~####~~~</Row>
+          <Row>###..####</Row>
+          <Row>#.....X.#</Row>
+          <Row>#.#..#X.#</Row>
+          <Row>#.O.O#P.#</Row>
+          <Row>#########</Row>
+          <Solutions>
+            <Solution StartX="6" StartY="4">
+              <Steps>ruuLLLulDrrrrddlUruLLLddllluurRDrdLuuurDD</Steps>
+              <SolutionDescription License="Creative Commons" Date="2008-01-22T12:31:15.326947+02:00">
+                <Name>'Microban failure' Solution</Name>
+                <Comments>Moves 41/41, Pushes 13/13, Undos 0, Restarts 0, Duration 00:00:25.9377930</Comments>
+                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
+          <MapDetails />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle PuzzleID="P33" CategoryREF="C30" Order="12">
+      <PuzzleDescription License="Creative Commons" Date="2008-01-22T11:37:47.4473035+02:00">
+        <Name>Microban failure #2</Name>
+        <Description />
+        <Comments>Exception: System.ArgumentException
+Message: Cannot be null
+Parameter name: startLocation
+Stack:
+    at SokoSolve.Common.Structures.FloodFillStrategy..ctor(IBitmap initialState, VectorInt startLocation) in C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.Common\Structures\Evaluation\FloodFill.cs:line 21
+   at SokoSolve.Core.Analysis.Solver.SolverStrategy.BuildPath(SolverNode node) in C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.Core\Analysis\Solver\SolverStrategy.cs:line 201
+   at SokoSolve.Core.Analysis.Solver.SolverController.BuildSolutionPath() in C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.Core\Analysis\Solver\SolverController.cs:line 263
+   at SokoSolve.Core.Analysis.Solver.SolverController.Solve() in C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.Core\Analysis\Solver\SolverController.cs:line 209</Comments>
+        <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M34">
+          <Row>######</Row>
+          <Row>#....#</Row>
+          <Row>#.#P.#</Row>
+          <Row>#.X$.#</Row>
+          <Row>#.O$.#</Row>
+          <Row>#....#</Row>
+          <Row>######</Row>
+          <Solutions>
+            <Solution StartX="3" StartY="2">
+              <Steps>rddlruulduullddr</Steps>
+              <SolutionDescription Date="2008-01-22T12:30:09.483505+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 10 nodes
+Total Nodes : 6 nodes
+Node per second :  
+Duplicates : 1 nodes
+DeadNodes : 7 nodes
+Eval Worker List : 5
+MoveMapTime : 0.000 sec
+EvalTime : 0.000 sec
+EvalChildTime : 0.000 sec
+DuplicateCheckTime : 0.000 sec
+Weighting Min : 0
+Weighting Max : 100
+Weighting Avg : 75.48 avg.
+Hints Uses : 0 hits
+Max Depth : 3
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
+          <MapDetails />
+        </Map>
+      </Maps>
+    </Puzzle>
+    <Puzzle PuzzleID="P35" CategoryREF="C30" Order="13">
+      <PuzzleDescription License="Creative Commons" Date="2008-01-22T12:45:48.8501395+02:00">
+        <Name>Reverse Solution</Name>
+        <Description />
+        <Comments />
+        <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+      </PuzzleDescription>
+      <Maps>
+        <Map MapID="M36">
+          <Row>#####~~</Row>
+          <Row>#...#~~</Row>
+          <Row>#.P.#~~</Row>
+          <Row>#.XX###</Row>
+          <Row>##O.O.#</Row>
+          <Row>~#....#</Row>
+          <Row>~######</Row>
+          <Solutions>
+            <Solution StartX="2" StartY="2">
+              <Steps>rdulldrddrruldluuluurrddldruuuldd</Steps>
+              <SolutionDescription Date="2008-01-22T13:40:08.0558794+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 47 nodes
+Total Nodes : 28 nodes
+Node per second :  
+Duplicates : 8 nodes
+DeadNodes : 15 nodes
+Eval Worker List : 14
+MoveMapTime : 0.000 sec
+EvalTime : 0.000 sec
+EvalChildTime : 0.004 sec
+DuplicateCheckTime : 0.000 sec
+Weighting Min : 0
+Weighting Max : 100
+Weighting Avg : 40.07 avg.
+Hints Uses : 0 hits
+Max Depth : 5
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
           <MapDetails />
         </Map>
       </Maps>

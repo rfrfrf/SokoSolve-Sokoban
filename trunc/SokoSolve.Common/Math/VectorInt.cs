@@ -319,6 +319,8 @@ namespace SokoSolve.Common.Math
                     return Direction.Right;
                 case (Direction.Right):
                     return Direction.Left;
+                case (Direction.None):
+                    return Direction.None;
             }
             throw new InvalidOperationException();
         }

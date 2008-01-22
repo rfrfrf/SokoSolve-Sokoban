@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Data;
+using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using SokoSolve.Core;
 using SokoSolve.Core.Analysis.Solver;
 using SokoSolve.Core.Model;
 using SokoSolve.Common;
@@ -168,7 +170,7 @@ namespace SokoSolve.UI.Section.Solver
 
                     tsbSaveXML.Enabled = false;
                     listViewResults.Enabled = true;
-                    ucPuzzleList1.Enabled = false;
+                    ucPuzzleList1.Enabled = true;
 
                     tsgProgress.Visible = true;
 
@@ -617,13 +619,16 @@ namespace SokoSolve.UI.Section.Solver
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            if (currentWorkItem != null)
+            if (listViewResults.SelectedItems.Count > 0)
             {
-                FormSolverVisualisation formVis = new FormSolverVisualisation();
-                formVis.Controller = currentWorkItem.Controller;
-                formVis.Show();    
+                WorkItem item = listViewResults.SelectedItems[0].Tag as WorkItem;
+                if (item != null && item.Controller != null)
+                {
+                    FormSolverVisualisation formVis = new FormSolverVisualisation();
+                    formVis.Controller = item.Controller;
+                    formVis.Show();
+                }
             }
-            
         }
 
         private void tsbSaveHTML_Click(object sender, EventArgs e)
@@ -632,9 +637,12 @@ namespace SokoSolve.UI.Section.Solver
             if (save.ShowDialog() == DialogResult.OK)
             {
                 List<SolverResult> results = workerList.ConvertAll<SolverResult>(delegate(WorkItem item) { return item.Result; });
-                SolverResultHTML report = new SolverResultHTML(results);
+                SolverResultHTML report = new SolverResultHTML(results, null);
                 report.BuildReport();
                 report.Save(save.FileName);
+
+                // Copy the default style sheet
+                File.Copy(FileManager.getContent("$html/style.css"), Path.GetDirectoryName(save.FileName) + "/style.css");
 
                 Process.Start(save.FileName);
             }
@@ -664,7 +672,8 @@ namespace SokoSolve.UI.Section.Solver
                     {
                         List<SolverResult> results = new List<SolverResult>();
                         results.Add(item.Result);
-                        SolverResultHTML report = new SolverResultHTML(results);
+                        
+                        SolverResultHTML report = new SolverResultHTML(results, File.ReadAllText(FileManager.getContent("$html/style.css")));
                         report.BuildReport();
 
                         FormBrowser browser = new FormBrowser();
@@ -673,6 +682,11 @@ namespace SokoSolve.UI.Section.Solver
                     }
                 }
             }
+        }
+
+        private void listViewResults_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

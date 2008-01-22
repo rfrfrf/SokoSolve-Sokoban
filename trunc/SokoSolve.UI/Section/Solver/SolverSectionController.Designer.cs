@@ -55,7 +55,6 @@ namespace SokoSolve.UI.Section.Solver
             this.tslStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageSolverQueue = new System.Windows.Forms.TabPage();
-            this.ucPuzzleList1 = new SokoSolve.UI.Controls.Secondary.ucPuzzleList();
             this.tabPageResults = new System.Windows.Forms.TabPage();
             this.listViewResults = new System.Windows.Forms.ListView();
             this.chPuzzle = new System.Windows.Forms.ColumnHeader();
@@ -69,8 +68,9 @@ namespace SokoSolve.UI.Section.Solver
             this.rbDontAdd = new System.Windows.Forms.RadioButton();
             this.cbThreadPriority = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.exitConditions1 = new SokoSolve.UI.Section.Solver.ExitConditions();
             this.timerUpdater = new System.Windows.Forms.Timer(this.components);
+            this.ucPuzzleList1 = new SokoSolve.UI.Controls.Secondary.ucPuzzleList();
+            this.exitConditions1 = new SokoSolve.UI.Section.Solver.ExitConditions();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -106,6 +106,7 @@ namespace SokoSolve.UI.Section.Solver
             this.tsbDone.Name = "tsbDone";
             this.tsbDone.Size = new System.Drawing.Size(52, 22);
             this.tsbDone.Text = "Done";
+            this.tsbDone.ToolTipText = "Return to the library";
             this.tsbDone.Click += new System.EventHandler(this.tsbDone_Click);
             // 
             // toolStripSeparator1
@@ -120,7 +121,8 @@ namespace SokoSolve.UI.Section.Solver
             this.tsbStart.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbStart.Name = "tsbStart";
             this.tsbStart.Size = new System.Drawing.Size(23, 22);
-            this.tsbStart.Text = "toolStripButton2";
+            this.tsbStart.Text = "Start Batch";
+            this.tsbStart.ToolTipText = "Start all items in the match";
             this.tsbStart.Click += new System.EventHandler(this.tsbStart_Click);
             // 
             // tsbStop
@@ -130,7 +132,8 @@ namespace SokoSolve.UI.Section.Solver
             this.tsbStop.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbStop.Name = "tsbStop";
             this.tsbStop.Size = new System.Drawing.Size(23, 22);
-            this.tsbStop.Text = "toolStripButton3";
+            this.tsbStop.Text = "Stop";
+            this.tsbStop.ToolTipText = "Cancel all items in the batch, including the current solver";
             this.tsbStop.Click += new System.EventHandler(this.tsbStop_Click);
             // 
             // toolStripSeparator2
@@ -156,7 +159,8 @@ namespace SokoSolve.UI.Section.Solver
             this.tsbSaveXML.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSaveXML.Name = "tsbSaveXML";
             this.tsbSaveXML.Size = new System.Drawing.Size(23, 22);
-            this.tsbSaveXML.Text = "toolStripButton4";
+            this.tsbSaveXML.Text = "Save XML";
+            this.tsbSaveXML.ToolTipText = "Save result report as XML";
             // 
             // tsbSaveHTML
             // 
@@ -165,7 +169,8 @@ namespace SokoSolve.UI.Section.Solver
             this.tsbSaveHTML.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSaveHTML.Name = "tsbSaveHTML";
             this.tsbSaveHTML.Size = new System.Drawing.Size(23, 22);
-            this.tsbSaveHTML.Text = "tsbSolverReport";
+            this.tsbSaveHTML.Text = "Save HTML";
+            this.tsbSaveHTML.ToolTipText = "Save result report as XHTML";
             this.tsbSaveHTML.Click += new System.EventHandler(this.tsbSaveHTML_Click);
             // 
             // toolStripSeparator3
@@ -180,6 +185,7 @@ namespace SokoSolve.UI.Section.Solver
             this.tsbVisualisation.Name = "tsbVisualisation";
             this.tsbVisualisation.Size = new System.Drawing.Size(119, 22);
             this.tsbVisualisation.Text = "Show Visualisations";
+            this.tsbVisualisation.ToolTipText = "Show Visualisations popup form";
             this.tsbVisualisation.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // statusStrip1
@@ -238,16 +244,6 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageSolverQueue.Text = "Solver Queue";
             this.tabPageSolverQueue.UseVisualStyleBackColor = true;
             // 
-            // ucPuzzleList1
-            // 
-            this.ucPuzzleList1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucPuzzleList1.Library = null;
-            this.ucPuzzleList1.Location = new System.Drawing.Point(3, 3);
-            this.ucPuzzleList1.Name = "ucPuzzleList1";
-            this.ucPuzzleList1.Size = new System.Drawing.Size(564, 367);
-            this.ucPuzzleList1.TabIndex = 0;
-            this.ucPuzzleList1.UseCheckBoxes = true;
-            // 
             // tabPageResults
             // 
             this.tabPageResults.Controls.Add(this.listViewResults);
@@ -293,6 +289,7 @@ namespace SokoSolve.UI.Section.Solver
             this.listViewResults.UseCompatibleStateImageBehavior = false;
             this.listViewResults.View = System.Windows.Forms.View.Details;
             this.listViewResults.DoubleClick += new System.EventHandler(this.listViewResults_DoubleClick);
+            this.listViewResults.SelectedIndexChanged += new System.EventHandler(this.listViewResults_SelectedIndexChanged);
             // 
             // chPuzzle
             // 
@@ -396,17 +393,29 @@ namespace SokoSolve.UI.Section.Solver
             this.label1.TabIndex = 1;
             this.label1.Text = "Thread Priority:";
             // 
+            // timerUpdater
+            // 
+            this.timerUpdater.Interval = 10000;
+            this.timerUpdater.Tick += new System.EventHandler(this.timerUpdater_Tick);
+            // 
+            // ucPuzzleList1
+            // 
+            this.ucPuzzleList1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ucPuzzleList1.Library = null;
+            this.ucPuzzleList1.Location = new System.Drawing.Point(3, 3);
+            this.ucPuzzleList1.Name = "ucPuzzleList1";
+            this.ucPuzzleList1.ShowGroups = true;
+            this.ucPuzzleList1.ShowPreview = true;
+            this.ucPuzzleList1.Size = new System.Drawing.Size(564, 367);
+            this.ucPuzzleList1.TabIndex = 0;
+            this.ucPuzzleList1.UseCheckBoxes = true;
+            // 
             // exitConditions1
             // 
             this.exitConditions1.Location = new System.Drawing.Point(6, 6);
             this.exitConditions1.Name = "exitConditions1";
             this.exitConditions1.Size = new System.Drawing.Size(267, 346);
             this.exitConditions1.TabIndex = 0;
-            // 
-            // timerUpdater
-            // 
-            this.timerUpdater.Interval = 10000;
-            this.timerUpdater.Tick += new System.EventHandler(this.timerUpdater_Tick);
             // 
             // SolverSectionController
             // 

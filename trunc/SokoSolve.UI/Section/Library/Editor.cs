@@ -20,6 +20,8 @@ namespace SokoSolve.UI.Section.Library
         public Editor()
         {
             InitializeComponent();
+
+            tbSokobanChars.Text = SokobanMap.StandardEncodeChars;
         }
 
         private SokobanMap Map
@@ -84,7 +86,10 @@ namespace SokoSolve.UI.Section.Library
         void ReDraw()
         {
             // Refresh the strings
-            tbLines.Lines = Map.ToStringArray();
+            if (!textUpdate)
+            {
+                tbLines.Lines = Map.ToStringArray(tbSokobanChars.Text);
+            }
 
             // Validate
             StringCollection validResult;
@@ -225,6 +230,22 @@ namespace SokoSolve.UI.Section.Library
 
         }
 
+        private void tbLines_TextChanged(object sender, EventArgs e)
+        {
+            textUpdate = true;
+            try
+            {
+                Map.SetFromStrings(tbLines.Lines, tbSokobanChars.Text);
+                ReDraw();
+            }
+            catch(Exception ex)
+            {
+                lStatus.Text = ex.Message;
+            }
+            textUpdate = false;
+        }
+
+        bool textUpdate;
        
 	}
 }

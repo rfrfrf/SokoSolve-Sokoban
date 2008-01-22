@@ -132,20 +132,29 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
             // Check if this is a solution
             if (node.Data.CrateMap.Equals(staticAnalysis.InitialCrateMap))
             {
-                // Solution found
+                // Player position must be inside the initial move map
+                if (staticAnalysis.InitialMoveMap[node.Data.PlayerPosition])
+                {
+                    controller.DebugReport.Append("Found a solution using only the reverse solver.");
 
-                node.Data.Status = SolverNodeStates.Solution;
-                node.Data.IsStateEvaluated = true;
-                node.Data.IsChildrenEvaluated = true;
+                    // Solution found
+                    node.Data.Status = SolverNodeStates.Solution;
+                    node.Data.IsStateEvaluated = true;
+                    node.Data.IsChildrenEvaluated = true;
 
-                MarkEvalCompelete(node);
+                    MarkEvalCompelete(node);
 
-                // Itterate back to root, marking the path
-                List<TreeNode<SolverNode>> solutionPath = node.Data.TreeNode.GetPathToRoot();
-                solutionPath.ForEach(delegate(TreeNode<SolverNode> item) { item.Data.Status = SolverNodeStates.SolutionPath; });
-                node.Data.Status = SolverNodeStates.Solution;
+                    // Itterate back to root, marking the path
+                    List<TreeNode<SolverNode>> solutionPath = node.Data.TreeNode.GetPathToRoot();
+                    solutionPath.ForEach(delegate(TreeNode<SolverNode> item) { item.Data.Status = SolverNodeStates.SolutionPath; });
+                    node.Data.Status = SolverNodeStates.Solution;
 
-                return EvalStatus.CompleteSolution;
+                    return EvalStatus.CompleteSolution;
+                }
+                else
+                {
+                    controller.DebugReport.Append("Found a near solution using only the reverse solver, but the player position was incorrect");
+                }
             }
 
             // Build the players move map
@@ -238,11 +247,47 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
             List<TreeNode<SolverNode>> nodePath = reverse.TreeNode.GetPathToRoot();
 
 
-            Path result = new Path(nodePath[0].Data.ChainSolutionLink.PlayerPosition);
+            Path result = null;
 
-            VectorInt startPos = result.StartLocation;
+            int startIndex = 0;
+            VectorInt startPos;
             
-            for (int cc = 0; cc < nodePath.Count-1; cc++)
+            if (nodePath[0].Data.ChainSolutionLink == null)
+            {
+                // Start at the root
+                result = new Path(controller.Map.Player);
+
+                // Fill in the gap between the player position and the first move node
+                
+                VectorInt firstMove =  nodePath[0].Data.PlayerPosition;
+
+                Bitmap boundry = staticAnalysis.InitialCrateMap.BitwiseOR(staticAnalysis.BoundryMap);
+
+                // Find all positble moves for the player
+                FloodFillStrategy floodFill = new FloodFillStrategy(boundry, controller.Map.Player);
+                Evaluator<LocationNode> eval = new Evaluator<LocationNode>();
+                eval.Evaluate(floodFill);
+
+                List<LocationNode> shortestPath = floodFill.GetShortestPath(firstMove);
+                if (shortestPath == null) throw new InvalidOperationException("Map intial player position must be on the path.");
+
+                foreach (LocationNode locationNode in shortestPath)
+                {
+                    result.Add(locationNode.Location);
+                }
+                startPos = nodePath[0].Data.PlayerPositionBeforeMove;
+                startIndex = 1;
+            }
+            else
+            {
+                result = new Path(nodePath[0].Data.ChainSolutionLink.PlayerPosition);
+                startPos = result.StartLocation;
+            }
+                
+
+            
+            
+            for (int cc = startIndex; cc < nodePath.Count-1; cc++)
             {
                 SolverNode node = nodePath[cc].Data;
 
@@ -255,7 +300,7 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
 
                 VectorInt destPos = node.PlayerPosition;
                 List<LocationNode> shortestPath = floodFill.GetShortestPath(destPos);
-                if (shortestPath == null) throw new InvalidOperationException("New player position must be on the path. This should never happen");
+                if (shortestPath == null) throw new InvalidOperationException("New player position must be on the path. ");
 
                 foreach (LocationNode locationNode in shortestPath)
                 {

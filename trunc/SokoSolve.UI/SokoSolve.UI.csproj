@@ -146,6 +146,12 @@
       <DependentUpon>Editor.cs</DependentUpon>
     </Compile>
     <Compile Include="Section\ExplorerItem.cs" />
+    <Compile Include="Section\Library\FormAddFromLibrary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Section\Library\FormAddFromLibrary.Designer.cs">
+      <DependentUpon>FormAddFromLibrary.cs</DependentUpon>
+    </Compile>
     <Compile Include="Section\Library\GenericPayload.cs">
       <SubType>UserControl</SubType>
     </Compile>

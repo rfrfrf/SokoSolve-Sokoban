@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using SokoSolve.UI.Controls.Secondary;
@@ -89,6 +90,12 @@ namespace SokoSolve.UI.Controls.Web
         {
             get { return tsbPrint.Visible; }
             set { tsbPrint.Visible = value; }
+        }
+
+        public bool ShowCommandSave
+        {
+            get { return tsbSave.Visible; }
+            set { tsbSave.Visible = value; }
         }
 
 
@@ -179,6 +186,14 @@ namespace SokoSolve.UI.Controls.Web
         private void webBrowser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
         {
             tsLabelStatus.Text = e.Url.ToString();
+        }
+
+        private void tsbSave_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                File.WriteAllText(saveFileDialog.FileName, webBrowser.DocumentText);
+            }
         }
     }
 }

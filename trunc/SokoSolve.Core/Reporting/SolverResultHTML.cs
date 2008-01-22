@@ -10,7 +10,7 @@ namespace SokoSolve.Core.Reporting
 {
     public class SolverResultHTML: ReportXHTML
     {
-        public SolverResultHTML(List<SolverResult> results) : base("SokoSolve | Automated Solver Report")
+        public SolverResultHTML(List<SolverResult> results, string inlineCSS) : base("SokoSolve | Automated Solver Report", inlineCSS)
         {
             this.results = results;
         }

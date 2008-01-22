@@ -59,7 +59,7 @@ namespace SokoSolve.Core.Model.DataModel
                 SokobanLibraryPuzzleMap res = new SokobanLibraryPuzzleMap();
                 res.MapID = input.MapID;
                 res.Rating = input.Rating;
-                res.Row = input.Map.ToStringArray();
+                res.Row = input.Map.ToStringArray(null);
                 res.Solutions = input.Solutions.ConvertAll<SokobanLibraryPuzzleMapSolution>(Convert).ToArray();
                 res.MapDetails = input.Details;
                 return res;

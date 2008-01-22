@@ -47,7 +47,11 @@ namespace SokoSolve.Test.Core
 
                 SolverResult results = controller.Solve();
 
-
+                if (results.Exception != null)
+                {
+                    // Bubble up
+                    throw results.Exception;
+                }
 
 
 
@@ -166,6 +170,52 @@ namespace SokoSolve.Test.Core
 
             int solutions = Solve(puz.MasterMap);
             Assert.IsTrue(solutions == 0, "Must not find a solution");
+        }
+
+
+        [TestMethod]
+        public void TestAtomicSolution()
+        {
+            XmlProvider xml = new XmlProvider();
+            Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\SolverDevelopment.ssx");
+            Puzzle puz = lib.GetPuzzleByID("P20");
+
+            int solutions = Solve(puz.MasterMap);
+            Assert.IsTrue(solutions > 0, "Must find a solution");
+        }
+
+        [TestMethod]
+        public void TestMicrobanFailureOne()
+        {
+            XmlProvider xml = new XmlProvider();
+            Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\SolverDevelopment.ssx");
+            Puzzle puz = lib.GetPuzzleByID("P31");
+
+            int solutions = Solve(puz.MasterMap);
+            Assert.IsTrue(solutions > 0, "Must find a solution");
+        }
+
+        [TestMethod]
+        public void TestMicrobanFailureTwo()
+        {
+            XmlProvider xml = new XmlProvider();
+            Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\SolverDevelopment.ssx");
+            Puzzle puz = lib.GetPuzzleByID("P33");
+
+            int solutions = Solve(puz.MasterMap);
+            Assert.IsTrue(solutions > 0, "Must find a solution");
+        }
+
+
+        [TestMethod]
+        public void TestMicrobanFailureReverseSolution()
+        {
+            XmlProvider xml = new XmlProvider();
+            Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\SolverDevelopment.ssx");
+            Puzzle puz = lib.GetPuzzleByID("P35");
+
+            int solutions = Solve(puz.MasterMap);
+            Assert.IsTrue(solutions > 0, "Must find a solution");
         }
     }
 

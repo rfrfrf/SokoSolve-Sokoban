@@ -40,7 +40,7 @@ namespace SokoSolve.Test.Core.Reporting
             SolverController two = new SolverController(lib.Puzzles[1].MasterMap);
             results.Add(two.Solve());
 
-            SolverResultHTML rpt = new SolverResultHTML(results);
+            SolverResultHTML rpt = new SolverResultHTML(results, null);
             rpt.BuildReport();
             rpt.Save(@"C:\junk\solver.html");
         }

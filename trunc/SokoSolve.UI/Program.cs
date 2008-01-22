@@ -21,6 +21,7 @@ namespace SokoSolve.UI
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException, true);
 			Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
 			try
 			{
@@ -45,6 +46,14 @@ Please make sure you have the latest version, you can do this by clicking Help -
 				Application_ThreadException(null, new ThreadExceptionEventArgs(ex));
 			}
 		}
+
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            FormError error = new FormError();
+            error.Exception = e.ExceptionObject as Exception;
+            error.Text = "Unexpected exception";
+            error.ShowDialog();
+        }
 
 
         /// <summary>

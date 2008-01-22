@@ -23,12 +23,12 @@ namespace SokoSolve.Core.Model
         /// <summary>
         /// Void, Wall, Floor, Crate, Goal, CrateAndGoal, Player, PlayerAndGoal
         /// </summary>
-		public readonly string StandardEncodeChars = "~#.XO$P*";
+		public  static readonly string StandardEncodeChars = "~#.XO$P*";
 
         /// <summary>
         /// Void, Wall, Floor, Crate, Goal, CrateAndGoal, Player, PlayerAndGoal
         /// </summary>
-		public readonly string StandardEncodeCharsV1 = "~#.xoXpP";
+		public static readonly string StandardEncodeCharsV1 = "~#.xoXpP";
 
         /// <summary>
         /// Map array
@@ -607,25 +607,38 @@ namespace SokoSolve.Core.Model
         /// <returns></returns>
 		public override string ToString()
 		{
-			StringBuilder sb = new StringBuilder();
-			for(int cc=0; cc<Size.Y; cc++)
-			{
-				sb.Append(EncodeRow(cc, this.StandardEncodeChars));
-				sb.Append(Environment.NewLine);
-			}
-			return sb.ToString();
+            return ToString(null);
 		}
 
         /// <summary>
         /// Show the map as a string seperated with line breaks
         /// </summary>
         /// <returns></returns>
-        public  string[] ToStringArray()
+        public string ToString(string SokobanChars)
         {
+            string schars = SokobanChars;
+            if (string.IsNullOrEmpty(schars)) schars = StandardEncodeChars;
+            StringBuilder sb = new StringBuilder();
+            for (int cc = 0; cc < Size.Y; cc++)
+            {
+                sb.Append(EncodeRow(cc, schars));
+                sb.Append(Environment.NewLine);
+            }
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Show the map as a string seperated with line breaks
+        /// </summary>
+        /// <returns></returns>
+        public  string[] ToStringArray(string SokobanChars)
+        {
+            string schars = SokobanChars;
+            if (string.IsNullOrEmpty(schars)) schars = StandardEncodeChars;
             List<string> res = new List<string>();
             for (int cc = 0; cc < Size.Y; cc++)
             {
-                res.Add(EncodeRow(cc, this.StandardEncodeChars));
+                res.Add(EncodeRow(cc, schars));
             }
             return res.ToArray();
         }

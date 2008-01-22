@@ -247,6 +247,14 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
                 <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
               </SolutionDescription>
             </Solution>
+            <Solution StartX="4" StartY="4">
+              <Steps>lluRRRRRllldlddddrrruurruuruulDDulldLLurrrrdrddlllddllluuuUludrruulDDDDDuuuurrrrrdrddllldddlllluRRluurUUluRRRRldllddldddrrruuurrruulDrdLLruuruulDDDrdLuuulldllddlddrRdrU</Steps>
+              <SolutionDescription License="Creative Commons" Date="2008-01-22T08:18:22.7365315+02:00">
+                <Name>'Superb Gem' Solution</Name>
+                <Comments>Moves 168/175, Pushes 32/39, Undos 7, Restarts 0, Duration 00:00:39.2465115</Comments>
+                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+              </SolutionDescription>
+            </Solution>
           </Solutions>
         </Map>
       </Maps>
@@ -332,6 +340,14 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
 &lt;tr&gt;&lt;th&gt;Machine&lt;/th&gt;&lt;td&gt;Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores. . Running Microsoft Windows NT 6.0.6000.0.&lt;/td&gt;&lt;/tr
 &lt;tr&gt;&lt;th&gt;SokoSolve&lt;/th&gt;&lt;td&gt;1.2.18-alpha&lt;/td&gt;&lt;/tr
 &lt;/table&gt;</Description>
+                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+              </SolutionDescription>
+            </Solution>
+            <Solution StartX="4" StartY="4">
+              <Steps>ruruulDlDlDlDlddrruLuururRlrdulldlddrUrUruurrdLullDlDlddrUrUrUdldlluRuRuRurrddlUdLdLruulDlDDrUluRdrUluRddldllddrUluurrdLulD</Steps>
+              <SolutionDescription License="Creative Commons" Date="2008-01-22T08:21:29.950135+02:00">
+                <Name>'Slimy Grave' Solution</Name>
+                <Comments>Moves 123/189, Pushes 30/52, Undos 66, Restarts 0, Duration 00:02:49.9881435</Comments>
                 <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
               </SolutionDescription>
             </Solution>
@@ -657,7 +673,7 @@ Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="135.1" PuzzleID="P17" CategoryREF="C4" Order="11">
+    <Puzzle Rating="135.1" PuzzleID="P17" CategoryREF="C3" Order="11">
       <PuzzleDescription>
         <Name>Cold Nemosis</Name>
         <Description />
@@ -732,7 +748,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="130.4" PuzzleID="P21" CategoryREF="C4" Order="13">
+    <Puzzle Rating="130.4" PuzzleID="P21" CategoryREF="C3" Order="13">
       <PuzzleDescription>
         <Name>Slimy Gem</Name>
         <Description />
@@ -880,7 +896,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="107.7" PuzzleID="P29" CategoryREF="C4" Order="17">
+    <Puzzle Rating="107.7" PuzzleID="P29" CategoryREF="C3" Order="17">
       <PuzzleDescription>
         <Name>Tepid Estate</Name>
         <Description />
@@ -1416,7 +1432,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="172.8" PuzzleID="P45" CategoryREF="C5" Order="25">
+    <Puzzle Rating="172.8" PuzzleID="P45" CategoryREF="C4" Order="25">
       <PuzzleDescription>
         <Name>Neville's Toad</Name>
         <Description />
@@ -1508,7 +1524,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="57.1" PuzzleID="P53" CategoryREF="C5" Order="29">
+    <Puzzle Rating="57.1" PuzzleID="P53" CategoryREF="C4" Order="29">
       <PuzzleDescription>
         <Name>Big Cottage</Name>
         <Description />
@@ -1886,7 +1902,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="96.4" PuzzleID="P81" CategoryREF="C5" Order="43">
+    <Puzzle Rating="96.4" PuzzleID="P81" CategoryREF="C4" Order="43">
       <PuzzleDescription>
         <Name>Ghastly Town</Name>
         <Description />
@@ -2108,7 +2124,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="44.2" PuzzleID="P97" CategoryREF="C5" Order="51">
+    <Puzzle Rating="44.2" PuzzleID="P97" CategoryREF="C4" Order="51">
       <PuzzleDescription>
         <Name>'Parallel Logic'</Name>
         <Description />

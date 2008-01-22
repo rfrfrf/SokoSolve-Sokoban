@@ -88,7 +88,7 @@ namespace SokoSolve.Core.Analysis.Solver
             // Derrived meta-state
             status = rhs.status;
             if (rhs.deadMap!= null) deadMap = new SolverBitmap(rhs.deadMap);
-            if (rhs.chainSolutionLink != null) chainSolutionLink = new SolverNode(rhs.chainSolutionLink);
+            // This causes a cycle: if (rhs.chainSolutionLink != null) chainSolutionLink = new SolverNode(rhs.chainSolutionLink);
             weighting = rhs.weighting;
             backRef = rhs.backRef;
 

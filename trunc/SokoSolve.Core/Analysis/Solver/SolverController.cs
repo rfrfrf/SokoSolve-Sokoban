@@ -259,22 +259,46 @@ namespace SokoSolve.Core.Analysis.Solver
             {
                 if (node.Data.Status == SolverNodeStates.Solution)
                 {
-                    Solution simpleForward = new Solution(puzzleMap, Map.Player);
-                    simpleForward.Set(strategy.BuildPath(node.Data));
+                    if (node.Data.IsForward)
+                    {
+                        Solution simpleForward = new Solution(puzzleMap, Map.Player);
+                        simpleForward.Set(strategy.BuildPath(node.Data));
 
-                    simpleForward.Details = new GenericDescription();
-                    simpleForward.Details.Name = "SokoSolve Solution";
-                    simpleForward.Details.Author = new GenericDescriptionAuthor();
-                    simpleForward.Details.Date = DateTime.Now;
-                    simpleForward.Details.DateSpecified = true;
+                        simpleForward.Details = new GenericDescription();
+                        simpleForward.Details.Name = "SokoSolve Solution";
+                        simpleForward.Details.Author = new GenericDescriptionAuthor();
+                        simpleForward.Details.Date = DateTime.Now;
+                        simpleForward.Details.DateSpecified = true;
 
-                    // Build a description
-                    SolverLabelList labels = Stats.GetDisplayData();
-                    labels.Add("Machine", string.Format("{0} Running {1}.", DebugHelper.GetCPUDescription(), Environment.OSVersion));
+                        // Build a description
+                        SolverLabelList labels = Stats.GetDisplayData();
+                        labels.Add("Machine", string.Format("{0} Running {1}.", DebugHelper.GetCPUDescription(), Environment.OSVersion));
 
-                    simpleForward.Details.Description = labels.ToString();
+                        simpleForward.Details.Description = labels.ToString();
 
-                    results.Add(simpleForward);
+                        results.Add(simpleForward);    
+                    }
+                    else
+                    {
+
+                        Solution simpleForward = new Solution(puzzleMap, Map.Player);
+                        simpleForward.Set(reverseStrategy.BuildPath(node.Data));
+
+                        simpleForward.Details = new GenericDescription();
+                        simpleForward.Details.Name = "SokoSolve Solution";
+                        simpleForward.Details.Author = new GenericDescriptionAuthor();
+                        simpleForward.Details.Date = DateTime.Now;
+                        simpleForward.Details.DateSpecified = true;
+
+                        // Build a description
+                        SolverLabelList labels = Stats.GetDisplayData();
+                        labels.Add("Machine", string.Format("{0} Running {1}.", DebugHelper.GetCPUDescription(), Environment.OSVersion));
+
+                        simpleForward.Details.Description = labels.ToString();
+
+                        results.Add(simpleForward);    
+                    }
+                    
                 }
 
                 if (node.Data.Status == SolverNodeStates.SolutionChain)
