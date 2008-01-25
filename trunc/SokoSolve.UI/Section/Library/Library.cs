@@ -41,23 +41,25 @@ namespace SokoSolve.UI.Controls.Primary
 
         public void InitLibrary(SokoSolve.Core.Model.Library current)
 	    {
-            CodeTimer timer = new CodeTimer();
-            timer.Start();
-	        controller.Current = current;
-            explorer.SyncDomain(new ItemLibrary(controller.Current));
-            explorer.SyncUI();
-
-            timer.Stop();
-            Debug.WriteLine("InitLibrary: "+timer.Duration(1).ToString());
+            using (CodeTimer timer = new CodeTimer("Library.InitLibray(...)"))
+            {
+	            
+                explorer.Clear();
+                controller.Current = current;
+                explorer.SyncDomain(new ItemLibrary(controller.Current));
+                explorer.SyncUI();
+                explorer.TreeView.ExpandAll();
+            }
 	    }
 
         public override void Refresh()
         {
-            base.Refresh();
+            
             if (explorer != null)
             {
                 explorer.Refresh();
             }
+            base.Refresh();
         }
 
         private void treeViewLibrary_DragDrop(object sender, DragEventArgs e)

@@ -13,7 +13,7 @@ namespace SokoSolve.Core.Analysis.Solver
         public CodeTimerStatistic(Statistic stat)
         {
             this.stat = stat;
-            timer = new CodeTimer();
+            timer = new CodeTimer(stat.Name);
             timer.Start();
         }
 

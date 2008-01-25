@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -9,7 +10,7 @@ namespace SokoSolve.Core.Analysis.Solver
     /// <summary>
     /// Measures time intervals for perfmon
     /// </summary>
-    public class CodeTimer
+    public class CodeTimer : IDisposable
     {
         [DllImport("KERNEL32")]
         private static extern bool QueryPerformanceCounter(
@@ -22,16 +23,24 @@ namespace SokoSolve.Core.Analysis.Solver
         private long stop = 0;
         private long frequency;
 
+        string name;
+
+
+
         /// <summary>
         /// Default constructor passing a global variable to hold a value that will be used to calculate a duration in nanoseconds. 
         /// </summary>
-        public CodeTimer()
+        public CodeTimer(string timerName)
         {
+            this.name = timerName;
             if (QueryPerformanceFrequency(out frequency) == false)
             {
                 // Frequency not supported
                 throw new Win32Exception();
             }
+
+            Debug.WriteLine(string.Format("Starting {0}", timerName));
+            Start();
         }
 
         /// <summary>
@@ -83,5 +92,19 @@ namespace SokoSolve.Core.Analysis.Solver
             if (stop == 0) Stop();
             return (double)iterations / (((double)(TicksOperationDuration()) / (double)frequency));
         }
+
+        #region IDisposable Members
+
+        ///<summary>
+        ///Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        ///</summary>
+        ///<filterpriority>2</filterpriority>
+        public virtual void Dispose()
+        {
+            if (stop == 0) Stop();
+            Debug.WriteLine(string.Format("Complete {0} in {1:0.000000}", name, this.Duration(1)));
+        }
+
+        #endregion
     }
 }

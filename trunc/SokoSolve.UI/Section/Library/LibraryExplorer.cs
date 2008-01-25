@@ -35,11 +35,18 @@ namespace SokoSolve.UI.Section.Library
 		{
 			SyncDomain(new ItemLibrary(controller.Current));
 			SyncUI();
-
-			TreeView.ExpandAll();
 		}
 
-	    
+
+        /// <summary>
+        /// Clear all nodes and selection
+        /// </summary>
+	    public void Clear()
+	    {
+            base.TreeView.Nodes.Clear();
+            base.TreeView.Nodes.Add("Root");
+            controller.UpdateSelection(new List<ExplorerItem>());
+	    }
 	}
 
 	

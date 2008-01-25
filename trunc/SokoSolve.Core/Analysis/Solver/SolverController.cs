@@ -149,7 +149,7 @@ namespace SokoSolve.Core.Analysis.Solver
             SolverResult solverResult = new SolverResult();
             solverResult.DebugReport = debugReport;
 
-            CodeTimer solveTime = new CodeTimer();
+            CodeTimer solveTime = new CodeTimer("Solver Timer");
             solveTime.Start();
 
             try

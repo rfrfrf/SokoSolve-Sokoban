@@ -16,7 +16,7 @@ namespace SokoSolve.Test.Core
         [TestMethod]
         public void TestReverseStrategyCoreSimple()
         {
-            CodeTimer timer = new CodeTimer();
+            CodeTimer timer = new CodeTimer("");
             timer.Start();
 
             try

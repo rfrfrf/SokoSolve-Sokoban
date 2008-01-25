@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using SokoSolve.Common.Structures;
+using SokoSolve.Core.Analysis.Solver;
 using SokoSolve.UI.Section.Library;
 
 namespace SokoSolve.UI.Section
@@ -149,6 +150,41 @@ namespace SokoSolve.UI.Section
         }
 
 
+        ///<summary>
+        ///Determines whether the specified <see cref="T:System.Object"></see> is equal to the current <see cref="T:System.Object"></see>.
+        ///</summary>
+        ///
+        ///<returns>
+        ///true if the specified <see cref="T:System.Object"></see> is equal to the current <see cref="T:System.Object"></see>; otherwise, false.
+        ///</returns>
+        ///
+        ///<param name="obj">The <see cref="T:System.Object"></see> to compare with the current <see cref="T:System.Object"></see>. </param><filterpriority>2</filterpriority>
+        public override bool Equals(object obj)
+        {
+            ExplorerItem rhs = obj as ExplorerItem;
+            if (rhs != null)
+            {
+                return this.DataUnTyped == rhs.DataUnTyped;    
+            }
+
+            return base.Equals(obj);
+        }
+
+        ///<summary>
+        ///Serves as a hash function for a particular type. <see cref="M:System.Object.GetHashCode"></see> is suitable for use in hashing algorithms and data structures like a hash table.
+        ///</summary>
+        ///
+        ///<returns>
+        ///A hash code for the current <see cref="T:System.Object"></see>.
+        ///</returns>
+        ///<filterpriority>2</filterpriority>
+        public override int GetHashCode()
+        {
+            if (DataUnTyped == null) return base.GetHashCode();
+
+            return DataUnTyped.GetHashCode();
+        }
+
         /// <summary>
         /// Swap between a readonly and editable form
         /// </summary>
@@ -200,25 +236,7 @@ namespace SokoSolve.UI.Section
             set { treeNode = value; }
         }
 
-        /// <summary>
-        /// Does a data item exist in the UI already?
-        /// </summary>
-        /// <param name="currentData">untyped data object</param>
-        /// <returns>true if found</returns>
-        protected bool ExistsInUI(object currentData)
-        {
-            if (TreeNode.HasChildren)
-            {
-                foreach (TreeNode<ExplorerItem> childUI in TreeNode.Children)
-                {
-                    if (object.Equals(childUI.Data.DataUnTyped, currentData))
-                    {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
+     
 
         /// <summary>
         /// <see cref="SyncUICollectionWithData"/> Simple Factory Method
@@ -239,8 +257,7 @@ namespace SokoSolve.UI.Section
         {
             if (Collection == null)
             {
-                // Remove all children and exit
-                treeNode.Clear();
+                // Don't clear as there may be multiple collections of differrent types on this node
                 return;
             }
 
@@ -284,15 +301,38 @@ namespace SokoSolve.UI.Section
             // Add new
             if (Collection != null)
             {
-                foreach (T dataItem in Collection)
+                using (new CodeTimer("ExplorerItem.SyncUICollectionWithData.AddCollection"))
                 {
-                    if (!ExistsInUI(dataItem))
+                    foreach (T dataItem in Collection)
                     {
-                        // Does not exist, so add
-                        TreeNode.Add(FactoryMethod(dataItem));
+                        if (!ExistsInUIModel(dataItem))
+                        {
+                            // Does not exist, so add
+                            TreeNode.Add(FactoryMethod(dataItem));
+                        }
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Does a data item exist in the UI already?
+        /// </summary>
+        /// <param name="currentData">untyped data object</param>
+        /// <returns>true if found</returns>
+        protected bool ExistsInUIModel(object currentData)
+        {
+            if (TreeNode.HasChildren)
+            {
+                foreach (TreeNode<ExplorerItem> childUI in TreeNode.Children)
+                {
+                    if (object.ReferenceEquals(childUI.Data.DataUnTyped, currentData))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
      

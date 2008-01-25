@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using SokoSolve.Common.Structures;
+using SokoSolve.Core.Analysis.Solver;
 using SokoSolve.UI.Section.Library;
 
 namespace SokoSolve.UI.Section
@@ -75,9 +76,12 @@ namespace SokoSolve.UI.Section
         /// </summary>
         public void Refresh()
         {
-            SyncDomain(Root.Data);
-            SyncUI();
-            UpdateSelection();
+            using (CodeTimer timer = new CodeTimer("Explorer.Refresh()"))
+            {
+                SyncDomain(Root.Data);
+                SyncUI();
+                UpdateSelection();
+            }
         }
 
         /// <summary>
@@ -86,9 +90,12 @@ namespace SokoSolve.UI.Section
         /// <param name="root"></param>
         public void SyncDomain(ExplorerItem root)
         {
-            // Set new data and bind
-            Root.Data = root;
-            Root.Data.SyncDomain();
+            using (CodeTimer timer = new CodeTimer("Explorer.SyncDomain(root)"))
+            {
+                // Set new data and bind
+                Root.Data = root;
+                Root.Data.SyncDomain();
+            }
         }
 
         /// <summary>
@@ -96,8 +103,13 @@ namespace SokoSolve.UI.Section
         /// </summary>
         public void SyncUI()
         {
-            // Recursive sync all (including root)
-            Root.ForEach(delegate(TreeNode<ExplorerItem> item) { item.Data.SyncUI(); }, int.MaxValue);
+            treeView.BeginUpdate();
+            using (CodeTimer timer = new CodeTimer("Explorer.SyncUI()"))
+            {
+                // Recursive sync all (including root)
+                Root.ForEach(delegate(TreeNode<ExplorerItem> item) { item.Data.SyncUI(); }, int.MaxValue);
+            }
+            treeView.EndUpdate();
         }
 
         /// <summary>

@@ -90,9 +90,9 @@ namespace SokoSolve.UI.Section.Library.Items
         }
 
        
-
+        // It these are not static, the tree load times will be very bad.
 	    private static HtmlView browser = new HtmlView();
-        private Editor puzzleEditor = new Editor();
+        private static Editor puzzleEditor = new Editor();
 
 	    
 	}

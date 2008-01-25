@@ -13,8 +13,8 @@ namespace SokoSolve.UI.Section.Library.Items
 	class ItemCategory : ExplorerItemBase<Category>
 	{
         private static GenericPayload payload = new GenericPayload();
-        private ucGenericDescription desc = new ucGenericDescription();
-	    private HtmlView html = new HtmlView();
+        private static ucGenericDescription desc = new ucGenericDescription();
+	    private static HtmlView html = new HtmlView();
 
 		public ItemCategory(Category data) : base(data)
 		{
@@ -43,6 +43,7 @@ namespace SokoSolve.UI.Section.Library.Items
             LibraryController libCont = Explorer.Controller as LibraryController;
             SyncUICollectionWithData<Puzzle>(DomainData.GetPuzzles(libCont.Current), delegate(Puzzle item) { return new ItemPuzzle(item); });
 
+            // Add sub-categories
             base.SyncDomain();
 		}
 

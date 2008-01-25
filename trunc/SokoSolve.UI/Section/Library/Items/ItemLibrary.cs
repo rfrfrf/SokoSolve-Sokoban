@@ -95,7 +95,7 @@ namespace SokoSolve.UI.Section.Library.Items
             }
         }
 
-        HtmlView html = new HtmlView();
-        ucGenericDescription desc = new ucGenericDescription();
+        static HtmlView html = new HtmlView();
+        static ucGenericDescription desc = new ucGenericDescription();
 	}
 }

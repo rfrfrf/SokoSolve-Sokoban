@@ -33,29 +33,31 @@ namespace SokoSolve.Test.Core
 
         private SolverResult Solve(PuzzleMap puzzle)
         {
-            CodeTimer timer = new CodeTimer();
-            timer.Start();
-
-            SolverController controller = new SolverController(puzzle);
-            try
+            using (CodeTimer timer = new CodeTimer("TestSolver.Solve(...)"))
             {
-                System.Console.WriteLine(puzzle.Map.ToString());
 
-                SolverResult results = controller.Solve();
 
-                if (results.Exception != null)
+                SolverController controller = new SolverController(puzzle);
+                try
                 {
-                    // Bubble up
-                    throw results.Exception;
+                    System.Console.WriteLine(puzzle.Map.ToString());
+
+                    SolverResult results = controller.Solve();
+
+                    if (results.Exception != null)
+                    {
+                        // Bubble up
+                        throw results.Exception;
+                    }
+                    return results;
                 }
-                return results;
-            }
-            finally
-            {
-                timer.Stop();
-                Console.WriteLine(controller.DebugReport.ToString(new DebugReportFormatter()));
-                System.Console.WriteLine("Total Time: " + timer.Duration(1));
-                System.Console.WriteLine("---");
+                finally
+                {
+                    timer.Stop();
+                    Console.WriteLine(controller.DebugReport.ToString(new DebugReportFormatter()));
+                    System.Console.WriteLine("Total Time: " + timer.Duration(1));
+                    System.Console.WriteLine("---");
+                }
             }
         }
 
