@@ -409,6 +409,7 @@
     <Content Include="Content\Graphics\Icons\Down.png" />
     <Content Include="Content\Graphics\Icons\Edit.png" />
     <Content Include="Content\Graphics\Icons\Exit.png" />
+    <Content Include="Content\Graphics\Icons\Failed.bmp" />
     <Content Include="Content\Graphics\Icons\folderopen.ico" />
     <None Include="Content\Graphics\Icons\Graph.png" />
     <Content Include="Content\Graphics\Icons\Help.png" />
@@ -426,14 +427,33 @@
     <None Include="Content\html\ReadMe.rtf" />
     <None Include="Content\Graphics\Icons\Stop.png" />
     <None Include="Content\Graphics\Icons\Refresh.png" />
+    <None Include="Content\Libraries\Mas Microban.ssx" />
+    <None Include="Content\Libraries\SasquatchIII.ssx" />
+    <None Include="Content\Libraries\SasquatchIV.ssx" />
+    <None Include="Content\Libraries\SasquatchV.ssx" />
+    <None Include="Content\Libraries\SasquatchVI.ssx" />
+    <None Include="Content\Libraries\SasquatchVII.ssx" />
     <None Include="Content\Libraries\Solver.ssx" />
     <None Include="Content\Graphics\Icons\Report.png" />
     <None Include="Content\Graphics\Icons\Rotate.png" />
+    <None Include="Content\Libraries\SolverDevelopment.ssx" />
+    <None Include="Content\Libraries\Thinking Rabbit Inc, Origonal.ssx" />
+    <Content Include="Content\Graphics\Icons\Sucess.bmp" />
+    <Content Include="Content\Graphics\ReportImages\C.png" />
+    <Content Include="Content\Graphics\ReportImages\F.png" />
+    <Content Include="Content\Graphics\ReportImages\G.png" />
+    <Content Include="Content\Graphics\ReportImages\GC.png" />
+    <Content Include="Content\Graphics\ReportImages\GP.png" />
+    <Content Include="Content\Graphics\ReportImages\P.png" />
+    <Content Include="Content\Graphics\ReportImages\V.png" />
+    <Content Include="Content\Graphics\ReportImages\W.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton1.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton2.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton3.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton4.png" />
     <Content Include="Content\Graphics\Tiles\Clean\WayPointButton5.png" />
+    <Content Include="Content\Graphics\Tiles\Static\SimplePlayerGoal16x16.png" />
+    <Content Include="Content\html\ReportStyle.css" />
     <Content Include="Content\html\Solver.html" />
     <Content Include="Content\Libraries\Default.ssx" />
     <Content Include="Content\Libraries\Microban.ssx" />
@@ -505,9 +525,6 @@
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\Analysis\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

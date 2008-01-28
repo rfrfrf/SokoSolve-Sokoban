@@ -15,7 +15,7 @@ namespace SokoSolve.UI
 		/// The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		static void Main()
+		static void Main(string[] parms)
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
@@ -26,7 +26,12 @@ namespace SokoSolve.UI
 			try
 			{
 			    ProfileController.Init(Application.UserAppDataPath);
-				Application.Run(new FormMain());
+			    FormMain formMain = new FormMain();
+                if (parms != null && parms.Length > 0)
+                {
+                    formMain.LoadLibrary(parms[0]);
+                }
+				Application.Run(formMain);
                 ProfileController.SaveOnClose(Application.UserAppDataPath);
 
 			}

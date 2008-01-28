@@ -185,16 +185,16 @@ namespace SokoSolve.Core.Reporting
         {
             switch(states)
             {
-                case (CellStates.Floor): return "images\\F.png";
-                case (CellStates.Wall): return "images\\W.png";
-                case (CellStates.FloorCrate): return "images\\C.png";
-                case (CellStates.FloorGoal): return "images\\G.png";
-                case (CellStates.FloorPlayer): return "images\\P.png";
-                case (CellStates.FloorGoalPlayer): return "images\\GP.png";
-                case (CellStates.FloorGoalCrate): return "images\\GC.png";
+                case (CellStates.Floor): return "images/F.png";
+                case (CellStates.Wall): return "images/W.png";
+                case (CellStates.FloorCrate): return "images/C.png";
+                case (CellStates.FloorGoal): return "images/G.png";
+                case (CellStates.FloorPlayer): return "images/P.png";
+                case (CellStates.FloorGoalPlayer): return "images/GP.png";
+                case (CellStates.FloorGoalCrate): return "images/GC.png";
 
                 default:
-                    return "images\\FV.png";
+                    return "images/FV.png";
             }
         }
 

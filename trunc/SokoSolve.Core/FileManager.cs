@@ -10,11 +10,11 @@ namespace SokoSolve.Core
     {
 		static FileManager()
 		{
-			baseloc = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "Content";
+            baseloc = CleanPath(AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "Content");
 			if (!Directory.Exists(baseloc))
 			{
 				// Assume we are in debug mode
-				baseloc = AppDomain.CurrentDomain.SetupInformation.ApplicationBase.Replace("\\bin\\Debug", "") + "Content";
+                baseloc = CleanPath(AppDomain.CurrentDomain.SetupInformation.ApplicationBase.Replace("\\bin\\Debug", "") + "Content");
 			}
 
             if (!Directory.Exists(baseloc))
@@ -29,10 +29,17 @@ namespace SokoSolve.Core
 			}
 		}
 
+        private static string CleanPath(string path)
+        {
+            string ret = path.Replace('/', '\\');
+            ret = ret.Replace("\\\\", "\\");
+            return ret;
+        }
+
         public static string getContent(string relPath)
         {
-            if (relPath.StartsWith("$")) return string.Format("{0}\\{1}", baseloc, relPath.Remove(0,1));
-            return relPath;
+            if (relPath.StartsWith("$")) return CleanPath(string.Format("{0}\\{1}", baseloc, relPath.Remove(0, 1)));
+            return CleanPath(relPath);
         }
 
         public static  string getContent(string relPath, string afile)
@@ -40,9 +47,7 @@ namespace SokoSolve.Core
             return getContent(string.Format("{0}\\{1}", relPath, afile));
         }
 
-       
-
-
+      
         // This has got to go
     	public static string baseloc;
     }

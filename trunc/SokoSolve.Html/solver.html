@@ -16,6 +16,21 @@
 	    <p>The solver was removed from the 1.2.* release series for a complete rewrite, it has been re-introduced 
 	    in 1.3.*.</p>
 	    
+	    <h2>HOWTO: Solver usage</h2>
+	    <p>The basic steps for using the solver are as follows:</p>
+	    <ol>
+	        <li>In the Library block, open a puzzle library</li>
+	        <li>Select a puzzle, then select Puzzle &gt; Solve </li>
+	        <li>This open the solver control dialog.</li>
+	        <li>From the first tab select thepuzzle you want to run in a batch</li>
+	        <li>From the settings tab, choose the solver configuration. For most users the default settings are ok. [More detail needed on config here]</li>
+	        <li>Click the 'Play' button to start the solver</li>
+	        <li>Double-click on the current solver puzzle to get a calculation report</li>
+	        <li>OR, select the current solver puzzle and click on the visualization button to bring up the visualizationsdialog. [More detail on the visualisation needed]</li>
+	        <li>Lastly, once the solver has completed the batch run, selection the 'HTML Report' option to save a solver report. These reports can be submitted to the 
+	        SokoSolve project site.</li>
+	    </ol>
+	    
 	    <h2>Technical Architecture</h2>
 	    <p>Each node in the move tree is unique CrateMap (crate positions) and MoveMap (all possible player moves, without a push)</p>
 	    <ul>
@@ -51,7 +66,9 @@
 	                <ol>
 	                    <li><a href="solver/baseline1.html">Baseline I</a> (v1.2.24)</li>
 	                    <li><a href="solver/Baseline2-GL-Laptop-First10.html">Baseline II</a> (v1.3.33)</li>
-	                    <li><a href="solver/baseline2.1.html">Baseline II rev 1 (v1.3.33 rev 1)</a> (v1.3.33)</li>
+	                    <li><a href="solver/baseline2.1.html">Baseline II rev 1</a> (v1.3.33)</li>
+	                    <li><a href="solver/baseline2.2.html">Baseline II rev 2</a> (v1.3.39-beta )</li>
+	                    <li><a href="solver/baseline2.3.html">Baseline II rev 3</a> (v1.3.39-beta )</li>
 	                </ol>
 	        </li>
 	        <li>Ubiquitous use of the strategy and factory pattern have made innovation very easy</li>

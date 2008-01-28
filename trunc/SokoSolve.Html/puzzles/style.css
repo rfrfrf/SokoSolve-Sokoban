@@ -31,32 +31,38 @@ h3
 	margin:0 0 0 0;
 }
 
-h4
-{
-	border-collapse: collapse;
-	padding:5 0 0 0;
-	margin:0 0 0 0;
-}
-
-h5 
-{
-	border-collapse: collapse;
-	padding:5 0 0 0;
-	margin:0 0 0 0;
-}
-
 p
 {
 	border-collapse: collapse;
 	padding:0 0 0 0;
 }
 
+img 
+{
+	border: none 0px;
+}
 
 
 
 a { color: #003366; }
 
+.tablepuzzle
+{
+	border-collapse: collapse;
+	border-style: none;
+	background-color: White;
+}
 
+.tablepuzzle tr
+{
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+.tablepuzzle td
+{
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
 
 .tableformat 
 {

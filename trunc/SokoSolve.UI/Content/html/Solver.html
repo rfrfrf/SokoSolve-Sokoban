@@ -7,10 +7,26 @@
 	<body>
 	    <h1>SokoSolve | Solver</h1>
 	    <h2>Introduction</h2>
-	    <p>This is an automated solver for sokoban puzzles. In essence, the solver tries all possible moves until it stumbles apon the correct sequence for a puzzle solution.</p>
+	    <p>This is an automated solver for sokoban puzzles. In essence, the solver tries all possible moves until it stumbles apon 
+	    the correct sequence for a puzzle solution.</p>
 	    
-	    <p>It is the general nature of automated solvers that small (few crates, constrained space) can be solved very quickly (sub second), while larger maps
-	    will take a very long time indeed.</p>
+	    <p>It is the general nature of automated solvers that small (few crates, constrained space) can be solved very 
+	    quickly (sub-second), while larger maps will take a very long time indeed.</p>
+	    
+	  <h2>HOWTO: Solver usage</h2>
+	    <p>The basic steps for using the solver are as follows:</p>
+	    <ol>
+	        <li>In the Library block, open a puzzle library</li>
+	        <li>Select a puzzle, then select Puzzle &gt; Solve </li>
+	        <li>This open the solver control dialog.</li>
+	        <li>From the first tab select thepuzzle you want to run in a batch</li>
+	        <li>From the settings tab, choose the solver configuration. For most users the default settings are ok. [More detail needed on config here]</li>
+	        <li>Click the 'Play' button to start the solver</li>
+	        <li>Double-click on the current solver puzzle to get a calculation report</li>
+	        <li>OR, select the current solver puzzle and click on the visualization button to bring up the visualizationsdialog. [More detail on the visualisation needed]</li>
+	        <li>Lastly, once the solver has completed the batch run, selection the 'HTML Report' option to save a solver report. These reports can be submitted to the 
+	        SokoSolve project site.</li>
+	    </ol>
 	    
 	    <h2>Technical Architecture</h2>
 	    <p>Each node in the move tree is unique CrateMap (crate positions) and MoveMap (all possible player moves, without a push)</p>

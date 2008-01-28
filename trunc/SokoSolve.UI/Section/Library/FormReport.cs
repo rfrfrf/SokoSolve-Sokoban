@@ -85,7 +85,11 @@ namespace SokoSolve.UI.Section.Library
             // Copy style.css file to destination
             if (rbCSSCopy.Checked)
             {
-                File.Copy(FileManager.getContent("$html\\reportstyle.css"), Path.GetDirectoryName(tbFileName.Text) + "\\style.css");
+                string destCSS = Path.GetDirectoryName(tbFileName.Text) + "\\style.css";
+                if (!File.Exists(destCSS))
+                {
+                    File.Copy(FileManager.getContent("$html\\reportstyle.css"), destCSS);
+                }
             }
 
             // Show the results in browser

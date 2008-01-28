@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using SokoSolve.Core.Model;
+using SokoSolve.Core.Model.DataModel;
 using SokoSolve.UI.Controls.Primary;
 using SokoSolve.UI.Section.Solver;
 using Library=SokoSolve.UI.Controls.Primary.Library;
@@ -170,6 +171,25 @@ namespace SokoSolve.UI
             libControl.InitLibrary(Current);
         }
 
+
+        /// <summary>
+        /// Load and display a file in Library mode
+        /// </summary>
+        /// <param name="libraryFile"></param>
+        public void LoadLibrary(string libraryFile)
+        {
+            try
+            {
+                XmlProvider xml = new XmlProvider();
+                InitLibrary(xml.Load(libraryFile));
+                Mode = Modes.Library;
+            }
+            catch(Exception ex)
+            {
+                // Nothing
+            }
+        }
+
         /// <summary>
         /// Show a URL in the in-applicaiton html browser
         /// </summary>
@@ -220,6 +240,6 @@ namespace SokoSolve.UI
         private Modes mode;
         private SolverSectionController solverControl;
 
-       
+
 	}
 }
