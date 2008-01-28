@@ -55,7 +55,7 @@ namespace SokoSolve.UI.Controls.Secondary
                 foreach (Category category in cats)
                 {
                     ListViewGroup grp = new ListViewGroup();
-                    grp.Header = string.Format("Category: {0} ({1} puzzles)", category.Details.Name, category.GetPuzzles(library).Count, category.NestedOrder);
+                    grp.Header = string.Format("Category: {0} ({1} puzzles)", category.Details.Name, category.GetPuzzles().Count, category.NestedOrder);
                     grp.Tag = category;
                     categories.Add(category.CategoryID, grp);
                     listViewPuzzles.Groups.Add(grp);
@@ -85,7 +85,7 @@ namespace SokoSolve.UI.Controls.Secondary
 
         private string BuildDescription(Puzzle puzzle)
         {
-            return string.Format("{0}, {1} crates, {2} solutions. Rating '{3}'", 
+            return string.Format("{0}, {1} crates, {2} solutions. {3}", 
                 puzzle.MasterMap.Map.Size, 
                 puzzle.MasterMap.Map.Count(Cell.Crate), 
                 puzzle.MasterMap.Solutions.Count,
@@ -99,7 +99,8 @@ namespace SokoSolve.UI.Controls.Secondary
         public Library Library
         {
             get { return library; }
-            set { 
+            set 
+            { 
                 library = value;
                 Bind(); 
             }

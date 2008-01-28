@@ -192,8 +192,23 @@ namespace SokoSolve.UI.Controls.Web
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                File.WriteAllText(saveFileDialog.FileName, webBrowser.DocumentText);
+                SaveToFile(saveFileDialog.FileName);
             }
+        }
+
+        /// <summary>
+        /// Inner web browser component
+        /// </summary>
+        [Browsable(false)]
+        public WebBrowser WebBrowser
+        {
+            get { return webBrowser; }
+            set { webBrowser = value; }
+        }
+
+        public void SaveToFile(string location)
+        {
+            File.WriteAllText(location, webBrowser.DocumentText); 
         }
     }
 }

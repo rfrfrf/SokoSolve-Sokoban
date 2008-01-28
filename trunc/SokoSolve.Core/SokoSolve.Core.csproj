@@ -160,6 +160,9 @@
       <Generator>xsd.exe</Generator>
       <CustomToolNamespace>SokoSolve.Core.Model.DataModel</CustomToolNamespace>
     </None>
+    <None Include="Model\DataModel\SokoSolveLibrary.xsx">
+      <DependentUpon>SokoSolveLibrary.xsd</DependentUpon>
+    </None>
     <None Include="Model\DataModel\SokoSolveProfile.xsd">
       <SubType>Designer</SubType>
     </None>

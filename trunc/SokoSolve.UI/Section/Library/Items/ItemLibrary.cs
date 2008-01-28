@@ -21,22 +21,46 @@ namespace SokoSolve.UI.Section.Library.Items
 		{
             if (DomainData != null)
             {
-                if (DomainData.Categories.Count > 0 && DomainData.CategoryTree.Root.Data.GetPuzzles(DomainData).Count == 0)
-                {
-                    SyncUICollectionWithData<Category>(DomainData.CategoryTree.Root.ChildrenData, delegate(Category item) { return new ItemCategory(item); });
-                }
-                else
-                {
-                    // Show the master list's puzzle only (not the list itself)
-                    SyncUICollectionWithData<Puzzle>(DomainData.CategoryTree.Root.Data.GetPuzzles(Controller.Current), delegate(Puzzle item) { return new ItemPuzzle(item); });
-                }
+                BeginDomainSync();
+
+                // Never show the master list
+                SyncUICollectionWithData<Category>(DomainData.CategoryTree.Root.ChildrenData, delegate(Category item) { return new ItemCategory(item); });
+
+                // Show the master list's puzzle only (not the list itself)
+                SyncUICollectionWithData<Puzzle>(DomainData.CategoryTree.Root.Data.GetPuzzles(), delegate(Puzzle item) { return new ItemPuzzle(item); });
+
+                EndDomainSync();
 
                 base.SyncDomain();
             }
 		    
 		}
 
-		public override void BindUI()
+	    private void EndDomainSync()
+	    {
+            if (TreeNode.HasChildren)
+            {
+                List<ExplorerItem> exp = new List<ExplorerItem>();
+                foreach (ExplorerItem explorerItem in TreeNode.ChildrenData)
+                {
+                    if (!explorerItem.Synced) exp.Add(explorerItem);
+                }
+                exp.ForEach(TreeNode.RemoveChild);
+            }
+	    }
+
+	    private void BeginDomainSync()
+	    {
+            if (TreeNode.HasChildren)
+            {
+                foreach (ExplorerItem explorerItem in TreeNode.ChildrenData)
+                {
+                    explorerItem.Synced = false;
+                }
+            }
+	    }
+
+	    public override void BindUI()
 		{
             base.BindUI();
 

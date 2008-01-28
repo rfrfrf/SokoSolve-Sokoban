@@ -43,6 +43,7 @@
     <Compile Include="FactoryPattern\FactoryStrict.cs" />
     <Compile Include="FactoryPattern\FactoryStringNamespace.cs" />
     <Compile Include="FactoryPattern\IFactory.cs" />
+    <Compile Include="FileHelper.cs" />
     <Compile Include="GeneralHelper.cs" />
     <Compile Include="ListHelper.cs" />
     <Compile Include="MathHelper.cs" />

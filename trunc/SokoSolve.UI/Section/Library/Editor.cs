@@ -21,7 +21,8 @@ namespace SokoSolve.UI.Section.Library
         {
             InitializeComponent();
 
-            tbSokobanChars.Text = SokobanMap.StandardEncodeChars;
+            cbPresets.SelectedIndex = 0;
+            
         }
 
         private SokobanMap Map
@@ -85,6 +86,8 @@ namespace SokoSolve.UI.Section.Library
         /// </summary>
         void ReDraw()
         {
+            if (puzzleMap == null) return;
+
             // Refresh the strings
             if (!textUpdate)
             {
@@ -246,6 +249,39 @@ namespace SokoSolve.UI.Section.Library
         }
 
         bool textUpdate;
+
+        private void cbPresets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(cbPresets.SelectedIndex)
+            {
+                case(1):
+                    tbSokobanChars.Text = SokobanMap.InternetChars;
+                    break;
+                case(0):
+                default:
+                    tbSokobanChars.Text = SokobanMap.StandardEncodeChars;
+                    break;
+            }
+            
+
+        }
+
+        private void tbSokobanChars_TextChanged(object sender, EventArgs e)
+        {
+            if (tbSokobanChars.Text.Length >= 8)
+            {
+                tbVoid.Text = Convert.ToString(tbSokobanChars.Text[0]);
+                tbWall.Text = Convert.ToString(tbSokobanChars.Text[1]);
+                tbFloor.Text = Convert.ToString(tbSokobanChars.Text[2]);
+                tbCrate.Text = Convert.ToString(tbSokobanChars.Text[3]);
+                tbGoal.Text = Convert.ToString(tbSokobanChars.Text[4]);
+                tbCrateGoal.Text = Convert.ToString(tbSokobanChars.Text[5]);
+                tbPlayer.Text = Convert.ToString(tbSokobanChars.Text[6]);
+                tbPlayerGoal.Text = Convert.ToString(tbSokobanChars.Text[7]);
+
+                ReDraw();
+            }
+        }
        
 	}
 }

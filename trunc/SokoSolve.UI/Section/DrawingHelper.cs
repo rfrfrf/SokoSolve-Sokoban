@@ -15,6 +15,12 @@ namespace SokoSolve.UI.Section
             return drawing.Draw(map.Map);
         }
 
+
+        static public Image DrawPuzzle(SokobanMap map)
+        {
+            return drawing.Draw(map);
+        }
+
         static public StaticImage Images
         {
             get { return drawing;  }

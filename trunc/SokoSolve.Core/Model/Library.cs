@@ -32,7 +32,7 @@ namespace SokoSolve.Core.Model
 
     	    libraryID = LibraryGUID.ToString();
 
-    		categories.Root.Data  = new Category();
+    		categories.Root.Data  = new Category(this);
     		categories.Root.Data.Details.Name = "Master List";
     		categories.Root.Data.CategoryID = "C"+idProvider.GetNextID().ToString();
     	}

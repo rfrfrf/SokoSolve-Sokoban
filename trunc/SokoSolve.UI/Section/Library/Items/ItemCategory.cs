@@ -41,7 +41,7 @@ namespace SokoSolve.UI.Section.Library.Items
 
             // Add puzzles
             LibraryController libCont = Explorer.Controller as LibraryController;
-            SyncUICollectionWithData<Puzzle>(DomainData.GetPuzzles(libCont.Current), delegate(Puzzle item) { return new ItemPuzzle(item); });
+            SyncUICollectionWithData<Puzzle>(DomainData.GetPuzzles(), delegate(Puzzle item) { return new ItemPuzzle(item); });
 
             // Add sub-categories
             base.SyncDomain();

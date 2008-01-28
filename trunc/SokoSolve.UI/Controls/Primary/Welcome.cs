@@ -14,6 +14,7 @@ using SokoSolve.Core.UI;
 using SokoSolve.UI.Controls.Secondary;
 using SokoSolve.UI.Controls.Web;
 using SokoSolve.UI.Section;
+using SokoSolve.UI.Section.Library;
 
 namespace SokoSolve.UI.Controls.Primary
 {
@@ -81,6 +82,13 @@ namespace SokoSolve.UI.Controls.Primary
             html = html.Replace("[BASEHREF]", FileManager.getContent("$html"));
             html = html.Replace("[USERNAME]", ProfileController.Current.UserName);
             htmlView.SetHTML(html.ToString());
+
+
+            // Perform a version check
+            if (ProfileController.Current.LastVersionCheck + new TimeSpan(7, 0, 0) < DateTime.Now)
+            {
+                HelpCheckVersion.PerformVersionCheck(false);
+            }
         }
 
         private void htmlView_OnCommand(object sender, SokoSolve.UI.Controls.Web.UIBrowserEvent e)

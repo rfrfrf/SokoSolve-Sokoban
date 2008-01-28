@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Xml.Serialization;
@@ -66,6 +67,18 @@ namespace SokoSolve.Core.Model
             get { return GetGeneralParam("UserLicense"); }
             set { simpleParams["UserLicense"] = value; }
         }
+
+        public DateTime LastVersionCheck
+        {
+            get
+            {
+                if (!HasParam("LastVersionCheck")) return DateTime.MinValue;
+                return DateTime.Parse(GetGeneralParam("LastVersionCheck"));
+            }
+            set { simpleParams["LastVersionCheck"] = value.ToString(); }
+        }
+
+        
 
         /// <summary>
         /// Get the default author
@@ -167,6 +180,11 @@ namespace SokoSolve.Core.Model
         {
             if (!simpleParams.ContainsKey(parmName)) return null;
             return simpleParams[parmName];
+        }
+
+        private bool HasParam(string parmName)
+        {
+            return simpleParams.ContainsKey(parmName);
         }
 
         private Dictionary<string, string> simpleParams;

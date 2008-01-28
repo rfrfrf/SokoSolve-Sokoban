@@ -127,7 +127,7 @@ namespace SokoSolve.UI.Controls.Web
 	    {
             HtmlBuilder report = Report(category.Details);
 
-            List<Puzzle> puz = category.GetPuzzles(helpLib);
+            List<Puzzle> puz = category.GetPuzzles();
             report.AddLabel("Puzzles", puz.Count.ToString());
 
             int puzPerLine = 4;

@@ -41,7 +41,7 @@ namespace SokoSolve.UI.Section.Library.Items
                 item.Tag = category;
                 item.Text = category.NestedOrder.ToString();
                 item.SubItems.Add(category.Details.Name);
-                item.SubItems.Add(category.GetPuzzles(Library).Count.ToString());
+                item.SubItems.Add(category.GetPuzzles().Count.ToString());
                 listViewCat.Items.Add(item);
             }
             listViewCat.EndUpdate();

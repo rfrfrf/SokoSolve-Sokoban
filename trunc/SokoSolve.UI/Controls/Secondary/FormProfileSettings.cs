@@ -14,6 +14,7 @@ namespace SokoSolve.UI.Controls.Secondary
         {
             InitializeComponent();
 
+            Bind();
         }
 
         public void Bind()

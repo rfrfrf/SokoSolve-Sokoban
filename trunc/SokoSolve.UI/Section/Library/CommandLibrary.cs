@@ -62,21 +62,21 @@ namespace SokoSolve.UI.Section.Library
             lib.Details.License = "Creative Commons";
             lib.Details.Comments = "This is a skeleton sokoban library. ALL RIGHTS RESERVED.";
 
-            Category easy = new Category();
+            Category easy = new Category(lib);
             easy.CategoryID = lib.IdProvider.GetNextIDString("C{0}");
             easy.Details = new GenericDescription(lib.Details);
             easy.Details.Name = "Easy";
             easy.CategoryParentREF = lib.CategoryTree.Root.Data.CategoryID;
             lib.CategoryTree.Root.Add(easy);
 
-            Category medium = new Category();
+            Category medium = new Category(lib);
             medium.CategoryID = lib.IdProvider.GetNextIDString("C{0}");
             medium.Details = new GenericDescription(lib.Details);
             medium.Details.Name = "Medium";
             medium.CategoryParentREF = lib.CategoryTree.Root.Data.CategoryID;
             lib.CategoryTree.Root.Add(medium);
 
-            Category hard = new Category();
+            Category hard = new Category(lib);
             hard.CategoryID = lib.IdProvider.GetNextIDString("C{0}");
             hard.Details = new GenericDescription(lib.Details);
             hard.Details.Name = "Hard";
@@ -187,7 +187,7 @@ namespace SokoSolve.UI.Section.Library
     {
         public LibraryOpen(Controller<ExplorerItem> controller, object[] buttonControls) : base(controller, buttonControls)
         {
-            Init("Open Library", "Open an existing library");
+            Init("Open...", "Open an existing library");
             
         }
 
@@ -196,6 +196,8 @@ namespace SokoSolve.UI.Section.Library
             OpenFileDialog open = new OpenFileDialog();
             open.InitialDirectory = ProfileController.Current.LibraryCurrentOpenDir;
             open.CheckFileExists = true;
+            open.RestoreDirectory = true;
+            open.Title = "Open SokoSolve .SSX XML file";
             open.DefaultExt = ".ssx";
             if (open.ShowDialog() == DialogResult.OK)
             {
@@ -221,17 +223,43 @@ namespace SokoSolve.UI.Section.Library
     {
         public LibrarySave(Controller<ExplorerItem> controller, object[] buttonControls) : base(controller, buttonControls)
         {
-            Init("Save Library", "Save the current library");
+            Init("Save", "Save the current library");
+        }
+
+        protected override void ExecuteImplementation(CommandInstance<ExplorerItem> instance)
+        {
+            if (!string.IsNullOrEmpty(Controller.Current.FileName))
+            {
+                XmlProvider xmlSave = new XmlProvider();
+                xmlSave.Save(Controller.Current, Controller.Current.FileName);
+            }
+        }
+    }
+
+    //#################################################################
+    //#################################################################
+    //#################################################################
+
+
+    class LibrarySaveAs : CommandLibraryBase
+    {
+        public LibrarySaveAs(Controller<ExplorerItem> controller, object[] buttonControls)
+            : base(controller, buttonControls)
+        {
+            Init("Save As...", "Save the current library");
         }
 
         protected override void ExecuteImplementation(CommandInstance<ExplorerItem> instance)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = FileManager.getContent("Libraries/");
+            saveFileDialog.DefaultExt = "SSX";
+            saveFileDialog.RestoreDirectory = true;
+            saveFileDialog.Title = "Save SokoSolve .SSX XML file";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                XmlProvider xmlLoad = new XmlProvider();
-                xmlLoad.Save(Controller.Current, saveFileDialog.FileName);
+                XmlProvider xmlSave = new XmlProvider();
+                xmlSave.Save(Controller.Current, saveFileDialog.FileName);
             }
         }
     }
@@ -250,6 +278,7 @@ namespace SokoSolve.UI.Section.Library
         protected override void ExecuteImplementation(CommandInstance<ExplorerItem> instance)
         {
             FormImport import = new FormImport();
+            import.ucImport.Library = Controller.Current;
             if (import.ShowDialog() == DialogResult.OK)
             {
                 Controller.Current = import.ucImport.Library;
@@ -391,14 +420,9 @@ namespace SokoSolve.UI.Section.Library
 
         protected override void ExecuteImplementation(CommandInstance<ExplorerItem> instance)
         {
-            SaveFileDialog save = new SaveFileDialog();
-            save.FileName = Controller.Current.Details.Name + ".html";
-            if (save.ShowDialog() == DialogResult.OK)
-            {
-                LibraryReport rpt = new LibraryReport(Controller.Current, DrawingHelper.Images,  Path.GetDirectoryName(save.FileName));
-                rpt.BuildReport();
-                rpt.Save(save.FileName);
-            }
+            FormReport report = new FormReport();
+            report.Library = Controller.Current;
+            report.ShowDialog();
         }
 
         public override void UpdateForSelection(List<ExplorerItem> selection)

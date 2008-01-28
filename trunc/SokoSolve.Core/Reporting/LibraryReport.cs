@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Xml;
 using SokoSolve.Common;
@@ -10,11 +11,30 @@ using SokoSolve.Core.UI;
 
 namespace SokoSolve.Core.Reporting
 {
+    /// <summary>
+    /// Create a puzzle report
+    /// </summary>
     public class LibraryReport : ReportXHTML
     {
         private string directory;
         private Library library;
-        StaticImage staticImage;
+        private StaticImage staticImage;
+        public CSS OptionCSS;
+        public Images OptionImages;
+
+        public enum CSS
+        {
+            None,
+            Inline,
+            Copy
+        }
+
+        public enum Images
+        {
+            None,
+            Full,
+            TableCell
+        }
 
         public LibraryReport(Library library, StaticImage drawing, string directory) : base(library.Details.Name)
         {
@@ -31,7 +51,7 @@ namespace SokoSolve.Core.Reporting
 
             foreach (Category category in library.Categories)
             {
-                List<Puzzle> puzzles = category.GetPuzzles(library);
+                List<Puzzle> puzzles = category.GetPuzzles();
                 Body.AppendChild(CreateContentTag("h2", category.Details.Name));
 
                 foreach (Puzzle puzzle in puzzles)
@@ -74,10 +94,12 @@ namespace SokoSolve.Core.Reporting
                 table.InnerXml +=
                     string.Format("<tr><th>{0}</th><td>{1}</td></tr>", "Web", puzzle.Details.Author.Homepage);
             }
+
             if (!string.IsNullOrEmpty(puzzle.Details.License))
-            table.InnerXml += string.Format("<tr><th>{0}</th><td>{1}</td></tr>", "License", puzzle.Details.License);
-        if (!string.IsNullOrEmpty(puzzle.Details.Comments))
-            table.InnerXml += string.Format("<tr><th>{0}</th><td>{1}</td></tr>", "Comments", puzzle.Details.Comments);
+                table.InnerXml += string.Format("<tr><th>{0}</th><td>{1}</td></tr>", "License", puzzle.Details.License);
+        
+            if (!string.IsNullOrEmpty(puzzle.Details.Comments))
+                table.InnerXml += string.Format("<tr><th>{0}</th><td>{1}</td></tr>", "Comments", puzzle.Details.Comments);
 
             table.InnerXml += string.Format("<tr><th>{0}</th><td>{1}</td></tr>", "Rating", puzzle.Rating);
 
@@ -85,21 +107,36 @@ namespace SokoSolve.Core.Reporting
            
             //=======================
 
-            Image pic = staticImage.Draw(puzzle.MasterMap.Map);
-            string picFileName = string.Format("{0}-{1}.png", library.LibraryID, puzzle.PuzzleID);
-            string picFullFileName = directory + "\\" + picFileName;
-            pic.Save(picFullFileName);
 
-            XmlElement img = report.CreateElement("img");
-            img.SetAttribute("src", picFileName);
-            img.SetAttribute("alt", "Puzzle" + puzzle.Details.Name);
-            
+            XmlElement img = null;
+            switch(OptionImages)
+            {
+                case(Images.Full) :
+
+                    Image pic = staticImage.Draw(puzzle.MasterMap.Map);
+                    string picFileName = string.Format("{0}-{1}.png", library.LibraryID, puzzle.PuzzleID);
+                    string picFullFileName = directory + "\\" + picFileName;
+                    pic.Save(picFullFileName);
+
+                    img = report.CreateElement("img");
+                    img.SetAttribute("src", picFileName);
+                    img.SetAttribute("alt", "Puzzle" + puzzle.Details.Name);
+                    break;
+
+                case (Images.TableCell):
+                    img = CreateTableCellImage(puzzle);
+                    break;
+            }
 
             XmlElement tableformat = report.CreateElement("table");
             tableformat.SetAttribute("class", "tableformat");
             tableformat.InnerXml = "<tr><td></td><td></td></tr>";
             tableformat.ChildNodes[0].ChildNodes[0].AppendChild(table);
-            tableformat.ChildNodes[0].ChildNodes[1].AppendChild(img);
+            if (img != null)
+            {
+                tableformat.ChildNodes[0].ChildNodes[1].AppendChild(img);    
+            }
+            
             xml.AppendChild(tableformat);
 
             if (puzzle.MasterMap.HasSolution)
@@ -116,6 +153,49 @@ namespace SokoSolve.Core.Reporting
             }
 
             return xml;
+        }
+
+        private XmlElement CreateTableCellImage(Puzzle puzzle)
+        {
+            XmlElement xmlTable = report.CreateElement("table");
+            xmlTable.SetAttribute("class", "tablepuzzle");
+
+            for (int ccy = 0; ccy < puzzle.MasterMap.Map.Size.Y; ccy++)
+            {
+                XmlElement tr = report.CreateElement("tr");
+                for(int ccx=0; ccx<puzzle.MasterMap.Map.Size.X; ccx++)
+                {
+                    XmlElement td = report.CreateElement("td");
+
+                    XmlElement img = report.CreateElement("img");
+                    img.SetAttribute("alt", ""); 
+                    img.SetAttribute("src", GetImageURL(puzzle.MasterMap.Map[ccx,ccy]));
+                    td.AppendChild(img);
+
+                    tr.AppendChild(td);
+                }
+
+                xmlTable.AppendChild(tr);
+            }
+            
+            return xmlTable;
+        }
+
+        private string GetImageURL(CellStates states)
+        {
+            switch(states)
+            {
+                case (CellStates.Floor): return "images\\F.png";
+                case (CellStates.Wall): return "images\\W.png";
+                case (CellStates.FloorCrate): return "images\\C.png";
+                case (CellStates.FloorGoal): return "images\\G.png";
+                case (CellStates.FloorPlayer): return "images\\P.png";
+                case (CellStates.FloorGoalPlayer): return "images\\GP.png";
+                case (CellStates.FloorGoalCrate): return "images\\GC.png";
+
+                default:
+                    return "images\\FV.png";
+            }
         }
 
 
@@ -177,48 +257,62 @@ namespace SokoSolve.Core.Reporting
         {
             
             report = new XmlDocument();
+            XmlElement xmlHTML = report.CreateElement("html");
+            xmlHTML.SetAttribute("xmlns", "http://www.w3.org/1999/xhtml");
+            report.AppendChild(xmlHTML);
 
-            if (inlineCSS == null)
-            {
-                report.LoadXml(
-                string.Format(
-                    @"<html xmlns=""http://www.w3.org/1999/xhtml"">
-	<head>
-		<title>{0}</title>
-		<link type=""text/css"" rel=""Stylesheet"" href=""style.css"" />
-	</head>
-	<body>
-	    
-	</body>
-</html>",
-                    title));
-            }
-            else
-            {
-                report.LoadXml(
-                    string.Format(
-                        @"<html xmlns=""http://www.w3.org/1999/xhtml"">
-	<head>
-		<title>{0}</title>
-		<style type=""text/css"">{1}</style>
-	</head>
-	<body>
-	    
-	</body>
-</html>",
-                        title, inlineCSS));
-            }
+            XmlElement xmlHEAD = report.CreateElement("head");
+            xmlHTML.AppendChild(xmlHEAD);
+
+            XmlElement xmlTITLE = report.CreateElement("title");
+            xmlTITLE.InnerText = title;
+            xmlHEAD.AppendChild(xmlTITLE);
+           
+            xmlLINK = report.CreateElement("link");
+            xmlLINK.SetAttribute("type", "text/css");
+            xmlLINK.SetAttribute("rel", "Stylesheet");
+            xmlLINK.SetAttribute("href", "style.css");
+            xmlHEAD.AppendChild(xmlLINK);
+
+            xmlSTYLE = report.CreateElement("style");
+            xmlSTYLE.SetAttribute("type", "text/css");
+            xmlHEAD.AppendChild(xmlSTYLE);
+
+            xmlBODY = report.CreateElement("body");
+            xmlHTML.AppendChild(xmlBODY);
+
+            xmlBODYBODY = report.CreateElement("div");
+            xmlBODY.AppendChild(xmlBODYBODY);
+
+            xmlFOOTER = report.CreateElement("div");
+            xmlFOOTER.SetAttribute("class", "footer");
+            xmlBODY.AppendChild(xmlFOOTER);
+            
+        }
+
+        XmlElement xmlBODY;
+        XmlElement xmlBODYBODY;
+        XmlElement xmlFOOTER;
+        XmlElement xmlSTYLE;
+        XmlElement xmlLINK;
+
+        protected void Add(XmlElement addInBody)
+        {
+            xmlBODYBODY.AppendChild(addInBody);
         }
 
         protected XmlElement Body
         {
-            get { return report.DocumentElement["body"]; }
+            get { return xmlBODYBODY; }
+        }
+
+        public void SetCSSInline(string fileName)
+        {
+            xmlSTYLE.InnerText = File.ReadAllText(fileName);
         }
 
         protected void AddFooter()
         {
-            XmlElement footer = report.CreateElement("div");
-            footer.SetAttribute("class", "footer");
 
             string html = 
                 string.Format(
@@ -227,9 +321,9 @@ namespace SokoSolve.Core.Reporting
     <img src=""http://sourceforge.net/sflogo.php?group_id=85742&amp;type=5"" width=""210"" height=""62""  alt=""SourceForge.net Logo"" />
 </a>", ProgramVersion.VersionString);
 
-            footer.InnerXml = html;
+            xmlFOOTER.InnerXml = html;
 
-            Body.AppendChild(footer);
+          
         }
 
         protected XmlElement CreateContentTag(string tagName, string innerText)
@@ -241,6 +335,8 @@ namespace SokoSolve.Core.Reporting
 
         public virtual void Save(string filename)
         {
+         
+            
             report.Save(filename);
         }
 

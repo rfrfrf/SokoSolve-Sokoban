@@ -29,10 +29,6 @@ namespace SokoSolve.Core.Analysis.Solver
             stats.Add(Duplicates);
             stats.Add(DeadNodes);
             stats.Add(AvgEvalList);
-            stats.Add(MoveMapTime);
-            stats.Add(EvalTime);
-            stats.Add(EvalChildTime);
-            stats.Add(DuplicateCheckTime);
             stats.Add(WeightingMin);
             stats.Add(WeightingMax);
             stats.Add(WeightingAvg);
@@ -100,10 +96,6 @@ namespace SokoSolve.Core.Analysis.Solver
         public Statistic CurrentEvalSecs = new Statistic("Evaluation Total Seconds", "{1:0} sec");
         public Statistic Nodes = new Statistic("Total Nodes", "{1:0} nodes");
         public Statistic AvgEvalList = new Statistic("Eval Worker List", "{1:0}");
-        public Statistic MoveMapTime = new Statistic("MoveMapTime", "{1:0.000} sec");
-        public Statistic EvalTime = new Statistic("EvalTime", "{1:0.000} sec");
-        public Statistic EvalChildTime = new Statistic("EvalChildTime", "{1:0.000} sec");
-        public Statistic DuplicateCheckTime = new Statistic("DuplicateCheckTime", "{1:0.000} sec");
         public Statistic Duplicates = new Statistic("Duplicates", "{1:0} nodes");
         public Statistic DeadNodes = new Statistic("DeadNodes", "{1:0} nodes");
         public Statistic WeightingMin = new Statistic("Weighting Min", "{1:0}");

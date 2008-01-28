@@ -31,6 +31,8 @@ namespace SokoSolve.UI.Controls.Secondary
 
             cbFileFormat.Items.AddRange(importers.ToArray());
             cbFileFormat.SelectedIndex = 0;
+
+            htmlView1.Navigate("http://sokosolve.sourceforge.net/resources.html");
         }
 
         /// <summary>
@@ -63,21 +65,60 @@ namespace SokoSolve.UI.Controls.Secondary
         {
             richTextBoxImportResults.Text = "";
 
-            if (string.IsNullOrEmpty(tbFileName.Text))
+            string fileLocation = null;
+            if (!string.IsNullOrEmpty(tbFileName.Text))
             {
-                // Force file select
-                buttonSelectFile_Click(sender, e);
-                return;
-            }
+                // Use local file
+                fileLocation = tbFileName.Text;
 
-            // Store the new directory in profile
-            ProfileController.Current.LibraryCurrentImportDir = Path.GetDirectoryName(openF.FileName);
+                // Store the new directory in profile
+                ProfileController.Current.LibraryCurrentImportDir = Path.GetDirectoryName(openF.FileName);
+            }
+            else if (!string.IsNullOrEmpty(tbClipboard.Text))
+            {
+                // Use clipboard
+                fileLocation = Path.GetTempFileName();
+                File.WriteAllText(fileLocation, tbClipboard.Text);
+            }
+            else
+            {
+                if (htmlView1.WebBrowser.DocumentType == "TXT File" || htmlView1.WebBrowser.DocumentType == "text\\xml")
+                {
+                    // Use internet
+                    fileLocation = Path.GetTempFileName();
+                    htmlView1.SaveToFile(fileLocation);    
+                } 
+                else
+                {
+                    richTextBoxImportResults.Text = string.Format("Internet import from '{0}' is not supported.", htmlView1.WebBrowser.DocumentType);
+                    tabControlImport.SelectTab(tabPageFeedback);
+                    return;
+                }
+                
+            }
 
             Importer.Details = ucGenericDescription1.Data;
 
-            library = Importer.Import(tbFileName.Text);
-            if (library != null && Importer.LastError == null)
+            Library newLib = Importer.Import(fileLocation);
+            if (newLib != null && Importer.LastError == null)
             {
+                if (rbNewLibrary.Checked)
+                {
+                    library = newLib;
+                }
+                else if (rbAddCurrent.Checked)
+                {
+                    // Add to current
+                    foreach (Puzzle puzzle in newLib.Puzzles)
+                    {
+                        puzzle.Category = library.Categories[library.Categories.Count -1];
+                        puzzle.Library = library;
+                        puzzle.Order = library.Puzzles.Count + 1;
+                        puzzle.PuzzleID = library.IdProvider.GetNextIDString("P{0}");
+                        library.Puzzles.Add(puzzle);
+                    }
+                }
+
                 FindForm().DialogResult = DialogResult.OK;
                 FindForm().Close();
             }
@@ -87,11 +128,17 @@ namespace SokoSolve.UI.Controls.Secondary
                     string.Format("{0}\n\n\nTechnical Error Message (For advanced users or bug reports):\n{1}",
                                   Importer.LastError.Message, StringHelper.Report(Importer.LastError));
 
-                tabControl1.SelectTab(tabPageFeedback);
+                tabControlImport.SelectTab(tabPageFeedback);
             }
         }
 
-        private void buttonSelectFile_Click(object sender, EventArgs e)
+     
+        private void buttonPaste_Click(object sender, EventArgs e)
+        {
+            tbClipboard.Text = Clipboard.GetText();
+        }
+
+        private void buttonSelectFile_Click_1(object sender, EventArgs e)
         {
             if (openF.ShowDialog() == DialogResult.OK)
             {

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using SokoSolve.Common;
 using SokoSolve.Common.Structures;
 using SokoSolve.Core.Model;
 using SokoSolve.Core.Model.DataModel;
@@ -29,28 +30,100 @@ namespace SokoSolve.UI.Section.Library
             if (category != null)
             {
                 // Create a new puzzle with a valid number etc.
-                Puzzle newPuz = new Puzzle(Controller.Current);
-                newPuz.PuzzleID = Controller.Current.IdProvider.GetNextIDString("P{0}");
-                newPuz.Details = ProfileController.Current.GenericDescription;
-                newPuz.Details.Name = string.Format("New Puzzle #{0}", Controller.Current.Puzzles.Count+1);
-                newPuz.Category = category.DomainData;
-                newPuz.MasterMap = new PuzzleMap(newPuz);
-                newPuz.MasterMap.MapID = Controller.Current.IdProvider.GetNextIDString("M{0}");
-                newPuz.Order = Controller.Current.Puzzles.Count + 1;
-
-                Controller.Current.Puzzles.Add(newPuz);
-
-                // Refresh the UI model to updated domain data
-                category.SyncDomain();
-
-                // Refresh enture tree
-                Controller.Explorer.SyncUI();
+                CreateNewPuzzle(category, category.DomainData);
             }
+
+            ItemLibrary library = instance.Context[0] as ItemLibrary;
+            if (library != null)
+            {
+                CreateNewPuzzle(library, library.DomainData.CategoryTree.Root.Data);
+            }
+        }
+
+        private void CreateNewPuzzle(ExplorerItem current, Category category)
+        {
+            Puzzle newPuz = new Puzzle(Controller.Current);
+            newPuz.PuzzleID = Controller.Current.IdProvider.GetNextIDString("P{0}");
+            newPuz.Details = ProfileController.Current.GenericDescription;
+            newPuz.Details.Name = string.Format("New Puzzle #{0}", Controller.Current.Puzzles.Count+1);
+            newPuz.Category = category;
+            newPuz.MasterMap = new PuzzleMap(newPuz);
+            newPuz.MasterMap.MapID = Controller.Current.IdProvider.GetNextIDString("M{0}");
+            newPuz.Order = Controller.Current.Puzzles.Count + 1;
+
+            Controller.Current.Puzzles.Add(newPuz);
+
+            // Refresh the UI model to updated domain data
+            current.SyncDomain();
+
+            // Refresh enture tree
+            Controller.Explorer.SyncUI();
         }
 
         public override void UpdateForSelection(List<ExplorerItem> selection)
         {
-            Enabled = ExplorerItem.SelectionHelper(selection, true, 1, 1, typeof(ItemCategory));
+            Enabled = ExplorerItem.SelectionHelper(selection, true, 1, 1, typeof(ItemCategory)) ||
+                ExplorerItem.SelectionHelper(selection, true, 1, 1, typeof(ItemLibrary));
+        }
+    }
+    //#################################################################
+    //#################################################################
+    //#################################################################
+
+
+    class PuzzleNewQuickStart : CommandLibraryBase
+    {
+        public PuzzleNewQuickStart(Controller<ExplorerItem> controller, object[] buttonControls)
+            : base(controller, buttonControls)
+        {
+            Init("New (Clipboard Quickstart)", "Create a new puzzle map, using the current clipboard contents");
+        }
+
+
+        protected override void ExecuteImplementation(CommandInstance<ExplorerItem> instance)
+        {
+            ItemCategory category = instance.Context[0] as ItemCategory;
+            if (category != null)
+            {
+                // Create a new puzzle with a valid number etc.
+                CreateNewPuzzle(category, category.DomainData);
+            }
+
+            ItemLibrary library = instance.Context[0] as ItemLibrary;
+            if (library != null)
+            {
+                CreateNewPuzzle(library, library.DomainData.CategoryTree.Root.Data);
+            }
+        }
+
+        private void CreateNewPuzzle(ExplorerItem current, Category category)
+        {
+            Puzzle newPuz = new Puzzle(Controller.Current);
+            newPuz.PuzzleID = Controller.Current.IdProvider.GetNextIDString("P{0}");
+            newPuz.Details = ProfileController.Current.GenericDescription;
+            newPuz.Details.Name = string.Format("New Puzzle #{0}", Controller.Current.Puzzles.Count + 1);
+            newPuz.Category = category;
+            newPuz.MasterMap = new PuzzleMap(newPuz);
+            newPuz.MasterMap.MapID = Controller.Current.IdProvider.GetNextIDString("M{0}");
+            newPuz.Order = Controller.Current.Puzzles.Count + 1;
+
+            newPuz.MasterMap.Map.SetFromStrings(StringHelper.Split(Clipboard.GetText(), "\n"), SokobanMap.InternetChars);
+
+            Controller.Current.Puzzles.Add(newPuz);
+
+            // Refresh the UI model to updated domain data
+            current.SyncDomain();
+
+            // Refresh enture tree
+            Controller.Explorer.SyncUI();
+
+            Controller.Explorer.UpdateSelection(current);
+        }
+
+        public override void UpdateForSelection(List<ExplorerItem> selection)
+        {
+            Enabled = ExplorerItem.SelectionHelper(selection, true, 1, 1, typeof(ItemCategory)) ||
+                ExplorerItem.SelectionHelper(selection, true, 1, 1, typeof(ItemLibrary));
         }
     }
 

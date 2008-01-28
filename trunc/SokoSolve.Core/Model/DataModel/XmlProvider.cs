@@ -109,8 +109,7 @@ namespace SokoSolve.Core.Model.DataModel
             converter.model.LibraryID = xmlLib.LibraryID;
             converter.model.IdProvider = new IDProvider(xmlLib.MaxID);
 
-            List<Category> categories =
-                new List<SokobanLibraryCategory>(xmlLib.Categories).ConvertAll<Category>(ModelToXml.ConvertCategory);
+            List<Category> categories = new List<SokobanLibraryCategory>(xmlLib.Categories).ConvertAll<Category>(converter.ConvertCategory);
 
             converter.model.CategoryTree = TreeAssembler.Create<Category>(categories, ModelToXml.GetID, ModelToXml.GetFK);
 
@@ -140,9 +139,9 @@ namespace SokoSolve.Core.Model.DataModel
                 return item.CategoryID;
             }
 
-            public static Category ConvertCategory(SokobanLibraryCategory xmlCategory)
+            public Category ConvertCategory(SokobanLibraryCategory xmlCategory)
             {
-                Category cat = new Category();
+                Category cat = new Category(model);
                 cat.Details = xmlCategory.CategoryDescription;
                 cat.CategoryID = xmlCategory.CategoryID;
                 cat.CategoryParentREF = xmlCategory.CategoryParentREF;

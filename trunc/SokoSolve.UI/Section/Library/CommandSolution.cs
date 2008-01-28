@@ -14,6 +14,44 @@ namespace SokoSolve.UI.Section.Library
     //#################################################################
     //#################################################################
 
+    class SolutionNew : CommandLibraryBase
+    {
+        public SolutionNew(Controller<ExplorerItem> controller, object[] buttonControls)
+            : base(controller, buttonControls)
+        {
+            Init("New Solution", "Create a new blank solution");
+        }
+
+        protected override void ExecuteImplementation(CommandInstance<ExplorerItem> instance)
+        {
+            ItemPuzzle itemPuzzle = instance.Context[0] as ItemPuzzle;
+            if (itemPuzzle != null)
+            {
+                Solution newSol = new Solution(itemPuzzle.DomainData.MasterMap, itemPuzzle.DomainData.MasterMap.Map.Player);
+                newSol.Details = ProfileController.Current.GenericDescription;
+                newSol.Details.Name = string.Format("Manual solution for {0}", newSol.Map.Puzzle.Details.Name);
+                newSol.Steps = "";
+
+                itemPuzzle.DomainData.MasterMap.Solutions.Add(newSol);
+
+                // Sync UI
+                itemPuzzle.SyncDomain();
+
+                // Refresh enture tree
+                Controller.Explorer.SyncUI();
+            }
+        }
+
+        public override void UpdateForSelection(List<ExplorerItem> selection)
+        {
+            Enabled = ExplorerItem.SelectionHelper(selection, true, 1, 1, typeof(ItemPuzzle));
+        }
+    }
+
+    //#################################################################
+    //#################################################################
+    //#################################################################
+
     class SolutionReplay : CommandLibraryBase
     {
         public SolutionReplay(Controller<ExplorerItem> controller, object[] buttonControls) : base(controller, buttonControls)
@@ -155,15 +193,22 @@ namespace SokoSolve.UI.Section.Library
                 instance.Status = ExecutionStatus.AwaitingCallback;
 
                 // Register for the call-bak events
-                ucGenericDescription details = implUI as ucGenericDescription;
-                if (details != null)
+                PayloadSolutionEdit edit = implUI as PayloadSolutionEdit;
+                if (edit != null)
                 {
-                    details.Tag = instance;
-                    details.ButtonOK.Tag = instance;
-                    details.ButtonOK.Click += new EventHandler(ButtonOK_Click);
-                    details.ButtonCancel.Tag = instance;
-                    details.ButtonCancel.Click += new EventHandler(ButtonCancel_Click);
+                    edit.tbSolutions.Text = (instance.Context[0].DataUnTyped as Solution).Steps;
+
+                    ucGenericDescription details = edit.ucGenericDescription;
+                    if (details != null)
+                    {
+                        details.Tag = instance;
+                        details.ButtonOK.Tag = instance;
+                        details.ButtonOK.Click += new EventHandler(ButtonOK_Click);
+                        details.ButtonCancel.Tag = instance;
+                        details.ButtonCancel.Click += new EventHandler(ButtonCancel_Click);
+                    }    
                 }
+                
                 return;
             }
 
@@ -171,14 +216,16 @@ namespace SokoSolve.UI.Section.Library
             {
                 if (instance.Param != null && instance.Param.ToString() == "Ok")
                 {
-                    ucGenericDescription editControl = item.ShowDetail() as ucGenericDescription;
-                    if (editControl == null) throw new InvalidCastException("Detail should be ucGenericDescription");
+                    PayloadSolutionEdit editControl = item.ShowDetail() as PayloadSolutionEdit;
+                    if (editControl == null) throw new InvalidCastException("Detail should be PayloadSolutionEdit");
+                    
                     // Replace details
-                    Core.Model.Solution category = (Core.Model.Solution)item.DataUnTyped;
-                    category.Details = editControl.Data;
+                    Core.Model.Solution solution = (Core.Model.Solution)item.DataUnTyped;
+                    solution.Details = editControl.ucGenericDescription.Data;
+                    solution.Steps = editControl.tbSolutions.Text;
 
-                    editControl.ButtonOK.Click -= new EventHandler(ButtonOK_Click);
-                    editControl.ButtonCancel.Click -= new EventHandler(ButtonOK_Click);
+                    editControl.ucGenericDescription.ButtonOK.Click -= new EventHandler(ButtonOK_Click);
+                    editControl.ucGenericDescription.ButtonCancel.Click -= new EventHandler(ButtonOK_Click);
 
                     item.IsEditable = false;
                     item.ShowDetail();

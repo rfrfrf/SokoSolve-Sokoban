@@ -49,6 +49,7 @@ namespace SokoSolve.Core.Model
         public Library Library
         {
             get { return library; }
+            set { library = value;  }
         }
 
         /// <summary>

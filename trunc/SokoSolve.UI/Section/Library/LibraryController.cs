@@ -30,8 +30,9 @@ namespace SokoSolve.UI.Section.Library
 			Register(new LibraryNew(this, new object[] { view.tsbLibraryNew, view.mbLibraryNew } ));
 			Register(new LibraryOpen(this, new object[] { view.tbsLibraryOpen, view.mbLibraryOpen}));
             Register(new LibrarySave(this, new object[] { view.tsbLibrarySave, view.mbSave }));
+            Register(new LibrarySaveAs(this, new object[] { view.tsbLibrarySaveAs }));
 		    Register(new LibraryEdit(this, new object[] {view.mbEdit, view.tsbLibraryProperties}));
-            Register(new LibraryImport(this, new object[] { view.tsbLibraryImport }));
+            Register(new LibraryImport(this, new object[] { view.tsbLibraryImport, view.mbLibraryImport }));
             Register(new LibraryRefresh(this, new object[] { view.tsbLibraryRefresh }));
             Register(new LibraryReportHTML(this, new object[] { view.tsbLibraryReport }));
 
@@ -42,6 +43,7 @@ namespace SokoSolve.UI.Section.Library
 
             // Puzzle Commands
             Register(new PuzzleNew(this, new object[] { view.tsbPuzzleNew }));
+            Register(new PuzzleNewQuickStart(this, new object[] { view.tsbPuzzleQuickstart }));
             Register(new PuzzleEdit(this, new object[] { view.tsbPuzzleEdit, view.mbPuzzleEdit }));
             Register(new PuzzleDelete(this, new object[] { view.tsbPuzzleDelete, view.mbDelete }));
             Register(new PuzzleClone(this, new object[] { view.tsbPuzzleClone }));
@@ -53,6 +55,7 @@ namespace SokoSolve.UI.Section.Library
             Register(new SolutionTest(this, new object[] { view.tsbSolutionTest }));
             Register(new SolutionDelete(this, new object[] { view.tsbSolutionDelete}));
             Register(new SolutionEdit(this, new object[] { view.tsbSolutionEdit }));
+            Register(new SolutionNew(this, new object[] { view.tsbSolutionAdd }));
 
             // Extra Commands
             Register(new HelpAbout(this, new object[] { view.tsbHelpAbout }));
@@ -62,6 +65,10 @@ namespace SokoSolve.UI.Section.Library
             Register(new HelpCheckVersion(this, new object[] { view.tsbCheckVersion }));
             Register(new HelpWebSite(this, new object[] { view.tsbHelpWebSite }));
             Register(new HelpReturn(this, new object[] { view.tsbReturn }));
+            Register(new HelpSupportBug(this, new object[] { view.tsbHelpSubmitBug }));
+            Register(new HelpSupportFeature(this, new object[] { view.tsbHelpSubmitFeature }));
+            Register(new HelpSupportPuzzle(this, new object[] { view.tsbHelpContributePuzzle }));
+            Register(new HelpSupportGeneralDiscussion(this, new object[] { view.tsbHelpForums }));
 
 			UpdateUI("Controller.Init");
 		}

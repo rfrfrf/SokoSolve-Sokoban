@@ -72,6 +72,8 @@ namespace SokoSolve.Common
         /// <returns></returns>
         public static string[] SplitOnLength(string source, int length)
         {
+            if (string.IsNullOrEmpty(source)) return new string[] { source };
+
             List<string> result = new List<string>();
 
             while (source.Length > length)

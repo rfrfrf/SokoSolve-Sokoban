@@ -13,10 +13,11 @@ namespace SokoSolve.Core.IO
     {
         public ImportTXT()
         {
-            ImporterName = "Import TXT Puzzles";
-            Description = @"Import TXT Puzzles. 
+            ImporterName = "Import TXT/XSB Puzzles";
+            Description = @"Import TXT/XSB Puzzles. 
 This is a very basic format that allow names,  descriptions, and puzzles only. 
-See http://users.bentonrea.com/~sasquatch/sokoban/. 
+See http://sokosolve.sourceforge.net/FileFormatXSB.html
+See http://users.bentonrea.com/~sasquatch/sokoban
 Example:
 
 ; '#1 First level in Sasquatch'

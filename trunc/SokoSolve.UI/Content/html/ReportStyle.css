@@ -1,0 +1,107 @@
+body
+{
+	font-family: Calibri, Verdana, Arial;
+	font-size: 11pt;
+	padding-right: 20px;
+	padding-left: 10px;
+	
+}
+
+h1
+{
+	font-family: Calibri, 'Bookman Old Style' , Verdana;
+	width: 100%;
+	border-bottom: lightsteelblue 2px solid;
+	color: #003366;
+}
+
+h2 
+{
+	width: 100%;
+	border-bottom: solid 1px lightsteelblue;
+	border-collapse: collapse;
+	padding:10 0 0 0;
+	margin:0 0 0 0;
+}
+
+h3 
+{
+	border-collapse: collapse;
+	padding:5 0 0 0;
+	margin:0 0 0 0;
+}
+
+p
+{
+	border-collapse: collapse;
+	padding:0 0 0 0;
+}
+
+img 
+{
+	border: none 0px;
+}
+
+
+
+a { color: #003366; }
+
+.tablepuzzle
+{
+	border-collapse: collapse;
+	border-style: none;
+	background-color: White;
+}
+
+.tablepuzzle tr
+{
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+.tablepuzzle td
+{
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+
+.tableformat 
+{
+	width: 100%;
+	border-style: none;
+	background-color: White;
+}
+
+.tableformat td 
+{
+	vertical-align: top;
+	border-style: none;
+	background-color: White;
+}
+
+.tableinfo
+{
+	padding : 6px;
+	border-bottom: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	line-height : 14px;
+	font-size: 11px;
+	font-family: tahoma;
+	line-height : 15px;
+	color : #656565;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.tableinfo td {
+	border-top: 1px solid #CCCCCC;
+	border-left: 1px solid #CCCCCC;
+	padding: 6px;
+}
+.tableinfo th {
+	padding : 6px;
+	border-bottom: 1px solid #CCCCCC;
+	border-right: 1px solid #CCCCCC;
+	font-weight : bold;
+	background-color : #EEEEEE;
+	line-height : 16px;
+}

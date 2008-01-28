@@ -27,10 +27,10 @@ namespace SokoSolve.UI.Section.Library
             ItemCategory cat = instance.Context[0] as ItemCategory;
             if (cat != null)
             {
-                Category newCat = new Category();
+                Category newCat = new Category(cat.DomainData.Library);
                 newCat.CategoryID = Controller.Current.IdProvider.GetNextIDString("C{0}");
                 newCat.CategoryParentREF = cat.DomainData.CategoryID;
-                newCat.Details = new GenericDescription();
+                newCat.Details = ProfileController.Current.GenericDescription;
                 newCat.Details.Name = "New Category";
                 newCat.Order = cat.DomainData.TreeNode.Tree.Nodes.Count + 1;
                 cat.DomainData.TreeNode.Add(newCat);
@@ -40,14 +40,37 @@ namespace SokoSolve.UI.Section.Library
                 // Refresh the UI model to updated domain data
                 cat.SyncDomain();
 
-                // Refresh enture tree
+                // Refresh entire tree
                 Controller.Explorer.SyncUI();
+                return;
+            }
+
+            ItemLibrary lib = instance.Context[0] as ItemLibrary;
+            if (lib != null)
+            {
+                Category newCat = new Category(lib.DomainData);
+                newCat.CategoryID = Controller.Current.IdProvider.GetNextIDString("C{0}");
+                newCat.CategoryParentREF = lib.DomainData.CategoryTree.Root.Data.CategoryID;
+                newCat.Details = ProfileController.Current.GenericDescription;
+                newCat.Details.Name = "New Category";
+                newCat.Order = lib.DomainData.CategoryTree.Nodes.Count + 1;
+                lib.DomainData.CategoryTree.Root.Add(newCat);
+
+                // Select new cat, set to edit...
+
+                // Refresh the UI model to updated domain data
+                lib.SyncDomain();
+
+                // Refresh entire tree
+                Controller.Explorer.SyncUI();
+                return;
             }
         }
 
         public override void UpdateForSelection(List<ExplorerItem> selection)
         {
-            Enabled = ExplorerItem.SelectionHelper(selection, true, 1, 1, typeof (ItemCategory));
+            Enabled = (ExplorerItem.SelectionHelper(selection, true, 1, 1, typeof (ItemCategory)) ||
+                            ExplorerItem.SelectionHelper(selection, true, 1, 1, typeof (ItemLibrary)));
         }
     }
 
@@ -67,22 +90,21 @@ namespace SokoSolve.UI.Section.Library
             ItemCategory delMe = instance.Context[0] as ItemCategory;
             if (delMe != null)
             {
-                // Find parent, then remove current
-                TreeNode<ExplorerItem> parent = delMe.TreeNode.Parent;
-                ItemCategory catParent = parent.Data as ItemCategory;
-                if (catParent != null)
+                DialogResult res = MessageBox.Show("This will delete the category, all sub categories and all puzzles. Are you sure?", "Confirm Delete?", MessageBoxButtons.OKCancel);
+                if (res == DialogResult.OK)
                 {
-                    catParent.DomainData.TreeNode.RemoveChild(delMe.DomainData);
+                    // Remove the category, etc
+                    delMe.DomainData.Delete();
 
-                    // Refresh the UI model to updated domain data
-                    catParent.SyncDomain();
+                    // Find parent, then remove current
+                    TreeNode<ExplorerItem> parent = delMe.TreeNode.Parent;
+
+                    // Set selection as parent
+                    Controller.UpdateSelectionSingle(parent.Data);
+
+                    // Refresh enture tree
+                    Controller.Explorer.Refresh();
                 }
-
-                // Set selection as parent
-                Controller.UpdateSelectionSingle(catParent);
-
-                // Refresh enture tree
-                Controller.Explorer.SyncUI();
             }
         }
 
@@ -98,8 +120,7 @@ namespace SokoSolve.UI.Section.Library
 
     class CategoryEdit : CommandLibraryBase
     {
-        public CategoryEdit(Controller<ExplorerItem> controller, object[] buttonControls)
-            : base(controller, buttonControls)
+        public CategoryEdit(Controller<ExplorerItem> controller, object[] buttonControls): base(controller, buttonControls)
         {
             Init("Edit Category", "Edit category properties");
         }

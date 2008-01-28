@@ -19,6 +19,7 @@ namespace SokoSolve.UI.Section
         protected object domainData;
         private TreeNode<ExplorerItem> treeNode;
         private bool isEditable;
+        private bool synced;
 
         /// <summary>
         /// Abstract constructor
@@ -27,6 +28,15 @@ namespace SokoSolve.UI.Section
         protected ExplorerItem(object domainData)
         {
             this.domainData = domainData;
+        }
+
+        /// <summary>
+        /// Has this item been synced
+        /// </summary>
+        public bool Synced
+        {
+            get { return synced; }
+            set { synced = value; }
         }
 
         /// <summary>
@@ -280,11 +290,13 @@ namespace SokoSolve.UI.Section
                         if (object.ReferenceEquals(existingUI.Data.DataUnTyped, dataItem))
                         {
                             found = true;
+                            existingUI.Data.Synced = true;
                             break;
                         }
                     }
 
                     if (!found) removeList.Add(existingUI);
+                    
                 }
             }
 
@@ -308,7 +320,10 @@ namespace SokoSolve.UI.Section
                         if (!ExistsInUIModel(dataItem))
                         {
                             // Does not exist, so add
-                            TreeNode.Add(FactoryMethod(dataItem));
+                            ExplorerItem newItem = FactoryMethod(dataItem);
+                            TreeNode.Add(newItem);
+                            TreeNode.Data.Synced = true;
+                            newItem.Synced = true;
                         }
                     }
                 }

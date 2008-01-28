@@ -21,14 +21,18 @@ namespace SokoSolve.Core.Model
     public class SokobanMap
     {
         /// <summary>
-        /// Void, Wall, Floor, Crate, Goal, CrateAndGoal, Player, PlayerAndGoal
+        /// Standard internet sequence
         /// </summary>
-		public  static readonly string StandardEncodeChars = "~#.XO$P*";
+        /// <remarks>Sequence is Void, Wall, Floor, Crate, Goal, CrateAndGoal, Player, PlayerAndGoal</remarks>
+        public static readonly string InternetChars = "~# $.*@+";
 
         /// <summary>
-        /// Void, Wall, Floor, Crate, Goal, CrateAndGoal, Player, PlayerAndGoal
+        /// Standard SokoSolve SSX xml encoding.
         /// </summary>
-		public static readonly string StandardEncodeCharsV1 = "~#.xoXpP";
+        /// <remarks>Sequence is Void, Wall, Floor, Crate, Goal, CrateAndGoal, Player, PlayerAndGoal</remarks>
+		public  static readonly string StandardEncodeChars = "~#.XO$P*";
+
+    
 
         /// <summary>
         /// Map array

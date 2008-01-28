@@ -315,8 +315,8 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <returns></returns>
         public override void EvaluateChildren(INode<SolverNode> node)
         {
-            using (CodeTimerStatistic timer = new CodeTimerStatistic(controller.Stats.EvalChildTime))
-            {
+            
+            
                 int pushes = 0;
                 // Find all possible pushes as result of the new move map
                 Bitmap moves = node.Data.MoveMap;
@@ -353,7 +353,7 @@ namespace SokoSolve.Core.Analysis.Solver
                 // Mark as complete
                 node.Data.IsChildrenEvaluated = true;
                 MarkEvalCompelete(node);
-            }
+            
         }
 
         /// <summary>

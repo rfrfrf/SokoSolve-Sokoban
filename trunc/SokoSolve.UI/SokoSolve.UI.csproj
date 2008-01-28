@@ -152,6 +152,12 @@
     <Compile Include="Section\Library\FormAddFromLibrary.Designer.cs">
       <DependentUpon>FormAddFromLibrary.cs</DependentUpon>
     </Compile>
+    <Compile Include="Section\Library\FormReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Section\Library\FormReport.Designer.cs">
+      <DependentUpon>FormReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Section\Library\GenericPayload.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -169,6 +175,18 @@
     </Compile>
     <Compile Include="Section\Library\Items\PayloadLibrary.Designer.cs">
       <DependentUpon>PayloadLibrary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Section\Library\Items\PayloadSolution.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Section\Library\Items\PayloadSolution.Designer.cs">
+      <DependentUpon>PayloadSolution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Section\Library\Items\PayloadSolutionEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Section\Library\Items\PayloadSolutionEdit.Designer.cs">
+      <DependentUpon>PayloadSolutionEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="Section\Library\Library.cs">
       <SubType>UserControl</SubType>
@@ -241,6 +259,10 @@
       <SubType>Designer</SubType>
       <DependentUpon>Editor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Section\Library\FormReport.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Section\Library\GenericPayload.resx">
       <SubType>Designer</SubType>
       <DependentUpon>GenericPayload.cs</DependentUpon>
@@ -248,6 +270,14 @@
     <EmbeddedResource Include="Section\Library\Items\PayloadLibrary.resx">
       <SubType>Designer</SubType>
       <DependentUpon>PayloadLibrary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Section\Library\Items\PayloadSolution.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PayloadSolution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Section\Library\Items\PayloadSolutionEdit.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PayloadSolutionEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Section\Library\Library.resx">
       <SubType>Designer</SubType>
@@ -383,6 +413,7 @@
     <None Include="Content\Graphics\Icons\Graph.png" />
     <Content Include="Content\Graphics\Icons\Help.png" />
     <None Include="Content\Graphics\Icons\Home.png" />
+    <None Include="Content\Graphics\Icons\Import.png" />
     <Content Include="Content\Graphics\Icons\Left.png" />
     <Content Include="Content\Graphics\Icons\Library.png" />
     <Content Include="Content\Graphics\Icons\NewLibrary.png" />

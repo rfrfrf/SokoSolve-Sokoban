@@ -33,6 +33,8 @@ namespace SokoSolve.UI.Section.Library
 
 		void controller_OnCurrentChanged(object sender, EventArgs e)
 		{
+            Clear();
+
 			SyncDomain(new ItemLibrary(controller.Current));
 			SyncUI();
 		}

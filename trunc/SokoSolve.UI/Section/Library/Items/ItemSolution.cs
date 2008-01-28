@@ -39,28 +39,29 @@ namespace SokoSolve.UI.Section.Library.Items
         {
             if (IsEditable)
             {
-                if (!Explorer.DetailPayload.Controls.Contains(properties))
+                if (!Explorer.DetailPayload.Controls.Contains(editControl))
                 {
                     Explorer.DetailPayload.Controls.Clear();
-                    Explorer.DetailPayload.Controls.Add(properties);
-                    properties.Dock = DockStyle.Fill;
+                    Explorer.DetailPayload.Controls.Add(editControl);
+                    editControl.Dock = DockStyle.Fill;
 
-                    properties.Data = DomainData.Details;
+                    editControl.ucGenericDescription.Data = DomainData.Details;
                 }
 
-                return properties;
+                return editControl;
             }
             else
             {
-                if (!Explorer.DetailPayload.Controls.Contains(html))
+                if (!Explorer.DetailPayload.Controls.Contains(readOnlyControl))
                 {
                     Explorer.DetailPayload.Controls.Clear();
-                    Explorer.DetailPayload.Controls.Add(html);
-                    html.Dock = DockStyle.Fill;
+                    Explorer.DetailPayload.Controls.Add(readOnlyControl);
+                    readOnlyControl.Dock = DockStyle.Fill;
                 }
 
                 if (DomainData != null)
                 {
+                    // Html
                     HtmlBuilder builder = new HtmlBuilder();
                     builder.Add(HtmlReporter.Report(DomainData.Details));
 
@@ -68,16 +69,19 @@ namespace SokoSolve.UI.Section.Library.Items
                     builder.AddLabel("Moves", StringHelper.Join(moveSplit, "<br/>"));
                     builder.AddLabel("Move Length", DomainData.Steps.Length.ToString());
 
-                    html.SetHTML(builder.GetHTMLPage());
+                    readOnlyControl.htmlView.SetHTML(builder.GetHTMLPage());
+
+                    // Solution Browser
+                    readOnlyControl.Solution = DomainData;
                 }
-                return html;
+                return readOnlyControl;
             }
         }
 
 
 
-        static HtmlView html = new HtmlView();
-        private static ucGenericDescription properties = new ucGenericDescription();
+        static PayloadSolution readOnlyControl = new PayloadSolution();
+        private static PayloadSolutionEdit editControl = new PayloadSolutionEdit();
 	}
 
 }
