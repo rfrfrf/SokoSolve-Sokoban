@@ -38,7 +38,7 @@ The 50 original levels from Sokoban plus the 40 from Extra.
           <Solutions>
             <Solution StartX="11" StartY="8">
               <Steps>ullluuululldlldddrrrrrrrrrrrrllllllluuululldduurrdrdddrrrrrrrrurdllllllllluuulullddduulldddrrrrrrrrrrrrdrulurdlllllllllllllulldrrrrrrrrrrrrrrllllllluuullulddduulldddrrrrrrrrrrrlllllluuululuurdlddrrdddrrrrrrdrrudllurllllllluuulluuulddurrdllddduulldddrrrlddrrrruurrrrrrrlllllllddlllluurrruuulrdddrluuullulddduulldddrrrlddrrrruurrrrrurdldrullllllddlllluurrrrrrrrrr</Steps>
-              <SolutionDescription Date="2008-01-22T20:52:10.337205+00:00">
+              <SolutionDescription Date="2008-01-22T22:52:10.337205+02:00">
                 <Name>SokoSolve Solution</Name>
                 <Description>Evaluation Total Seconds : 114 sec
 Evaluation Time : 0.000 sec
@@ -83,7 +83,16 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>~~#.X..X.X.X.#</Row>
           <Row>~~#....#.....#</Row>
           <Row>~~############</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="7" StartY="4">
+              <Steps>rdrRdddrruuLUUruulLulllldDuurrrrdrrddldlllulLLLdlUUUruLLdddrrrruuurrdLulDDuurrrrdrrddldlllulLLLulDrdLLurrrruuurrrrdLLLulDDurrrrrrddldlllulLLLdlUUruLLddrrrrrrdrrruUruLLLLLulDDurrrrrdddlllulLLLdlUruLLdrrrrrrdrrrdrddlUUUUUruLLLLLulDDurrrrrdddlllulLLLLLrrrrrrdrrrddlUruuuulllllddrrdrRdrUUUruLLLLLulDDurrrrrdddlllulLLLdlUUUruLdddrrrrrdrrdddlluRdrUUruuuulllllddrrdrRdrUUUruLLLLLulDDurrrrrdddlllulLLLdlUUruLddrrrrrdrrddlUruruuulllllddrrdRRdrUUUruLLLLLulDDurrrrrdddlllulLLLdlUruLdrrrdddRRdrUUdllluuurrdRRdrUUUruLLLLLulDDurrrrrdddlllulLLLulDrdLurrrddddllluRRdrUUUddrrruululLLLL</Steps>
+              <SolutionDescription License="Creative Commons" Date="2008-02-01T09:22:38.7659975+02:00">
+                <Name>'Puzzle No. 1' Solution</Name>
+                <Comments>Moves 568/568, Pushes 153/153, Undos 0, Restarts 0, Duration 00:01:45.2110395</Comments>
+                <Author Name="Guy Langston" Email="guy@langston.org.za" Homepage="www.guylangston.net" />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>

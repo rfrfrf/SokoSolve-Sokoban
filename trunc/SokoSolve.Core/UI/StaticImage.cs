@@ -15,12 +15,12 @@ namespace SokoSolve.Core.UI
         Brush[] tileColours;
         Image[] tiles;
         VectorInt tileSize;
-        public ResourceManager Resources;
+        public ResourceFactory Resources;
 
         /// <summary>
         /// Default construction
         /// </summary>
-        public StaticImage(ResourceManager resource, VectorInt tileSize)
+        public StaticImage(ResourceFactory resource, VectorInt tileSize)
         {
             this.tileSize = tileSize;
             Resources = resource;
@@ -174,11 +174,32 @@ namespace SokoSolve.Core.UI
             tiles = new Image[CellStatesClass.Size];
             foreach (CellStates cellState in Enum.GetValues(typeof(CellStates)))
             {
-                if (Resources[cellState.ToString()] != null) tiles[(int)cellState] = Resources[cellState.ToString()].LoadBitmap();
+                tiles[(int) cellState] = Resources[Convert(cellState)].DataAsImage;
             }
            
 
             tileSize = new VectorInt(tiles[0].Width, tiles[0].Height);
+        }
+
+        /// <summary>
+        /// Convert a cellstate (logical) to its static gfx resourceID
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        static public ResourceID Convert(CellStates input)
+        {
+            switch(input)
+            {
+                case(CellStates.Void) : return ResourceID.StaticTileVoid;
+                case (CellStates.Wall): return ResourceID.StaticTileWall;
+                case (CellStates.Floor): return ResourceID.StaticTileFloor;
+                case (CellStates.FloorCrate): return ResourceID.StaticTileFloorCrate;
+                case (CellStates.FloorGoal): return ResourceID.StaticTileFloorGoal;
+                case (CellStates.FloorGoalPlayer): return ResourceID.StaticTileFloorGoalPlayer;
+                case (CellStates.FloorGoalCrate): return ResourceID.StaticTileFloorGoalCrate;
+                case (CellStates.FloorPlayer): return ResourceID.StaticTileFloorPlayer;
+            }
+            throw new Exception("Unhandled enum");
         }
 
        

@@ -67,16 +67,20 @@ namespace SokoSolve.Core.UI.Nodes
                         Game.Game.MoveResult res = GameUI.Move(futureMoves.Dequeue());
                         if (res == Game.Game.MoveResult.Invalid)
                         {
-                            string[] rndMsg = new string[] { "!!!", "$&!%", "&*!?", "Sorry" };
+                            string[] rndMsg = GameUI.ResourceFactory[ResourceID.GameMiscStringInvalidMove].DataAsStringArray;
                             NodeEffectText msg = new NodeEffectText(GameUI, 20, rndMsg, CurrentCentre);
                             msg.Brush = new SolidBrush(Color.Red);
                             GameUI.Add(msg);
+
+                            GameUI.Sound.PlaySound(GameUI.ResourceFactory[ResourceID.GameSoundInvalid].DataAsSound);
                         } 
                         else if (res == Game.Game.MoveResult.ValidPushGoal)
                         {
-                            string[] rndMsg = new string[] { "Great!", "Yeah!", "Cool", "Brilliant" };
+                            string[] rndMsg = GameUI.ResourceFactory[ResourceID.GameMiscStringCrateGoal].DataAsStringArray;
                             NodeEffectText msg = new NodeEffectText(GameUI, 20, rndMsg, CurrentCentre);
                             GameUI.Add(msg);
+
+                            GameUI.Sound.PlaySound(GameUI.ResourceFactory[ResourceID.GameSoundPushGoal].DataAsSound);
                         }
                         else if (res == Game.Game.MoveResult.ValidPushWin)
                         {
@@ -90,7 +94,9 @@ namespace SokoSolve.Core.UI.Nodes
                             else
                             {
                                 NodePuzzleWin win = new NodePuzzleWin(GameUI, 5000, GameUI.GameCoords.PuzzleRegion.Center);
-                                GameUI.Add(win);    
+                                GameUI.Add(win);
+
+                                GameUI.Sound.PlaySound(GameUI.ResourceFactory[ResourceID.GameSoundWin].DataAsSound);
                             }
                         }
                     }

@@ -23,10 +23,7 @@ namespace SokoSolve.UI.Controls.Primary
         {
             if (name.ToLower().EndsWith("wav"))
             {
-                string file = FileManager.getContent("$SFX", name);
-                if (!File.Exists(file)) return null;
-
-                SoundFX sfx = new SoundFX(file);
+                SoundFX sfx = new SoundFX(name);
                 sfx.Load();
                 return sfx;
             }
@@ -60,8 +57,13 @@ namespace SokoSolve.UI.Controls.Primary
 
             try
             {
+                // Add a delegate for the PlayStateChange event.
+
+               
+               
                 player.Open(music.ToString());
                 player.Play();
+                
                 currentMusic = music;
                 
               
@@ -73,6 +75,8 @@ namespace SokoSolve.UI.Controls.Primary
             }
             
         }
+
+      
 
         void player_EndOfStream(int Result)
         {

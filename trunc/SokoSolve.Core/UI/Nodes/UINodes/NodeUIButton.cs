@@ -19,17 +19,17 @@ namespace SokoSolve.Core.UI.Nodes.UINodes
         /// <param name="myGameUI"></param>
         /// <param name="myDepth"></param>
         /// <param name="PositionAbs"></param>
-        /// <param name="FileImage">Filename</param>
+        /// <param name="resImage">Resource of the UI button image</param>
         /// <param name="ClickCommand">Command string passed back in the click event</param>
-        public NodeUIButton(GameUI myGameUI, int myDepth, VectorInt PositionAbs, string FileImage, string ClickCommand) : base(myGameUI, myDepth)
+        public NodeUIButton(GameUI myGameUI, int myDepth, VectorInt PositionAbs, ResourceID resImage, string ClickCommand) : base(myGameUI, myDepth)
         {
-            imageNormal = new Bitmap(FileManager.getContent(FileImage));
-            imageBack = new Bitmap(FileManager.getContent("$Graphics\\Icons\\BasicButtonBK.png"));
+            imageNormal = myGameUI.ResourceFactory[resImage].DataAsImage;
+            imageBack = myGameUI.ResourceFactory[ResourceID.GameButtonBackGround].DataAsImage;
             Size = new SizeInt(imageBack.Size);
             CurrentAbsolute = PositionAbs;
             clickCommand = ClickCommand;
 
-            mouseOverBrush = new SolidBrush(Color.FromArgb(60, Color.Yellow));
+            mouseOverBrush = myGameUI.ResourceFactory[ResourceID.GameButtonMouseOverBrush].DataAsBrush;
             maskEffect = null;
             toolTip = null;
 
@@ -78,7 +78,7 @@ namespace SokoSolve.Core.UI.Nodes.UINodes
         /// <summary>
         /// Clickable image
         /// </summary>
-        public Bitmap ImageNormal
+        public Image ImageNormal
         {
             get { return imageNormal; }
             set 
@@ -90,7 +90,7 @@ namespace SokoSolve.Core.UI.Nodes.UINodes
         /// <summary>
         /// Background image
         /// </summary>
-        public Bitmap ImageBack
+        public Image ImageBack
         {
             get { return imageBack; }
             set 
@@ -178,15 +178,15 @@ namespace SokoSolve.Core.UI.Nodes.UINodes
             }
         }
 
-        private static void DrawBitmapCentered(Graphics Graphics, RectangleInt Target, Bitmap image)
+        private static void DrawBitmapCentered(Graphics Graphics, RectangleInt Target, Image image)
         {
             VectorInt pos = Target.Center.Subtract(image.Width/2, image.Height/2);
             Graphics.DrawImage(image, pos.X, pos.Y);
         }
 
         private bool isMouseOver;
-        private Bitmap imageNormal;
-        private Bitmap imageBack;
+        private Image imageNormal;
+        private Image imageBack;
         private string clickCommand;
         private string toolTip;
         private Brush maskEffect;

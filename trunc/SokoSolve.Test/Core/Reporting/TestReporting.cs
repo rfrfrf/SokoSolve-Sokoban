@@ -20,7 +20,7 @@ namespace SokoSolve.Test.Core.Reporting
             XmlProvider xmlHelper = new XmlProvider();
             Library lib = xmlHelper.Load("../../../SokoSolve.Test/Core/Reporting/Sasquatch.ssx");
 
-            LibraryReport rpt = new LibraryReport(lib, new StaticImage(ResourceFactory.Singleton.GetInstance("default"), new VectorInt(16,16)),@"c:\junk\");
+            LibraryReport rpt = new LibraryReport(lib, new StaticImage(ResourceController.Singleton.GetInstance("default"), new VectorInt(16,16)),@"c:\junk\");
             rpt.BuildReport();
             rpt.Save(@"C:\junk\library.html");
         }

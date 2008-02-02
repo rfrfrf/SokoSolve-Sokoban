@@ -428,13 +428,21 @@ namespace SokoSolve.UI.Section.Library
                 if (form != null)
                 {
                     form.Solve(puz.DomainData.MasterMap);
+                    return;
                 }
+            }
+
+            FormMain defForm = Controller.Explorer.TreeView.FindForm() as FormMain;
+            if (defForm != null)
+            {
+                defForm.Solve(null);
+                return;
             }
         }
 
         public override void UpdateForSelection(List<ExplorerItem> selection)
         {
-            Enabled = ExplorerItem.SelectionHelper(selection, true, 1, 1, typeof(ItemPuzzle));
+            Enabled = (selection != null && selection.Count > 0);
         }
 
     }

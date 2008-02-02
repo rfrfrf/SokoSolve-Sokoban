@@ -213,9 +213,19 @@ namespace SokoSolve.UI
         /// <param name="map"></param>
         public void Solve(PuzzleMap map)
         {
+            if (map != null)
+            {
+                solverControl.Library = map.Puzzle.Library;
+                solverControl.Puzzle = map.Puzzle;
+            }
+            else
+            {
+                solverControl.Library = libControl.CurrentLibrary;
+            }
+
             Mode = Modes.Solver;
-            solverControl.Library = map.Puzzle.Library;
-            solverControl.Puzzle = map.Puzzle;
+
+            
         }
 
         /// <summary>

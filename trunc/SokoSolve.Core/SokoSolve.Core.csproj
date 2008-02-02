@@ -124,9 +124,6 @@
     <Compile Include="UI\Nodes\Effects\NodeEffect.cs" />
     <Compile Include="UI\Nodes\Effects\NodeEffectCircle.cs" />
     <Compile Include="UI\Nodes\Effects\NodeEffectText.cs" />
-    <Compile Include="UI\Nodes\Effects\NodeEffectTicker.cs" />
-    <Compile Include="UI\Nodes\NodeAnimation.cs" />
-    <Compile Include="UI\Nodes\NodeArtefact.cs" />
     <Compile Include="UI\Nodes\NodeCell.cs" />
     <Compile Include="UI\Nodes\Complex\NodeCursor.cs" />
     <Compile Include="UI\Nodes\NodeDynamic.cs" />
@@ -143,8 +140,14 @@
     <Compile Include="UI\Paths\Spiral.cs" />
     <Compile Include="UI\Paths\StaticPath.cs" />
     <Compile Include="UI\Resource.cs" />
+    <Compile Include="UI\ResourceController.cs" />
+    <Compile Include="UI\ResourceID.cs" />
     <Compile Include="UI\ResourceFactory.cs" />
-    <Compile Include="UI\ResourceManager.cs" />
+    <Compile Include="UI\ResourceTypes\ResourceBrush.cs" />
+    <Compile Include="UI\ResourceTypes\ResourceFont.cs" />
+    <Compile Include="UI\ResourceTypes\ResourceImage.cs" />
+    <Compile Include="UI\ResourceTypes\ResourceSFX.cs" />
+    <Compile Include="UI\ResourceTypes\ResourceString.cs" />
     <Compile Include="UI\StaticImage.cs" />
   </ItemGroup>
   <ItemGroup>

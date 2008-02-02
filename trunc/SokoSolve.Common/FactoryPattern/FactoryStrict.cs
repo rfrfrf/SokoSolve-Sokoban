@@ -4,6 +4,13 @@ using System.Text;
 
 namespace SokoSolve.Common.FactoryPattern
 {
+    /// <summary>
+    /// Implement a strict factory.
+    /// Allow sealed creation (a marker afterwhich no calls to CreateInstance are allowed)
+    /// GetInstance() will throw an exception is not found (vs creations or returning null)
+    /// </summary>
+    /// <typeparam name="Provider"></typeparam>
+    /// <typeparam name="ProviderContext"></typeparam>
     public abstract class FactoryStrict<Provider, ProviderContext> : Factory<Provider, ProviderContext>
     {
 

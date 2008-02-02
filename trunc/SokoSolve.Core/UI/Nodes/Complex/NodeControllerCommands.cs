@@ -17,31 +17,31 @@ namespace SokoSolve.Core.UI.Nodes.Complex
             RectangleInt panel = myGameUI.GameCoords.PositionMovementCommands;
             VectorInt locCommands = myGameUI.GameCoords.PositionMovementCommands.TopLeft;
 
-            NodeUIButton buttonUp = new NodeUIButton(myGameUI, myDepth + 1, locCommands.Add(22, 2), "$Graphics/Icons/Up.png", "Up");
+            NodeUIButton buttonUp = new NodeUIButton(myGameUI, myDepth + 1, locCommands.Add(22, 2), ResourceID.GameButtonUp, "Up");
             buttonUp.CurrentCentre = panel.TopMiddle;
             buttonUp.ToolTip = "Move Up";
             buttonUp.OnClick += new EventHandler<NotificationEvent>(Button_OnClick);
             myGameUI.Add(buttonUp);
 
-            NodeUIButton buttonDown = new NodeUIButton(myGameUI, myDepth + 2, locCommands.Add(22, 42), "$Graphics/Icons/Down.png", "Down");
+            NodeUIButton buttonDown = new NodeUIButton(myGameUI, myDepth + 2, locCommands.Add(22, 42), ResourceID.GameButtonDown, "Down");
             buttonDown.CurrentCentre = panel.BottomMiddle;
             buttonDown.ToolTip = "Move Down";
             buttonDown.OnClick += new EventHandler<NotificationEvent>(Button_OnClick);
             myGameUI.Add(buttonDown);
 
-            NodeUIButton buttonLeft = new NodeUIButton(myGameUI, myDepth + 3, locCommands.Add(2, 22), "$Graphics/Icons/Left.png", "Left");
+            NodeUIButton buttonLeft = new NodeUIButton(myGameUI, myDepth + 3, locCommands.Add(2, 22), ResourceID.GameButtonLeft, "Left");
             buttonLeft.CurrentCentre = panel.MiddleLeft;
             buttonLeft.ToolTip = "Move Left";
             buttonLeft.OnClick += new EventHandler<NotificationEvent>(Button_OnClick);
             myGameUI.Add(buttonLeft);
 
-            NodeUIButton buttonRight = new NodeUIButton(myGameUI, myDepth + 4, locCommands.Add(42, 22), "$Graphics/Icons/Right.png", "Right");
+            NodeUIButton buttonRight = new NodeUIButton(myGameUI, myDepth + 4, locCommands.Add(42, 22), ResourceID.GameButtonRight, "Right");
             buttonRight.CurrentCentre = panel.MiddleRight;
             buttonRight.ToolTip = "Move Right";
             buttonRight.OnClick += new EventHandler<NotificationEvent>(Button_OnClick);
             myGameUI.Add(buttonRight);
 
-            NodeUIButton buttonUndo = new NodeUIButton(myGameUI, myDepth + 6, locCommands.Add(22, 22), "$Graphics/Icons/Undo.png", "Undo");
+            NodeUIButton buttonUndo = new NodeUIButton(myGameUI, myDepth + 6, locCommands.Add(22, 22), ResourceID.GameButtonUndo, "Undo");
             buttonUndo.CurrentCentre = panel.Center;
             buttonUndo.ToolTip = "Undo last move";
             buttonUndo.OnClick += new EventHandler<NotificationEvent>(Button_OnClick);
@@ -50,19 +50,19 @@ namespace SokoSolve.Core.UI.Nodes.Complex
             RectangleInt panelGen = myGameUI.GameCoords.PositionGeneralCommands;
 
 
-            NodeUIButton buttonRestart = new NodeUIButton(myGameUI, myDepth + 7, locCommands.Add(42, 42), "$Graphics/Icons/Restart.png", "Restart");
+            NodeUIButton buttonRestart = new NodeUIButton(myGameUI, myDepth + 7, locCommands.Add(42, 42), ResourceID.GameButtonRestart, "Restart");
             buttonRestart.CurrentCentre = panelGen.MiddleLeft;
             buttonRestart.ToolTip = "Restart puzzle";
             buttonRestart.OnClick += new EventHandler<NotificationEvent>(Button_OnClick);
             myGameUI.Add(buttonRestart);
 
-            NodeUIButton buttonExit = new NodeUIButton(myGameUI, myDepth + 8, locCommands.Add(42, 2), "$Graphics/Icons/Cancel.png", "Exit");
+            NodeUIButton buttonExit = new NodeUIButton(myGameUI, myDepth + 8, locCommands.Add(42, 2), ResourceID.GameButtonCancel, "Exit");
             buttonExit.CurrentCentre = panelGen.Center;
             buttonExit.ToolTip = "Give up and exit";
             buttonExit.OnClick += new EventHandler<NotificationEvent>(Button_OnClick);
             myGameUI.Add(buttonExit);
 
-            NodeUIButton buttonHelp = new NodeUIButton(myGameUI, myDepth + 5, locCommands.Add(2, 42), "$Graphics/Icons/Help.png", "Help");
+            NodeUIButton buttonHelp = new NodeUIButton(myGameUI, myDepth + 5, locCommands.Add(2, 42), ResourceID.GameButtonHelp, "Help");
             buttonHelp.CurrentCentre = panelGen.MiddleRight;
             buttonHelp.ToolTip = "Get a hint";
             buttonHelp.OnClick += new EventHandler<NotificationEvent>(Button_OnClick);

@@ -15,7 +15,7 @@ namespace SokoSolve.Core.UI.Nodes.Complex
         public NodeControllerBookmarks(GameUI myGameUI, int myDepth) : base(myGameUI, myDepth)
         {
             VectorInt vi = myGameUI.GameCoords.PositionWayPoints.TopLeft;
-            b1 = new NodeUIButton(myGameUI, myDepth + 1, vi, "$Graphics/Tiles/Clean/WayPointButton1.png", "WP1");
+            b1 = new NodeUIButton(myGameUI, myDepth + 1, vi, ResourceID.GameButtonBookmark1, "WP1");
             b1.ImageBack = null;
             b1.ToolTip = "Bookmark #1";
             b1.OnClick += new EventHandler<NotificationEvent>(OnButtonClick);
@@ -23,7 +23,7 @@ namespace SokoSolve.Core.UI.Nodes.Complex
             myGameUI.Add(b1);
 
             vi = vi.Add(0, 40);
-            b2 = new NodeUIButton(myGameUI, myDepth +2, vi, "$Graphics/Tiles/Clean/WayPointButton2.png", "WP2");
+            b2 = new NodeUIButton(myGameUI, myDepth + 2, vi, ResourceID.GameButtonBookmark2, "WP2");
             b2.ImageBack = null;
             b2.ToolTip = "Bookmark #2";
             b2.OnClick += new EventHandler<NotificationEvent>(OnButtonClick);
@@ -31,7 +31,7 @@ namespace SokoSolve.Core.UI.Nodes.Complex
             myGameUI.Add(b2);
 
             vi = vi.Add(0, 40);
-            b3 = new NodeUIButton(myGameUI, myDepth + 3, vi, "$Graphics/Tiles/Clean/WayPointButton3.png", "WP3");
+            b3 = new NodeUIButton(myGameUI, myDepth + 3, vi, ResourceID.GameButtonBookmark3, "WP3");
             b3.ImageBack = null;
             b3.ToolTip = "Bookmark #3";
             b3.OnClick += new EventHandler<NotificationEvent>(OnButtonClick);
@@ -39,7 +39,7 @@ namespace SokoSolve.Core.UI.Nodes.Complex
             myGameUI.Add(b3);
 
             vi = vi.Add(0, 40);
-            b4 = new NodeUIButton(myGameUI, myDepth + 4, vi, "$Graphics/Tiles/Clean/WayPointButton4.png", "WP4");
+            b4 = new NodeUIButton(myGameUI, myDepth + 4, vi, ResourceID.GameButtonBookmark4, "WP4");
             b4.ImageBack = null;
             b4.ToolTip = "Bookmark #4";
             b4.OnClick += new EventHandler<NotificationEvent>(OnButtonClick);
@@ -47,7 +47,7 @@ namespace SokoSolve.Core.UI.Nodes.Complex
             myGameUI.Add(b4);
 
             vi = vi.Add(0, 40);
-            b5 = new NodeUIButton(myGameUI, myDepth + 5, vi, "$Graphics/Tiles/Clean/WayPointButton5.png", "WP5");
+            b5 = new NodeUIButton(myGameUI, myDepth + 5, vi, ResourceID.GameButtonBookmark5, "WP5");
             b5.ImageBack = null;
             b5.ToolTip = "Bookmark #5";
             b5.OnClick += new EventHandler<NotificationEvent>(OnButtonClick);
@@ -57,7 +57,7 @@ namespace SokoSolve.Core.UI.Nodes.Complex
             brushBookmarkOn = null;
             brushBookmarkOff = new SolidBrush(Color.FromArgb(120, Color.Black));
 
-            staticImageRender = new StaticImage(ResourceFactory.Singleton.GetInstance("Default.Tiles"), new VectorInt(16, 16));
+            staticImageRender = new StaticImage(ResourceController.Singleton.GetInstance("Default.Tiles"), new VectorInt(16, 16));
         }
 
         public override void doStep()

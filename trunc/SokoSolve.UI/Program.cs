@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
+using SokoSolve.Core.UI;
+using SokoSolve.UI.Controls.Primary;
 using SokoSolve.UI.Controls.Secondary;
 
 namespace SokoSolve.UI
@@ -25,6 +27,10 @@ namespace SokoSolve.UI
 
 			try
 			{
+                // Init Resources
+			    ResourceController.Singleton.Init(new WindowsSoundSubSystem());
+
+                // Init the profile
 			    ProfileController.Init(Application.UserAppDataPath);
 			    FormMain formMain = new FormMain();
                 if (parms != null && parms.Length > 0)

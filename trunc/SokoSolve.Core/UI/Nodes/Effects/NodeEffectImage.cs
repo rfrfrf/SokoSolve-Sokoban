@@ -8,9 +8,30 @@ namespace SokoSolve.Core.UI.Nodes.Effects
 {
     class NodeEffectImage : NodeEffect
     {
-        public NodeEffectImage(GameUI myGameUI, int myDepth, Image image) : base(myGameUI, myDepth)
+        /// <summary>
+        /// Strong Contructor. 
+        /// Enforce the use of resource for images
+        /// </summary>
+        /// <param name="myGameUI"></param>
+        /// <param name="myDepth"></param>
+        /// <param name="resourceImage"></param>
+        public NodeEffectImage(GameUI myGameUI, int myDepth, ResourceID resourceImage) : base(myGameUI, myDepth)
         {
-            this.image = image;
+            this.image = myGameUI.ResourceFactory[resourceImage].DataAsImage;
+            this.Size = new SizeInt(image.Width, image.Height);
+        }
+
+        /// <summary>
+        /// Strong Contructor. 
+        /// Direct use of image
+        /// </summary>
+        /// <param name="myGameUI"></param>
+        /// <param name="myDepth"></param>
+        /// <param name="directImage"></param>
+        public NodeEffectImage(GameUI myGameUI, int myDepth, Image directImage)
+            : base(myGameUI, myDepth)
+        {
+            this.image = directImage;
             this.Size = new SizeInt(image.Width, image.Height);
         }
 

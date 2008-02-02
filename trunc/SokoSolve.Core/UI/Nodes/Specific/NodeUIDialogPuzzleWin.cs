@@ -13,10 +13,10 @@ namespace SokoSolve.Core.UI.Nodes.Specific
             NodeUIButton buttonCancel;
             NodeUIButton buttonSave;
             NodeUIButton buttonExit;
-            buttonNext = new NodeUIButton(myGameUI, myDepth + 1, CurrentAbsolute, "$Graphics/Icons/Right.png", "Next");
-            buttonCancel = new NodeUIButton(myGameUI, myDepth + 1, CurrentAbsolute, "$Graphics/Icons/Cancel.png", "Cancel");
-            buttonSave = new NodeUIButton(myGameUI, myDepth + 1, CurrentAbsolute, "$Graphics/Icons/Save.png", "Save");
-            buttonExit = new NodeUIButton(myGameUI, myDepth + 1, CurrentAbsolute, "$Graphics/Icons/Home.png", "Home");
+            buttonNext = new NodeUIButton(myGameUI, myDepth + 1, CurrentAbsolute, ResourceID.GameButtonRight, "Next");
+            buttonCancel = new NodeUIButton(myGameUI, myDepth + 1, CurrentAbsolute, ResourceID.GameButtonCancel, "Cancel");
+            buttonSave = new NodeUIButton(myGameUI, myDepth + 1, CurrentAbsolute, ResourceID.GameButtonSave, "Save");
+            buttonExit = new NodeUIButton(myGameUI, myDepth + 1, CurrentAbsolute, ResourceID.GameButtonHome, "Home");
 
             buttonNext.ToolTip = "Start the next puzzle";
             buttonCancel.ToolTip = "Redo this puzzle";

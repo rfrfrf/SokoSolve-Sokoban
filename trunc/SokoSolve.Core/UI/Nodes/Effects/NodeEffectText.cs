@@ -26,9 +26,9 @@ namespace SokoSolve.Core.UI.Nodes.Effects
         {
             CurrentAbsolute = Start;
             text = Text;
-            font = new Font("Arial", 12, FontStyle.Bold);
-            brush = new SolidBrush(Color.White);
-            brushShaddow = new SolidBrush(Color.FromArgb(80,80,80));
+            font = myGameUI.ResourceFactory[ResourceID.GameMiscFontDefault].DataAsFont;
+            brush = myGameUI.ResourceFactory[ResourceID.GameMiscFontDefaultBrush].DataAsBrush;
+            brushShaddow = myGameUI.ResourceFactory[ResourceID.GameMiscFontDefaultBrushShaddow].DataAsBrush; 
             Path = null;
             IsVisible = true;
 
@@ -46,10 +46,10 @@ namespace SokoSolve.Core.UI.Nodes.Effects
         public NodeEffectText(GameUI myGameUI, int myDepth, string[] Text, VectorInt Start) : base(myGameUI, myDepth)
         {
             CurrentAbsolute = Start;
-            
-            font = new Font("Arial", 12, FontStyle.Bold);
-            brush = new SolidBrush(Color.Yellow);
-            brushShaddow = new SolidBrush(Color.FromArgb(80, 80, 80));
+
+            font = myGameUI.ResourceFactory[ResourceID.GameMiscFontDefault].DataAsFont;
+            brush = myGameUI.ResourceFactory[ResourceID.GameMiscFontDefaultBrush].DataAsBrush;
+            brushShaddow = myGameUI.ResourceFactory[ResourceID.GameMiscFontDefaultBrushShaddow].DataAsBrush; 
             Path = new Linear(CurrentAbsolute, new VectorInt(20, 20), new VectorDouble(1, 1), false);
             text = RandomHelper.Select<string>(Text);
             IsVisible = true;

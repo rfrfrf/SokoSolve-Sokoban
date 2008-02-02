@@ -42,7 +42,7 @@ namespace SokoSolve.Core.UI
             GameCoords = new GameCoords(this);
             StepCurrent = 0;
 
-            ResourceManager = ResourceFactory.Singleton.GetInstance("Default.GameTiles");
+            ResourceFactory = ResourceController.Singleton.GetInstance("Default.GameTiles");
             GameCoords.GlobalTileSize = new SizeInt(32, 32);
            
             nodes = new List<NodeBase>();
@@ -51,10 +51,7 @@ namespace SokoSolve.Core.UI
 
             // I would like to move this somewhere else
             sound = sfx;
-            sfxWelcome = sound.GetHandle("Welcome.wav");
-            sfxUndo = sound.GetHandle("sound40.wav");
-            sfxRestart = sound.GetHandle("sound31.wav");
-
+           
             // Add blank bookmarks
             Add((Bookmark)null);
             Add((Bookmark)null);
@@ -79,7 +76,7 @@ namespace SokoSolve.Core.UI
             GameCoords = new GameCoords(this);
             StepCurrent = 0;
 
-            ResourceManager = ResourceFactory.Singleton.GetInstance("Default.GameTiles");
+            ResourceFactory = ResourceController.Singleton.GetInstance("Default.GameTiles");
             GameCoords.GlobalTileSize = new SizeInt(32, 32);
 
             nodes = new List<NodeBase>();
@@ -268,7 +265,7 @@ namespace SokoSolve.Core.UI
                 start.Path = new Paths.Spiral(Player.CurrentCentre);
                 Add(start);
 
-                sound.PlaySound(sfxWelcome);
+                sound.PlaySound(ResourceFactory[ResourceID.GameSoundWelcome].DataAsSound);
 
                 sound.PlayMusic(sound.GetHandle("Camokaze-Low.mp3"));
 
@@ -281,7 +278,7 @@ namespace SokoSolve.Core.UI
                 start.Path = new Paths.Spiral(Player.CurrentCentre);
                 Add(start);
 
-                sound.PlaySound(sfxRestart);
+                sound.PlaySound(ResourceFactory[ResourceID.GameSoundRestart].DataAsSound);
             }
             else if (initType == InitTypes.Undo)
             {
@@ -289,7 +286,7 @@ namespace SokoSolve.Core.UI
                 start.Brush = new SolidBrush(Color.Cyan);
                 Add(start);
 
-                sound.PlaySound(sfxUndo);
+                sound.PlaySound(ResourceFactory[ResourceID.GameSoundUndo].DataAsSound);
             }
             
 
@@ -571,7 +568,7 @@ namespace SokoSolve.Core.UI
         
         public GameCoords GameCoords;
         public Graphics Graphics;
-        public ResourceManager ResourceManager;
+        public ResourceFactory ResourceFactory;
         public Size SizeTile;
         public int StepCurrent;
         public bool Active;
@@ -583,10 +580,6 @@ namespace SokoSolve.Core.UI
         private NodeCursor cursor;
         private NodeDynamicPlayer player;
         private ISoundSubSystem sound;
-
-        private ISoundHandle sfxUndo;
-        private ISoundHandle sfxRestart;
-        private ISoundHandle sfxWelcome;
 
         private Solution solution;
         private PuzzleMap puzzleMap;

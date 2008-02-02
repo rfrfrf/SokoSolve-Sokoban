@@ -197,7 +197,7 @@ namespace SokoSolve.UI.Section
         private ExecutionStatus status;
         private List<T> selection;
         private ContextLogger logger;
-        private IconBinder iconBinder = new IconBinder(new StaticImage(ResourceFactory.Singleton.GetInstance("Default.Tiles"), new VectorInt(16, 16)));
+        private IconBinder iconBinder = new IconBinder(new StaticImage(ResourceController.Singleton.GetInstance("Default.Tiles"), new VectorInt(16, 16)));
 
 	}
 

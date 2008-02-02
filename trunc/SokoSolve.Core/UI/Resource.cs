@@ -4,6 +4,7 @@ using System.Text;
 
 using System.Xml;
 using System.Drawing;
+using SokoSolve.Common;
 using SokoSolve.Core.DataModel;
 
 namespace SokoSolve.Core.UI
@@ -12,48 +13,160 @@ namespace SokoSolve.Core.UI
     {
         Image,
         Animation,
-        SoundEffect
+        String,
+        Bool,
+        Int32,
+        Float,
+        Font,
+        Brush,
+        Pen,
+        Colour,
+        VectorInt,
+        FloatInt,
+        SoundEffect,
+        File,
+
+        Other
     }
 
-    public class Resource
+
+    /// <summary>
+    /// Unlike standard .NET resource which are statically compiled in
+    /// this simple resource system is dynamic and my be swapped at
+    /// run-time.
+    /// </summary>
+    public interface IDynamicResource
     {
-        public Resource()
-        {
-        }
+        Identity Identity { get;}
+        string Name { get; }
+        object DataUnTyped { get; }
+    }
+  
 
-        public Resource(ResourceManager aManager, XmlElement myElement)
-        {
-            pManager = aManager;
-            string id = myElement.GetAttribute("ID");
-            if (id != null && id.Length > 0) ID = new Identity(XmlConvert.ToInt32(id));
-            Name = myElement.GetAttribute("Name");
-            Filename = myElement.GetAttribute("Filename");
-            string t = myElement.GetAttribute("ResourceType");
-            if (t != null && t.Length > 0) Type = (ResourceType)Enum.Parse(typeof(ResourceType), t);
-        }
+    /// <summary>
+    /// Simple resource handle.
+    /// It is responsible for loading the resource into memory. Basic type (image, file, string, etc) are handled by this base type
+    /// to allow strong-typeing and quick access.
+    /// </summary>
+    public abstract class Resource : IDynamicResource
+    {
+        private Identity identity;
+        private string name;
+        private string description;
+        private ResourceType type;
+        protected object dataUnTyped;
+        private XmlElement xmlConfigData;
+        private ResourceFactory factory;
 
-        public string FullPath
+        /// <summary>
+        /// Build from XML based on type
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="xmlConfigData"></param>
+        protected Resource(ResourceFactory factory, ResourceType type, XmlElement xmlConfigData)
         {
-            get
+            this.type = type;
+            this.xmlConfigData = xmlConfigData;
+            this.factory = factory;
+
+            identity = new Identity(int.Parse(xmlConfigData.GetAttribute("ID")));
+            name = xmlConfigData.GetAttribute("Name");
+            if (xmlConfigData.HasAttribute("Description"))
             {
-                return pManager.getResourceFileName(this);
-                
+                description = xmlConfigData.GetAttribute("Description");
             }
         }
 
-        public Image LoadBitmap()
+        public Identity Identity
         {
-            if (i == null) i = Bitmap.FromFile(FullPath);
-            return i;
+            get { return identity; }
         }
 
-        public Identity ID;
-        public string Name;
-        public string Filename;
-        public ResourceType Type;
-        public ResourceManager pManager;
-        
+        public string Name
+        {
+            get { return name; }
+        }
 
-        Image i;
+        public string Description
+        {
+            get { return description; }
+        }
+
+        public ResourceType Type
+        {
+            get { return type; }
+        }
+
+        public object DataUnTyped
+        {
+            get { return dataUnTyped; }
+        }
+
+        public Image DataAsImage
+        {
+            get
+            {
+                Image ret = dataUnTyped as Image;
+                if (ret == null) throw new InvalidCastException("Excpected Image");
+                return ret;
+            }
+        }
+
+        public Font DataAsFont
+        {
+            get
+            {
+                Font ret = dataUnTyped as Font;
+                if (ret == null) throw new InvalidCastException("Expected Font");
+                return ret;
+            }
+        }
+
+        public string DataAsString
+        {
+            get
+            {
+                String ret = dataUnTyped as String;
+                if (ret == null) throw new InvalidCastException("Expected String");
+                return ret;
+            }
+        }
+
+        public ISoundHandle DataAsSound
+        {
+            get
+            {
+                ISoundHandle ret = dataUnTyped as ISoundHandle;
+                if (ret == null) throw new InvalidCastException("Expected ISoundHandle");
+                return ret;
+            }
+        }
+
+
+        public string[] DataAsStringArray
+        {
+            get
+            {
+                String ret = dataUnTyped as String;
+                if (ret == null) throw new InvalidCastException("Expected String");
+                string[] lines = StringHelper.Split(ret, Environment.NewLine);
+                for (int cc = 0; cc < lines.Length; cc++)
+                {
+                    lines[cc] = lines[cc].Trim();
+                }
+                return lines;
+            }
+        }
+
+        public Brush DataAsBrush
+        {
+            get
+            {
+                Brush ret = dataUnTyped as Brush;
+                if (ret == null) throw new InvalidCastException("Expected Brush");
+                return ret;
+            }
+        }
     }
 }
+

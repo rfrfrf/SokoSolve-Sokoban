@@ -26,6 +26,6 @@ namespace SokoSolve.UI.Section
             get { return drawing;  }
         }
 
-        static StaticImage drawing = new StaticImage(ResourceFactory.Singleton.GetInstance("Default.Tiles"), new VectorInt(16, 16));
+        static StaticImage drawing = new StaticImage(ResourceController.Singleton.GetInstance("Default.Tiles"), new VectorInt(16, 16));
     }
 }

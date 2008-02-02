@@ -39,6 +39,10 @@ namespace SokoSolve.UI.Controls.Primary
             }
         }
 
+        /// <summary>
+        /// Initalise the library, this is essentially the set method for <see cref="CurrentLibrary"/>
+        /// </summary>
+        /// <param name="current"></param>
         public void InitLibrary(SokoSolve.Core.Model.Library current)
 	    {
             using (CodeTimer timer = new CodeTimer("Library.InitLibray(...)"))
@@ -51,6 +55,17 @@ namespace SokoSolve.UI.Controls.Primary
                 explorer.TreeView.ExpandAll();
             }
 	    }
+
+        /// <summary>
+        /// Current controller library data
+        /// </summary>
+        public SokoSolve.Core.Model.Library CurrentLibrary
+        {
+            get
+            {
+                return controller.Current;
+            }
+        }
 
         public override void Refresh()
         {
@@ -86,7 +101,6 @@ namespace SokoSolve.UI.Controls.Primary
                         // Remove from cat
                         controller.Current.CategoryTree.Move(sourceCat.TreeNode, targetCat.DomainData.TreeNode);
                         sourceCat.CategoryParentREF =  targetCat.DomainData.CategoryID;
-
                         explorer.Refresh();
                         return;
                     }

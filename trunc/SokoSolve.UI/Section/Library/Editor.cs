@@ -47,17 +47,17 @@ namespace SokoSolve.UI.Section.Library
             if (puzzleMap == null) throw new NullReferenceException("puzzleMap");
 
             // Load GFX
-            staticImage = new StaticImage(ResourceFactory.Singleton.GetInstance("Default.Tiles"), new VectorInt(16, 16));
+            staticImage = new StaticImage(ResourceController.Singleton.GetInstance("Default.Tiles"), new VectorInt(16, 16));
 
             // Draw the palette images
             Bitmap palette = new Bitmap(6 * 16, 16);
             Graphics gfx = Graphics.FromImage(palette);
-            gfx.DrawImage(staticImage.Resources[SokobanMap.Convert(paletteCells[0]).ToString()].LoadBitmap(), 0, 0);
-            gfx.DrawImage(staticImage.Resources[SokobanMap.Convert(paletteCells[1]).ToString()].LoadBitmap(), 16 * 1, 0);
-            gfx.DrawImage(staticImage.Resources[SokobanMap.Convert(paletteCells[2]).ToString()].LoadBitmap(), 16 * 2, 0);
-            gfx.DrawImage(staticImage.Resources[SokobanMap.Convert(paletteCells[3]).ToString()].LoadBitmap(), 16 * 3, 0);
-            gfx.DrawImage(staticImage.Resources[SokobanMap.Convert(paletteCells[4]).ToString()].LoadBitmap(), 16 * 4, 0);
-            gfx.DrawImage(staticImage.Resources[SokobanMap.Convert(paletteCells[5]).ToString()].LoadBitmap(), 16 * 5, 0);
+            gfx.DrawImage(staticImage.Resources[StaticImage.Convert(SokobanMap.Convert(paletteCells[0]))].DataAsImage, 0, 0);
+            gfx.DrawImage(staticImage.Resources[StaticImage.Convert(SokobanMap.Convert(paletteCells[0]))].DataAsImage, 16 * 1, 0);
+            gfx.DrawImage(staticImage.Resources[StaticImage.Convert(SokobanMap.Convert(paletteCells[0]))].DataAsImage, 16 * 2, 0);
+            gfx.DrawImage(staticImage.Resources[StaticImage.Convert(SokobanMap.Convert(paletteCells[0]))].DataAsImage, 16 * 3, 0);
+            gfx.DrawImage(staticImage.Resources[StaticImage.Convert(SokobanMap.Convert(paletteCells[0]))].DataAsImage, 16 * 4, 0);
+            gfx.DrawImage(staticImage.Resources[StaticImage.Convert(SokobanMap.Convert(paletteCells[0]))].DataAsImage, 16 * 5, 0);
 
             pbPaletteLeft.Image = palette;
             pbPaletteRight.Image = palette;
@@ -115,8 +115,8 @@ namespace SokoSolve.UI.Section.Library
             Image result = staticImage.Draw(Map);
             pbEditor.Image = result;
 
-            pbCurrentLeft.Image   = staticImage.Resources[SokobanMap.Convert(leftCell).ToString()].LoadBitmap();
-            pbCurrentRight.Image = staticImage.Resources[SokobanMap.Convert(rightCell).ToString()].LoadBitmap();
+            pbCurrentLeft.Image = staticImage.Resources[StaticImage.Convert(SokobanMap.Convert(leftCell))].DataAsImage;
+            pbCurrentRight.Image = staticImage.Resources[StaticImage.Convert(SokobanMap.Convert(rightCell))].DataAsImage;
         }
 
         private void pbEditor_MouseClick(object sender, MouseEventArgs e)

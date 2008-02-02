@@ -35,22 +35,22 @@ namespace SokoSolve.Core.UI.Nodes
             switch (myCell)
             {
                 case (Cell.Void):
-                    TileImage = GameUI.ResourceManager["Void"].LoadBitmap();
+                    TileImage = GameUI.ResourceFactory[ResourceID.GameTileVoid].DataAsImage;
                     break;
                 case (Cell.Floor):
-                    TileImage = GameUI.ResourceManager["Floor"].LoadBitmap();
+                    TileImage = GameUI.ResourceFactory[ResourceID.GameTileFloor].DataAsImage;
                     break;
                 case (Cell.Crate):
-                    TileImage = GameUI.ResourceManager["Crate"].LoadBitmap();
+                    TileImage = GameUI.ResourceFactory[ResourceID.GameTileCrate].DataAsImage;
                     break;
                 case (Cell.Player):
-                    TileImage = GameUI.ResourceManager["Player"].LoadBitmap();
+                    TileImage = GameUI.ResourceFactory[ResourceID.GameTilePlayer].DataAsImage;
                     break;
                 case (Cell.Goal):
-                    TileImage = GameUI.ResourceManager["Goal"].LoadBitmap();
+                    TileImage = GameUI.ResourceFactory[ResourceID.GameTileGoal].DataAsImage;
                     break;
                 case (Cell.Wall):
-                    TileImage = GameUI.ResourceManager["Wall"].LoadBitmap();
+                    TileImage = GameUI.ResourceFactory[ResourceID.GameTileWall].DataAsImage;
                     break;
             }
         }

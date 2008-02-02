@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceLibrary Name="Standard or default resource library for SokoSolve core functions" BaseDir=".">
+  <!-- Basic Static Tiles -->
+  <Resource Type="Image" ID="1" Name="StaticTileVoid"><Image FileName="$Graphics\Tiles\Static\SimpleVoid16x16.png"/> </Resource>
+  <Resource Type="Image" ID="2" Name="StaticTileWall"><Image FileName="$Graphics\Tiles\Static\SimpleWall16x16.png"/> </Resource>
+  <Resource Type="Image" ID="3" Name="StaticTileFloor"><Image FileName="$Graphics\Tiles\Static\SimpleFloor16x16.png"/> </Resource>
+  <Resource Type="Image" ID="4" Name="StaticTileFloorCrate"><Image FileName="$Graphics\Tiles\Static\SimpleCrate16x16.png"/> </Resource>
+  <Resource Type="Image" ID="5" Name="StaticTileFloorGoal"><Image FileName="$Graphics\Tiles\Static\SimpleGoal16x16.png"/> </Resource>
+  <Resource Type="Image" ID="6" Name="StaticTileFloorGoalCrate"><Image FileName="$Graphics\Tiles\Static\SimpleCrateGoal16x16.png"/> </Resource>
+  <Resource Type="Image" ID="7" Name="StaticTileFloorPlayer"><Image FileName="$Graphics\Tiles\Static\SimplePlayer16x16.png"/> </Resource>
+  <Resource Type="Image" ID="8" Name="StaticTileFloorGoalPlayer"><Image FileName="$Graphics\Tiles\Static\SimplePlayerGoal16x16.png"/> </Resource>
+  
+  <!-- Basic Game Tiles -->
+  <Resource Type="Image" ID="100" Name="GameTileVoid"><Image FileName="$Graphics\Tiles\Clean\Void.png"/> </Resource>
+  <Resource Type="Image" ID="101" Name="GameTileWall"><Image FileName="$Graphics\Tiles\Clean\Wall.png"/> </Resource>
+  <Resource Type="Image" ID="102" Name="GameTileFloor"><Image FileName="$Graphics\Tiles\Clean\Floor.png"/> </Resource>
+  <Resource Type="Image" ID="103" Name="GameTileGoal"><Image FileName="$Graphics\Tiles\Clean\Goal.png"/> </Resource>
+  <Resource Type="Image" ID="104" Name="GameTileCrate"><Image FileName="$Graphics\Tiles\Clean\Crate.png"/> </Resource>
+  <Resource Type="Image" ID="105" Name="GameTilePlayer"><Image FileName="$Graphics\Tiles\Clean\Player.png"/> </Resource>
+
+  <!-- Basic Game Button -->
+  <Resource Type="Image" ID="150" Name="GameButtonBackGround"><Image FileName="$Graphics\Icons\BasicButtonBK.png"/> </Resource>
+  <Resource Type="Image" ID="151" Name="GameButtonUndo"><Image FileName="$Graphics\Icons\Undo.png"/> </Resource>
+  <Resource Type="Image" ID="152" Name="GameButtonRestart"><Image FileName="$Graphics\Icons\Restart.png"/> </Resource>
+  <Resource Type="Image" ID="153" Name="GameButtonExit"><Image FileName="$Graphics\Icons\Exit.png"/> </Resource>
+  <Resource Type="Image" ID="154" Name="GameButtonUp"><Image FileName="$Graphics\Icons\Up.png"/> </Resource>
+  <Resource Type="Image" ID="155" Name="GameButtonDown"><Image FileName="$Graphics\Icons\Down.png"/> </Resource>
+  <Resource Type="Image" ID="156" Name="GameButtonLeft"><Image FileName="$Graphics\Icons\Left.png"/> </Resource>
+  <Resource Type="Image" ID="157" Name="GameButtonRight"><Image FileName="$Graphics\Icons\Right.png"/> </Resource>
+  <Resource Type="Brush" ID="158" Name="GameButtonMouseOverBrush"><SolidBrush Color="#80F0F000"/> </Resource> 
+
+  <Resource Type="Image" ID="161" Name="GameButtonBookmark1"><Image FileName="$Graphics\Tiles\Clean\WayPointButton1.png"/> </Resource>
+  <Resource Type="Image" ID="162" Name="GameButtonBookmark2"><Image FileName="$Graphics\Tiles\Clean\WayPointButton2.png"/> </Resource>
+  <Resource Type="Image" ID="163" Name="GameButtonBookmark3"><Image FileName="$Graphics\Tiles\Clean\WayPointButton3.png"/> </Resource>
+  <Resource Type="Image" ID="164" Name="GameButtonBookmark4"><Image FileName="$Graphics\Tiles\Clean\WayPointButton4.png"/> </Resource>
+  <Resource Type="Image" ID="165" Name="GameButtonBookmark5"><Image FileName="$Graphics\Tiles\Clean\WayPointButton5.png"/> </Resource>
+  
+  <Resource Type="Image" ID="167" Name="GameButtonCancel"><Image FileName="$Graphics\Icons\Cancel.png"/> </Resource>
+  <Resource Type="Image" ID="168" Name="GameButtonSave"><Image FileName="$Graphics\Icons\Save.png"/> </Resource>
+  <Resource Type="Image" ID="166" Name="GameButtonHome"><Image FileName="$Graphics\Icons\Home.png"/> </Resource>
+  <Resource Type="Image" ID="169" Name="GameButtonHelp"><Image FileName="$Graphics\Icons\Home.png"/> </Resource>
+  
+  <!-- Game Sound Effects -->
+  <Resource Type="SoundEffect" ID="500" Name="GameSoundPushGoal"><Sound FileName="$SFX\click.wav"/> </Resource>
+  <Resource Type="SoundEffect" ID="501" Name="GameSoundUndo"><Sound FileName="$SFX\sound31.wav"/> </Resource>
+  
+  <Resource Type="SoundEffect" ID="502" Name="GameSoundRestart"><Sound FileName="$SFX\sound40.wav"/> </Resource>
+  <Resource Type="SoundEffect" ID="503" Name="GameSoundWin"><Sound FileName="$SFX\sound31.wav"/> </Resource>
+  <Resource Type="SoundEffect" ID="504" Name="GameSoundWelcome"><Sound FileName="$SFX\Welcome.wav"/> </Resource>
+  <Resource Type="SoundEffect" ID="505" Name="GameSoundInvalid"><Sound FileName="$SFX\sound31.wav"/> </Resource>
+
+
+
+  <!-- Game Misc Config -->
+  <Resource Type="Font" ID="200" Name="GameMiscFontDefault"><Font Name="Arial" Size="12" Style="Bold"/></Resource>
+  <Resource Type="Brush" ID="201" Name="GameMiscFontDefaultBrush"><SolidBrush ColorName="White"/></Resource>
+  <Resource Type="Brush" ID="202" Name="GameMiscFontDefaultBrushShaddow"><SolidBrush Color="#808080"/></Resource>
+  <Resource Type="String" ID="300" Name="GameMiscStringInvalidMove"><String>!!!
+    $&amp;!%
+    &amp;*!?
+    Sorry</String></Resource>
+  <Resource Type="String" ID="301" Name="GameMiscStringCrateGoal">
+    <String>Great!
+    Yeah!
+    Cool
+    Brilliant
+    </String>
+  </Resource>
+
+
+
+</ResourceLibrary>

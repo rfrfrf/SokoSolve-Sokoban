@@ -639,6 +639,9 @@ namespace SokoSolve.UI.Section.Solver
         private void tsbSaveHTML_Click(object sender, EventArgs e)
         {
             SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "HTML Files (*.html)|*.html";
+            save.AddExtension = true;
+            save.DefaultExt = "html";
             if (save.ShowDialog() == DialogResult.OK)
             {
                 List<SolverResult> results = workerList.ConvertAll<SolverResult>(delegate(WorkItem item) { return item.Result; });
@@ -647,9 +650,17 @@ namespace SokoSolve.UI.Section.Solver
                 report.Save(save.FileName);
 
                 // Copy the default style sheet
-                File.Copy(FileManager.getContent("$html/style.css"), Path.GetDirectoryName(save.FileName) + "/style.css");
+                string dest = Path.GetDirectoryName(save.FileName) + "/style.css";
+                if (!File.Exists(dest))
+                {
+                    File.Copy(FileManager.getContent("$html/style.css"), dest, false);    
+                }
 
-                Process.Start(save.FileName);
+                if (Path.GetExtension(save.FileName) == ".html" || Path.GetExtension(save.FileName) == ".htm")
+                {
+                    Process.Start(save.FileName);
+                }
+                
             }
         }
 
