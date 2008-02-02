@@ -27,18 +27,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_660EFE022E140D8F7B4FCF145DB45A39"
-        "OwnerKey" = "8:_A1998136E81740C8A9DC917C61AB41D8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_660EFE022E140D8F7B4FCF145DB45A39"
-        "OwnerKey" = "8:_E54DA4E38055676570958B110D6F7267"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_781A35AFBA304FE9ABDE0DDF0EDAD58E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -57,12 +45,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_E54DA4E38055676570958B110D6F7267"
-        "OwnerKey" = "8:_A1998136E81740C8A9DC917C61AB41D8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_A1998136E81740C8A9DC917C61AB41D8"
         "MsmSig" = "8:_UNDEFINED"
@@ -71,18 +53,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_029F082258F972239A9D009C0A20F68A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E54DA4E38055676570958B110D6F7267"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_660EFE022E140D8F7B4FCF145DB45A39"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -182,6 +152,11 @@
             "AssemblyAsmDisplayName" = "8:Interop.MediaPlayer, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_029F082258F972239A9D009C0A20F68A"
+                    {
+                    "Name" = "8:Interop.MediaPlayer.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Interop.MediaPlayer.dll"
             "TargetName" = "8:"
@@ -218,32 +193,6 @@
             "PackageAs" = "3:1"
             "Register" = "3:2"
             "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_660EFE022E140D8F7B4FCF145DB45A39"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SokoSolve.Common, Version=1.2.0.38246, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                }
-            "SourcePath" = "8:SokoSolve.Common.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_AA1BE3CA7D6841B3B88009CD5A7D4BF7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -285,32 +234,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E54DA4E38055676570958B110D6F7267"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:SokoSolve.Core, Version=1.2.0.38246, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                }
-            "SourcePath" = "8:SokoSolve.Core.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_AA1BE3CA7D6841B3B88009CD5A7D4BF7"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
         }
@@ -413,14 +336,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SokoSolve"
-        "ProductCode" = "8:{55B9352C-482B-4B71-80ED-CE26D2D9414B}"
-        "PackageCode" = "8:{4B7BEF3D-1576-4BEF-9215-76BBE88BCEE8}"
+        "ProductCode" = "8:{36F9CA2D-D9FD-4481-9A23-AAB509855D5F}"
+        "PackageCode" = "8:{D435DF80-C878-40B0-AA77-32EC0110358B}"
         "UpgradeCode" = "8:{72834B61-C2A8-4119-9ADD-E306A2A8F675}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.3.43"
+        "ProductVersion" = "8:1.3.45"
         "Manufacturer" = "8:OpenSource"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://sokosolve.sourceforge.net"

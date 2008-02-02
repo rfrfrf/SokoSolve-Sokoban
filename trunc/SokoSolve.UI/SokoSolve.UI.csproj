@@ -504,6 +504,7 @@
     <Content Include="Content\html\style.css" />
     <Content Include="Content\html\Welcome.html" />
     <Content Include="Content\Music\Camokaze-Low.mp3" />
+    <Content Include="Content\SFX\click.wav" />
     <Content Include="Content\SFX\sound31.wav" />
     <Content Include="Content\SFX\sound40.wav" />
     <Content Include="Content\SFX\Welcome.wav" />
