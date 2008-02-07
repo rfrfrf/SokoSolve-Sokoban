@@ -69,7 +69,7 @@ namespace SokoSolve.Core.UI.Nodes
         }
 
         protected bool Animate = false;
-        protected int Speed = 16;
+        protected int Speed = 4;
         protected VectorInt  target =  VectorInt.Null;
     }
 }

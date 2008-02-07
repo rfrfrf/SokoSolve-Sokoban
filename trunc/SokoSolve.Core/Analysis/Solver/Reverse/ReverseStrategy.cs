@@ -4,6 +4,7 @@ using System.Text;
 using SokoSolve.Common.Math;
 using SokoSolve.Common.Structures;
 using SokoSolve.Common.Structures.Evaluation;
+using SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis;
 
 namespace SokoSolve.Core.Analysis.Solver.Reverse
 {
@@ -135,7 +136,7 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
                 // Player position must be inside the initial move map
                 if (staticAnalysis.InitialMoveMap[node.Data.PlayerPosition])
                 {
-                    controller.DebugReport.Append("Found a solution using only the reverse solver.");
+                    controller.DebugReport.Append("Node {0}: Found a solution using only the reverse solver.", node.Data.NodeID);
 
                     // Solution found
                     node.Data.Status = SolverNodeStates.Solution;
@@ -153,7 +154,7 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
                 }
                 else
                 {
-                    controller.DebugReport.Append("Found a near solution using only the reverse solver, but the player position was incorrect");
+                    controller.DebugReport.Append("Node {0}: Found a near solution using only the reverse solver, but the player position was incorrect", node.Data.NodeID);
                 }
             }
 

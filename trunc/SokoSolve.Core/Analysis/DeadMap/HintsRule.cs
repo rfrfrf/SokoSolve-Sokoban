@@ -6,6 +6,7 @@ using SokoSolve.Common;
 using SokoSolve.Common.Math;
 using SokoSolve.Common.Structures.Evaluation.Strategy;
 using SokoSolve.Core.Analysis.Solver;
+using SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis;
 
 namespace SokoSolve.Core.Analysis.DeadMap
 {
@@ -24,42 +25,7 @@ namespace SokoSolve.Core.Analysis.DeadMap
     /// </remarks>
     internal class HintsRule : StrategyRule<DeadMapState>
     {
-        #region HintCell enum
-
-        public enum HintCell
-        {
-            /// <summary>
-            /// Encode as W
-            /// </summary>
-            Wall,
-
-            /// <summary>
-            /// Encode as C
-            /// </summary>
-            CrateNotGoal,
-
-            /// <summary>
-            /// Encode as O
-            /// </summary>
-            CrateGoalOrCrateNonGoal,
-
-            /// <summary>
-            /// Encode as ?
-            /// </summary>
-            Ignore,
-
-            /// <summary>
-            /// Encode as D
-            /// </summary>
-            DeadStatic,
-
-            /// <summary>
-            /// Encode as d
-            /// </summary>
-            DeadStaticOrDynamic
-        }
-
-        #endregion
+        
 
         private List<Hint> hints;
         private StaticAnalysis staticAnalysis;
@@ -163,6 +129,9 @@ namespace SokoSolve.Core.Analysis.DeadMap
                         case ('W'):
                             result[cx, cy] = HintCell.Wall;
                             break;
+                        case ('F'):
+                            result[cx, cy] = HintCell.Floor;
+                            break;
                         case ('C'):
                             result[cx, cy] = HintCell.CrateNotGoal;
                             break;
@@ -205,170 +174,6 @@ namespace SokoSolve.Core.Analysis.DeadMap
             return RuleResult.Success;
         }
 
-        #region Nested type: Hint
-
-        /// <summary>
-        /// Basic Hint
-        /// </summary>
-        public class Hint
-        {
-            private List<VectorInt> checkLocations;
-            private HintCell[,] hint;
-            private bool IsForward;
-            private string name;
-
-
-            /// <summary>
-            /// Constructor
-            /// </summary>
-            /// <param name="name"></param>
-            /// <param name="hint"></param>
-            public Hint(string name, HintCell[,] hint)
-            {
-                this.name = name;
-                this.hint = hint;
-                this.IsForward = true;
-            }
-
-
-            public string Name
-            {
-                get { return name; }
-            }
-
-
-            public List<VectorInt> CheckLocations
-            {
-                get { return checkLocations; }
-            }
-
-            public bool HasPreProcessedMatches
-            {
-                get { return checkLocations != null; }
-            }
-
-            /// <summary>
-            /// Filter out irrelivant checks (use wall/floor to match). From all posible check locations (Width, Height)
-            /// generate the list of possible hits
-            /// </summary>
-            /// <param name="staticAnalysis"></param>
-            /// <returns>true of match found</returns>
-            public bool PreProcess(StaticAnalysis staticAnalysis)
-            {
-                checkLocations = new List<VectorInt>();
-
-                for (int cx = 0; cx < staticAnalysis.WallMap.Size.Width; cx++)
-                    for (int cy = 0; cy < staticAnalysis.WallMap.Size.Height; cy++)
-                    {
-                        PreProcessHintLocation(cx, cy, staticAnalysis);
-                    }
-
-                if (checkLocations.Count == 0)
-                {
-                    checkLocations = null;
-                    return false;
-                }
-                return true;
-            }
-
-            public void PreProcessHintLocation(int cx, int cy, StaticAnalysis staticAnalysis)
-            {
-                for (int hintY = 0; hintY < hint.GetLength(1); hintY++)
-                    for (int hintX = 0; hintX < hint.GetLength(0); hintX++)
-                    {
-                        if (staticAnalysis.WallMap.Size.Width <= hintX + cx) return;
-                        if (staticAnalysis.WallMap.Size.Height <= hintY + cy) return;
-
-                        switch (hint[hintX, hintY])
-                        {
-                            case (HintCell.Wall):
-                                if (!staticAnalysis.WallMap[cx + hintX, cy + hintY]) return;
-                                break;
-                            case (HintCell.CrateNotGoal):
-                                if (!staticAnalysis.FloorMap[cx + hintX, cy + hintY] &&
-                                    !staticAnalysis.GoalMap[cx + hintX, cy + hintY]) return;
-                                break;
-                            case (HintCell.CrateGoalOrCrateNonGoal):
-                                if (!staticAnalysis.FloorMap[cx + hintX, cy + hintY] ) return;
-                                break;
-                            case (HintCell.DeadStatic):
-                                if (!staticAnalysis.DeadMap[cx + hintX, cy + hintY]) return;
-                                break;
-                            case (HintCell.DeadStaticOrDynamic):
-                                // Cannot precalculate this
-                                break;
-                            case (HintCell.Ignore):
-                                break;
-                            default:
-                                throw new InvalidDataException("Unknown hint cell state:" + hint[hintX, hintY]);
-                        }
-                    }
-                // All criteria passed
-                this.checkLocations.Add(new VectorInt(cx, cy));
-            }
-
-            /// <summary>
-            /// Check to see if the dead map hint applies
-            /// </summary>
-            /// <param name="context"></param>
-            public void Check(DeadMapState context)
-            {
-                foreach (VectorInt checkLocation in checkLocations)
-                {
-                    int cx = checkLocation.X;
-                    int cy = checkLocation.Y;
-                  
-                    if (CheckMatchAtLocation(context, cx, cy))
-                    {
-                        // All criteria passed
-                        // Mark all crates as dead
-                        for (int hintY = 0; hintY < hint.GetLength(1); hintY++)
-                            for (int hintX = 0; hintX < hint.GetLength(0); hintX++)
-                            {
-                                if (hint[hintX, hintY] == HintCell.CrateNotGoal) context[cx + hintX, cy + hintY] = true;
-                            }
-
-                        // Increase the hints
-                        context.DeadMapAnalysis.StaticAnalysis.Controller.Stats.HintsUsed.Increment();
-                    }
-                }
-            }
-
-            bool CheckMatchAtLocation(DeadMapState context, int cx, int cy)
-            {
-                for (int hintY = 0; hintY < hint.GetLength(1); hintY++)
-                    for (int hintX = 0; hintX < hint.GetLength(0); hintX++)
-                    {
-                        switch (hint[hintX, hintY])
-                        {
-                            case (HintCell.Wall):
-                                if (!context.WallMap[cx + hintX, cy + hintY]) return false;
-                                break;
-                            case (HintCell.CrateNotGoal):
-                                if (!(context.CrateMap[cx + hintX, cy + hintY] && !context.GoalMap[cx + hintX, cy + hintY])) return false;
-                                break;
-                            case (HintCell.CrateGoalOrCrateNonGoal):
-                                if (!(context.CrateMap[cx + hintX, cy + hintY])) return false;
-                                break;
-                            case (HintCell.DeadStatic):
-                                // Dead cannot be in the move map
-                                if (context.MoveMap[cx + hintX, cy + hintY]) return false;
-                                // Static deadmap or dynamic dead map
-                                if (!context.StaticAnalysis.DeadMap[cx + hintX, cy + hintY] &&
-                                    !context[cx + hintX, cy + hintY]) return false;
-                                break;
-                            case (HintCell.Ignore):
-                                break;
-                            default:
-                                throw new InvalidDataException("Hint char is invalid:" + hint[hintX, hintY]);
-                        }
-                    }
-                return true;
-            }
-        }
-
         
-
-        #endregion
     }
 }

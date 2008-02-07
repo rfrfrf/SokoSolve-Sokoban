@@ -78,7 +78,7 @@ namespace SokoSolve.Common.Structures.Evaluation
         public abstract void EvaluateChildren(INode<T> node);
 
         /// <summary>
-        /// Get the next node for evaluation. <see cref="IEvaluationStrategyItterator<T>"/>
+        /// Get the next node for evaluation. 
         /// </summary>
         /// <returns></returns>
         public virtual INode<T> GetNext(out EvalStatus Status)
@@ -136,6 +136,10 @@ namespace SokoSolve.Common.Structures.Evaluation
             return nextID.ToString();
         }
 
+        /// <summary>
+        /// Debug string
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return string.Format("{0} {1} {2}", this.GetType().Name, evaluation, workList);

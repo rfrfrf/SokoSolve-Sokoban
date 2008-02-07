@@ -70,7 +70,7 @@ namespace SokoSolve.UI.Controls.Secondary
             listViewItem1});
             this.listViewPuzzles.Location = new System.Drawing.Point(0, 0);
             this.listViewPuzzles.Name = "listViewPuzzles";
-            this.listViewPuzzles.Size = new System.Drawing.Size(299, 295);
+            this.listViewPuzzles.Size = new System.Drawing.Size(235, 295);
             this.listViewPuzzles.TabIndex = 0;
             this.listViewPuzzles.UseCompatibleStateImageBehavior = false;
             this.listViewPuzzles.View = System.Windows.Forms.View.Details;
@@ -118,7 +118,7 @@ namespace SokoSolve.UI.Controls.Secondary
             this.splitContainer.Panel2.AutoScroll = true;
             this.splitContainer.Panel2.Controls.Add(this.pictureBoxMap);
             this.splitContainer.Size = new System.Drawing.Size(411, 295);
-            this.splitContainer.SplitterDistance = 299;
+            this.splitContainer.SplitterDistance = 235;
             this.splitContainer.TabIndex = 2;
             // 
             // pictureBoxMap

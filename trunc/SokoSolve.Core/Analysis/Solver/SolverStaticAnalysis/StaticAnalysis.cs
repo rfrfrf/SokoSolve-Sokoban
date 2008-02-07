@@ -6,7 +6,7 @@ using SokoSolve.Core.Analysis;
 using SokoSolve.Core.Analysis.DeadMap;
 using SokoSolve.Core.Model.Analysis;
 
-namespace SokoSolve.Core.Analysis.Solver
+namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
 {
 
     /// <summary>
@@ -32,28 +32,36 @@ namespace SokoSolve.Core.Analysis.Solver
             // Set the simple maps, walls, etc
             SetSimpleMaps();
 
-
             // Build boundry map
             BuildBoundryMap();
 
             // Build the initial player move map
             BuildInitialMoveMap();
 
-
-            
-
             // Make the dead map
             BuildDeadMap();
- 
+
+            // Room Analysis
+            BuildRoomAnalysis();
 
             // Build Weighting matrix maps
             BuildForwardWeightingMap();
             BuildReverseWeightingMap();
         }
 
+        /// <summary>
+        /// Find all room and door with RoomAnalysis
+        /// </summary>
+        private void BuildRoomAnalysis()
+        {
+            roomAnalysis = new RoomAnalysis(controller);
+            roomAnalysis.Analyse();
+        }
+
         private void BuildInitialMoveMap()
         {
             initialMoveMap = new SolverBitmap("Initial Move Map", MapAnalysis.GenerateMoveMap(boundryMap, initialCrateMap, controller.Map.Player));
+            initialMoveMap[controller.Map.Player] = true;
         }
 
         /// <summary>
@@ -269,6 +277,7 @@ namespace SokoSolve.Core.Analysis.Solver
 
         private SolverController controller;
         private DeadMapAnalysis deadMapAnalysis;
+        private RoomAnalysis roomAnalysis;
     }
 }
 

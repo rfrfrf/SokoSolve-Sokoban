@@ -6,6 +6,7 @@ using SokoSolve.Common.Structures;
 using SokoSolve.Common.Structures.Evaluation;
 using SokoSolve.Core.Analysis.DeadMap;
 using SokoSolve.Core.Model;
+using SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis;
 
 namespace SokoSolve.Core.Analysis.Solver
 {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Net.Cache;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
@@ -181,6 +182,7 @@ namespace SokoSolve.UI.Section.Library
             try
             {
                 WebRequest req = WebRequest.Create("http://sokosolve.sourceforge.net/VersionCurrent.xml");
+                req.CachePolicy = new HttpRequestCachePolicy(HttpRequestCacheLevel.BypassCache);
                 XmlDocument reqXML = new XmlDocument();
                 reqXML.Load(req.GetResponse().GetResponseStream());
 

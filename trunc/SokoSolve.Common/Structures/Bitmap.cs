@@ -98,6 +98,15 @@ namespace SokoSolve.Common.Structures
         }
 
         /// <summary>
+        /// Create a BitMap from a string map of '0' and '1', seperated by NewLine
+        /// Generally this constructor is for test purposes.
+        /// </summary>
+        /// <param name="StringMap"></param>
+        public Bitmap(string StringMap) : this(StringHelper.Split(StringMap, Environment.NewLine))
+        {
+        }
+
+        /// <summary>
         /// Create a BitMap from a string map of '0' and '1'.
         /// Generally this constructor is for test purposes.
         /// </summary>
@@ -126,6 +135,19 @@ namespace SokoSolve.Common.Structures
                         this[xx, yy] = StringMap[yy][xx] == '1';
                     }
                 }
+        }
+
+        /// <summary>
+        /// Set the internal state of the bitmap to another bitmap
+        /// </summary>
+        /// <param name="bitmap"></param>
+        public void Set(IBitmap bitmap)
+        {
+             for (int yy = 0; yy < Size.Y; yy++)
+                 for (int xx = 0; xx < Size.X; xx++)
+                 {
+                     this[xx, yy] = bitmap[xx, yy];
+                 }
         }
 
         /// <summary>
