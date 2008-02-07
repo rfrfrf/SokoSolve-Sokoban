@@ -28,9 +28,13 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <summary>
         /// Provide analysis of the static (unchanging elements of the map) e.g walls, etc
         /// </summary>
-        public StaticAnalysis StaticAnalysis
+        private StaticAnalysis StaticAnalysis
         {
-            get { return staticAnalysis; }
+            get
+            {
+                // refactored to use SolverController
+                return controller.StaticAnalysis;
+            }
         }
 
         /// <summary>
@@ -65,10 +69,6 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <returns>Return the root search node for init and eval</returns>
         public override SolverNode InitStartConditions()
         {
-            // Recalculate the static position
-            staticAnalysis = new StaticAnalysis(controller);
-            staticAnalysis.Analyse();
-
             // Make the root node
             SolverNode root = new SolverNode();
             root.IsChildrenEvaluated = false;
@@ -76,7 +76,7 @@ namespace SokoSolve.Core.Analysis.Solver
             root.Weighting = rootWeighting;
             root.PlayerPosition = SokobanMap.Player;
             root.MoveDirection = Direction.None;
-            root.CrateMap = staticAnalysis.InitialCrateMap;
+            root.CrateMap = StaticAnalysis.InitialCrateMap;
 
             return root;
         }
@@ -102,7 +102,7 @@ namespace SokoSolve.Core.Analysis.Solver
             controller.Stats.NodesPerSecond.AddMeasure(1f);
 
             // Check if this is a solution
-            if (node.Data.CrateMap.Equals(staticAnalysis.GoalMap))
+            if (node.Data.CrateMap.Equals(StaticAnalysis.GoalMap))
             {
                 node.Data.Status = SolverNodeStates.Solution;
                 node.Data.IsStateEvaluated = true;
@@ -126,7 +126,7 @@ namespace SokoSolve.Core.Analysis.Solver
             if (node.Data.MoveMap == null)
             {
                 // Generate MoveMap
-                node.Data.MoveMap = MapAnalysis.GenerateMoveMap(staticAnalysis.BoundryMap, node.Data.CrateMap, node.Data.PlayerPosition);
+                node.Data.MoveMap = MapAnalysis.GenerateMoveMap(StaticAnalysis.BoundryMap, node.Data.CrateMap, node.Data.PlayerPosition);
                 if (node.Data.TreeNode.IsRoot)
                 {
                     node.Data.MoveMap[node.Data.PlayerPosition] = true;
@@ -157,7 +157,7 @@ namespace SokoSolve.Core.Analysis.Solver
             }
 
             // Check for deadness
-            node.Data.DeadMap = staticAnalysis.DeadMapAnalysis.BuildDeadMap(node.Data.MoveMap, node.Data.CrateMap, staticAnalysis.GoalMap, staticAnalysis.WallMap);
+            node.Data.DeadMap = StaticAnalysis.DeadMapAnalysis.BuildDeadMap(node.Data.MoveMap, node.Data.CrateMap, StaticAnalysis.GoalMap, StaticAnalysis.WallMap);
             node.Data.DeadMap.Name = "Dynamic Deadmap";
             if (node.Data.CrateMap.BitwiseAND(node.Data.DeadMap).Count > 0)
             {
@@ -202,7 +202,7 @@ namespace SokoSolve.Core.Analysis.Solver
             VectorInt curentPos = VectorInt.Null; 
             for (int cc=0; cc<nodePath.Count-1; cc++)
             {
-                Bitmap boundry = nodePath[cc].Data.CrateMap.BitwiseOR(staticAnalysis.BoundryMap);
+                Bitmap boundry = nodePath[cc].Data.CrateMap.BitwiseOR(StaticAnalysis.BoundryMap);
 
                 // Find all positble moves for the player
                 FloodFillStrategy floodFill = new FloodFillStrategy(boundry, nodePath[cc].Data.PlayerPosition);
@@ -259,10 +259,10 @@ namespace SokoSolve.Core.Analysis.Solver
                 // Building weighting
 
                 // Start with crate map weighting
-                float weighting = new Matrix(node.CrateMap, 1f).Multiply(staticAnalysis.StaticForwardCrateWeighting).Total();
+                float weighting = new Matrix(node.CrateMap, 1f).Multiply(StaticAnalysis.StaticForwardCrateWeighting).Total();
 
                 // Add a movemap weighting
-                if (node.MoveMap != null) weighting += node.CrateMap.BitwiseAND(staticAnalysis.GoalMap).Count * 0.3f;
+                if (node.MoveMap != null) weighting += node.CrateMap.BitwiseAND(StaticAnalysis.GoalMap).Count * 0.3f;
 
                 // Tree related datd
                 if (node.TreeNode != null)
@@ -379,7 +379,7 @@ namespace SokoSolve.Core.Analysis.Solver
             {
                 // Crate found, is it pushable?
                 VectorInt crateFreePos = cratePos.Offset(PushDirection);
-                if (!node.Data.CrateMap[crateFreePos] && !staticAnalysis.BoundryMap[crateFreePos])
+                if (!node.Data.CrateMap[crateFreePos] && !StaticAnalysis.BoundryMap[crateFreePos])
                 {
                     VectorInt newCratePos = new VectorInt(crateFreePos);
                     // Would this crate push results in a dead puzzle
@@ -424,7 +424,7 @@ namespace SokoSolve.Core.Analysis.Solver
         private bool CheckIfDead(INode<SolverNode> node, VectorInt CratePosition)
         {
             // Check Static Dead positions
-            if (staticAnalysis.DeadMap[CratePosition]) return true;
+            if (StaticAnalysis.DeadMap[CratePosition]) return true;
 
             // TODO: Check dynamic dead positions
 
@@ -454,8 +454,6 @@ namespace SokoSolve.Core.Analysis.Solver
         /// </summary>
         private float rootWeighting = 100f;
 
-
-        private StaticAnalysis staticAnalysis;
         private SolverController controller;
         private SolverNodeCollection cachedNodes;   
     }

@@ -53,7 +53,7 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
                         newRoom.Doors.Add(door);
 
                         // Set Room region
-                        Bitmap boundry = controller.Strategy.StaticAnalysis.BoundryMap.BitwiseOR(doorBitmap);
+                        Bitmap boundry = controller.StaticAnalysis.BoundryMap.BitwiseOR(doorBitmap);
                         FloodFillStrategy floodfill = new FloodFillStrategy(boundry, exit);
 
                         Evaluator<LocationNode> eval = new Evaluator<LocationNode>();
@@ -62,7 +62,7 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
                         // Set region from floodfill
                         newRoom.Set(floodfill.Result);
 
-                        newRoom.Goals = newRoom.BitwiseAND(controller.Strategy.StaticAnalysis.GoalMap).Count;
+                        newRoom.Goals = newRoom.BitwiseAND(controller.StaticAnalysis.GoalMap).Count;
                         if (newRoom.Goals == 0)
                         {
                             newRoom.Roomtype = Room.RoomTypes.StorageRoom;
@@ -73,7 +73,14 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
                         }
 
                         // Add it the size if more than one floor space
-                        if (newRoom.Count > 1) rooms.Add(newRoom);
+                        if (newRoom.Count > 1)
+                        {
+                            rooms.Add(newRoom);
+
+                            controller.DebugReport.Append("{0} Room ({1}) found with {2} goals:", newRoom.Roomtype, newRoom.Name, newRoom.Goals);
+                            controller.DebugReport.Append("Doors: {0}",  StringHelper.Join(newRoom.Doors, delegate(Door item) { return item.Position.ToString() + item.DoorID;}, ", "));
+                            controller.DebugReport.Append(newRoom.ToString());
+                        }
                     }
                 }
             }
@@ -104,7 +111,7 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
             // Find Matches
             foreach (Hint hint in doorHints)
             {
-                hint.PreProcess(controller.Strategy.StaticAnalysis);
+                hint.PreProcess(controller.StaticAnalysis);
             }
 
             // Process matches
@@ -126,15 +133,15 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
 
                             // Find door sides
                             VectorInt exit = newDoor.Position.Offset(Direction.Up);
-                            if (controller.Strategy.StaticAnalysis.FloorMap[exit]) newDoor.Exits.Add(exit);
+                            if (controller.StaticAnalysis.FloorMap[exit]) newDoor.Exits.Add(exit);
                             exit = newDoor.Position.Offset(Direction.Down);
-                            if (controller.Strategy.StaticAnalysis.FloorMap[exit]) newDoor.Exits.Add(exit);
+                            if (controller.StaticAnalysis.FloorMap[exit]) newDoor.Exits.Add(exit);
                             exit = newDoor.Position.Offset(Direction.Left);
-                            if (controller.Strategy.StaticAnalysis.FloorMap[exit]) newDoor.Exits.Add(exit);
+                            if (controller.StaticAnalysis.FloorMap[exit]) newDoor.Exits.Add(exit);
                             exit = newDoor.Position.Offset(Direction.Right);
-                            if (controller.Strategy.StaticAnalysis.FloorMap[exit]) newDoor.Exits.Add(exit);
+                            if (controller.StaticAnalysis.FloorMap[exit]) newDoor.Exits.Add(exit);
 
-                            Console.WriteLine("Found door {0} at {1}, with exits at {2} exits", doorIDCounter, newDoor.Position, StringHelper.Join<VectorInt>(newDoor.Exits, null, ", "));
+                            controller.DebugReport.Append("Found door {0} at {1}, with exits at {2} exits", doorIDCounter, newDoor.Position, StringHelper.Join<VectorInt>(newDoor.Exits, null, ", "));
 
                             doors.Add(newDoor);
                         }

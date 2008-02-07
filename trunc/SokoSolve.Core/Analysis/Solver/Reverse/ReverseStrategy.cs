@@ -32,19 +32,26 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
         }
 
         /// <summary>
+        /// Provide access to static analysis
+        /// </summary>
+        private StaticAnalysis StaticAnalysis
+        {
+            get { return controller.StaticAnalysis;  }
+        }
+
+        /// <summary>
         /// Initialise the start conditions for the search. Prepare the root search node
         /// </summary>
         /// <returns>Return the root search node for init and eval</returns>
         public override SolverNode InitStartConditions()
         {
-            staticAnalysis = new StaticAnalysis(controller);
-            staticAnalysis.Analyse();
+          
            
             SolverNode endposition = new SolverNode();
             endposition.NodeID = "R0";
 
             // Crate map is the goal map
-            endposition.CrateMap = staticAnalysis.GoalMap;
+            endposition.CrateMap = StaticAnalysis.GoalMap;
 
             // We do not know that the player position is at the end
             //endposition.PlayerPosition = VectorInt.Empty; 
@@ -102,11 +109,11 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
             if (!endposition.CrateMap[crate]) return;
 
             // Player must move into a space
-            if (staticAnalysis.BoundryMap[newPlayerPosition]) return;
+            if (StaticAnalysis.BoundryMap[newPlayerPosition]) return;
             if (endposition.CrateMap[newPlayerPosition]) return;
 
             // We have a valid player start position
-            Bitmap partialMoveMap = MapAnalysis.GenerateMoveMap(staticAnalysis.BoundryMap, endposition.CrateMap, oldPlayerPosition);
+            Bitmap partialMoveMap = MapAnalysis.GenerateMoveMap(StaticAnalysis.BoundryMap, endposition.CrateMap, oldPlayerPosition);
             endposition.MoveMap = endposition.MoveMap.BitwiseOR(partialMoveMap);
         }
 
@@ -131,10 +138,10 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
             controller.Stats.NodesPerSecond.AddMeasure(1f);
 
             // Check if this is a solution
-            if (node.Data.CrateMap.Equals(staticAnalysis.InitialCrateMap))
+            if (node.Data.CrateMap.Equals(StaticAnalysis.InitialCrateMap))
             {
                 // Player position must be inside the initial move map
-                if (staticAnalysis.InitialMoveMap[node.Data.PlayerPosition])
+                if (StaticAnalysis.InitialMoveMap[node.Data.PlayerPosition])
                 {
                     controller.DebugReport.Append("Node {0}: Found a solution using only the reverse solver.", node.Data.NodeID);
 
@@ -162,7 +169,7 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
             if (node.Data.MoveMap == null)
             {
                 // Generate MoveMap
-                node.Data.MoveMap = MapAnalysis.GenerateMoveMap(staticAnalysis.BoundryMap, node.Data.CrateMap, node.Data.PlayerPosition);
+                node.Data.MoveMap = MapAnalysis.GenerateMoveMap(StaticAnalysis.BoundryMap, node.Data.CrateMap, node.Data.PlayerPosition);
             }
 
             node.Data.IsStateEvaluated = true;
@@ -262,7 +269,7 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
                 
                 VectorInt firstMove =  nodePath[0].Data.PlayerPosition;
 
-                Bitmap boundry = staticAnalysis.InitialCrateMap.BitwiseOR(staticAnalysis.BoundryMap);
+                Bitmap boundry = StaticAnalysis.InitialCrateMap.BitwiseOR(StaticAnalysis.BoundryMap);
 
                 // Find all positble moves for the player
                 FloodFillStrategy floodFill = new FloodFillStrategy(boundry, controller.Map.Player);
@@ -292,7 +299,7 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
             {
                 SolverNode node = nodePath[cc].Data;
 
-                Bitmap boundry = node.CrateMap.BitwiseOR(staticAnalysis.BoundryMap);
+                Bitmap boundry = node.CrateMap.BitwiseOR(StaticAnalysis.BoundryMap);
 
                 // Find all positble moves for the player
                 FloodFillStrategy floodFill = new FloodFillStrategy(boundry, startPos);
@@ -343,7 +350,7 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
             if (!solverNode.CrateMap[oldCratePosition]) return 0;
 
             // Player must move into a space
-            if (staticAnalysis.BoundryMap[newPlayerPosition]) return 0;
+            if (StaticAnalysis.BoundryMap[newPlayerPosition]) return 0;
             if (solverNode.CrateMap[newPlayerPosition]) return 0;
 
             // Ok, we have a valid pull
@@ -384,7 +391,7 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
             {
 
                 // Start with crate map weighting
-                float weighting = new Matrix(solverNode.CrateMap, 1f).Multiply(staticAnalysis.StaticForwardCrateWeighting).Total();
+                float weighting = new Matrix(solverNode.CrateMap, 1f).Multiply(StaticAnalysis.StaticForwardCrateWeighting).Total();
 
                 return weighting;
             }
@@ -430,7 +437,6 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
         }
 
         private SolverController controller;
-        private StaticAnalysis staticAnalysis;
         private SolverNodeCollection cachedNodes;   
 
        

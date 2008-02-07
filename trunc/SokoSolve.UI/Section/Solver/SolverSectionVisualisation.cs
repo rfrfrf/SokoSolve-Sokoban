@@ -129,7 +129,7 @@ namespace SokoSolve.UI.Section.Solver
             //}
 
 
-            if (controller != null && controller.Strategy != null && controller.Strategy.StaticAnalysis != null)
+            if (controller != null && controller.Strategy != null && controller.StaticAnalysis != null)
             {
                 richTextBoxSolverReport.Text = controller.DebugReport.ToString(new DebugReportFormatter());
 
@@ -142,28 +142,28 @@ namespace SokoSolve.UI.Section.Solver
                     mapLayer.Name = "Puzzle";
                     bitmapViewerStatic.SetLayer(mapLayer);
 
-                    bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.WallMap,
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.WallMap,
                                                 new SolidBrush(Color.FromArgb(120, Color.Gray))).IsVisible = false;
-                    bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.FloorMap,
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.FloorMap,
                                                 new SolidBrush(Color.FromArgb(120, Color.Green))).IsVisible = false;
-                    bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.InitialCrateMap,
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.InitialCrateMap,
                                                 new SolidBrush(Color.FromArgb(120, Color.Blue))).IsVisible = false;
-                    bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.DeadMap,
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.DeadMap,
                                                 new SolidBrush(Color.FromArgb(120, Color.Brown)));
-                    bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.BoundryMap,
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.BoundryMap,
                                                 new SolidBrush(Color.FromArgb(120, Color.LightGray))).IsVisible =
                         false;
-                    bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.GoalMap,
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.GoalMap,
                                                 new SolidBrush(Color.FromArgb(120, Color.Yellow))).IsVisible = false;
-                    bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.CornerMap,
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.CornerMap,
                                                 new SolidBrush(Color.FromArgb(120, Color.Pink)));
-                    bitmapViewerStatic.SetLayer(controller.Strategy.StaticAnalysis.RecessMap,
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.RecessMap,
                                                 new SolidBrush(Color.FromArgb(120, Color.Cyan)));
 
                     BitmapViewer.Layer weightLayer = new BitmapViewer.Layer();
                     weightLayer.Order = 10;
                     weightLayer.IsVisible = true;
-                    weightLayer.Matrix = controller.Strategy.StaticAnalysis.StaticForwardCrateWeighting;
+                    weightLayer.Matrix = controller.StaticAnalysis.StaticForwardCrateWeighting;
                     weightLayer.Name = "Weightings";
                     weightLayer.Brush = new SolidBrush(Color.FromArgb(200, Color.Pink));
                     weightLayer.BrushAlt = new SolidBrush(Color.FromArgb(200, Color.Red));
@@ -345,9 +345,9 @@ namespace SokoSolve.UI.Section.Solver
             for (int cx = 0; cx < result.Size.Width; cx++)
                 for (int cy = 0; cy < result.Size.Height; cy++)
                 {
-                    if (controller.Strategy.StaticAnalysis.WallMap[cx, cy]) result[cx, cy] = CellStates.Wall;
-                    if (controller.Strategy.StaticAnalysis.FloorMap[cx, cy]) result[cx, cy] = CellStates.Floor;
-                    if (controller.Strategy.StaticAnalysis.GoalMap[cx, cy])
+                    if (controller.StaticAnalysis.WallMap[cx, cy]) result[cx, cy] = CellStates.Wall;
+                    if (controller.StaticAnalysis.FloorMap[cx, cy]) result[cx, cy] = CellStates.Floor;
+                    if (controller.StaticAnalysis.GoalMap[cx, cy])
                         result.setState(new VectorInt(cx, cy), Cell.Goal);
                     if (node.CrateMap[cx, cy]) result.setState(new VectorInt(cx, cy), Cell.Crate);
                     result.setState(node.PlayerPosition, Cell.Player);

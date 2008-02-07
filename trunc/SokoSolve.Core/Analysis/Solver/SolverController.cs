@@ -7,6 +7,7 @@ using SokoSolve.Common;
 using SokoSolve.Common.Math;
 using SokoSolve.Common.Structures;
 using SokoSolve.Common.Structures.Evaluation;
+using SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis;
 using SokoSolve.Core.Model;
 using SokoSolve.Core.Analysis.Solver.Reverse;
 using SokoSolve.Core.Model.DataModel;
@@ -31,7 +32,7 @@ namespace SokoSolve.Core.Analysis.Solver
             debugReport = new SolverReport();
             stats = new SolverStats(this);
             exitConditions = new ExitConditions();
-            
+
 
             // TODO: This should be configured, perhaps via a factory pattern
             strategy = new SolverStrategy(this);
@@ -71,6 +72,14 @@ namespace SokoSolve.Core.Analysis.Solver
         public SokobanMap Map
         {
             get { return puzzleMap.Map; }
+        }
+
+        /// <summary>
+        /// Provide static analysis. Static Analysis is stateless in terms of the solver progress (SolverNode)
+        /// </summary>
+        public StaticAnalysis StaticAnalysis
+        {
+            get { return staticAnalysis; }
         }
 
         /// <summary>
@@ -139,12 +148,26 @@ namespace SokoSolve.Core.Analysis.Solver
         }
 
         /// <summary>
+        /// Initialise and perform the static puzzle analysis
+        /// </summary>
+        public void Init()
+        {
+            staticAnalysis = new StaticAnalysis(this);
+            staticAnalysis.Analyse();
+        }
+
+        /// <summary>
         /// Attempt to find a solution
         /// </summary>
         /// <returns>Solution class, or null which means no solution found</returns>
         public SolverResult Solve()
         {
             if (state != States.NotStarted) throw new Exception("Solve cannot be re-run on a single instance, this may cause state corruption.");
+
+            if (staticAnalysis == null)
+            {
+                Init();
+            }
 
             SolverResult solverResult = new SolverResult();
             solverResult.DebugReport = debugReport;
@@ -468,6 +491,7 @@ namespace SokoSolve.Core.Analysis.Solver
         private SolverStats stats;
         private SolverStrategy strategy;
         private ReverseStrategy reverseStrategy;
+        private StaticAnalysis staticAnalysis;
         private Evaluator<SolverNode> reverseEvaluator;
         private Thread reverseWorker;
         private Exception reverseWorkerException;
