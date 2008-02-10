@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using SokoSolve.Common;
 
 namespace SokoSolve.Core.Analysis.Solver
 {
@@ -34,6 +35,9 @@ namespace SokoSolve.Core.Analysis.Solver
             stats.Add(WeightingAvg);
             stats.Add(HintsUsed);
             stats.Add(MaxDepth);
+
+            BestNodesFwd = new LinkedList<SolverNode>();
+            BestNodesRev = new LinkedList<SolverNode>();
         }
 
         /// <summary>
@@ -77,6 +81,10 @@ namespace SokoSolve.Core.Analysis.Solver
             get { return stats; }
         }
 
+        /// <summary>
+        /// Get all stats as simple name, value labels
+        /// </summary>
+        /// <returns></returns>
         public SolverLabelList GetDisplayData()
         {
             SolverLabelList txt = new SolverLabelList();
@@ -84,8 +92,94 @@ namespace SokoSolve.Core.Analysis.Solver
             {
                 txt.Add(stat.GetDisplayData());
             }
+
+            // Manually add BestNodes
+            string bestForward = StringHelper.Join<SolverNode>(BestNodesFwd, BestNodeToString, ", ");
+            SolverLabel lb = new SolverLabel("Best Fwd Nodes", bestForward, "");
+            txt.Add(lb);
+
+            string bestRev = StringHelper.Join<SolverNode>(BestNodesRev, BestNodeToString, ", ");
+            SolverLabel lbRev = new SolverLabel("Best Rev Nodes", bestRev, "");
+            txt.Add(lbRev);
+
+
             return txt;
         }
+
+        string BestNodeToString(SolverNode node)
+        {
+            if (node.IsChildrenEvaluated)
+            {
+                return string.Format("<a href=\"app://node/{0}\"><b>{1:0.00}</b></a>", node.NodeID, node.Weighting); 
+            }
+            return string.Format("<a href=\"app://node/{0}\">{1:0.00}</a>", node.NodeID, node.Weighting); 
+        }
+
+        /// <summary>
+        /// Register a new node for stats
+        /// </summary>
+        /// <param name="node"></param>
+        public void NewNode(SolverNode node)
+        {
+            if (node == null) return;
+
+       
+            if (node.IsForward)
+            {
+                if (BestNodesFwd.Count == 0 || node.Weighting > BestNodesFwd.Last.Value.Weighting)
+                {
+                    InsertSorted(BestNodesFwd, node);
+                }
+            }
+            else
+            {
+                if (BestNodesRev.Count == 0 || node.Weighting > BestNodesRev.Last.Value.Weighting)
+                {
+                    InsertSorted(BestNodesRev, node);
+                }
+            }
+        }
+
+        private void InsertSorted(LinkedList<SolverNode>  list, SolverNode node)
+        {
+            lock(list)
+            {
+                if (list.Count == 0)
+                {
+                    list.AddFirst(node);
+                    return;
+                }
+
+                LinkedListNode<SolverNode> current = list.First;
+                while (current != null && current.Value.Weighting >= node.Weighting)
+                {
+                    current = current.Next;
+                }
+
+                if (current == null)
+                {
+                    if (list.Count < MaxBestNodes)
+                    {
+                        list.AddLast(node);
+                        return;
+                    }
+                    return;
+                }
+
+                
+
+                // Add
+                list.AddBefore(current, node);
+
+                // Check max length
+                if (list.Count > MaxBestNodes)
+                {
+                    list.RemoveLast();
+                }
+            }
+        }
+
+
 
         private SolverController controller;
         private List<Statistic> stats;
@@ -95,6 +189,8 @@ namespace SokoSolve.Core.Analysis.Solver
         public Statistic EvaluationItterations = new Statistic("Evaluation Itterations", "{1:0} nodes");
         public Statistic CurrentEvalSecs = new Statistic("Evaluation Total Seconds", "{1:0} sec");
         public Statistic Nodes = new Statistic("Total Nodes", "{1:0} nodes");
+        public Statistic NodesFwd = new Statistic("Total Forward Nodes", "{1:0} nodes");
+        public Statistic NodesRev = new Statistic("Total Reverse Nodes", "{1:0} nodes");
         public Statistic AvgEvalList = new Statistic("Eval Worker List", "{1:0}");
         public Statistic Duplicates = new Statistic("Duplicates", "{1:0} nodes");
         public Statistic DeadNodes = new Statistic("DeadNodes", "{1:0} nodes");
@@ -104,5 +200,8 @@ namespace SokoSolve.Core.Analysis.Solver
         public Statistic HintsUsed = new Statistic("Hints Uses", "{1:0} hits");
         public Statistic MaxDepth = new Statistic("Max Depth", "{1:0}");
         public StatisticRollingAverage NodesPerSecond = new StatisticRollingAverage("Node per second");
+        public LinkedList<SolverNode> BestNodesFwd;
+        public LinkedList<SolverNode> BestNodesRev;
+        public readonly int MaxBestNodes = 20;
     }
 }

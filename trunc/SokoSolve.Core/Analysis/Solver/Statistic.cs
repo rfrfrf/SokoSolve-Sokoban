@@ -14,6 +14,7 @@ namespace SokoSolve.Core.Analysis.Solver
             count = 0;
             valueTotal = 0;
             valueLast = 0;
+            history = new List<float>();
         }
 
         public Statistic(string name) : this()
@@ -68,6 +69,12 @@ namespace SokoSolve.Core.Analysis.Solver
             set { description = value; }
         }
 
+
+        public List<float> History
+        {
+            get { return history; }
+        }
+
         /// <summary>
         /// Basic unit of measure eg "avg nodes", "pixels", "msecs"
         /// </summary>
@@ -115,7 +122,7 @@ namespace SokoSolve.Core.Analysis.Solver
         /// </summary>
         public virtual void SecondTick()
         {
-            
+            history.Add(valueTotal);
         }
 
 
@@ -179,5 +186,6 @@ namespace SokoSolve.Core.Analysis.Solver
         protected string description;
         protected string unitOfMeasure;
         protected string stringFormat = "{1} {4}, avg {2} of {3}";
+        private List<float> history;
     }
 }

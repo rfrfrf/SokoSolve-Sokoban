@@ -27,18 +27,29 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <param name="puzzleMap">Map to solve</param>
         public SolverController(PuzzleMap puzzleMap)
         {
+            this.settings = new Settings();
+
             this.state = States.NotStarted;
             this.puzzleMap = puzzleMap;
             debugReport = new SolverReport();
+
+            debugReport.AppendHeading(1, "SokoSolve | Solver Debug Report v{0}", ProgramVersion.VersionString);
+
+            debugReport.Append("Creating Statistics");
             stats = new SolverStats(this);
+            debugReport.Append("Creating Exit Conditions");
             exitConditions = new ExitConditions();
 
 
             // TODO: This should be configured, perhaps via a factory pattern
+            debugReport.Append("Creating Forward Strategy");
             strategy = new SolverStrategy(this);
+            debugReport.Append("Creating Forward Evaluator");
             evaluator = new Evaluator<SolverNode>(true);
 
+            debugReport.Append("Creating Reverse Strategy");
             reverseStrategy = new ReverseStrategy(this);
+            debugReport.Append("Creating Reverse Evaluator");
             reverseEvaluator = new Evaluator<SolverNode>(true);
         }
 
@@ -99,6 +110,14 @@ namespace SokoSolve.Core.Analysis.Solver
         }
 
         /// <summary>
+        /// Solver Settings (configuration)
+        /// </summary>
+        public Settings Settings
+        {
+            get { return settings; }
+        }
+
+        /// <summary>
         /// The conditions under which the solver should exit without solution
         /// </summary>
         public ExitConditions ExitConditions
@@ -152,8 +171,10 @@ namespace SokoSolve.Core.Analysis.Solver
         /// </summary>
         public void Init()
         {
+            debugReport.AppendHeading(2, "Static Puzzle Analysis");
             staticAnalysis = new StaticAnalysis(this);
             staticAnalysis.Analyse();
+            debugReport.CompleteSection();
         }
 
         /// <summary>
@@ -168,6 +189,8 @@ namespace SokoSolve.Core.Analysis.Solver
             {
                 Init();
             }
+
+            debugReport.AppendHeading(2, "Controller | Solving");
 
             SolverResult solverResult = new SolverResult();
             solverResult.DebugReport = debugReport;
@@ -191,10 +214,13 @@ namespace SokoSolve.Core.Analysis.Solver
                 }
 
                 // Prepare and start reverse
-                reverseWorker = new Thread(new ThreadStart(StartReverseWorker));
-                reverseWorker.Name = "REV";
-                reverseWorker.Priority = Thread.CurrentThread.Priority;
-                reverseWorker.Start();
+                if (settings.UseReverseSolver)
+                {
+                    reverseWorker = new Thread(new ThreadStart(StartReverseWorker));
+                    reverseWorker.Name = "REV";
+                    reverseWorker.Priority = Thread.CurrentThread.Priority;
+                    reverseWorker.Start();
+                }
 
                 // Start forward
                 debugReport.AppendTimeStamp("Forward Started.");
@@ -220,7 +246,11 @@ namespace SokoSolve.Core.Analysis.Solver
 
                 // Wait for the reverse strategy to complete
                 debugReport.AppendTimeStamp("Waiting for reverse to JOIN...");
-                reverseWorker.Join();
+                if (reverseWorker != null)
+                {
+                    reverseWorker.Join();    
+                }
+                
                 debugReport.AppendTimeStamp("Done.");
                 
                 // Rethrow on calling thread.
@@ -255,6 +285,8 @@ namespace SokoSolve.Core.Analysis.Solver
 
             solverResult.ControllerResult = state;
             solverResult.Build(this);
+
+            debugReport.CompleteSection();
 
             return solverResult;
         }
@@ -426,6 +458,11 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <returns></returns>
         public bool CheckChainForward(SolverNode reverseNode)
         {
+            if (stats != null)
+            {
+                stats.NewNode(reverseNode);
+            }
+
             if (strategy == null) return false;
 
             SolverNode match = strategy.CheckDuplicate(reverseNode);
@@ -451,6 +488,11 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <returns></returns>
         public bool CheckChainBack(SolverNode forwardNode)
         {
+            if (stats != null)
+            {
+                stats.NewNode(forwardNode);
+            }
+
             if (reverseStrategy == null) return false;
 
             SolverNode match = reverseStrategy.CheckDuplicate(forwardNode);
@@ -496,6 +538,7 @@ namespace SokoSolve.Core.Analysis.Solver
         private Thread reverseWorker;
         private Exception reverseWorkerException;
         private States state;
+        private Settings settings;
 
         #region IDisposable Members
 
@@ -509,5 +552,22 @@ namespace SokoSolve.Core.Analysis.Solver
         }
 
         #endregion
+
+
+        /// <summary>
+        /// Find an active node by ID
+        /// </summary>
+        /// <param name="nodeID"></param>
+        /// <returns></returns>
+        public SolverNode FindNode(string nodeID)
+        {
+            TreeNode<SolverNode> node =  strategy.EvaluationTree.Root.Find(delegate(TreeNode<SolverNode> item) { return item.Data.NodeID == nodeID; }, int.MaxValue);
+            if (node != null) return node.Data;
+
+            node = ReverseStrategy.EvaluationTree.Root.Find(delegate(TreeNode<SolverNode> item) { return item.Data.NodeID == nodeID; }, int.MaxValue);
+            if (node != null) return node.Data;
+
+            return null;
+        }
     }
 }

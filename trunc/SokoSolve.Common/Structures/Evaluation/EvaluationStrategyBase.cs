@@ -24,7 +24,7 @@ namespace SokoSolve.Common.Structures.Evaluation
         /// <summary>
         /// Use a depth-last itterator by default.
         /// </summary>
-        protected EvaluationStrategyBase() : this (new DepthLastItterator<T>())
+        protected EvaluationStrategyBase() : this (new BreadthFirstItterator<T>())
         {
             
         }

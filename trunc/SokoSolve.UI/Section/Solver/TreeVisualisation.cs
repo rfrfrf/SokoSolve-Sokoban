@@ -353,11 +353,11 @@ namespace SokoSolve.UI.Section.Solver
         public override void Draw(Graphics graphics, RectangleInt region)
         {
             graphics.FillRectangle(owner.Display.GetBrush(node), region.ToDrawingRect());
-            graphics.DrawRectangle(owner.Display.GetPen(node), region.ToDrawingRect());
+            graphics.DrawRectangle(owner.Display.GetPen(node), region.TopLeft.X, region.TopLeft.Y,region.Width-1, region.Height-1);
 
             if (owner.Selected == this)
             {
-                graphics.DrawRectangle(new Pen(Color.Yellow, 2f), region.ToDrawingRect());
+                graphics.DrawRectangle(new Pen(Color.Yellow, 2f), region.TopLeft.X, region.TopLeft.Y,region.Width-1, region.Height-1);
             }
         }        
     }

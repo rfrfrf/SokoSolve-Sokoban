@@ -150,7 +150,7 @@ namespace SokoSolve.UI.Section.Library
             FormMain main = Controller.Explorer.TreeView.FindForm() as FormMain;
             if (main != null)
             {
-                main.ShowInBrowser("http://sokosolve.sourceforge.net/");
+                main.ShowInBrowser("http://sokosolve.sourceforge.net/?Version="+ProgramVersion.VersionString);
             }
         }
 
@@ -192,7 +192,7 @@ namespace SokoSolve.UI.Section.Library
                     string message = string.Format("Current internet version is {0}, while you are currently running {1}. Do you want to download the latest version?", xmlLatest, ProgramVersion.VersionString);
                     if (MessageBox.Show(message, "Version Check", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                     {
-                        Process.Start("http://sokosolve.sourceforge.net/install.html");
+                        Process.Start("http://sokosolve.sourceforge.net/install.html?UpdateFromVersion="+ProgramVersion.VersionString);
                     }
                 }
                 else if (MessageIfOk)

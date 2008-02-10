@@ -30,14 +30,10 @@ namespace SokoSolve.UI.Section.Solver
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SolverSectionController));
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Solved", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Failed", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Errors", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Pending", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new System.Windows.Forms.ListViewItem.ListViewSubItem[] {
-            new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "#2 Dire Gem"),
-            new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "Pending", System.Drawing.SystemColors.ScrollBar, System.Drawing.SystemColors.Window, new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)))),
-            new System.Windows.Forms.ListViewItem.ListViewSubItem(null, "3w5h, rating 43.50, no solutions")}, "Sucess.bmp");
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Solved", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Failed", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Errors", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Pending", System.Windows.Forms.HorizontalAlignment.Left);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbDone = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -45,9 +41,10 @@ namespace SokoSolve.UI.Section.Solver
             this.tsbStop = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbSelectAll = new System.Windows.Forms.ToolStripButton();
+            this.tsbUnSelectAll = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbSaveXML = new System.Windows.Forms.ToolStripButton();
             this.tsbSaveHTML = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbVisualisation = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tslTime = new System.Windows.Forms.ToolStripStatusLabel();
@@ -63,6 +60,9 @@ namespace SokoSolve.UI.Section.Solver
             this.chSummary = new System.Windows.Forms.ColumnHeader();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabPageSettings = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbRetainHistory = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbAlwaysAdd = new System.Windows.Forms.RadioButton();
             this.rbAddBetter = new System.Windows.Forms.RadioButton();
@@ -71,17 +71,15 @@ namespace SokoSolve.UI.Section.Solver
             this.label1 = new System.Windows.Forms.Label();
             this.exitConditions1 = new SokoSolve.UI.Section.Solver.ExitConditions();
             this.timerUpdater = new System.Windows.Forms.Timer(this.components);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbRetainHistory = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.solverSettings1 = new SokoSolve.UI.Section.Solver.SolverSettings();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageSolverQueue.SuspendLayout();
             this.tabPageResults.SuspendLayout();
             this.tabPageSettings.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -93,9 +91,10 @@ namespace SokoSolve.UI.Section.Solver
             this.tsbStop,
             this.toolStripSeparator2,
             this.tsbSelectAll,
+            this.tsbUnSelectAll,
+            this.toolStripSeparator4,
             this.tsbSaveXML,
             this.tsbSaveHTML,
-            this.toolStripSeparator3,
             this.tsbVisualisation});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -155,6 +154,21 @@ namespace SokoSolve.UI.Section.Solver
             this.tsbSelectAll.Text = "Select All";
             this.tsbSelectAll.Click += new System.EventHandler(this.tsbSelectAll_Click);
             // 
+            // tsbUnSelectAll
+            // 
+            this.tsbUnSelectAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbUnSelectAll.Image = ((System.Drawing.Image)(resources.GetObject("tsbUnSelectAll.Image")));
+            this.tsbUnSelectAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbUnSelectAll.Name = "tsbUnSelectAll";
+            this.tsbUnSelectAll.Size = new System.Drawing.Size(67, 22);
+            this.tsbUnSelectAll.Text = "UnSelect All";
+            this.tsbUnSelectAll.Click += new System.EventHandler(this.tsbUnSelectAll_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
             // tsbSaveXML
             // 
             this.tsbSaveXML.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -169,6 +183,7 @@ namespace SokoSolve.UI.Section.Solver
             // tsbSaveHTML
             // 
             this.tsbSaveHTML.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSaveHTML.Enabled = false;
             this.tsbSaveHTML.Image = global::SokoSolve.UI.Properties.Resources.Report;
             this.tsbSaveHTML.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSaveHTML.Name = "tsbSaveHTML";
@@ -177,13 +192,9 @@ namespace SokoSolve.UI.Section.Solver
             this.tsbSaveHTML.ToolTipText = "Save result report as XHTML";
             this.tsbSaveHTML.Click += new System.EventHandler(this.tsbSaveHTML_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
             // tsbVisualisation
             // 
+            this.tsbVisualisation.Enabled = false;
             this.tsbVisualisation.Image = global::SokoSolve.UI.Properties.Resources.Graph;
             this.tsbVisualisation.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbVisualisation.Name = "tsbVisualisation";
@@ -280,22 +291,19 @@ namespace SokoSolve.UI.Section.Solver
             this.chSummary});
             this.listViewResults.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewResults.FullRowSelect = true;
-            listViewGroup1.Header = "Solved";
-            listViewGroup1.Name = "listViewGroupSolved";
-            listViewGroup2.Header = "Failed";
-            listViewGroup2.Name = "listViewGroupFailed";
-            listViewGroup3.Header = "Errors";
-            listViewGroup3.Name = "listViewGroupError";
-            listViewGroup4.Header = "Pending";
-            listViewGroup4.Name = "listViewGroupPending";
+            listViewGroup5.Header = "Solved";
+            listViewGroup5.Name = "listViewGroupSolved";
+            listViewGroup6.Header = "Failed";
+            listViewGroup6.Name = "listViewGroupFailed";
+            listViewGroup7.Header = "Errors";
+            listViewGroup7.Name = "listViewGroupError";
+            listViewGroup8.Header = "Pending";
+            listViewGroup8.Name = "listViewGroupPending";
             this.listViewResults.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3,
-            listViewGroup4});
-            listViewItem1.Group = listViewGroup4;
-            this.listViewResults.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewGroup5,
+            listViewGroup6,
+            listViewGroup7,
+            listViewGroup8});
             this.listViewResults.Location = new System.Drawing.Point(3, 3);
             this.listViewResults.MultiSelect = false;
             this.listViewResults.Name = "listViewResults";
@@ -306,6 +314,7 @@ namespace SokoSolve.UI.Section.Solver
             this.listViewResults.View = System.Windows.Forms.View.Details;
             this.listViewResults.DoubleClick += new System.EventHandler(this.listViewResults_DoubleClick);
             this.listViewResults.SelectedIndexChanged += new System.EventHandler(this.listViewResults_SelectedIndexChanged);
+            this.listViewResults.Leave += new System.EventHandler(this.listViewResults_Leave);
             // 
             // chPuzzle
             // 
@@ -335,6 +344,7 @@ namespace SokoSolve.UI.Section.Solver
             // 
             // tabPageSettings
             // 
+            this.tabPageSettings.Controls.Add(this.solverSettings1);
             this.tabPageSettings.Controls.Add(this.groupBox1);
             this.tabPageSettings.Controls.Add(this.groupBox2);
             this.tabPageSettings.Controls.Add(this.cbThreadPriority);
@@ -348,12 +358,41 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageSettings.Text = "Settings";
             this.tabPageSettings.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.cbRetainHistory);
+            this.groupBox1.Location = new System.Drawing.Point(269, 204);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(295, 86);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Retain History";
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(6, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(283, 44);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "* WARNING * This will keep each solver attempt in memory, and will consume large " +
+                "amounts of memory for large work lists.";
+            // 
+            // cbRetainHistory
+            // 
+            this.cbRetainHistory.Location = new System.Drawing.Point(9, 15);
+            this.cbRetainHistory.Name = "cbRetainHistory";
+            this.cbRetainHistory.Size = new System.Drawing.Size(280, 22);
+            this.cbRetainHistory.TabIndex = 0;
+            this.cbRetainHistory.Text = "Allow visualisations for each item in the work list.";
+            this.cbRetainHistory.UseVisualStyleBackColor = true;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.rbAlwaysAdd);
             this.groupBox2.Controls.Add(this.rbAddBetter);
             this.groupBox2.Controls.Add(this.rbDontAdd);
-            this.groupBox2.Location = new System.Drawing.Point(297, 111);
+            this.groupBox2.Location = new System.Drawing.Point(269, 98);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(249, 100);
             this.groupBox2.TabIndex = 4;
@@ -396,7 +435,7 @@ namespace SokoSolve.UI.Section.Solver
             // 
             this.cbThreadPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbThreadPriority.FormattingEnabled = true;
-            this.cbThreadPriority.Location = new System.Drawing.Point(297, 69);
+            this.cbThreadPriority.Location = new System.Drawing.Point(279, 71);
             this.cbThreadPriority.Name = "cbThreadPriority";
             this.cbThreadPriority.Size = new System.Drawing.Size(194, 21);
             this.cbThreadPriority.TabIndex = 2;
@@ -404,7 +443,7 @@ namespace SokoSolve.UI.Section.Solver
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(294, 53);
+            this.label1.Location = new System.Drawing.Point(276, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 1;
@@ -422,34 +461,12 @@ namespace SokoSolve.UI.Section.Solver
             this.timerUpdater.Interval = 10000;
             this.timerUpdater.Tick += new System.EventHandler(this.timerUpdater_Tick);
             // 
-            // groupBox1
+            // solverSettings1
             // 
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.cbRetainHistory);
-            this.groupBox1.Location = new System.Drawing.Point(297, 218);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(249, 100);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Retain History";
-            // 
-            // cbRetainHistory
-            // 
-            this.cbRetainHistory.Location = new System.Drawing.Point(9, 15);
-            this.cbRetainHistory.Name = "cbRetainHistory";
-            this.cbRetainHistory.Size = new System.Drawing.Size(236, 34);
-            this.cbRetainHistory.TabIndex = 0;
-            this.cbRetainHistory.Text = "Allow visualisations for each item in the work list.";
-            this.cbRetainHistory.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(6, 52);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(237, 56);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "* WARNING * This will keep each solver attempt in memory, and will consume large " +
-                "amounts of memory for large work lists.";
+            this.solverSettings1.Location = new System.Drawing.Point(269, 297);
+            this.solverSettings1.Name = "solverSettings1";
+            this.solverSettings1.Size = new System.Drawing.Size(295, 149);
+            this.solverSettings1.TabIndex = 6;
             // 
             // SolverSectionController
             // 
@@ -469,9 +486,9 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageResults.ResumeLayout(false);
             this.tabPageSettings.ResumeLayout(false);
             this.tabPageSettings.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -507,7 +524,6 @@ namespace SokoSolve.UI.Section.Solver
         private System.Windows.Forms.ComboBox cbThreadPriority;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripButton tsbSelectAll;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rbAlwaysAdd;
         private System.Windows.Forms.RadioButton rbAddBetter;
@@ -515,5 +531,8 @@ namespace SokoSolve.UI.Section.Solver
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox cbRetainHistory;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripButton tsbUnSelectAll;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private SolverSettings solverSettings1;
     }
 }

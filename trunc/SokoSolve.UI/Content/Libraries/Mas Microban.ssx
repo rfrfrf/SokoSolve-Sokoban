@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"  MaxID="1000" LibraryID="fd689df1-0512-44f5-aaf2-3ad75bc54da5" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
+<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LibraryID="fd689df1-0512-44f5-aaf2-3ad75bc54da5" MaxID="1000" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
   <Details License="Acknowledgement Required" Date="1999-08-01T17:12:45">
     <Name>Mas Microban</Name>
     <Description />
@@ -7,7 +7,7 @@
     <Author Name="David W. Skinner" Email="sasquatch@bentonrea.com" Homepage="http://users.bentonrea.com/~sasquatch/" />
   </Details>
   <Categories>
-    <Category CategoryID="C0" Order="0">
+    <Category CategoryID="C0" Order="1">
       <CategoryDescription>
         <Name>Master List</Name>
       </CategoryDescription>
@@ -1063,6 +1063,28 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
                 <Author />
               </SolutionDescription>
             </Solution>
+            <Solution StartX="2" StartY="2">
+              <Steps>rddldrrrdrrullllrrruulululdddllddrurrrdruudllluuurrdrddlllllurdrrrruulullddldrrrdrullluuurrdrrrurrddlullllulldddrrrudllluuurrdrrruurrdlrddlu</Steps>
+              <SolutionDescription Date="2008-02-09T22:59:01.903175+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 418 nodes
+Total Nodes : 283 nodes
+Node per second :  
+Duplicates : 146 nodes
+DeadNodes : 7 nodes
+Eval Worker List : 18
+Weighting Min : 0
+Weighting Max : 100
+Weighting Avg : 37.70 avg.
+Hints Uses : 0 hits
+Max Depth : 31
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
           </Solutions>
         </Map>
       </Maps>
@@ -1108,6 +1130,28 @@ Weighting Max : 100
 Weighting Avg : 14.02 avg.
 Hints Uses : 0 hits
 Max Depth : 18
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+            <Solution StartX="3" StartY="3">
+              <Steps>ulldrurddurrruurrddlddlllldllurrrrlluurrrlllddrrrllluurrruurrddlllrrdddrrrdddldllluluurrdruluuuullllulldrurddurrrrddlllldllurrrrrllluurrrrdddurrdrdddldllluluurrurlddru</Steps>
+              <SolutionDescription Date="2008-02-09T22:59:02.586725+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 826 nodes
+Total Nodes : 556 nodes
+Node per second :  
+Duplicates : 282 nodes
+DeadNodes : 69 nodes
+Eval Worker List : 78
+Weighting Min : -2
+Weighting Max : 100
+Weighting Avg : 32.36 avg.
+Hints Uses : 0 hits
+Max Depth : 20
 Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
 </Description>
                 <Author />
@@ -1392,6 +1436,28 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
                 <Author />
               </SolutionDescription>
             </Solution>
+            <Solution StartX="4" StartY="4">
+              <Steps>lddrrrrrrdrrruuluuruullddrddrddlulllllllluullddrdruudlluuurrrdlddrrrrrrrruuluuurrddldlulldrrurddrdlllllllllrrrrrrrruuuruullddldrurddrdldllulllllluuulldddrdrulluurrrlllddrrudlluuurrrdlddrrrrrrdrrulllllllluuulldddrdruuululdrrrurrdllllrrull</Steps>
+              <SolutionDescription Date="2008-02-09T22:59:06.916526+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 4080 nodes
+Total Nodes : 2820 nodes
+Node per second :  
+Duplicates : 1509 nodes
+DeadNodes : 326 nodes
+Eval Worker List : 500
+Weighting Min : -2
+Weighting Max : 167
+Weighting Avg : 36.45 avg.
+Hints Uses : 16 hits
+Max Depth : 46
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
           </Solutions>
         </Map>
       </Maps>
@@ -1625,6 +1691,28 @@ Weighting Max : 100
 Weighting Avg : -4.76 avg.
 Hints Uses : 56 hits
 Max Depth : 53
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+            <Solution StartX="6" StartY="4">
+              <Steps>rurdlllluulldddddrrrrurudldlllluuuuurrrrurrrdrdddllullludrrrdrruuulullldlllulddddddrddllururrrrurudldllllddruluuuuuurrdrddluurulluldddddduuuuurrrrurrrdrdddllullluullldddddrddlluruuuuuurrdrddluurulluldddddddldruuuuuuurrddrrrddldll</Steps>
+              <SolutionDescription Date="2008-02-09T22:59:10.8820925+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 3375 nodes
+Total Nodes : 2445 nodes
+Node per second :  
+Duplicates : 1456 nodes
+DeadNodes : 459 nodes
+Eval Worker List : 318
+Weighting Min : 0
+Weighting Max : 151
+Weighting Avg : 24.10 avg.
+Hints Uses : 48 hits
+Max Depth : 32
 Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
 </Description>
                 <Author />
@@ -2002,6 +2090,28 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
                 <Author />
               </SolutionDescription>
             </Solution>
+            <Solution StartX="7" StartY="1">
+              <Steps>lddddrrruulululddurrdlrrddllullluldldrurrrdrrruululldurrdrddlluluurrdldlllullddrurrrruuldrdllluldllur</Steps>
+              <SolutionDescription Date="2008-02-09T22:59:15.3642275+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 1036 nodes
+Total Nodes : 734 nodes
+Node per second :  
+Duplicates : 374 nodes
+DeadNodes : 225 nodes
+Eval Worker List : 256
+Weighting Min : 0
+Weighting Max : 177
+Weighting Avg : 103.99 avg.
+Hints Uses : 22 hits
+Max Depth : 15
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
           </Solutions>
         </Map>
       </Maps>
@@ -2023,7 +2133,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#.###.#...#</Row>
           <Row>#.....#####</Row>
           <Row>#######~~~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="5" StartY="4">
+              <Steps>lulldddrrrrruuruulldlllulddduurrrrurrddddlllddlllluuruuurrrruuldrrrddddlllddlllluuruuuurrrldlldddrllddrrrruurruuruulldlllulddurrrruuldrdllurrrrddddlllddlllluurrrrrruuruullllllddduuurrrrrrdddldllddlllluurrluuuurrdlulddduuurrrrrrdddldllddlllluurlddrrrruurrdrrulll</Steps>
+              <SolutionDescription Date="2008-02-09T22:59:16.2743255+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 4018 nodes
+Total Nodes : 2947 nodes
+Node per second :  
+Duplicates : 1801 nodes
+DeadNodes : 734 nodes
+Eval Worker List : 577
+Weighting Min : 0
+Weighting Max : 249
+Weighting Avg : 97.27 avg.
+Hints Uses : 80 hits
+Max Depth : 28
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -2041,7 +2174,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#.OO..#.P#..#</Row>
           <Row>#############</Row>
           <Row>~~~~~~#~~#~~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="8" StartY="4">
+              <Steps>lulurdlllrrurrrllddrurulrurrddlruulldldllllldlluurdldrrurrrrrururrddlllllllldlluurdrrrdlurrrrrrruldllllurdrrruuldrdlllurdrruuldrdlulldlurrrdlulldlllrrrurrdllll</Steps>
+              <SolutionDescription Date="2008-02-09T22:59:16.995959+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 3323 nodes
+Total Nodes : 2364 nodes
+Node per second :  
+Duplicates : 1198 nodes
+DeadNodes : 478 nodes
+Eval Worker List : 367
+Weighting Min : 0
+Weighting Max : 148
+Weighting Avg : 80.76 avg.
+Hints Uses : 16 hits
+Max Depth : 27
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -2230,6 +2386,28 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
                 <Author />
               </SolutionDescription>
             </Solution>
+            <Solution StartX="3" StartY="7">
+              <Steps>uluuulururrdddulrddlddruruuluuulldrurd</Steps>
+              <SolutionDescription Date="2008-02-09T22:59:20.142242+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 505 nodes
+Total Nodes : 329 nodes
+Node per second :  
+Duplicates : 123 nodes
+DeadNodes : 81 nodes
+Eval Worker List : 344
+Weighting Min : 0
+Weighting Max : 348
+Weighting Avg : 258.54 avg.
+Hints Uses : 2 hits
+Max Depth : 6
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
           </Solutions>
         </Map>
       </Maps>
@@ -2248,7 +2426,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#..X#..##</Row>
           <Row>#...#..#~</Row>
           <Row>########~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="4" StartY="3">
+              <Steps>lrrdruruullddlluldlddrrudlluurrddlururruurrddlllrrddlururuuld</Steps>
+              <SolutionDescription Date="2008-02-09T22:59:20.605103+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 762 nodes
+Total Nodes : 493 nodes
+Node per second :  
+Duplicates : 175 nodes
+DeadNodes : 126 nodes
+Eval Worker List : 89
+Weighting Min : 0
+Weighting Max : 346
+Weighting Avg : 277.75 avg.
+Hints Uses : 24 hits
+Max Depth : 9
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -2430,6 +2631,28 @@ Weighting Max : 100
 Weighting Avg : 10.08 avg.
 Hints Uses : 8 hits
 Max Depth : 37
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+            <Solution StartX="7" StartY="3">
+              <Steps>dddllllddrlllddrruruldrrruluddllurluurrrllldddrrulluurrrrdrruldlullllddrrudlluurrrldddlldlluurrrluurrrruurulddddrruldlulllldddrruudlluurrrruulluurduurrddlddddrruldluuuruuulldlddrluurduurrddlddduuuruulldlddrluururrddlddulluurdldrurd</Steps>
+              <SolutionDescription Date="2008-02-09T22:59:22.714343+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 3336 nodes
+Total Nodes : 2295 nodes
+Node per second :  
+Duplicates : 1214 nodes
+DeadNodes : 381 nodes
+Eval Worker List : 402
+Weighting Min : 0
+Weighting Max : 202
+Weighting Avg : 102.60 avg.
+Hints Uses : 24 hits
+Max Depth : 35
 Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
 </Description>
                 <Author />
@@ -2806,6 +3029,28 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
                 <Author />
               </SolutionDescription>
             </Solution>
+            <Solution StartX="6" StartY="3">
+              <Steps>ldludrddlulrruuldrddllurdruulururrdlrdluululdddrddlluruurdlddlllurrdrruuddlluruuurrrddlurul</Steps>
+              <SolutionDescription Date="2008-02-09T22:59:27.671057+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 1394 nodes
+Total Nodes : 991 nodes
+Node per second :  
+Duplicates : 497 nodes
+DeadNodes : 258 nodes
+Eval Worker List : 347
+Weighting Min : 0
+Weighting Max : 367
+Weighting Avg : 248.01 avg.
+Hints Uses : 30 hits
+Max Depth : 15
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
           </Solutions>
         </Map>
       </Maps>
@@ -2893,6 +3138,28 @@ Weighting Max : 100
 Weighting Avg : 46.97 avg.
 Hints Uses : 0 hits
 Max Depth : 12
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+            <Solution StartX="7" StartY="2">
+              <Steps>ulldurrdrddlllldlluuluurdrrdddlluulurrldddrrurrrruululddldruuuldrddlldlluuurrrurrdrddlruululldld</Steps>
+              <SolutionDescription Date="2008-02-09T22:59:28.9824965+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 906 nodes
+Total Nodes : 595 nodes
+Node per second :  
+Duplicates : 259 nodes
+DeadNodes : 113 nodes
+Eval Worker List : 424
+Weighting Min : 0
+Weighting Max : 334
+Weighting Avg : 233.84 avg.
+Hints Uses : 0 hits
+Max Depth : 10
 Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
 </Description>
                 <Author />
@@ -3059,7 +3326,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#OXXXO#</Row>
           <Row>#.O.O.#</Row>
           <Row>#######</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="3" StartY="3">
+              <Steps>ulurdrlddrdlulruurdldlurrdullu</Steps>
+              <SolutionDescription Date="2008-02-09T23:04:33.4786325+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 878 nodes
+Total Nodes : 532 nodes
+Node per second :  
+Duplicates : 126 nodes
+DeadNodes : 202 nodes
+Eval Worker List : 1600
+Weighting Min : 0
+Weighting Max : 712
+Weighting Avg : 536.47 avg.
+Hints Uses : 0 hits
+Max Depth : 8
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -3100,6 +3390,28 @@ Weighting Max : 100
 Weighting Avg : 43.53 avg.
 Hints Uses : 0 hits
 Max Depth : 17
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+            <Solution StartX="3" StartY="6">
+              <Steps>luuluurddlddrrruuudrrudllulrdrruluurddldddlllluururrdruruullddllluurdldrdlddrrruruurulddddlllluuurrldlddruluurrrllldddrrruruuruuldddullllddrulurrrdrullldddrrrudlu</Steps>
+              <SolutionDescription Date="2008-02-09T23:04:34.227608+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 2161 nodes
+Total Nodes : 1592 nodes
+Node per second :  
+Duplicates : 825 nodes
+DeadNodes : 448 nodes
+Eval Worker List : 1210
+Weighting Min : 0
+Weighting Max : 423
+Weighting Avg : 321.22 avg.
+Hints Uses : 70 hits
+Max Depth : 19
 Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
 </Description>
                 <Author />
@@ -3146,6 +3458,28 @@ Weighting Max : 110
 Weighting Avg : 87.83 avg.
 Hints Uses : 0 hits
 Max Depth : 12
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+            <Solution StartX="6" StartY="6">
+              <Steps>lluuuluulldrddrrrudlddrululllddruruulduuurdlddrrulrrruuldlrrdlullddrulurlulldr</Steps>
+              <SolutionDescription Date="2008-02-09T23:04:34.8281555+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 1138 nodes
+Total Nodes : 692 nodes
+Node per second :  
+Duplicates : 213 nodes
+DeadNodes : 280 nodes
+Eval Worker List : 775
+Weighting Min : 0
+Weighting Max : 557
+Weighting Avg : 415.68 avg.
+Hints Uses : 0 hits
+Max Depth : 10
 Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
 </Description>
                 <Author />
@@ -3218,7 +3552,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#.OXOXO.#</Row>
           <Row>#.......#</Row>
           <Row>#########</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="4" StartY="4">
+              <Steps>uldlluuurrrrrdrddlduruuldlldlllurdrrurdurrddddllluldlluuuuuurrrrdullldddrrdullurluurdurrdllulldddrrrudllldddrruuruldddlluurlddrrrrrruullrrddlludlllluuuuuurrdrrurrddddddlluldllluuuuuurrdrdddluruuulllddddddrrudlluuuurrdrulllddddrruuudddlluur</Steps>
+              <SolutionDescription Date="2008-02-09T23:04:38.698025+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 1299 nodes
+Total Nodes : 853 nodes
+Node per second :  
+Duplicates : 367 nodes
+DeadNodes : 39 nodes
+Eval Worker List : 5684
+Weighting Min : 0
+Weighting Max : 1297
+Weighting Avg : 1080.89 avg.
+Hints Uses : 0 hits
+Max Depth : 23
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -3238,7 +3595,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#.XOXOX.#</Row>
           <Row>#.......#</Row>
           <Row>#########</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="4" StartY="4">
+              <Steps>uldrrdrudrddlllllluurruuuurdldddlldruruuurrdulldddlddrrrrudlllluuruuuulldrurrrrrdlulllldldrdrruldluluurdurrdlullddrluurrddllururrdrdluurrrdlullddlruurrdrdldduuuullddrluulldldrrlddlddruuudddrrrrruullllrrrrddludllu</Steps>
+              <SolutionDescription Date="2008-02-09T23:05:49.1905835+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 69 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 21304 nodes
+Total Nodes : 14014 nodes
+Node per second : avg 100.2, last 81 
+Duplicates : 5874 nodes
+DeadNodes : 2393 nodes
+Eval Worker List : 33599
+Weighting Min : 0
+Weighting Max : 1254
+Weighting Avg : 1146.26 avg.
+Hints Uses : 0 hits
+Max Depth : 53
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -3258,7 +3638,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#.OXOXO.#</Row>
           <Row>#...#...#</Row>
           <Row>#########</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="4" StartY="4">
+              <Steps>uldrdrullludrrrruddullullluurrdullddrddurrdrrrddlludrruululllldrllddrrudlluururrrrulrruulldlrurrddldlludrruruullddldrlllurrllluurrddrdldllddrruuurrdlrrrddllu</Steps>
+              <SolutionDescription Date="2008-02-09T23:05:50.7236885+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 2700 nodes
+Total Nodes : 1664 nodes
+Node per second :  
+Duplicates : 534 nodes
+DeadNodes : 674 nodes
+Eval Worker List : 4535
+Weighting Min : 0
+Weighting Max : 1229
+Weighting Avg : 1024.45 avg.
+Hints Uses : 0 hits
+Max Depth : 20
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -3278,7 +3681,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#...OX.##</Row>
           <Row>###.O..#~</Row>
           <Row>~~######~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="4" StartY="4">
+              <Steps>uurrrdddlddllulludrdrrruuuruuldulldrurrdddlddllulluluururldrlldddrrdrrruuruuulldrurdlllddldlluuurrlldddrrdrrruulrddllluuldludrrdrrruuldrdl</Steps>
+              <SolutionDescription Date="2008-02-09T23:06:15.3314885+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 24 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 34863 nodes
+Total Nodes : 26832 nodes
+Node per second : avg 1147.7, last 762 
+Duplicates : 9351 nodes
+DeadNodes : 14031 nodes
+Eval Worker List : 12532
+Weighting Min : 0
+Weighting Max : 1186
+Weighting Avg : 934.20 avg.
+Hints Uses : 1046 hits
+Max Depth : 36
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -3441,6 +3867,28 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
                 <Author />
               </SolutionDescription>
             </Solution>
+            <Solution StartX="7" StartY="5">
+              <Steps>luullrrddrruululdllulldrdduurrrlllddrddluuuurrrururrdldlllrrruuldldlluldllurdrrrrurrdlllllrrrrrddlludrruulll</Steps>
+              <SolutionDescription Date="2008-02-09T23:08:48.5306675+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 1950 nodes
+Total Nodes : 1264 nodes
+Node per second :  
+Duplicates : 547 nodes
+DeadNodes : 201 nodes
+Eval Worker List : 241
+Weighting Min : 0
+Weighting Max : 316
+Weighting Avg : 192.08 avg.
+Hints Uses : 0 hits
+Max Depth : 26
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
           </Solutions>
         </Map>
       </Maps>
@@ -3484,6 +3932,28 @@ Weighting Min : 0
 Weighting Max : 100
 Weighting Avg : 33.31 avg.
 Hints Uses : 128 hits
+Max Depth : 55
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+            <Solution StartX="9" StartY="3">
+              <Steps>lullddlulldddddrrrruuuuluuuldrddrddddlllluuuuurrdrulurddrddluuudrrurrdlllddddlllluuuuurrrduluurdlddrrruulluldrrrddllulurdllrdrrddddlllluuuuuluurdddddduuuurrdrrddddlllldllurrrrlluuuuurrdrrdddddrruldluuuluululldddddrrrllluuuuurrdrddrdduuluuluurdd</Steps>
+              <SolutionDescription Date="2008-02-09T23:08:51.476768+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 2 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 14074 nodes
+Total Nodes : 9867 nodes
+Node per second : avg 4219.0, last 4600 
+Duplicates : 5585 nodes
+DeadNodes : 2312 nodes
+Eval Worker List : 3330
+Weighting Min : 0
+Weighting Max : 463
+Weighting Avg : 311.50 avg.
+Hints Uses : 52 hits
 Max Depth : 55
 Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
 </Description>
@@ -3607,7 +4077,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#....X.#</Row>
           <Row>#....###</Row>
           <Row>######~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="5" StartY="6">
+              <Steps>uldulldrurrdrdddlllrrruuululldrddlddruuuudddrruuululrdrdddlluuuluuulurddddrddddlllurrdruudrruuullluuuurdrruuldldldddrruldluuddrrrdddlluuddrruuululluuddrrdrdddlluuuluuurulddddrruldluuulluurdrddddrrrdlrddlluuuruldluuu</Steps>
+              <SolutionDescription Date="2008-02-09T23:09:04.8792305+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 10337 nodes
+Total Nodes : 7355 nodes
+Node per second :  
+Duplicates : 3851 nodes
+DeadNodes : 2018 nodes
+Eval Worker List : 1656
+Weighting Min : 0
+Weighting Max : 265
+Weighting Avg : 111.49 avg.
+Hints Uses : 105 hits
+Max Depth : 34
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -3631,7 +4124,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#..#..OOOO#~~</Row>
           <Row>#....######~~</Row>
           <Row>######~~~~~~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="3" StartY="9">
+              <Steps>rdrrrruuuuuruulldldrdrrrruldllluuurrddrdluuullddrdddduuuuluurrdduuruulddlldddrddluururrdlulduruuruulddddldruuulldldrrdlddrdrdllllulllddrrurrrruuluurddduuururrdlluldlddrdrdluuluuuuurrddldrllddrddlllullulldddrrrurrrruuluurddduuuurrrdlullddddrdluuuuurrdluldlddrddlllululldurrdlulldddrrrurrrruuluurdddrdlllluulldrullldddrrrudllluuurrrrdulllldddrrrurrrrllluulldrurdldrrrlluulllldrrrurdldrrlldllulurrrurdldr</Steps>
+              <SolutionDescription Date="2008-02-09T23:09:08.819408+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 3 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 29322 nodes
+Total Nodes : 21892 nodes
+Node per second : avg 6611.3, last 6099 
+Duplicates : 14197 nodes
+DeadNodes : 2919 nodes
+Eval Worker List : 2003
+Weighting Min : 0
+Weighting Max : 351
+Weighting Avg : 135.44 avg.
+Hints Uses : 162 hits
+Max Depth : 72
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -3677,6 +4193,28 @@ Weighting Max : 100
 Weighting Avg : 4.69 avg.
 Hints Uses : 228 hits
 Max Depth : 48
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+            <Solution StartX="4" StartY="9">
+              <Steps>drruuuullululurddrddluuulldruuurduurrddldduuruulldldddrdrluluurlddrdrrrurddddlddrruldluuruuulllluluurdrdulldrdrrrlludrrurddddlddrruluuuullluluuuurrddldllurdrdldrrrlluuluuurrddldddrrdrdddluruuluurdllluulluurdrdddrrrdduulllullurddrrrdrddluruullluluurddldrrrurdddluudddddrruldluuurdlddrruldludllurdrruuuuuld</Steps>
+              <SolutionDescription Date="2008-02-09T23:09:10.79975+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 1 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 10105 nodes
+Total Nodes : 7349 nodes
+Node per second : avg 5254.0, last 5254 
+Duplicates : 4395 nodes
+DeadNodes : 1598 nodes
+Eval Worker List : 2324
+Weighting Min : 0
+Weighting Max : 289
+Weighting Avg : 171.24 avg.
+Hints Uses : 174 hits
+Max Depth : 52
 Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
 </Description>
                 <Author />
@@ -3733,6 +4271,28 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
                 <Author />
               </SolutionDescription>
             </Solution>
+            <Solution StartX="9" StartY="4">
+              <Steps>ulldlddddldldldllururururldldlddrurururuuddldldllururururuulurdrudlddldldlddrururuuddldllurururuulurrdlddldlddruruuddllururuurulrrurdlllurddlddlddruuuuruuldrdlurrrrddlurullrul</Steps>
+              <SolutionDescription Date="2008-02-09T23:09:11.942255+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 6393 nodes
+Total Nodes : 4198 nodes
+Node per second :  
+Duplicates : 1937 nodes
+DeadNodes : 1909 nodes
+Eval Worker List : 592
+Weighting Min : 0
+Weighting Max : 473
+Weighting Avg : 190.83 avg.
+Hints Uses : 4 hits
+Max Depth : 36
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
           </Solutions>
         </Map>
       </Maps>
@@ -3778,6 +4338,28 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
                 <Author />
               </SolutionDescription>
             </Solution>
+            <Solution StartX="5" StartY="3">
+              <Steps>uulldrddluddllurdrururrdlllruuulldrurrdulldrddluruulldrurdldddllurdruuuruldddruuddrruldlu</Steps>
+              <SolutionDescription Date="2008-02-09T23:09:12.6365465+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 396 nodes
+Total Nodes : 243 nodes
+Node per second :  
+Duplicates : 79 nodes
+DeadNodes : 83 nodes
+Eval Worker List : 119
+Weighting Min : 0
+Weighting Max : 295
+Weighting Avg : 176.88 avg.
+Hints Uses : 4 hits
+Max Depth : 19
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
           </Solutions>
         </Map>
       </Maps>
@@ -3798,7 +4380,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#.#O##~~</Row>
           <Row>#...#~~~</Row>
           <Row>#####~~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="4" StartY="5">
+              <Steps>udlddlluururudduurlddrururuullldduurrrddldldlluruuurrrddllrruulllddduuullddrdrurrdlurruuldrdll</Steps>
+              <SolutionDescription Date="2008-02-09T23:09:13.29959+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 1503 nodes
+Total Nodes : 1003 nodes
+Node per second :  
+Duplicates : 457 nodes
+DeadNodes : 230 nodes
+Eval Worker List : 309
+Weighting Min : 0
+Weighting Max : 454
+Weighting Avg : 375.33 avg.
+Hints Uses : 0 hits
+Max Depth : 16
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -3841,6 +4446,28 @@ Weighting Max : 102
 Weighting Avg : 78.06 avg.
 Hints Uses : 35 hits
 Max Depth : 10
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+            <Solution StartX="3" StartY="5">
+              <Steps>uluddrdulldrddrruudldluuuruuldrrruluullddrluurrdduuld</Steps>
+              <SolutionDescription Date="2008-02-09T23:09:14.174534+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 2315 nodes
+Total Nodes : 1463 nodes
+Node per second :  
+Duplicates : 506 nodes
+DeadNodes : 572 nodes
+Eval Worker List : 2357
+Weighting Min : 0
+Weighting Max : 553
+Weighting Avg : 460.74 avg.
+Hints Uses : 37 hits
+Max Depth : 15
 Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
 </Description>
                 <Author />
@@ -3916,7 +4543,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#......###.X.#~</Row>
           <Row>########~##..#~</Row>
           <Row>~~~~~~~~~~####~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="3" StartY="1">
+              <Steps>rrdrrrdrdrdrdruuuruuldlllllldllluurrdrrrdrdrdrruurullllllldddllluurrlluurrdrrrdrdruddrruuulllllldllluurrdullddddrrrudllluuuurrdrrrrrrrddlruulllllllulldldrddllurdruluuurrrdrrrrrrrdddlluulullldlurrrdrdrrruulldllulllulldldddrrrrudllluuluurrrddllrruulllddrddllururrrurrrdrrulllldllllddrrrrudlllulurluurrrdulld</Steps>
+              <SolutionDescription Date="2008-02-09T23:09:16.9722065+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 1 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 8913 nodes
+Total Nodes : 6405 nodes
+Node per second : avg 5526.0, last 5526 
+Duplicates : 3689 nodes
+DeadNodes : 871 nodes
+Eval Worker List : 2824
+Weighting Min : 0
+Weighting Max : 300
+Weighting Avg : 149.40 avg.
+Hints Uses : 0 hits
+Max Depth : 38
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -3988,7 +4638,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#....####~~#....##</Row>
           <Row>##...#~~~~~#...##~</Row>
           <Row>~#####~~~~~#####~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="13" StartY="5">
+              <Steps>uuullullldlllddrrrrurdlllddlururrrrdrruuullullldlllddrrddllruuldldrullulddldrdrruuddlluuurrrurrddlruulldrdlullldddrruuddllurluurrrurrrllldllldddrrulluurrrurrrrdrrlluurdllllldlllddrruruurrrrrrdrlullllllddrulurrlluurrrurrrdrrddduuullullldlllddddldlluurrdrruurrllddllururrrrdrrlluurdllllluurrrurrrdrrdddduuuullullldlllddrrrrrrdrlullllllddrrudlluurrlldrurrrdrullllddrulurlluurrrurrrdrrddduuullullldlllddrrrrdrruldlulllluurrrurrrdrrdddlllrrrurrrddldldlluruullulllllluurrrurrrdrrddrrrddldldlurruruulldlllrrurrrddldlludrruruulldll</Steps>
+              <SolutionDescription Date="2008-02-09T23:10:30.200918+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 71 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 160851 nodes
+Total Nodes : 125185 nodes
+Node per second : avg 1405.5, last 1069 
+Duplicates : 85671 nodes
+DeadNodes : 19563 nodes
+Eval Worker List : 7799
+Weighting Min : 0
+Weighting Max : 547
+Weighting Avg : 282.24 avg.
+Hints Uses : 2774 hits
+Max Depth : 77
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -4007,7 +4680,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#..........#~</Row>
           <Row>##OO########~</Row>
           <Row>~####~~~~~~~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="1" StartY="4">
+              <Steps>drrrrrrruldlllulluuurrrrrdddrdllllullddrulurdrrrruuldrdlrrrrulllrrruuldrdlulrddlllllluluuurrrrrddrrddlllllldluudrrrrrrruullldurrrddlllrrulurdrruuldrdlldllllluludrddluudrrrrrruulldurrdldlruuuulllllldrurrrrrddddllllulldrurdrrrruuuullllldduurrrrrddddllllllurdrrrrruuldrdllllrrruuruullllldddduuuurrdluldd</Steps>
+              <SolutionDescription Date="2008-02-09T23:10:43.8377405+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 12 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 53138 nodes
+Total Nodes : 42070 nodes
+Node per second : avg 2854.2, last 5170 
+Duplicates : 29669 nodes
+DeadNodes : 5995 nodes
+Eval Worker List : 6507
+Weighting Min : 0
+Weighting Max : 545
+Weighting Avg : 317.98 avg.
+Hints Uses : 220 hits
+Max Depth : 66
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -4029,7 +4725,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#........##</Row>
           <Row>##.O######~</Row>
           <Row>~####~~~~~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="7" StartY="7">
+              <Steps>ulluruuruulddddldrrdrrululddrdlllllulldrurudlddrurrrruuluuddrddllllluurudlddrrrrruuuluuruulddddrdddlllludrrrruuulldruuuldrdrddrdllruuuluullrdrddrddllllulldrurudlddruudrrrruulludrrddlllluluuuurrrllldddddrrrrruuuluuddlurulrruulddddldrurddrdllllluluuuurrrdruruulddddldrurdrddllllldluudrrrrrruuldrdlllllulldrurdrrrruuuluullllddduuurrrdddrrddllllllur</Steps>
+              <SolutionDescription Date="2008-02-09T23:10:58.435439+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 14 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 72864 nodes
+Total Nodes : 55672 nodes
+Node per second : avg 3331.4, last 3929 
+Duplicates : 34924 nodes
+DeadNodes : 13569 nodes
+Eval Worker List : 4517
+Weighting Min : 0
+Weighting Max : 457
+Weighting Avg : 262.35 avg.
+Hints Uses : 864 hits
+Max Depth : 73
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -4149,6 +4868,28 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
                 <Author />
               </SolutionDescription>
             </Solution>
+            <Solution StartX="5" StartY="8">
+              <Steps>ruurrdluldrdlllluullddrdrurrruurrurrddllluldrdlllrrrdruluururrddlllddrruluuurrddllrrulddlllllluullddrdrulluurrudllddrrudrrrrruruuldldurrddlllllrrrrruldllllluullddrdrulluuurrdruuuldrddllurdllddrrrrrrruulldurrddllrruldlllluullddrdrulluurrruuldrdlulldddrruuddrrrruuldrdlllluuruuldlldddrluuurrdulldruruuuurrdluldddruluurrdluldd</Steps>
+              <SolutionDescription Date="2008-02-09T23:13:35.519135+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 4 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 28901 nodes
+Total Nodes : 21349 nodes
+Node per second : avg 4977.8, last 8103 
+Duplicates : 12301 nodes
+DeadNodes : 4316 nodes
+Eval Worker List : 5515
+Weighting Min : 0
+Weighting Max : 378
+Weighting Avg : 198.67 avg.
+Hints Uses : 549 hits
+Max Depth : 68
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
           </Solutions>
         </Map>
       </Maps>
@@ -4195,6 +4936,28 @@ Weighting Max : 100
 Weighting Avg : 28.60 avg.
 Hints Uses : 342 hits
 Max Depth : 43
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+            <Solution StartX="4" StartY="9">
+              <Steps>llddrrrrruuuurrruulllllulrddlurrrrrrddlllddddllllluurrruuulurddddllurdrudlllddrrrrruuuurrruuuulllulullllddrrdrddlduruululluurrrrdrdrrrddddlllddddllllluurrruuddlllddrrrrruuuurrruuuulllulullllddrrdrdrlulddurrrrlllululluurrrrdrdrrrddddlllddddllllluurrruldllddrrrrruuuurrruuuulllulullllddrrdddduuuulldruluurrrrdrdrrrddddlllddddllllluurrruuluurrrrrlllllddrudddluruulurrrllddddlllurdrruuuurrrlllddddllurdruuulurrldldrddllurdruuluurrrlllddrulurrlululldrurddddrddllurdruuulur</Steps>
+              <SolutionDescription Date="2008-02-09T23:13:38.929073+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 2 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 17886 nodes
+Total Nodes : 13746 nodes
+Node per second : avg 4826.0, last 4432 
+Duplicates : 9094 nodes
+DeadNodes : 2515 nodes
+Eval Worker List : 1817
+Weighting Min : 0
+Weighting Max : 438
+Weighting Avg : 275.25 avg.
+Hints Uses : 66 hits
+Max Depth : 44
 Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
 </Description>
                 <Author />
@@ -4271,7 +5034,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#...X.P.#~~~</Row>
           <Row>###..####~~~</Row>
           <Row>~~####~~~~~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="6" StartY="11">
+              <Steps>lluulurrrlldddlruuurrrrdrruldlulllldddlulldrruruuldurrrrrudllllddlddruuulurrrrllldddlllurdrruuldrdrrrulldlulldrrrulluurdduurrrruuuluurrdldddddrruldlullllddlddruuulurrrrruuuurulllrrddddddrruldlullllddrrudlluurrrruuullluuddrrrurullllddrrrddddrruldluuuddllddrdllullddrulurrdruudlluurrrruuuudlllulluurdrddrrrurulddllluulldrdrrrruulllrrrddddddrruldluuuulllluluurdrrrrddlllludrrrruullldldrrlulluurdldrurrrrddddduuuuullllddrrrllluurduluurdldddruluurdlddrrlluurrrrdddduuuullllddrrrllluurdldrrluurrrddduuulllddrrlluurrrdduuldullddrr</Steps>
+              <SolutionDescription Date="2008-02-09T23:14:34.601291+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 51 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 120546 nodes
+Total Nodes : 89744 nodes
+Node per second : avg 899.2, last 751 
+Duplicates : 57149 nodes
+DeadNodes : 11664 nodes
+Eval Worker List : 10476
+Weighting Min : 0
+Weighting Max : 454
+Weighting Avg : 261.65 avg.
+Hints Uses : 1424 hits
+Max Depth : 106
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -4294,7 +5080,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>~~~~###.X##..#</Row>
           <Row>~~~~~##..#####</Row>
           <Row>~~~~~~####~~~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="6" StartY="5">
+              <Steps>rdddruuddrllddruurrllluuuuuuurrrddddddrrddlullldluuuuuudddddrrruuuuuuulldlddddrduluuuuurrrdddddddlldluuuuuddddrrruuuuuuulldllllrrrurrrdddddddlluuluuudddddrrruuuuuuulldlddddddrrrrruldllluuluuuuurrrddddddrdllldluuuuuddddrrruuuuuuulldlllrrurrrdddddddlluuluuudrdddldrrrurrdlllldluuuddrrruuuuuuullldllulldurddurrrurrrdddddddlluuuuludrddluuddddrrruuuuuuulldlllullddrdluuurdrrrurrrdddddddlluuuuludddddrrruuuuuuulldlllulldrrllddrudlddruluuuurrdrlullddddruluuurrdrrllulldrrllddrullldrurrddlulururlddru</Steps>
+              <SolutionDescription Date="2008-02-09T23:14:53.68796+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 18 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 70642 nodes
+Total Nodes : 52497 nodes
+Node per second : avg 1951.3, last 1954 
+Duplicates : 31985 nodes
+DeadNodes : 8139 nodes
+Eval Worker List : 7052
+Weighting Min : 0
+Weighting Max : 307
+Weighting Avg : 139.76 avg.
+Hints Uses : 332 hits
+Max Depth : 72
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -4484,7 +5293,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>~~###X.##~~</Row>
           <Row>~~~~#..#~~~</Row>
           <Row>~~~~####~~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="5" StartY="5">
+              <Steps>ullddllurdrdrrruruuldulldurrrrrdlulldlduulurluurddlddrrurulddllurdlldllurdrdruuruuluurdldlddldrurrrrurrdlllllrrrddllrddlururuuuuldldrululuurdldldrrdrrurrdlululluldrddddrddluuuuudllddrlullur</Steps>
+              <SolutionDescription Date="2008-02-09T23:17:31.511843+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 2 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 4304 nodes
+Total Nodes : 2525 nodes
+Node per second : avg 1122.0, last 1365 
+Duplicates : 722 nodes
+DeadNodes : 307 nodes
+Eval Worker List : 8614
+Weighting Min : 0
+Weighting Max : 826
+Weighting Avg : 711.09 avg.
+Hints Uses : 16 hits
+Max Depth : 35
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -4532,7 +5364,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>##..#..##~</Row>
           <Row>~####..#~~</Row>
           <Row>~~~~####~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="2" StartY="4">
+              <Steps>rrrrddldldldurururrdldldldlrururuuldldldlddldruuurururrdldldlruruuldldlldddrrrrdrulurdlllluluurddldruuururrdldlruuldlldddrrrrurduurrdldllddrulullluluurdlddrrrrurdllllluurduurrdlullddrudldrrrlluulurdddrrrururrdldllddrululrururrdldlruuldldlldluuluurrdrulurdllldddrrrrurrdlllldluluuurrrrulurdruuuuudlluurrddddddldlllldrduurrdlullddrulurrdrulurdrulurdruuuuddddldldlldldruuururururuulluurrurrdllllddrrudlluurrddddddldldllddrrrurrdlllldluuulurrdrulurdrulurdruuuuddddldldllddrrrrddlurullldluuulurrdruruuuruulluurrurrdlldddulluuuldrddrruulrddddlddruuuuddddldllurdruruuuuudlluldrrrddddllurdruuuulluluurdrrlldldllurdrururrurrdlldddullrrdduulluuuldrddrruulrddddlddruuuuudlluluurdrrddllulurdddluudllurrdru</Steps>
+              <SolutionDescription Date="2008-02-09T23:20:11.2740785+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 8 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 41665 nodes
+Total Nodes : 29398 nodes
+Node per second : avg 3564.1, last 5825 
+Duplicates : 15931 nodes
+DeadNodes : 9986 nodes
+Eval Worker List : 5200
+Weighting Min : -54
+Weighting Max : 231
+Weighting Avg : 75.63 avg.
+Hints Uses : 1194 hits
+Max Depth : 141
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -4618,7 +5473,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#..$.O.$..#</Row>
           <Row>#....#....#</Row>
           <Row>###########</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="5" StartY="3">
+              <Steps>uullldrurrdddlluddllurdrrurrdrrulluluurdurrdlduulldrldruurrdlldddrruuddlluuruurrdlullllllddrrrlddlludrruurruulldurrddddrruuddlluurlddrrululuurdurrdlduullddrddludrrrul</Steps>
+              <SolutionDescription Date="2008-02-09T23:22:44.6177795+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 1 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 3899 nodes
+Total Nodes : 2491 nodes
+Node per second : avg 2252.0, last 2252 
+Duplicates : 951 nodes
+DeadNodes : 321 nodes
+Eval Worker List : 5926
+Weighting Min : 0
+Weighting Max : 1037
+Weighting Avg : 918.36 avg.
+Hints Uses : 0 hits
+Max Depth : 23
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -4717,7 +5595,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#....O.O.O.O...#</Row>
           <Row>#...############</Row>
           <Row>#####~~~~~~~~~~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="14" StartY="7">
+              <Steps>uulllllldlrurrrrrrdddlllllllllllluuuuuurrrdddrddurrurrrrrrdddlllllllluurrurrdlllrurrrrrrdddlllllllluuluurddrrurrrrdlurrrdddllllllllllldlurrrrrrrrrrrruuullllldllldurrurrrrrrdddlllllllluurrurrrdllllrurrrrrrdddlllllllluuluurddrrurrrrrrdddllllllllllldllurrrlluuuuulurrrurdddrddrrurrrrrrdddllllllllllldlurrrrrrrrrrrruuulldlllllldurrurrrrrrdddllllllllrrrrrrrruulllllrrrrrddlllllllluuluuddrddrrrrrrrruulllllllrrrrrrrddlllllllluuluurddrrrrrrrrddllllllllllldllurudrrrrlllluuudddrrrrudlllluuuuudddddrrrruuluuudddrddlllluuuuuluurdddddduuuuurrurrdlddddrddllldllurrrlluuuuuurrurrdlddddrddrrrrllllllldlluruuuuuurrllddddddrluuuuuurrurdlllddddddrrlluuuuuurrrddrdduuluulllddddddrrrrrrlllllluuuuuurrrddrddduuuluulllddddddrrrruuluuudddrddlllluuuuuurrurrdlllrrddddrddlllluuuuuluurdddddduuuuurrrddddrddllldllurrr</Steps>
+              <SolutionDescription Date="2008-02-09T23:27:34.3843895+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 136 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 176581 nodes
+Total Nodes : 131658 nodes
+Node per second : avg 1050.0, last 1384 
+Duplicates : 79032 nodes
+DeadNodes : 13052 nodes
+Eval Worker List : 11878
+Weighting Min : 0
+Weighting Max : 329
+Weighting Avg : 141.73 avg.
+Hints Uses : 0 hits
+Max Depth : 118
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -4862,7 +5763,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>~~#X##..#~</Row>
           <Row>~~#....##~</Row>
           <Row>~~######~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="6" StartY="7">
+              <Steps>lldduurruuulluddrrddllddllluuuruuurururrdrddlddddrdddldllluuddrrruruuulullddrdluuurruuuruuullldldldddldddrrlluuuruuurururrdrddlddddrdddldllluuruldddrrruruuulullldurrrdrdddldllluuruulurrldddlddrrruruuululldddluruurruuluuurrddlruulllldldddldddrrdrullluuuruuururrddrdddllldurrrdrdddldllluuruuddlddrrruruuuluuuuluulldldddldddrrdruluurrlldddddrrruruuululllddruddlddrrruruuuluuudddrdddldllluuulluuuruuururrrrddlruulllldrlldddlddrrlluuruuurrddrluuurrrddlldlurrruulllldldddldddrrdddrrruruuuluuudddrdddldllluuuulluuruuururrrrddlddddrdddldllluuuuurrllddruddlddrrruruuuluuddrdddldllluuuulluuruuururrrrddllrruulllldldddldddrrdddrrruruuuluuuluuddrdddrdddldllluuuulluuruuurrlldddldddrrdddrrruruuuluuulludrrdddrdddldllluuuulluuruuururrrurrdlddlddddrdddldllluuuulluuruuururrrurdlllldldddldddrrdddrrruruuuluuulluulurdddrruldludrrdddrdddldllluuuulluuruuururrdduururrdlllddrrudlluururrdlddlddddrdddldllluuuuurdllluuruuurururdlldldddldddrrdddrrruruuuluuuuruuulrdddlddddrdddldllluuuuurrldddlddrrruruuuluuuddlldllluuruuururrrurrdlddlruul</Steps>
+              <SolutionDescription Date="2008-02-09T23:36:02.3225825+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 52 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 33745 nodes
+Total Nodes : 25390 nodes
+Node per second : avg 326.5, last 271 
+Duplicates : 15623 nodes
+DeadNodes : 7955 nodes
+Eval Worker List : 17701
+Weighting Min : 0
+Weighting Max : 517
+Weighting Avg : 381.83 avg.
+Hints Uses : 639 hits
+Max Depth : 69
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -4902,6 +5826,28 @@ Weighting Max : 100
 Weighting Avg : 69.34 avg.
 Hints Uses : 4 hits
 Max Depth : 13
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+            <Solution StartX="3" StartY="5">
+              <Steps>rudludllurrdrruruulllldurrrrddldlluulurdddrruldlludrruluurdlddrruruululdlddrluurd</Steps>
+              <SolutionDescription Date="2008-02-09T23:36:03.171161+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 302 nodes
+Total Nodes : 203 nodes
+Node per second :  
+Duplicates : 103 nodes
+DeadNodes : 0 nodes
+Eval Worker List : 20
+Weighting Min : 0
+Weighting Max : 0
+Weighting Avg : NaN avg.
+Hints Uses : 0 hits
+Max Depth : 16
 Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
 </Description>
                 <Author />
@@ -5003,7 +5949,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>#..#..#~~~~~~~~~</Row>
           <Row>####..#~~~~~~~~~</Row>
           <Row>~~~####~~~~~~~~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="3" StartY="8">
+              <Steps>uuuurrruuurrrrrrrddrdddldlludrruuruuululllllllddrrrdrrlulllluurrrrrrrddrdddldlluuddrruuludrruuululldrurdrdddlluuddrruuululllllllddrrrdrrlulllluurrrrrrrdrddddldlluurrruuululllllllddrrrdddrdrrruulullrdrrddllluluurulllrrdrrdrrruuululllllllddrdllldluruldrrrurrrdddrdruurullrddlluurulllrrdrrdrrruuululllllllddrdluuurrrrrdrddldddrruulrddlluurullrddlluurulllrrdrrdrrruulruldrddllullullldllluldrrrrurrdrrdrrruuululldrdrruldldurrddllrddlluurulruruuldrdrddllullrdrrruuullddurrddllullullldlllldurrrrurrrdrrdrddllulluurullrdrrruuulllllldduurrrrrdrddllullldlrurrdddrrurullullldllldlddddldrurduluuuuruulddurrrrurrrdrruuullllllddrrrrdrddlluurrruuullllllddrdluuurrrrrdrddlluldrrruuulllllldddlruuurrrrrdrddllullrdrrruuulllllldddllrruuurrrrrdrddllullldllldlddddrdluuuuuruulddduurrrrurrdrrruuullllllddrdllldldddduuuulurrdlddddllddrurllurdruuuuuruuldrdlddddrrdllullddrulurdruuuuudddddrrddluuluuuuuuddddddrruldluuuu</Steps>
+              <SolutionDescription Date="2008-02-09T23:39:45.024149+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 64 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 81725 nodes
+Total Nodes : 61819 nodes
+Node per second : avg 768.3, last 584 
+Duplicates : 35721 nodes
+DeadNodes : 14813 nodes
+Eval Worker List : 11641
+Weighting Min : -9
+Weighting Max : 570
+Weighting Avg : 265.25 avg.
+Hints Uses : 110 hits
+Max Depth : 114
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -5074,6 +6043,28 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
                 <Author />
               </SolutionDescription>
             </Solution>
+            <Solution StartX="1" StartY="1">
+              <Steps>dddruluurrdulldddrdrruldluluuurrdrduldrrrurrdllllululldddrdrrudllurlluuurrddrululldddrdrudrullluuurrdluld</Steps>
+              <SolutionDescription Date="2008-02-09T23:42:17.1677315+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 1959 nodes
+Total Nodes : 1343 nodes
+Node per second :  
+Duplicates : 647 nodes
+DeadNodes : 367 nodes
+Eval Worker List : 317
+Weighting Min : 0
+Weighting Max : 442
+Weighting Avg : 335.99 avg.
+Hints Uses : 14 hits
+Max Depth : 14
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
           </Solutions>
         </Map>
       </Maps>
@@ -5121,6 +6112,28 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
                 <Author />
               </SolutionDescription>
             </Solution>
+            <Solution StartX="1" StartY="4">
+              <Steps>urrururrrrdrddddldllluullludrudrrruuldldrlllurrrdddrrruruuuululllldldururrrrdrddddldllluuuurrddlruulldldlluruururrrrdrddddldllluullullurddrrrddrrruruuuululllldld</Steps>
+              <SolutionDescription Date="2008-02-09T23:42:17.955767+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 0 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 540 nodes
+Total Nodes : 356 nodes
+Node per second :  
+Duplicates : 168 nodes
+DeadNodes : 44 nodes
+Eval Worker List : 80
+Weighting Min : 0
+Weighting Max : 348
+Weighting Avg : 240.26 avg.
+Hints Uses : 0 hits
+Max Depth : 11
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
           </Solutions>
         </Map>
       </Maps>
@@ -5143,7 +6156,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>~#...X.####</Row>
           <Row>~#..####~~~</Row>
           <Row>~####~~~~~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="7" StartY="7">
+              <Steps>luulurdlllludrrrrdddlruuulllluulurrldddrrruuurrlldddrddrruuuuruuldddlldludllluuurrrrrllllldddrrrurrruruuldlllllldddrrrrdddllldluuuuuulurrldddrrrurrrddrdluuulldlllluuurrrllldddrrrurrrdddlruuulldlllldddrrrrurruuuuruuldddlldlllluuurrrddrdluuulllddddddrrrrurruuudddlluuddrruuulldlurrruruuldddddrdluuullddddlllluuuuuurrrrrlllllddddddrrrruuuurrdddlruuuuruulddullllllddddddrrrrudlllluuuuuurrrrrrddddrdluuuuullllllddddddrrrruuulurddddlllluuuuuurrrrrrdddddlruuuuullllllddddddrrrru</Steps>
+              <SolutionDescription Date="2008-02-09T23:42:48.108134+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 29 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 30924 nodes
+Total Nodes : 22875 nodes
+Node per second : avg 598.5, last 426 
+Duplicates : 13816 nodes
+DeadNodes : 2351 nodes
+Eval Worker List : 10700
+Weighting Min : 0
+Weighting Max : 295
+Weighting Avg : 210.53 avg.
+Hints Uses : 144 hits
+Max Depth : 65
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>

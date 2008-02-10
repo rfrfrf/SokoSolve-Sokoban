@@ -35,6 +35,9 @@ namespace SokoSolve.UI.Controls.Web
             webBrowser.Navigate(Url);
         }
 
+        /// <summary>
+        /// Allow URI's with the schema/prefix "app://" to be trapped and handled
+        /// </summary>
         public event EventHandler<UIBrowserEvent> OnCommand; 
 
         public bool ShowCommands

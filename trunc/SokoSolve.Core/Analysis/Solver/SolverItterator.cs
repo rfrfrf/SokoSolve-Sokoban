@@ -7,7 +7,7 @@ using SokoSolve.Common.Structures.Evaluation;
 namespace SokoSolve.Core.Analysis.Solver
 {
     /// <summary>
-    /// Custom evaluator (buildin og <see cref="DepthLastItterator{T}"/>) make a custom itterator 
+    /// Custom evaluator (buildin og <see cref="BreadthFirstItterator{T}"/>) make a custom itterator 
     /// which can intergrate into the Solver implmentation with stats, weighting and multi-threading
     /// </summary>
     internal class SolverItterator : IEvaluationStrategyItterator<SolverNode>
@@ -32,6 +32,7 @@ namespace SokoSolve.Core.Analysis.Solver
         private EvalStatus exitStatus;
         private ItteratorExit status;
         private bool useLinked = true;
+        private bool locked = false;
 
         public SolverItterator(SolverController controller)
         {
@@ -148,48 +149,52 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <param name="NewEvalNode"></param>
         public void Add(INode<SolverNode> NewEvalNode)
         {
-            controller.Stats.AvgEvalList.Increment();
 
-            if (useLinked)
-            {
-                if (evalLinkedList.First == null)
+            while (locked) ;
+
+                controller.Stats.AvgEvalList.Increment();
+
+                if (useLinked)
                 {
-                    // First
-                    evalLinkedList.AddFirst(NewEvalNode);
-                }
-                else
-                {
-                    LinkedListNode<INode<SolverNode>> current = evalLinkedList.First;
-                    while (current != null && CompareNodes(NewEvalNode, current.Value) > 0)
+                    if (evalLinkedList.First == null)
                     {
-                        current = current.Next;
-                    }
-                    if (current == null)
-                    {
-                        // Last
-                        evalLinkedList.AddLast(NewEvalNode);
+                        // First
+                        evalLinkedList.AddFirst(NewEvalNode);
                     }
                     else
                     {
-                        evalLinkedList.AddBefore(current, NewEvalNode);
+                        LinkedListNode<INode<SolverNode>> current = evalLinkedList.First;
+                        while (current != null && CompareNodes(NewEvalNode, current.Value) > 0)
+                        {
+                            current = current.Next;
+                        }
+                        if (current == null)
+                        {
+                            // Last
+                            evalLinkedList.AddLast(NewEvalNode);
+                        }
+                        else
+                        {
+                            evalLinkedList.AddBefore(current, NewEvalNode);
+                        }
+                    }
+
+                    // This implementation does not garentee sortedness, as the wieghting value may change after added
+                    // As a work-around we should sort the list ever 100 (or some other number) of itterations
+                    if (controller.Stats.AvgEvalList.ValueTotal%100 == 0)
+                    {
+                        INode<SolverNode>[] tmp = new INode<SolverNode>[evalLinkedList.Count];
+                        evalLinkedList.CopyTo(tmp, 0);
+                        Array.Sort(tmp, CompareNodes);
+                        evalLinkedList = new LinkedList<INode<SolverNode>>(tmp);
                     }
                 }
-
-                // This implementation does not garentee sortedness, as the wieghting value may change after added
-                // As a work-around we should sort the list ever 100 (or some other number) of itterations
-                if (controller.Stats.AvgEvalList.ValueTotal%100 == 0)
+                else
                 {
-                    INode<SolverNode>[] tmp = new INode<SolverNode>[evalLinkedList.Count];
-                    evalLinkedList.CopyTo(tmp, 0);
-                    Array.Sort(tmp, CompareNodes);
-                    evalLinkedList = new LinkedList<INode<SolverNode>>(tmp);
+                    evalList.Add(NewEvalNode);
+                    evalList.Sort(CompareNodes);
                 }
-            }
-            else
-            {
-                evalList.Add(NewEvalNode);
-                evalList.Sort(CompareNodes);
-            }
+            
         }
 
 
@@ -218,14 +223,29 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <returns>A copy of the nodes</returns>
         public List<INode<SolverNode>> GetEvalList()
         {
-            if (useLinked)
+            try
             {
-                return new List<INode<SolverNode>>(evalLinkedList);
+                locked = true;
+
+                if (useLinked)
+                {
+                    List<INode<SolverNode>> tmp = new List<INode<SolverNode>>();
+                    foreach (INode<SolverNode> node in evalLinkedList)
+                    {
+                        tmp.Add(node);
+                    }
+                    return tmp;
+                }
+                else
+                {
+                    return new List<INode<SolverNode>>(evalList);
+                }
             }
-            else
+            finally
             {
-                return new List<INode<SolverNode>>(evalList);
+                locked = false;
             }
+            
         }
 
         #endregion

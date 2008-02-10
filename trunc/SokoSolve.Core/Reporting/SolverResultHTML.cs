@@ -10,8 +10,9 @@ namespace SokoSolve.Core.Reporting
 {
     public class SolverResultHTML: ReportXHTML
     {
-        public SolverResultHTML(List<SolverResult> results, string inlineCSS) : base("SokoSolve | Automated Solver Report", inlineCSS)
+        public SolverResultHTML(List<SolverResult> results, string inlineCSS) : base("SokoSolve | Automated Solver Report")
         {
+            SetCSSInline(inlineCSS);
             this.results = results;
         }
 

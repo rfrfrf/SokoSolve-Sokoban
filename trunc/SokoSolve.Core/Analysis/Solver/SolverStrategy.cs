@@ -157,7 +157,7 @@ namespace SokoSolve.Core.Analysis.Solver
             }
 
             // Check for deadness
-            node.Data.DeadMap = StaticAnalysis.DeadMapAnalysis.BuildDeadMap(node.Data.MoveMap, node.Data.CrateMap, StaticAnalysis.GoalMap, StaticAnalysis.WallMap);
+            node.Data.DeadMap = StaticAnalysis.DeadMapAnalysis.BuildDeadMap(node.Data, StaticAnalysis.GoalMap, StaticAnalysis.WallMap);
             node.Data.DeadMap.Name = "Dynamic Deadmap";
             if (node.Data.CrateMap.BitwiseAND(node.Data.DeadMap).Count > 0)
             {
@@ -244,14 +244,14 @@ namespace SokoSolve.Core.Analysis.Solver
             {
                 //################################
                 // Simple depth-last weighting
-                //if (node.TreeNode != null)
-                //{
-                //    return 100 - node.TreeNode.Depth;
-                //}
-                //else
-                //{
-                //    return 0;
-                //}    
+                if (node.TreeNode != null)
+                {
+                    return 100 - node.TreeNode.Depth;
+                }
+                else
+                {
+                    return 0;
+                }    
             }
             else
             {

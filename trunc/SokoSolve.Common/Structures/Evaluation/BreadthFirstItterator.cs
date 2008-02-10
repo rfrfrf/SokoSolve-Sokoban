@@ -8,13 +8,13 @@ namespace SokoSolve.Common.Structures.Evaluation
     /// High-speed, optimised, depth-last (shallowest node first) Eval Strategy iterator
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class DepthLastItterator<T> : DepthFirstItterator<T>
+    public class BreadthFirstItterator<T> : DepthFirstItterator<T>
     {
-        public DepthLastItterator(GetDepthDelegate getDepth) : base(getDepth)
+        public BreadthFirstItterator(GetDepthDelegate getDepth) : base(getDepth)
         {
         }
         
-        public DepthLastItterator() : base()
+        public BreadthFirstItterator() : base()
         {
         }
 

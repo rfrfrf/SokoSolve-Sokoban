@@ -198,6 +198,8 @@ namespace SokoSolve.UI.Section.Solver
                     tsgProgress.Enabled = true;
                     tsgProgress.Value = CountPercentageComplete();
 
+                    
+
                     BindResults();
                     return;
 
@@ -302,7 +304,7 @@ namespace SokoSolve.UI.Section.Solver
         {
             if (workItem.Map != null && workItem.Map.Puzzle != null && workItem.Map.Puzzle.Details != null)
             {
-                target.Text = workItem.Map.Puzzle.Details.Name;
+                target.Text = string.Format("[{1}] {0}",  workItem.Map.Puzzle.Details.Name, workItem.Map.Puzzle.PuzzleID);
             }
             else
             {
@@ -310,6 +312,19 @@ namespace SokoSolve.UI.Section.Solver
             }
 
             target.Group = listViewResults.Groups[3];
+
+            if (workItem.Exception != null)
+            {
+                target.SubItems[1].Text = "ERROR";
+                target.SubItems[2].Text = workItem.Exception.Message;
+
+                target.ImageIndex = 3; // red cross icon
+                target.Group = listViewResults.Groups[2]; // Failed
+                target.ForeColor = Color.Red;
+                return;
+            }
+
+            target.ForeColor = Color.Black;
             if (workItem.Result != null)
             {
                 target.SubItems[1].Text = workItem.Result.StatusString;
@@ -438,6 +453,7 @@ namespace SokoSolve.UI.Section.Solver
                 try
                 {
                     workItem.Controller = new SolverController(workItem.Map);
+                    workItem.Controller.Settings.UseReverseSolver = solverSettings1.cbUseReverseSolver.Checked;
                     workItem.Controller.ExitConditions.StopOnSolution = exitConditions1.cbStopOnSolution.Checked;
                     workItem.Controller.ExitConditions.MaxDepth = (int) exitConditions1.upMaxDepth.Value;
                     workItem.Controller.ExitConditions.MaxNodes = (int) exitConditions1.upMaxNodes.Value;
@@ -445,7 +461,7 @@ namespace SokoSolve.UI.Section.Solver
                     workItem.Controller.ExitConditions.MaxTimeSecs = (int) (exitConditions1.upMaxTime.Value*60);
                     this.Invoke(new SimpleDelegate(ProcessWorkerListItemUpdate));
                     workItem.Result = workItem.Controller.Solve();
-                    if (!cbRetainHistory.Checked)
+                    if (!cbRetainHistory.Checked && workerList.Count > 1)
                     {
                         workItem.Controller.Dispose();
                         workItem.Controller = null;
@@ -689,7 +705,7 @@ namespace SokoSolve.UI.Section.Solver
                         List<SolverResult> results = new List<SolverResult>();
                         results.Add(item.Result);
                         
-                        SolverResultHTML report = new SolverResultHTML(results, File.ReadAllText(FileManager.getContent("$html/style.css")));
+                        SolverResultHTML report = new SolverResultHTML(results, FileManager.getContent("$html/style.css"));
                         report.BuildReport();
 
                         FormBrowser browser = new FormBrowser();
@@ -702,7 +718,31 @@ namespace SokoSolve.UI.Section.Solver
 
         private void listViewResults_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (listViewResults.SelectedItems.Count > 0)
+            {
+                WorkItem item = listViewResults.SelectedItems[0].Tag as WorkItem;
+                tsbSaveXML.Enabled = (item != null && item.Result != null);
+                tsbSaveHTML.Enabled = (item != null && item.Result != null);
+                tsbVisualisation.Enabled = (item != null && item.Controller != null);
+            }
+            else
+            {
+                tsbSaveXML.Enabled = false;
+                tsbSaveHTML.Enabled = false;
+                tsbVisualisation.Enabled = false;
+            }
+        }
 
+        private void tsbUnSelectAll_Click(object sender, EventArgs e)
+        {
+            ucPuzzleList1.UnSelectAll();
+        }
+
+        private void listViewResults_Leave(object sender, EventArgs e)
+        {
+            tsbSaveXML.Enabled = false;
+            tsbSaveHTML.Enabled = false;
+            tsbVisualisation.Enabled = false;
         }
     }
 }

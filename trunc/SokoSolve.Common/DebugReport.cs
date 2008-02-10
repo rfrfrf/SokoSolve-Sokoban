@@ -255,14 +255,20 @@ namespace SokoSolve.Common
 		{
 			if (!enabled) return null;
 		
+		    string[] split = StringHelper.Split(Text, Environment.NewLine);
+		    ReportLine first = null;
+		    foreach (string s in split)
+		    {
+                ReportLine newLine = new ReportLine();
+                newLine.Depth = currentDepth;
+                newLine.Text = s;
+                newLine.TextMarkUp = null;
+		        report.Add(newLine);
+                if (first == null) first = newLine;
+		    }
 
-			ReportLine newLine = new ReportLine();
-			newLine.Depth = currentDepth;
-			newLine.Text = Text;
-			newLine.TextMarkUp = null;
-			report.Add(newLine);
 
-			return newLine;
+            return first;
 		}
 
 		/// <summary>

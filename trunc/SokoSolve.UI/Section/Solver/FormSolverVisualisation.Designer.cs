@@ -38,7 +38,7 @@ namespace SokoSolve.UI.Section.Solver
             this.solverSectionVisualisation1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.solverSectionVisualisation1.Location = new System.Drawing.Point(0, 0);
             this.solverSectionVisualisation1.Name = "solverSectionVisualisation1";
-            this.solverSectionVisualisation1.Size = new System.Drawing.Size(729, 493);
+            this.solverSectionVisualisation1.Size = new System.Drawing.Size(884, 765);
             this.solverSectionVisualisation1.TabIndex = 0;
             this.solverSectionVisualisation1.Load += new System.EventHandler(this.solverSectionVisualisation1_Load);
             // 
@@ -46,11 +46,12 @@ namespace SokoSolve.UI.Section.Solver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(729, 493);
+            this.ClientSize = new System.Drawing.Size(884, 765);
             this.Controls.Add(this.solverSectionVisualisation1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormSolverVisualisation";
             this.Text = "Solver Visualisation";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }

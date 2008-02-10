@@ -48,25 +48,25 @@ namespace SokoSolve.UI.Section.Solver
 
         public Pen GetPen(TreeNode<SolverNode> node)
         {
-            if (node != null)
+            if (node != null && node.Data != null)
             {
                 // In reverse order...
 
                 if (node.Data.Status == SolverNodeStates.Dead) return new Pen(Color.Purple, 2f);
                 if (node.Data.Status == SolverNodeStates.DeadChildren) return new Pen(Color.Purple, 2f);
-                if (node.Data.Status == SolverNodeStates.DeadExhausted) return new Pen(Color.Purple, 4f);
+                if (node.Data.Status == SolverNodeStates.DeadExhausted) return new Pen(Color.Yellow, 2f);
                 
-                if (node.Data.IsChildrenEvaluated) return new Pen(Color.Magenta, 1f);
-                if (node.Data.IsStateEvaluated) return new Pen(Color.Yellow, 1f);
+                if (node.Data.IsChildrenEvaluated) return new Pen(Color.Blue, 1f);
+                if (node.Data.IsStateEvaluated) return new Pen(Color.LightBlue, 1f);
                 
-                return new Pen(Color.Black, 1f);
+                return new Pen(Color.White, 1f);
             }
             return new Pen(Color.LightGray, 1f);
         }
 
         public Brush GetBrush(TreeNode<SolverNode> node)
         {
-            if (node.Data != null)
+            if (node != null && node.Data != null)
             {
                 switch (node.Data.Status)
                 {
@@ -87,8 +87,9 @@ namespace SokoSolve.UI.Section.Solver
                         // Convert to RGB
                         int r = 0, g = 0, b = 0;
 
-                        if (colourIndex < 255) g = (colourIndex % 255);
-                        else g = 255;
+                        if (colourIndex < 255) r = (colourIndex % 255);
+                        else r = 255;
+                        g = r;
                         if (colourIndex > 255) b = (colourIndex - 255) % 255;
 
                         return new SolidBrush(Color.FromArgb(r, g, b));

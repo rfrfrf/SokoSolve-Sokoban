@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using SokoSolve.Common.Math;
-
+using SokoSolve.Core.Analysis.DeadMap;
 
 namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
 {
@@ -14,6 +14,22 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
         public Door()
         {
             exits = new List<VectorInt>();
+        }
+
+        public enum Types
+        {
+            Basic,
+            Offset,
+            Diagonal
+        }
+
+        /// <summary>
+        /// Door Type
+        /// </summary>
+        public Types Type
+        {
+            get { return type; }
+            set { type = value; }
         }
 
         /// <summary>
@@ -60,10 +76,21 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
             set { position = value; }
         }
 
+        /// <summary>
+        /// Source Hint
+        /// </summary>
+        public Hint SourceHint
+        {
+            get { return sourceHint; }
+            set { sourceHint = value; }
+        }
+
         private string doorID;
         private Room roomA;
         private Room roomB;
         private VectorInt position;
+        private Types type; 
         private List<VectorInt> exits;
+        private Hint sourceHint;
     }
 }

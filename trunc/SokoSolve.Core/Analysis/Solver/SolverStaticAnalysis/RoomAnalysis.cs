@@ -27,12 +27,42 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
         }
 
         /// <summary>
+        /// All Doors
+        /// </summary>
+        public List<Door> Doors
+        {
+            get { return doors; }
+        }
+
+        /// <summary>
+        /// All Rooms
+        /// </summary>
+        public List<Room> Rooms
+        {
+            get { return rooms; }
+        }
+
+        /// <summary>
+        /// All Doors in bitmap form
+        /// </summary>
+        public SolverBitmap DoorBitmap
+        {
+            get { return doorBitmap; }
+        }
+
+        /// <summary>
         /// Find the puzzles Doors and Rooms
         /// </summary>
         public void Analyse()
         {
+            controller.DebugReport.AppendHeading(1, "Room Analysis -- Doors");
             AnalyseDoors();
+            controller.DebugReport.CompleteSection();
+
+            controller.DebugReport.AppendHeading(1, "Room Analysis -- Rooms");
             AnalyseRooms();
+            controller.DebugReport.CompleteSection();
+
         }
 
         /// <summary>
@@ -40,6 +70,7 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
         /// </summary>
         private void AnalyseRooms()
         {
+            
             int roomID = 0;
             foreach (Door door in doors)
             {
@@ -61,6 +92,7 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
 
                         // Set region from floodfill
                         newRoom.Set(floodfill.Result);
+                        newRoom[exit] = true; // Make sure the exit is also in the room
 
                         newRoom.Goals = newRoom.BitwiseAND(controller.StaticAnalysis.GoalMap).Count;
                         if (newRoom.Goals == 0)
@@ -72,14 +104,45 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
                             newRoom.Roomtype = Room.RoomTypes.GoalRoom;
                         }
 
+                        // Link to other doors
+                        LinkDoors(newRoom);
+
                         // Add it the size if more than one floor space
                         if (newRoom.Count > 1)
                         {
                             rooms.Add(newRoom);
 
-                            controller.DebugReport.Append("{0} Room ({1}) found with {2} goals:", newRoom.Roomtype, newRoom.Name, newRoom.Goals);
-                            controller.DebugReport.Append("Doors: {0}",  StringHelper.Join(newRoom.Doors, delegate(Door item) { return item.Position.ToString() + item.DoorID;}, ", "));
+                            
+                            controller.DebugReport.AppendHeading(3,"{0} Room ({1}) found with {2} goals:", newRoom.Roomtype, newRoom.Name, newRoom.Goals);
+                            controller.DebugReport.Append("Doors: {0}",  StringHelper.Join(newRoom.Doors, 
+                                delegate(Door item)
+                                    {
+                                        return string.Format("{0}({2})@{1}", item.Type, item.Position, item.DoorID);
+                                    }, ", "));
                             controller.DebugReport.Append(newRoom.ToString());
+                            controller.DebugReport.CompleteSection();
+                        }
+                    }
+                }
+            }
+            controller.DebugReport.CompleteSection();
+        }
+
+        /// <summary>
+        /// Find other doors that the room links too.
+        /// </summary>
+        /// <param name="room"></param>
+        private void LinkDoors(Room room)
+        {
+            foreach (Door door in doors)
+            {
+                foreach (VectorInt exit in door.Exits)
+                {
+                    if (room[exit])
+                    {
+                        if (!room.Doors.Contains(door))
+                        {
+                            room.Doors.Add(door);
                         }
                     }
                 }
@@ -91,11 +154,17 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
         /// </summary>
         private void AnalyseDoors()
         {
+
             // List of 3x3 map, of which the middle cell is a door if all other positions match
             Hint basicHorz = new Hint("Basic Door Horz", HintsRule.Convert(new string[] {"?F?", "WFW", "?F?"}));
             Hint basicVert = new Hint("Basic Door Vert", HintsRule.Convert(new string[] {"?W?", "FFF", "?W?"}));
 
-            Hint half1 = new Hint("Half Door 1", HintsRule.Convert(new string[] {"?FW", "WF?", "???"}));
+            Hint diag1 = new Hint("Diag Door 1", HintsRule.Convert(new string[] { "?FW", "?F?", "WF?" }));
+            Hint diag2 = new Hint("Diag Door 2", GeneralHelper.Rotate(diag1.HintArray));
+            Hint diag3 = new Hint("Diag Door 3", GeneralHelper.Rotate(diag2.HintArray));
+            Hint diag4 = new Hint("Diag Door 4", GeneralHelper.Rotate(diag3.HintArray));
+
+            Hint half1 = new Hint("Half Door 1", HintsRule.Convert(new string[] {"?FW", "WF?", "?F?"}));
             Hint half2 = new Hint("Half Door 2", GeneralHelper.Rotate(half1.HintArray));
             Hint half3 = new Hint("Half Door 3", GeneralHelper.Rotate(half2.HintArray));
             Hint half4 = new Hint("Half Door 4", GeneralHelper.Rotate(half3.HintArray));
@@ -103,6 +172,10 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
             List<Hint> doorHints = new List<Hint>();
             doorHints.Add(basicVert);
             doorHints.Add(basicHorz);
+            doorHints.Add(diag1);
+            doorHints.Add(diag2);
+            doorHints.Add(diag3);
+            doorHints.Add(diag4);
             doorHints.Add(half1);
             doorHints.Add(half2);
             doorHints.Add(half3);
@@ -129,7 +202,20 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
                             newDoor.Position = checkLocation.Add(1, 1); // Center of the hint is the door
                             doorBitmap[newDoor.Position] = true;
                             newDoor.DoorID = "D" + doorIDCounter.ToString();
-                            doorIDCounter++;
+                            newDoor.SourceHint = hint;
+
+                            doorIDCounter++; 
+                            
+                            if (hint == basicHorz) newDoor.Type = Door.Types.Basic;
+                            else if (hint == basicVert) newDoor.Type = Door.Types.Basic;
+                            else if (hint == half1) newDoor.Type = Door.Types.Offset;
+                            else if (hint == half2) newDoor.Type = Door.Types.Offset;
+                            else if (hint == half3) newDoor.Type = Door.Types.Offset;
+                            else if (hint == half4) newDoor.Type = Door.Types.Offset;
+                            else if (hint == diag1) newDoor.Type = Door.Types.Diagonal;
+                            else if (hint == diag2) newDoor.Type = Door.Types.Diagonal;
+                            else if (hint == diag3) newDoor.Type = Door.Types.Diagonal;
+                            else if (hint == diag4) newDoor.Type = Door.Types.Diagonal;
 
                             // Find door sides
                             VectorInt exit = newDoor.Position.Offset(Direction.Up);
@@ -141,13 +227,17 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
                             exit = newDoor.Position.Offset(Direction.Right);
                             if (controller.StaticAnalysis.FloorMap[exit]) newDoor.Exits.Add(exit);
 
-                            controller.DebugReport.Append("Found door {0} at {1}, with exits at {2} exits", doorIDCounter, newDoor.Position, StringHelper.Join<VectorInt>(newDoor.Exits, null, ", "));
+                            controller.DebugReport.Append("Found door {0} of type {1} at {2}, with exits at {3} exits", newDoor.DoorID, newDoor.Type, newDoor.Position, StringHelper.Join<VectorInt>(newDoor.Exits, null, ", "));
 
                             doors.Add(newDoor);
                         }
                     }
                 }
             }
+
+            controller.DebugReport.AppendHeading(2, "Final Door Map:");
+            controller.DebugReport.Append(doorBitmap.ToString());
+            controller.DebugReport.CompleteSection();
         }
 
         /// <summary>

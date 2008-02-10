@@ -107,9 +107,9 @@ namespace SokoSolve.Common
         /// <summary>
         /// Join a list of string using a seperator
         /// </summary>
-        public static string Join<T>(IList<T> source, ToString<T> toStringDelegate, string sep)
+        public static string Join<T>(IEnumerable<T> source, ToString<T> toStringDelegate, string sep)
         {
-            if (source == null || source.Count == 0) return string.Empty;
+            if (source == null) return string.Empty;
 
             StringBuilder sb = new StringBuilder();
             bool first = true;

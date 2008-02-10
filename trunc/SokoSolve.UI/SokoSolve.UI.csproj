@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NPlot, Version=0.9.10.0, Culture=neutral, PublicKeyToken=4eda430eb4395eb1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\NPlot.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -40,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\Primary\FullscreenMode.cs" />
     <Compile Include="Controls\Primary\Game.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -312,6 +317,10 @@
       <SubType>Designer</SubType>
       <DependentUpon>SolverSectionController.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Section\Solver\SolverSettings.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SolverSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Section\Solver\TreeViewer.resx">
       <SubType>Designer</SubType>
       <DependentUpon>TreeViewer.cs</DependentUpon>
@@ -371,6 +380,12 @@
     </Compile>
     <Compile Include="Section\Solver\SolverSectionController.Designer.cs">
       <DependentUpon>SolverSectionController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Section\Solver\SolverSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Section\Solver\SolverSettings.Designer.cs">
+      <DependentUpon>SolverSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Section\Solver\TreeViewer.cs">
       <SubType>UserControl</SubType>
@@ -508,6 +523,8 @@
     <Content Include="Content\SFX\sound31.wav" />
     <Content Include="Content\SFX\sound40.wav" />
     <Content Include="Content\SFX\Welcome.wav" />
+    <Content Include="Lib\NPlot.pdb" />
+    <Content Include="Lib\NPlot.xml" />
     <Content Include="SokoSolve16x16.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -527,6 +544,9 @@
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Component Include="Lib\NPlot.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

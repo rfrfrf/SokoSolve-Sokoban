@@ -14,9 +14,11 @@ using SokoSolve.Core;
 using SokoSolve.Core.Analysis.Solver;
 using SokoSolve.Core.Model;
 using SokoSolve.Core.Model.DataModel;
+using SokoSolve.Core.Reporting;
 using SokoSolve.Core.UI;
 using SokoSolve.UI.Controls.Secondary;
 using Path=SokoSolve.Common.Structures.Path;
+using NPlot;
 
 namespace SokoSolve.UI.Section.Solver
 {
@@ -39,6 +41,8 @@ namespace SokoSolve.UI.Section.Solver
                 new EventHandler<VisEventArgs>(OnVisualisationClick_LocalNode);
             visualisationContainerReverseTree.OnVisualisationClick +=
                 new EventHandler<VisEventArgs>(OnVisualisationClick_ReverseTree);
+
+            
         }
 
 
@@ -59,6 +63,7 @@ namespace SokoSolve.UI.Section.Solver
                         pictureBoxStaticImage.Image = DrawingHelper.DrawPuzzle(Map);
                     }
                 }
+                inlineBrowserSolver.NavigateIncludedContent("$html\\Solver.html");
             }
         }
 
@@ -106,6 +111,71 @@ namespace SokoSolve.UI.Section.Solver
             File.WriteAllText(FileManager.getContent("$Analysis", filename), report.ToString());
         }
 
+        private NPlot.Windows.PlotSurface2D surface;
+
+        public  void UpdateGraph()
+        {
+            if (surface == null)
+            {
+                surface = new NPlot.Windows.PlotSurface2D();
+                tabPageGraphs.Controls.Add(surface);
+                surface.Dock = DockStyle.Fill;
+            }
+
+            surface.Clear();
+            
+            //Add a background grid for better chart readability.
+            Grid grid = new Grid();
+            grid.VerticalGridType = Grid.GridType.Coarse;
+            grid.HorizontalGridType = Grid.GridType.Coarse;
+            grid.MajorGridPen = new Pen(Color.LightGray, 1.0f);
+            surface.Add(grid);
+
+            surface.YAxis2 = new LinearAxis(0, 2000);
+
+            LinePlot lp = new LinePlot();
+            lp.DataSource = controller.Stats.EvaluationItterations.History;
+            lp.Color = Color.Black;
+            lp.Label = "Itterations";
+            surface.Add(lp);
+
+            LinePlot lp2 = new LinePlot();
+            lp2.DataSource = controller.Stats.Nodes.History;
+            lp2.Pen = new Pen(Color.Green, 2.0f);
+            lp2.Label = "Nodes";
+            surface.Add(lp2);
+
+            LinePlot lp3 = new LinePlot();
+            lp3.DataSource = controller.Stats.Duplicates.History;
+            lp3.Pen = new Pen(Color.Orange, 1.0f);
+            lp3.Label = "Duplicates";
+            surface.Add(lp3);
+
+            LinePlot lp4 = new LinePlot();
+            lp4.DataSource = controller.Stats.DeadNodes.History;
+            lp4.Pen = new Pen(Color.Red, 1.5f);
+            lp4.Label = "Dead";
+            surface.Add(lp4);
+
+            LinePlot lp5 = new LinePlot();
+            lp5.DataSource = controller.Stats.NodesPerSecond.History;
+            lp5.Label = "Nodes Per Second";
+            surface.Add(lp5);
+
+            LinePlot lp6 = new LinePlot();
+            lp6.DataSource = controller.Stats.AvgEvalList.History;
+            lp6.Pen = new Pen(Color.Brown, 1.3f);
+            lp6.Label = "Eval List";
+            surface.Add(lp6);
+
+            surface.XAxis1.Label = "Time (sec)";
+            surface.YAxis1.Label = "Total";            
+            surface.Legend = new Legend();
+            
+            
+            surface.Refresh();
+        }
+
         /// <summary>
         /// Update or Bind to the UI
         /// </summary>
@@ -113,52 +183,32 @@ namespace SokoSolve.UI.Section.Solver
         {
             richTextBoxSolverReport.Clear();
 
-            //if (lastException != null)
-            //{
-            //    richTextBoxSolverReport.AppendText("###########################################" + Environment.NewLine);
-            //    richTextBoxSolverReport.AppendText(StringHelper.Report(lastException));
-            //    richTextBoxSolverReport.AppendText(Environment.NewLine);
-            //    richTextBoxSolverReport.AppendText("###########################################" + Environment.NewLine);
-            //    if (controller != null && controller.DebugReport != null)
-            //    {
-            //        richTextBoxSolverReport.AppendText(controller.DebugReport.ToString(new DebugReportFormatter()));
-            //    }
-            //    richTextBoxSolverReport.AppendText("###########################################" + Environment.NewLine);
-
-            //    return;
-            //}
-
+            
 
             if (controller != null && controller.Strategy != null && controller.StaticAnalysis != null)
             {
+                UpdateGraph();
+
                 richTextBoxSolverReport.Text = controller.DebugReport.ToString(new DebugReportFormatter());
 
                 if (!bitmapViewerStatic.HasLayers)
                 {
+                    SokobanMap build = BuildCurrentMap(controller.Strategy.EvaluationTree.Root.Data);
                     BitmapViewer.Layer mapLayer = new BitmapViewer.Layer();
                     mapLayer.Order = 0;
                     mapLayer.IsVisible = true;
-                    mapLayer.Map = controller.Map;
+                    mapLayer.Map = build;
                     mapLayer.Name = "Puzzle";
                     bitmapViewerStatic.SetLayer(mapLayer);
 
-                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.WallMap,
-                                                new SolidBrush(Color.FromArgb(120, Color.Gray))).IsVisible = false;
-                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.FloorMap,
-                                                new SolidBrush(Color.FromArgb(120, Color.Green))).IsVisible = false;
-                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.InitialCrateMap,
-                                                new SolidBrush(Color.FromArgb(120, Color.Blue))).IsVisible = false;
-                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.DeadMap,
-                                                new SolidBrush(Color.FromArgb(120, Color.Brown)));
-                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.BoundryMap,
-                                                new SolidBrush(Color.FromArgb(120, Color.LightGray))).IsVisible =
-                        false;
-                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.GoalMap,
-                                                new SolidBrush(Color.FromArgb(120, Color.Yellow))).IsVisible = false;
-                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.CornerMap,
-                                                new SolidBrush(Color.FromArgb(120, Color.Pink)));
-                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.RecessMap,
-                                                new SolidBrush(Color.FromArgb(120, Color.Cyan)));
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.WallMap, new SolidBrush(Color.FromArgb(120, Color.Gray))).IsVisible = false;
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.FloorMap, new SolidBrush(Color.FromArgb(120, Color.Green))).IsVisible = false;
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.InitialCrateMap, new SolidBrush(Color.FromArgb(120, Color.Blue))).IsVisible = false;
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.DeadMap, new SolidBrush(Color.FromArgb(120, Color.Brown)));
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.BoundryMap,  new SolidBrush(Color.FromArgb(120, Color.LightGray))).IsVisible = false;
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.GoalMap, new SolidBrush(Color.FromArgb(120, Color.Yellow))).IsVisible = false;
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.CornerMap, new SolidBrush(Color.FromArgb(120, Color.Pink)));
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.RecessMap, new SolidBrush(Color.FromArgb(120, Color.Cyan)));
 
                     BitmapViewer.Layer weightLayer = new BitmapViewer.Layer();
                     weightLayer.Order = 10;
@@ -198,11 +248,14 @@ namespace SokoSolve.UI.Section.Solver
                 SolverLabelList txt = controller.Stats.GetDisplayData();
                 if (txt == null)
                 {
-                    webBrowserGlobalStats.DocumentText = null;
+                    
                 }
                 else
                 {
-                    webBrowserGlobalStats.DocumentText = txt.ToHTMLDocument();
+                    ReportXHTML reportCurrent = new ReportXHTML("Node Details");
+                    reportCurrent.SetCSSInline(FileManager.getContent("$html\\style.css"));
+                    reportCurrent.Add(txt.ToHTML());
+                    htmlViewStats.SetHTML(reportCurrent.ToString());
                 }
 
                 UpdateEvalList();
@@ -214,6 +267,8 @@ namespace SokoSolve.UI.Section.Solver
         /// </summary>
         private void UpdateEvalList()
         {
+            return;
+
             List<INode<SolverNode>> evalList = controller.Strategy.EvaluationItterator.GetEvalList();
 
             List<SolverNode> deepClone = new List<SolverNode>(evalList.Count);
@@ -300,7 +355,10 @@ namespace SokoSolve.UI.Section.Solver
             // Build details
             SolverLabelList txt = solverNode.GetDisplayData();
 
-            webBrowserNodeCurrent.DocumentText = txt.ToHTMLDocument();
+            ReportXHTML reportCurrent = new ReportXHTML("Node Details");
+            reportCurrent.SetCSSInline(FileManager.getContent("$html\\style.css"));
+            reportCurrent.Add(txt.ToHTML());
+            webBrowserNodeCurrent.DocumentText = reportCurrent.ToString();
 
             bitmapViewerNodeMaps.Render();
 
@@ -366,30 +424,29 @@ namespace SokoSolve.UI.Section.Solver
         }
 
 
-        private void tsbRefreshVis_Click(object sender, EventArgs e)
-        {
-            UpdateStatus();
-        }
-
-        private void solverSectionController1_OnUserFinished(object sender, EventArgs e)
-        {
-            // Set the library
-            FormMain main = FindForm() as FormMain;
-            main.Mode = FormMain.Modes.Library;
-        }
+       
 
         private void tsbRefresh_Click(object sender, EventArgs e)
         {
             UpdateStatus();
         }
 
-        #region Nested type: OnCompleteDelegate
 
-        /// <summary>
-        /// Target call-back for completion
-        /// </summary>
-        private delegate void OnCompleteDelegate();
+        private void htmlViewStats_OnCommand(object sender, SokoSolve.UI.Controls.Web.UIBrowserEvent e)
+        {
+            string NodeID = e.Command.ToString().Remove(0, "app://node/".Length);
+            e.Completed = true;
+            SelectNode(NodeID);
+        }
 
-        #endregion
+        private void SelectNode(string nodeID)
+        {
+            SolverNode node =  controller.FindNode(nodeID);
+            if (node != null)
+            {
+                BindNode(node);
+            }
+
+        }
     }
 }

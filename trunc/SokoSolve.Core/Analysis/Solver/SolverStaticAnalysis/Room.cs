@@ -60,9 +60,27 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
             set { goals = value; }
         }
 
+        /// <summary>
+        /// Get the direction used to enter the room from a door
+        /// </summary>
+        /// <param name="door"></param>
+        /// <returns></returns>
+        public Direction GetRoomDirection(Door door)
+        {
+            foreach (VectorInt exit in door.Exits)
+            {
+                if (this[exit])
+                {
+                    return VectorInt.GetDirection(door.Position, exit);
+                }
+            }
+            throw new InvalidOperationException();
+        }
+
         private List<Door> doors;
         private RoomTypes roomtype;
         private int goals;
+
         
     }
 

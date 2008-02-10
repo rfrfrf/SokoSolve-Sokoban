@@ -266,7 +266,7 @@ namespace SokoSolve.Core.Analysis.Solver
         /// </summary>
         public bool IsForward
         {
-            get { return nodeID[0] == 'F';  }
+            get { return nodeID != null && nodeID[0] == 'F';  }
         }
 
         /// <summary>

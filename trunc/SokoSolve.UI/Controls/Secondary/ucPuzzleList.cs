@@ -314,5 +314,17 @@ namespace SokoSolve.UI.Controls.Secondary
                     else item.Selected = true;
                 } 
         }
+
+        /// <summary>
+        /// UnSelect everything
+        /// </summary>
+        public void UnSelectAll()
+        {
+            foreach (ListViewItem item in listViewPuzzles.Items)
+            {
+                if (UseCheckBoxes) item.Checked = false;
+                else item.Selected = false;
+            } 
+        }
     }
 }

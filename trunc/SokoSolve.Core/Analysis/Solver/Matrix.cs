@@ -225,34 +225,71 @@ namespace SokoSolve.Core.Analysis.Solver
                         if (ccx - 1 > 0 && currentValues[ccx - 1, ccy])
                         {
                             total += result[ccx - 1, ccy];
+                            count++;
                         }
-                        count++;
+
 
                         // Right
                         if (ccx+1 < Width && currentValues[ccx+1,ccy])
                         {
                             total += result[ccx + 1, ccy];
+                            count++;
                         }
-                        count++;
+                        
 
                         // Up
                         if (ccy - 1 > 0 && currentValues[ccx, ccy-1])
                         {
                             total += result[ccx, ccy - 1];
+                            count++;
                         }
-                        count++;
+                        
 
                         // Down
                         if (ccy + 1 < Height && currentValues[ccx, ccy+1])
                         {
                             total += result[ccx, ccy + 1];
+                            count++;
                         }
-                        count++;
 
-                        if (total > 0)
+                        // Top Left
+                        if (ccx - 1 > 0 && ccy-1 > 0 && currentValues[ccx - 1, ccy-1])
+                        {
+                            total += result[ccx - 1, ccy - 1];
+                            count++;
+                        }
+
+
+                        // Top Right
+                        if (ccx + 1 < Width && ccy-1 > 0&& currentValues[ccx + 1, ccy-1])
+                        {
+                            total += result[ccx + 1, ccy - 1];
+                            count++;
+                        }
+
+
+                        // Bottom Left
+                        if (ccx - 1 > 0 && ccy + 1 < Height &&  currentValues[ccx-1, ccy + 1])
+                        {
+                            total += result[ccx - 1, ccy + 1];
+                            count++;
+                        }
+
+
+                        // Bottom Right
+                        if (ccx + 1 < Width && ccy + 1 < Height && currentValues[ccx + 1, ccy + 1])
+                        {
+                            total += result[ccx + 1, ccy + 1];
+                            count++;
+                        }
+                        
+
+                        
+
+                        if (count > 0)
                         {
                             valueSet = true;
-                            result[ccx, ccy] = total/count;
+                            result[ccx, ccy] = total/count/2;
                             nextValues[ccx, ccy] = true;
                         }   
                     }

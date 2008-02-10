@@ -40,6 +40,8 @@ namespace SokoSolve.Core.Analysis.Solver
             {
                 history.Dequeue();
             }
+
+            base.History.Add(history.Peek());
         }
 
         float lastSample = 0;

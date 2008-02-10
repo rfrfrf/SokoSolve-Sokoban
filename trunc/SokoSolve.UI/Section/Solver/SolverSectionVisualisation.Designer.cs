@@ -33,34 +33,35 @@ namespace SokoSolve.UI.Section.Solver
             this.splitContainerTop = new System.Windows.Forms.SplitContainer();
             this.tabControlTreeVis = new System.Windows.Forms.TabControl();
             this.tabPageForward = new System.Windows.Forms.TabPage();
-            this.treeViewer = new SokoSolve.UI.Section.Solver.TreeViewer();
             this.tabPageReverse = new System.Windows.Forms.TabPage();
-            this.visualisationContainerReverseTree = new SokoSolve.UI.Section.Solver.VisualisationContainer();
             this.tabPageLogger = new System.Windows.Forms.TabPage();
             this.richTextBoxSolverReport = new System.Windows.Forms.RichTextBox();
             this.tabPageSolverBrowser = new System.Windows.Forms.TabPage();
-            this.inlineBrowserSolver = new SokoSolve.UI.Controls.Primary.InlineBrowser();
             this.tabControlTopLeft = new System.Windows.Forms.TabControl();
             this.tabPageLocalNodes = new System.Windows.Forms.TabPage();
-            this.visualisationContainerLocalNodes = new SokoSolve.UI.Section.Solver.VisualisationContainer();
             this.tabPageStaticImage = new System.Windows.Forms.TabPage();
             this.pictureBoxStaticImage = new System.Windows.Forms.PictureBox();
             this.splitContainerBottom = new System.Windows.Forms.SplitContainer();
             this.tabControlStaticDetails = new System.Windows.Forms.TabControl();
             this.tabPageStaticMaps = new System.Windows.Forms.TabPage();
-            this.bitmapViewerStatic = new SokoSolve.UI.Section.Solver.BitmapViewer();
             this.tabPageStats = new System.Windows.Forms.TabPage();
-            this.webBrowserGlobalStats = new System.Windows.Forms.WebBrowser();
             this.tabPageEvalList = new System.Windows.Forms.TabPage();
-            this.visualisationContainerEvalList = new SokoSolve.UI.Section.Solver.VisualisationContainer();
             this.tabControlNode = new System.Windows.Forms.TabControl();
             this.tabPageNodeDetails = new System.Windows.Forms.TabPage();
             this.splitContainerCurrentNode = new System.Windows.Forms.SplitContainer();
-            this.bitmapViewerNodeMaps = new SokoSolve.UI.Section.Solver.BitmapViewer();
             this.webBrowserNodeCurrent = new System.Windows.Forms.WebBrowser();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbRefresh = new System.Windows.Forms.ToolStripButton();
+            this.tabPageGraphs = new System.Windows.Forms.TabPage();
+            this.treeViewer = new SokoSolve.UI.Section.Solver.TreeViewer();
+            this.visualisationContainerReverseTree = new SokoSolve.UI.Section.Solver.VisualisationContainer();
+            this.inlineBrowserSolver = new SokoSolve.UI.Controls.Primary.InlineBrowser();
+            this.visualisationContainerLocalNodes = new SokoSolve.UI.Section.Solver.VisualisationContainer();
+            this.bitmapViewerStatic = new SokoSolve.UI.Section.Solver.BitmapViewer();
+            this.visualisationContainerEvalList = new SokoSolve.UI.Section.Solver.VisualisationContainer();
+            this.bitmapViewerNodeMaps = new SokoSolve.UI.Section.Solver.BitmapViewer();
+            this.htmlViewStats = new SokoSolve.UI.Controls.Web.HtmlView();
             this.splitContainerMain.Panel1.SuspendLayout();
             this.splitContainerMain.Panel2.SuspendLayout();
             this.splitContainerMain.SuspendLayout();
@@ -133,6 +134,7 @@ namespace SokoSolve.UI.Section.Solver
             this.tabControlTreeVis.Controls.Add(this.tabPageReverse);
             this.tabControlTreeVis.Controls.Add(this.tabPageLogger);
             this.tabControlTreeVis.Controls.Add(this.tabPageSolverBrowser);
+            this.tabControlTreeVis.Controls.Add(this.tabPageGraphs);
             this.tabControlTreeVis.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlTreeVis.Location = new System.Drawing.Point(0, 0);
             this.tabControlTreeVis.Name = "tabControlTreeVis";
@@ -151,38 +153,16 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageForward.Text = "Forward Tree";
             this.tabPageForward.UseVisualStyleBackColor = true;
             // 
-            // treeViewer
-            // 
-            this.treeViewer.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.treeViewer.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.treeViewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewer.Location = new System.Drawing.Point(3, 3);
-            this.treeViewer.Name = "treeViewer";
-            this.treeViewer.OnVisualisationClick = null;
-            this.treeViewer.Size = new System.Drawing.Size(545, 248);
-            this.treeViewer.TabIndex = 0;
-            // 
             // tabPageReverse
             // 
             this.tabPageReverse.Controls.Add(this.visualisationContainerReverseTree);
             this.tabPageReverse.Location = new System.Drawing.Point(4, 22);
             this.tabPageReverse.Name = "tabPageReverse";
             this.tabPageReverse.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageReverse.Size = new System.Drawing.Size(392, 211);
+            this.tabPageReverse.Size = new System.Drawing.Size(551, 254);
             this.tabPageReverse.TabIndex = 1;
             this.tabPageReverse.Text = "Reverse Tree";
             this.tabPageReverse.UseVisualStyleBackColor = true;
-            // 
-            // visualisationContainerReverseTree
-            // 
-            this.visualisationContainerReverseTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.visualisationContainerReverseTree.Location = new System.Drawing.Point(3, 3);
-            this.visualisationContainerReverseTree.Name = "visualisationContainerReverseTree";
-            this.visualisationContainerReverseTree.RenderOnClick = false;
-            this.visualisationContainerReverseTree.Size = new System.Drawing.Size(386, 205);
-            this.visualisationContainerReverseTree.Status = "Status";
-            this.visualisationContainerReverseTree.TabIndex = 0;
-            this.visualisationContainerReverseTree.Visualisation = null;
             // 
             // tabPageLogger
             // 
@@ -190,7 +170,7 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageLogger.Location = new System.Drawing.Point(4, 22);
             this.tabPageLogger.Name = "tabPageLogger";
             this.tabPageLogger.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLogger.Size = new System.Drawing.Size(392, 211);
+            this.tabPageLogger.Size = new System.Drawing.Size(551, 254);
             this.tabPageLogger.TabIndex = 2;
             this.tabPageLogger.Text = "Solver Report";
             this.tabPageLogger.UseVisualStyleBackColor = true;
@@ -202,7 +182,7 @@ namespace SokoSolve.UI.Section.Solver
             this.richTextBoxSolverReport.Location = new System.Drawing.Point(3, 3);
             this.richTextBoxSolverReport.Name = "richTextBoxSolverReport";
             this.richTextBoxSolverReport.ReadOnly = true;
-            this.richTextBoxSolverReport.Size = new System.Drawing.Size(386, 205);
+            this.richTextBoxSolverReport.Size = new System.Drawing.Size(545, 248);
             this.richTextBoxSolverReport.TabIndex = 0;
             this.richTextBoxSolverReport.Text = "";
             // 
@@ -212,18 +192,10 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageSolverBrowser.Location = new System.Drawing.Point(4, 22);
             this.tabPageSolverBrowser.Name = "tabPageSolverBrowser";
             this.tabPageSolverBrowser.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSolverBrowser.Size = new System.Drawing.Size(392, 211);
+            this.tabPageSolverBrowser.Size = new System.Drawing.Size(551, 254);
             this.tabPageSolverBrowser.TabIndex = 3;
             this.tabPageSolverBrowser.Text = "Solver Help";
             this.tabPageSolverBrowser.UseVisualStyleBackColor = true;
-            // 
-            // inlineBrowserSolver
-            // 
-            this.inlineBrowserSolver.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.inlineBrowserSolver.Location = new System.Drawing.Point(3, 3);
-            this.inlineBrowserSolver.Name = "inlineBrowserSolver";
-            this.inlineBrowserSolver.Size = new System.Drawing.Size(386, 205);
-            this.inlineBrowserSolver.TabIndex = 0;
             // 
             // tabControlTopLeft
             // 
@@ -247,24 +219,13 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageLocalNodes.Text = "Local Nodes";
             this.tabPageLocalNodes.UseVisualStyleBackColor = true;
             // 
-            // visualisationContainerLocalNodes
-            // 
-            this.visualisationContainerLocalNodes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.visualisationContainerLocalNodes.Location = new System.Drawing.Point(3, 3);
-            this.visualisationContainerLocalNodes.Name = "visualisationContainerLocalNodes";
-            this.visualisationContainerLocalNodes.RenderOnClick = true;
-            this.visualisationContainerLocalNodes.Size = new System.Drawing.Size(227, 248);
-            this.visualisationContainerLocalNodes.Status = "Status";
-            this.visualisationContainerLocalNodes.TabIndex = 0;
-            this.visualisationContainerLocalNodes.Visualisation = null;
-            // 
             // tabPageStaticImage
             // 
             this.tabPageStaticImage.Controls.Add(this.pictureBoxStaticImage);
             this.tabPageStaticImage.Location = new System.Drawing.Point(4, 22);
             this.tabPageStaticImage.Name = "tabPageStaticImage";
             this.tabPageStaticImage.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageStaticImage.Size = new System.Drawing.Size(163, 211);
+            this.tabPageStaticImage.Size = new System.Drawing.Size(233, 254);
             this.tabPageStaticImage.TabIndex = 0;
             this.tabPageStaticImage.Text = "Puzzle Initial";
             this.tabPageStaticImage.UseVisualStyleBackColor = true;
@@ -274,7 +235,7 @@ namespace SokoSolve.UI.Section.Solver
             this.pictureBoxStaticImage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxStaticImage.Location = new System.Drawing.Point(3, 3);
             this.pictureBoxStaticImage.Name = "pictureBoxStaticImage";
-            this.pictureBoxStaticImage.Size = new System.Drawing.Size(157, 205);
+            this.pictureBoxStaticImage.Size = new System.Drawing.Size(227, 248);
             this.pictureBoxStaticImage.TabIndex = 0;
             this.pictureBoxStaticImage.TabStop = false;
             // 
@@ -318,36 +279,17 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageStaticMaps.Text = "Static Maps";
             this.tabPageStaticMaps.UseVisualStyleBackColor = true;
             // 
-            // bitmapViewerStatic
-            // 
-            this.bitmapViewerStatic.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.bitmapViewerStatic.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.bitmapViewerStatic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bitmapViewerStatic.Location = new System.Drawing.Point(3, 3);
-            this.bitmapViewerStatic.Name = "bitmapViewerStatic";
-            this.bitmapViewerStatic.Size = new System.Drawing.Size(405, 190);
-            this.bitmapViewerStatic.TabIndex = 0;
-            // 
             // tabPageStats
             // 
-            this.tabPageStats.Controls.Add(this.webBrowserGlobalStats);
+            this.tabPageStats.Controls.Add(this.htmlViewStats);
             this.tabPageStats.Location = new System.Drawing.Point(4, 22);
             this.tabPageStats.Name = "tabPageStats";
             this.tabPageStats.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageStats.Size = new System.Drawing.Size(292, 161);
+            this.tabPageStats.Size = new System.Drawing.Size(411, 196);
             this.tabPageStats.TabIndex = 1;
             this.tabPageStats.Text = "Statistics";
             this.tabPageStats.UseVisualStyleBackColor = true;
             this.tabPageStats.Click += new System.EventHandler(this.tabPageStats_Click);
-            // 
-            // webBrowserGlobalStats
-            // 
-            this.webBrowserGlobalStats.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowserGlobalStats.Location = new System.Drawing.Point(3, 3);
-            this.webBrowserGlobalStats.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowserGlobalStats.Name = "webBrowserGlobalStats";
-            this.webBrowserGlobalStats.Size = new System.Drawing.Size(286, 155);
-            this.webBrowserGlobalStats.TabIndex = 0;
             // 
             // tabPageEvalList
             // 
@@ -355,21 +297,10 @@ namespace SokoSolve.UI.Section.Solver
             this.tabPageEvalList.Location = new System.Drawing.Point(4, 22);
             this.tabPageEvalList.Name = "tabPageEvalList";
             this.tabPageEvalList.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEvalList.Size = new System.Drawing.Size(292, 161);
+            this.tabPageEvalList.Size = new System.Drawing.Size(411, 196);
             this.tabPageEvalList.TabIndex = 2;
             this.tabPageEvalList.Text = "Eval List";
             this.tabPageEvalList.UseVisualStyleBackColor = true;
-            // 
-            // visualisationContainerEvalList
-            // 
-            this.visualisationContainerEvalList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.visualisationContainerEvalList.Location = new System.Drawing.Point(3, 3);
-            this.visualisationContainerEvalList.Name = "visualisationContainerEvalList";
-            this.visualisationContainerEvalList.RenderOnClick = true;
-            this.visualisationContainerEvalList.Size = new System.Drawing.Size(286, 155);
-            this.visualisationContainerEvalList.Status = "Not Implemented";
-            this.visualisationContainerEvalList.TabIndex = 0;
-            this.visualisationContainerEvalList.Visualisation = null;
             // 
             // tabControlNode
             // 
@@ -409,16 +340,6 @@ namespace SokoSolve.UI.Section.Solver
             this.splitContainerCurrentNode.SplitterDistance = 178;
             this.splitContainerCurrentNode.TabIndex = 1;
             // 
-            // bitmapViewerNodeMaps
-            // 
-            this.bitmapViewerNodeMaps.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.bitmapViewerNodeMaps.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.bitmapViewerNodeMaps.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bitmapViewerNodeMaps.Location = new System.Drawing.Point(0, 0);
-            this.bitmapViewerNodeMaps.Name = "bitmapViewerNodeMaps";
-            this.bitmapViewerNodeMaps.Size = new System.Drawing.Size(178, 190);
-            this.bitmapViewerNodeMaps.TabIndex = 0;
-            // 
             // webBrowserNodeCurrent
             // 
             this.webBrowserNodeCurrent.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -451,6 +372,105 @@ namespace SokoSolve.UI.Section.Solver
             this.tsbRefresh.Size = new System.Drawing.Size(65, 22);
             this.tsbRefresh.Text = "Refresh";
             this.tsbRefresh.Click += new System.EventHandler(this.tsbRefresh_Click);
+            // 
+            // tabPageGraphs
+            // 
+            this.tabPageGraphs.Location = new System.Drawing.Point(4, 22);
+            this.tabPageGraphs.Name = "tabPageGraphs";
+            this.tabPageGraphs.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageGraphs.Size = new System.Drawing.Size(551, 254);
+            this.tabPageGraphs.TabIndex = 4;
+            this.tabPageGraphs.Text = "Graphs";
+            this.tabPageGraphs.UseVisualStyleBackColor = true;
+            // 
+            // treeViewer
+            // 
+            this.treeViewer.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.treeViewer.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.treeViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewer.Location = new System.Drawing.Point(3, 3);
+            this.treeViewer.Name = "treeViewer";
+            this.treeViewer.OnVisualisationClick = null;
+            this.treeViewer.Size = new System.Drawing.Size(545, 248);
+            this.treeViewer.TabIndex = 0;
+            // 
+            // visualisationContainerReverseTree
+            // 
+            this.visualisationContainerReverseTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.visualisationContainerReverseTree.Location = new System.Drawing.Point(3, 3);
+            this.visualisationContainerReverseTree.Name = "visualisationContainerReverseTree";
+            this.visualisationContainerReverseTree.RenderOnClick = false;
+            this.visualisationContainerReverseTree.Size = new System.Drawing.Size(545, 248);
+            this.visualisationContainerReverseTree.Status = "Status";
+            this.visualisationContainerReverseTree.TabIndex = 0;
+            this.visualisationContainerReverseTree.Visualisation = null;
+            // 
+            // inlineBrowserSolver
+            // 
+            this.inlineBrowserSolver.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inlineBrowserSolver.Location = new System.Drawing.Point(3, 3);
+            this.inlineBrowserSolver.Name = "inlineBrowserSolver";
+            this.inlineBrowserSolver.Size = new System.Drawing.Size(545, 248);
+            this.inlineBrowserSolver.TabIndex = 0;
+            // 
+            // visualisationContainerLocalNodes
+            // 
+            this.visualisationContainerLocalNodes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.visualisationContainerLocalNodes.Location = new System.Drawing.Point(3, 3);
+            this.visualisationContainerLocalNodes.Name = "visualisationContainerLocalNodes";
+            this.visualisationContainerLocalNodes.RenderOnClick = true;
+            this.visualisationContainerLocalNodes.Size = new System.Drawing.Size(227, 248);
+            this.visualisationContainerLocalNodes.Status = "Status";
+            this.visualisationContainerLocalNodes.TabIndex = 0;
+            this.visualisationContainerLocalNodes.Visualisation = null;
+            // 
+            // bitmapViewerStatic
+            // 
+            this.bitmapViewerStatic.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.bitmapViewerStatic.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.bitmapViewerStatic.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bitmapViewerStatic.Location = new System.Drawing.Point(3, 3);
+            this.bitmapViewerStatic.Name = "bitmapViewerStatic";
+            this.bitmapViewerStatic.Size = new System.Drawing.Size(405, 190);
+            this.bitmapViewerStatic.TabIndex = 0;
+            // 
+            // visualisationContainerEvalList
+            // 
+            this.visualisationContainerEvalList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.visualisationContainerEvalList.Location = new System.Drawing.Point(3, 3);
+            this.visualisationContainerEvalList.Name = "visualisationContainerEvalList";
+            this.visualisationContainerEvalList.RenderOnClick = true;
+            this.visualisationContainerEvalList.Size = new System.Drawing.Size(405, 190);
+            this.visualisationContainerEvalList.Status = "Not Implemented";
+            this.visualisationContainerEvalList.TabIndex = 0;
+            this.visualisationContainerEvalList.Visualisation = null;
+            // 
+            // bitmapViewerNodeMaps
+            // 
+            this.bitmapViewerNodeMaps.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.bitmapViewerNodeMaps.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.bitmapViewerNodeMaps.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bitmapViewerNodeMaps.Location = new System.Drawing.Point(0, 0);
+            this.bitmapViewerNodeMaps.Name = "bitmapViewerNodeMaps";
+            this.bitmapViewerNodeMaps.Size = new System.Drawing.Size(178, 190);
+            this.bitmapViewerNodeMaps.TabIndex = 0;
+            // 
+            // htmlViewStats
+            // 
+            this.htmlViewStats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.htmlViewStats.Location = new System.Drawing.Point(3, 3);
+            this.htmlViewStats.Name = "htmlViewStats";
+            this.htmlViewStats.ShowCommandBack = false;
+            this.htmlViewStats.ShowCommandDone = false;
+            this.htmlViewStats.ShowCommandForward = false;
+            this.htmlViewStats.ShowCommandHome = false;
+            this.htmlViewStats.ShowCommandPrint = false;
+            this.htmlViewStats.ShowCommands = false;
+            this.htmlViewStats.ShowCommandSave = false;
+            this.htmlViewStats.ShowStatus = true;
+            this.htmlViewStats.Size = new System.Drawing.Size(405, 190);
+            this.htmlViewStats.TabIndex = 0;
+            this.htmlViewStats.OnCommand += new System.EventHandler<SokoSolve.UI.Controls.Web.UIBrowserEvent>(this.htmlViewStats_OnCommand);
             // 
             // SolverSectionVisualisation
             // 
@@ -514,7 +534,6 @@ namespace SokoSolve.UI.Section.Solver
         private System.Windows.Forms.TabPage tabPageStaticMaps;
         private BitmapViewer bitmapViewerStatic;
         private System.Windows.Forms.TabPage tabPageStats;
-        private System.Windows.Forms.WebBrowser webBrowserGlobalStats;
         private System.Windows.Forms.TabPage tabPageEvalList;
         private VisualisationContainer visualisationContainerEvalList;
         private System.Windows.Forms.TabControl tabControlTreeVis;
@@ -528,5 +547,7 @@ namespace SokoSolve.UI.Section.Solver
         private SokoSolve.UI.Controls.Primary.InlineBrowser inlineBrowserSolver;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton tsbRefresh;
+        private System.Windows.Forms.TabPage tabPageGraphs;
+        private SokoSolve.UI.Controls.Web.HtmlView htmlViewStats;
     }
 }

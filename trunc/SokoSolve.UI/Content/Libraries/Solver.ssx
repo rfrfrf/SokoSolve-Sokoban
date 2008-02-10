@@ -839,7 +839,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>~~~~#...X..#</Row>
           <Row>~~~~#####..#</Row>
           <Row>~~~~~~~~####</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="5" StartY="4">
+              <Steps>ullduururrrrdrddddldddrdrddluuuluulrddlulldddrrudrurrddluudlllluuuuurdldrrllllluurdldrrrlluuuuudddddrrurrlldlluuuuuruurrrrdrddddlldlldlluuuuulurddddddrrurrurruuuululllldlddddddrruurdlddddrruuddlluuulluuuuuururrrrdrddddlldlldlluullurdddrrrurrurruuuululllldldddldddrrruurrdllddddrruuuulldrllluluurddldrrrurrddduuulldrldddrrlluuulluuuuurldddddrrdddrrrurrddlulllluuulluuuuurrlldddddrrdddrruuudddrrrulldludlluuulluuuuurrdrrullluldddddldrrrr</Steps>
+              <SolutionDescription Date="2008-02-09T20:38:42.6323385+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 63 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 70483 nodes
+Total Nodes : 50643 nodes
+Node per second : avg 519.2, last 582 
+Duplicates : 28538 nodes
+DeadNodes : 12605 nodes
+Eval Worker List : 16633
+Weighting Min : 0
+Weighting Max : 1043
+Weighting Avg : 864.42 avg.
+Hints Uses : 790 hits
+Max Depth : 75
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>
@@ -1902,7 +1925,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="96.4" PuzzleID="P81" CategoryREF="C4" Order="43">
+    <Puzzle Rating="96.4" PuzzleID="P81" CategoryREF="C3" Order="43">
       <PuzzleDescription>
         <Name>Ghastly Town</Name>
         <Description />
@@ -1923,7 +1946,30 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>~~~~~~~~~########X.X###~</Row>
           <Row>~~~~~~~~~~~~~~~~#...#~~~</Row>
           <Row>~~~~~~~~~~~~~~~~#####~~~</Row>
-          <Solutions />
+          <Solutions>
+            <Solution StartX="18" StartY="9">
+              <Steps>lllurdrdrddruluurrruldllllldrurrrruldlddrululldrrddluurururrdlululuurddldddlddrrululluurlddrrddluruululldrururuulddrddllulldrurrllddrulurdrrrurrdllluuluurrddldruuulddrddrruldllllrrdullulldrdrrllurdrddrruulurdddluruuurrdlrdluululuurdd</Steps>
+              <SolutionDescription Date="2008-02-09T18:51:02.4579515+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 105 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 36032 nodes
+Total Nodes : 23782 nodes
+Node per second : avg 115.2, last 155 
+Duplicates : 10334 nodes
+DeadNodes : 3013 nodes
+Eval Worker List : 36645
+Weighting Min : 0
+Weighting Max : 800
+Weighting Avg : 681.43 avg.
+Hints Uses : 354 hits
+Max Depth : 70
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
+              </SolutionDescription>
+            </Solution>
+          </Solutions>
         </Map>
       </Maps>
     </Puzzle>

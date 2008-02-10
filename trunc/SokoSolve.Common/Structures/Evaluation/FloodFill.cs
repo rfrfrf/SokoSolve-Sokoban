@@ -22,7 +22,7 @@ namespace SokoSolve.Common.Structures
 			this.initialState = initialState;
 			this.currentState = new Bitmap(initialState.Size);
 			this.startLocation = startLocation;
-            workList = new DepthLastItterator<LocationNode>(GetLocationNodeDepth);
+            workList = new BreadthFirstItterator<LocationNode>(GetLocationNodeDepth);
             workList.MaxDepth = 1000;
             workList.MaxItterations = 100000;
 
@@ -36,6 +36,20 @@ namespace SokoSolve.Common.Structures
 
 			workList.Add(startNode);
 		}
+
+        /// <summary>
+        /// Static Helper to perform a basic flood fill
+        /// </summary>
+        /// <param name="initialState">Initial state (boundry)</param>
+        /// <param name="startLocation">Start Location</param>
+        /// <returns>Completed FloodFill</returns>
+        public static FloodFillStrategy Evaluate(IBitmap initialState, VectorInt startLocation)
+        {
+            FloodFillStrategy floodFill = new FloodFillStrategy(initialState, startLocation);
+            Evaluator<LocationNode> eval = new Evaluator<LocationNode>();
+            eval.Evaluate(floodFill);
+            return floodFill;
+        }
 
         private static int GetLocationNodeDepth(INode<LocationNode> node)
         {
@@ -159,7 +173,7 @@ namespace SokoSolve.Common.Structures
         private IBitmap initialState;
         private Bitmap currentState;
         private VectorInt startLocation;
-        private DepthLastItterator<LocationNode> workList;
+        private BreadthFirstItterator<LocationNode> workList;
         private Tree<LocationNode> searchTree;
 	}
 }

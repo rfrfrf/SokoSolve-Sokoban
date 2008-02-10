@@ -61,7 +61,7 @@ namespace SokoSolve.Core.Analysis
         /// </summary>
         class BuildCrateMapImplementation : EvaluationStrategyBase<CrateMapNode>
         {
-            public BuildCrateMapImplementation(SokobanMap InitialConditions, VectorInt CrateStartLocation) : base(new DepthLastItterator<CrateMapNode>())
+            public BuildCrateMapImplementation(SokobanMap InitialConditions, VectorInt CrateStartLocation) : base(new BreadthFirstItterator<CrateMapNode>())
             {
                 crateLocationStart = CrateStartLocation;
                 initialConditions = InitialConditions;

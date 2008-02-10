@@ -178,8 +178,10 @@ namespace SokoSolve.UI.Section.Solver
                         }
                         else if (current.Matrix != null)
                         {
-                            Font matFont = new Font("Arial Narrow", 8f);
-                            graphics.DrawString(current.Matrix[logicalPosition].ToString("0.00"), matFont, current.Brush, region.ToDrawingRect());
+                            if (current.Matrix[logicalPosition] != 0)
+                            {
+                                graphics.DrawString(current.Matrix[logicalPosition].ToString("0.0"), matFont, current.Brush, region.ToDrawingRect());
+                            }
                         }
                         else
                         {
@@ -213,6 +215,7 @@ namespace SokoSolve.UI.Section.Solver
             }
         }
 
+        Font matFont = new Font("Arial Narrow", 8f);
         
 
 
