@@ -27,10 +27,11 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="name">Room name</param>
+        /// <param name="roomID">Room name</param>
         /// <param name="aSize">MapSize</param>
-        public Room(string name, SizeInt aSize) : base(name, aSize)
+        public Room(string roomID, SizeInt aSize) : base(roomID, aSize)
         {
+            this.roomID = roomID;
             doors = new List<Door>();
         }
 
@@ -49,6 +50,15 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
         {
             get { return roomtype; }
             set { roomtype = value; }
+        }
+
+        /// <summary>
+        /// Room Identifier
+        /// </summary>
+        public string RoomID
+        {
+            get { return roomID; }
+            set { roomID = value; }
         }
 
         /// <summary>
@@ -77,9 +87,19 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
             throw new InvalidOperationException();
         }
 
+
+        public string Description
+        {
+            get
+            {
+                return string.Format("Room-{0}/{1} {2} exits", Name, roomtype, doors.Count, goals );
+            }
+        }
+
         private List<Door> doors;
         private RoomTypes roomtype;
         private int goals;
+        private string roomID;
 
         
     }

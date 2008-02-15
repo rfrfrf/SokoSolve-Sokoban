@@ -12,7 +12,9 @@ namespace SokoSolve.Core.Reporting
     {
         public SolverResultHTML(List<SolverResult> results, string inlineCSS) : base("SokoSolve | Automated Solver Report")
         {
-            SetCSSInline(inlineCSS);
+            if (inlineCSS != null) SetCSSInline(inlineCSS);
+                else SetCSSLink("style.css");
+
             this.results = results;
         }
 

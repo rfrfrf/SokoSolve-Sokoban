@@ -104,6 +104,9 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
                             newRoom.Roomtype = Room.RoomTypes.GoalRoom;
                         }
 
+                        // Human Readable name
+                        newRoom.Name = newRoom.Description;
+
                         // Link to other doors
                         LinkDoors(newRoom);
 

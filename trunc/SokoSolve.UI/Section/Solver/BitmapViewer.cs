@@ -62,49 +62,24 @@ namespace SokoSolve.UI.Section.Solver
                 layers.Add(layer.Name, layer);
             }
 
-            if (layerButton == null)
-            {
-                layerButton = toolStripDropDownButton1;
-                Controls.Remove(toolStrip1);
-                visualisationContainer.toolStripContainer.BottomToolStripPanel.Controls.Add(toolStrip1);
-                
-            }
-
-            layerButton.DropDownItems.Clear();
+            lvLayers.BeginUpdate();
+            IsListViewUpdating = true;
+            lvLayers.Items.Clear();
             foreach (Layer value in layers.Values)
             {
-                ToolStripMenuItem item = new ToolStripMenuItem(value.Name);
+                ListViewItem item = new ListViewItem(value.Name);
+
                 SolidBrush br = (value.Brush as SolidBrush);
-                if (br != null) item.ForeColor = Color.FromArgb(br.Color.R ^ 200, br.Color.G ^ 200, br.Color.B ^ 200);
+                if (br != null) item.ForeColor = Color.FromArgb(br.Color.R ^ 255, (255-br.Color.G) ^ 255, br.Color.B ^ 255);
                 if (br != null) item.BackColor = br.Color;
                 item.Checked = value.IsVisible;
-                layerButton.DropDownItems.Add(item);
                 item.Tag = value;
-                item.Alignment = ToolStripItemAlignment.Right;
-                item.Click += new EventHandler(LayerButton_OnClick);
-
+                lvLayers.Items.Add(item);
             }
+            lvLayers.EndUpdate();
+            IsListViewUpdating = false;
             return layer;
         }
-
-        void LayerButton_OnClick(object sender, EventArgs e)
-        {
-            ToolStripMenuItem item = sender as ToolStripMenuItem;
-            if (item != null)
-            {
-                Layer value = item.Tag as Layer;
-                if (value != null)
-                {
-                    value.IsVisible = !value.IsVisible;
-                    item.Checked = value.IsVisible;
-                }
-            }
-
-            // Update display
-            visualisationContainer.Render();
-        }
-
-        private ToolStripDropDownButton layerButton;
 
         /// <summary>
         /// Overloaded Helper.
@@ -115,7 +90,7 @@ namespace SokoSolve.UI.Section.Solver
         {
             Layer tmp = new Layer();
             tmp.Order = layers.Count;
-            tmp.IsVisible = true;
+            tmp.IsVisible = false;
             if (Bitmap != null)
             {
                 tmp.Name = Bitmap.Name;
@@ -182,5 +157,18 @@ namespace SokoSolve.UI.Section.Solver
 
         private BitmapViewerVisualisation vis;
         private Dictionary<string, Layer> layers;
+
+        private bool IsListViewUpdating = false;
+
+        private void lvLayers_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+            if (IsListViewUpdating) return;
+
+            Layer layer = e.Item.Tag as Layer;
+            if (layer != null) layer.IsVisible = e.Item.Checked;
+
+            // Update display
+            visualisationContainer.Render();
+        }
     }
 }

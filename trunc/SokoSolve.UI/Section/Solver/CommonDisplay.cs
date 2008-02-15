@@ -75,7 +75,7 @@ namespace SokoSolve.UI.Section.Solver
                         // Color Scale 0-255 Blue then 0-255 Green (0-512 color range)
                         // This is match on scale to MinWeighting=0, MaxWeighting=512
                         float colourIndexMin = 0;
-                        float colourIndexMax = 255 * 2;
+                        float colourIndexMax = 255;
 
                         // Range 0-max in weightings
                         float absrange = MaxWeighting - MinWeighting;
@@ -87,10 +87,7 @@ namespace SokoSolve.UI.Section.Solver
                         // Convert to RGB
                         int r = 0, g = 0, b = 0;
 
-                        if (colourIndex < 255) r = (colourIndex % 255);
-                        else r = 255;
-                        g = r;
-                        if (colourIndex > 255) b = (colourIndex - 255) % 255;
+                        g = colourIndex;
 
                         return new SolidBrush(Color.FromArgb(r, g, b));
 

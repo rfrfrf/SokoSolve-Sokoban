@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Text;
 using System.Threading;
@@ -12,6 +13,7 @@ using SokoSolve.Common.Math;
 using SokoSolve.Common.Structures;
 using SokoSolve.Core;
 using SokoSolve.Core.Analysis.Solver;
+using SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis;
 using SokoSolve.Core.Model;
 using SokoSolve.Core.Model.DataModel;
 using SokoSolve.Core.Reporting;
@@ -112,6 +114,7 @@ namespace SokoSolve.UI.Section.Solver
         }
 
         private NPlot.Windows.PlotSurface2D surface;
+        private NPlot.Windows.PlotSurface2D surface2;
 
         public  void UpdateGraph()
         {
@@ -120,6 +123,13 @@ namespace SokoSolve.UI.Section.Solver
                 surface = new NPlot.Windows.PlotSurface2D();
                 tabPageGraphs.Controls.Add(surface);
                 surface.Dock = DockStyle.Fill;
+
+                surface2 = new NPlot.Windows.PlotSurface2D();
+                surface2.Height = 150;
+                tabPageGraphs.Controls.Add(surface2);
+                surface2.Dock = DockStyle.Bottom;
+
+                
             }
 
             surface.Clear();
@@ -131,13 +141,11 @@ namespace SokoSolve.UI.Section.Solver
             grid.MajorGridPen = new Pen(Color.LightGray, 1.0f);
             surface.Add(grid);
 
-            surface.YAxis2 = new LinearAxis(0, 2000);
-
-            LinePlot lp = new LinePlot();
-            lp.DataSource = controller.Stats.EvaluationItterations.History;
-            lp.Color = Color.Black;
-            lp.Label = "Itterations";
-            surface.Add(lp);
+            LinePlot lp1 = new LinePlot();
+            lp1.DataSource = controller.Stats.EvaluationItterations.History;
+            lp1.Color = Color.Black;
+            lp1.Label = "Itterations";
+            surface.Add(lp1);
 
             LinePlot lp2 = new LinePlot();
             lp2.DataSource = controller.Stats.Nodes.History;
@@ -157,10 +165,7 @@ namespace SokoSolve.UI.Section.Solver
             lp4.Label = "Dead";
             surface.Add(lp4);
 
-            LinePlot lp5 = new LinePlot();
-            lp5.DataSource = controller.Stats.NodesPerSecond.History;
-            lp5.Label = "Nodes Per Second";
-            surface.Add(lp5);
+          
 
             LinePlot lp6 = new LinePlot();
             lp6.DataSource = controller.Stats.AvgEvalList.History;
@@ -168,12 +173,27 @@ namespace SokoSolve.UI.Section.Solver
             lp6.Label = "Eval List";
             surface.Add(lp6);
 
-            surface.XAxis1.Label = "Time (sec)";
+            surface.XAxis1.Label = "Elapsed Time (sec)";
             surface.YAxis1.Label = "Total";            
             surface.Legend = new Legend();
-            
+
+            surface.SmoothingMode = SmoothingMode.HighQuality;
+            surface.Title = "Solver | Node Information";
             
             surface.Refresh();
+
+            surface2.Clear();
+            StepPlot lp5 = new StepPlot();
+            lp5.Pen = new Pen(Color.Fuchsia, 2f);
+            lp5.DataSource = controller.Stats.NodesPerSecond.History;
+            lp5.Label = "Nodes/s";
+            surface2.Add(lp5);
+
+            surface2.XAxis1.Label = "Elapsed Time (sec)";
+            surface2.YAxis1.Label = "Rate (node/sec)";
+            surface2.Legend = new Legend();
+            surface2.SmoothingMode = SmoothingMode.HighQuality;
+            surface2.Refresh();
         }
 
         /// <summary>
@@ -196,23 +216,28 @@ namespace SokoSolve.UI.Section.Solver
                     SokobanMap build = BuildCurrentMap(controller.Strategy.EvaluationTree.Root.Data);
                     BitmapViewer.Layer mapLayer = new BitmapViewer.Layer();
                     mapLayer.Order = 0;
-                    mapLayer.IsVisible = true;
                     mapLayer.Map = build;
                     mapLayer.Name = "Puzzle";
                     bitmapViewerStatic.SetLayer(mapLayer);
+                    mapLayer.IsVisible = true;
 
-                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.WallMap, new SolidBrush(Color.FromArgb(120, Color.Gray))).IsVisible = false;
-                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.FloorMap, new SolidBrush(Color.FromArgb(120, Color.Green))).IsVisible = false;
-                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.InitialCrateMap, new SolidBrush(Color.FromArgb(120, Color.Blue))).IsVisible = false;
-                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.DeadMap, new SolidBrush(Color.FromArgb(120, Color.Brown)));
-                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.BoundryMap,  new SolidBrush(Color.FromArgb(120, Color.LightGray))).IsVisible = false;
-                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.GoalMap, new SolidBrush(Color.FromArgb(120, Color.Yellow))).IsVisible = false;
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.WallMap, new SolidBrush(Color.FromArgb(120, Color.Gray)));
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.FloorMap, new SolidBrush(Color.FromArgb(120, Color.Green)));
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.InitialCrateMap, new SolidBrush(Color.FromArgb(120, Color.Blue)));
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.DeadMap, new SolidBrush(Color.FromArgb(120, Color.Brown))).IsVisible = true;
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.BoundryMap, new SolidBrush(Color.FromArgb(120, Color.LightGray)));
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.GoalMap, new SolidBrush(Color.FromArgb(120, Color.Yellow)));
                     bitmapViewerStatic.SetLayer(controller.StaticAnalysis.CornerMap, new SolidBrush(Color.FromArgb(120, Color.Pink)));
                     bitmapViewerStatic.SetLayer(controller.StaticAnalysis.RecessMap, new SolidBrush(Color.FromArgb(120, Color.Cyan)));
 
+                    bitmapViewerStatic.SetLayer(controller.StaticAnalysis.RoomAnalysis.DoorBitmap, new SolidBrush(Color.FromArgb(120, Color.Khaki)));
+                    foreach (Room room in controller.StaticAnalysis.RoomAnalysis.Rooms)
+                    {
+                        bitmapViewerStatic.SetLayer(room, new SolidBrush(Color.FromArgb(120, Color.LightCyan)));    
+                    }
+
                     BitmapViewer.Layer weightLayer = new BitmapViewer.Layer();
                     weightLayer.Order = 10;
-                    weightLayer.IsVisible = true;
                     weightLayer.Matrix = controller.StaticAnalysis.StaticForwardCrateWeighting;
                     weightLayer.Name = "Weightings";
                     weightLayer.Brush = new SolidBrush(Color.FromArgb(200, Color.Pink));
@@ -336,19 +361,19 @@ namespace SokoSolve.UI.Section.Solver
                 puzzleLayer.Map = build;
                 puzzleLayer.Order = 0;
                 puzzleLayer.IsVisible = true;
-                bitmapViewerNodeMaps.SetLayer(puzzleLayer);
+                bitmapViewerNodeMaps.SetLayer(puzzleLayer).IsVisible = true;
             }
 
 
             if (solverNode.MoveMap != null)
             {
                 SolverBitmap move = new SolverBitmap("MoveMap", solverNode.MoveMap);
-                bitmapViewerNodeMaps.SetLayer(move, new SolidBrush(Color.FromArgb(120, Color.Green)));
+                bitmapViewerNodeMaps.SetLayer(move, new SolidBrush(Color.FromArgb(120, Color.Green))).IsVisible = true;
             }
 
             if (solverNode.DeadMap != null)
             {
-                bitmapViewerNodeMaps.SetLayer(solverNode.DeadMap, new SolidBrush(Color.FromArgb(120, Color.Black)));
+                bitmapViewerNodeMaps.SetLayer(solverNode.DeadMap, new SolidBrush(Color.FromArgb(120, Color.Black))).IsVisible = true;
             }
 
 

@@ -24,17 +24,36 @@ namespace SokoSolve.Console
                return -1;
            }
 
-           System.Console.WriteLine("Console is not implemented.");
+           try
+           {
+               switch (args[0].ToUpper())
+               {
+                   case("REPORT") :
+                       ConsoleReport.Execute(args);
+                       break;
+
+                   default:
+                       DisplayHelp();
+                       break;
+               }
+               
+           }
+           catch (Exception ex)
+           {
+               System.Console.WriteLine("FAILED" + ex.Message);
+               return -1;
+           }
+           
            return 0;
         }
 
         private static void DisplayHelp()
         {
             System.Console.WriteLine(@"Available commands are:
-LIST - Usage: List <Library.ssx> - Provides a simple list of puzzle IDs and Names
-REPORT - Usage: REPORT <*.ssx> - Generates an HTML report of puzzles with inline images
-IMPORT - Usage: IMPORT <Source.xsb|*.xsb> <Target.ssx> - Import one or many sokoban puzzles
-SOLVE - Usage: SOLVE <Library.ssx> <PuzzleID|StartPuzzleID-EndPuzzleID> maxTime=X maxNode=X maxItt=X maxDepth=X Save=<Yes|No> ReportXML=<Report.XML> ReportHTML=<Report.HTML>");
+LIST - List <Library.ssx> - Provides a simple list of puzzle IDs and Names
+REPORT - REPORT <*.ssx> <destination_directory> - Generates an HTML report of puzzles with inline images
+IMPORT - IMPORT <Source.xsb|*.xsb> <Target.ssx> - Import one or many sokoban puzzles
+SOLVE - SOLVE <Library.ssx> <PuzzleID|StartPuzzleID-EndPuzzleID> -maxTime=X -maxNode=X -maxItt=X -maxDepth=X -Save=<Yes|No> -ReportXML=<Report.XML> -ReportHTML=<Report.HTML>");
 
         }
     }

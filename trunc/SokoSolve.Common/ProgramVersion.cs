@@ -12,7 +12,7 @@ namespace SokoSolve.Common
         /// <returns></returns>
         public static string VersionString
         {
-            get { return "1.3.45-beta"; }
+            get { return "1.3.50-beta"; }
         }
     }
 }
