@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using SokoSolve.Common.Structures;
 using SokoSolve.Common.Structures.Evaluation;
 
@@ -27,23 +28,42 @@ namespace SokoSolve.Core.Analysis.Solver
         #endregion
 
         private SolverController controller;
-        private LinkedList<INode<SolverNode>> evalLinkedList;
-        private List<INode<SolverNode>> evalList;
-        private EvalStatus exitStatus;
+        private ReaderWriterLock readWriteLock;
+        private IDDFSItterator<SolverNode> innerItterator;
         private ItteratorExit status;
-        private bool useLinked = true;
-        private bool locked = false;
+        private EvalStatus exitStatus;
 
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        /// <param name="controller"></param>
         public SolverItterator(SolverController controller)
         {
-            evalList = new List<INode<SolverNode>>(10000);
-            evalLinkedList = new LinkedList<INode<SolverNode>>();
-
-            useLinked = true;
-
             this.controller = controller;
+            innerItterator = new IDDFSItterator<SolverNode>(GetSolverNodeDepth, CompareNodes);
+            innerItterator.ExitConditions = controller.ExitConditions;
+            
         }
 
+        public ItteratorExitConditions ExitConditions
+        {
+            get { return innerItterator.ExitConditions;  }
+            set { innerItterator.ExitConditions = value; }
+        }
+
+        /// <summary>
+        /// Return a SolverNodes depth
+        /// </summary>
+        /// <param name="EvalNode"></param>
+        /// <returns></returns>
+        private int GetSolverNodeDepth(INode<SolverNode> EvalNode)
+        {
+            return EvalNode.Data.TreeNode.Depth;
+        }
+
+        /// <summary>
+        /// Itterator Exit Status (additional to EvalStatus)
+        /// </summary>
         public ItteratorExit Status
         {
             get { return status; }
@@ -70,72 +90,16 @@ namespace SokoSolve.Core.Analysis.Solver
                 return null;
             }
 
-            // Max Time
-            if ((int) controller.Stats.CurrentEvalSecs.ValueTotal >= controller.ExitConditions.MaxTimeSecs)
-            {
-                exitStatus = EvalStatus.ExitIncomplete;
-                EvalStatus = exitStatus;
-                status = ItteratorExit.MaxTimeExceeded;
-                controller.DebugReport.AppendTimeStamp("Exiting - Max Time exceeded");
-                return null;
-            }
-
-            // Max Depth
-            if ((int) controller.Stats.MaxDepth.ValueTotal >= controller.ExitConditions.MaxDepth)
-            {
-                exitStatus = EvalStatus.ExitIncomplete;
-                EvalStatus = exitStatus;
-                controller.DebugReport.AppendTimeStamp("Exiting - Max Depth exceeded");
-                status = ItteratorExit.MaxDepthExceeded;
-                return null;
-            }
-
-            // Max itterations
-            if (controller.Stats.EvaluationItterations.ValueTotal >= controller.ExitConditions.MaxItterations)
-            {
-                exitStatus = EvalStatus.ExitIncomplete;
-                EvalStatus = exitStatus;
-                status = ItteratorExit.MaxItteratorsExceeded;
-                controller.DebugReport.AppendTimeStamp("Exiting - Max Itterations exceeded");
-                return null;
-            }
-
             // INode<SolverNode> next = evalList[0];
-            INode<SolverNode> next = null;
-            if (useLinked)
+            INode<SolverNode> next = innerItterator.GetNext(out exitStatus);
+            if (next == null)
             {
-                if (evalLinkedList.First == null)
-                {
-                    exitStatus = EvalStatus.CompleteNoSolution;
-                    EvalStatus = exitStatus;
-                    status = ItteratorExit.EvalListEmpty;
-                    controller.DebugReport.AppendTimeStamp(
-                        "Exiting - Node worker list is empty. All possible moved exhausted?");
-                    return null;
-                }
-                next = evalLinkedList.First.Value;
-            }
-            else
-            {
-                if (evalList.Count == 0)
-                {
-                    exitStatus = EvalStatus.CompleteNoSolution;
-                    EvalStatus = exitStatus;
-                    status = ItteratorExit.EvalListEmpty;
-                    controller.DebugReport.AppendTimeStamp(
-                        "Exiting - Node worker list is empty. All possible moved exhausted?");
-                    return null;
-                }
-                next = evalList[0];
+                EvalStatus = exitStatus;
+                return null;
             }
 
+            // Updates stats
             controller.Stats.EvaluationItterations.Increment();
-
-
-            // Check max depth
-            int currDepth = next.Data.TreeNode.Depth;
-            if (currDepth > (int) controller.Stats.MaxDepth.ValueTotal)
-                controller.Stats.MaxDepth.ValueTotal = currDepth;
 
             // Exit
             EvalStatus = exitStatus;
@@ -149,52 +113,11 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <param name="NewEvalNode"></param>
         public void Add(INode<SolverNode> NewEvalNode)
         {
+            controller.Stats.AvgEvalList.Increment();
 
-            while (locked) ;
-
-                controller.Stats.AvgEvalList.Increment();
-
-                if (useLinked)
-                {
-                    if (evalLinkedList.First == null)
-                    {
-                        // First
-                        evalLinkedList.AddFirst(NewEvalNode);
-                    }
-                    else
-                    {
-                        LinkedListNode<INode<SolverNode>> current = evalLinkedList.First;
-                        while (current != null && CompareNodes(NewEvalNode, current.Value) > 0)
-                        {
-                            current = current.Next;
-                        }
-                        if (current == null)
-                        {
-                            // Last
-                            evalLinkedList.AddLast(NewEvalNode);
-                        }
-                        else
-                        {
-                            evalLinkedList.AddBefore(current, NewEvalNode);
-                        }
-                    }
-
-                    // This implementation does not garentee sortedness, as the wieghting value may change after added
-                    // As a work-around we should sort the list ever 100 (or some other number) of itterations
-                    if (controller.Stats.AvgEvalList.ValueTotal%100 == 0)
-                    {
-                        INode<SolverNode>[] tmp = new INode<SolverNode>[evalLinkedList.Count];
-                        evalLinkedList.CopyTo(tmp, 0);
-                        Array.Sort(tmp, CompareNodes);
-                        evalLinkedList = new LinkedList<INode<SolverNode>>(tmp);
-                    }
-                }
-                else
-                {
-                    evalList.Add(NewEvalNode);
-                    evalList.Sort(CompareNodes);
-                }
-            
+            //readWriteLock.AcquireWriterLock(1000);
+            innerItterator.Add(NewEvalNode);
+            //readWriteLock.ReleaseWriterLock();    
         }
 
 
@@ -206,14 +129,9 @@ namespace SokoSolve.Core.Analysis.Solver
         {
             controller.Stats.AvgEvalList.Decrement();
 
-            if (useLinked)
-            {
-                evalLinkedList.Remove(EvalNode);
-            }
-            else
-            {
-                evalList.Remove(EvalNode);
-            }
+            //readWriteLock.AcquireWriterLock(1000);
+            innerItterator.Remove(EvalNode);
+            //readWriteLock.ReleaseWriterLock();    
         }
 
 
@@ -223,29 +141,7 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <returns>A copy of the nodes</returns>
         public List<INode<SolverNode>> GetEvalList()
         {
-            try
-            {
-                locked = true;
-
-                if (useLinked)
-                {
-                    List<INode<SolverNode>> tmp = new List<INode<SolverNode>>();
-                    foreach (INode<SolverNode> node in evalLinkedList)
-                    {
-                        tmp.Add(node);
-                    }
-                    return tmp;
-                }
-                else
-                {
-                    return new List<INode<SolverNode>>(evalList);
-                }
-            }
-            finally
-            {
-                locked = false;
-            }
-            
+            return null;
         }
 
         #endregion

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SokoSolve.Common.Math;
+using SokoSolve.Common.Structures;
 using SokoSolve.Core.Analysis.Solver;
 
 namespace SokoSolve.Test.Common
@@ -19,7 +20,7 @@ namespace SokoSolve.Test.Common
 
             Console.WriteLine(mm.ToString());
 
-            mm = mm.Average();
+            mm = mm.Average(new Bitmap(5,5));
 
             Console.WriteLine(mm.ToString());
 

@@ -38,7 +38,7 @@ namespace SokoSolve.Core.Analysis.Solver
             debugReport.Append("Creating Statistics");
             stats = new SolverStats(this);
             debugReport.Append("Creating Exit Conditions");
-            exitConditions = new ExitConditions();
+            exitConditions = new ItteratorExitConditions();
 
 
             // TODO: This should be configured, perhaps via a factory pattern
@@ -120,7 +120,7 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <summary>
         /// The conditions under which the solver should exit without solution
         /// </summary>
-        public ExitConditions ExitConditions
+        public ItteratorExitConditions ExitConditions
         {
             get { return exitConditions; }
         }
@@ -528,7 +528,7 @@ namespace SokoSolve.Core.Analysis.Solver
 
         private SolverReport debugReport;
         private Evaluator<SolverNode> evaluator;
-        private ExitConditions exitConditions;
+        private ItteratorExitConditions exitConditions;
         private PuzzleMap puzzleMap;
         private SolverStats stats;
         private SolverStrategy strategy;

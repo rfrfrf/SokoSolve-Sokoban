@@ -27,6 +27,9 @@ namespace SokoSolve.Core.Analysis.Solver
             stats.Add(EvaluationItterations);
             stats.Add(Nodes);
             stats.Add(NodesPerSecond);
+            stats.Add(NodesFwd);
+            stats.Add(NodesRev);
+            
             stats.Add(Duplicates);
             stats.Add(DeadNodes);
             stats.Add(AvgEvalList);
@@ -93,6 +96,12 @@ namespace SokoSolve.Core.Analysis.Solver
                 txt.Add(stat.GetDisplayData());
             }
 
+            // Manual information
+            // Perfect (solution score)
+            SolverLabel man = new SolverLabel("Solution Fwd Score", controller.StaticAnalysis.SolutionScoreForward.ToString("0.00") , "");
+            txt.Add(man);
+
+
             // Manually add BestNodes
             string bestForward = StringHelper.Join<SolverNode>(BestNodesFwd, BestNodeToString, ", ");
             SolverLabel lb = new SolverLabel("Best Fwd Nodes", bestForward, "");
@@ -101,7 +110,6 @@ namespace SokoSolve.Core.Analysis.Solver
             string bestRev = StringHelper.Join<SolverNode>(BestNodesRev, BestNodeToString, ", ");
             SolverLabel lbRev = new SolverLabel("Best Rev Nodes", bestRev, "");
             txt.Add(lbRev);
-
 
             return txt;
         }

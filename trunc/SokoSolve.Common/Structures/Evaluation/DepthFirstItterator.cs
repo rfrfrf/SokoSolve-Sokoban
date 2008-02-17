@@ -8,53 +8,23 @@ namespace SokoSolve.Common.Structures.Evaluation
     /// High-speed, optimised, depth-first (deepest node first) Eval Strategy iterator
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class DepthFirstItterator<T> : IEvaluationStrategyItterator<T>
+    public class DepthFirstItterator<T> : BaseItterator<T>
     {
-        public DepthFirstItterator(GetDepthDelegate getDepth)
+        public DepthFirstItterator(GetDepthDelegate getDepth) : base(getDepth)
         {
-            GetDepth = getDepth;
-            evaluationList = new LinkedList<INode<T>>();
-            maxDepth = 100;
-            maxItterations = 1000;
-            currentMaxDepth = 0;
-            currentItteration = 0;
+            evaluationList = new PriorityWorkQueue<INode<T>>(CompareDepth);
         }
 
-        public DepthFirstItterator() : this(DefaultGetLocationNodeDepth)
+        private int CompareDepth(INode<T> lhs, INode<T> rhs)
         {
-        }
-
-        /// <summary>
-        /// Limit the maximum depth. Default is 100
-        /// </summary>
-        public int MaxDepth
-        {
-            get { return maxDepth; }
-            set { maxDepth = value; }
-        }
-
-        /// <summary>
-        /// Limit the number of search itterations. Default is 1000
-        /// </summary>
-        public int MaxItterations
-        {
-            get { return maxItterations; }
-            set { maxItterations = value; }
-        }
-
-        /// <summary>
-        /// Exit Status. <see cref="GetNext"/>
-        /// </summary>
-        public EvalStatus ExitStatus
-        {
-            get { return exitStatus; }
+            return GetDepth(lhs).CompareTo(GetDepth(rhs));
         }
 
         /// <summary>
         /// Get the next node to evaluate, based on depth-first.
         /// </summary>
         /// <returns></returns>
-        public virtual INode<T> GetNext(out EvalStatus Status)
+        public override  INode<T> GetNext(out EvalStatus Status)
         {
             if (evaluationList.Count == 0)
             {
@@ -62,24 +32,16 @@ namespace SokoSolve.Common.Structures.Evaluation
                 Status = exitStatus;
                 return null;
             }
-            if (currentMaxDepth > maxDepth)
+
+            INode<T> next = evaluationList.GetWorst();
+            if (CheckExitConditions(next, float.MinValue))
             {
                 exitStatus = EvalStatus.ExitIncomplete;
                 Status = exitStatus;
                 return null;
             }
-            if (currentItteration++ > maxItterations)
-            {
-                exitStatus = EvalStatus.ExitIncomplete;
-                Status = exitStatus;
-                return null;
-            }
 
-            INode<T> next = evaluationList.Last.Value;
-
-            int nextDepth = GetDepth(next);
-            if (nextDepth > currentMaxDepth) currentMaxDepth = nextDepth;
-
+            exitStatus = EvalStatus.InProgress;
             Status = exitStatus;
             return next;
         }
@@ -88,59 +50,28 @@ namespace SokoSolve.Common.Structures.Evaluation
         /// Add another node to evaluate
         /// </summary>
         /// <param name="NewEvalNode"></param>
-        public virtual void Add(INode<T> NewEvalNode)
+        public override void Add(INode<T> NewEvalNode)
         {
-            if (evaluationList.Count == 0)
-            {
-                evaluationList.AddFirst(NewEvalNode);
-                return;
-            }
-
-            if (evaluationList.Contains(NewEvalNode)) return;
-
-            LinkedListNode<INode<T>> current = evaluationList.First;
-            while (current != null)
-            {
-                if (GetDepth(NewEvalNode) < GetDepth(current.Value))
-                {
-                    evaluationList.AddBefore(current, NewEvalNode);
-                    return;
-                }
-
-                current = current.Next;
-            }
-
-            evaluationList.AddLast(NewEvalNode);
+            evaluationList.Add(NewEvalNode);
         }
 
         /// <summary>
         /// Return a copy of the evaluation list
         /// </summary>
         /// <returns></returns>
-        public List<INode<T>> GetEvalList()
+        public override  List<INode<T>> GetEvalList()
         {
-            return new List<INode<T>>(evaluationList);
+            throw new NotImplementedException();
         }
 
         /// <summary>
         /// Remove a node (it has been evaluated)
         /// </summary>
         /// <param name="EvalNode"></param>
-        public virtual void Remove(INode<T> EvalNode)
+        public override void Remove(INode<T> EvalNode)
         {
             evaluationList.Remove(EvalNode);
         }
-
-        private static int DefaultGetLocationNodeDepth(INode<T> node)
-        {
-            TreeNode<T> upcast = node as TreeNode<T>;
-            if (upcast == null) return 0;
-            return upcast.Depth;
-        }
-
-        public delegate int GetDepthDelegate(INode<T> EvalNode);
-
-        public GetDepthDelegate GetDepth;
 
         public override string ToString()
         {
@@ -148,12 +79,8 @@ namespace SokoSolve.Common.Structures.Evaluation
                 this.GetType().Name, evaluationList.Count, exitStatus, currentItteration, currentMaxDepth);
         }
 
-        protected LinkedList<INode<T>> evaluationList;
-        protected int maxDepth;
-        protected int maxItterations;
-        protected int currentMaxDepth;
-        protected int currentItteration;
-        protected EvalStatus exitStatus;
+        protected PriorityWorkQueue<INode<T>> evaluationList;
+       
        
     }
 }

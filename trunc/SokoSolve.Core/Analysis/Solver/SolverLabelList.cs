@@ -5,6 +5,9 @@ using SokoSolve.Common;
 
 namespace SokoSolve.Core.Analysis.Solver
 {
+    /// <summary>
+    /// A simple list of name/value human readable values
+    /// </summary>
     public class SolverLabelList : List<SolverLabel>
     {
         public SolverLabel Add(string name, string value)
@@ -100,7 +103,7 @@ namespace SokoSolve.Core.Analysis.Solver
             else
             {
                 if (tableClass == null) tableClass = "tableinfo";
-                sb.AppendFormat("<table style=\"{0}\">\n", tableClass);   
+                sb.AppendFormat("<table class=\"{0}\">\n", tableClass);   
             }
             
             foreach (SolverLabel label in this)

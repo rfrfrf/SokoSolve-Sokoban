@@ -15,6 +15,8 @@ namespace SokoSolve.Core.UI.Nodes.Specific
 
         public override void Render()
         {
+            return;
+
             string text = string.Format("??.? fps, mouse:{0}, step:{1}", 
                     GameUI.Cursor == null ? "" : GameUI.Cursor.CurrentAbsolute.ToString()
                 , GameUI.StepCurrent);

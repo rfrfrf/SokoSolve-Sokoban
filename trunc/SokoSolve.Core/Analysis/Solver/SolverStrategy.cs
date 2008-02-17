@@ -76,7 +76,7 @@ namespace SokoSolve.Core.Analysis.Solver
             root.Weighting = rootWeighting;
             root.PlayerPosition = SokobanMap.Player;
             root.MoveDirection = Direction.None;
-            root.CrateMap = StaticAnalysis.InitialCrateMap;
+            root.CrateMap = StaticAnalysis.InitialCrateMap;            
 
             return root;
         }
@@ -99,6 +99,8 @@ namespace SokoSolve.Core.Analysis.Solver
         public override EvalStatus EvaluateState(INode<SolverNode> node)
         {
             controller.Stats.Nodes.AddMeasure(1f);
+            controller.Stats.NodesFwd.AddMeasure(1f);
+            
             controller.Stats.NodesPerSecond.AddMeasure(1f);
 
             // Check if this is a solution
@@ -265,7 +267,7 @@ namespace SokoSolve.Core.Analysis.Solver
                 if (node.MoveMap != null) weighting += node.CrateMap.BitwiseAND(StaticAnalysis.GoalMap).Count * 0.3f;
 
                 // Tree related datd
-                if (node.TreeNode != null)
+                if (false) // node.TreeNode != null)
                 {
                     // Add a depth weight
                     weighting += node.TreeNode.Depth * -0.3f;

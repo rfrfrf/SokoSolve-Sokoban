@@ -61,7 +61,7 @@ namespace SokoSolve.UI.Section.Solver
                 
                 return new Pen(Color.White, 1f);
             }
-            return new Pen(Color.LightGray, 1f);
+            return new Pen(Color.Black, 1f);
         }
 
         public Brush GetBrush(TreeNode<SolverNode> node)
@@ -87,7 +87,7 @@ namespace SokoSolve.UI.Section.Solver
                         // Convert to RGB
                         int r = 0, g = 0, b = 0;
 
-                        g = colourIndex;
+                        g = colourIndex % 255;
 
                         return new SolidBrush(Color.FromArgb(r, g, b));
 
@@ -107,7 +107,7 @@ namespace SokoSolve.UI.Section.Solver
                         return new SolidBrush(Color.LightPink);
                 }
             }
-            return new SolidBrush(Color.Purple);
+            return new SolidBrush(Color.Black);
         }
     }
 }

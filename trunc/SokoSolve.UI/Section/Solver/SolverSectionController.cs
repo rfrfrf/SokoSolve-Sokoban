@@ -454,9 +454,9 @@ namespace SokoSolve.UI.Section.Solver
                 {
                     workItem.Controller = new SolverController(workItem.Map);
                     workItem.Controller.Settings.UseReverseSolver = solverSettings1.cbUseReverseSolver.Checked;
-                    workItem.Controller.ExitConditions.StopOnSolution = exitConditions1.cbStopOnSolution.Checked;
+                    //workItem.Controller.ExitConditions.StopOnSolution = exitConditions1.cbStopOnSolution.Checked;
                     workItem.Controller.ExitConditions.MaxDepth = (int) exitConditions1.upMaxDepth.Value;
-                    workItem.Controller.ExitConditions.MaxNodes = (int) exitConditions1.upMaxNodes.Value;
+                    //workItem.Controller.ExitConditions.MaxNodes = (int) exitConditions1.upMaxNodes.Value;
                     workItem.Controller.ExitConditions.MaxItterations = (int) exitConditions1.upMaxItter.Value;
                     workItem.Controller.ExitConditions.MaxTimeSecs = (int) (exitConditions1.upMaxTime.Value*60);
                     this.Invoke(new SimpleDelegate(ProcessWorkerListItemUpdate));

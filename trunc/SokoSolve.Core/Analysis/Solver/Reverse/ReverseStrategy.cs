@@ -135,6 +135,7 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
         public override EvalStatus EvaluateState(INode<SolverNode> node)
         {
             controller.Stats.Nodes.AddMeasure(1f);
+            controller.Stats.NodesRev.AddMeasure(1f);
             controller.Stats.NodesPerSecond.AddMeasure(1f);
 
             // Check if this is a solution

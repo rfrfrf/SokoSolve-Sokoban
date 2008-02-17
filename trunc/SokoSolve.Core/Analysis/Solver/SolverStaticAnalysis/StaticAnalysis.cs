@@ -73,7 +73,7 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
             staticReverseCrateWeighting = new Matrix(initialCrateMap, 10f);
 
             // Average
-            staticReverseCrateWeighting = staticReverseCrateWeighting.Average();
+            staticReverseCrateWeighting = staticReverseCrateWeighting.Average(boundryMap);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
             Bitmap cornerGoals = goalMap.BitwiseAND(cornerMap);
             staticForwardCrateWeighting = staticForwardCrateWeighting.Add(new Matrix(cornerGoals, 33f));
 
-            staticForwardCrateWeighting = staticForwardCrateWeighting.Average();
+            staticForwardCrateWeighting = staticForwardCrateWeighting.Average(boundryMap);
 
             // No crates will ever get onto a dead piece, but this will make the area around a dead cell less likely to be filled by crates
             staticForwardCrateWeighting = staticForwardCrateWeighting.Add(new Matrix(deadMap, -5f));
@@ -261,6 +261,19 @@ namespace SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis
         public Matrix StaticForwardCrateWeighting
         {
             get { return staticForwardCrateWeighting; }
+        }
+
+        /// <summary>
+        /// Calculate the solution (perfect) score from the StaticForwardCrateWeighting
+        /// </summary>
+        public float SolutionScoreForward
+        {
+            get
+            {
+                Matrix perfect = new Matrix(controller.StaticAnalysis.GoalMap, 1f);
+                perfect = perfect.Multiply(controller.StaticAnalysis.StaticForwardCrateWeighting);
+                return perfect.Total();
+            }
         }
 
         /// <summary>

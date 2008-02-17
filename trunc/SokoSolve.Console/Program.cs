@@ -14,7 +14,7 @@ namespace SokoSolve.Console
 
         public static int Main(string[] args)
         {
-            System.Console.WriteLine(" SokoSolve Console - " + ProgramVersion.VersionString);
+            System.Console.WriteLine(" SokoSolve Console | " + ProgramVersion.VersionString);
             System.Console.WriteLine("============================================");
             System.Console.WriteLine("");
 
@@ -29,7 +29,8 @@ namespace SokoSolve.Console
                switch (args[0].ToUpper())
                {
                    case("REPORT") :
-                       ConsoleReport.Execute(args);
+                       ConsoleReport report = new ConsoleReport();
+                       report.Execute(args);
                        break;
 
                    default:

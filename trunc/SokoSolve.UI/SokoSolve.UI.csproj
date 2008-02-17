@@ -443,6 +443,8 @@
     <None Include="Content\html\ReadMe.rtf" />
     <Content Include="Content\Graphics\Icons\Stop.png" />
     <Content Include="Content\Graphics\Icons\Refresh.png" />
+    <Content Include="Content\html\images\ExtLink.gif" />
+    <Content Include="Content\html\images\LibraryOpen.png" />
     <Content Include="Content\Libraries\Mas Microban.ssx" />
     <Content Include="Content\Libraries\SasquatchIII.ssx" />
     <Content Include="Content\Libraries\SasquatchIV.ssx" />

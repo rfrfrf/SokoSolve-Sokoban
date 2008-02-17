@@ -102,7 +102,8 @@ namespace SokoSolve.UI
                         libControl.Refresh();
                         break;
                     case (Modes.Game):
-                 
+
+                        FullscreenMode.SetWinFullScreen(this.FindForm().Handle);
                         gameControl.Visible = true;
                         gameControl.Focus();
                         break;

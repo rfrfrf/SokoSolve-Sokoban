@@ -165,13 +165,27 @@ namespace SokoSolve.UI.Section.Solver
             lp4.Label = "Dead";
             surface.Add(lp4);
 
-          
+         
 
             LinePlot lp6 = new LinePlot();
             lp6.DataSource = controller.Stats.AvgEvalList.History;
             lp6.Pen = new Pen(Color.Brown, 1.3f);
             lp6.Label = "Eval List";
             surface.Add(lp6);
+
+            LinePlot lp7 = new LinePlot();
+            lp7.DataSource = controller.Stats.NodesFwd.History;
+            lp7.Pen = new Pen(Color.Brown, 1.0f);
+            lp7.Pen.DashStyle = DashStyle.Dash;
+            lp7.Label = "Nodes Fwd";
+            surface.Add(lp7);
+
+            LinePlot lp8 = new LinePlot();
+            lp8.DataSource = controller.Stats.NodesRev.History;
+            lp8.Pen = new Pen(Color.Cyan, 1.0f);
+            lp8.Pen.DashStyle = DashStyle.Dash;
+            lp8.Label = "Nodes Rev";
+            surface.Add(lp8);
 
             surface.XAxis1.Label = "Elapsed Time (sec)";
             surface.YAxis1.Label = "Total";            
@@ -201,16 +215,18 @@ namespace SokoSolve.UI.Section.Solver
         /// </summary>
         private void UpdateStatus()
         {
+            // Clear existing report text
             richTextBoxSolverReport.Clear();
-
-            
 
             if (controller != null && controller.Strategy != null && controller.StaticAnalysis != null)
             {
+                // Draw the graphs
                 UpdateGraph();
 
+                // Show debug text
                 richTextBoxSolverReport.Text = controller.DebugReport.ToString(new DebugReportFormatter());
 
+                // Static bitmaps
                 if (!bitmapViewerStatic.HasLayers)
                 {
                     SokobanMap build = BuildCurrentMap(controller.Strategy.EvaluationTree.Root.Data);
@@ -249,7 +265,7 @@ namespace SokoSolve.UI.Section.Solver
                     bitmapViewerStatic.Render();
                 }
 
-
+                // Forward Tree
                 if (controller.Strategy.EvaluationTree != null)
                 {
                     treeViewer.Init(controller);
@@ -257,6 +273,7 @@ namespace SokoSolve.UI.Section.Solver
                     treeViewer.Render();
                 }
 
+                // Reverse Tree
                 if (controller.ReverseStrategy != null && controller.ReverseStrategy.EvaluationTree != null)
                 {
                     TreeVisualisation tresVisRev = new TreeVisualisation(controller.ReverseStrategy.EvaluationTree,
@@ -265,17 +282,10 @@ namespace SokoSolve.UI.Section.Solver
                     visualisationContainerReverseTree.Visualisation = tresVisRev;
                     visualisationContainerReverseTree.Render();
                 }
-            }
 
-            // Stats
-            if (controller != null && controller.Strategy != null)
-            {
+                // Stats
                 SolverLabelList txt = controller.Stats.GetDisplayData();
-                if (txt == null)
-                {
-                    
-                }
-                else
+                if (txt != null)
                 {
                     ReportXHTML reportCurrent = new ReportXHTML("Node Details");
                     reportCurrent.SetCSSInline(FileManager.getContent("$html\\style.css"));

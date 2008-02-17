@@ -195,8 +195,9 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <summary>
         /// Average the Matrix values in generations
         /// </summary>
+        /// <param name="VoidCells">Positions that are not include (null/void/zero) in the average process</param>
         /// <returns></returns>
-        public Matrix Average()
+        public Matrix Average(Bitmap VoidCells)
         {
             // Clone
             Matrix result = new Matrix(this);
@@ -215,6 +216,9 @@ namespace SokoSolve.Core.Analysis.Solver
                 for (int ccx = 0; ccx < Width; ccx++)
                 for (int ccy = 0; ccy < Height; ccy++)
                 {
+                    // Skip void cells
+                    if (VoidCells[ccx, ccy]) continue;
+
                     if (currentValues[ccx,ccy] == false)
                     {
                         // Not set
@@ -252,44 +256,45 @@ namespace SokoSolve.Core.Analysis.Solver
                             count++;
                         }
 
-                        // Top Left
-                        if (ccx - 1 > 0 && ccy-1 > 0 && currentValues[ccx - 1, ccy-1])
+                        if (false)
                         {
-                            total += result[ccx - 1, ccy - 1];
-                            count++;
+                            // Top Left
+                            if (ccx - 1 > 0 && ccy - 1 > 0 && currentValues[ccx - 1, ccy - 1])
+                            {
+                                total += result[ccx - 1, ccy - 1];
+                                count++;
+                            }
+
+
+                            // Top Right
+                            if (ccx + 1 < Width && ccy - 1 > 0 && currentValues[ccx + 1, ccy - 1])
+                            {
+                                total += result[ccx + 1, ccy - 1];
+                                count++;
+                            }
+
+
+                            // Bottom Left
+                            if (ccx - 1 > 0 && ccy + 1 < Height && currentValues[ccx - 1, ccy + 1])
+                            {
+                                total += result[ccx - 1, ccy + 1];
+                                count++;
+                            }
+
+
+                            // Bottom Right
+                            if (ccx + 1 < Width && ccy + 1 < Height && currentValues[ccx + 1, ccy + 1])
+                            {
+                                total += result[ccx + 1, ccy + 1];
+                                count++;
+                            }
                         }
 
-
-                        // Top Right
-                        if (ccx + 1 < Width && ccy-1 > 0&& currentValues[ccx + 1, ccy-1])
-                        {
-                            total += result[ccx + 1, ccy - 1];
-                            count++;
-                        }
-
-
-                        // Bottom Left
-                        if (ccx - 1 > 0 && ccy + 1 < Height &&  currentValues[ccx-1, ccy + 1])
-                        {
-                            total += result[ccx - 1, ccy + 1];
-                            count++;
-                        }
-
-
-                        // Bottom Right
-                        if (ccx + 1 < Width && ccy + 1 < Height && currentValues[ccx + 1, ccy + 1])
-                        {
-                            total += result[ccx + 1, ccy + 1];
-                            count++;
-                        }
-                        
-
-                        
 
                         if (count > 0)
                         {
                             valueSet = true;
-                            result[ccx, ccy] = total/count/2;
+                            result[ccx, ccy] = total/count/3f;
                             nextValues[ccx, ccy] = true;
                         }   
                     }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using SokoSolve.Common;
 using SokoSolve.Core;
 using SokoSolve.Core.Reporting;
+using SokoSolve.Core.UI;
 
 namespace SokoSolve.UI.Section.Library
 {

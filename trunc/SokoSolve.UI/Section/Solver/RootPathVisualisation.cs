@@ -273,8 +273,23 @@ namespace SokoSolve.UI.Section.Solver
             {
                 graphics.DrawRectangle(new Pen(Color.Yellow, 2f), region.ToDrawingRect());
             }
+
+            // ID and Weighting text
+            graphics.DrawString(node.Weighting.ToString("0"), font, brushShaddow, region.TopLeft.Add(1,1).ToPoint());
+            graphics.DrawString(node.Weighting.ToString("0"), font, brush, region.TopLeft.ToPoint());
+
+            if (false)
+            {
+                // Show ID below
+                graphics.DrawString(node.NodeID, font, brushShaddow, region.TopLeft.X + 1, region.TopLeft.Y + 9);
+                graphics.DrawString(node.NodeID, font, brush, region.TopLeft.X, region.TopLeft.Y + 8);
+            }
+            
         }
 
+        private static Font font = new Font("Arial Narrow", 8f, FontStyle.Bold);
+        private static Brush brush = new SolidBrush(Color.Yellow);
+        private static Brush brushShaddow = new SolidBrush(Color.Black);
     
     }
 }
