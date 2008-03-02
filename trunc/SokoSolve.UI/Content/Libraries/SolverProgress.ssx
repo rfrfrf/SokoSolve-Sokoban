@@ -69,7 +69,7 @@
 
 Added lost of space to make the search slower.</Description>
         <Comments />
-        <Author Name="" Email="" Homepage="" />
+        <Author Name="SokoSolve" Email="" Homepage="" />
       </PuzzleDescription>
       <Maps>
         <Map MapID="M3">
@@ -398,7 +398,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="157.9" PuzzleID="P7" CategoryREF="C4" Order="6">
+    <Puzzle Rating="157.9" PuzzleID="P7" CategoryREF="C3" Order="6">
       <PuzzleDescription>
         <Name>Bob's Cottage</Name>
         <Description />
@@ -428,6 +428,33 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
               <SolutionDescription Date="2007-12-21T21:27:36.797703+02:00">
                 <Name>Solution</Name>
                 <Comments>Solution found from game player.</Comments>
+              </SolutionDescription>
+            </Solution>
+            <Solution StartX="11" StartY="1">
+              <Steps>dddlludrullllluulldrurrdulldrddluruulldrdrrrrldlulluurdurrdllrdddduurudlddrdlluldurruuurrrllluullldrddrluurdrdulldrurrrrdrrulllllldluruulldrurdldrrrrldldduuuluurrdluldrddrudlddrdluuuuullddruruldrrrrdrrullllluullldrurrddldlurruurdldrrldldddluruuulldrurddduuuuulldrddluruulldrddrrddldluldurrruuulluurdldrdrddrdllllullddrulurrrdrruuuluurddddrdllllullddrulurrdrrruuuurrrdrrulllldlluurdddduuurrrrruulldurrddllllluurdlddddrdllruuuuldrdddlllullddrurrrruuulludrrruluullldrdrrrrrrruldllllululdurrrdldrdllluruulldrrurdddduurrrdruruulldurrddllllldluruldrrrrrruldllluulllldrrrdrrrruuldrdllldluluurrdllddrdduuuuulldrddrddrdluuurudllluruulldrddrrdddlruuuuulurrdulllldrurdrdrullldrdrdddllrruuuurrlululdrdrrrdrulllullldrdrurrrrruldlllulldrrrrruuldrdllluullldrddrurullddrdddlllrrruuuuuullldrurrdddllurruuldulldrddrrdddllllrrrruuulluurlddruluurrdlddruddddlllldlurrrrruuuuluuldurrddldluruulldrdrrduuuldrdddullurrdrudlddrdluuuuuurdldrrrdrurululdrdllldlurullddrdddlruuuuuullldrurdrdddddllrruuuuldrdddlllrrruuulluruulldrrurdddddrdlll</Steps>
+              <SolutionDescription Date="2008-02-17T18:07:58.8520585+02:00">
+                <Name>SokoSolve Solution</Name>
+                <Description>Evaluation Total Seconds : 161 sec
+Evaluation Time : 0.000 sec
+Evaluation Itterations : 773675 nodes
+Total Nodes : 565484 nodes
+Node per second : avg 2208.6, last 2324 
+Total Forward Nodes : 295747 nodes
+Total Reverse Nodes : 269739 nodes
+Duplicates : 333646 nodes
+DeadNodes : 221230 nodes
+Eval Worker List : 220922
+Weighting Min : 0
+Weighting Max : 384
+Weighting Avg : 142.13 avg.
+Hints Uses : 7318 hits
+Max Depth : 0
+Solution Fwd Score : 506.00 
+Best Fwd Nodes : &lt;a href="app://node/F167975"&gt;&lt;b&gt;379.70&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F167816"&gt;&lt;b&gt;378.35&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F169857"&gt;&lt;b&gt;378.35&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F166040"&gt;&lt;b&gt;377.89&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F167438"&gt;&lt;b&gt;377.89&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F167027"&gt;&lt;b&gt;377.89&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F169456"&gt;&lt;b&gt;377.89&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F166042"&gt;&lt;b&gt;377.74&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F166270"&gt;&lt;b&gt;377.74&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F166864"&gt;&lt;b&gt;377.74&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F169859"&gt;&lt;b&gt;377.74&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F170840"&gt;&lt;b&gt;377.74&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F166045"&gt;&lt;b&gt;377.69&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F166476"&gt;&lt;b&gt;377.69&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F170380"&gt;&lt;b&gt;377.69&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F166274"&gt;&lt;b&gt;377.68&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F166657"&gt;&lt;b&gt;377.68&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F166475"&gt;&lt;b&gt;377.67&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F167815"&gt;&lt;b&gt;367.48&lt;/b&gt;&lt;/a&gt;, &lt;a href="app://node/F166651"&gt;&lt;b&gt;366.12&lt;/b&gt;&lt;/a&gt; 
+Best Rev Nodes : &lt;a href="app://node/R0"&gt;&lt;b&gt;506.00&lt;/b&gt;&lt;/a&gt; 
+Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running Microsoft Windows NT 6.0.6000.0.
+</Description>
+                <Author />
               </SolutionDescription>
             </Solution>
           </Solutions>
@@ -818,7 +845,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
         </Map>
       </Maps>
     </Puzzle>
-    <Puzzle Rating="107.5" PuzzleID="P25" CategoryREF="C5" Order="15">
+    <Puzzle Rating="107.5" PuzzleID="P25" CategoryREF="C3" Order="15">
       <PuzzleDescription>
         <Name>Tepid Blanket</Name>
         <Description />

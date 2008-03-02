@@ -10,8 +10,13 @@ namespace SokoSolve.Core.Analysis.Solver
     /// <summary>
     /// Provide advanced (high-speed) thread safe acess to large number of SolverNodes.
     /// This class will be used to drive the duplicate and forward/reverse chain checks.
-    /// This class must be thread safe
+    /// This class must be thread safe.
     /// </summary>
+    /// <remarks>
+    /// Implemented a HashTable lookup which allows multiple items per hash value.
+    /// A very fast collection. 
+    /// Not sorted.
+    /// </remarks>
     public class SolverNodeCollection : ICollection<SolverNode>
     {
         public SolverNodeCollection()

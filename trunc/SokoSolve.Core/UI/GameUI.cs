@@ -2,6 +2,7 @@ using System;
 using System.Collections.Specialized;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -43,7 +44,7 @@ namespace SokoSolve.Core.UI
             StepCurrent = 0;
 
             ResourceFactory = ResourceController.Singleton.GetInstance("Default.GameTiles");
-            GameCoords.GlobalTileSize = new SizeInt(32, 32);
+            GameCoords.GlobalTileSize = new SizeInt(48, 48);
            
             nodes = new List<NodeBase>();
             nodesToRemove = new List<NodeBase>();
@@ -77,11 +78,75 @@ namespace SokoSolve.Core.UI
             StepCurrent = 0;
 
             ResourceFactory = ResourceController.Singleton.GetInstance("Default.GameTiles");
-            GameCoords.GlobalTileSize = new SizeInt(32, 32);
+            GameCoords.GlobalTileSize = new SizeInt(48, 48);
 
             nodes = new List<NodeBase>();
             nodesToRemove = new List<NodeBase>();
             nodesToAdd = new List<NodeBase>();
+        }
+
+        /// <summary>
+        /// Provide access to coordinate-calculation information
+        /// </summary>
+        public GameCoords GameCoords
+        {
+            get { return gameCoords; }
+            set { gameCoords = value; }
+        }
+
+        /// <summary>
+        /// The GDI graphics handeller
+        /// </summary>
+        public Graphics Graphics
+        {
+            get { return graphics; }
+            set { graphics = value; }
+        }
+
+        /// <summary>
+        /// Provide access to resoruces
+        /// </summary>
+        public ResourceFactory ResourceFactory
+        {
+            get { return resourceFactory; }
+            set { resourceFactory = value; }
+        }
+
+        /// <summary>
+        /// The Size of each tile (this should be in GameCoords)
+        /// </summary>
+        public Size SizeTile
+        {
+            get { return sizeTile; }
+            set { sizeTile = value; }
+        }
+
+        /// <summary>
+        /// The current game step
+        /// </summary>
+        public int StepCurrent
+        {
+            get { return stepCurrent; }
+            set { stepCurrent = value; }
+        }
+
+        /// <summary>
+        /// Is the game active
+        /// </summary>
+        public bool Active
+        {
+            get { return active; }
+            set
+            {
+                active = value;
+                if (active == false)
+                {
+                    if (sound != null)
+                    {
+                        sound.Stop();    
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -109,7 +174,9 @@ namespace SokoSolve.Core.UI
             }
         }
 
-
+        /// <summary>
+        /// The puzzle currently being played
+        /// </summary>
         public PuzzleMap PuzzleMap
         {
             get { return puzzleMap; }
@@ -265,9 +332,12 @@ namespace SokoSolve.Core.UI
                 start.Path = new Paths.Spiral(Player.CurrentCentre);
                 Add(start);
 
+                // Stop all music and sounds
+                sound.Stop();
                 sound.PlaySound(ResourceFactory[ResourceID.GameSoundWelcome].DataAsSound);
 
-                sound.PlayMusic(sound.GetHandle("Camokaze-Low.mp3"));
+                string[] music = Directory.GetFiles(FileManager.getContent("$Music/"), "*.mp3");
+                sound.PlayMusic(sound.GetHandle(Path.GetFileName(RandomHelper.Select<string>(music))));
 
             }
             else if (initType == InitTypes.Restart)
@@ -371,6 +441,7 @@ namespace SokoSolve.Core.UI
         public void Exit()
         {
             Active = false;
+            sound.Stop();
             if (OnExit != null) OnExit(this, new EventArgs());
         }
 
@@ -481,6 +552,9 @@ namespace SokoSolve.Core.UI
             }
         }
 
+        /// <summary>
+        /// Capture mouse button events
+        /// </summary>
         public enum MouseButtons
         {
             None,
@@ -488,6 +562,9 @@ namespace SokoSolve.Core.UI
             Right
         }
 
+        /// <summary>
+        /// Capture mouse clicks
+        /// </summary>
         public enum MouseClicks
         {
             None,
@@ -565,27 +642,37 @@ namespace SokoSolve.Core.UI
             return l.Depth - r.Depth;
         }
 
+        /// <summary>
+        /// General game events
+        /// </summary>
+        public EventHandler<NotificationEvent> OnGameEvents;
+
+        /// <summary>
+        /// Allow 'friend' classes to send a common notification event
+        /// </summary>
+        /// <param name="e"></param>
+        protected internal void FireNotificationEvent(NotificationEvent e)
+        {
+            if (OnGameEvents != null)
+            {
+                OnGameEvents(this, e);
+            }
+        }
         
-        public GameCoords GameCoords;
-        public Graphics Graphics;
-        public ResourceFactory ResourceFactory;
-        public Size SizeTile;
-        public int StepCurrent;
-        public bool Active;
-
-        List<NodeBase> nodes;
-        List<NodeBase> nodesToAdd;
-        List<NodeBase> nodesToRemove;
-
+        private GameCoords gameCoords;
+        private Graphics graphics;
+        private ResourceFactory resourceFactory;
+        private Size sizeTile;
+        private int stepCurrent;
+        private bool active;
+        private List<NodeBase> nodes;
+        private List<NodeBase> nodesToAdd;
+        private List<NodeBase> nodesToRemove;
         private NodeCursor cursor;
         private NodeDynamicPlayer player;
         private ISoundSubSystem sound;
-
         private Solution solution;
         private PuzzleMap puzzleMap;
-
         private InitTypes initType;
-
-        
     }
 }

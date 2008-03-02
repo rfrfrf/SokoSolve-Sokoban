@@ -103,7 +103,7 @@ namespace SokoSolve.UI
                         break;
                     case (Modes.Game):
 
-                        FullscreenMode.SetWinFullScreen(this.FindForm().Handle);
+                        
                         gameControl.Visible = true;
                         gameControl.Focus();
                         break;

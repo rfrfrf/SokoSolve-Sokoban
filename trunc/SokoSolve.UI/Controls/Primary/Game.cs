@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using SokoSolve.Common;
 using SokoSolve.Common.Math;
+using SokoSolve.Core;
 using SokoSolve.Core.Model;
 using SokoSolve.Core.Model.DataModel;
 using SokoSolve.Core.UI;
@@ -22,6 +23,9 @@ namespace SokoSolve.UI.Controls.Primary
     /// </summary>
 	public partial class Game : UserControl
 	{
+        /// <summary>
+        /// Default constructor. Sets up basic GDI-based animation.
+        /// </summary>
 		public Game()
 		{
 			InitializeComponent();
@@ -45,20 +49,40 @@ namespace SokoSolve.UI.Controls.Primary
 
             // Set coord size
 		    Game_Resize(null, null);
+
+            
 		}
 
+        /// <summary>
+        /// Capture logic events
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void gameUI_OnGameEvents(object sender, NotificationEvent e)
+        {
+            
+        }
+
+        /// <summary>
+        /// Capture key events
+        /// </summary>
+        /// <param name="keyData"></param>
+        /// <returns></returns>
         protected override bool ProcessDialogKey(Keys keyData)
         {
             ProcessImput(keyData);
-
             return base.ProcessDialogKey(keyData);
         }
 
-
+        /// <summary>
+        /// Exit the game, return to the 'caller'
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonDone_Click(object sender, EventArgs e)
         {
             gameUI.Active = false;
-
+            
             timerAnimation.Enabled = false;
             gameUI = null;
             
@@ -69,6 +93,11 @@ namespace SokoSolve.UI.Controls.Primary
             }
         }
 
+        /// <summary>
+        /// Display any errors in the Error form
+        /// </summary>
+        /// <param name="Context"></param>
+        /// <param name="ex"></param>
         public void HandleGameException(string Context, Exception ex)
         {
             FormError error = new FormError();
@@ -91,6 +120,8 @@ namespace SokoSolve.UI.Controls.Primary
                 gameUI = new GameUI(puzzle, map, new WindowsSoundSubSystem());
                 gameUI.OnExit += new EventHandler(gameUI_OnExit);
                 gameUI.OnGameWin += new EventHandler<NotificationEvent>(gameUI_OnGameWin);
+                gameUI.OnGameEvents += new EventHandler<NotificationEvent>(gameUI_OnGameEvents);
+
                 Game_Resize(null, null);
                 timerAnimation.Enabled = true;
 
@@ -155,11 +186,29 @@ namespace SokoSolve.UI.Controls.Primary
         #endregion
 
         
+        /// <summary>
+        /// Exit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void gameUI_OnExit(object sender, EventArgs e)
         {
             buttonDone_Click(sender, e);
         }
 
+        /// <summary>
+        /// Another exit path
+        /// </summary>
+        private void PuzzleCompletedExit()
+        {
+            buttonDone_Click(null, null);
+        }
+
+        /// <summary>
+        /// What to do when the puzzle is completed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void gameUI_OnGameWin(object sender, NotificationEvent e)
         {
             switch(e.Command)
@@ -169,9 +218,7 @@ namespace SokoSolve.UI.Controls.Primary
                 case ("Save"): PuzzleCompletedSave(); return;
                 case ("Home"): PuzzleCompletedExit(); return;
             }
-
             throw new NotImplementedException();
-            
         }
 
         /// <summary>
@@ -186,11 +233,9 @@ namespace SokoSolve.UI.Controls.Primary
             gameUI.Add(node);
         }
 
-        private void PuzzleCompletedExit()
-        {
-            buttonDone_Click(null, null);
-        }
-
+        /// <summary>
+        /// Save the new puzzle solution
+        /// </summary>
         private void PuzzleCompletedSave()
         {
             // Save
@@ -214,11 +259,17 @@ namespace SokoSolve.UI.Controls.Primary
             ShowText("Solution Saved.");
         }
 
+        /// <summary>
+        /// Game cancel
+        /// </summary>
         private void PuzzleCompletedCancel()
         {
             StartGame(gameUI.Puzzle, puzzleMap);   
         }
 
+        /// <summary>
+        /// Play the next puzzle
+        /// </summary>
         private void PuzzleCompletedNext()
         {
             SokoSolve.Core.Model.Library lib = gameUI.Puzzle.Library;
@@ -236,55 +287,70 @@ namespace SokoSolve.UI.Controls.Primary
             }
         }
 
-
+        /// <summary>
+        /// The paint/refresh call-back, this drive the animation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timerAnimation_Tick(object sender, EventArgs e)
         {
             Refresh();
         }        
 
-
+        /// <summary>
+        /// Keyboard input processing
+        /// </summary>
+        /// <param name="inputKey"></param>
         private void ProcessImput(Keys inputKey)
         {
             if (gameUI == null) return;
 
             switch (inputKey)
             {
-                case (Keys.Up):
-                    gameUI.Player.doMove(Direction.Up);
-                    break;
-
-                case (Keys.Down):
-                    gameUI.Player.doMove(Direction.Down);
-                    break;
-
-                case (Keys.Left):
-                    gameUI.Player.doMove(Direction.Left);
-                    break;
-
-                case (Keys.Right):
-                    gameUI.Player.doMove(Direction.Right);
-                    break;
-
-                case (Keys.Escape):
-
-                case (Keys.Q):
-                    buttonDone_Click(this, null);
-                    break;
-
-                case (Keys.R):
-                    gameUI.Reset();
-                    break;
-
-                case (Keys.U):
-                    gameUI.Undo();
-                    break;
-
-                case (Keys.Back):
-                    gameUI.Undo();
-                    break;
+                case (Keys.Up): gameUI.Player.doMove(Direction.Up); break;
+                case (Keys.Down): gameUI.Player.doMove(Direction.Down); break;
+                case (Keys.Left): gameUI.Player.doMove(Direction.Left); break;
+                case (Keys.Right): gameUI.Player.doMove(Direction.Right); break;
+                case (Keys.Escape): 
+                case (Keys.Q):buttonDone_Click(this, null); break;
+                case (Keys.R): gameUI.Reset(); break;
+                case (Keys.U): gameUI.Undo(); break;
+                case (Keys.Back): gameUI.Undo(); break;
+                case (Keys.O): ChangeGameSettings(); break;
             }
         }
 
+        /// <summary>
+        /// Allow the user to change game-play settings
+        /// </summary>
+        private void ChangeGameSettings()
+        {
+            FormGameSettings settings = new FormGameSettings();
+            settings.ucGameSettings.MusicVolume.Value = gameUI.Sound.VolumeMusic;
+            settings.ucGameSettings.SoundVolume.Value = gameUI.Sound.VolumeSound;
+            settings.ucGameSettings.MusicLocation.Text = FileManager.getContent("$music");
+            settings.TopMost = true;
+            if (settings.ShowDialog() == DialogResult.OK)
+            {
+                gameUI.Sound.VolumeMusic = settings.ucGameSettings.MusicVolume.Value;
+                gameUI.Sound.VolumeSound = settings.ucGameSettings.SoundVolume.Value;
+                if (settings.ucGameSettings.FullScreen.Checked)
+                {
+                    // Move tofull-screen
+                    FullscreenMode.SetFormFullScreen(FindForm());
+                }
+                else
+                {
+                    FullscreenMode.RestoreFromFullScreen(FindForm());
+                }
+            }
+        }
+
+        /// <summary>
+        /// Convert .NET mouse buttons to sokosolve game buttons
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         static GameUI.MouseButtons Convert(MouseButtons item)
         {
             if (item == MouseButtons.Left) return GameUI.MouseButtons.Left;
@@ -293,9 +359,13 @@ namespace SokoSolve.UI.Controls.Primary
             return GameUI.MouseButtons.None;
         }
 
+        /// <summary>
+        /// Mouse down button press
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Game_MouseDown(object sender, MouseEventArgs e)
         {
-            
             if (gameUI != null)
             {
                 if (gameUI.SetCursor(e.X, e.Y, e.Clicks, Convert(e.Button), GameUI.MouseClicks.Down))
@@ -310,6 +380,11 @@ namespace SokoSolve.UI.Controls.Primary
             }
         }
 
+        /// <summary>
+        /// Mouse up (paired with Mouse-down)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Game_MouseUp(object sender, MouseEventArgs e)
         {
             if (gameUI != null)
@@ -326,6 +401,11 @@ namespace SokoSolve.UI.Controls.Primary
             }
         }
 
+        /// <summary>
+        /// Capture and relay mouse movement
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Game_MouseMove(object sender, MouseEventArgs e)
         {
             if (gameUI != null)
@@ -350,6 +430,11 @@ namespace SokoSolve.UI.Controls.Primary
             set { returnMode = value; }
         }
 
+        /// <summary>
+        /// Allow the display region to be resized
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Game_Resize(object sender, EventArgs e)
         {
             if (gameUI != null)
@@ -358,10 +443,19 @@ namespace SokoSolve.UI.Controls.Primary
             }
         }
 
+        /// <summary>
+        /// The 'logical' game UI (aninamation and logic modules), it is reasonably platform (winforms) agnostic
+        /// </summary>
         private GameUI gameUI;
-        private FormMain.Modes returnMode = FormMain.Modes.Library;
-        private PuzzleMap puzzleMap;
 
-        
+        /// <summary>
+        /// Which mode to return to
+        /// </summary>
+        private FormMain.Modes returnMode = FormMain.Modes.Library;
+
+        /// <summary>
+        /// The current library puzzle being played
+        /// </summary>
+        private PuzzleMap puzzleMap;   
 	}
 }

@@ -29,8 +29,6 @@ namespace SokoSolve.UI.Section.Solver
     /// </summary>
     public partial class SolverSectionVisualisation : UserControl
     {
-        private SolverController controller;
-
         /// <summary>
         /// Default Constructor
         /// </summary>
@@ -42,12 +40,13 @@ namespace SokoSolve.UI.Section.Solver
             visualisationContainerLocalNodes.OnVisualisationClick +=
                 new EventHandler<VisEventArgs>(OnVisualisationClick_LocalNode);
             visualisationContainerReverseTree.OnVisualisationClick +=
-                new EventHandler<VisEventArgs>(OnVisualisationClick_ReverseTree);
-
-            
+                new EventHandler<VisEventArgs>(OnVisualisationClick_ReverseTree);       
         }
 
 
+        /// <summary>
+        /// The solver controller which will be visualised
+        /// </summary>
         [Browsable(false)]
         public SolverController Controller
         {
@@ -113,10 +112,10 @@ namespace SokoSolve.UI.Section.Solver
             File.WriteAllText(FileManager.getContent("$Analysis", filename), report.ToString());
         }
 
-        private NPlot.Windows.PlotSurface2D surface;
-        private NPlot.Windows.PlotSurface2D surface2;
-
-        public  void UpdateGraph()
+        /// <summary>
+        /// Update (replot) the graphs
+        /// </summary>
+        public void PlotGraphs()
         {
             if (surface == null)
             {
@@ -127,9 +126,7 @@ namespace SokoSolve.UI.Section.Solver
                 surface2 = new NPlot.Windows.PlotSurface2D();
                 surface2.Height = 150;
                 tabPageGraphs.Controls.Add(surface2);
-                surface2.Dock = DockStyle.Bottom;
-
-                
+                surface2.Dock = DockStyle.Bottom;                
             }
 
             surface.Clear();
@@ -164,8 +161,6 @@ namespace SokoSolve.UI.Section.Solver
             lp4.Pen = new Pen(Color.Red, 1.5f);
             lp4.Label = "Dead";
             surface.Add(lp4);
-
-         
 
             LinePlot lp6 = new LinePlot();
             lp6.DataSource = controller.Stats.AvgEvalList.History;
@@ -221,7 +216,7 @@ namespace SokoSolve.UI.Section.Solver
             if (controller != null && controller.Strategy != null && controller.StaticAnalysis != null)
             {
                 // Draw the graphs
-                UpdateGraph();
+                PlotGraphs();
 
                 // Show debug text
                 richTextBoxSolverReport.Text = controller.DebugReport.ToString(new DebugReportFormatter());
@@ -320,27 +315,6 @@ namespace SokoSolve.UI.Section.Solver
             }
         }
 
-        /// <summary>
-        /// Timer tick (update & monitor status)
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            //UpdateStatus();
-        }
-
-
-        /// <summary>
-        /// Exit click
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tsbExit_Click(object sender, EventArgs e)
-        {
-            FindForm().Close();
-        }
-
 
         private void OnVisualisationClick_LocalNode(object sender, VisEventArgs e)
         {
@@ -359,6 +333,10 @@ namespace SokoSolve.UI.Section.Solver
             OnVisualisationClick_TreeViewer(sender, e);
         }
 
+        /// <summary>
+        /// Select a SPECIFIC node and display its details
+        /// </summary>
+        /// <param name="solverNode"></param>
         private void BindNode(SolverNode solverNode)
         {
             if (solverNode == null) return;
@@ -393,10 +371,13 @@ namespace SokoSolve.UI.Section.Solver
             ReportXHTML reportCurrent = new ReportXHTML("Node Details");
             reportCurrent.SetCSSInline(FileManager.getContent("$html\\style.css"));
             reportCurrent.Add(txt.ToHTML());
+            if (build != null)
+            {
+                reportCurrent.Add(string.Format("<code><pre>{0}</pre></code>", build.ToString()));
+            }
             webBrowserNodeCurrent.DocumentText = reportCurrent.ToString();
 
             bitmapViewerNodeMaps.Render();
-
 
             RootPathVisualisation localVis = new RootPathVisualisation(new SizeInt(16, 16), controller);
             localVis.RenderCanvas =
@@ -483,5 +464,9 @@ namespace SokoSolve.UI.Section.Solver
             }
 
         }
+
+        private NPlot.Windows.PlotSurface2D surface;
+        private NPlot.Windows.PlotSurface2D surface2;
+        private SolverController controller;
     }
 }

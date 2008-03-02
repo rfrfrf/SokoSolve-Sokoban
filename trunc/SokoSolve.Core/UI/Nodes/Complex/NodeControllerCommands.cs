@@ -72,6 +72,8 @@ namespace SokoSolve.Core.UI.Nodes.Complex
 
         void Button_OnClick(object sender, NotificationEvent e)
         {
+            GameUI.FireNotificationEvent(e);
+
             switch(e.Command)
             {
                 case("Undo") : GameUI.Undo(); return;
@@ -83,8 +85,7 @@ namespace SokoSolve.Core.UI.Nodes.Complex
                 case ("Right"): GameUI.Player.doMove(Direction.Right); return;
                 case ("Help"): 
                     NodeUIDialogHelp help = new NodeUIDialogHelp(GameUI, 20000);
-                    help.
-                    GameUI.Add(help);
+                    help.GameUI.Add(help);
                     return;
 
                 default:

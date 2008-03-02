@@ -26,13 +26,22 @@ namespace SokoSolve.Core.UI
         /// <summary>
         /// The gobal offset/distance from 0,0 to draw the topleft of the puzzle
         /// </summary>
-		public VectorInt GlobalOffset;
+        public VectorInt GlobalOffset
+        {
+            get { return globalOffset; }
+            set { globalOffset = value; }
+        }
 
         /// <summary>
         /// Pixel size of each tile/cell
         /// </summary>
-		public SizeInt GlobalTileSize;
+        public SizeInt GlobalTileSize
+        {
+            get { return globalTileSize; }
+            set { globalTileSize = value; }
+        }
 
+      
 
         /// <summary>
         /// Get the absolute pixel coords from a puzzle position
@@ -128,5 +137,15 @@ namespace SokoSolve.Core.UI
         private RectangleInt windowRegion;
         private SizeInt movementCommands = new SizeInt(75, 75);
         private SizeInt generalCommands = new SizeInt(75, -40);
+        /// <summary>
+        /// The gobal offset/distance from 0,0 to draw the topleft of the puzzle
+        /// </summary>
+        VectorInt globalOffset;
+
+        /// <summary>
+        /// Pixel size of each tile/cell
+        /// </summary>
+        SizeInt globalTileSize;
+
     }
 }

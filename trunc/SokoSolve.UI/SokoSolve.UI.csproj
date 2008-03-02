@@ -63,6 +63,8 @@
     <Compile Include="Controls\Primary\Welcome.Designer.cs">
       <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Primary\WindowsMediaPlayerResource.cs" />
+    <Compile Include="Controls\Primary\WindowsMediaPlayerWrapper.cs" />
     <Compile Include="Controls\Primary\WindowsSoundSubSystem.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -84,6 +86,12 @@
     <Compile Include="Controls\Secondary\FormError.designer.cs">
       <DependentUpon>FormError.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Secondary\FormGameSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Secondary\FormGameSettings.Designer.cs">
+      <DependentUpon>FormGameSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Secondary\FormImport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +103,12 @@
     </Compile>
     <Compile Include="Controls\Secondary\FormProfileSettings.Designer.cs">
       <DependentUpon>FormProfileSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Secondary\ucGameSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Secondary\ucGameSettings.Designer.cs">
+      <DependentUpon>ucGameSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\Secondary\ucGenericDescription.cs">
       <SubType>UserControl</SubType>
@@ -232,6 +246,10 @@
       <DependentUpon>FormError.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Secondary\FormGameSettings.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormGameSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Secondary\FormImport.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FormImport.cs</DependentUpon>
@@ -239,6 +257,10 @@
     <EmbeddedResource Include="Controls\Secondary\FormProfileSettings.resx">
       <SubType>Designer</SubType>
       <DependentUpon>FormProfileSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Secondary\ucGameSettings.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ucGameSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Secondary\ucGenericDescription.resx">
       <SubType>Designer</SubType>
@@ -441,6 +463,7 @@
     <Content Include="Content\Graphics\Icons\Play.png" />
     <Content Include="Content\Graphics\Icons\Print.png" />
     <None Include="Content\html\ReadMe.rtf" />
+    <None Include="Content\Libraries\SolverProgress.ssx" />
     <Content Include="Content\Graphics\Icons\Stop.png" />
     <Content Include="Content\Graphics\Icons\Refresh.png" />
     <Content Include="Content\html\images\ExtLink.gif" />
@@ -451,7 +474,6 @@
     <Content Include="Content\Libraries\SasquatchV.ssx" />
     <Content Include="Content\Libraries\SasquatchVI.ssx" />
     <Content Include="Content\Libraries\SasquatchVII.ssx" />
-    <Content Include="Content\Libraries\Solver.ssx" />
     <Content Include="Content\Graphics\Icons\Report.png" />
     <Content Include="Content\Graphics\Icons\Rotate.png" />
     <Content Include="Content\Libraries\SolverDevelopment.ssx" />
@@ -530,20 +552,20 @@
     <Content Include="SokoSolve16x16.ico" />
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="MediaPlayer">
-      <Guid>{22D6F304-B0F6-11D0-94AB-0080C74C7E95}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-    </COMReference>
     <COMReference Include="stdole">
       <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
       <VersionMajor>2</VersionMajor>
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
   </ItemGroup>

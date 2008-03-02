@@ -42,7 +42,8 @@ namespace SokoSolve.UI.Controls.Primary
             this.htmlView.ShowCommandHome = true;
             this.htmlView.ShowCommandPrint = false;
             this.htmlView.ShowCommands = true;
-            this.htmlView.ShowStatus = false;
+            this.htmlView.ShowCommandSave = false;
+            this.htmlView.ShowStatus = true;
             this.htmlView.Size = new System.Drawing.Size(400, 150);
             this.htmlView.TabIndex = 0;
             this.htmlView.OnCommand += new System.EventHandler<SokoSolve.UI.Controls.Web.UIBrowserEvent>(this.htmlView_OnCommand);

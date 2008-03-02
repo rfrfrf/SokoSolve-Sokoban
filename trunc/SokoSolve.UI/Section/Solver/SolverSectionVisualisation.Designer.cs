@@ -453,7 +453,6 @@ namespace SokoSolve.UI.Section.Solver
             // timer
             // 
             this.timer.Interval = 3000;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // toolStrip1
             // 

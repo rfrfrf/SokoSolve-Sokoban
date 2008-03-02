@@ -42,10 +42,29 @@ namespace SokoSolve.Core.Game
         /// </summary>
         public enum MoveResult
         {
+            /// <summary>
+            /// A invalid push
+            /// </summary>
             Invalid,
+            
+            /// <summary>
+            /// A valid simple player move
+            /// </summary>
             ValidMove,
+
+            /// <summary>
+            /// Player move resulting in a crate push
+            /// </summary>
             ValidPush,
+
+            /// <summary>
+            /// Player movement resulting in a crate push onto a goal
+            /// </summary>
             ValidPushGoal,
+
+            /// <summary>
+            /// A winning crate push
+            /// </summary>
             ValidPushWin
         }
 
@@ -162,7 +181,8 @@ namespace SokoSolve.Core.Game
         /// <summary>
         /// Test a solution to see if it is valid
         /// </summary>
-        /// <param name="aSolution"></param>
+        /// <param name="aSolution">The solution to replay</param>
+        /// <param name="FirstError">A human-readable error string</param>
         public bool Test(Solution aSolution, out string FirstError)
         {
             FirstError = null;
@@ -232,41 +252,64 @@ namespace SokoSolve.Core.Game
             // Do not allow undo beyond this point
         }
 
+        /// <summary>
+        /// The puzzle being played
+        /// </summary>
         public Puzzle Puzzle
         {
             get { return puzzle; }
             set { puzzle = value; }
         }
 
+        /// <summary>
+        /// The map being played
+        /// </summary>
         public SokobanMap StartPuzzle
         {
             get { return startPuzzle; }
             set { startPuzzle = value; }
         }
 
+        /// <summary>
+        /// The current map layout
+        /// </summary>
         public SokobanMap Current
         {
             get { return current; }
             set { current = value; }
         }
 
+        /// <summary>
+        /// Stack of moves resulting in <see cref="Current"/>
+        /// </summary>
         public Stack<Move> Moves
         {
             get { return moves; }
             set { moves = value; }
         }
 
+        /// <summary>
+        /// Game statistics
+        /// </summary>
         public Stats Stats
         {
             get { return stats; }
             set { stats = value; }
         }
 
+        /// <summary>
+        /// Add a new bookmark to the game
+        /// </summary>
+        /// <param name="newBookmark">Snapshot/Waypoint/Bookmark</param>
         public void Add(Bookmark newBookmark)
         {
             bookmarks.Add(newBookmark);
         }
 
+        /// <summary>
+        /// Crate a bookmark from the <see cref="Current"/> game map.
+        /// </summary>
+        /// <returns></returns>
         public Bookmark MakeBookmark()
         {
             Bookmark bk = new Bookmark();
@@ -279,18 +322,25 @@ namespace SokoSolve.Core.Game
             return bk;
         }
 
-
+        /// <summary>
+        /// List of bookmarks of the game 
+        /// </summary>
         public List<Bookmark> Bookmarks
         {
             get { return bookmarks; }
         }
 
-        Puzzle puzzle;
-        SokobanMap startPuzzle;
-        SokobanMap current;
-        Stack<Move> moves;
-        Stats stats;
-        private List<Bookmark> bookmarks;
+        /// <summary>
+        /// The game win solution
+        /// </summary>
         public EventHandler<NotificationEvent> OnGameWin;
+
+
+        private Puzzle puzzle;
+        private SokobanMap startPuzzle;
+        private SokobanMap current;
+        private Stack<Move> moves;
+        private Stats stats;
+        private List<Bookmark> bookmarks;
     }
 }

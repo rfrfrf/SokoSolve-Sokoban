@@ -35,9 +35,9 @@ namespace SokoSolve.UI.Controls.Web
             this.tsbForward = new System.Windows.Forms.ToolStripButton();
             this.tsbHome = new System.Windows.Forms.ToolStripButton();
             this.tsbPrint = new System.Windows.Forms.ToolStripButton();
+            this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.tsbDone = new System.Windows.Forms.ToolStripButton();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
-            this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.statusStrip.SuspendLayout();
             this.toolStripCommands.SuspendLayout();
@@ -56,8 +56,9 @@ namespace SokoSolve.UI.Controls.Web
             // tsLabelStatus
             // 
             this.tsLabelStatus.Name = "tsLabelStatus";
-            this.tsLabelStatus.Size = new System.Drawing.Size(408, 17);
+            this.tsLabelStatus.Size = new System.Drawing.Size(377, 17);
             this.tsLabelStatus.Spring = true;
+            this.tsLabelStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // toolStripCommands
             // 
@@ -110,6 +111,16 @@ namespace SokoSolve.UI.Controls.Web
             this.tsbPrint.Text = "Print";
             this.tsbPrint.Click += new System.EventHandler(this.tsbPrint_Click);
             // 
+            // tsbSave
+            // 
+            this.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSave.Image = global::SokoSolve.UI.Properties.Resources.Save;
+            this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSave.Name = "tsbSave";
+            this.tsbSave.Size = new System.Drawing.Size(23, 22);
+            this.tsbSave.Text = "Save";
+            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
+            // 
             // tsbDone
             // 
             this.tsbDone.Image = global::SokoSolve.UI.Properties.Resources.Exit;
@@ -129,16 +140,6 @@ namespace SokoSolve.UI.Controls.Web
             this.webBrowser.TabIndex = 2;
             this.webBrowser.Navigated += new System.Windows.Forms.WebBrowserNavigatedEventHandler(this.webBrowser_Navigated);
             this.webBrowser.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.webBrowser_Navigating);
-            // 
-            // tsbSave
-            // 
-            this.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSave.Image = global::SokoSolve.UI.Properties.Resources.Save;
-            this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSave.Name = "tsbSave";
-            this.tsbSave.Size = new System.Drawing.Size(23, 22);
-            this.tsbSave.Text = "Save";
-            this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // saveFileDialog
             // 

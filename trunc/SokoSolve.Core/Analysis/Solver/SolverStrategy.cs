@@ -11,14 +11,15 @@ using SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis;
 namespace SokoSolve.Core.Analysis.Solver
 {
     /// <summary>
-    /// Encapsulate the system of rules to be used to solve the puzzle. However, no state should be stored here.
+    /// Encapsulate the system of rules to be used to solve the puzzle. However, no state should be stored here
     /// </summary>
+    /// <include file='Solver.cd' path='[@name=""]'/>
     public class SolverStrategy : EvaluationStrategyBase<SolverNode>
     {
         /// <summary>
         /// Strong Contruction
         /// </summary>
-        /// <param name="controller"></param>
+        /// <param name="controller">Controller which holds the search trees and other anlysis</param>
         public SolverStrategy(SolverController controller) : base(new SolverItterator(controller))
         {
             this.controller = controller;
@@ -73,7 +74,7 @@ namespace SokoSolve.Core.Analysis.Solver
             SolverNode root = new SolverNode();
             root.IsChildrenEvaluated = false;
             root.IsStateEvaluated = false;
-            root.Weighting = rootWeighting;
+            root.Weighting = 100f;
             root.PlayerPosition = SokobanMap.Player;
             root.MoveDirection = Direction.None;
             root.CrateMap = StaticAnalysis.InitialCrateMap;            
@@ -84,8 +85,8 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <summary>
         /// Is the node a solution
         /// </summary>
-        /// <param name="node"></param>
-        /// <returns></returns>
+        /// <param name="node">Solver Node to check</param>
+        /// <returns>true = solution</returns>
         public override bool IsSolution(INode<SolverNode> node)
         {
             return node.Data.Status == SolverNodeStates.Solution || node.Data.Status == SolverNodeStates.SolutionChain;
@@ -94,8 +95,8 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <summary>
         /// Evaluate the current node
         /// </summary>
-        /// <param name="node"></param>
-        /// <returns></returns>
+        /// <param name="node">Solver Node to check</param>
+        /// <returns>Evaluation Result</returns>
         public override EvalStatus EvaluateState(INode<SolverNode> node)
         {
             controller.Stats.Nodes.AddMeasure(1f);
@@ -192,8 +193,8 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <summary>
         /// Build a player moves (steps) path, based on this node
         /// </summary>
-        /// <param name="node"></param>
-        /// <returns></returns>
+        /// <param name="node">Solver Node make a path to</param>
+        /// <returns>The path from the start node </returns>
         public Path BuildPath(SolverNode node)
         {
             List<TreeNode<SolverNode>> nodePath = node.TreeNode.GetPathToRoot();
@@ -238,8 +239,8 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <summary>
         /// Create a weighting for this node (many different strategies may be used here)
         /// </summary>
-        /// <param name="node"></param>
-        /// <returns></returns>
+        /// <param name="node">Solver Node to check</param>
+        /// <returns>numeric weighting result</returns>
         private float CalcWeighting(SolverNode node)
         {
             if (false)
@@ -279,7 +280,7 @@ namespace SokoSolve.Core.Analysis.Solver
                     weighting += node.TreeNode.Count * 1.6f;
 
                     // Make sure we eval all beginning nodes
-                    if (node.TreeNode.Depth < 2) weighting = rootWeighting;
+                    if (node.TreeNode.Depth < 2) weighting = 100f;
                 }
 
 
@@ -295,8 +296,8 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <summary>
         /// Check to see if this node already exists in the search tree
         /// </summary>
-        /// <param name="node"></param>
-        /// <returns>duplicate</returns>
+        /// <param name="node">Solver Node to check</param>
+        /// <returns>duplicate node, null if not a duplicate</returns>
         public SolverNode CheckDuplicate(SolverNode node)
         {
             List<SolverNode> matches = cachedNodes.GetMatch(node);
@@ -314,12 +315,9 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <summary>
         /// Evaluate all child nodes
         /// </summary>
-        /// <param name="node"></param>
-        /// <returns></returns>
+        /// <param name="node">Solver Node to check</param>
         public override void EvaluateChildren(INode<SolverNode> node)
         {
-            
-            
                 int pushes = 0;
                 // Find all possible pushes as result of the new move map
                 Bitmap moves = node.Data.MoveMap;
@@ -362,7 +360,7 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <summary>
         /// Prefix nodes with F for Forward
         /// </summary>
-        /// <returns></returns>
+        /// <returns>string ID</returns>
         protected override string GetNextNodeID()
         {
             return "F" + base.GetNextNodeID();
@@ -371,9 +369,9 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <summary>
         /// See if there is a crate in a direction to push, checking validity
         /// </summary>
-        /// <param name="node"></param>
-        /// <param name="moveMapPos"></param>
-        /// <param name="PushDirection"></param>
+        /// <param name="node">Solver Node to check</param>
+        /// <param name="moveMapPos">Position on the current movemap</param>
+        /// <param name="PushDirection">The push direction, asumming a cate to push</param>
         private int CheckPlayerPush(INode<SolverNode> node,VectorInt moveMapPos , Direction PushDirection)
         {
             VectorInt cratePos = moveMapPos.Offset(PushDirection);
@@ -420,9 +418,9 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <summary>
         /// Check if a crate at CratePostion would result in a dead puzzle
         /// </summary>
-        /// <param name="node"></param>
-        /// <param name="CratePosition"></param>
-        /// <returns></returns>
+        /// <param name="node">Solver Node to check</param>
+        /// <param name="CratePosition">Position of a crate</param>
+        /// <returns>true is dead/unsolvable</returns>
         private bool CheckIfDead(INode<SolverNode> node, VectorInt CratePosition)
         {
             // Check Static Dead positions
@@ -433,16 +431,10 @@ namespace SokoSolve.Core.Analysis.Solver
             return false;
         }
 
-        protected override void AddNodeForEval(INode<SolverNode> CurrentNode, SolverNode NewChild)
-        {
-            base.AddNodeForEval(CurrentNode, NewChild);
-        }
-
-        protected override void MarkEvalCompelete(INode<SolverNode> CurrentNode)
-        {
-            base.MarkEvalCompelete(CurrentNode);
-        }
-
+        /// <summary>
+        /// Remove a node
+        /// </summary>
+        /// <param name="CurrentNode"></param>
         protected override void RemoveRedundantNode(INode<SolverNode> CurrentNode)
         {
             // Remove from cache
@@ -452,11 +444,13 @@ namespace SokoSolve.Core.Analysis.Solver
         #endregion EvaluationStrategy
 
         /// <summary>
-        /// Initial root node weighting
+        /// The controller (owner) of this strategy class
         /// </summary>
-        private float rootWeighting = 100f;
-
         private SolverController controller;
+
+        /// <summary>
+        /// A high-speed collection of existing codes, to allow duplicate checks
+        /// </summary>
         private SolverNodeCollection cachedNodes;   
     }
 }

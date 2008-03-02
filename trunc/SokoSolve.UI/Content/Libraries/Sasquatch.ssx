@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LibraryID="L1"  MaxID="1000" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
+<SokobanLibrary xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LibraryID="L1" MaxID="1000" xmlns="http://sokosolve.sourceforge.net/SokoSolveLibrary.xsd">
   <Details License="Acknowledgement Required">
     <Name>Sasquatch</Name>
     <Description>This is my first set. Scott Lindhurst describes them as generally of just the right difficulty to be fun: not too easy, but (usually) not so hard that you get frustrated.</Description>
@@ -7,7 +7,7 @@
     <Author Name="David W. Skinner " Email="sasquatch@bentonrea.com" Homepage="http://users.bentonrea.com/~sasquatch/" />
   </Details>
   <Categories>
-    <Category CategoryID="C0" Order="0">
+    <Category CategoryID="C0" Order="1">
       <CategoryDescription>
         <Name>Master List</Name>
       </CategoryDescription>
@@ -33,14 +33,6 @@
           <Row>~#.....##~~</Row>
           <Row>~#######~~~</Row>
           <Solutions>
-            <Solution StartX="4" StartY="4">
-              <Steps>lluRRRRRllldlddddrrruurruuruulDDulllldlddrUUddlddrrruurrruuullllLulDDDDDuuuurrrrrdrddllldddlllluRRluuuuurrrdLullddrUluRRRRldllddldddrrruuurrruulDrdLLruuruulDDDrdLuuulldllddlddrRdrU</Steps>
-              <SolutionDescription License="Creative Commons" Date="2007-12-30T12:22:05.463336+02:00">
-                <Name>'Superb Gem' Solution</Name>
-                <Comments>Moves 180/180, Pushes 32/32, Undos 0, Restarts 0, Duration 00:00:19.8717750</Comments>
-                <Author Name="Anonymous" Email="anonymous@sokosolve.sourceforge.net" Homepage="http://sokosolve.sourceforge.net" />
-              </SolutionDescription>
-            </Solution>
             <Solution StartX="4" StartY="4">
               <Steps>llurrrrrllldlddddrrruurruuruulddulldlluldddduuuurrrrrdrddllldddllllurrluuruulurrrrldllddldddrrruuurrruulduruuldlldllddlddrrdrullluuuuurrrrrrdddllruruulddrdl</Steps>
               <SolutionDescription Date="2008-01-17T14:50:18.214665+02:00">
@@ -203,22 +195,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>###.X.X#X.X.###</Row>
           <Row>~##....#....##~</Row>
           <Row>~~###########~~</Row>
-          <Solutions>
-            <Solution StartX="0" StartY="0">
-              <Steps>
-                lUdrruulLddrdddrrrruuurUdlluurRllLrddrUruLdddddlllluuuruRldR
-                lldddrrrruuuuLLdRllldddrrrruuUdddlluUddlluuurRdddrruuuruLddd
-                dlluuuRldddrruuUdddlldddrruLdlUUUUdlluuurrDDDDDrdLLLuRdrUUUU
-                dlluuurrDDDDDldRRRulluuuuurrruulrddllluuRDlddddrruuuruuLDlld
-                ddRluuuuLDrddddlluuuluuRlddrdddrruuuuuRdlddddlluuuluurRlDrrd
-                ddLruuuruLdrrruL
-              </Steps>
-              <SolutionDescription Date="2007-12-21T21:27:36.797703+02:00">
-                <Name>Solution</Name>
-                <Comments>Solution found from game player.</Comments>
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
@@ -241,25 +218,7 @@ Machine : Genuine Intel(R) CPU           T2500  @ 2.00GHz with 2 cores.  Running
           <Row>~~~#O..X..O#~~~</Row>
           <Row>~~~###.O.###~~~</Row>
           <Row>~~~~~#####~~~~~</Row>
-          <Solutions>
-            <Solution StartX="0" StartY="0">
-              <Steps>
-                uRRurrdLLdddddRddlUUUUUUUdddddddrrruLdlUUluurrdLrDurDuluurD
-                rruLLLLLdrddddrUUUluurrdLddrUluurrdLulDrdLdllUdrruurrrdLLulD
-                rdLLdlUddrrrUUUruLulllulldRRRluuruulDDDldRuuLLrruuuRuulDDDuu
-                urrrdLLulDDrdrUluurrdLulDDDrrUdlddrUrrdLLLLLrruuurDlddrruLdl
-                UruLuuurDDDlddrruLdllldlluRRRRRlrurrdLLLLLdlluRluuuLddldRurD
-                rddlUUrRRRRurrdLLLLLdlluluullURdddlUdrrrdrruLLLrrrrrUUUddrrr
-                uLdlluurDDrdLLLLrruuuluurDDDrddllldlluRRRlllluurDldRRRllulll
-                dRRRuullulDrrruLuurDDDllluRRurDuullDrddlluRdrUdddllUruulDrdd
-                lUlldRRRuuuuurDDDullDDldRulluRdrruulDlddrUluRRuuulDDDldR
-              </Steps>
-              <SolutionDescription Date="2007-12-21T21:27:36.797703+02:00">
-                <Name>Solution</Name>
-                <Comments>Solution found from game player.</Comments>
-              </SolutionDescription>
-            </Solution>
-          </Solutions>
+          <Solutions />
         </Map>
       </Maps>
     </Puzzle>
