@@ -1,17 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="NameAndType">
-  <Font Name="Arial" Size="8.25" />
   <Class Name="SokoSolve.Core.Analysis.Solver.SolverController">
     <Position X="3.25" Y="1.75" Width="2.5" />
-    <TypeIdentifier>
-      <FileName>Analysis\Solver\SolverController.cs</FileName>
-      <HashCode>EBAAAAgQSDQIAAgAAAIBAAKIAAABAAAEIUAABDBAAAI=</HashCode>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="PuzzleMap" />
-      <Property Name="Strategy" />
-      <Property Name="Stats" />
-    </ShowAsAssociation>
     <Compartments>
       <Compartment Name="Private" Collapsed="true" />
       <Compartment Name="Fields" Collapsed="true" />
@@ -23,79 +13,58 @@
         </TypeIdentifier>
       </Enum>
     </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>EBAAAAgQSDQIQAgAAEIBAAKIAACBAAAE4UACBDBAAAI=</HashCode>
+      <FileName>Analysis\Solver\SolverController.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="PuzzleMap" />
+      <Property Name="Strategy" />
+      <Property Name="Stats" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SokoSolve.Core.Analysis.Solver.SolverAPI">
     <Position X="1" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <FileName>Analysis\Solver\SolverAPI.cs</FileName>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Analysis\Solver\SolverAPI.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SokoSolve.Core.Analysis.Solver.SolverBitmap">
-    <Position X="11.75" Y="9.5" Width="2" />
+    <Position X="8.25" Y="7.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <FileName>Analysis\Solver\SolverBitmap.cs</FileName>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Analysis\Solver\SolverBitmap.cs</FileName>
     </TypeIdentifier>
-    <Compartments>
-      <Compartment Name="Private" Collapsed="true" />
-      <Compartment Name="Fields" Collapsed="true" />
-    </Compartments>
-  </Class>
-  <Class Name="SokoSolve.Core.Analysis.Solver.StaticAnalysis">
-    <Position X="7" Y="4.75" Width="2.75" />
-    <TypeIdentifier>
-      <FileName>Analysis\Solver\StaticAnalysis.cs</FileName>
-      <HashCode>oAQCAKIAIw6AACEIUAAAghIQAICQFAAAkIAAAIAEAAA=</HashCode>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="DeadMapAnalysis" />
-    </ShowAsAssociation>
-    <Compartments>
-      <Compartment Name="Private" Collapsed="true" />
-      <Compartment Name="Fields" Collapsed="true" />
-    </Compartments>
-    <AssociationLine Name="DeadMapAnalysis" Type="SokoSolve.Core.Analysis.DeadMap.DeadMapAnalysis" ManuallyRouted="true" FixedToPoint="true">
-      <Path>
-        <Point X="8" Y="7.962" />
-        <Point X="8" Y="8.75" />
-      </Path>
-    </AssociationLine>
   </Class>
   <Class Name="SokoSolve.Core.Analysis.Solver.SolverStrategy">
     <Position X="7" Y="0.5" Width="3" />
-    <TypeIdentifier>
-      <FileName>Analysis\Solver\SolverStrategy.cs</FileName>
-      <HashCode>AACAAAAAAQAGQEEBAUDAgQECBQAAAAgAAAAIAAAAACA=</HashCode>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="StaticAnalysis" />
-    </ShowAsAssociation>
     <Compartments>
       <Compartment Name="Private" Collapsed="true" />
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAEAEEBAUDAgAECBQAAAAgAAAAIAAAAACA=</HashCode>
+      <FileName>Analysis\Solver\SolverStrategy.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Class Name="SokoSolve.Core.Model.PuzzleMap">
-    <Position X="4" Y="5.75" Width="2" />
-    <TypeIdentifier>
-      <FileName>Model\PuzzleMap.cs</FileName>
-      <HashCode>AAAAGBAAABgRAACEAQAAgAAQAQAAEAEAAAAAAAAAAAI=</HashCode>
-    </TypeIdentifier>
+    <Position X="4" Y="6.5" Width="2" />
     <Compartments>
       <Compartment Name="Private" Collapsed="true" />
     </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAGBAAABgRAACEAQAAgAAQAQAAEAEAAAAAAAAAAAI=</HashCode>
+      <FileName>Model\PuzzleMap.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Class Name="SokoSolve.Core.Analysis.Solver.SolverStats">
     <Position X="0.5" Y="2.25" Width="2" />
-    <TypeIdentifier>
-      <FileName>Analysis\Solver\SolverStats.cs</FileName>
-      <HashCode>ABAgEAEQACACgAEBAIAQACAQABAAAgAAIAAACAAAiAA=</HashCode>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Stats" />
-    </ShowAsCollectionAssociation>
     <Compartments>
       <Compartment Name="Private" Collapsed="true" />
       <Compartment Name="Fields" Collapsed="true" />
@@ -104,32 +73,35 @@
       <Path>
         <Point X="2.5" Y="5.375" />
         <Point X="2.75" Y="5.375" />
-        <Point X="2.75" Y="6.185" />
-        <Point X="1.542" Y="6.185" />
-        <Point X="1.542" Y="6.5" />
+        <Point X="2.75" Y="7.132" />
+        <Point X="1.792" Y="7.132" />
+        <Point X="1.792" Y="8.25" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
         <Position X="-2.182" Y="0.102" Height="0.16" Width="1.85" />
       </MemberNameLabel>
     </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>ABAgEAEUACACgBEBAIAQACgQSBAAAgAAJAgACAAAiAA=</HashCode>
+      <FileName>Analysis\Solver\SolverStats.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Stats" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="SokoSolve.Core.Analysis.Solver.Statistic">
-    <Position X="0.5" Y="6.5" Width="2.5" />
-    <TypeIdentifier>
-      <FileName>Analysis\Solver\Statistic.cs</FileName>
-      <HashCode>AAKAIAIABAAiEAQEJAIAACQAAAAEIAAAAAAAAAAAACA=</HashCode>
-    </TypeIdentifier>
+    <Position X="0.75" Y="8.25" Width="2.5" />
     <Compartments>
       <Compartment Name="Protected" Collapsed="true" />
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAKAIAIABAAiEAQEJAIAACQAAAAEIAAAAAACAAAAAiA=</HashCode>
+      <FileName>Analysis\Solver\Statistic.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Class Name="SokoSolve.Core.Analysis.Solver.SolverItterator">
     <Position X="11" Y="1.75" Width="1.5" />
-    <TypeIdentifier>
-      <FileName>Analysis\Solver\SolverItterator.cs</FileName>
-      <HashCode>AAYAAIAEAAAAAQEAAAAABAQCAAAABAIAAAAAAACAAAA=</HashCode>
-    </TypeIdentifier>
     <Compartments>
       <Compartment Name="Private" Collapsed="true" />
       <Compartment Name="Fields" Collapsed="true" />
@@ -141,24 +113,24 @@
         </TypeIdentifier>
       </Enum>
     </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAYAAAAEAACAAQEIAAAABAQCAAAABAIAAQAAAAAAAAA=</HashCode>
+      <FileName>Analysis\Solver\SolverItterator.cs</FileName>
+    </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SokoSolve.Core.Analysis.DeadMap.DeadMapAnalysis">
-    <Position X="7" Y="8.75" Width="2.75" />
+    <Position X="7" Y="9.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <FileName>Analysis\DeadMap\DeadMapAnalysis.cs</FileName>
       <HashCode>EAAAAAAAAAAAQCAAAEAAAAAAAAAAAAAAgAAAAAAAAQA=</HashCode>
+      <FileName>Analysis\DeadMap\DeadMapAnalysis.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SokoSolve.Core.Analysis.DeadMap.DeadMapState">
     <Position X="11.25" Y="5.5" Width="2.75" />
-    <TypeIdentifier>
-      <FileName>Analysis\DeadMap\DeadMapAnalysis.cs</FileName>
-      <HashCode>KCAAACAAIACAACAAAEAAgAAQAICDEAAAAwAAAAgAAAA=</HashCode>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="DeadMapAnalysis" />
-    </ShowAsAssociation>
     <Compartments>
       <Compartment Name="Private" Collapsed="true" />
       <Compartment Name="Fields" Collapsed="true" />
@@ -168,5 +140,97 @@
         <Position X="0.258" Y="-1.265" />
       </MemberNameLabel>
     </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>KCAAACAAIACAACAAAEAAgAAQAICDEAAAAwIAAAgCAAA=</HashCode>
+      <FileName>Analysis\DeadMap\DeadMapState.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DeadMapAnalysis" />
+    </ShowAsAssociation>
   </Class>
+  <Class Name="SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis.Door">
+    <Position X="15.25" Y="8.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis.Door.Types" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Analysis\Solver\SolverStaticAnalysis\Door.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BAAAAAQAAAAEAAIgAAACIAAAAAABAQAAQQEAAEQAAAA=</HashCode>
+      <FileName>Analysis\Solver\SolverStaticAnalysis\Door.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis.Recess">
+    <Position X="9.25" Y="5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAA=</HashCode>
+      <FileName>Analysis\Solver\SolverStaticAnalysis\Recess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis.RecessAnalysis">
+    <Position X="15.25" Y="6.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAIAAAAAAiAAAAAAAAAAAA=</HashCode>
+      <FileName>Analysis\Solver\SolverStaticAnalysis\RecessAnalysis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis.Room">
+    <Position X="6.5" Y="4.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis.Room.RoomTypes" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Analysis\Solver\SolverStaticAnalysis\Room.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAEAAAACAAAgAgAAAAAAAACAAAAAgAEAAAAhAAAAIAA=</HashCode>
+      <FileName>Analysis\Solver\SolverStaticAnalysis\Room.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis.RoomAnalysis">
+    <Position X="17.5" Y="8.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAEgAAIAAAAGAQAABAEAAQABAACAAAI=</HashCode>
+      <FileName>Analysis\Solver\SolverStaticAnalysis\RoomAnalysis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis.StaticAnalysis">
+    <Position X="17.5" Y="3.75" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>oAQGAKAAJx6AAKEIUACAwhIQAICQFAEIkIAAAIAEAAA=</HashCode>
+      <FileName>Analysis\Solver\SolverStaticAnalysis\StaticAnalysis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SokoSolve.Core.Analysis.Solver.Reverse.ReverseStrategy">
+    <Position X="14.25" Y="2.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Private" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AACAAAQAgAAGAEEBAEDAgAAABQAAAAgAAAAIAAAAACA=</HashCode>
+      <FileName>Analysis\Solver\Reverse\ReverseStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Arial" Size="8.25" />
 </ClassDiagram>
