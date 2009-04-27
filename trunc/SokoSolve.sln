@@ -1,14 +1,15 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SokoSolve.Deploy", "SokoSolve.Deploy\SokoSolve.Deploy.vdproj", "{8D5B4830-6CDF-4964-B462-BF96B86EA6C7}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\SokoSolve.Html\", "SokoSolve.Html\", "{31F063CD-E29D-4917-A385-C3F016B4E531}"
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SokoSolve.Html", "SokoSolve.Html\", "{31F063CD-E29D-4917-A385-C3F016B4E531}"
 	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "Svn"
+		SccAuxPath = "Svn"
+		SccLocalPath = "Svn"
+		SccProvider = "SubversionScc"
+		TargetFramework = "3.5"
 		Debug.AspNetCompiler.VirtualPath = "/SokoSolve.Html"
 		Debug.AspNetCompiler.PhysicalPath = "SokoSolve.Html\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\SokoSolve.Html\"
@@ -27,36 +28,20 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "C:\...\SokoSolve.Html\", "S
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SokoSolve.Console", "SokoSolve.Console\SokoSolve.Console.csproj", "{D382F62D-AEA9-4B16-8F4B-0876AD0ECD24}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SokoSolve.Common", "SokoSolve.Common\SokoSolve.Common.csproj", "{0DEBF03E-A3D8-445B-95C6-6F777F5A9970}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SokoSolve.Core", "SokoSolve.Core\SokoSolve.Core.csproj", "{1A95D7E8-F0B8-4596-85F1-57C100A5D754}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SokoSolve.UI", "SokoSolve.UI\SokoSolve.UI.csproj", "{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SokoSolve.Test", "SokoSolve.Test\SokoSolve.Test.csproj", "{04E6AAA7-DB10-4F61-BC6C-5211D189D40A}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.Debug = "False"
-	EndProjectSection
 EndProject
 Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|.NET = Debug|.NET
 		Debug|Any CPU = Debug|Any CPU
