@@ -12,41 +12,54 @@ namespace SokoSolve.Console
     static class ProgramCommandLine
     {
 
-        public static int Main(string[] args)
+        class Program
         {
-            System.Console.WriteLine(" SokoSolve Console | " + ProgramVersion.VersionString);
-            System.Console.WriteLine("============================================");
-            System.Console.WriteLine("");
+            static int Main(string[] args)
+            {
+                ConsoleCommandController controller = new ConsoleCommandController("SokoSolve Console", " SokoSolve Console | " + ProgramVersion.VersionString);
+                //controller.Add(new Encrypt());
+                
 
-           if (args == null || args.Length == 0)
-           {
-               DisplayHelp();
-               return -1;
-           }
+                return controller.Execute(args);
+            }
 
-           try
-           {
-               switch (args[0].ToUpper())
-               {
-                   case("REPORT") :
-                       ConsoleReport report = new ConsoleReport();
-                       report.Execute(args);
-                       break;
-
-                   default:
-                       DisplayHelp();
-                       break;
-               }
-               
-           }
-           catch (Exception ex)
-           {
-               System.Console.WriteLine("FAILED" + ex.Message);
-               return -1;
-           }
-           
-           return 0;
         }
+
+        //public static int Main(string[] args)
+        //{
+        //    System.Console.WriteLine(" SokoSolve Console | " + ProgramVersion.VersionString);
+        //    System.Console.WriteLine("============================================");
+        //    System.Console.WriteLine("");
+
+        //   if (args == null || args.Length == 0)
+        //   {
+        //       DisplayHelp();
+        //       return -1;
+        //   }
+
+        //   try
+        //   {
+        //       switch (args[0].ToUpper())
+        //       {
+        //           case("REPORT") :
+        //               ConsoleReport report = new ConsoleReport();
+        //               report.Execute(args);
+        //               break;
+
+        //           default:
+        //               DisplayHelp();
+        //               break;
+        //       }
+               
+        //   }
+        //   catch (Exception ex)
+        //   {
+        //       System.Console.WriteLine("FAILED" + ex.Message);
+        //       return -1;
+        //   }
+           
+        //   return 0;
+        //}
 
         private static void DisplayHelp()
         {

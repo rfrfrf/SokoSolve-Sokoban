@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{04E6AAA7-DB10-4F61-BC6C-5211D189D40A}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\MatrixTest.cs" />
+    <Compile Include="Common\Structures\MatrixTest.cs" />
     <Compile Include="Common\Structures\BitmapTest.cs" />
     <Compile Include="Core\Reporting\TestReporting.cs" />
     <Compile Include="Core\TestImporter.cs" />

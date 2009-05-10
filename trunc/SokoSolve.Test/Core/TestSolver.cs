@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SokoSolve.Common;
@@ -62,12 +63,22 @@ namespace SokoSolve.Test.Core
             Assert.IsTrue(solutions > 0, "Must find a solution");
         }
 
+        public string MakeProjectRootPath(string path)
+        {
+            return @"..\..\..\..\..\" + path;
+        }
+
+        public string MakePathUIContent(string path)
+        {
+            return MakeProjectRootPath(@"\..\SokoSolve.UI\Content\" + path);
+        }
 
         [TestMethod]
         public void TestRecessHoverHint()
         {
+            Console.WriteLine(Directory.GetCurrentDirectory());
             XmlProvider xml = new XmlProvider();
-            Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\Solver.ssx");
+            Library lib = xml.Load(MakePathUIContent(@"Libraries\SolverDevelopment.ssx"));
             Puzzle puz = lib.GetPuzzleByID("P2");
 
             int solutions = SolveForSolutions(puz.MasterMap);
@@ -78,7 +89,7 @@ namespace SokoSolve.Test.Core
         public void TestCornerHoverHint()
         {
             XmlProvider xml = new XmlProvider();
-            Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\Solver.ssx");
+            Library lib = xml.Load(MakePathUIContent(@"Libraries\SolverDevelopment.ssx"));
             Puzzle puz = lib.GetPuzzleByID("P0");
 
             int solutions = SolveForSolutions(puz.MasterMap);
@@ -90,7 +101,7 @@ namespace SokoSolve.Test.Core
         public void TestAtomicSolution()
         {
             XmlProvider xml = new XmlProvider();
-            Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\SolverDevelopment.ssx");
+            Library lib = xml.Load(MakePathUIContent(@"Libraries\SolverDevelopment.ssx"));
             Puzzle puz = lib.GetPuzzleByID("P20");
 
             int solutions = SolveForSolutions(puz.MasterMap);
@@ -101,7 +112,7 @@ namespace SokoSolve.Test.Core
         public void TestMicrobanFailureOne()
         {
             XmlProvider xml = new XmlProvider();
-            Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\SolverDevelopment.ssx");
+            Library lib = xml.Load(MakePathUIContent(@"Libraries\SolverDevelopment.ssx"));
             Puzzle puz = lib.GetPuzzleByID("P31");
 
             int solutions = SolveForSolutions(puz.MasterMap);
@@ -112,7 +123,7 @@ namespace SokoSolve.Test.Core
         public void TestMicrobanFailureTwo()
         {
             XmlProvider xml = new XmlProvider();
-            Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\SolverDevelopment.ssx");
+            Library lib = xml.Load(MakePathUIContent(@"Libraries\SolverDevelopment.ssx"));
             Puzzle puz = lib.GetPuzzleByID("P33");
 
             int solutions = SolveForSolutions(puz.MasterMap);
@@ -124,7 +135,7 @@ namespace SokoSolve.Test.Core
         public void TestMicrobanFailureReverseSolution()
         {
             XmlProvider xml = new XmlProvider();
-            Library lib = xml.Load(@"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content\Libraries\SolverDevelopment.ssx");
+            Library lib = xml.Load(MakePathUIContent(@"Libraries\SolverDevelopment.ssx"));
             Puzzle puz = lib.GetPuzzleByID("P35");
 
             int solutions = SolveForSolutions(puz.MasterMap);
