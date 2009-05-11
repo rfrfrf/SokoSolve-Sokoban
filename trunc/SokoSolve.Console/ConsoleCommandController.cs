@@ -5,6 +5,15 @@ using System.Text;
 
 namespace SokoSolve.Console
 {
+    public enum ReturnCodes
+    {
+        OK = 0,
+        GeneralError = -1,
+        ArgInvalid = -2,
+        ArgMissing,
+        NotImplemented
+    }
+
     /// <summary>
     /// This is a helper class to allow multiple commands with multiple parameters to be quickly built for a Console app.
     /// </summary>
@@ -27,6 +36,33 @@ namespace SokoSolve.Console
             commands = new List<ConsoleCommandBase>();
         }
 
+        /// <summary>
+        /// Default Construction, get the name, description, author and copyright from the Assembly
+        /// </summary>
+        public ConsoleCommandController() : this(RetrieveName(), RetrieveDescription())
+        {
+          
+        }
+
+        private static string RetrieveDescription()
+        {
+            var asm = Assembly.GetExecutingAssembly();
+            var title = asm.GetCustomAttributes(typeof (AssemblyTitleAttribute), false);
+            var copyright = asm.GetCustomAttributes(typeof (AssemblyCopyrightAttribute), false);
+
+            return string.Format("{0}, {1}, v{2}.", ((AssemblyTitleAttribute)title[0]).Title, ((AssemblyCopyrightAttribute)copyright[0]).Copyright, asm.GetName().Version.ToString());
+        }
+
+        private static string RetrieveName()
+        {
+            return Assembly.GetExecutingAssembly().GetName().Name;
+        }
+
+        /// <summary>
+        /// Find an command line argument (case-insensitive)
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
         public string FindArg(string Name)
         {
             foreach (string arg in args)
@@ -40,6 +76,18 @@ namespace SokoSolve.Console
         }
 
         /// <summary>
+        /// Find an command line argument (case-insensitive)
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
+        public string FindArgExpected(string Name)
+        {
+            string res = FindArg(Name);
+            if (res == null) throw new ArgumentNullException(Name, "Argument is missing");
+            return res;
+        }
+
+        /// <summary>
         /// Find the argument (not including the command name)
         /// </summary>
         /// <param name="Index">cmd.exe PLAY file; here file is index 0</param>
@@ -49,25 +97,79 @@ namespace SokoSolve.Console
             return args[Index + 1];
         }
 
-        public void Add(ConsoleCommandBase cmd)
+        /// <summary>
+        /// Enroll/Register a new command with the controller
+        /// </summary>
+        /// <param name="cmd"></param>
+        public void Enroll(ConsoleCommandBase cmd)
         {
             commands.Add(cmd);
+            cmd.Enroll(this);
         }
 
-        public int Execute(string[] ExecuteArgs)
+        /// <summary>
+        /// Attempt to *automatically* enroll all classes which derive from <see cref="ConsoleCommandBase"/>
+        /// </summary>
+        /// <param name="NameSpace"></param>
+        public int Enroll(string NameSpace)
         {
-            int result = ExecuteInternal(ExecuteArgs);
+            int cc = 0;
+            foreach (Assembly asm in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                if (asm.FullName.StartsWith("mscorlib")) continue;
+                if (asm.FullName.StartsWith("System")) continue;
+                if (asm.FullName.StartsWith("Microsoft")) continue;
+
+                foreach (Type type in asm.GetTypes())
+                {
+                    if (type.Namespace == null) continue;
+                    if (type.Namespace.StartsWith(NameSpace))
+                    {
+                        if (type.IsSubclassOf(typeof(ConsoleCommandBase)))
+                        {
+                            Enroll(Activator.CreateInstance(type) as ConsoleCommandBase);
+                            cc++;
+                        }
+                    }
+                }
+            }
+            return cc;
+        }
+
+        public ReturnCodes Execute(string[] ExecuteArgs)
+        {
+            ReturnCodes result = ExecuteInternal(ExecuteArgs);
             Display("Exiting with ReturnCode: {0}.", result);
             return result;
         }
 
-        public int ExecuteInternal(string[] ExecuteArgs)
+        /// <summary>
+        /// Execute the command with the appropriate wrapping
+        /// </summary>
+        /// <param name="ExecuteArgs"></param>
+        /// <returns></returns>
+        protected ReturnCodes ExecuteInternal(string[] ExecuteArgs)
         {
             args = ExecuteArgs;
             try
             {
-                DisplayHeader(applicationName);
+                DisplayHeader(applicationName + " | " + applicationDescription, 1);
                 Display(string.Empty);
+
+                if (args.Length == 0)
+                {
+                    var defCom = commands.Find(x => x.IsDefaultCommand);
+                    if (defCom != null)
+                    {
+                        Display("Attempting {0}...", defCom.CommandName.ToUpper());
+                        return defCom.Execute(this);
+                    }
+                    else
+                    {
+                        DisplayHelp();
+                        return ReturnCodes.ArgInvalid;
+                    }
+                }
 
                 // Using the first argument check to see if there is a command we can execute
                 foreach (ConsoleCommandBase command in commands)
@@ -77,19 +179,18 @@ namespace SokoSolve.Console
                         if (command.MinParams > args.Length -1)
                         {
                             Display("This command {0} requires {1} params, only {2} was given.", command.CommandName, args.Length, command.MinParams);
-                            return -3;
+                            return ReturnCodes.ArgMissing;
                         }
 
                         try
                         {
                             Display("Attempting {0}...", command.CommandName.ToUpper());
-                            int result = command.Execute(this);
-                            return result;
+                            return command.Execute(this);
                         }
                         catch(Exception ex)
                         {
                             Display(ex);
-                            return -4;
+                            return ReturnCodes.GeneralError;
                         }
                     }
                 }
@@ -98,20 +199,23 @@ namespace SokoSolve.Console
                 Display("No commands Found");
                 Display(string.Empty);
                 DisplayHelp();
-
-                return -2;
+                Display(string.Empty);
+                return ReturnCodes.ArgInvalid;
             }
             catch(Exception ex)
             {
                 Display(ex);
-                return -1;
+                return ReturnCodes.GeneralError;
             }
         }
 
         public void DisplayHelp()
         {
-            DisplayHeader("Commad Help:");
-            Display("In for format APPLICTION.EXE COMMAND param1 param2 -arg:123");
+            DisplayHeader("Command Help", 3);
+            Display(string.Empty);
+            Display("All commands are in for format \"APPLICTION.EXE COMMAND param1 param2 -arg:123\"");
+            Display(string.Empty);
+            Display("The available commands are:");
             foreach (ConsoleCommandBase command in commands)
             {
                 DisplayHelp(command);
@@ -121,23 +225,39 @@ namespace SokoSolve.Console
 
         public void DisplayHelp(ConsoleCommandBase cmd)
         {
-            Display("{0} {1}", cmd.CommandName, cmd.CommandDesc);
-            Display("\t -> Example: {0}", cmd.CommandExample);
+            Display("(o) {0}\t\"{1}\"", cmd.CommandName, cmd.CommandDesc);
+            Display("   \t\t -> Example: {0}", cmd.CommandExample);
+            Display(string.Empty);
         }
 
 
         public void Display(Exception ex)
         {
-            DisplayHeader("Error");
-            Display(ex.Message);
+            DisplayHeader("Error: "+ ex.Message, 2);
             Display(ex.StackTrace);
             if (ex.InnerException != null) Display(ex.InnerException);
         }
 
-        private void DisplayHeader(string title)
+        private void DisplayHeader(string title, int level)
         {
-            Display(title);
-            Display("=========================================");
+            if (level <= 1)
+            {
+                Display("==================================================================================");
+                Display(" " + title);
+                Display("==================================================================================");
+                return;
+            }
+
+            if (level == 2)
+            {
+                Display("==========================================");
+                Display(" " + title);
+                Display("------------------------------------------");
+                return;
+            }
+
+            Display(string.Format("##### {0} #####", title));
+            
         }
 
         public void Display(string aLine)

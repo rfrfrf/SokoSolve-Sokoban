@@ -13,6 +13,8 @@ namespace SokoSolve.Console
         private string commandDesc;
         private string commandExample;
         private int minParams;
+        private bool isDefaultCommand;
+        protected ConsoleCommandController controller;
 
         /// <summary>
         /// Strong Construction
@@ -27,6 +29,15 @@ namespace SokoSolve.Console
             this.commandDesc = commandDesc;
             this.commandExample = commandExample;
             this.minParams = minParams;
+        }
+
+        /// <summary>
+        /// This will be automatically called when this command is enrolled with the controller 
+        /// </summary>
+        /// <param name="consoleCommandController"></param>
+        protected internal void Enroll(ConsoleCommandController consoleCommandController)
+        {
+            controller = consoleCommandController;
         }
 
         public string CommandName
@@ -44,11 +55,15 @@ namespace SokoSolve.Console
             get { return this.commandExample; }
         }
 
-       
-
         public int MinParams
         {
             get { return this.minParams; }
+        }
+
+        public bool IsDefaultCommand
+        {
+            get { return isDefaultCommand; }
+            set { isDefaultCommand = value; }
         }
 
         /// <summary>
@@ -61,7 +76,7 @@ namespace SokoSolve.Console
             return commandName.ToLower() == argCommandName.ToLower();
         }
 
-        public abstract int Execute(ConsoleCommandController controller);
+        public abstract ReturnCodes Execute(ConsoleCommandController controller);
 
 
         
