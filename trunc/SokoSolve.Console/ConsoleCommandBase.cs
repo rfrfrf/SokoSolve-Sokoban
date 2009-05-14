@@ -40,26 +40,41 @@ namespace SokoSolve.Console
             controller = consoleCommandController;
         }
 
+        /// <summary>
+        /// Command argument name
+        /// </summary>
         public string CommandName
         {
             get { return this.commandName; }
         }
 
+        /// <summary>
+        /// Friendly command description for help display
+        /// </summary>
         public string CommandDesc
         {
             get { return this.commandDesc; }
         }
 
+        /// <summary>
+        /// Friendly command example for help display
+        /// </summary>
         public string CommandExample
         {
             get { return this.commandExample; }
         }
 
+        /// <summary>
+        /// The min number of REQUIRED parameters
+        /// </summary>
         public int MinParams
         {
             get { return this.minParams; }
         }
 
+        /// <summary>
+        /// Allow a command to be default, if no specific command is given in command-line arguments
+        /// </summary>
         public bool IsDefaultCommand
         {
             get { return isDefaultCommand; }
@@ -76,9 +91,12 @@ namespace SokoSolve.Console
             return commandName.ToLower() == argCommandName.ToLower();
         }
 
+        /// <summary>
+        /// The command implementation
+        /// </summary>
+        /// <param name="controller">The source for parameters, logging, display and meta-data</param>
+        /// <returns>Success/Failure return code</returns>
         public abstract ReturnCodes Execute(ConsoleCommandController controller);
-
-
         
     }
 }

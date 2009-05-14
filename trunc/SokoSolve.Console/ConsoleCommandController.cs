@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 namespace SokoSolve.Console
 {
+    /// <summary>
+    /// Console Return codes (you can pass other System.Int32 values in also)
+    /// </summary>
     public enum ReturnCodes
     {
         OK = 0,
@@ -19,9 +21,9 @@ namespace SokoSolve.Console
     /// </summary>
     public class ConsoleCommandController
     {
-        private string applicationName;
-        private string applicationDescription;
-        private List<ConsoleCommandBase> commands;
+        private readonly string applicationDescription;
+        private readonly string applicationName;
+        private readonly List<ConsoleCommandBase> commands;
         private string[] args;
 
         /// <summary>
@@ -41,18 +43,26 @@ namespace SokoSolve.Console
         /// </summary>
         public ConsoleCommandController() : this(RetrieveName(), RetrieveDescription())
         {
-          
         }
 
+        /// <summary>
+        /// Build a description of the application, based on the executing assemblies Assembly attributes
+        /// </summary>
+        /// <returns></returns>
         private static string RetrieveDescription()
         {
-            var asm = Assembly.GetExecutingAssembly();
-            var title = asm.GetCustomAttributes(typeof (AssemblyTitleAttribute), false);
-            var copyright = asm.GetCustomAttributes(typeof (AssemblyCopyrightAttribute), false);
+            Assembly asm = Assembly.GetExecutingAssembly();
+            object[] title = asm.GetCustomAttributes(typeof (AssemblyTitleAttribute), false);
+            object[] copyright = asm.GetCustomAttributes(typeof (AssemblyCopyrightAttribute), false);
 
-            return string.Format("{0}, {1}, v{2}.", ((AssemblyTitleAttribute)title[0]).Title, ((AssemblyCopyrightAttribute)copyright[0]).Copyright, asm.GetName().Version.ToString());
+            return string.Format("{0}, {1}, v{2}.", ((AssemblyTitleAttribute) title[0]).Title,
+                                 ((AssemblyCopyrightAttribute) copyright[0]).Copyright, asm.GetName().Version);
         }
 
+        /// <summary>
+        /// Build a description of the application, based on the executing assemblies Assembly name
+        /// </summary>
+        /// <returns></returns>
         private static string RetrieveName()
         {
             return Assembly.GetExecutingAssembly().GetName().Name;
@@ -125,7 +135,7 @@ namespace SokoSolve.Console
                     if (type.Namespace == null) continue;
                     if (type.Namespace.StartsWith(NameSpace))
                     {
-                        if (type.IsSubclassOf(typeof(ConsoleCommandBase)))
+                        if (type.IsSubclassOf(typeof (ConsoleCommandBase)))
                         {
                             Enroll(Activator.CreateInstance(type) as ConsoleCommandBase);
                             cc++;
@@ -136,6 +146,11 @@ namespace SokoSolve.Console
             return cc;
         }
 
+        /// <summary>
+        /// Execute the most appropriate command with exception management and return codes
+        /// </summary>
+        /// <param name="ExecuteArgs"></param>
+        /// <returns></returns>
         public ReturnCodes Execute(string[] ExecuteArgs)
         {
             ReturnCodes result = ExecuteInternal(ExecuteArgs);
@@ -158,7 +173,7 @@ namespace SokoSolve.Console
 
                 if (args.Length == 0)
                 {
-                    var defCom = commands.Find(x => x.IsDefaultCommand);
+                    ConsoleCommandBase defCom = commands.Find(x => x.IsDefaultCommand);
                     if (defCom != null)
                     {
                         Display("Attempting {0}...", defCom.CommandName.ToUpper());
@@ -176,9 +191,10 @@ namespace SokoSolve.Console
                 {
                     if (command.CanProcess(args[0]))
                     {
-                        if (command.MinParams > args.Length -1)
+                        if (command.MinParams > args.Length - 1)
                         {
-                            Display("This command {0} requires {1} params, only {2} was given.", command.CommandName, args.Length, command.MinParams);
+                            Display("This command {0} requires {1} params, only {2} was given.", command.CommandName,
+                                    args.Length, command.MinParams);
                             return ReturnCodes.ArgMissing;
                         }
 
@@ -187,7 +203,7 @@ namespace SokoSolve.Console
                             Display("Attempting {0}...", command.CommandName.ToUpper());
                             return command.Execute(this);
                         }
-                        catch(Exception ex)
+                        catch (Exception ex)
                         {
                             Display(ex);
                             return ReturnCodes.GeneralError;
@@ -202,13 +218,16 @@ namespace SokoSolve.Console
                 Display(string.Empty);
                 return ReturnCodes.ArgInvalid;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Display(ex);
                 return ReturnCodes.GeneralError;
             }
         }
 
+        /// <summary>
+        /// Helper, display the HELP menu
+        /// </summary>
         public void DisplayHelp()
         {
             DisplayHeader("Command Help", 3);
@@ -222,7 +241,10 @@ namespace SokoSolve.Console
             }
         }
 
-
+        /// <summary>
+        /// Display help for an individual command
+        /// </summary>
+        /// <param name="cmd"></param>
         public void DisplayHelp(ConsoleCommandBase cmd)
         {
             Display("(o) {0}\t\"{1}\"", cmd.CommandName, cmd.CommandDesc);
@@ -230,14 +252,22 @@ namespace SokoSolve.Console
             Display(string.Empty);
         }
 
-
+        /// <summary>
+        /// Display an exception
+        /// </summary>
+        /// <param name="ex"></param>
         public void Display(Exception ex)
         {
-            DisplayHeader("Error: "+ ex.Message, 2);
+            DisplayHeader("Error: " + ex.Message, 2);
             Display(ex.StackTrace);
             if (ex.InnerException != null) Display(ex.InnerException);
         }
 
+        /// <summary>
+        /// Display a header H1, H2, H2, etc
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="level"></param>
         private void DisplayHeader(string title, int level)
         {
             if (level <= 1)
@@ -257,19 +287,32 @@ namespace SokoSolve.Console
             }
 
             Display(string.Format("##### {0} #####", title));
-            
         }
 
+        /// <summary>
+        /// Display a single line
+        /// </summary>
+        /// <param name="aLine"></param>
         public void Display(string aLine)
         {
             System.Console.WriteLine(aLine);
         }
 
+        /// <summary>
+        /// Display a name-value pair
+        /// </summary>
+        /// <param name="Label"></param>
+        /// <param name="Value"></param>
         public void DisplayLable(string Label, string Value)
         {
             Display("{0,40}: {1}", Label, Value);
         }
 
+        /// <summary>
+        /// String.Format overload for Display(string)
+        /// </summary>
+        /// <param name="StringFormat"></param>
+        /// <param name="args"></param>
         public void Display(string StringFormat, params object[] args)
         {
             Display(string.Format(StringFormat, args));
