@@ -526,6 +526,37 @@ namespace SokoSolve.Core.Analysis.Solver
             return (lhs.CrateMap == rhs.CrateMap && lhs.MoveMap == rhs.MoveMap && lhs.MoveMap != null);
         }
 
+
+        #region IDisposable Members
+
+        ///<summary>
+        ///Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        ///</summary>
+        ///<filterpriority>2</filterpriority>
+        public void Dispose()
+        {
+
+        }
+
+        #endregion
+
+
+        /// <summary>
+        /// Find an active node by ID
+        /// </summary>
+        /// <param name="nodeID"></param>
+        /// <returns></returns>
+        public SolverNode FindNode(string nodeID)
+        {
+            TreeNode<SolverNode> node = strategy.EvaluationTree.Root.Find(delegate(TreeNode<SolverNode> item) { return item.Data.NodeID == nodeID; }, int.MaxValue);
+            if (node != null) return node.Data;
+
+            node = ReverseStrategy.EvaluationTree.Root.Find(delegate(TreeNode<SolverNode> item) { return item.Data.NodeID == nodeID; }, int.MaxValue);
+            if (node != null) return node.Data;
+
+            return null;
+        }
+
         private SolverReport debugReport;
         private Evaluator<SolverNode> evaluator;
         private ItteratorExitConditions exitConditions;
@@ -540,34 +571,5 @@ namespace SokoSolve.Core.Analysis.Solver
         private States state;
         private Settings settings;
 
-        #region IDisposable Members
-
-        ///<summary>
-        ///Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        ///</summary>
-        ///<filterpriority>2</filterpriority>
-        public void Dispose()
-        {
-            
-        }
-
-        #endregion
-
-
-        /// <summary>
-        /// Find an active node by ID
-        /// </summary>
-        /// <param name="nodeID"></param>
-        /// <returns></returns>
-        public SolverNode FindNode(string nodeID)
-        {
-            TreeNode<SolverNode> node =  strategy.EvaluationTree.Root.Find(delegate(TreeNode<SolverNode> item) { return item.Data.NodeID == nodeID; }, int.MaxValue);
-            if (node != null) return node.Data;
-
-            node = ReverseStrategy.EvaluationTree.Root.Find(delegate(TreeNode<SolverNode> item) { return item.Data.NodeID == nodeID; }, int.MaxValue);
-            if (node != null) return node.Data;
-
-            return null;
-        }
     }
 }

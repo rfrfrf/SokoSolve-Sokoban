@@ -73,7 +73,7 @@ namespace SokoSolve.Test.Core
         [Test]
         public void TestRecessHoverHint()
         {
-            Console.WriteLine(Directory.GetCurrentDirectory());
+            
             XmlProvider xml = new XmlProvider();
             Library lib = xml.Load(MakePathUIContent(@"Libraries\SolverDevelopment.ssx"));
             Puzzle puz = lib.GetPuzzleByID("P9");

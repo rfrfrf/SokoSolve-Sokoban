@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
-using System.Xml;
+using System.Xml.Serialization;
 using SokoSolve.Common;
 using SokoSolve.Core.Model;
 using SokoSolve.Core.Model.Analysis;
@@ -151,7 +151,7 @@ namespace SokoSolve.Core.Analysis.Solver
             {
                 SolverLabel lb = stat.GetDisplayData();
 
-                info.InfoValues.Add(lb.Name, lb.Value);
+                info.InfoValues.Add(new NameValuePair() {Name = lb.Name, Value = lb.Value});
             }
 
 
@@ -218,7 +218,7 @@ namespace SokoSolve.Core.Analysis.Solver
 
     public class SolverResultInfo
     {
-        private NameValueCollection infoValues;
+        private List<NameValuePair> infoValues;
         private string machine;
         private double ratingScore;
         private int totalNodes;
@@ -226,7 +226,7 @@ namespace SokoSolve.Core.Analysis.Solver
 
         public SolverResultInfo()
         {
-            infoValues = new NameValueCollection();
+            infoValues = new List<NameValuePair>();
         }
 
         public int TotalNodes
@@ -253,7 +253,7 @@ namespace SokoSolve.Core.Analysis.Solver
             set { ratingScore = value; }
         }
 
-        public NameValueCollection InfoValues
+        public List<NameValuePair> InfoValues
         {
             get { return infoValues; }
         }
@@ -266,12 +266,20 @@ namespace SokoSolve.Core.Analysis.Solver
             sb.AppendLine(string.Format("Machine     : {0}", Machine));
             sb.AppendLine(string.Format("RatingScore : {0}", RatingScore));
 
-            foreach (string s in InfoValues.Keys)
+            foreach (var item in InfoValues)
             {
-                sb.AppendLine(string.Format("Property    : {0}={1}", s, InfoValues[s]));
+                sb.AppendLine(string.Format("Property    : {0}={1}", item.Name, item.Value));
             }
 
             return sb.ToString();
         }
+    }
+
+    public class NameValuePair
+    {
+        [XmlAttribute]
+        public string Name { get; set; }
+        [XmlAttribute]
+        public string Value { get; set; }
     }
 }

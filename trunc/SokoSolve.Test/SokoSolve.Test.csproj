@@ -42,6 +42,7 @@
     <Compile Include="Common\Structures\MatrixTest.cs" />
     <Compile Include="Common\Structures\BitmapTest.cs" />
     <Compile Include="Core\Reporting\TestReporting.cs" />
+    <Compile Include="Core\Solver\TestProgressComponent.cs" />
     <Compile Include="Core\Solver\TestSolverAtomic.cs" />
     <Compile Include="Core\Solver\TestSolverDeadMaps.cs" />
     <Compile Include="Core\Solver\TestSolverFailures.cs" />

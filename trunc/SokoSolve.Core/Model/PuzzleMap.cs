@@ -91,5 +91,10 @@ namespace SokoSolve.Core.Model
         {
             return string.Format("{0} {1}", mapID, details);
         }
+
+        public GenericDescription GetDetails()
+        {
+            return GenericDescription.Combine(details, Puzzle.GetDetails());
+        }
     }
 }

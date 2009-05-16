@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("General Support Library")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Guy Langston - guy@langston.org.za")]
-[assembly: AssemblyProduct("SokoSolve.UI")]
+[assembly: AssemblyProduct("SokoSolve.Common")]
 [assembly: AssemblyCopyright("GPL")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.2.0.*")]
+[assembly: AssemblyVersion("1.2.*")]
 [assembly: AssemblyFileVersion("1.0.0.0")]

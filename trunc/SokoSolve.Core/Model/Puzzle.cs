@@ -170,5 +170,10 @@ namespace SokoSolve.Core.Model
         {
             return string.Format("{0} {1}", puzzleID, details);
         }
+
+        public GenericDescription GetDetails()
+        {
+            return GenericDescription.Combine(details, Library.GetDetails());
+        }
     }
 }

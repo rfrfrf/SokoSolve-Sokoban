@@ -195,6 +195,11 @@ namespace SokoSolve.Core.Model
 
             return res;
         }
+
+        public GenericDescription GetDetails()
+        {
+            return details;
+        }
     }
 
 	

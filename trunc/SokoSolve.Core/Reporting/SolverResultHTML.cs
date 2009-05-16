@@ -72,9 +72,9 @@ namespace SokoSolve.Core.Reporting
                  tabledtl.InnerXml += string.Format("<tr><th>{0}</th><td><pre>{1}</pre></td></tr>", "Puzzle", result.Map.Map.ToString());
 
                  StringBuilder sb = new StringBuilder();
-                 foreach (string s in result.Info.InfoValues)
+                 foreach (var s in result.Info.InfoValues)
                  {
-                     sb.AppendFormat("{0}: {1}<br/>", s, result.Info.InfoValues[s]);
+                     sb.AppendFormat("{0}: {1}<br/>", s.Name, s.Value);
                  }
                  tabledtl.InnerXml += string.Format("<tr><th>{0}</th><td>{1}</td></tr>", "Misc Details", sb);
 
