@@ -21,16 +21,22 @@ namespace SokoSolve.Core.Analysis.Solver
     /// </summary>
     public class SolverController : IDisposable
     {
+        public SolverController(PuzzleMap map) : this(map.Map)
+        {
+            PuzzleMap = map;
+        }
+
         /// <summary>
         /// Strong Contruction
         /// </summary>
-        /// <param name="puzzleMap">Map to solve</param>
-        public SolverController(PuzzleMap puzzleMap)
+        /// <param name="map">Map to solve</param>
+        public SolverController(SokobanMap map)
         {
+            if (map == null) throw new ArgumentNullException("map");
             this.settings = new Settings();
 
             this.state = States.NotStarted;
-            this.puzzleMap = puzzleMap;
+            this.map = map;
             debugReport = new SolverReport();
 
             debugReport.AppendHeading(1, "SokoSolve | Solver Debug Report v{0}", ProgramVersion.VersionString);
@@ -69,21 +75,21 @@ namespace SokoSolve.Core.Analysis.Solver
             Error
         }
 
-        /// <summary>
-        /// Map to solve with added information (Model)
-        /// </summary>
-        public PuzzleMap PuzzleMap
-        {
-            get { return puzzleMap; }
-        }
+     
 
         /// <summary>
         /// Map to solve
         /// </summary>
         public SokobanMap Map
         {
-            get { return puzzleMap.Map; }
+            get { return map; }
         }
+
+        /// <summary>
+        /// This is for information purpuse (use Map instead), only Solutions use this value
+        /// </summary>
+        public PuzzleMap PuzzleMap { get; set; }
+        
 
         /// <summary>
         /// Provide static analysis. Static Analysis is stateless in terms of the solver progress (SolverNode)
@@ -315,7 +321,7 @@ namespace SokoSolve.Core.Analysis.Solver
                 {
                     if (node.Data.IsForward)
                     {
-                        Solution simpleForward = new Solution(puzzleMap, Map.Player);
+                        Solution simpleForward = new Solution(PuzzleMap, Map.Player);
                         simpleForward.Set(strategy.BuildPath(node.Data));
 
                         simpleForward.Details = new GenericDescription();
@@ -335,7 +341,7 @@ namespace SokoSolve.Core.Analysis.Solver
                     else
                     {
 
-                        Solution simpleForward = new Solution(puzzleMap, Map.Player);
+                        Solution simpleForward = new Solution(PuzzleMap, Map.Player);
                         simpleForward.Set(reverseStrategy.BuildPath(node.Data));
 
                         simpleForward.Details = new GenericDescription();
@@ -389,7 +395,7 @@ namespace SokoSolve.Core.Analysis.Solver
                     fullPath.Add(reversePortion);
 
                     // Join them
-                    Solution solution = new Solution(puzzleMap, Map.Player);
+                    Solution solution = new Solution(PuzzleMap, Map.Player);
                     solution.Set(fullPath);
 
                     solution.Details = new GenericDescription();
@@ -560,7 +566,7 @@ namespace SokoSolve.Core.Analysis.Solver
         private SolverReport debugReport;
         private Evaluator<SolverNode> evaluator;
         private ItteratorExitConditions exitConditions;
-        private PuzzleMap puzzleMap;
+        private SokobanMap map;
         private SolverStats stats;
         private SolverStrategy strategy;
         private ReverseStrategy reverseStrategy;

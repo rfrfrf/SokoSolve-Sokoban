@@ -8,7 +8,7 @@ namespace SokoSolve.Core.UI.Nodes.Actions
     {
         public ActionChain()
         {
-            actions = new List<Action>();
+            actions = new List<NodeAction>();
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace SokoSolve.Core.UI.Nodes.Actions
         {
             if (actions != null && actions.Count > 0)
             {
-                foreach (Action action in actions)
+                foreach (NodeAction action in actions)
                 {
                     action.Init();
                 }
@@ -59,7 +59,7 @@ namespace SokoSolve.Core.UI.Nodes.Actions
         }
 
 
-        public List<Action> Actions
+        public List<NodeAction> Actions
         {
             get { return actions; }
         }
@@ -67,18 +67,18 @@ namespace SokoSolve.Core.UI.Nodes.Actions
         /// <summary>
         /// Current action
         /// </summary>
-        public Action Current
+        public NodeAction Current
         {
             get { return current; }
             set { current = value; }
         }
 
-        public void Add(Action newAction)
+        public void Add(NodeAction newNodeAction)
         {
-            actions.Add(newAction);
+            actions.Add(newNodeAction);
         }
 
-        private List<Action> actions;
-        private Action current;
+        private List<NodeAction> actions;
+        private NodeAction current;
     }
 }

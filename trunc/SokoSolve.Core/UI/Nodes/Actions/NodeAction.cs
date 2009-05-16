@@ -4,19 +4,19 @@ using System.Text;
 
 namespace SokoSolve.Core.UI.Nodes.Actions
 {
-    public delegate bool ActionDelegate(Action Source);
+    public delegate bool ActionDelegate(NodeAction Source);
 
     /// <summary>
     /// Orcestrate a simple action. <see cref="ActionChain"/>
     /// </summary>
-    public abstract class Action
+    public abstract class NodeAction
     {
-        protected Action(ActionDelegate onBind)
+        protected NodeAction(ActionDelegate onBind)
         {
             this.onBind = onBind;
         }
 
-        protected Action()
+        protected NodeAction()
         {
         }
 

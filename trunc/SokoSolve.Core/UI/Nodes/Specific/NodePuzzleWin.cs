@@ -22,7 +22,7 @@ namespace SokoSolve.Core.UI.Nodes.Specific
             myGameUI.Add(winner);
         }
 
-        private bool ReSizeText(Action Source)
+        private bool ReSizeText(NodeAction Source)
         {
             ActionCounter cc = Source as ActionCounter;
             winner.Font = new Font("Arial", 10f + (float)cc.Current);

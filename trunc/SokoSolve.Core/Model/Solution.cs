@@ -26,7 +26,7 @@ namespace SokoSolve.Core.Model
         }
 
         /// <summary>
-        /// Map for which there is a solution
+        /// Map for which there is a solution [OPTIONAL]
         /// </summary>
         public PuzzleMap Map
         {

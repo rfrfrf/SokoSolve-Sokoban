@@ -61,7 +61,7 @@ namespace SokoSolve.Core.UI.Nodes.Specific
         private Color secondLineColour = Color.Sienna;
 
 
-        bool SetAlpha(Action current)
+        bool SetAlpha(NodeAction current)
         {
             secondLine.IsVisible = true;
             ActionCounter ctr = current as ActionCounter;
@@ -75,7 +75,7 @@ namespace SokoSolve.Core.UI.Nodes.Specific
 
         private readonly int maxSecondLineChars = 70;
 
-        bool SelectNextMessage(Action current)
+        bool SelectNextMessage(NodeAction current)
         {
             secondLine.Text = lines[currentLine];
             if (secondLine.Text.Length > maxSecondLineChars)

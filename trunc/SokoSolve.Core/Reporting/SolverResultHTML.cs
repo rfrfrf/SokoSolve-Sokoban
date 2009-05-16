@@ -34,13 +34,13 @@ namespace SokoSolve.Core.Reporting
             {
                 if (result == null) continue;
                 if (result.Map ==null) continue;
-                if (result.Map.Puzzle == null) continue;
-                if (result.Map.Puzzle.Details == null) continue;
-                table.InnerXml += string.Format("<tr><td>({3}) {0}</td><td>{1}</td><td>{2}</td></tr>", 
-                    result.Map.Puzzle.Details.Name, 
-                    result.StatusString, 
-                    result.Summary,
-                    result.Map.Puzzle.PuzzleID);
+                //if (result. == null) continue;
+                //if (result.Map.Puzzle.Details == null) continue;
+                //table.InnerXml += string.Format("<tr><td>({3}) {0}</td><td>{1}</td><td>{2}</td></tr>", 
+                //    result.Map.Puzzle.Details.Name, 
+                //    result.StatusString, 
+                //    result.Summary,
+                //    result.Map.Puzzle.PuzzleID);
             }
 
             Body.AppendChild(table);
@@ -49,10 +49,9 @@ namespace SokoSolve.Core.Reporting
              {
                  if (result == null) continue;
                  if (result.Map == null) continue;
-                 if (result.Map.Puzzle == null) continue;
-                 if (result.Map.Puzzle.Details == null) continue;
+                 
 
-                 Body.AppendChild(CreateContentTag("h2", string.Format("({0}) {1}", result.Map.Puzzle.PuzzleID, result.Map.Puzzle.Details.Name)));
+                 //Body.AppendChild(CreateContentTag("h2", string.Format("({0}) {1}", result.Map.Puzzle.PuzzleID, result.Map.Puzzle.Details.Name)));
 
                  XmlElement tabledtl = report.CreateElement("table");
                  tabledtl.SetAttribute("class", "tableinfo");
@@ -64,12 +63,12 @@ namespace SokoSolve.Core.Reporting
 
                  tabledtl.InnerXml += string.Format("<tr><th>{0}</th><td>{1}</td></tr>", "Status", result.StatusString);
                  tabledtl.InnerXml += string.Format("<tr><th>{0}</th><td>{1}</td></tr>", "Controller Status", result.ControllerResult);
-                 tabledtl.InnerXml += string.Format("<tr><th>{0}</th><td>{1}</td></tr>", "Total Seconds", result.Info.TotalSecond);
+                 tabledtl.InnerXml += string.Format("<tr><th>{0}</th><td>{1}</td></tr>", "Total Seconds", result.Info.TotalSeconds);
                  tabledtl.InnerXml += string.Format("<tr><th>{0}</th><td>{1}</td></tr>", "Total Nodes", result.Info.TotalNodes);
                  tabledtl.InnerXml += string.Format("<tr><th>{0}</th><td>{1}</td></tr>", "Machine", result.Info.Machine);
                  tabledtl.InnerXml += string.Format("<tr><th>{0}</th><td>{1}</td></tr>", "Puzzle Rating", result.Info.RatingScore);
 
-                 tabledtl.InnerXml += string.Format("<tr><th>{0}</th><td><pre>{1}</pre></td></tr>", "Puzzle", result.Map.Map.ToString());
+                 //tabledtl.InnerXml += string.Format("<tr><th>{0}</th><td><pre>{1}</pre></td></tr>", "Puzzle", result.Map.Map.ToString());
 
                  StringBuilder sb = new StringBuilder();
                  foreach (var s in result.Info.InfoValues)

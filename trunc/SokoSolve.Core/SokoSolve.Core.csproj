@@ -14,6 +14,7 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,6 +36,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
@@ -107,7 +111,6 @@
     <Compile Include="Namespace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomHelper.cs" />
-    <Compile Include="Analysis\Solver\SolverAPI.cs" />
     <Compile Include="Analysis\Solver\SolverBitmap.cs" />
     <Compile Include="Analysis\Solver\SolverController.cs" />
     <Compile Include="Analysis\Solver\SolverNode.cs" />
@@ -129,7 +132,7 @@
     <Compile Include="UI\Nodes\Complex\NodeControllerStatus.cs" />
     <Compile Include="UI\Nodes\Complex\NodeControllerBookmarks.cs" />
     <Compile Include="UI\Nodes\Complex\NodeCursorEventArgs.cs" />
-    <Compile Include="UI\Nodes\Actions\Action.cs" />
+    <Compile Include="UI\Nodes\Actions\NodeAction.cs" />
     <Compile Include="UI\Nodes\Actions\ActionChain.cs" />
     <Compile Include="UI\Nodes\Effects\NodeEffectImage.cs" />
     <Compile Include="UI\Nodes\NotifcationEvent.cs" />

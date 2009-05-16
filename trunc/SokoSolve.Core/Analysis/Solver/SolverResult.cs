@@ -34,10 +34,10 @@ namespace SokoSolve.Core.Analysis.Solver
         private SolverResultInfo info;
         private List<Solution> solutions;
         private string summary = "Not set";
-        PuzzleMap map;
+        SokobanMap map;
 
 
-        public PuzzleMap Map
+        public SokobanMap Map
         {
             get { return map; }
             set { map = value; }
@@ -139,14 +139,14 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <param name="controller"></param>
         public void Build(SolverController controller)
         {
-            map = controller.PuzzleMap;
+            map = controller.Map;
 
             // Build type strong info class
             info = new SolverResultInfo();
             info.TotalNodes = (int) controller.Stats.Nodes.ValueTotal;
-            info.TotalSecond = controller.Stats.EvaluationTime.ValueTotal;
+            info.TotalSeconds = controller.Stats.EvaluationTime.ValueTotal;
             info.Machine = DebugHelper.GetCPUDescription();
-            info.RatingScore = PuzzleAnalysis.CalcRating(map.Map);
+            info.RatingScore = PuzzleAnalysis.CalcRating(map);
             foreach (Statistic stat in controller.Stats.Stats)
             {
                 SolverLabel lb = stat.GetDisplayData();
@@ -171,9 +171,9 @@ namespace SokoSolve.Core.Analysis.Solver
                 }
 
                 sb.AppendFormat(" in {0} and {1} nodes at {2:0} nodes/s (puzzle score {3})",
-                                StringHelper.ToString(TimeSpan.FromSeconds(info.TotalSecond)),
+                                StringHelper.ToString(TimeSpan.FromSeconds(info.TotalSeconds)),
                                 info.TotalNodes,
-                                info.TotalNodes/info.TotalSecond,
+                                info.TotalNodes/info.TotalSeconds,
                                 info.RatingScore);
                 summary = sb.ToString();
             }
@@ -191,9 +191,9 @@ namespace SokoSolve.Core.Analysis.Solver
                         status = CalculationResult.Cancelled;
                         summary =
                             string.Format(" Cancelled after {0} sec and {1} nodes at {2:0} nodes/s (puzzle score {3})",
-                                          StringHelper.ToString(TimeSpan.FromSeconds(info.TotalSecond)),
+                                          StringHelper.ToString(TimeSpan.FromSeconds(info.TotalSeconds)),
                                           info.TotalNodes,
-                                          info.TotalNodes/info.TotalSecond,
+                                          info.TotalNodes/info.TotalSeconds,
                                           info.RatingScore);
                     }
                     else if (controllerResult == SolverController.States.CompleteNoSolution)
@@ -206,9 +206,9 @@ namespace SokoSolve.Core.Analysis.Solver
                         status = CalculationResult.GaveUp;
                         summary = string.Format(
                                 "The solver could not find a within the given constraints. Tried for {0} sec and {1} nodes at {2:0} nodes/s (puzzle score {3})",
-                                StringHelper.ToString(TimeSpan.FromSeconds(info.TotalSecond)),
+                                StringHelper.ToString(TimeSpan.FromSeconds(info.TotalSeconds)),
                                 info.TotalNodes,
-                                info.TotalNodes/info.TotalSecond,
+                                info.TotalNodes/info.TotalSeconds,
                                 info.RatingScore);
                     }
                 }
@@ -222,7 +222,7 @@ namespace SokoSolve.Core.Analysis.Solver
         private string machine;
         private double ratingScore;
         private int totalNodes;
-        private float totalSecond;
+        private float totalSeconds;
 
         public SolverResultInfo()
         {
@@ -235,10 +235,10 @@ namespace SokoSolve.Core.Analysis.Solver
             set { totalNodes = value; }
         }
 
-        public float TotalSecond
+        public float TotalSeconds
         {
-            get { return totalSecond; }
-            set { totalSecond = value; }
+            get { return totalSeconds; }
+            set { totalSeconds = value; }
         }
 
         public string Machine
@@ -262,7 +262,7 @@ namespace SokoSolve.Core.Analysis.Solver
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(string.Format("TotalNodes  : {0} nodes", TotalNodes));
-            sb.AppendLine(string.Format("TotalSecond : {0} sec", TotalSecond));
+            sb.AppendLine(string.Format("TotalSeconds : {0} sec", TotalSeconds));
             sb.AppendLine(string.Format("Machine     : {0}", Machine));
             sb.AppendLine(string.Format("RatingScore : {0}", RatingScore));
 

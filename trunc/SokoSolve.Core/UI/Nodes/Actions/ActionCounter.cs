@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SokoSolve.Core.UI.Nodes.Actions
 {
-    class ActionCounter : Action
+    class ActionCounter : NodeAction
     {
 
         public ActionCounter(int fromValue, int toValue, int delta, ActionDelegate binder) : base(binder)

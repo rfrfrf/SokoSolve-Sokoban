@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using SokoSolve.Common;
+using SokoSolve.Core.Analysis.Progress;
 using SokoSolve.Core.Analysis.Solver;
 using SokoSolve.Core.Model;
 using SokoSolve.Core.Model.DataModel;
+using SokoSolve.Core.Model.Services;
 
 namespace SokoSolve.Console
 {
@@ -17,9 +19,14 @@ namespace SokoSolve.Console
         {
         }
 
+        public string ArgSolverLibrary
+        {
+            get { return controller.FindArg("-slib:"); }
+        }
+
         public string ArgLibrary
         {
-            get { return controller.FindArgExpected("-lib:"); }
+            get { return controller.FindArg("-lib:"); }
         }
 
         public string ArgPuzzle
@@ -48,25 +55,71 @@ namespace SokoSolve.Console
             {
                 reportFile = File.CreateText(ArgReport);
             }
-
-            XmlProvider xml = new XmlProvider();
-            Library lib = xml.Load(ArgLibrary);
-
-            if (ArgPuzzle == "*")
+            
+            if (!string.IsNullOrEmpty(ArgSolverLibrary))
             {
-                int cc = 0;
-                foreach (Puzzle puzzle in lib.Puzzles)
+                // MODE: Progress + Library
+                ProgressComponent comp = new ProgressComponent();
+                Library lib = null;
+
+                // It is exists load...
+                if (File.Exists(ArgSolverLibrary))
                 {
-                    cc++;
+                    comp.Load(ArgSolverLibrary);
+                }
+                
+                // If a library is specified, merge/add it...
+                if (!string.IsNullOrEmpty(ArgLibrary))
+                {
+                    XmlProvider xml = new XmlProvider();
+                    lib = xml.Load(ArgLibrary);
+                    comp.Add(lib);
+                }
+
+                foreach (SolverPuzzle item in comp.Items)
+                {
                     controller.Display("");
-                    controller.DisplayLable("Attempting", string.Format("{0:000} of {1:000}", cc, lib.Puzzles.Count));
-                    SolvePuzzle(puzzle, controller);
-                }   
+                    controller.DisplayLable("Name", item.Name);
+                    controller.Display(StringHelper.Join(item.NormalisedMap, null, Environment.NewLine));
+
+                    SokobanMap map = new SokobanMap();
+                    map.SetFromStrings(item.NormalisedMap);
+                    SolverController ctrl = new SolverController(map);
+                    ctrl.ExitConditions.MaxDepth = 1000;
+                    ctrl.ExitConditions.MaxItterations = 10000000;
+                    ctrl.ExitConditions.MaxTimeSecs = (float)ArgMaxTime;
+
+                    SolverResult res = ctrl.Solve();
+                    comp.Update(res);
+                }
+
+                comp.Save(ArgSolverLibrary);
+
             }
-            else
+            else if (!string.IsNullOrEmpty(ArgLibrary))
             {
-                SolvePuzzle(lib.GetPuzzleByID(ArgPuzzle), controller);
+                // MODE: Only Library
+                XmlProvider xml = new XmlProvider();
+                Library lib = xml.Load(ArgLibrary);
+
+                if (ArgPuzzle == "*")
+                {
+                    int cc = 0;
+                    foreach (Puzzle puzzle in lib.Puzzles)
+                    {
+                        cc++;
+                        controller.Display("");
+                        controller.DisplayLable("Attempting", string.Format("{0:000} of {1:000}", cc, lib.Puzzles.Count));
+                        SolvePuzzle(puzzle.MasterMap, puzzle.GetDetails().Name);
+                    }
+                }
+                else
+                {
+                    Puzzle pux = lib.GetPuzzleByID(ArgPuzzle);
+                    SolvePuzzle(pux.MasterMap, pux.GetDetails().Name);
+                }    
             }
+            
 
             if (reportFile != null)
             {
@@ -77,16 +130,16 @@ namespace SokoSolve.Console
             return ReturnCodes.OK;
         }
 
-        private void SolvePuzzle(Puzzle puz, ConsoleCommandController controller)
+        private void SolvePuzzle(PuzzleMap puz, string Name)
         {
-            SolverController ctrl = new SolverController(puz.MasterMap);
+            SolverController ctrl = new SolverController(puz);
             ctrl.ExitConditions.MaxDepth = 1000;
             ctrl.ExitConditions.MaxItterations = 10000000;
             ctrl.ExitConditions.MaxTimeSecs = (float)ArgMaxTime;
 
             SolverResult res = ctrl.Solve();
             
-            controller.DisplayLable("Name", string.Format("{0}, {1}", puz.PuzzleID, puz.Details.Name));
+            controller.DisplayLable("Name", Name);
             controller.DisplayLable("Result", res.StatusString);
             controller.DisplayLable("Summary", res.Summary);
             controller.DisplayLable("Exit Conditions", ctrl.ExitConditions.ToString());
@@ -99,7 +152,7 @@ namespace SokoSolve.Console
             if (reportFile != null)
             {
                 reportFile.WriteLine("###########################################################################");
-                reportFile.WriteLine(string.Format("{0}, {1} ===> {2}", puz.PuzzleID, puz.Details.Name, res.Summary));
+                reportFile.WriteLine(string.Format("{0} ===> {1}", Name, res.Summary));
                 reportFile.WriteLine("###########################################################################");
                 reportFile.WriteLine(res.Info.ToString());
                 reportFile.WriteLine(res.DebugReport.ToString(new DebugReportFormatter()));

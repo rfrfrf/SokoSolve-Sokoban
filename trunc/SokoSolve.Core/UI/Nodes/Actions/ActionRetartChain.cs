@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SokoSolve.Core.UI.Nodes.Actions
 {
-    class ActionRetartChain : Action
+    class ActionRetartChain : NodeAction
     {
         public ActionRetartChain(ActionChain chain)
         {

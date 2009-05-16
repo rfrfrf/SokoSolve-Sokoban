@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SokoSolve.Core.UI.Nodes.Actions
 {
-    class ActionMethod : Action
+    class ActionMethod : NodeAction
     {
         public ActionMethod(ActionDelegate onStep)
         {

@@ -11,6 +11,12 @@ namespace SokoSolve.Core.Model.Services
     /// </summary>
     public class SolverPuzzle
     {
+        public SolverPuzzle()
+        {
+            Attempts = new SolverAttemptCollection();
+        }
+
+
         [XmlAttribute]
         public string Name { get; set; }
         [XmlAttribute]
@@ -24,6 +30,8 @@ namespace SokoSolve.Core.Model.Services
         [XmlAttribute]
         public string Author { get; set; }
         [XmlAttribute]
+        public string SolutionAuthor { get; set; }
+        [XmlAttribute]
         public string Email { get; set; }
         [XmlAttribute]
         public string SourceURL { get; set; }
@@ -32,7 +40,37 @@ namespace SokoSolve.Core.Model.Services
 
         public string[] NormalisedMap { get; set; }
 
-        public List<SolverAttempt> Attempts { get; set; }
+        public SolverAttemptCollection Attempts { get; set; }
+    }
+
+    public class SolverAttemptCollection
+    {
+        public SolverAttemptCollection()
+        {
+            TotalTime = 0;
+            Items = new List<SolverAttempt>();
+        }
+
+        [XmlAttribute]
+        public int TotalAttemptSucceed { get; set; }
+        [XmlAttribute]
+        public int TotalAttemptFailed { get; set; }
+        
+
+        public double TotalTime { get; set; }
+
+        public List<SolverAttempt> Items { get; set; }
+
+        [XmlIgnore]
+        public int Count
+        {
+            get { return Items.Count;  }
+        }
+
+        public void Add(SolverAttempt item)
+        {
+            Items.Add(item);
+        }
     }
 
     public class SolverAttempt

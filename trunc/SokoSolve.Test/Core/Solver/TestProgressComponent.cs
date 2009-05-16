@@ -29,5 +29,26 @@ namespace SokoSolve.Test.Core.Solver
 
             Assert.AreEqual(comp.Count, load.Count);
         }
+
+        [Test]
+        public void TestProgressUpdate()
+        {
+            ProgressComponent comp = new ProgressComponent();
+
+            XmlProvider xml = new XmlProvider();
+            Library lib = xml.Load(MakePathUIContent(@"Libraries\Sasquatch.ssx"));
+
+            comp.Add(lib);
+
+            var res = Solve(lib.GetPuzzleByID("P1").MasterMap);
+            comp.Update(res);
+
+            var res2 = Solve(lib.GetPuzzleByID("P3").MasterMap);
+            comp.Update(res2);
+
+            comp.Save("temp_test_progress.xml");
+
+
+        }
     }
 }
