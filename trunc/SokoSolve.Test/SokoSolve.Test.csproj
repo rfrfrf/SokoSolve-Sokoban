@@ -69,8 +69,5 @@
   <ItemGroup>
     <Content Include="Core\Mas Microban.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Core\Reporting\Sasquatch.ssx" />
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
 </Project>

@@ -22,7 +22,7 @@ namespace SokoSolve.Test.Core.Reporting
 
             LibraryReport rpt = new LibraryReport(lib, new StaticImage(ResourceController.Singleton.GetInstance("default"), new VectorInt(16,16)),@".");
             rpt.BuildReport();
-            rpt.Save(@"C:\junk\library.html");
+            rpt.Save(@"library.html");
         }
 
 

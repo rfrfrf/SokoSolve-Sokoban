@@ -14,6 +14,7 @@ namespace SokoSolve.Test.Core.Solver
     class TestSolverFailures : TestPuzzleBase
     {
         [Test]
+        [Ignore]
         public void TestInvalidRecessHoverHint()
         {
             string[] puzzle = new string[]
@@ -34,6 +35,7 @@ namespace SokoSolve.Test.Core.Solver
         }
 
         [Test]
+        [Ignore]
         public void TestDead_InvalidCornerHoverHint()
         {
             string[] puzzle = new string[]
