@@ -166,8 +166,6 @@ namespace SokoSolve.Common
             foreach(PropertyInfo prop in props)
             {
                 sb.Append(prop.Name);
-                string value = "";
-
             }
 
             return sb.ToString();

@@ -47,7 +47,7 @@ namespace SokoSolve.Common.FactoryPattern
         /// </summary>
         /// <param name="providerContext"></param>
         /// <returns></returns>
-        public virtual bool Contains(ProviderContext providerContext)
+        public virtual new bool Contains(ProviderContext providerContext)
         {
             return base.CacheContains(providerContext);
         }

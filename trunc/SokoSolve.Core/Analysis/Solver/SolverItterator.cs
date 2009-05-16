@@ -84,7 +84,7 @@ namespace SokoSolve.Core.Analysis.Solver
         /// Get the next node to evaluate, based on depth-first.
         /// </summary>
         /// <returns></returns>
-        public INode<SolverNode> GetNext(out EvalStatus EvalStatus)
+        public INode<SolverNode> GetNext(out EvalStatus evalStatus)
         {
             // Check Exit conditions
 
@@ -92,7 +92,7 @@ namespace SokoSolve.Core.Analysis.Solver
             if (controller.State != SolverController.States.Running)
             {
                 exitStatus = EvalStatus.ExitIncomplete;
-                EvalStatus = exitStatus;
+                evalStatus = exitStatus;
                 status = ItteratorExit.Cancelled;
                 controller.DebugReport.AppendTimeStamp("Exiting - Controller not running");
                 return null;
@@ -102,7 +102,7 @@ namespace SokoSolve.Core.Analysis.Solver
             INode<SolverNode> next = innerItterator.GetNext(out exitStatus);
             if (next == null)
             {
-                EvalStatus = exitStatus;
+                evalStatus = exitStatus;
                 return null;
             }
 
@@ -110,7 +110,7 @@ namespace SokoSolve.Core.Analysis.Solver
             controller.Stats.EvaluationItterations.Increment();
 
             // Exit
-            EvalStatus = exitStatus;
+            evalStatus = exitStatus;
             return next;
         }
 

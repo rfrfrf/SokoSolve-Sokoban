@@ -37,7 +37,6 @@ namespace SokoSolve.Common.Structures
         /// <param name="root">Controlling Tree</param>
         public TreeNode(Tree<T> root)
         {
-            this.parent = parent;
             this.tree = root;
         }
 

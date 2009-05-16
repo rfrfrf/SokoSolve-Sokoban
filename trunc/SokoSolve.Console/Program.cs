@@ -5,7 +5,7 @@ using SokoSolve.Common;
 using SokoSolve.Common.Structures;
 using SokoSolve.Core.Analysis.Solver;
 using SokoSolve.Core.Model;
-using SokoSolve.Test.Core;
+
 
 namespace SokoSolve.Console
 {

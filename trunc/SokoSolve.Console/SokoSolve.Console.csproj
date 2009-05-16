@@ -1,4 +1,5 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -14,6 +15,7 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -53,14 +55,6 @@
     <ProjectReference Include="..\SokoSolve.Core\SokoSolve.Core.csproj">
       <Project>{1A95D7E8-F0B8-4596-85F1-57C100A5D754}</Project>
       <Name>SokoSolve.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SokoSolve.Test\SokoSolve.Test.csproj">
-      <Project>{04E6AAA7-DB10-4F61-BC6C-5211D189D40A}</Project>
-      <Name>SokoSolve.Test</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SokoSolve.UI\SokoSolve.UI.csproj">
-      <Project>{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}</Project>
-      <Name>SokoSolve.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

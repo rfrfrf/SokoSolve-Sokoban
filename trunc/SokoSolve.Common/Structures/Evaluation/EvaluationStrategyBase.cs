@@ -24,9 +24,11 @@ namespace SokoSolve.Common.Structures.Evaluation
         /// <summary>
         /// Use a depth-last itterator by default.
         /// </summary>
-        protected EvaluationStrategyBase() : this (new BreadthFirstItterator<T>(ItteratorHelper.DefaultGetLocationNodeDepth))
+        protected EvaluationStrategyBase()
         {
-            
+             this.workList = new BreadthFirstItterator<T>(ItteratorHelper.DefaultGetLocationNodeDepth<T>);
+            this.evaluation = new Tree<T>();
+            nextID = 0;
         }
 
         /// <summary>
