@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using SokoSolve.Core.IO;
 
 namespace SokoSolve.Test.Core
 {
-    [TestClass]
+    [TestFixture]
     public class TestImporter
     {
-        [TestMethod]
+        [Test]
         public void TestTXT()
         {
             ImportTXT importer = new ImportTXT();

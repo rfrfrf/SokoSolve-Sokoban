@@ -31,7 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="nunit.framework, Version=2.4.8.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -43,6 +43,7 @@
     <Compile Include="Common\Structures\BitmapTest.cs" />
     <Compile Include="Core\Reporting\TestReporting.cs" />
     <Compile Include="Core\Solver\TestSolverAtomic.cs" />
+    <Compile Include="Core\Solver\TestSolverDeadMaps.cs" />
     <Compile Include="Core\Solver\TestSolverFailures.cs" />
     <Compile Include="Core\TestImporter.cs" />
     <Compile Include="Core\TestPuzzleBase.cs" />

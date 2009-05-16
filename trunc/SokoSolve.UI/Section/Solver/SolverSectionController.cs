@@ -669,7 +669,7 @@ namespace SokoSolve.UI.Section.Solver
                 string dest = Path.GetDirectoryName(save.FileName) + "/style.css";
                 if (!File.Exists(dest))
                 {
-                    File.Copy(FileManager.getContent("$html/style.css"), dest, false);    
+                    File.Copy(FileManager.GetContent("$html/style.css"), dest, false);    
                 }
 
                 if (Path.GetExtension(save.FileName) == ".html" || Path.GetExtension(save.FileName) == ".htm")
@@ -705,7 +705,7 @@ namespace SokoSolve.UI.Section.Solver
                         List<SolverResult> results = new List<SolverResult>();
                         results.Add(item.Result);
                         
-                        SolverResultHTML report = new SolverResultHTML(results, FileManager.getContent("$html/style.css"));
+                        SolverResultHTML report = new SolverResultHTML(results, FileManager.GetContent("$html/style.css"));
                         report.BuildReport();
 
                         FormBrowser browser = new FormBrowser();

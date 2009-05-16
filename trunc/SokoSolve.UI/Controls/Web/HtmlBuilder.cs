@@ -92,7 +92,7 @@ namespace SokoSolve.UI.Controls.Web
         }
 
 
-        private string fileCSS = FileManager.getContent("$html/style.css");
+        private string fileCSS = FileManager.GetContent("$html/style.css");
         private string header = @"<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0 Transitional//EN"">
 <html xmlns=""http://www.w3.org/1999/xhtml"">
 	<head>

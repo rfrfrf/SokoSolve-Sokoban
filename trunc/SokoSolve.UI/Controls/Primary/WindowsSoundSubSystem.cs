@@ -40,7 +40,7 @@ namespace SokoSolve.UI.Controls.Primary
 
             if (name.ToLower().EndsWith("mp3"))
             {
-                string file = FileManager.getContent("$music", name);
+                string file = FileManager.GetContent("$music", name);
                 if (!File.Exists(file)) return null;
 
                 SoundMusic msc = new SoundMusic(player.Open(file));

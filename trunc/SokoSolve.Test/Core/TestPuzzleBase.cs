@@ -11,12 +11,12 @@ namespace SokoSolve.Test.Core
     {
         protected string MakeProjectRootPath(string path)
         {
-            return @"..\..\..\..\..\" + path;
+            return @"..\..\..\" + path;
         }
 
         protected string MakePathUIContent(string path)
         {
-            return MakeProjectRootPath(@"\..\SokoSolve.UI\Content\" + path);
+            return MakeProjectRootPath(@"\SokoSolve.UI\Content\" + path);
         }
 
 

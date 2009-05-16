@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using SokoSolve.Common.Structures;
 using SokoSolve.Common.Structures.Evaluation;
 using SokoSolve.Core.Analysis.Solver;
@@ -10,10 +10,10 @@ using SokoSolve.Core.Model;
 
 namespace SokoSolve.Test.Core
 {
-    [TestClass]
+    [TestFixture]
     public class TestReverseStrategy
     {
-        [TestMethod]
+        [Test]
         public void TestReverseStrategyCoreSimple()
         {
             CodeTimer timer = new CodeTimer("");
@@ -39,6 +39,8 @@ namespace SokoSolve.Test.Core
                 pMap.Map = map;
 
                 SolverController controller = new SolverController(pMap);
+                controller.Init();
+
                 ReverseStrategy rev = new ReverseStrategy(controller);
 
                 Evaluator<SolverNode> eval = new Evaluator<SolverNode>();

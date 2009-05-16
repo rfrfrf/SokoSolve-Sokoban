@@ -47,13 +47,13 @@ namespace SokoSolve.UI.Controls.Primary
         private void InitHTML()
         {
             
-                StringBuilder html = new StringBuilder(File.ReadAllText(FileManager.getContent("$html/Welcome.html")));
+                StringBuilder html = new StringBuilder(File.ReadAllText(FileManager.GetContent("$html/Welcome.html")));
 
                 XmlProvider prov = new XmlProvider();
 
                 if (!File.Exists(ProfileController.Current.LibraryLastFile))
                 {
-                    ProfileController.Current.LibraryLastFile = FileManager.getContent("$Libraries\\Sasquatch.ssx");
+                    ProfileController.Current.LibraryLastFile = FileManager.GetContent("$Libraries\\Sasquatch.ssx");
                 }
 
                 Core.Model.Library lib = prov.Load(ProfileController.Current.LibraryLastFile);
@@ -85,7 +85,7 @@ namespace SokoSolve.UI.Controls.Primary
 
                 html = html.Replace("[Details]", leftpane.GetHTMLBody());
                 html = html.Replace("[Image]", rightpane.GetHTMLBody());
-                html = html.Replace("[BASEHREF]", FileManager.getContent("$html"));
+                html = html.Replace("[BASEHREF]", FileManager.GetContent("$html"));
                 html = html.Replace("[USERNAME]", ProfileController.Current.UserName);
                 htmlView.SetHTML(html.ToString());
            
@@ -121,19 +121,19 @@ namespace SokoSolve.UI.Controls.Primary
 
             if (e.Command == new Uri("app://HTML/About.html"))
             {
-                htmlView.Navigate(FileManager.getContent("$html\\About.html"));
+                htmlView.Navigate(FileManager.GetContent("$html\\About.html"));
                 return;
             }
 
             if (e.Command == new Uri("app://HTML/ReleaseNotes.html"))
             {
-                htmlView.Navigate(FileManager.getContent("$html\\ReleaseNotes.html"));
+                htmlView.Navigate(FileManager.GetContent("$html\\ReleaseNotes.html"));
                 return;
             }
 
             if (e.Command == new Uri("app://HTML/HowToPlay.html"))
             {
-                htmlView.Navigate(FileManager.getContent("$html\\HowToPlay.html"));
+                htmlView.Navigate(FileManager.GetContent("$html\\HowToPlay.html"));
                 return;
             }
 

@@ -19,13 +19,20 @@ namespace SokoSolve.Core
 
             if (!Directory.Exists(baseloc))
             {
-                // Assume we are in unit tests
-                baseloc = @"C:\Projects\Personal\SokoSolve\svn\trunc\SokoSolve.UI\Content";
+                if (Directory.GetCurrentDirectory().EndsWith(@"\SokoSolve.Test\bin\Debug"))
+                {
+                    baseloc = Directory.GetCurrentDirectory().Replace(@"\SokoSolve.Test\bin\Debug", @"\SokoSolve.UI\Content");
+                }
             }
 
 			if (!Directory.Exists(baseloc))
 			{
-				throw new Exception("Cannot find the application content directory");
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("Cannot find the application content directory.");
+                sb.AppendLine("Current Directory: " + Directory.GetCurrentDirectory());
+                sb.AppendLine("App Directory: " + AppDomain.CurrentDomain.SetupInformation.ApplicationBase);
+                sb.AppendLine("BaseLoc: " + baseloc);
+				throw new Exception(sb.ToString());
 			}
 		}
 
@@ -36,15 +43,25 @@ namespace SokoSolve.Core
             return ret;
         }
 
-        public static string getContent(string relPath)
+        public static string GetContent(string relPath, bool checkPath)
         {
             if (relPath.StartsWith("$")) return CleanPath(string.Format("{0}\\{1}", baseloc, relPath.Remove(0, 1)));
-            return CleanPath(relPath);
+            string path = CleanPath(relPath);
+            if (!File.Exists(path) && !Directory.Exists(path))
+            {
+                throw new FileNotFoundException("Path does not exist", path);
+            }
+            return path;
         }
 
-        public static  string getContent(string relPath, string afile)
+        public static string GetContent(string relPath)
         {
-            return getContent(string.Format("{0}\\{1}", relPath, afile));
+            return GetContent(relPath, true);
+        }
+
+        public static  string GetContent(string relPath, string afile)
+        {
+            return GetContent(string.Format("{0}\\{1}", relPath, afile), true);
         }
 
       

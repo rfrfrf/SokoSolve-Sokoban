@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using SokoSolve.Common;
 using SokoSolve.Common.Math;
 using SokoSolve.Common.Structures;
@@ -12,10 +12,10 @@ using SokoSolve.Core.Model;
 
 namespace SokoSolve.Test.Common.Structures
 {
-	[TestClass]
+	[TestFixture]
 	public class BitmapTest
 	{
-		[TestMethod]
+		[Test]
 		public void FloodFill()
 		{
             Bitmap map = new Bitmap(new string[]
@@ -53,7 +53,7 @@ namespace SokoSolve.Test.Common.Structures
 		    Assert.AreEqual(new VectorInt(9, 9), path[path.Count - 1].Location);
 		}
 
-        [TestMethod]
+        [Test]
         public void FloodCrateMoveMap()
         {
          
@@ -82,7 +82,7 @@ namespace SokoSolve.Test.Common.Structures
             Debug.WriteLine("done.");
         }
 
-        [TestMethod]
+        [Test]
         public void TestFindCratePath()
         {
 
@@ -112,7 +112,7 @@ namespace SokoSolve.Test.Common.Structures
             Debug.WriteLine("done.");
         }
 
-        [TestMethod]
+        [Test]
         public void TestFindCratePath_DeeperTest()
         {
             string mapString =

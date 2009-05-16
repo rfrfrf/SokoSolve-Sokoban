@@ -70,7 +70,7 @@ namespace SokoSolve.UI.Section.Library
             // Set inline CSS?
             if (rbCSSInline.Checked)
             {
-                rpt.SetCSSInline(FileManager.getContent("$html\\reportstyle.css"));
+                rpt.SetCSSInline(FileManager.GetContent("$html\\reportstyle.css"));
             }
 
             // Create and write to disk
@@ -80,7 +80,7 @@ namespace SokoSolve.UI.Section.Library
             // Copy inline images
             if (rbImageTableCell.Checked && cbCopyStatic.Checked)
             {
-                FileHelper.CopyDirectory(FileManager.getContent("$Graphics\\ReportImages"), Path.GetDirectoryName(tbFileName.Text) + "\\images\\");
+                FileHelper.CopyDirectory(FileManager.GetContent("$Graphics\\ReportImages"), Path.GetDirectoryName(tbFileName.Text) + "\\images\\");
             }
 
             // Copy style.css file to destination
@@ -89,7 +89,7 @@ namespace SokoSolve.UI.Section.Library
                 string destCSS = Path.GetDirectoryName(tbFileName.Text) + "\\style.css";
                 if (!File.Exists(destCSS))
                 {
-                    File.Copy(FileManager.getContent("$html\\reportstyle.css"), destCSS);
+                    File.Copy(FileManager.GetContent("$html\\reportstyle.css"), destCSS);
                 }
             }
 

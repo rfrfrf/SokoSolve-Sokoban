@@ -45,14 +45,14 @@ namespace SokoSolve.UI
                 current.UserHomepage = "http://sokosolve.sourceforge.net";
                 current.UserLicense = "Creative Commons";
 
-                string initLib = FileManager.getContent("$Libraries", "Sasquatch.ssx");
+                string initLib = FileManager.GetContent("$Libraries", "Sasquatch.ssx");
                 if (File.Exists(initLib))
                 {
                     // Set defaults
-                    current.LibraryCurrentOpenDir = FileManager.getContent("$Libraries");
+                    current.LibraryCurrentOpenDir = FileManager.GetContent("$Libraries");
                     current.LibraryLastFile = initLib;
                     current.LibraryLastPuzzle = "";
-                    current.LibraryCurrentImportDir = FileManager.getContent("$Libraries");
+                    current.LibraryCurrentImportDir = FileManager.GetContent("$Libraries");
 
                     SokoSolveProfileLibrary lib = new SokoSolveProfileLibrary();
                     lib.LibraryID = "L1";

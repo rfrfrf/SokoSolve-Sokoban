@@ -51,4 +51,39 @@ namespace SokoSolve.Core.UI
         /// </summary>
         int VolumeMusic { get; set; }
     }
+
+    public class MockSoundSystem : ISoundSubSystem
+    {
+        public ISoundHandle GetHandle(string name)
+        {
+            return null;
+        }
+
+        public void PlaySound(ISoundHandle sound)
+        {
+            
+        }
+
+        public void PlayMusic(ISoundHandle music)
+        {
+            
+        }
+
+        public void Stop()
+        {
+           
+        }
+
+        public int VolumeSound
+        {
+            get { return 0; }
+            set { }
+        }
+
+        public int VolumeMusic
+        {
+            get { return 0; }
+            set {  }
+        }
+    }
 }

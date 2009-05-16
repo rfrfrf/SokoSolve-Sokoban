@@ -142,6 +142,7 @@ namespace SokoSolve.Common
 
         string KeepLength(string source, int length)
         {
+            if (string.IsNullOrEmpty(source)) return string.Empty.PadRight(length, ' ');
             if (source.Length == length) return source;
             if (source.Length > length) return source.Substring(0, length);
             return source.PadRight(length, ' ');

@@ -2,15 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Management;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using SokoSolve.Common;
 
 namespace SokoSolve.Test
 {
-    [TestClass]
+    [TestFixture]
     public class TestCPUType
     {
-        [TestMethod]
+        [Test]
         public void TestCPU()
         {
             ManagementObjectSearcher searcher = new ManagementObjectSearcher("Select * from Win32_Processor");
@@ -30,7 +30,7 @@ namespace SokoSolve.Test
             Console.WriteLine("DOne");
         }
 
-        [TestMethod]
+        [Test]
         public void TestCPUFunction()
         {
             Console.WriteLine(DebugHelper.GetCPUDescription());

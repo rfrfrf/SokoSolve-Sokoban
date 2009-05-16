@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using SokoSolve.Common.Math;
 using SokoSolve.Common.Structures;
@@ -70,6 +71,7 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <returns>Return the root search node for init and eval</returns>
         public override SolverNode InitStartConditions()
         {
+            if (StaticAnalysis == null) throw new NoNullAllowedException("StaticAnalysis");
             // Make the root node
             SolverNode root = new SolverNode();
             root.IsChildrenEvaluated = false;

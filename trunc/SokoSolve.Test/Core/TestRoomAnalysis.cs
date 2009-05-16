@@ -1,17 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using SokoSolve.Core.Analysis.Solver;
 using SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis;
 using SokoSolve.Core.Model;
 
 namespace SokoSolve.Test.Core
 {
-    [TestClass]
+    [TestFixture]
     public class TestRoomAnalysis : TestPuzzleBase
     {
-        [TestMethod]
+        [Test]
         public void TestRoom()
         {
             string[] puzzle = new string[]
@@ -35,7 +35,8 @@ namespace SokoSolve.Test.Core
             pMap.Map = map;
 
             SolverController solver = new SolverController(pMap);
-            solver.Strategy.Init();
+            solver.Init();
+            
 
           
         }

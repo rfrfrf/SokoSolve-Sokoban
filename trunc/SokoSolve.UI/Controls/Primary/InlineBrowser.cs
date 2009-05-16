@@ -27,12 +27,12 @@ namespace SokoSolve.UI.Controls.Primary
         }
 
         /// <summary>
-        /// Navigate to included content (via the FileManger.getContent())
+        /// Navigate to included content (via the FileManger.GetContent())
         /// </summary>
         /// <param name="RelativeContent">Eg "$html/about.html"</param>
         public void NavigateIncludedContent(string RelativeContent)
         {
-            htmlView.Navigate(FileManager.getContent(RelativeContent));
+            htmlView.Navigate(FileManager.GetContent(RelativeContent));
         }
 
         private void htmlView_OnCommand(object sender, SokoSolve.UI.Controls.Web.UIBrowserEvent e)

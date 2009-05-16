@@ -94,7 +94,7 @@ namespace SokoSolve.UI.Section.Solver
         /// </summary>
         private void BuildSolverLogReport()
         {
-            if (!Directory.Exists(FileManager.getContent("$Analysis"))) return;
+            if (!Directory.Exists(FileManager.GetContent("$Analysis"))) return;
 
             // Build report
             SolverReport report = new SolverReport();
@@ -109,7 +109,7 @@ namespace SokoSolve.UI.Section.Solver
             // Save
             string filename = "SolverReport-" + controller.PuzzleMap.Puzzle.Library.LibraryID +
                               controller.PuzzleMap.Puzzle.PuzzleID + "-" + DateTime.Now.Ticks.ToString() + ".html";
-            File.WriteAllText(FileManager.getContent("$Analysis", filename), report.ToString());
+            File.WriteAllText(FileManager.GetContent("$Analysis", filename), report.ToString());
         }
 
         /// <summary>
@@ -283,7 +283,7 @@ namespace SokoSolve.UI.Section.Solver
                 if (txt != null)
                 {
                     ReportXHTML reportCurrent = new ReportXHTML("Node Details");
-                    reportCurrent.SetCSSInline(FileManager.getContent("$html\\style.css"));
+                    reportCurrent.SetCSSInline(FileManager.GetContent("$html\\style.css"));
                     reportCurrent.Add(txt.ToHTML());
                     htmlViewStats.SetHTML(reportCurrent.ToString());
                 }
@@ -369,7 +369,7 @@ namespace SokoSolve.UI.Section.Solver
             SolverLabelList txt = solverNode.GetDisplayData();
 
             ReportXHTML reportCurrent = new ReportXHTML("Node Details");
-            reportCurrent.SetCSSInline(FileManager.getContent("$html\\style.css"));
+            reportCurrent.SetCSSInline(FileManager.GetContent("$html\\style.css"));
             reportCurrent.Add(txt.ToHTML());
             if (build != null)
             {

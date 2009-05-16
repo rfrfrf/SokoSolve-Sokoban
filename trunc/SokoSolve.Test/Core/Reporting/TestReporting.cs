@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using SokoSolve.Common.Math;
 using SokoSolve.Core.Analysis.Solver;
 using SokoSolve.Core.Model;
@@ -11,26 +11,26 @@ using SokoSolve.Core.UI;
 
 namespace SokoSolve.Test.Core.Reporting
 {
-    [TestClass]
-    public class TestReporting
+    [TestFixture]
+    public class TestReporting : TestPuzzleBase
     {
-        [TestMethod]
+        [Test]
         public void TestLibraryReport()
         {
             XmlProvider xmlHelper = new XmlProvider();
-            Library lib = xmlHelper.Load("../../../SokoSolve.Test/Core/Reporting/Sasquatch.ssx");
+            Library lib = xmlHelper.Load(MakePathUIContent("Libraries\\Sasquatch.ssx"));
 
-            LibraryReport rpt = new LibraryReport(lib, new StaticImage(ResourceController.Singleton.GetInstance("default"), new VectorInt(16,16)),@"c:\junk\");
+            LibraryReport rpt = new LibraryReport(lib, new StaticImage(ResourceController.Singleton.GetInstance("default"), new VectorInt(16,16)),@".");
             rpt.BuildReport();
             rpt.Save(@"C:\junk\library.html");
         }
 
 
-        [TestMethod]
+        [Test]
         public void TestSolverReport()
         {
             XmlProvider xmlHelper = new XmlProvider();
-            Library lib = xmlHelper.Load("../../../SokoSolve.Test/Core/Reporting/Sasquatch.ssx");
+            Library lib = xmlHelper.Load(MakePathUIContent("Libraries\\Sasquatch.ssx"));
 
             List<SolverResult> results = new List<SolverResult>();
 
@@ -42,7 +42,7 @@ namespace SokoSolve.Test.Core.Reporting
 
             SolverResultHTML rpt = new SolverResultHTML(results, null);
             rpt.BuildReport();
-            rpt.Save(@"C:\junk\solver.html");
+            rpt.Save(@"solver.html");
         }
     }
 }

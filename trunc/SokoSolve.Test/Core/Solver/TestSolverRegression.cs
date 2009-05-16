@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using SokoSolve.Common;
 using SokoSolve.Common.Math;
 using SokoSolve.Common.Structures;
@@ -14,18 +14,19 @@ using SokoSolve.Core.Analysis.Solver;
 using SokoSolve.Core.Model;
 using SokoSolve.Core.Model.DataModel;
 using Bitmap=System.Drawing.Bitmap;
+using NUnit.Framework;
 
 namespace SokoSolve.Test.Core
 {
     /// <summary>
     /// This test set should make sure that we do not go backwards. It is important to keep all the test working.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     public class TestSolverRegression : TestPuzzleBase
     {
         
 
-        [TestMethod]
+        [Test]
         public  void TestSimplePuzzle()
         {
             string[] puzzle = new string[]
@@ -45,7 +46,7 @@ namespace SokoSolve.Test.Core
             Assert.IsTrue(solutions > 0, "Must find a solution");
         }
 
-        [TestMethod]
+        [Test]
         public void TestMediumPuzzle()
         {
             string[] puzzle = new string[]
@@ -69,7 +70,7 @@ namespace SokoSolve.Test.Core
 
      
 
-        [TestMethod]
+        [Test]
         public void TestRecessHoverHint()
         {
             Console.WriteLine(Directory.GetCurrentDirectory());
@@ -83,7 +84,7 @@ namespace SokoSolve.Test.Core
         }
 
 
-        [TestMethod]
+        [Test]
         public void TestRecessHoverHint2()
         {
             Console.WriteLine(Directory.GetCurrentDirectory());
@@ -97,7 +98,7 @@ namespace SokoSolve.Test.Core
         }
 
 
-        [TestMethod]
+        [Test]
         public void TestCornerHoverHint()
         {
             XmlProvider xml = new XmlProvider();
@@ -110,7 +111,7 @@ namespace SokoSolve.Test.Core
         }
 
 
-        [TestMethod]
+        [Test]
         public void TestAtomicSolution()
         {
             XmlProvider xml = new XmlProvider();
@@ -121,7 +122,7 @@ namespace SokoSolve.Test.Core
             Assert.IsTrue(solutions > 0, "Must find a solution");
         }
 
-        [TestMethod]
+        [Test]
         public void TestMicrobanFailureOne()
         {
             XmlProvider xml = new XmlProvider();
@@ -132,7 +133,7 @@ namespace SokoSolve.Test.Core
             Assert.IsTrue(solutions > 0, "Must find a solution");
         }
 
-        [TestMethod]
+        [Test]
         public void TestMicrobanFailureTwo()
         {
             XmlProvider xml = new XmlProvider();
@@ -144,7 +145,7 @@ namespace SokoSolve.Test.Core
         }
 
 
-        [TestMethod]
+        [Test]
         public void TestMicrobanFailureReverseSolution()
         {
             XmlProvider xml = new XmlProvider();

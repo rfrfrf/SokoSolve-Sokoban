@@ -252,7 +252,7 @@ namespace SokoSolve.UI.Section.Library
         protected override void ExecuteImplementation(CommandInstance<ExplorerItem> instance)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = FileManager.getContent("Libraries/");
+            saveFileDialog.InitialDirectory = FileManager.GetContent("Libraries/");
             saveFileDialog.DefaultExt = "SSX";
             saveFileDialog.RestoreDirectory = true;
             saveFileDialog.Title = "Save SokoSolve .SSX XML file";

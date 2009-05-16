@@ -336,7 +336,7 @@ namespace SokoSolve.Core.UI
                 sound.Stop();
                 sound.PlaySound(ResourceFactory[ResourceID.GameSoundWelcome].DataAsSound);
 
-                string[] music = Directory.GetFiles(FileManager.getContent("$Music/"), "*.mp3");
+                string[] music = Directory.GetFiles(FileManager.GetContent("$Music/"), "*.mp3");
                 sound.PlayMusic(sound.GetHandle(Path.GetFileName(RandomHelper.Select<string>(music))));
 
             }

@@ -328,7 +328,7 @@ namespace SokoSolve.UI.Controls.Primary
             FormGameSettings settings = new FormGameSettings();
             settings.ucGameSettings.MusicVolume.Value = gameUI.Sound.VolumeMusic;
             settings.ucGameSettings.SoundVolume.Value = gameUI.Sound.VolumeSound;
-            settings.ucGameSettings.MusicLocation.Text = FileManager.getContent("$music");
+            settings.ucGameSettings.MusicLocation.Text = FileManager.GetContent("$music");
             settings.TopMost = true;
             if (settings.ShowDialog() == DialogResult.OK)
             {

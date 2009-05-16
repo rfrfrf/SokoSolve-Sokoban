@@ -9,13 +9,21 @@ namespace SokoSolve.Core.UI
     {
         private static ResourceController singleton = new ResourceController();
         private ResourceFactory defaultFactory;
-         private ISoundSubSystem sound;
+        private ISoundSubSystem sound;
+
+        /// <summary>
+        /// This is primarily for sound systems
+        /// </summary>
+        protected ResourceController()
+        {
+            defaultFactory = new ResourceFactory(FileManager.GetContent("$DefaultResources.xml"), new MockSoundSystem());
+        }
       
 
         public void Init(ISoundSubSystem soundSys)
         {
             sound = soundSys;
-            defaultFactory = new ResourceFactory(FileManager.getContent("$DefaultResources.xml"), sound);
+            defaultFactory = new ResourceFactory(FileManager.GetContent("$DefaultResources.xml"), sound);
         }
 
        
@@ -29,7 +37,6 @@ namespace SokoSolve.Core.UI
 
         public ResourceFactory GetInstance(string creationContext)
         {
-            
             // "Default"
             return defaultFactory;
         }

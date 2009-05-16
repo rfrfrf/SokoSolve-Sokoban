@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using SokoSolve.Core.Analysis.Solver;
 
 namespace SokoSolve.Test.Core.Solver
@@ -10,10 +10,10 @@ namespace SokoSolve.Test.Core.Solver
     /// This test collection holds the failures and finding from manual inspection of the solver. 
     /// It collects future improvements and abilities that have not yet made it into the solver in stable form.
     /// </summary>
-    [TestClass]
+    [TestFixture]
     class TestSolverFailures : TestPuzzleBase
     {
-        [TestMethod]
+        [Test]
         public void TestInvalidRecessHoverHint()
         {
             string[] puzzle = new string[]
@@ -33,7 +33,7 @@ namespace SokoSolve.Test.Core.Solver
             Assert.IsTrue(SolveFromString(puzzle).HasSolution, "Must find a solution");
         }
 
-        [TestMethod]
+        [Test]
         public void TestDead_InvalidCornerHoverHint()
         {
             string[] puzzle = new string[]

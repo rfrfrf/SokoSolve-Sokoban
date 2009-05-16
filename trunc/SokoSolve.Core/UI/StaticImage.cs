@@ -22,8 +22,10 @@ namespace SokoSolve.Core.UI
         /// </summary>
         public StaticImage(ResourceFactory resource, VectorInt tileSize)
         {
+            if (resource == null) throw new ArgumentNullException("resource");
             this.tileSize = tileSize;
             Resources = resource;
+            
 
             InitTiles();
         }
