@@ -34,7 +34,7 @@ namespace SokoSolve.Console
 
         public double ArgMaxTime
         {
-            get { return controller.FindArgDouble("-maxtime:", TimeSpan.FromMinutes(3).TotalSeconds, false); }
+            get { return controller.FindArgDouble("-maxtime:", TimeSpan.FromMinutes(2).TotalSeconds, false); }
         }
 
         public bool IsPathWildCard(string path)

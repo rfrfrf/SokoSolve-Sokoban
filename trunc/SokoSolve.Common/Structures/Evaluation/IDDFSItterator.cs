@@ -66,7 +66,7 @@ namespace SokoSolve.Common.Structures.Evaluation
             }
             
             // Check Exit Conditions
-            if (CheckExitConditions(next, float.MinValue))
+            if (CheckExitConditions(next))
             {
                 Status = EvalStatus.ExitIncomplete;
                 exitStatus = EvalStatus.ExitIncomplete;

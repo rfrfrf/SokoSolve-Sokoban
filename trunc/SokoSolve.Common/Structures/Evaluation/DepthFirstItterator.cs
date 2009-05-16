@@ -34,7 +34,7 @@ namespace SokoSolve.Common.Structures.Evaluation
             }
 
             INode<T> next = evaluationList.GetWorst();
-            if (CheckExitConditions(next, float.MinValue))
+            if (CheckExitConditions(next))
             {
                 exitStatus = EvalStatus.ExitIncomplete;
                 Status = exitStatus;

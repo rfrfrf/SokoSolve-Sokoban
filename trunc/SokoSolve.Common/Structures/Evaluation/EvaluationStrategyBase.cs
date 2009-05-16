@@ -45,6 +45,7 @@ namespace SokoSolve.Common.Structures.Evaluation
             evaluation.Root.Data = InitStartConditions();
 
             workList.Add(evaluation.Root);
+            workList.Init();
         }
 
         /// <summary>

@@ -213,6 +213,11 @@ namespace SokoSolve.Common.Structures
     public interface IEvaluationStrategyItterator<T>
     {
         /// <summary>
+        /// Start the itterator (this will also start the inner clock)
+        /// </summary>
+        void Init();
+
+        /// <summary>
         /// Get the next node to evaluate, based on depth-first.
         /// </summary>
         /// <returns>null means exit evaluation</returns>
@@ -235,6 +240,7 @@ namespace SokoSolve.Common.Structures
         /// </summary>
         /// <returns>A copy of the nodes</returns>
         List<INode<T>> GetEvalList();
+
     }
 
     /// <summary>

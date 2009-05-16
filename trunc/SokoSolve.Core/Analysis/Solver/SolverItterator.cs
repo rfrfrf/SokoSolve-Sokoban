@@ -42,7 +42,7 @@ namespace SokoSolve.Core.Analysis.Solver
             this.controller = controller;
             innerItterator = new IDDFSItterator<SolverNode>(GetSolverNodeDepth, CompareNodes);
             innerItterator.ExitConditions = controller.ExitConditions;
-            
+            innerItterator.TimerEnabled = true;
         }
 
         public ItteratorExitConditions ExitConditions
@@ -71,6 +71,14 @@ namespace SokoSolve.Core.Analysis.Solver
         }
 
         #region IEvaluationStrategyItterator<SolverNode> Members
+
+        /// <summary>
+        /// Start the itterator (this will also start the inner clock)
+        /// </summary>
+        public void Init()
+        {
+            innerItterator.Init();
+        }
 
         /// <summary>
         /// Get the next node to evaluate, based on depth-first.
@@ -143,6 +151,8 @@ namespace SokoSolve.Core.Analysis.Solver
         {
             return null;
         }
+
+      
 
         #endregion
 
