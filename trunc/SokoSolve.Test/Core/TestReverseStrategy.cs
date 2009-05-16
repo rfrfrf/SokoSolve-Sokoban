@@ -40,6 +40,7 @@ namespace SokoSolve.Test.Core
 
                 SolverController controller = new SolverController(pMap);
                 controller.Init();
+                controller.State = SolverController.States.Running; // Manually set state, as we are not using the controller; but the strategy uses the controller to check if it should exit
 
                 ReverseStrategy rev = new ReverseStrategy(controller);
 
@@ -53,8 +54,6 @@ namespace SokoSolve.Test.Core
             {
                 timer.Stop();
                 System.Console.WriteLine("Total Time: " + timer.Duration(1));
-                System.Console.WriteLine("No Solutions");
-
             }
 
         }
