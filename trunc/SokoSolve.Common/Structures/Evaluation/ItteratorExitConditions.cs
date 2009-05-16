@@ -46,6 +46,12 @@ namespace SokoSolve.Common.Structures.Evaluation
             set { maxTimeSecs = value; }
         }
 
+        public override string ToString()
+        {
+            return string.Format("MaxDepth: {0}, MaxItterations: {1}, MaxTimeSecs: {2}", MaxDepth, maxItterations,
+                                 TimeSpan.FromSeconds(maxTimeSecs));
+        }
+
         protected int maxDepth;
         protected int maxItterations;
         protected float maxTimeSecs;

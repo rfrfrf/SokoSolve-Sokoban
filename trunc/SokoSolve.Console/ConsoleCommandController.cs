@@ -98,6 +98,51 @@ namespace SokoSolve.Console
         }
 
         /// <summary>
+        /// Find an command line argument (case-insensitive)
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
+        public string FindArgDefault(string Name, string Default)
+        {
+            string res = FindArg(Name);
+            if (res == null) return Default;
+            return res;
+        }
+
+
+        /// <summary>
+        /// Find an argument as cast as DOUBLE
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="defaultValue"></param>
+        /// <param name="isRequired"></param>
+        /// <returns></returns>
+        public double FindArgDouble(string name, double? defaultValue, bool isRequired)
+        {
+            string res = FindArg(name);
+            if (res != null) return double.Parse(res);
+            if (isRequired) throw new ArgumentException("Parameter missing", name);
+            if (defaultValue != null) return defaultValue.Value;
+            return double.MinValue;
+        }
+
+        /// <summary>
+        /// Find an argument as cast as DOUBLE
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="defaultValue"></param>
+        /// <param name="isRequired"></param>
+        /// <returns></returns>
+        public string FindArg(string name, string defaultValue, bool isRequired)
+        {
+            string res = FindArg(name);
+            if (res != null) return res;
+            if (isRequired) throw new ArgumentException("Parameter missing", name);
+            if (defaultValue != null) return defaultValue;
+            return null;
+        }
+
+        /// <summary>
         /// Find the argument (not including the command name)
         /// </summary>
         /// <param name="Index">cmd.exe PLAY file; here file is index 0</param>

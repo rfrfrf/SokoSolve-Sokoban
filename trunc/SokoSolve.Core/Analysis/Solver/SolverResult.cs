@@ -204,9 +204,7 @@ namespace SokoSolve.Core.Analysis.Solver
                     else
                     {
                         status = CalculationResult.GaveUp;
-                        summary = "";
-                        summary =
-                            string.Format(
+                        summary = string.Format(
                                 "The solver could not find a within the given constraints. Tried for {0} sec and {1} nodes at {2:0} nodes/s (puzzle score {3})",
                                 StringHelper.ToString(TimeSpan.FromSeconds(info.TotalSecond)),
                                 info.TotalNodes,
@@ -258,6 +256,22 @@ namespace SokoSolve.Core.Analysis.Solver
         public NameValueCollection InfoValues
         {
             get { return infoValues; }
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(string.Format("TotalNodes  : {0} nodes", TotalNodes));
+            sb.AppendLine(string.Format("TotalSecond : {0} sec", TotalSecond));
+            sb.AppendLine(string.Format("Machine     : {0}", Machine));
+            sb.AppendLine(string.Format("RatingScore : {0}", RatingScore));
+
+            foreach (string s in InfoValues.Keys)
+            {
+                sb.AppendLine(string.Format("Property    : {0}={1}", s, InfoValues[s]));
+            }
+
+            return sb.ToString();
         }
     }
 }
