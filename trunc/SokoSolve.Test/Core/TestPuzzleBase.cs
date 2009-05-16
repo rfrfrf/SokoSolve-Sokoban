@@ -9,6 +9,17 @@ namespace SokoSolve.Test.Core
 {
     public abstract class TestPuzzleBase
     {
+        protected string MakeProjectRootPath(string path)
+        {
+            return @"..\..\..\..\..\" + path;
+        }
+
+        protected string MakePathUIContent(string path)
+        {
+            return MakeProjectRootPath(@"\..\SokoSolve.UI\Content\" + path);
+        }
+
+
         protected SolverResult SolveFromString(string[] puzzle)
         {
             SokobanMap map = new SokobanMap();
@@ -24,8 +35,6 @@ namespace SokoSolve.Test.Core
         {
             using (CodeTimer timer = new CodeTimer("TestSolver.Solve(...)"))
             {
-
-
                 SolverController controller = new SolverController(puzzle);
                 try
                 {

@@ -42,11 +42,13 @@
     <Compile Include="Common\Structures\MatrixTest.cs" />
     <Compile Include="Common\Structures\BitmapTest.cs" />
     <Compile Include="Core\Reporting\TestReporting.cs" />
+    <Compile Include="Core\Solver\TestSolverAtomic.cs" />
+    <Compile Include="Core\Solver\TestSolverFailures.cs" />
     <Compile Include="Core\TestImporter.cs" />
     <Compile Include="Core\TestPuzzleBase.cs" />
     <Compile Include="Core\TestReverseStrategy.cs" />
     <Compile Include="Core\TestRoomAnalysis.cs" />
-    <Compile Include="Core\TestSolver.cs" />
+    <Compile Include="Core\Solver\TestSolverRegression.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCPUType.cs" />
   </ItemGroup>

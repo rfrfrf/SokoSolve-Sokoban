@@ -17,9 +17,13 @@ using Bitmap=System.Drawing.Bitmap;
 
 namespace SokoSolve.Test.Core
 {
+    /// <summary>
+    /// This test set should make sure that we do not go backwards. It is important to keep all the test working.
+    /// </summary>
     [TestClass]
-    public class TestSolver : TestPuzzleBase
+    public class TestSolverRegression : TestPuzzleBase
     {
+        
 
         [TestMethod]
         public  void TestSimplePuzzle()
@@ -63,15 +67,7 @@ namespace SokoSolve.Test.Core
             Assert.IsTrue(solutions > 0, "Must find a solution");
         }
 
-        public string MakeProjectRootPath(string path)
-        {
-            return @"..\..\..\..\..\" + path;
-        }
-
-        public string MakePathUIContent(string path)
-        {
-            return MakeProjectRootPath(@"\..\SokoSolve.UI\Content\" + path);
-        }
+     
 
         [TestMethod]
         public void TestRecessHoverHint()
@@ -79,18 +75,35 @@ namespace SokoSolve.Test.Core
             Console.WriteLine(Directory.GetCurrentDirectory());
             XmlProvider xml = new XmlProvider();
             Library lib = xml.Load(MakePathUIContent(@"Libraries\SolverDevelopment.ssx"));
-            Puzzle puz = lib.GetPuzzleByID("P2");
+            Puzzle puz = lib.GetPuzzleByID("P9");
+            Assert.IsNotNull(puz);
 
             int solutions = SolveForSolutions(puz.MasterMap);
-            Assert.IsTrue(solutions > 0, "Must find a solution");
+            Assert.IsTrue(solutions == 0, "Puzzle is dead");
         }
+
+
+        [TestMethod]
+        public void TestRecessHoverHint2()
+        {
+            Console.WriteLine(Directory.GetCurrentDirectory());
+            XmlProvider xml = new XmlProvider();
+            Library lib = xml.Load(MakePathUIContent(@"Libraries\SolverDevelopment.ssx"));
+            Puzzle puz = lib.GetPuzzleByID("P11");
+            Assert.IsNotNull(puz);
+
+            int solutions = SolveForSolutions(puz.MasterMap);
+            Assert.IsTrue(solutions == 0, "Puzzle is dead");
+        }
+
 
         [TestMethod]
         public void TestCornerHoverHint()
         {
             XmlProvider xml = new XmlProvider();
             Library lib = xml.Load(MakePathUIContent(@"Libraries\SolverDevelopment.ssx"));
-            Puzzle puz = lib.GetPuzzleByID("P0");
+            Puzzle puz = lib.GetPuzzleByID("P7");
+            Assert.IsNotNull(puz);
 
             int solutions = SolveForSolutions(puz.MasterMap);
             Assert.IsTrue(solutions == 0, "Must not find a solution");
@@ -142,50 +155,7 @@ namespace SokoSolve.Test.Core
             Assert.IsTrue(solutions > 0, "Must find a solution");
         }
 
-        [TestMethod]
-        public void TestInvalidRecessHoverHint()
-        {
-            string[] puzzle = new string[]
-                {
-"#############",
-"#O#.P#..#...#",
-"#O#XX...#.X.#",
-"#O#..#.X#...#",
-"#O#.X#..#.X##",
-"#O#..#.X#..#~",
-"#O#.X#..#.X#~",
-"#OO..#.X...#~",
-"#OO..#..#..#~",
-"############~"
-                };
-
-            int solutions = SolveFromString(puzzle).Solutions.Count;
-            Assert.IsTrue(solutions > 0, "Must find a solution");
-        }
-
-          [TestMethod]
-        public void TestDead_InvalidCornerHoverHint()
-        {
-            string[] puzzle = new string[]
-                {
-"~####~~~~~~~~~~~",
-"##..####~~~~~~~~",
-"...OOO#~~~~~~~~",
-"#...OOO#~~~~~~~~",
-"#...#.##~~~~~~~~",
-"#...#P.####~####",
-"#####...X.###..#",
-"~~~~#..##X.X...#",
-"~~~###.....XX..#",
-"~~~#.X..##...###",
-"~~~#....######~~",
-"~~~######~~~~~~~"
-                    };
-
-            SolverResult result = SolveFromString(puzzle);
-            Assert.IsFalse(result.HasSolution, "Must be Dead, but has solutions");
-            Assert.AreEqual(1, result.Info.TotalNodes, "Must be Dead, but has more than one eval node");
-        }
+     
     }
 
 
