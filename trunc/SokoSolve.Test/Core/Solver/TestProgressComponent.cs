@@ -40,11 +40,13 @@ namespace SokoSolve.Test.Core.Solver
 
             comp.Add(lib);
 
-            var res = Solve(lib.GetPuzzleByID("P1").MasterMap);
-            comp.Update(res);
+            var res = Solve(lib.GetPuzzleByID("P1").MasterMap.Map);
+            var rec = comp.Update(res);
+            Assert.IsTrue(rec.HasSolution);
 
-            var res2 = Solve(lib.GetPuzzleByID("P3").MasterMap);
-            comp.Update(res2);
+            var res2 = Solve(lib.GetPuzzleByID("P3").MasterMap.Map);
+            var rec2 = comp.Update(res2);
+            Assert.IsTrue(rec2.HasSolution);
 
             comp.Save("temp_test_progress.xml");
 

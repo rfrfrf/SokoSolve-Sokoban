@@ -241,6 +241,11 @@ namespace SokoSolve.Common.Structures
         /// <returns>A copy of the nodes</returns>
         List<INode<T>> GetEvalList();
 
+        /// <summary>
+        /// Empty the itterator
+        /// </summary>
+        void Clear();
+
     }
 
     /// <summary>

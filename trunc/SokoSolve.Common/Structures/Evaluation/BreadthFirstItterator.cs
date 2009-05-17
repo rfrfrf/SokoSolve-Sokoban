@@ -64,6 +64,11 @@ namespace SokoSolve.Common.Structures.Evaluation
             throw new NotImplementedException();
         }
 
+        public override void Clear()
+        {
+            evaluationList.Clear();
+        }
+
         /// <summary>
         /// Remove a node (it has been evaluated)
         /// </summary>

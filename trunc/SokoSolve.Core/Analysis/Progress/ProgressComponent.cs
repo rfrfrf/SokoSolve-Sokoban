@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
+using SokoSolve.Common;
 using SokoSolve.Core.Analysis.Solver;
 using SokoSolve.Core.Analysis.Solver.SolverStaticAnalysis;
 using SokoSolve.Core.Model;
@@ -53,7 +55,7 @@ namespace SokoSolve.Core.Analysis.Progress
         public void Save(string fileName)
         {
             XmlSerializer ser = new XmlSerializer(typeof(SolverProgress));
-            using (var fs = File.OpenWrite(fileName))
+            using (var fs = File.CreateText(fileName))
             {
                 ser.Serialize(fs, store);
             }
@@ -73,6 +75,24 @@ namespace SokoSolve.Core.Analysis.Progress
         public int Count
         {
             get { return store.Items.Count; }
+        }
+
+        public string Summary
+        {
+            get
+            {
+                var best = Items.Where(x => x.HasSolution).OrderByDescending(x => x.Rating).FirstOrDefault();
+                
+
+                int total = Items.Count;
+                var countSolutions = Items.Count(x => x.HasSolution);
+                
+                if (best == null)
+                {
+                    return string.Format("{0}/{1} = {2}%", countSolutions, total, countSolutions*100/total);
+                }
+                return string.Format("{0}/{1} = {2}%, Best Solution={3} for '{4}'", countSolutions, total, countSolutions*100/total, best.Rating, best.Name);
+            }
         }
 
         public SolverPuzzle Add(PuzzleMap map)
@@ -145,7 +165,7 @@ namespace SokoSolve.Core.Analysis.Progress
         /// </summary>
         /// <param name="result"></param>
         /// <returns></returns>
-        public void Update(SolverResult result)
+        public SolverPuzzle Update(SolverResult result)
         {
             SolverPuzzle record = Get(result.Map);
             if (record == null)
@@ -157,9 +177,11 @@ namespace SokoSolve.Core.Analysis.Progress
 
             SolverAttempt attempt = new SolverAttempt();
             attempt.Created = DateTime.Now;
-            attempt.ElapsedTime = TimeSpan.FromSeconds(result.Info.TotalSeconds);
+            attempt.ElapsedTime = result.Info.TotalSeconds;
+            attempt.SolverSummary = result.Summary;
+            attempt.Result = result.ControllerResult;
             attempt.SolverResultInfo = result.Info;
-            record.Attempts.TotalTime += attempt.ElapsedTime.TotalSeconds;
+            record.Attempts.TotalTime += attempt.ElapsedTime;
             if (result.HasSolution)
             {
                 record.Attempts.TotalAttemptSucceed++;
@@ -192,6 +214,7 @@ namespace SokoSolve.Core.Analysis.Progress
                 if (attempt != worst && worst != best) record.Attempts.Add(worst);
                 items.Sort(AttemptOrderDefault);
             }
+            return record;
         }
 
         private SolverAttempt FindBest(List<SolverAttempt> attempts)
@@ -200,7 +223,7 @@ namespace SokoSolve.Core.Analysis.Progress
             
             SolverAttempt best = attempts[0];
             int bestSolutionLen = best.Solution == null ? -1 : best.Solution.Length;
-            TimeSpan bestSolutionTime = best.ElapsedTime;
+            double bestSolutionTime = best.ElapsedTime;
 
             foreach (var attempt in attempts)
             {
@@ -232,7 +255,7 @@ namespace SokoSolve.Core.Analysis.Progress
 
             SolverAttempt worst = attempts[0];
             int worstLen = worst.Solution == null ? -1 : worst.Solution.Length;
-            TimeSpan worstTime = worst.ElapsedTime;
+            double worstTime = worst.ElapsedTime;
 
             foreach (var attempt in attempts)
             {
@@ -303,6 +326,14 @@ namespace SokoSolve.Core.Analysis.Progress
         {
             // TODO: Convert all unreachable floor positions to walls
             return map.ToStringArray(SokobanMap.StandardEncodeChars);
+        }
+
+        /// <summary>
+        /// Sort the items
+        /// </summary>
+        public void Sort()
+        {
+            Items.Sort((x,y) => x.Rating.CompareTo(y.Rating));
         }
     }
 }

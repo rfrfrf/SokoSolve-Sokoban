@@ -279,13 +279,27 @@ namespace SokoSolve.Common.Structures
 		/// <returns>Node list</returns>
 		public void ForEach(Action<TreeNode<T>> action, int searchDepth)
 		{
-			ForEachInternal(action, searchDepth, 0);
+			ForEachInternal(action, searchDepth, 0, false);
 		}
 
-		private void ForEachInternal(Action<TreeNode<T>> action, int searchDepth, int currentDepth)
+        /// <summary>
+        /// Apply an action for each node recursive, includingTHIS but applying this to children (recursive) before the current node
+        /// </summary>
+        /// <param name="predicate">predicate match function</param>
+        /// <param name="searchDepth">Depth 0 (this), 1 (all children), int.MaxValue (recurse), -1 parent, int.MinValue (recurse to root)</param>
+        /// <returns>Node list</returns>
+        public void ForEachDepthFirst(Action<TreeNode<T>> action, int searchDepth)
+        {
+            ForEachInternal(action, searchDepth, 0, true);
+        }
+
+		private void ForEachInternal(Action<TreeNode<T>> action, int searchDepth, int currentDepth, bool depthFirst)
 		{
-			// Current
-			action(this);
+            if (!depthFirst)
+            {
+                // Current
+                action(this);    
+            }
 
 			if (searchDepth != 0)
 			{
@@ -298,7 +312,7 @@ namespace SokoSolve.Common.Structures
                             // Children
                             foreach (TreeNode<T> kid in children)
                             {
-                                kid.ForEachInternal(action, searchDepth, currentDepth++);
+                                kid.ForEachInternal(action, searchDepth, currentDepth++, depthFirst);
                             }
                         }
 					}
@@ -308,11 +322,18 @@ namespace SokoSolve.Common.Structures
 					if(searchDepth < currentDepth)
 					{
 						// Parents
-						parent.ForEachInternal(action, searchDepth, currentDepth--);
+						parent.ForEachInternal(action, searchDepth, currentDepth--, depthFirst);
 					}
 				}
 			}
+
+            if (depthFirst)
+            {
+                // Current
+                action(this);
+            }
 		}
+
 
 		private TreeNode<T> FindInternal(Predicate<TreeNode<T>> predicate, int searchDepth, int currentDepth, List<TreeNode<T>> results)
 		{

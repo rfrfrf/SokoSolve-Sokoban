@@ -115,6 +115,15 @@ namespace SokoSolve.Common.Structures.Evaluation
             throw new NotImplementedException();
         }
 
+        public override void Clear()
+        {
+            foreach (PriorityWorkQueue<INode<T>> list in segmentedWorkList)
+            {
+                list.Clear();
+            }
+            segmentedWorkList.Clear();
+        }
+
         private int currentStartDepth;
         private int currentDepth;
         private int maxDepth;

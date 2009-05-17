@@ -8,7 +8,7 @@ namespace SokoSolve.Common.Structures.Evaluation
     /// Implement a basic (tree-based) evaluation strategy
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract class EvaluationStrategyBase<T> : IEvaluationStrategy<T> where T : IEvaluationNode
+    public abstract class EvaluationStrategyBase<T> : IDisposable, IEvaluationStrategy<T> where T : IEvaluationNode
     {
         /// <summary>
         /// Strong Constructor
@@ -148,8 +148,18 @@ namespace SokoSolve.Common.Structures.Evaluation
             return string.Format("{0} {1} {2}", this.GetType().Name, evaluation, workList);
         }
 
+        public void Dispose()
+        {
+            evaluation.Clear();
+            evaluation = null;
+            workList.Clear();
+            workList = null;
+        }
+
         private int nextID;
         protected Tree<T> evaluation;
         protected IEvaluationStrategyItterator<T> workList;
     }
+
+
 }

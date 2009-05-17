@@ -152,7 +152,10 @@ namespace SokoSolve.Core.Analysis.Solver
             return null;
         }
 
-      
+        public void Clear()
+        {
+            innerItterator.Clear();
+        }
 
         #endregion
 

@@ -418,7 +418,7 @@ namespace SokoSolve.Core.Analysis.Solver
             string firsterror;
             foreach (Solution solution in results)
             {
-                if (!solution.Test(out firsterror)) throw new Exception("Sanity Check Failed. Solution is not valid: "+firsterror);
+                if (!solution.Test(map, out firsterror)) throw new Exception("Sanity Check Failed. Solution is not valid: "+firsterror);
             }
 
             return results;
@@ -541,7 +541,26 @@ namespace SokoSolve.Core.Analysis.Solver
         ///<filterpriority>2</filterpriority>
         public void Dispose()
         {
-
+            if (strategy != null)
+            {
+                strategy.Dispose();
+                strategy = null;
+            }
+            if (evaluator != null)
+            {
+                evaluator.Dispose();
+                evaluator = null;
+            }
+            if (reverseEvaluator != null)
+            {
+                reverseEvaluator.Dispose();
+                reverseEvaluator = null;
+            }
+            if (reverseStrategy != null)
+            {
+                reverseStrategy.Dispose();
+                reverseStrategy = null;
+            }
         }
 
         #endregion

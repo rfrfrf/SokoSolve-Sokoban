@@ -9,7 +9,7 @@ namespace SokoSolve.Common.Structures.Evaluation
     /// Itterates through all nodes, storing all solutions
     /// </summary>
     /// <typeparam name="T"></typeparam>
-	public class Evaluator<T> : IEvaluator<T> where T : IEvaluationNode
+	public class Evaluator<T> : IDisposable, IEvaluator<T> where T : IEvaluationNode
 	{
         /// <summary>
         /// Constructor
@@ -114,6 +114,13 @@ namespace SokoSolve.Common.Structures.Evaluation
         public override string ToString()
         {
             return string.Format("Evaluting. Solutions:{0} {1}", solutions.Count, strategy);
+        }
+
+        public void Dispose()
+        {
+            solutions.Clear();
+            solutions = null;
+            strategy = null;
         }
 
         private bool stopOnSolution;

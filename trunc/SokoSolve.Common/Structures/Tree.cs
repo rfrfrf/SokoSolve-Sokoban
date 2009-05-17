@@ -128,5 +128,24 @@ namespace SokoSolve.Common.Structures
         {
             return string.Format("Tree Size:{0}", Leaves.Count);
         }
+
+        /// <summary>
+        /// Clear/Empty the tree
+        /// </summary>
+	    public void Clear()
+	    {
+	        if (root != null)
+	        {
+	            
+	            root.ForEach(ClearNode, 0);
+	            root = null;
+	        }
+	    }
+
+	    private void ClearNode(TreeNode<T> obj)
+	    {
+	        obj.Data = default(T);
+	        obj.Clear();
+	    }
 	}
 }

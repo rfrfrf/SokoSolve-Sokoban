@@ -61,6 +61,11 @@ namespace SokoSolve.Common.Structures.Evaluation
             evaluationList.Remove(EvalNode);
         }
 
+        public void Clear()
+        {
+            evaluationList.Clear();
+        }
+
         /// <summary>
         /// The number of items in the sortedlist/queue
         /// </summary>

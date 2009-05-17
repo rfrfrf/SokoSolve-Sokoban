@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml;
 using System.Xml.Serialization;
 using SokoSolve.Core.Analysis.Solver;
 
@@ -11,6 +12,8 @@ namespace SokoSolve.Core.Model.Services
     /// </summary>
     public class SolverPuzzle
     {
+        
+
         public SolverPuzzle()
         {
             Attempts = new SolverAttemptCollection();
@@ -41,6 +44,22 @@ namespace SokoSolve.Core.Model.Services
         public string[] NormalisedMap { get; set; }
 
         public SolverAttemptCollection Attempts { get; set; }
+
+        [XmlIgnore]
+        public bool HasSolution
+        {
+            get
+            {
+                if (Attempts == null) return false;
+
+                foreach (var attempt in Attempts.Items)
+                {
+                    if (attempt.Solution != null) return true;
+                }
+
+                return false;
+            }
+        }
     }
 
     public class SolverAttemptCollection
@@ -75,11 +94,20 @@ namespace SokoSolve.Core.Model.Services
 
     public class SolverAttempt
     {
-        public string Solution { get; set; }
-
+        
+        [XmlAttribute]
         public DateTime Created { get; set; }
 
-        public TimeSpan ElapsedTime { get; set; }
+        [XmlAttribute]
+        public double ElapsedTime { get; set; }
+
+        [XmlAttribute]
+        public SolverController.States Result { get; set; }
+
+        [XmlAttribute]
+        public string SolverSummary { get; set; }
+
+        public string Solution { get; set; }
 
         public SolverResultInfo SolverResultInfo { get; set; }
     }

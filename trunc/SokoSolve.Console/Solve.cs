@@ -39,6 +39,11 @@ namespace SokoSolve.Console
             get { return controller.FindArg("-report:"); }
         }
 
+        public bool ArgNonSolutionOnly
+        {
+            get { return controller.FindArg("-sol:", "on", false) == "on"; }
+        }
+
         public double ArgMaxTime
         {
             get { return controller.FindArgDouble("-maxtime:", TimeSpan.FromMinutes(2).TotalSeconds, false); }
@@ -76,21 +81,50 @@ namespace SokoSolve.Console
                     comp.Add(lib);
                 }
 
+                int cc = 0;
                 foreach (SolverPuzzle item in comp.Items)
                 {
+                    if (ArgNonSolutionOnly && item.HasSolution)
+                    {
+                        controller.DisplayLable("Skipping solution", item.Name);
+                        cc++;
+                        continue;
+                    }
+
+                    controller.Display("==========================================================================");
                     controller.Display("");
+                    controller.DisplayLable("Attempt", string.Format("{0}/{1} {2}%, maxtime={3}", cc, comp.Items.Count, cc*100/comp.Items.Count, TimeSpan.FromSeconds(ArgMaxTime)));
                     controller.DisplayLable("Name", item.Name);
+                    controller.DisplayLable("Rating", string.Format("{0}, size=({1}, {2})", item.Rating, item.Width, item.Height));
                     controller.Display(StringHelper.Join(item.NormalisedMap, null, Environment.NewLine));
 
                     SokobanMap map = new SokobanMap();
                     map.SetFromStrings(item.NormalisedMap);
-                    SolverController ctrl = new SolverController(map);
-                    ctrl.ExitConditions.MaxDepth = 1000;
-                    ctrl.ExitConditions.MaxItterations = 10000000;
-                    ctrl.ExitConditions.MaxTimeSecs = (float)ArgMaxTime;
+                    using (SolverController ctrl = new SolverController(map))
+                    {
+                        ctrl.ExitConditions.MaxDepth = 1000;
+                        ctrl.ExitConditions.MaxItterations = 10000000;
+                        ctrl.ExitConditions.MaxTimeSecs = (float) ArgMaxTime;
 
-                    SolverResult res = ctrl.Solve();
-                    comp.Update(res);
+                        SolverResult res = ctrl.Solve();
+                        if (res.Exception != null)
+                        {
+                            controller.Display(res.Exception);
+                        }
+                        controller.DisplayLable("Result", res.Summary);
+
+                        comp.Update(res);
+                    }
+                    controller.Display("---------------------------------------------------------------------------");
+
+                    if (System.Console.KeyAvailable && System.Console.ReadKey().KeyChar == 'Q')
+                    {
+                        controller.Display("BREAK REQUESTED... Exiting");
+                        break;
+                    }
+
+
+                    cc++;
                 }
 
                 comp.Save(ArgSolverLibrary);
@@ -132,32 +166,38 @@ namespace SokoSolve.Console
 
         private void SolvePuzzle(PuzzleMap puz, string Name)
         {
-            SolverController ctrl = new SolverController(puz);
-            ctrl.ExitConditions.MaxDepth = 1000;
-            ctrl.ExitConditions.MaxItterations = 10000000;
-            ctrl.ExitConditions.MaxTimeSecs = (float)ArgMaxTime;
-
-            SolverResult res = ctrl.Solve();
-            
-            controller.DisplayLable("Name", Name);
-            controller.DisplayLable("Result", res.StatusString);
-            controller.DisplayLable("Summary", res.Summary);
-            controller.DisplayLable("Exit Conditions", ctrl.ExitConditions.ToString());
-            
-            if (res.HasSolution)
+            using (SolverController ctrl = new SolverController(puz))
             {
-                controller.DisplayLable("Solution", res.Solutions[0].Steps);
-            }
+                ctrl.ExitConditions.MaxDepth = 1000;
+                ctrl.ExitConditions.MaxItterations = 10000000;
+                ctrl.ExitConditions.MaxTimeSecs = (float) ArgMaxTime;
 
-            if (reportFile != null)
-            {
-                reportFile.WriteLine("###########################################################################");
-                reportFile.WriteLine(string.Format("{0} ===> {1}", Name, res.Summary));
-                reportFile.WriteLine("###########################################################################");
-                reportFile.WriteLine(res.Info.ToString());
-                reportFile.WriteLine(res.DebugReport.ToString(new DebugReportFormatter()));
-                reportFile.WriteLine("---------------------------------------------------------------------------");
-                reportFile.WriteLine("");
+                SolverResult res = ctrl.Solve();
+                if (res.Exception != null)
+                {
+                    controller.Display(res.Exception);
+                }
+
+                controller.DisplayLable("Name", Name);
+                controller.DisplayLable("Result", res.StatusString);
+                controller.DisplayLable("Summary", res.Summary);
+                controller.DisplayLable("Exit Conditions", ctrl.ExitConditions.ToString());
+
+                if (res.HasSolution)
+                {
+                    controller.DisplayLable("Solution", res.Solutions[0].Steps);
+                }
+
+                if (reportFile != null)
+                {
+                    reportFile.WriteLine("###########################################################################");
+                    reportFile.WriteLine(string.Format("{0} ===> {1}", Name, res.Summary));
+                    reportFile.WriteLine("###########################################################################");
+                    reportFile.WriteLine(res.Info.ToString());
+                    reportFile.WriteLine(res.DebugReport.ToString(new DebugReportFormatter()));
+                    reportFile.WriteLine("---------------------------------------------------------------------------");
+                    reportFile.WriteLine("");
+                }
             }
         }
     }

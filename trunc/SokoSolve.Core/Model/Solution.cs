@@ -65,9 +65,9 @@ namespace SokoSolve.Core.Model
         /// Test the solution to see if indeed it results in a solution. <see cref="Game.Test"/>
         /// </summary>
         /// <remarks>True means a solution is valid</remarks>
-        public bool Test(out string firstError)
+        public bool Test(SokobanMap map, out string firstError)
         {
-            SokoSolve.Core.Game.Game coreGame = new SokoSolve.Core.Game.Game(map.Puzzle, map.Map);
+            SokoSolve.Core.Game.Game coreGame = new SokoSolve.Core.Game.Game(null, map);
             return coreGame.Test(this, out firstError);
         }
 

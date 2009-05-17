@@ -104,6 +104,12 @@ namespace SokoSolve.Common.Structures.Evaluation
         public abstract List<INode<T>> GetEvalList();
 
         /// <summary>
+        /// Remove the eval list
+        /// </summary>
+        public abstract void Clear();
+        
+
+        /// <summary>
         /// Start the itterator (this will also start the inner clock)
         /// </summary>
         public void Init()
