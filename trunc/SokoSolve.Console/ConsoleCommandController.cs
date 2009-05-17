@@ -313,7 +313,7 @@ namespace SokoSolve.Console
         /// </summary>
         /// <param name="title"></param>
         /// <param name="level"></param>
-        private void DisplayHeader(string title, int level)
+        public void DisplayHeader(string title, int level)
         {
             if (level <= 1)
             {

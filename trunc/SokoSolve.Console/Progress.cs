@@ -27,17 +27,29 @@ namespace SokoSolve.Console
             ProgressComponent comp = new ProgressComponent();
             comp.Load(ArgSolverLibrary);
 
-            var best = comp.Items.Where(x => x.HasSolution).OrderByDescending(x => x.Rating).First();
-            controller.DisplayLable("Best", best.Rating.ToString());
-            controller.Display(StringHelper.Join(best.NormalisedMap, null, Environment.NewLine));
-
-            var worst = comp.Items.Where(x => !x.HasSolution).OrderBy(x => x.Rating).First();
-            controller.DisplayLable("Worst", worst.Rating.ToString());
-            controller.Display(StringHelper.Join(worst.NormalisedMap, null, Environment.NewLine));
-
             int total = comp.Items.Count;
             var countSolutions = comp.Items.Count(x => x.HasSolution);
-            controller.DisplayLable("# Solutions", string.Format("{0}/{1} = {2} %", countSolutions, total, countSolutions*100/total));
+            controller.DisplayLable("# Solutions", string.Format("{0}/{1} = {2} %", countSolutions, total, countSolutions * 100 / total));
+
+            controller.DisplayHeader("TOP 10", 1);
+            var best = comp.Items.Where(x => x.HasSolution).OrderByDescending(x => x.Rating).Take(10);
+            foreach (SolverPuzzle puzzle in best)
+            {
+                controller.DisplayLable("Best", puzzle.Rating.ToString());
+                controller.Display(StringHelper.Join(puzzle.NormalisedMap, null, Environment.NewLine));
+            }
+          
+
+            controller.DisplayHeader("WORST 10", 1);
+            var worst = comp.Items.Where(x => !x.HasSolution).OrderBy(x => x.Rating).Take(10);
+            foreach (SolverPuzzle puzzle in worst)
+            {
+                controller.DisplayLable("Worst", string.Format("{0}, longest attempt={1}", puzzle.Rating, puzzle.Attempts.Items.Max(x => x.ElapsedTime)));
+                controller.Display(StringHelper.Join(puzzle.NormalisedMap, null, Environment.NewLine));
+            }
+           
+
+            
             
 
             return ReturnCodes.OK;
