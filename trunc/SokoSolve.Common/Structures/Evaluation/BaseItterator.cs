@@ -128,7 +128,6 @@ namespace SokoSolve.Common.Structures.Evaluation
         private void TimerSecondTick(object notUsed)
         {
             elapsedSeconds++;
-            System.Console.Write(".");
         }
 
         #endregion

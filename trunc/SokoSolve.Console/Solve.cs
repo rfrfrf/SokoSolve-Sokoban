@@ -46,7 +46,7 @@ namespace SokoSolve.Console
 
         public bool ArgForceGC
         {
-            get { return controller.FindArg("-forcegc:", "on", true) == "on"; }
+            get { return controller.FindArg("-forcegc:", "on", false) == "on"; }
         }
 
         public double ArgMaxTime

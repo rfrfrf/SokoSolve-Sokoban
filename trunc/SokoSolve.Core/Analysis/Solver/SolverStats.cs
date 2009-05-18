@@ -68,12 +68,15 @@ namespace SokoSolve.Core.Analysis.Solver
                 foreach (Statistic stat in stats)
                 {
                     stat.SecondTick();
-                }     
+                }
+
+                Console.SetCursorPosition(0, Console.CursorTop);
+                Console.Write("Searching {0:#,##0} nodes as {1:#,##0.00}/sec\t\t\t", Nodes.ValueTotal, NodesPerSecond.ValuePerSec);
             }
             catch(Exception ex)
             {
                 //TODO: Thread-safe bubbling
-                Console.WriteLine("X");
+                Console.WriteLine(ex.Message);
             }
         }
 
