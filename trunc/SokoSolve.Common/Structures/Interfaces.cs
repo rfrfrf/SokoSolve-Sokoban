@@ -210,7 +210,7 @@ namespace SokoSolve.Common.Structures
 	}
 
 
-    public interface IEvaluationStrategyItterator<T>
+    public interface IEvaluationStrategyItterator<T> : IDisposable
     {
         /// <summary>
         /// Start the itterator (this will also start the inner clock)

@@ -10,7 +10,7 @@ namespace SokoSolve.Core.Analysis.Solver
     /// <summary>
     /// Universal statistics mechanism
     /// </summary>
-    public class SolverStats
+    public class SolverStats : IDisposable
     {
         /// <summary>
         /// Strong constuctor, also 'registers' all available stats
@@ -73,6 +73,7 @@ namespace SokoSolve.Core.Analysis.Solver
             catch(Exception ex)
             {
                 //TODO: Thread-safe bubbling
+                Console.WriteLine("X");
             }
         }
 
@@ -187,6 +188,21 @@ namespace SokoSolve.Core.Analysis.Solver
             }
         }
 
+        public void Clear()
+        {
+            stats.Clear();
+            BestNodesRev.Clear();
+            BestNodesFwd.Clear();
+        }
+
+
+        public void Dispose()
+        {
+            if (threadingTimer != null)
+            {
+                threadingTimer.Dispose();    
+            }
+        }
 
 
         private SolverController controller;
@@ -211,5 +227,7 @@ namespace SokoSolve.Core.Analysis.Solver
         public LinkedList<SolverNode> BestNodesFwd;
         public LinkedList<SolverNode> BestNodesRev;
         public readonly int MaxBestNodes = 20;
+
+      
     }
 }

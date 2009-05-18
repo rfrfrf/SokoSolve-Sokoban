@@ -10,9 +10,7 @@ namespace SokoSolve.Common.Structures.Evaluation
     /// </summary>
     public abstract class BaseItterator<T> : IEvaluationStrategyItterator<T>, IDisposable
     {
-        private Timer secondTick;
-        private uint elapsedSeconds;
-        private bool timerEnabled;
+      
 
         /// <summary>
         /// Default Constructor
@@ -66,14 +64,6 @@ namespace SokoSolve.Common.Structures.Evaluation
             return string.Format("{0} LastStatus:{1} Itt:{2} Depth:{3}", this.GetType().Name,  exitStatus, currentItteration, currentMaxDepth);
         }
 
-        public void Dispose()
-        {
-            if (secondTick != null)
-            {
-                secondTick.Dispose();
-                secondTick = null;    
-            }
-        }
 
         #region IEvaluationStrategyItterator<T> Members
 
@@ -121,13 +111,24 @@ namespace SokoSolve.Common.Structures.Evaluation
             }
         }
 
+
+        public void Dispose()
+        {
+            if (secondTick != null)
+            {
+                secondTick.Dispose();
+                secondTick = null;
+            }
+        }
+
         /// <summary>
         /// The timer tick method
         /// </summary>
         /// <param name="notUsed"></param>
         private void TimerSecondTick(object notUsed)
         {
-            elapsedSeconds++;   
+            elapsedSeconds++;
+            System.Console.Write(".");
         }
 
         #endregion
@@ -163,6 +164,7 @@ namespace SokoSolve.Common.Structures.Evaluation
             // Time
             if (elapsedSeconds > exitConditions.MaxTimeSecs)
             {
+                
                 return true;
             }
 
@@ -174,5 +176,8 @@ namespace SokoSolve.Common.Structures.Evaluation
         protected EvalStatus exitStatus;
         protected int currentMaxDepth;
         protected int currentItteration;
+        private Timer secondTick;
+        private uint elapsedSeconds;
+        private bool timerEnabled;
     }
 }

@@ -48,10 +48,6 @@ namespace SokoSolve.Console
                 controller.Display(StringHelper.Join(puzzle.NormalisedMap, null, Environment.NewLine));
             }
            
-
-            
-            
-
             return ReturnCodes.OK;
         }
     }

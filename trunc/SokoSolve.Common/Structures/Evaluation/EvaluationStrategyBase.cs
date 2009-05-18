@@ -150,10 +150,13 @@ namespace SokoSolve.Common.Structures.Evaluation
 
         public void Dispose()
         {
+            workList.Clear();
+            workList.Dispose();
+            workList = null;
+
             evaluation.Clear();
             evaluation = null;
-            workList.Clear();
-            workList = null;
+
         }
 
         private int nextID;

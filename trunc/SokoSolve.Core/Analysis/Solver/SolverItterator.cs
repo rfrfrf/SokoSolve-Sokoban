@@ -11,9 +11,9 @@ namespace SokoSolve.Core.Analysis.Solver
     /// Custom evaluator (buildin og <see cref="BreadthFirstItterator{T}"/>) make a custom itterator 
     /// which can intergrate into the Solver implmentation with stats, weighting and multi-threading
     /// </summary>
-    internal class SolverItterator : IEvaluationStrategyItterator<SolverNode>
+    internal class SolverItterator : IEvaluationStrategyItterator<SolverNode>, IDisposable
     {
-        #region ItteratorExit enum
+        
 
         public enum ItteratorExit
         {
@@ -25,7 +25,7 @@ namespace SokoSolve.Core.Analysis.Solver
             EvalListEmpty
         }
 
-        #endregion
+       
 
         private SolverController controller;
         private ReaderWriterLock readWriteLock;
@@ -162,6 +162,11 @@ namespace SokoSolve.Core.Analysis.Solver
         private static int CompareNodes(INode<SolverNode> lhs, INode<SolverNode> rhs)
         {
             return rhs.Data.Weighting.CompareTo(lhs.Data.Weighting);
+        }
+
+        public void Dispose()
+        {
+            innerItterator.Dispose();
         }
     }
 }

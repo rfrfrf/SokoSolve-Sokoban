@@ -43,6 +43,9 @@ namespace SokoSolve.Console
             XmlProvider xml = new XmlProvider();
             Library lib = xml.Load(ArgLibrary);
 
+            controller.DisplayLable("Reading File", ArgLibrary);
+            controller.DisplayLable("Reading Library", lib.GetDetails().Name);
+
             if (ArgPuzzle == null || ArgPuzzle == "*")
             {
                 int cc = 0;

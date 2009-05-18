@@ -44,6 +44,11 @@ namespace SokoSolve.Console
             get { return controller.FindArg("-sol:", "on", false) == "on"; }
         }
 
+        public bool ArgForceGC
+        {
+            get { return controller.FindArg("-forcegc:", "on", true) == "on"; }
+        }
+
         public double ArgMaxTime
         {
             get { return controller.FindArgDouble("-maxtime:", TimeSpan.FromMinutes(2).TotalSeconds, false); }
@@ -63,6 +68,8 @@ namespace SokoSolve.Console
             
             if (!string.IsNullOrEmpty(ArgSolverLibrary))
             {
+                DateTime start = DateTime.Now;
+
                 // MODE: Progress + Library
                 ProgressComponent comp = new ProgressComponent();
                 Library lib = null;
@@ -81,6 +88,7 @@ namespace SokoSolve.Console
                     comp.Add(lib);
                 }
 
+                
                 int cc = 0;
                 foreach (SolverPuzzle item in comp.Items)
                 {
@@ -91,11 +99,15 @@ namespace SokoSolve.Console
                         continue;
                     }
 
+                    TimeSpan left = TimeSpan.FromSeconds((double) (comp.Items.Count - cc)*ArgMaxTime);
+                    controller.DisplayLable("Est. Time Left", left.ToString());
+                    controller.DisplayLable("Time Elapsed", (DateTime.Now-start).ToString());
                     controller.Display("==========================================================================");
                     controller.Display("");
                     controller.DisplayLable("Attempt", string.Format("{0}/{1} {2}%, maxtime={3}", cc, comp.Items.Count, cc*100/comp.Items.Count, TimeSpan.FromSeconds(ArgMaxTime)));
                     controller.DisplayLable("Name", item.Name);
                     controller.DisplayLable("Rating", string.Format("{0}, size=({1}, {2})", item.Rating, item.Width, item.Height));
+
                     controller.Display(StringHelper.Join(item.NormalisedMap, null, Environment.NewLine));
 
                     SokobanMap map = new SokobanMap();
@@ -115,6 +127,8 @@ namespace SokoSolve.Console
 
                         comp.Update(res);
                     }
+
+                    CheckForceGC();
                     controller.Display("---------------------------------------------------------------------------");
 
                     if (System.Console.KeyAvailable && System.Console.ReadKey().KeyChar == 'Q')
@@ -144,7 +158,17 @@ namespace SokoSolve.Console
                         cc++;
                         controller.Display("");
                         controller.DisplayLable("Attempting", string.Format("{0:000} of {1:000}", cc, lib.Puzzles.Count));
+                        
                         SolvePuzzle(puzzle.MasterMap, puzzle.GetDetails().Name);
+
+                        CheckForceGC();
+
+                        if (System.Console.KeyAvailable && System.Console.ReadKey().KeyChar == 'Q')
+                        {
+                            controller.Display("BREAK REQUESTED... Exiting");
+                            break;
+                        }
+
                     }
                 }
                 else
@@ -162,6 +186,18 @@ namespace SokoSolve.Console
             }
 
             return ReturnCodes.OK;
+        }
+
+        void CheckForceGC()
+        {
+            if (!ArgForceGC) return;
+
+            controller.DisplayLable("Working Set Before GC", (Environment.WorkingSet / 1024 / 1024).ToString("#,##0K"));
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            var status = GC.WaitForFullGCComplete();
+            controller.DisplayLable("GC Wait", status.ToString());
+            controller.DisplayLable("Working Set After GC", (Environment.WorkingSet / 1024 / 1024).ToString("#,##0K"));
         }
 
         private void SolvePuzzle(PuzzleMap puz, string Name)

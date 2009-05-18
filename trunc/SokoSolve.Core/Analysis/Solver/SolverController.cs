@@ -541,6 +541,12 @@ namespace SokoSolve.Core.Analysis.Solver
         ///<filterpriority>2</filterpriority>
         public void Dispose()
         {
+            if (reverseWorker != null)
+            {
+                if (reverseWorker.IsAlive) reverseWorker.Join(100);
+                reverseWorker = null;
+            }
+
             if (strategy != null)
             {
                 strategy.Dispose();
@@ -560,6 +566,12 @@ namespace SokoSolve.Core.Analysis.Solver
             {
                 reverseStrategy.Dispose();
                 reverseStrategy = null;
+            }
+            if (stats != null)
+            {
+                stats.Clear();
+                stats.Dispose();
+                stats = null;
             }
         }
 

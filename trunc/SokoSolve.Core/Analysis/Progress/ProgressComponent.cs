@@ -110,8 +110,11 @@ namespace SokoSolve.Core.Analysis.Progress
                                     map.MapID);
             nP.Width = map.Map.Size.Width;
             nP.Height = map.Map.Size.Height;
-            nP.Author = map.GetDetails().Author.Name;
-            nP.Email = map.GetDetails().Author.Email;
+            if (map.GetDetails().Author != null)
+            {
+                nP.Author = map.GetDetails().Author.Name;
+                nP.Email = map.GetDetails().Author.Email;    
+            }
             nP.Rating = (float)PuzzleAnalysis.CalcRating(map.Map);
             nP.SourceURL = null;
             if (map.HasSolution)
