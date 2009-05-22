@@ -71,7 +71,7 @@ namespace SokoSolve.Core.Analysis.Solver
                 }
 
                 Console.SetCursorPosition(0, Console.CursorTop);
-                Console.Write("Searching {0:#,##0} nodes as {1:#,##0.00}/sec. Best Node={2:#,##0.00}\t\t\t", Nodes.ValueTotal, NodesPerSecond.ValuePerSec, WeightingMax.ValueLast);
+                Console.Write("Searching {0:#,##0} nodes as {1:#,##0.00}/sec. EvalList length={2:#,##0.00}\t\t\t", Nodes.ValueTotal, NodesPerSecond.ValuePerSec, AvgEvalList.ValueTotal);
             }
             catch(Exception ex)
             {

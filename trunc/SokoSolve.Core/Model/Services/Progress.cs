@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Xml;
+using System.Linq;
 using System.Xml.Serialization;
 using SokoSolve.Core.Analysis.Solver;
 
@@ -75,7 +76,6 @@ namespace SokoSolve.Core.Model.Services
         [XmlAttribute]
         public int TotalAttemptFailed { get; set; }
         
-
         public double TotalTime { get; set; }
 
         public List<SolverAttempt> Items { get; set; }
@@ -85,6 +85,7 @@ namespace SokoSolve.Core.Model.Services
         {
             get { return Items.Count;  }
         }
+
 
         public void Add(SolverAttempt item)
         {

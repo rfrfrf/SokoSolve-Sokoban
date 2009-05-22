@@ -80,10 +80,14 @@ namespace SokoSolve.Core.Analysis.Solver
         {
             int hash = rhs.GetHashCode();
             if (!items.ContainsKey(hash)) return null;
-            List<SolverNode> list = new List<SolverNode>();
+            
             LinkedHashedItem linked = items[hash];
+            if (linked == null) return null;
+
+            List<SolverNode> list = new List<SolverNode>();
             while (linked != null)
             {
+                
                 if (!object.ReferenceEquals(rhs, linked.Node) && rhs.Equals(linked.Node))
                 {
                     // Match!
@@ -93,6 +97,34 @@ namespace SokoSolve.Core.Analysis.Solver
                 linked = linked.Next;
             }
             return list;
+        }
+
+        /// <summary>
+        /// Find a match (SolverNode.Equals(...)) in the list
+        /// </summary>
+        /// <param name="rhs"></param>
+        /// <returns></returns>
+        public SolverNode GetMatchFirst(SolverNode rhs)
+        {
+            int hash = rhs.GetHashCode();
+            if (!items.ContainsKey(hash)) return null;
+
+            LinkedHashedItem linked = items[hash];
+            if (linked == null) return null;
+
+            List<SolverNode> list = new List<SolverNode>();
+            while (linked != null)
+            {
+
+                if (!object.ReferenceEquals(rhs, linked.Node) && rhs.Equals(linked.Node))
+                {
+                    // Match!
+                    return linked.Node;
+                }
+
+                linked = linked.Next;
+            }
+            return null;
         }
 
         #region ICollection<SolverNode> Members
@@ -169,8 +201,8 @@ namespace SokoSolve.Core.Analysis.Solver
         {
             if (!items.ContainsKey(item.GetHashCode())) return false;
 
-            List<SolverNode> matches = GetMatch(item);
-            return (matches != null && matches.Count > 0);
+            SolverNode matches = GetMatchFirst(item);
+            return (matches != null);
         }
 
         ///<summary>

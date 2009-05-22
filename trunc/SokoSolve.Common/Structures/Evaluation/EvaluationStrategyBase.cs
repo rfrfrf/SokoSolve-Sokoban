@@ -110,6 +110,8 @@ namespace SokoSolve.Common.Structures.Evaluation
             workList.Add(newChildNode);
         }
 
+
+       
         /// <summary>
         /// Once the evaluation is complete, remove it from the worker list
         /// </summary>

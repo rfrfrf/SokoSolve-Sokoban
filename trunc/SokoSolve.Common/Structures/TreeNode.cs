@@ -23,12 +23,13 @@ namespace SokoSolve.Common.Structures
 	/// Member node for a Tree
 	/// </summary>
 	/// <typeparam name="T">Node's data</typeparam>
-	public class TreeNode<T> : ITreeNode<T>, IDirectedNode<T>, INode<T>
+	public class TreeNode<T> : ITreeNode<T>, IDirectedNode<T>, INode<T> 
 	{
 		private TreeNode<T> parent;
 		private ManagedCollection<TreeNode<T>> children;
 		private T data;
 		private Tree<T> tree;
+	    private int depth;
 
 
         /// <summary>
@@ -49,6 +50,7 @@ namespace SokoSolve.Common.Structures
             if (parent == null) throw new ArgumentNullException("parent");
 			this.parent = parent;
 			this.tree = parent.tree;
+		    depth = GetDepth();
 		}
 
 		/// <summary>
@@ -60,6 +62,18 @@ namespace SokoSolve.Common.Structures
 		{	
         	Data = data;   
 		}
+
+
+        /// <summary>
+        /// Strong Constructor
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="data"></param>
+        public TreeNode(TreeNode<T> parent, ITreeNodeBackReference<T> backREF) : this(parent)
+        {
+            this.data = (T)backREF;
+            backREF.TreeNode = this;
+        }
 
 		/// <summary>
 		/// Data Payload
@@ -143,6 +157,22 @@ namespace SokoSolve.Common.Structures
         /// Add a new child payload to the tree
         /// </summary>
         /// <param name="child"></param>
+        public TreeNode<T> Add(ITreeNodeBackReference<T> child)
+        {
+            // Lazy initlisation of children to save space
+            if (children == null) children = tree.ManagedCollectionFactory(ChildrenNotifications);
+
+            // Add the node
+            TreeNode<T> node = new TreeNode<T>(this, child);
+            children.Add(node);
+            return node;
+        }
+
+      
+        /// <summary>
+        /// Add a new child payload to the tree
+        /// </summary>
+        /// <param name="child"></param>
         public TreeNode<T> Add(TreeNode<T> child)
         {
             // Lazy initlisation of children to save space
@@ -193,10 +223,15 @@ namespace SokoSolve.Common.Structures
 		{
 			get
 			{
-				if (parent == null) return 0;
-				return parent.Depth + 1;
+			    return depth;
 			}
 		}
+
+        protected internal int GetDepth()
+        {
+            if (parent == null) return 0;
+			return parent.Depth + 1;
+        }
 
 		/// <summary>
 		/// Simular to depth, get all nodes from this node to the top node

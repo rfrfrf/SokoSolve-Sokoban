@@ -13364,8 +13364,8 @@
         <string>~~~~#..#~~~</string>
         <string>~~~~####~~~</string>
       </NormalisedMap>
-      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="3">
-        <TotalTime>915.6488037109375</TotalTime>
+      <Attempts TotalAttemptSucceed="1" TotalAttemptFailed="3">
+        <TotalTime>1190.6822204589844</TotalTime>
         <Items>
           <SolverAttempt Created="2009-05-17T22:21:58.9401539+01:00" ElapsedTime="305.22311401367187" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 350613 nodes at 1149 nodes/s (puzzle score 10.64)">
             <SolverResultInfo>
@@ -13442,6 +13442,32 @@
               </InfoValues>
             </SolverResultInfo>
           </SolverAttempt>
+          <SolverAttempt Created="2009-05-22T12:42:25.442041+01:00" ElapsedTime="275.03341674804688" Result="CompleteSolution" SolverSummary="Solution in 04m35s and 423351 nodes at 1539 nodes/s (puzzle score 10.64)">
+            <Solution>ldluruurrdrrrdlululllddddrruruddllluuuurrdrdddlddluruuulldrllllurdrruuuuurdldddrrruullrrddllluudddllurdrurrruulllldduurruuldrdrrddlluluruulddrddrruulrddlluulduuurdlddrdrruulldludrddlulldrurruulldurrddllrrrrrruldllluurrdulluuldrdddllururuulddldddllurdrurruullduruurd</Solution>
+            <SolverResultInfo>
+              <TotalNodes>423351</TotalNodes>
+              <TotalSeconds>275.033417</TotalSeconds>
+              <Machine>Intel(R) Core(TM)2 Quad CPU           @ 2.40GHz with 4 cores. </Machine>
+              <RatingScore>10.64</RatingScore>
+              <InfoValues>
+                <NameValuePair Name="Evaluation Total Seconds" Value="271 sec" />
+                <NameValuePair Name="Evaluation Time" Value="275.033 sec" />
+                <NameValuePair Name="Evaluation Itterations" Value="548666 nodes" />
+                <NameValuePair Name="Total Nodes" Value="423351 nodes" />
+                <NameValuePair Name="Node per second" Value="avg 1091.4, last 1210 " />
+                <NameValuePair Name="Total Forward Nodes" Value="229038 nodes" />
+                <NameValuePair Name="Total Reverse Nodes" Value="194320 nodes" />
+                <NameValuePair Name="Duplicates" Value="278240 nodes" />
+                <NameValuePair Name="DeadNodes" Value="164941 nodes" />
+                <NameValuePair Name="Eval Worker List" Value="449407" />
+                <NameValuePair Name="Weighting Min" Value="0" />
+                <NameValuePair Name="Weighting Max" Value="368" />
+                <NameValuePair Name="Weighting Avg" Value="214.98 avg." />
+                <NameValuePair Name="Hints Uses" Value="31372 hits" />
+                <NameValuePair Name="Max Depth" Value="0" />
+              </InfoValues>
+            </SolverResultInfo>
+          </SolverAttempt>
         </Items>
       </Attempts>
     </SolverPuzzle>
@@ -13460,8 +13486,8 @@
         <string>~~~~#.....#########</string>
         <string>~~~~#######~~~~~~~~</string>
       </NormalisedMap>
-      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="3">
-        <TotalTime>915.70516967773438</TotalTime>
+      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="4">
+        <TotalTime>1220.9151000976562</TotalTime>
         <Items>
           <SolverAttempt Created="2009-05-17T22:27:05.3796813+01:00" ElapsedTime="305.20217895507812" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 1230284 nodes at 4031 nodes/s (puzzle score 10.73)">
             <SolverResultInfo>
@@ -13538,6 +13564,31 @@
               </InfoValues>
             </SolverResultInfo>
           </SolverAttempt>
+          <SolverAttempt Created="2009-05-22T12:47:32.0565783+01:00" ElapsedTime="305.20993041992187" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 1043597 nodes at 3419 nodes/s (puzzle score 10.73)">
+            <SolverResultInfo>
+              <TotalNodes>1043597</TotalNodes>
+              <TotalSeconds>305.20993</TotalSeconds>
+              <Machine>Intel(R) Core(TM)2 Quad CPU           @ 2.40GHz with 4 cores. </Machine>
+              <RatingScore>10.73</RatingScore>
+              <InfoValues>
+                <NameValuePair Name="Evaluation Total Seconds" Value="301 sec" />
+                <NameValuePair Name="Evaluation Time" Value="305.210 sec" />
+                <NameValuePair Name="Evaluation Itterations" Value="1342381 nodes" />
+                <NameValuePair Name="Total Nodes" Value="1043597 nodes" />
+                <NameValuePair Name="Node per second" Value="avg 2538.8, last 2471 " />
+                <NameValuePair Name="Total Forward Nodes" Value="561969 nodes" />
+                <NameValuePair Name="Total Reverse Nodes" Value="481645 nodes" />
+                <NameValuePair Name="Duplicates" Value="699631 nodes" />
+                <NameValuePair Name="DeadNodes" Value="203933 nodes" />
+                <NameValuePair Name="Eval Worker List" Value="129316" />
+                <NameValuePair Name="Weighting Min" Value="0" />
+                <NameValuePair Name="Weighting Max" Value="177" />
+                <NameValuePair Name="Weighting Avg" Value="22.56 avg." />
+                <NameValuePair Name="Hints Uses" Value="0 hits" />
+                <NameValuePair Name="Max Depth" Value="0" />
+              </InfoValues>
+            </SolverResultInfo>
+          </SolverAttempt>
         </Items>
       </Attempts>
     </SolverPuzzle>
@@ -13558,8 +13609,8 @@
         <string>~~##...##~</string>
         <string>~~~#####~~</string>
       </NormalisedMap>
-      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="3">
-        <TotalTime>915.60858154296875</TotalTime>
+      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="4">
+        <TotalTime>1220.8212890625</TotalTime>
         <Items>
           <SolverAttempt Created="2009-05-17T22:32:11.7792063+01:00" ElapsedTime="305.199462890625" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 578294 nodes at 1895 nodes/s (puzzle score 10.73)">
             <SolverResultInfo>
@@ -13632,6 +13683,31 @@
                 <NameValuePair Name="Weighting Max" Value="257" />
                 <NameValuePair Name="Weighting Avg" Value="52.21 avg." />
                 <NameValuePair Name="Hints Uses" Value="3227 hits" />
+                <NameValuePair Name="Max Depth" Value="0" />
+              </InfoValues>
+            </SolverResultInfo>
+          </SolverAttempt>
+          <SolverAttempt Created="2009-05-22T12:52:38.7551205+01:00" ElapsedTime="305.21270751953125" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 391553 nodes at 1283 nodes/s (puzzle score 10.73)">
+            <SolverResultInfo>
+              <TotalNodes>391553</TotalNodes>
+              <TotalSeconds>305.2127</TotalSeconds>
+              <Machine>Intel(R) Core(TM)2 Quad CPU           @ 2.40GHz with 4 cores. </Machine>
+              <RatingScore>10.73</RatingScore>
+              <InfoValues>
+                <NameValuePair Name="Evaluation Total Seconds" Value="301 sec" />
+                <NameValuePair Name="Evaluation Time" Value="305.213 sec" />
+                <NameValuePair Name="Evaluation Itterations" Value="495043 nodes" />
+                <NameValuePair Name="Total Nodes" Value="391553 nodes" />
+                <NameValuePair Name="Node per second" Value="avg 635.9, last 608 " />
+                <NameValuePair Name="Total Forward Nodes" Value="218847 nodes" />
+                <NameValuePair Name="Total Reverse Nodes" Value="172714 nodes" />
+                <NameValuePair Name="Duplicates" Value="279479 nodes" />
+                <NameValuePair Name="DeadNodes" Value="155524 nodes" />
+                <NameValuePair Name="Eval Worker List" Value="191871" />
+                <NameValuePair Name="Weighting Min" Value="0" />
+                <NameValuePair Name="Weighting Max" Value="220" />
+                <NameValuePair Name="Weighting Avg" Value="48.59 avg." />
+                <NameValuePair Name="Hints Uses" Value="2672 hits" />
                 <NameValuePair Name="Max Depth" Value="0" />
               </InfoValues>
             </SolverResultInfo>
@@ -13984,9 +14060,35 @@
         <string>~~~#....######~~</string>
         <string>~~~######~~~~~~~</string>
       </NormalisedMap>
-      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="5">
-        <TotalTime>1008.9061546325684</TotalTime>
+      <Attempts TotalAttemptSucceed="1" TotalAttemptFailed="5">
+        <TotalTime>1259.5481376647949</TotalTime>
         <Items>
+          <SolverAttempt Created="2009-05-22T12:56:50.6355272+01:00" ElapsedTime="250.64198303222656" Result="CompleteSolution" SolverSummary="Solution in 04m10s and 1221779 nodes at 4875 nodes/s (puzzle score 10.95)">
+            <Solution>ddrdddllurdrruurrrurrllddrruldlurrrruuldrdlldllururldlllldluuluurddduurrrdulllddrddludllurruudrrruullldluuuurulldlluurdldrurrdddddrdddruluuurrrddlldluudrrruullldluuddrdrrrrdrrulllllrruulllddrdlurrrrruldlllluurrrdrdlllrruullluluudddrrrrddlldluulurrluluurulllulddurrrdddddrdrrrrrrrruuldrdlulldllllluuuluuulldddlururldlulurdrrurrdllulrdldlluurrddlulurdrrrddddrdrrruullrrddllluluuuullluurdrllddrurululddrrrrullldrrddrduluullllururdldrddlururldlururrddduullllururdldrurrdddrdrrrddrruldlllluluurduluddrrrrdullluluudddrrrrdrdluulllduuluurullluldrrrdddddrduuuluuulllldrurdrllddruluurrrdulllddrurrduulldrrdduullllururdldrurrdddrddluuudddrdrddluuddllurdrruurrllluluruluurullluldrrrddddrrluluuulllldrurdrllddruluurrrdulllddrurrduulldrrdduullllururdldrurrdddrddluuddrdrrrurrdlluullluluurulllulddurrrdddrdddrddlururldluulurluuurullldrurddullddluluurldrrrurrdlddrdddrrrllluurluluuulldllururddurrdddrddluuddrdrrrurrdlurrrdlulldlurrrdlulldlldlurrruullluluurulllulddurrrdddrdrrrddlllulurrlluuurullldrlllurdrrurdllllddrudrulluurrrlllddrrudlluurdrruldrrdurulddduullurdlllururdrdrrulllrdlddlluurrrlllurdrrurrdlddrddluuuuruldddddrdrrrurrdlllldlurrruullluluullddlluuururdrllldddrruuruldrrruldllddlluurrrrlluuldrdrrulldddlluurrurrdddrdrrrddllluluuddrdrrruullluluululdurrdllllurdrrrddrddluuuullluurdldrrlllddrrudlluurrddluulurr</Solution>
+            <SolverResultInfo>
+              <TotalNodes>1221779</TotalNodes>
+              <TotalSeconds>250.641983</TotalSeconds>
+              <Machine>Intel(R) Core(TM)2 Quad CPU           @ 2.40GHz with 4 cores. </Machine>
+              <RatingScore>10.95</RatingScore>
+              <InfoValues>
+                <NameValuePair Name="Evaluation Total Seconds" Value="247 sec" />
+                <NameValuePair Name="Evaluation Time" Value="250.642 sec" />
+                <NameValuePair Name="Evaluation Itterations" Value="1600694 nodes" />
+                <NameValuePair Name="Total Nodes" Value="1221779 nodes" />
+                <NameValuePair Name="Node per second" Value="avg 3767.5, last 4194 " />
+                <NameValuePair Name="Total Forward Nodes" Value="592954 nodes" />
+                <NameValuePair Name="Total Reverse Nodes" Value="628846 nodes" />
+                <NameValuePair Name="Duplicates" Value="814258 nodes" />
+                <NameValuePair Name="DeadNodes" Value="299308 nodes" />
+                <NameValuePair Name="Eval Worker List" Value="257705" />
+                <NameValuePair Name="Weighting Min" Value="0" />
+                <NameValuePair Name="Weighting Max" Value="287" />
+                <NameValuePair Name="Weighting Avg" Value="54.11 avg." />
+                <NameValuePair Name="Hints Uses" Value="1742 hits" />
+                <NameValuePair Name="Max Depth" Value="0" />
+              </InfoValues>
+            </SolverResultInfo>
+          </SolverAttempt>
           <SolverAttempt Created="2009-05-17T19:36:56.9127903+01:00" ElapsedTime="31.423255920410156" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 31.42 sec sec and 172291 nodes at 5483 nodes/s (puzzle score 10.95)">
             <SolverResultInfo>
               <TotalNodes>172291</TotalNodes>
@@ -14037,31 +14139,6 @@
               </InfoValues>
             </SolverResultInfo>
           </SolverAttempt>
-          <SolverAttempt Created="2009-05-17T22:39:52.0185305+01:00" ElapsedTime="305.20718383789062" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 1145218 nodes at 3752 nodes/s (puzzle score 10.95)">
-            <SolverResultInfo>
-              <TotalNodes>1145218</TotalNodes>
-              <TotalSeconds>305.207184</TotalSeconds>
-              <Machine>Intel(R) Core(TM)2 Quad CPU           @ 2.40GHz with 4 cores. </Machine>
-              <RatingScore>10.95</RatingScore>
-              <InfoValues>
-                <NameValuePair Name="Evaluation Total Seconds" Value="301 sec" />
-                <NameValuePair Name="Evaluation Time" Value="305.207 sec" />
-                <NameValuePair Name="Evaluation Itterations" Value="1503648 nodes" />
-                <NameValuePair Name="Total Nodes" Value="1145218 nodes" />
-                <NameValuePair Name="Node per second" Value="avg 3116.8, last 3110 " />
-                <NameValuePair Name="Total Forward Nodes" Value="553706 nodes" />
-                <NameValuePair Name="Total Reverse Nodes" Value="591561 nodes" />
-                <NameValuePair Name="Duplicates" Value="759671 nodes" />
-                <NameValuePair Name="DeadNodes" Value="284398 nodes" />
-                <NameValuePair Name="Eval Worker List" Value="251786" />
-                <NameValuePair Name="Weighting Min" Value="0" />
-                <NameValuePair Name="Weighting Max" Value="287" />
-                <NameValuePair Name="Weighting Avg" Value="52.92 avg." />
-                <NameValuePair Name="Hints Uses" Value="1490 hits" />
-                <NameValuePair Name="Max Depth" Value="0" />
-              </InfoValues>
-            </SolverResultInfo>
-          </SolverAttempt>
           <SolverAttempt Created="2009-05-18T20:34:42.7832404+01:00" ElapsedTime="305.205810546875" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 1085145 nodes at 3555 nodes/s (puzzle score 10.95)">
             <SolverResultInfo>
               <TotalNodes>1085145</TotalNodes>
@@ -14087,31 +14164,6 @@
               </InfoValues>
             </SolverResultInfo>
           </SolverAttempt>
-          <SolverAttempt Created="2009-05-18T23:19:31.941868+01:00" ElapsedTime="305.21084594726562" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 1155618 nodes at 3786 nodes/s (puzzle score 10.95)">
-            <SolverResultInfo>
-              <TotalNodes>1155618</TotalNodes>
-              <TotalSeconds>305.210846</TotalSeconds>
-              <Machine>Intel(R) Core(TM)2 Quad CPU           @ 2.40GHz with 4 cores. </Machine>
-              <RatingScore>10.95</RatingScore>
-              <InfoValues>
-                <NameValuePair Name="Evaluation Total Seconds" Value="301 sec" />
-                <NameValuePair Name="Evaluation Time" Value="305.211 sec" />
-                <NameValuePair Name="Evaluation Itterations" Value="1516773 nodes" />
-                <NameValuePair Name="Total Nodes" Value="1155618 nodes" />
-                <NameValuePair Name="Node per second" Value="avg 3007.5, last 2924 " />
-                <NameValuePair Name="Total Forward Nodes" Value="560854 nodes" />
-                <NameValuePair Name="Total Reverse Nodes" Value="594804 nodes" />
-                <NameValuePair Name="Duplicates" Value="767082 nodes" />
-                <NameValuePair Name="DeadNodes" Value="287260 nodes" />
-                <NameValuePair Name="Eval Worker List" Value="252445" />
-                <NameValuePair Name="Weighting Min" Value="0" />
-                <NameValuePair Name="Weighting Max" Value="287" />
-                <NameValuePair Name="Weighting Avg" Value="53.15 avg." />
-                <NameValuePair Name="Hints Uses" Value="1526 hits" />
-                <NameValuePair Name="Max Depth" Value="0" />
-              </InfoValues>
-            </SolverResultInfo>
-          </SolverAttempt>
         </Items>
       </Attempts>
     </SolverPuzzle>
@@ -14128,8 +14180,8 @@
         <string>###..#..###</string>
         <string>~~#######~~</string>
       </NormalisedMap>
-      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="5">
-        <TotalTime>1008.9546947479248</TotalTime>
+      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="6">
+        <TotalTime>1314.1881542205811</TotalTime>
         <Items>
           <SolverAttempt Created="2009-05-17T19:37:29.4296502+01:00" ElapsedTime="31.42045783996582" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 31.42 sec sec and 121497 nodes at 3867 nodes/s (puzzle score 10.96)">
             <SolverResultInfo>
@@ -14181,56 +14233,6 @@
               </InfoValues>
             </SolverResultInfo>
           </SolverAttempt>
-          <SolverAttempt Created="2009-05-17T22:44:58.5400625+01:00" ElapsedTime="305.23446655273437" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 547181 nodes at 1793 nodes/s (puzzle score 10.96)">
-            <SolverResultInfo>
-              <TotalNodes>547181</TotalNodes>
-              <TotalSeconds>305.234467</TotalSeconds>
-              <Machine>Intel(R) Core(TM)2 Quad CPU           @ 2.40GHz with 4 cores. </Machine>
-              <RatingScore>10.96</RatingScore>
-              <InfoValues>
-                <NameValuePair Name="Evaluation Total Seconds" Value="301 sec" />
-                <NameValuePair Name="Evaluation Time" Value="305.235 sec" />
-                <NameValuePair Name="Evaluation Itterations" Value="687049 nodes" />
-                <NameValuePair Name="Total Nodes" Value="547181 nodes" />
-                <NameValuePair Name="Node per second" Value="avg 941.2, last 1272 " />
-                <NameValuePair Name="Total Forward Nodes" Value="371949 nodes" />
-                <NameValuePair Name="Total Reverse Nodes" Value="175247 nodes" />
-                <NameValuePair Name="Duplicates" Value="372789 nodes" />
-                <NameValuePair Name="DeadNodes" Value="172288 nodes" />
-                <NameValuePair Name="Eval Worker List" Value="128557" />
-                <NameValuePair Name="Weighting Min" Value="0" />
-                <NameValuePair Name="Weighting Max" Value="313" />
-                <NameValuePair Name="Weighting Avg" Value="170.71 avg." />
-                <NameValuePair Name="Hints Uses" Value="3415 hits" />
-                <NameValuePair Name="Max Depth" Value="0" />
-              </InfoValues>
-            </SolverResultInfo>
-          </SolverAttempt>
-          <SolverAttempt Created="2009-05-18T20:39:49.2107671+01:00" ElapsedTime="305.23004150390625" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 530704 nodes at 1739 nodes/s (puzzle score 10.96)">
-            <SolverResultInfo>
-              <TotalNodes>530704</TotalNodes>
-              <TotalSeconds>305.230042</TotalSeconds>
-              <Machine>Intel(R) Core(TM)2 Quad CPU           @ 2.40GHz with 4 cores. </Machine>
-              <RatingScore>10.96</RatingScore>
-              <InfoValues>
-                <NameValuePair Name="Evaluation Total Seconds" Value="301 sec" />
-                <NameValuePair Name="Evaluation Time" Value="305.230 sec" />
-                <NameValuePair Name="Evaluation Itterations" Value="666362 nodes" />
-                <NameValuePair Name="Total Nodes" Value="530704 nodes" />
-                <NameValuePair Name="Node per second" Value="avg 1401.4, last 1229 " />
-                <NameValuePair Name="Total Forward Nodes" Value="359685 nodes" />
-                <NameValuePair Name="Total Reverse Nodes" Value="171034 nodes" />
-                <NameValuePair Name="Duplicates" Value="361708 nodes" />
-                <NameValuePair Name="DeadNodes" Value="166114 nodes" />
-                <NameValuePair Name="Eval Worker List" Value="124601" />
-                <NameValuePair Name="Weighting Min" Value="0" />
-                <NameValuePair Name="Weighting Max" Value="313" />
-                <NameValuePair Name="Weighting Avg" Value="170.73 avg." />
-                <NameValuePair Name="Hints Uses" Value="3361 hits" />
-                <NameValuePair Name="Max Depth" Value="0" />
-              </InfoValues>
-            </SolverResultInfo>
-          </SolverAttempt>
           <SolverAttempt Created="2009-05-18T23:24:38.6064082+01:00" ElapsedTime="305.22161865234375" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 558777 nodes at 1831 nodes/s (puzzle score 10.96)">
             <SolverResultInfo>
               <TotalNodes>558777</TotalNodes>
@@ -14252,6 +14254,56 @@
                 <NameValuePair Name="Weighting Max" Value="313" />
                 <NameValuePair Name="Weighting Avg" Value="170.66 avg." />
                 <NameValuePair Name="Hints Uses" Value="3470 hits" />
+                <NameValuePair Name="Max Depth" Value="0" />
+              </InfoValues>
+            </SolverResultInfo>
+          </SolverAttempt>
+          <SolverAttempt Created="2009-05-22T13:01:57.4120738+01:00" ElapsedTime="305.23345947265625" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 1047346 nodes at 3431 nodes/s (puzzle score 10.96)">
+            <SolverResultInfo>
+              <TotalNodes>1047346</TotalNodes>
+              <TotalSeconds>305.233459</TotalSeconds>
+              <Machine>Intel(R) Core(TM)2 Quad CPU           @ 2.40GHz with 4 cores. </Machine>
+              <RatingScore>10.96</RatingScore>
+              <InfoValues>
+                <NameValuePair Name="Evaluation Total Seconds" Value="301 sec" />
+                <NameValuePair Name="Evaluation Time" Value="305.234 sec" />
+                <NameValuePair Name="Evaluation Itterations" Value="1303277 nodes" />
+                <NameValuePair Name="Total Nodes" Value="1047346 nodes" />
+                <NameValuePair Name="Node per second" Value="avg 2913.3, last 3006 " />
+                <NameValuePair Name="Total Forward Nodes" Value="624373 nodes" />
+                <NameValuePair Name="Total Reverse Nodes" Value="423007 nodes" />
+                <NameValuePair Name="Duplicates" Value="732467 nodes" />
+                <NameValuePair Name="DeadNodes" Value="297330 nodes" />
+                <NameValuePair Name="Eval Worker List" Value="181894" />
+                <NameValuePair Name="Weighting Min" Value="0" />
+                <NameValuePair Name="Weighting Max" Value="313" />
+                <NameValuePair Name="Weighting Avg" Value="168.67 avg." />
+                <NameValuePair Name="Hints Uses" Value="5219 hits" />
+                <NameValuePair Name="Max Depth" Value="0" />
+              </InfoValues>
+            </SolverResultInfo>
+          </SolverAttempt>
+          <SolverAttempt Created="2009-05-17T22:44:58.5400625+01:00" ElapsedTime="305.23446655273437" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 547181 nodes at 1793 nodes/s (puzzle score 10.96)">
+            <SolverResultInfo>
+              <TotalNodes>547181</TotalNodes>
+              <TotalSeconds>305.234467</TotalSeconds>
+              <Machine>Intel(R) Core(TM)2 Quad CPU           @ 2.40GHz with 4 cores. </Machine>
+              <RatingScore>10.96</RatingScore>
+              <InfoValues>
+                <NameValuePair Name="Evaluation Total Seconds" Value="301 sec" />
+                <NameValuePair Name="Evaluation Time" Value="305.235 sec" />
+                <NameValuePair Name="Evaluation Itterations" Value="687049 nodes" />
+                <NameValuePair Name="Total Nodes" Value="547181 nodes" />
+                <NameValuePair Name="Node per second" Value="avg 941.2, last 1272 " />
+                <NameValuePair Name="Total Forward Nodes" Value="371949 nodes" />
+                <NameValuePair Name="Total Reverse Nodes" Value="175247 nodes" />
+                <NameValuePair Name="Duplicates" Value="372789 nodes" />
+                <NameValuePair Name="DeadNodes" Value="172288 nodes" />
+                <NameValuePair Name="Eval Worker List" Value="128557" />
+                <NameValuePair Name="Weighting Min" Value="0" />
+                <NameValuePair Name="Weighting Max" Value="313" />
+                <NameValuePair Name="Weighting Avg" Value="170.71 avg." />
+                <NameValuePair Name="Hints Uses" Value="3415 hits" />
                 <NameValuePair Name="Max Depth" Value="0" />
               </InfoValues>
             </SolverResultInfo>
@@ -14552,8 +14604,8 @@
         <string>##..#########~~~~</string>
         <string>~####~~~~~~~~~~~~</string>
       </NormalisedMap>
-      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="5">
-        <TotalTime>1008.8808155059814</TotalTime>
+      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="6">
+        <TotalTime>1314.1131763458252</TotalTime>
         <Items>
           <SolverAttempt Created="2009-05-17T19:38:37.0825197+01:00" ElapsedTime="31.425580978393555" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 31.43 sec sec and 123410 nodes at 3927 nodes/s (puzzle score 11.17)">
             <SolverResultInfo>
@@ -14605,56 +14657,6 @@
               </InfoValues>
             </SolverResultInfo>
           </SolverAttempt>
-          <SolverAttempt Created="2009-05-17T22:53:31.8444218+01:00" ElapsedTime="305.20364379882812" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 647912 nodes at 2123 nodes/s (puzzle score 11.17)">
-            <SolverResultInfo>
-              <TotalNodes>647912</TotalNodes>
-              <TotalSeconds>305.203644</TotalSeconds>
-              <Machine>Intel(R) Core(TM)2 Quad CPU           @ 2.40GHz with 4 cores. </Machine>
-              <RatingScore>11.17</RatingScore>
-              <InfoValues>
-                <NameValuePair Name="Evaluation Total Seconds" Value="301 sec" />
-                <NameValuePair Name="Evaluation Time" Value="305.204 sec" />
-                <NameValuePair Name="Evaluation Itterations" Value="801374 nodes" />
-                <NameValuePair Name="Total Nodes" Value="647912 nodes" />
-                <NameValuePair Name="Node per second" Value="avg 1259.6, last 1144 " />
-                <NameValuePair Name="Total Forward Nodes" Value="372614 nodes" />
-                <NameValuePair Name="Total Reverse Nodes" Value="275314 nodes" />
-                <NameValuePair Name="Duplicates" Value="476005 nodes" />
-                <NameValuePair Name="DeadNodes" Value="186807 nodes" />
-                <NameValuePair Name="Eval Worker List" Value="91173" />
-                <NameValuePair Name="Weighting Min" Value="0" />
-                <NameValuePair Name="Weighting Max" Value="221" />
-                <NameValuePair Name="Weighting Avg" Value="41.95 avg." />
-                <NameValuePair Name="Hints Uses" Value="5392 hits" />
-                <NameValuePair Name="Max Depth" Value="0" />
-              </InfoValues>
-            </SolverResultInfo>
-          </SolverAttempt>
-          <SolverAttempt Created="2009-05-18T20:44:55.5972914+01:00" ElapsedTime="305.20111083984375" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 634155 nodes at 2078 nodes/s (puzzle score 11.17)">
-            <SolverResultInfo>
-              <TotalNodes>634155</TotalNodes>
-              <TotalSeconds>305.2011</TotalSeconds>
-              <Machine>Intel(R) Core(TM)2 Quad CPU           @ 2.40GHz with 4 cores. </Machine>
-              <RatingScore>11.17</RatingScore>
-              <InfoValues>
-                <NameValuePair Name="Evaluation Total Seconds" Value="301 sec" />
-                <NameValuePair Name="Evaluation Time" Value="305.201 sec" />
-                <NameValuePair Name="Evaluation Itterations" Value="784762 nodes" />
-                <NameValuePair Name="Total Nodes" Value="634155 nodes" />
-                <NameValuePair Name="Node per second" Value="avg 1029.8, last 1008 " />
-                <NameValuePair Name="Total Forward Nodes" Value="365050 nodes" />
-                <NameValuePair Name="Total Reverse Nodes" Value="269127 nodes" />
-                <NameValuePair Name="Duplicates" Value="465467 nodes" />
-                <NameValuePair Name="DeadNodes" Value="184057 nodes" />
-                <NameValuePair Name="Eval Worker List" Value="92019" />
-                <NameValuePair Name="Weighting Min" Value="0" />
-                <NameValuePair Name="Weighting Max" Value="221" />
-                <NameValuePair Name="Weighting Avg" Value="41.91 avg." />
-                <NameValuePair Name="Hints Uses" Value="5316 hits" />
-                <NameValuePair Name="Max Depth" Value="0" />
-              </InfoValues>
-            </SolverResultInfo>
-          </SolverAttempt>
           <SolverAttempt Created="2009-05-18T23:29:45.0839377+01:00" ElapsedTime="305.20040893554687" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 659025 nodes at 2159 nodes/s (puzzle score 11.17)">
             <SolverResultInfo>
               <TotalNodes>659025</TotalNodes>
@@ -14680,6 +14682,31 @@
               </InfoValues>
             </SolverResultInfo>
           </SolverAttempt>
+          <SolverAttempt Created="2009-05-22T13:07:04.1566186+01:00" ElapsedTime="305.23236083984375" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 996402 nodes at 3264 nodes/s (puzzle score 11.17)">
+            <SolverResultInfo>
+              <TotalNodes>996402</TotalNodes>
+              <TotalSeconds>305.232361</TotalSeconds>
+              <Machine>Intel(R) Core(TM)2 Quad CPU           @ 2.40GHz with 4 cores. </Machine>
+              <RatingScore>11.17</RatingScore>
+              <InfoValues>
+                <NameValuePair Name="Evaluation Total Seconds" Value="301 sec" />
+                <NameValuePair Name="Evaluation Time" Value="305.232 sec" />
+                <NameValuePair Name="Evaluation Itterations" Value="1237131 nodes" />
+                <NameValuePair Name="Total Nodes" Value="996402 nodes" />
+                <NameValuePair Name="Node per second" Value="avg 2323.7, last 2315 " />
+                <NameValuePair Name="Total Forward Nodes" Value="555322 nodes" />
+                <NameValuePair Name="Total Reverse Nodes" Value="441110 nodes" />
+                <NameValuePair Name="Duplicates" Value="727718 nodes" />
+                <NameValuePair Name="DeadNodes" Value="262356 nodes" />
+                <NameValuePair Name="Eval Worker List" Value="172170" />
+                <NameValuePair Name="Weighting Min" Value="0" />
+                <NameValuePair Name="Weighting Max" Value="221" />
+                <NameValuePair Name="Weighting Avg" Value="37.13 avg." />
+                <NameValuePair Name="Hints Uses" Value="10114 hits" />
+                <NameValuePair Name="Max Depth" Value="0" />
+              </InfoValues>
+            </SolverResultInfo>
+          </SolverAttempt>
         </Items>
       </Attempts>
     </SolverPuzzle>
@@ -14698,8 +14725,8 @@
         <string>~~~~#..####~~</string>
         <string>~~~~####~~~~~</string>
       </NormalisedMap>
-      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="3">
-        <TotalTime>915.61175537109375</TotalTime>
+      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="4">
+        <TotalTime>1220.8235778808594</TotalTime>
         <Items>
           <SolverAttempt Created="2009-05-17T22:58:38.228946+01:00" ElapsedTime="305.19802856445312" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 833624 nodes at 2731 nodes/s (puzzle score 11.17)">
             <SolverResultInfo>
@@ -14772,6 +14799,31 @@
                 <NameValuePair Name="Weighting Max" Value="287" />
                 <NameValuePair Name="Weighting Avg" Value="77.42 avg." />
                 <NameValuePair Name="Hints Uses" Value="3446 hits" />
+                <NameValuePair Name="Max Depth" Value="0" />
+              </InfoValues>
+            </SolverResultInfo>
+          </SolverAttempt>
+          <SolverAttempt Created="2009-05-22T13:12:10.8161585+01:00" ElapsedTime="305.21182250976563" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 1399779 nodes at 4586 nodes/s (puzzle score 11.17)">
+            <SolverResultInfo>
+              <TotalNodes>1399779</TotalNodes>
+              <TotalSeconds>305.211823</TotalSeconds>
+              <Machine>Intel(R) Core(TM)2 Quad CPU           @ 2.40GHz with 4 cores. </Machine>
+              <RatingScore>11.17</RatingScore>
+              <InfoValues>
+                <NameValuePair Name="Evaluation Total Seconds" Value="301 sec" />
+                <NameValuePair Name="Evaluation Time" Value="305.212 sec" />
+                <NameValuePair Name="Evaluation Itterations" Value="1801859 nodes" />
+                <NameValuePair Name="Total Nodes" Value="1399779 nodes" />
+                <NameValuePair Name="Node per second" Value="avg 3666.3, last 3413 " />
+                <NameValuePair Name="Total Forward Nodes" Value="703484 nodes" />
+                <NameValuePair Name="Total Reverse Nodes" Value="696302 nodes" />
+                <NameValuePair Name="Duplicates" Value="979856 nodes" />
+                <NameValuePair Name="DeadNodes" Value="544419 nodes" />
+                <NameValuePair Name="Eval Worker List" Value="255442" />
+                <NameValuePair Name="Weighting Min" Value="0" />
+                <NameValuePair Name="Weighting Max" Value="287" />
+                <NameValuePair Name="Weighting Avg" Value="88.77 avg." />
+                <NameValuePair Name="Hints Uses" Value="4966 hits" />
                 <NameValuePair Name="Max Depth" Value="0" />
               </InfoValues>
             </SolverResultInfo>
@@ -14978,8 +15030,8 @@
         <string>~#..#######</string>
         <string>~####~~~~~~</string>
       </NormalisedMap>
-      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="3">
-        <TotalTime>915.60775756835937</TotalTime>
+      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="4">
+        <TotalTime>1220.8155212402344</TotalTime>
         <Items>
           <SolverAttempt Created="2009-05-17T23:04:16.1522741+01:00" ElapsedTime="305.20703125" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 559159 nodes at 1832 nodes/s (puzzle score 11.52)">
             <SolverResultInfo>
@@ -15052,6 +15104,31 @@
                 <NameValuePair Name="Weighting Max" Value="282" />
                 <NameValuePair Name="Weighting Avg" Value="106.07 avg." />
                 <NameValuePair Name="Hints Uses" Value="3618 hits" />
+                <NameValuePair Name="Max Depth" Value="0" />
+              </InfoValues>
+            </SolverResultInfo>
+          </SolverAttempt>
+          <SolverAttempt Created="2009-05-22T13:17:17.6277072+01:00" ElapsedTime="305.207763671875" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 783610 nodes at 2567 nodes/s (puzzle score 11.52)">
+            <SolverResultInfo>
+              <TotalNodes>783610</TotalNodes>
+              <TotalSeconds>305.207764</TotalSeconds>
+              <Machine>Intel(R) Core(TM)2 Quad CPU           @ 2.40GHz with 4 cores. </Machine>
+              <RatingScore>11.52</RatingScore>
+              <InfoValues>
+                <NameValuePair Name="Evaluation Total Seconds" Value="301 sec" />
+                <NameValuePair Name="Evaluation Time" Value="305.208 sec" />
+                <NameValuePair Name="Evaluation Itterations" Value="1004463 nodes" />
+                <NameValuePair Name="Total Nodes" Value="783610 nodes" />
+                <NameValuePair Name="Node per second" Value="avg 1495.1, last 1477 " />
+                <NameValuePair Name="Total Forward Nodes" Value="334687 nodes" />
+                <NameValuePair Name="Total Reverse Nodes" Value="448945 nodes" />
+                <NameValuePair Name="Duplicates" Value="476097 nodes" />
+                <NameValuePair Name="DeadNodes" Value="122947 nodes" />
+                <NameValuePair Name="Eval Worker List" Value="347768" />
+                <NameValuePair Name="Weighting Min" Value="0" />
+                <NameValuePair Name="Weighting Max" Value="318" />
+                <NameValuePair Name="Weighting Avg" Value="106.85 avg." />
+                <NameValuePair Name="Hints Uses" Value="4808 hits" />
                 <NameValuePair Name="Max Depth" Value="0" />
               </InfoValues>
             </SolverResultInfo>
@@ -15194,8 +15271,8 @@
         <string>~~#..####~~~</string>
         <string>~~####~~~~~~</string>
       </NormalisedMap>
-      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="5">
-        <TotalTime>1008.9027709960937</TotalTime>
+      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="6">
+        <TotalTime>1314.1138305664062</TotalTime>
         <Items>
           <SolverAttempt Created="2009-05-17T19:40:32.4161164+01:00" ElapsedTime="31.428905487060547" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 31.43 sec sec and 175041 nodes at 5569 nodes/s (puzzle score 11.85)">
             <SolverResultInfo>
@@ -15272,27 +15349,27 @@
               </InfoValues>
             </SolverResultInfo>
           </SolverAttempt>
-          <SolverAttempt Created="2009-05-18T21:00:14.7698651+01:00" ElapsedTime="305.20809936523437" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 892967 nodes at 2926 nodes/s (puzzle score 11.85)">
+          <SolverAttempt Created="2009-05-22T13:22:24.2322439+01:00" ElapsedTime="305.2110595703125" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 1232434 nodes at 4038 nodes/s (puzzle score 11.85)">
             <SolverResultInfo>
-              <TotalNodes>892967</TotalNodes>
-              <TotalSeconds>305.2081</TotalSeconds>
+              <TotalNodes>1232434</TotalNodes>
+              <TotalSeconds>305.21106</TotalSeconds>
               <Machine>Intel(R) Core(TM)2 Quad CPU           @ 2.40GHz with 4 cores. </Machine>
               <RatingScore>11.85</RatingScore>
               <InfoValues>
                 <NameValuePair Name="Evaluation Total Seconds" Value="301 sec" />
-                <NameValuePair Name="Evaluation Time" Value="305.208 sec" />
-                <NameValuePair Name="Evaluation Itterations" Value="1222991 nodes" />
-                <NameValuePair Name="Total Nodes" Value="892967 nodes" />
-                <NameValuePair Name="Node per second" Value="avg 1865.5, last 1913 " />
-                <NameValuePair Name="Total Forward Nodes" Value="380289 nodes" />
-                <NameValuePair Name="Total Reverse Nodes" Value="512705 nodes" />
-                <NameValuePair Name="Duplicates" Value="524444 nodes" />
-                <NameValuePair Name="DeadNodes" Value="230530 nodes" />
-                <NameValuePair Name="Eval Worker List" Value="170413" />
+                <NameValuePair Name="Evaluation Time" Value="305.211 sec" />
+                <NameValuePair Name="Evaluation Itterations" Value="1692289 nodes" />
+                <NameValuePair Name="Total Nodes" Value="1232434 nodes" />
+                <NameValuePair Name="Node per second" Value="avg 2370.8, last 610 " />
+                <NameValuePair Name="Total Forward Nodes" Value="501408 nodes" />
+                <NameValuePair Name="Total Reverse Nodes" Value="731082 nodes" />
+                <NameValuePair Name="Duplicates" Value="724944 nodes" />
+                <NameValuePair Name="DeadNodes" Value="304185 nodes" />
+                <NameValuePair Name="Eval Worker List" Value="242251" />
                 <NameValuePair Name="Weighting Min" Value="0" />
                 <NameValuePair Name="Weighting Max" Value="401" />
-                <NameValuePair Name="Weighting Avg" Value="146.74 avg." />
-                <NameValuePair Name="Hints Uses" Value="12017 hits" />
+                <NameValuePair Name="Weighting Avg" Value="145.68 avg." />
+                <NameValuePair Name="Hints Uses" Value="15055 hits" />
                 <NameValuePair Name="Max Depth" Value="0" />
               </InfoValues>
             </SolverResultInfo>
@@ -15461,8 +15538,8 @@
         <string>~#####...#</string>
         <string>~~~~~#####</string>
       </NormalisedMap>
-      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="2">
-        <TotalTime>610.40676879882813</TotalTime>
+      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="3">
+        <TotalTime>915.61660766601562</TotalTime>
         <Items>
           <SolverAttempt Created="2009-05-17T23:15:29.2397725+01:00" ElapsedTime="305.19802856445312" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 411299 nodes at 1348 nodes/s (puzzle score 12.06)">
             <SolverResultInfo>
@@ -15510,6 +15587,31 @@
                 <NameValuePair Name="Weighting Max" Value="310" />
                 <NameValuePair Name="Weighting Avg" Value="73.42 avg." />
                 <NameValuePair Name="Hints Uses" Value="14266 hits" />
+                <NameValuePair Name="Max Depth" Value="0" />
+              </InfoValues>
+            </SolverResultInfo>
+          </SolverAttempt>
+          <SolverAttempt Created="2009-05-22T13:27:30.8357807+01:00" ElapsedTime="305.2098388671875" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 05m05s sec and 688483 nodes at 2256 nodes/s (puzzle score 12.06)">
+            <SolverResultInfo>
+              <TotalNodes>688483</TotalNodes>
+              <TotalSeconds>305.209839</TotalSeconds>
+              <Machine>Intel(R) Core(TM)2 Quad CPU           @ 2.40GHz with 4 cores. </Machine>
+              <RatingScore>12.059999999999999</RatingScore>
+              <InfoValues>
+                <NameValuePair Name="Evaluation Total Seconds" Value="301 sec" />
+                <NameValuePair Name="Evaluation Time" Value="305.210 sec" />
+                <NameValuePair Name="Evaluation Itterations" Value="897934 nodes" />
+                <NameValuePair Name="Total Nodes" Value="688483 nodes" />
+                <NameValuePair Name="Node per second" Value="avg 1387.9, last 1378 " />
+                <NameValuePair Name="Total Forward Nodes" Value="370420 nodes" />
+                <NameValuePair Name="Total Reverse Nodes" Value="318089 nodes" />
+                <NameValuePair Name="Duplicates" Value="455552 nodes" />
+                <NameValuePair Name="DeadNodes" Value="241300 nodes" />
+                <NameValuePair Name="Eval Worker List" Value="403875" />
+                <NameValuePair Name="Weighting Min" Value="0" />
+                <NameValuePair Name="Weighting Max" Value="365" />
+                <NameValuePair Name="Weighting Avg" Value="93.45 avg." />
+                <NameValuePair Name="Hints Uses" Value="18898 hits" />
                 <NameValuePair Name="Max Depth" Value="0" />
               </InfoValues>
             </SolverResultInfo>
@@ -15581,8 +15683,8 @@
         <string>~###P.##~</string>
         <string>~######~~</string>
       </NormalisedMap>
-      <Attempts TotalAttemptSucceed="0" TotalAttemptFailed="4">
-        <TotalTime>703.68476676940918</TotalTime>
+      <Attempts TotalAttemptSucceed="1" TotalAttemptFailed="4">
+        <TotalTime>994.76392936706543</TotalTime>
         <Items>
           <SolverAttempt Created="2009-05-17T19:41:40.2859984+01:00" ElapsedTime="31.427202224731445" Result="CompleteNoSolutionInConstaints" SolverSummary="The solver could not find a within the given constraints. Tried for 31.43 sec sec and 113445 nodes at 3610 nodes/s (puzzle score 12.09)">
             <SolverResultInfo>
@@ -15680,6 +15782,32 @@
                 <NameValuePair Name="Weighting Max" Value="442" />
                 <NameValuePair Name="Weighting Avg" Value="296.25 avg." />
                 <NameValuePair Name="Hints Uses" Value="31801 hits" />
+                <NameValuePair Name="Max Depth" Value="0" />
+              </InfoValues>
+            </SolverResultInfo>
+          </SolverAttempt>
+          <SolverAttempt Created="2009-05-22T13:32:23.2285046+01:00" ElapsedTime="291.07916259765625" Result="CompleteSolution" SolverSummary="Solution in 04m51s and 631192 nodes at 2168 nodes/s (puzzle score 12.09)">
+            <Solution>uuuuuulldrurddrddlluurrdrrullddllurruluulldrduuruulddllurdrruuldrdrruldlluururdllddrdduuulurddddrddlddruuluurrrddlldlurrruulldulluurrdulldrllurruulddrrruldlluururdllddllurdrrddrdduuluuulurddddrddluuluuruulddllurdrruuldrdrruldlluururdllddrdduuulurddddrddlddruuludrrruulrddllluuluurdllurruulddrdduurruldlddduuuluururdllddllurdrrdddduuludrddlururluuulurdddllulurddrrulruulddrrruldlluururdllddrudrruldllulldrdrluurrdrruldlluururdlldddduurulurddlddrddludrrrruulrddllluluuuruulddrrruldlluururdllddrullldrurrdrruldldduululldrdrluurrdrruldllddddrrrruullrrddlllluuuuurlurddlddddrrrruullldurrrddllulurdlluuuruulddrrruldlluururdllddrudrruldldululldrdrluurrdlrrruldlluururddullddrurrdlullddddrruuddlluuuulldrdrddrruuldururulldlruruulddrdddllurdruluuruulddddrudlllurdrruululdrrddludlluruururdllddllurddrrrululurdddllulurddrrulruulddrrruldlluururdllddrudrruldllulldrdrluurrdlrrruldlluururddullddrurrdlddddrruulrddlluuuurul</Solution>
+            <SolverResultInfo>
+              <TotalNodes>631192</TotalNodes>
+              <TotalSeconds>291.079163</TotalSeconds>
+              <Machine>Intel(R) Core(TM)2 Quad CPU           @ 2.40GHz with 4 cores. </Machine>
+              <RatingScore>12.09</RatingScore>
+              <InfoValues>
+                <NameValuePair Name="Evaluation Total Seconds" Value="287 sec" />
+                <NameValuePair Name="Evaluation Time" Value="291.079 sec" />
+                <NameValuePair Name="Evaluation Itterations" Value="882457 nodes" />
+                <NameValuePair Name="Total Nodes" Value="631192 nodes" />
+                <NameValuePair Name="Node per second" Value="avg 1273.7, last 1401 " />
+                <NameValuePair Name="Total Forward Nodes" Value="312539 nodes" />
+                <NameValuePair Name="Total Reverse Nodes" Value="318677 nodes" />
+                <NameValuePair Name="Duplicates" Value="330225 nodes" />
+                <NameValuePair Name="DeadNodes" Value="225873 nodes" />
+                <NameValuePair Name="Eval Worker List" Value="246523" />
+                <NameValuePair Name="Weighting Min" Value="0" />
+                <NameValuePair Name="Weighting Max" Value="442" />
+                <NameValuePair Name="Weighting Avg" Value="300.22 avg." />
+                <NameValuePair Name="Hints Uses" Value="42468 hits" />
                 <NameValuePair Name="Max Depth" Value="0" />
               </InfoValues>
             </SolverResultInfo>

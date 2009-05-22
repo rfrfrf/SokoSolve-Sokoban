@@ -62,7 +62,7 @@ namespace SokoSolve.Common.Math
 
        
 
-        public VectorInt Add(VectorInt value)
+        public  VectorInt Add(VectorInt value)
         {
             return new VectorInt(x + value.X, y + value.Y);
         }

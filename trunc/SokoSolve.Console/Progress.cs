@@ -47,6 +47,7 @@ namespace SokoSolve.Console
                 controller.DisplayLable("Worst", string.Format("{0}, longest attempt={1}", puzzle.Rating, puzzle.Attempts.Items.Max(x => x.ElapsedTime)));
                 controller.Display(StringHelper.Join(puzzle.NormalisedMap, null, Environment.NewLine));
             }
+
            
             return ReturnCodes.OK;
         }

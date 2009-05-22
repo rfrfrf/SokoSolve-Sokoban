@@ -9,7 +9,7 @@ namespace SokoSolve.Common.Structures
 	/// Encapsulate a Tree structure for parent / children
 	/// </summary>
 	/// <typeparam name="T">Node's data</typeparam>
-	public class Tree<T> : ITree<T>
+    public class Tree<T> : ITree<T> 
 	{
 		private TreeNode<T> root;
 

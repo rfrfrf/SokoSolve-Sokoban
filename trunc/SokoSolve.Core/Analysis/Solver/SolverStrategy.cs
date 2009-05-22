@@ -302,16 +302,7 @@ namespace SokoSolve.Core.Analysis.Solver
         /// <returns>duplicate node, null if not a duplicate</returns>
         public SolverNode CheckDuplicate(SolverNode node)
         {
-            List<SolverNode> matches = cachedNodes.GetMatch(node);
-            if (matches == null || matches.Count == 0) return null;
-            if (matches.Count > 1)
-            {
-                throw new NotImplementedException();
-            }
-            else
-            {
-                return matches[0];   
-            }
+            return cachedNodes.GetMatchFirst(node);
         }
 
         /// <summary>

@@ -408,16 +408,7 @@ namespace SokoSolve.Core.Analysis.Solver.Reverse
         /// <returns></returns>
         public SolverNode CheckDuplicate(SolverNode node)
         {
-            List<SolverNode> matches = cachedNodes.GetMatch(node);
-            if (matches == null || matches.Count == 0) return null;
-            if (matches.Count > 1)
-            {
-                throw new NotImplementedException();
-            }
-            else
-            {
-                return matches[0];
-            }
+            return cachedNodes.GetMatchFirst(node);
         }
       
 
