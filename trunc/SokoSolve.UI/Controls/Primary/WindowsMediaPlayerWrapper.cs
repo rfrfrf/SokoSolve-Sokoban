@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
-using WMPLib;
 
 namespace SokoSolve.UI.Controls.Primary
 {
@@ -26,8 +25,6 @@ namespace SokoSolve.UI.Controls.Primary
             /// </summary>
             public WindowsMediaPlayerWrapper()
             {
-                player = new WindowsMediaPlayerClass();
-                player.PlayStateChange += new _WMPOCXEvents_PlayStateChangeEventHandler(player_PlayStateChange);
             }
 
             /// <summary>
@@ -39,7 +36,7 @@ namespace SokoSolve.UI.Controls.Primary
             {
                 WindowsMediaPlayerResource res = new WindowsMediaPlayerResource();
                 res.fileName = filename;
-                res.media = player.newMedia(res.fileName);
+            
                 return res;
             }
 
@@ -50,9 +47,7 @@ namespace SokoSolve.UI.Controls.Primary
             /// <param name="res">WMP resource</param>
             public void Play(WindowsMediaPlayerResource res)
             {
-                player.currentMedia = res.media;
-                player.controls.play();
-
+            
                 current = res;
 
                 return;
@@ -76,26 +71,15 @@ namespace SokoSolve.UI.Controls.Primary
             /// </summary>
             public void Stop()
             {
-                player.controls.stop();
+                
             }
 
             /// <summary>
             /// Volume level
             /// </summary>
-            public int Volume
-            {
-                get { return player.settings.volume; }
-                set { player.settings.volume = value; }
-            }
+            public int Volume { get; set;  }
 
-            /// <summary>
-            /// Get the actual UI control, allows the player to be imbedded if nessesary
-            /// </summary>
-            /// <returns></returns>
-            public WindowsMediaPlayer GetControl()
-            {
-                return player;   
-            }
+            
 
             /// <summary>
             /// Fired when the current music is finished
@@ -138,7 +122,7 @@ namespace SokoSolve.UI.Controls.Primary
 
             #endregion
 
-            private WindowsMediaPlayerClass player;
+            
             private WindowsMediaPlayerResource current;
             private int prevState;
             

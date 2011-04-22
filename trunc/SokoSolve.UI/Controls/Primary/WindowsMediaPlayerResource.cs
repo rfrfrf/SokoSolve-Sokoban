@@ -10,7 +10,7 @@ namespace SokoSolve.UI.Controls.Primary
     public class WindowsMediaPlayerResource
     {
         internal string fileName;
-        internal WMPLib.IWMPMedia media;
+        
         internal WindowsMediaPlayerWrapper wrapper;
 
         public event EventHandler OnComplete;
@@ -23,15 +23,7 @@ namespace SokoSolve.UI.Controls.Primary
             }
         }
 
-        public override string ToString()
-        {
-            string tmp = media.name + " ";
-            for (int cc = 0; cc < media.attributeCount; cc++)
-            {
-                tmp += media.getAttributeName(cc) + "=" + media.getItemInfo(media.getAttributeName(cc));
-            }
-            return tmp;
-        }
+        
 
     }
 }
