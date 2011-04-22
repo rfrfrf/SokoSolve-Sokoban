@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SokoSolve.Deploy", "SokoSolve.Deploy\SokoSolve.Deploy.vdproj", "{8D5B4830-6CDF-4964-B462-BF96B86EA6C7}"
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SokoSolve.Html", "SokoSolve.Html\", "{31F063CD-E29D-4917-A385-C3F016B4E531}"
@@ -9,7 +9,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SokoSolve.Html", "SokoSolve
 		SccAuxPath = "Svn"
 		SccLocalPath = "Svn"
 		SccProvider = "SubversionScc"
-		TargetFramework = "3.5"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/SokoSolve.Html"
 		Debug.AspNetCompiler.PhysicalPath = "SokoSolve.Html\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\SokoSolve.Html\"
