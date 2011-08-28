@@ -23,5 +23,10 @@ namespace SoloSolve.UI.WPF
         {
             InitializeComponent();
         }
+
+        private void FireLoaded(object sender, RoutedEventArgs e)
+        {
+            game.Focus();
+        }
     }
 }

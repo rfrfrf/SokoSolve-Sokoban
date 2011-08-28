@@ -10,7 +10,7 @@ using SokoSolve.Core.UI.Nodes;
 namespace SokoSolve.Core.Game
 {
     /// <summary>
-    /// Encapsultes the basic game logic
+    /// Encapsulate the basic game logic
     /// </summary>
     public class Game
     {
@@ -42,6 +42,8 @@ namespace SokoSolve.Core.Game
         /// </summary>
         public enum MoveResult
         {
+             None,
+
             /// <summary>
             /// A invalid push
             /// </summary>
@@ -65,7 +67,13 @@ namespace SokoSolve.Core.Game
             /// <summary>
             /// A winning crate push
             /// </summary>
-            ValidPushWin
+            ValidPushWin,
+
+            /// <summary>
+            /// Allow for easier control (not really game logic)
+            /// </summary>
+            Undo
+           
         }
 
         /// <summary>
@@ -177,6 +185,8 @@ namespace SokoSolve.Core.Game
             }
             return MoveResult.Invalid;
         }
+
+        
 
         /// <summary>
         /// Test a solution to see if it is valid

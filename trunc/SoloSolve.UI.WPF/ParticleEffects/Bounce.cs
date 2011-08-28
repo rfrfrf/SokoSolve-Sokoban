@@ -7,7 +7,8 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using SokoSolve.Common.Math;
-using SoloSolve.UI.WPF.Helpers;
+using SokoSolve.Core;
+
 
 namespace SoloSolve.UI.WPF.ParticleEffects
 {

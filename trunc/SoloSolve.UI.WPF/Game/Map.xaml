@@ -4,9 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Border BorderThickness="2" BorderBrush="DarkOrange" CornerRadius="3">
-        
-    </Border>
+             d:DesignHeight="300" d:DesignWidth="300"
+             
+             Loaded="UserControl_Loaded"
+             >
+    <UserControl.Resources>
+        <BitmapImage x:Key="Wall" UriSource="/Resources/Wall.png"/>
+        <BitmapImage x:Key="Floor" UriSource="/Resources/Floor.png"/>
+        <BitmapImage x:Key="Goal" UriSource="/Resources/Goal.png"/>
+        <BitmapImage x:Key="Crate" UriSource="/Resources/Crate.png"/>
+        <BitmapImage x:Key="Player" UriSource="/Resources/Player.png"/>
+    </UserControl.Resources>
+    
+    <Grid x:Name="grid" ShowGridLines="False" Margin="0" SnapsToDevicePixels="True" 
+          MouseLeftButtonDown="FireLeftMouseDown" 
+          MouseLeftButtonUp="FireLeftMouseUp" 
+          >
+            
+    </Grid>
+    
     
 </UserControl>

@@ -4,10 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             KeyDown="FireKeyDown"
+            KeyUp="FireKeyUp"
+             PreviewKeyDown="FirePreviewDown"
+             d:DesignHeight="300" d:DesignWidth="300" IsTabStop="True" TabIndex="0" Focusable="True">
     <Canvas SizeChanged="MainReSize"
             Loaded="MainLoaded"
-            Background="Black"
+            Background="#333333"
+           
             >
         <Canvas x:Name="background">
             
@@ -23,8 +27,11 @@
                 <RowDefinition Height="200*"/>
                 <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
-            
-            <my:Map Grid.Row="1" Grid.Column="1"/>
+
+            <my:Map Grid.Row="1" Grid.Column="1" x:Name="map"/>
+            <TextBlock x:Name="Status" Grid.Row="2" Grid.ColumnSpan="3" Foreground="Orange" Text="Welcome..." 
+                       MouseLeftButtonDown="ViewStatus"
+                       VerticalAlignment="Bottom"/>
         </Grid>
         <Canvas x:Name="foreground">
             <!--<Rectangle Fill="#80ffffff" Canvas.Top="0" Canvas.Left="0" 

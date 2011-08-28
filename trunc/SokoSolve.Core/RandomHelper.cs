@@ -7,7 +7,7 @@ namespace SokoSolve.Core
     /// <summary>
     /// Random Helper methods
     /// </summary>
-    static class RandomHelper
+    public static class RandomHelper
     {
         /// <summary>
         /// Basic static constructor
@@ -54,6 +54,33 @@ namespace SokoSolve.Core
         {
             if (aList == null || aList.Count == 0) return default(T);
             return aList[random.Next(0, aList.Count)];
+        }
+
+        /// <summary>
+        /// Select randomly from a list, with null protection
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="aList"></param>
+        /// <returns></returns>
+        static public IEnumerable<T> Select<T>(IList<T> aList, int count)
+        {
+            if (aList == null || aList.Count == 0) return new T[0];
+
+            if (count == 1)
+            {
+                return new T[] { Select(aList) };   
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+            
+        }
+
+        public static double NextDouble(int from, int to, int fraction)
+        {
+            int d = 10 ^ fraction;
+            return (double)random.Next(from * d, to * d) / (double)d;
         }
 
         private static Random random;
