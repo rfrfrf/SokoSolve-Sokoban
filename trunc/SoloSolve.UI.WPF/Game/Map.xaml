@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
-             
+             x:Name="root"
              Loaded="UserControl_Loaded"
              >
     <UserControl.Resources>
@@ -15,13 +15,22 @@
         <BitmapImage x:Key="Crate" UriSource="/Resources/Crate.png"/>
         <BitmapImage x:Key="Player" UriSource="/Resources/Player.png"/>
     </UserControl.Resources>
-    
-    <Grid x:Name="grid" ShowGridLines="False" Margin="0" SnapsToDevicePixels="True" 
+
+    <Canvas x:Name="canvas" 
+            >
+        <Grid x:Name="grid" ShowGridLines="False" Margin="0" SnapsToDevicePixels="True" 
           MouseLeftButtonDown="FireLeftMouseDown" 
           MouseLeftButtonUp="FireLeftMouseUp" 
+          MouseMove="FireMouseMove"
+          Width="{Binding Path=ActualWidth, ElementName=canvas}"
+          Height="{Binding Path=ActualHeight, ElementName=canvas}"
           >
-            
-    </Grid>
+
+        </Grid>
+
+    </Canvas>
+    
+    
     
     
 </UserControl>

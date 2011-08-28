@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Text;
+
 
 namespace SokoSolve.Common.Math
 {
@@ -239,18 +237,20 @@ namespace SokoSolve.Common.Math
         /// Convert to a Drawing position
         /// </summary>
         /// <returns></returns>
-        public System.Drawing.Point ToPoint()
+        public System.Drawing.Point ToDrawingPoint()
         {
-            return new Point(x, y);
+            return new System.Drawing.Point(x, y);
         }
+
+        
 
         /// <summary>
         /// Convert to a Drawing position
         /// </summary>
         /// <returns></returns>
-        public System.Drawing.PointF ToPointF()
+        public System.Drawing.PointF ToDrawingPointF()
         {
-            return new PointF(x, y);
+            return new System.Drawing.PointF(x, y);
         }
 
         /// <summary>
@@ -343,5 +343,17 @@ namespace SokoSolve.Common.Math
         }
 
         #endregion DirectionReleatedHelpers
+
+        public Direction ToDirection()
+        {
+            if (X == 0 && Y == 0) return Direction.None;
+            if (X == 0 && Y == 1) return Direction.Down;
+            if (X == 0 && Y == -1) return Direction.Up;
+            if (X == -1 && Y == 0) return Direction.Left;
+            if (X == 1 && Y == 0) return Direction.Right;
+
+            return Direction.None;
+
+        }
     }
 }

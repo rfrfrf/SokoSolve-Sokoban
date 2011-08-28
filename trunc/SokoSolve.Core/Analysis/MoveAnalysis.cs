@@ -9,7 +9,7 @@ using SokoSolve.Core.Model.Analysis;
 
 namespace SokoSolve.Core.Analysis
 {
-    class MoveAnalysis
+    public class MoveAnalysis
     {
 
         /// <summary>

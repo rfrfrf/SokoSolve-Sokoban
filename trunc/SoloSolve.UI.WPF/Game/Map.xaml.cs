@@ -5,8 +5,10 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using SokoSolve.Common.Math;
 using SokoSolve.Core;
+using SokoSolve.Core.Analysis;
 
 namespace SoloSolve.UI.WPF.Game
 {
@@ -20,6 +22,20 @@ namespace SoloSolve.UI.WPF.Game
         private Image player;
         private int step;
         private Game game;
+        private VectorInt start;
+        private Path path;
+        private List<VectorInt> stack;
+
+        private class Crate
+        {
+            public int Index { get; set; }
+            public Image Element { get; set; }
+
+            public double spin { get; set; }
+            public double spinspeed { get; set; }
+        }
+
+
 
         public Map()
         {
@@ -60,6 +76,19 @@ namespace SoloSolve.UI.WPF.Game
                 crate.spin += crate.spinspeed;
                 crate.Element.RenderTransform = new RotateTransform(crate.spin, crate.Element.ActualWidth/2,
                                                                     crate.Element.ActualHeight/2);
+            }
+
+            if (stack != null && stack.Count > 0)
+            {
+                if (step % 2 == 0)
+                {
+                    var diff = stack.First() - Logic.Current.Player;
+                    var dir = diff.ToDirection();
+                    var res = Logic.Move(dir);
+                    game.SetStatus(res.ToString());
+                    SyncPositions(res, dir);
+                    stack.RemoveAt(0);
+                }
             }
         }
 
@@ -238,16 +267,7 @@ namespace SoloSolve.UI.WPF.Game
             Grid.SetRow(player, Logic.Current.Player.Y);
         }
 
-        private class Crate
-        {
-            public int Index { get; set; }
-            public Image Element { get; set; }
-
-            public double spin { get; set; }
-            public double spinspeed { get; set; }
-        }
-
-
+       
         public void HandleClick(MouseButtonEventArgs e)
         {
             var element = (UIElement)e.Source;
@@ -260,7 +280,7 @@ namespace SoloSolve.UI.WPF.Game
             game.SetStatus(string.Format("m:{0} c:{1} r:{2} = {3}", p, c, r, Logic.Current[c, r]));
         }
 
-        private VectorInt start;
+       
 
         private void FireLeftMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -273,6 +293,9 @@ namespace SoloSolve.UI.WPF.Game
             game.SetStatus(string.Format("Start {0}", start));
         }
 
+
+        
+
         private void FireLeftMouseUp(object sender, MouseButtonEventArgs e)
         {
             var element = (UIElement)e.Source;
@@ -282,8 +305,77 @@ namespace SoloSolve.UI.WPF.Game
             var end = new VectorInt(c, r);
 
             game.SetStatus(string.Format("Start {0} to {1}", start, end));
-           
+
+            
+            stack = DrawPlayerPath(end, false);
+
             start = VectorInt.Null;
         }
+
+        private void FireMouseMove(object sender, MouseEventArgs e)
+        {
+            var element = (UIElement)e.Source;
+            int c = Grid.GetColumn(element);
+            int r = Grid.GetRow(element);
+
+            var end = new VectorInt(c, r);
+            DrawPlayerPath(end, true);
+
+        }
+
+        private List<VectorInt> DrawPlayerPath(VectorInt end, bool hover)
+        {
+            var steps = MoveAnalysis.FindPlayerPath(Logic.Current, end);
+            if (steps != null)
+            {
+                if (path == null)
+                {
+                    path = new Path()
+                    {
+                        StrokeThickness = 3
+                    };
+                    canvas.Children.Add(path);
+                }
+
+                path.Stroke = hover
+                                  ? new SolidColorBrush(Color.FromArgb(128, Colors.DarkSalmon.R, Colors.DarkSalmon.G,
+                                                                       Colors.DarkSalmon.B))
+                                  : new SolidColorBrush(Colors.Orange);
+
+                // Paint trail
+                var segs = new List<PathSegment>();
+                foreach (var step in steps.Skip(1))
+                {
+                    var np = GetPhysFromLogical(step).ToWindowsPoint();
+                    segs.Add(new LineSegment(np, true));
+                }
+
+                var p = new PathGeometry(new List<PathFigure>()
+                {
+                    new PathFigure(GetPhysFromLogical(steps.First()).ToWindowsPoint(), segs, false)
+                });
+
+                path.Data = p;
+            }
+            else
+            {
+                canvas.Children.Remove(path);
+                path = null;
+            }
+
+            return steps;
+        }
+
+       
+
+
+        VectorInt GetPhysFromLogical(VectorInt i)
+        {
+            var s = new VectorInt((int) grid.ColumnDefinitions.First().ActualWidth,
+                                  (int) grid.RowDefinitions.First().ActualHeight);
+            return i.Multiply(s).Add( s.Divide(2,2) );
+        }
+
+        
     }
 }

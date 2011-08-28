@@ -29,7 +29,7 @@ namespace SoloSolve.UI.WPF.Game
             var xml = new XmlProvider();
 
             Library = xml.Load(@"C:\Projects\SokoSolve\SokoSolve.UI\Content\Libraries\Sasquatch.ssx");
-            logic = new SokoSolve.Core.Game.Game(Library.Puzzles.First(), Library.Puzzles[3].MasterMap.Map);
+            logic = new SokoSolve.Core.Game.Game(Library.Puzzles.First(), Library.Puzzles[1].MasterMap.Map);
         }
 
         protected SokoSolve.Core.Model.Library Library { get; set; }
