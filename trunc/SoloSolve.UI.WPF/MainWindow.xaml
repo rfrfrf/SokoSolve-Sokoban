@@ -1,0 +1,9 @@
+﻿<Window xmlns:my1="clr-namespace:SoloSolve.UI.WPF.Game"  
+        x:Class="SoloSolve.UI.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    
+ <my1:Game />
+ 
+</Window>
