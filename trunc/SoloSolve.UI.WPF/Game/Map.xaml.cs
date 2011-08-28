@@ -167,6 +167,7 @@ namespace SoloSolve.UI.WPF.Game
                     new Image
                         {
                             Stretch = Stretch.Fill,
+                            
                             Source = Resources["Wall"] as BitmapImage
                         }
                 };
@@ -184,6 +185,8 @@ namespace SoloSolve.UI.WPF.Game
                     new Image
                     {
                         Stretch = Stretch.Fill,
+                        HorizontalAlignment = HorizontalAlignment.Center,
+                            VerticalAlignment = VerticalAlignment.Center,
                         Source = Resources["Goal"] as BitmapImage
                     }
                 };

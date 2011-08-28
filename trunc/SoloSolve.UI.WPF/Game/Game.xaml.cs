@@ -28,9 +28,11 @@ namespace SoloSolve.UI.WPF.Game
             InitializeComponent();
             var xml = new XmlProvider();
 
-            var lib = xml.Load(@"C:\Projects\SokoSolve\SokoSolve.UI\Content\Libraries\Sasquatch.ssx");
-            logic = new SokoSolve.Core.Game.Game(lib.Puzzles.First(), lib.Puzzles[3].MasterMap.Map);
+            Library = xml.Load(@"C:\Projects\SokoSolve\SokoSolve.UI\Content\Libraries\Sasquatch.ssx");
+            logic = new SokoSolve.Core.Game.Game(Library.Puzzles.First(), Library.Puzzles[3].MasterMap.Map);
         }
+
+        protected SokoSolve.Core.Model.Library Library { get; set; }
 
         private Bounce b;
         private DispatcherTimer t;
@@ -39,6 +41,8 @@ namespace SoloSolve.UI.WPF.Game
 
         private void MainLoaded(object sender, RoutedEventArgs e)
         {
+            Title.Text = logic.Puzzle.Details.Name;
+            Description.Text = string.Format("{0} {1} {2}", logic.Puzzle.Details.Description, logic.Puzzle.Details.Author, Library.Details.Name);
             map.Logic = logic;
             map.SetGame(this);
 

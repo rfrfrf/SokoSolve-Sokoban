@@ -32,6 +32,12 @@
             <TextBlock x:Name="Status" Grid.Row="2" Grid.ColumnSpan="3" Foreground="Orange" Text="Welcome..." 
                        MouseLeftButtonDown="ViewStatus"
                        VerticalAlignment="Bottom"/>
+
+            <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+                <TextBlock  x:Name="Title" Foreground="Orange" FontSize="18" FontWeight="Bold"  HorizontalAlignment="Center"/>
+                <TextBlock x:Name="Description" Foreground="DarkOrange" FontSize="10"   HorizontalAlignment="Center"/>
+            </StackPanel>
+            
         </Grid>
         <Canvas x:Name="foreground">
             <!--<Rectangle Fill="#80ffffff" Canvas.Top="0" Canvas.Left="0" 

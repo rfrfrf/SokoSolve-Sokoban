@@ -33,8 +33,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SokoSolve.Common", "SokoSol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SokoSolve.Core", "SokoSolve.Core\SokoSolve.Core.csproj", "{1A95D7E8-F0B8-4596-85F1-57C100A5D754}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SokoSolve.UI", "SokoSolve.UI\SokoSolve.UI.csproj", "{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SokoSolve.Test", "SokoSolve.Test\SokoSolve.Test.csproj", "{04E6AAA7-DB10-4F61-BC6C-5211D189D40A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SokoSolve.Services", "SokoSolve.Services\SokoSolve.Services.csproj", "{613092A1-871D-427D-B007-B54EB4B98129}"
@@ -118,18 +116,6 @@ Global
 		{1A95D7E8-F0B8-4596-85F1-57C100A5D754}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{1A95D7E8-F0B8-4596-85F1-57C100A5D754}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{1A95D7E8-F0B8-4596-85F1-57C100A5D754}.Release|x86.ActiveCfg = Release|Any CPU
-		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Release|.NET.ActiveCfg = Release|Any CPU
-		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Release|x86.ActiveCfg = Release|Any CPU
 		{04E6AAA7-DB10-4F61-BC6C-5211D189D40A}.Debug|.NET.ActiveCfg = Debug|Any CPU
 		{04E6AAA7-DB10-4F61-BC6C-5211D189D40A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{04E6AAA7-DB10-4F61-BC6C-5211D189D40A}.Debug|Any CPU.Build.0 = Debug|Any CPU
