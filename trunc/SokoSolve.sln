@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SokoSolve.Services", "SokoS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoloSolve.UI.WPF", "SoloSolve.UI.WPF\SoloSolve.UI.WPF.csproj", "{51FF3671-EE9D-4F50-A980-DA97731B3C79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SokoSolve.UI", "SokoSolve.UI\SokoSolve.UI.csproj", "{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -152,6 +154,18 @@ Global
 		{51FF3671-EE9D-4F50-A980-DA97731B3C79}.Release|Mixed Platforms.Build.0 = Release|x86
 		{51FF3671-EE9D-4F50-A980-DA97731B3C79}.Release|x86.ActiveCfg = Release|x86
 		{51FF3671-EE9D-4F50-A980-DA97731B3C79}.Release|x86.Build.0 = Release|x86
+		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Debug|.NET.ActiveCfg = Debug|Any CPU
+		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Release|.NET.ActiveCfg = Release|Any CPU
+		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{87D7432C-9CCA-41BE-9B0C-CBFC57F518D5}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

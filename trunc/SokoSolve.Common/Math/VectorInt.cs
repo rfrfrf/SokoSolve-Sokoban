@@ -46,6 +46,36 @@ namespace SokoSolve.Common.Math
             this.y = copy.y;
         }
 
+        public VectorInt(Direction d)
+        {
+            switch (d)
+            {
+
+                case (Direction.Up):
+                    x = 0;
+                    y = -1;
+                    break;
+                case (Direction.Down):
+                    x = 0;
+                    y = 1;
+                    break;
+                case (Direction.Left):
+                    x = -1;
+                    y = 0;
+                    break;
+                case (Direction.Right):
+                    x = 1;
+                    y = 0;
+                    break;
+                case (Direction.None):
+                    x = 0;
+                    y = 0;
+                    break;
+                default:
+                    throw  new NotImplementedException();
+            }
+        }
+
         public int X
         {
             get { return x; }

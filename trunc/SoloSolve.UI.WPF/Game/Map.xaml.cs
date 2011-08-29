@@ -80,7 +80,7 @@ namespace SoloSolve.UI.WPF.Game
 
             if (stack != null && stack.Count > 0)
             {
-                if (step % 2 == 0)
+                if (true)
                 {
                     var diff = stack.First() - Logic.Current.Player;
                     var dir = diff.ToDirection();
@@ -320,7 +320,25 @@ namespace SoloSolve.UI.WPF.Game
 
             var end = new VectorInt(c, r);
             DrawPlayerPath(end, true);
+        }
 
+        /// <summary>
+        /// Move the crate
+        /// </summary>
+        /// <param name="startCrateLocation"></param>
+        /// <param name="targetCrateLocation"></param>
+        private void PerformCrateMovement(VectorInt startCrateLocation, VectorInt targetCrateLocation)
+        {
+            CrateAnalysis.ShortestCratePath path = CrateAnalysis.FindCratePath(Logic.Current, startCrateLocation, targetCrateLocation);
+            if (path != null)
+            {
+                var p = Logic.Current.Player;
+                foreach (Direction step in path.PlayerPath.Moves)
+                {
+                    p.Add(new VectorInt(step));
+                    stack.Add(p);
+                }
+            }
         }
 
         private List<VectorInt> DrawPlayerPath(VectorInt end, bool hover)
@@ -332,14 +350,18 @@ namespace SoloSolve.UI.WPF.Game
                 {
                     path = new Path()
                     {
-                        StrokeThickness = 3
+                        StrokeThickness = 4
                     };
                     canvas.Children.Add(path);
                 }
 
+                var cHover = Colors.Black;
+                
+                path.StrokeDashCap = PenLineCap.Round;
+                path.StrokeStartLineCap = PenLineCap.Triangle;
+                path.StrokeDashArray = new DoubleCollection(new double[] { 0, 2});
                 path.Stroke = hover
-                                  ? new SolidColorBrush(Color.FromArgb(128, Colors.DarkSalmon.R, Colors.DarkSalmon.G,
-                                                                       Colors.DarkSalmon.B))
+                                  ? new SolidColorBrush(Color.FromArgb(128, cHover.R, cHover.G, cHover.B))
                                   : new SolidColorBrush(Colors.Orange);
 
                 // Paint trail
