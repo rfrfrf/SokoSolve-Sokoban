@@ -168,8 +168,8 @@ namespace SokoSolve.UI.Section.Solver
 
                 // Draw the region summaries
                 graphics.DrawLine(summaryPen,
-                                  region.RenderRegion.TopLeft.Add(summaryIndent - 5, 1).ToPoint(),
-                                  region.RenderRegion.BottomLeft.Add(summaryIndent - 5, -1).ToPoint());
+                                  region.RenderRegion.TopLeft.Add(summaryIndent - 5, 1).ToDrawingPoint(),
+                                  region.RenderRegion.BottomLeft.Add(summaryIndent - 5, -1).ToDrawingPoint());
 
                 string txt = region.treeSegment.Count.ToString();
                 if (region.treeSegment.Discarded > 0)
@@ -180,13 +180,13 @@ namespace SokoSolve.UI.Section.Solver
                 // Alternate text
                 if (cc%2 == 0)
                 {
-                    graphics.DrawString(txt, summaryFont, summaryBush, region.RenderRegion.TopLeft.ToPoint());
+                    graphics.DrawString(txt, summaryFont, summaryBush, region.RenderRegion.TopLeft.ToDrawingPoint());
                 }
                 else
                 {
                     SizeF txtSize = graphics.MeasureString(txt, summaryFont);
                     VectorInt pos = region.RenderRegion.TopLeft.Add(summaryIndent - 7 - (int) txtSize.Width, 0);
-                    graphics.DrawString(txt, summaryFont, summaryBush, pos.ToPoint());
+                    graphics.DrawString(txt, summaryFont, summaryBush, pos.ToDrawingPoint());
                 }
 
 

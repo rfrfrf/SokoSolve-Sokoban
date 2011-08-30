@@ -84,6 +84,7 @@
     <Compile Include="Core\Solver\TestSolverRegression.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCPUType.cs" />
+    <Compile Include="UI\MapOutlineTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SokoSolve.Common\SokoSolve.Common.csproj">

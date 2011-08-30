@@ -258,13 +258,13 @@ namespace SokoSolve.UI.Section.Solver
                 {
                     if (onPath)
                     {
-                        graphics.DrawLine(new Pen(Color.Black, 2f), region.TopMiddle.ToPoint(),
-                                          owner.GetDrawRegion(parent).BottomMiddle.ToPoint());
+                        graphics.DrawLine(new Pen(Color.Black, 2f), region.TopMiddle.ToDrawingPoint(),
+                                          owner.GetDrawRegion(parent).BottomMiddle.ToDrawingPoint());
                     }
                     else
                     {
-                        graphics.DrawLine(new Pen(Color.Black), region.TopMiddle.ToPoint(),
-                                          owner.GetDrawRegion(parent).BottomMiddle.ToPoint());
+                        graphics.DrawLine(new Pen(Color.Black), region.TopMiddle.ToDrawingPoint(),
+                                          owner.GetDrawRegion(parent).BottomMiddle.ToDrawingPoint());
                     }
                 }
             }
@@ -275,8 +275,8 @@ namespace SokoSolve.UI.Section.Solver
             }
 
             // ID and Weighting text
-            graphics.DrawString(node.Weighting.ToString("0"), font, brushShaddow, region.TopLeft.Add(1,1).ToPoint());
-            graphics.DrawString(node.Weighting.ToString("0"), font, brush, region.TopLeft.ToPoint());
+            graphics.DrawString(node.Weighting.ToString("0"), font, brushShaddow, region.TopLeft.Add(1, 1).ToDrawingPoint());
+            graphics.DrawString(node.Weighting.ToString("0"), font, brush, region.TopLeft.ToDrawingPoint());
 
             if (false)
             {

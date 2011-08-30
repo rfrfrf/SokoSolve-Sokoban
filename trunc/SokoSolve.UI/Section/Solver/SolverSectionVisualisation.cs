@@ -422,9 +422,9 @@ namespace SokoSolve.UI.Section.Solver
                     if (controller.StaticAnalysis.WallMap[cx, cy]) result[cx, cy] = CellStates.Wall;
                     if (controller.StaticAnalysis.FloorMap[cx, cy]) result[cx, cy] = CellStates.Floor;
                     if (controller.StaticAnalysis.GoalMap[cx, cy])
-                        result.setState(new VectorInt(cx, cy), Cell.Goal);
-                    if (node.CrateMap[cx, cy]) result.setState(new VectorInt(cx, cy), Cell.Crate);
-                    result.setState(node.PlayerPosition, Cell.Player);
+                        result.SetState(new VectorInt(cx, cy), Cell.Goal);
+                    if (node.CrateMap[cx, cy]) result.SetState(new VectorInt(cx, cy), Cell.Crate);
+                    result.SetState(node.PlayerPosition, Cell.Player);
                 }
 
             return result;

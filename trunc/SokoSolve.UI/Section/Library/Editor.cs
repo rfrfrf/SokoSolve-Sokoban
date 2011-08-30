@@ -126,12 +126,12 @@ namespace SokoSolve.UI.Section.Library
             CellStates before = Map[cell];
             if (e.Button == MouseButtons.Left)
             {
-                Map.setState(cell, leftCell);
+                Map.SetState(cell, leftCell);
             }
 
             if (e.Button == MouseButtons.Right)
             {
-                Map.setState(cell, rightCell);
+                Map.SetState(cell, rightCell);
             }
 
             CellStates after = Map[cell];

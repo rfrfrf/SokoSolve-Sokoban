@@ -32,12 +32,10 @@ namespace SokoSolve.Core.Model
         /// <remarks>Sequence is Void, Wall, Floor, Crate, Goal, CrateAndGoal, Player, PlayerAndGoal</remarks>
 		public  static readonly string StandardEncodeChars = "~#.XO$P*";
 
-    
-
         /// <summary>
         /// Map array
         /// </summary>
-		CellStates[,] map;
+		private CellStates[,] map;
 
         /// <summary>
         /// Default Construction
@@ -139,6 +137,33 @@ namespace SokoSolve.Core.Model
             }
         }
 
+
+        /// <summary>
+        /// Check is a cell is a position
+        /// </summary>
+        public bool Check(Cell cell, VectorInt v)
+        {
+            return Check(cell, v.X, v.Y);
+        }
+
+        /// <summary>
+        /// Check is a cell is a position
+        /// </summary>
+        public bool Check(Cell cell, int x, int y)
+        {
+            var c = this[x,y];
+            switch(cell)
+            {
+                case(Cell.Void)     : return c == CellStates.Void;
+                case (Cell.Wall)    : return c == CellStates.Wall;
+                case (Cell.Crate)   : return c == CellStates.FloorCrate || c == CellStates.FloorGoalCrate;
+                case (Cell.Goal)    : return c == CellStates.FloorGoal || c == CellStates.FloorGoalCrate;
+                case (Cell.Player)  : return c == CellStates.FloorPlayer || c == CellStates.FloorGoalPlayer;
+                default:
+                    throw new NotImplementedException();
+            }
+        }
+
         /// <summary>
         /// Get the puzzles size
         /// </summary>
@@ -165,7 +190,7 @@ namespace SokoSolve.Core.Model
         /// </summary>
         /// <param name="P"></param>
         /// <param name="aCell"></param>
-        public void setState(VectorInt P, Cell aCell)
+        public void SetState(VectorInt P, Cell aCell)
         {
             if (aCell == Cell.Void) this[P] = CellStates.Void;
             if (aCell == Cell.Wall) this[P] = CellStates.Wall;
@@ -188,11 +213,11 @@ namespace SokoSolve.Core.Model
         
 
         /// <summary>
-        /// Get the list of cell's at this postision
+        /// Get the list of cell's at this position
         /// </summary>
         /// <param name="P"></param>
         /// <returns></returns>
-        public Cell[] getCells(VectorInt P)
+        public Cell[] GetCells(VectorInt P)
         {
             return Cell2CellStatesMap[(int)this[P]];
         }
@@ -203,9 +228,9 @@ namespace SokoSolve.Core.Model
         /// <param name="P"></param>
         /// <param name="C"></param>
         /// <returns></returns>
-        public bool isCell(VectorInt P, Cell C)
+        public bool IsCell(VectorInt P, Cell C)
         {
-            return Array.IndexOf(getCells(P), C) >= 0;
+            return Array.IndexOf(GetCells(P), C) >= 0;
         }
 
         /// <summary>
@@ -248,7 +273,7 @@ namespace SokoSolve.Core.Model
             for (int x = 0; x < Size.X; x++)
                 for (int y = 0; y < Size.Y; y++)
                 {
-                    if (Array.IndexOf(getCells(new VectorInt(x, y)), cs) >= 0) c++;
+                    if (Array.IndexOf(GetCells(new VectorInt(x, y)), cs) >= 0) c++;
                 }
             return c;
         }
