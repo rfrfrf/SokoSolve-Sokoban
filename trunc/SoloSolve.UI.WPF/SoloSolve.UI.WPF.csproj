@@ -91,6 +91,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Extensions.cs" />
+    <Compile Include="Game\CursorMovement.cs" />
     <Compile Include="Game\Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>

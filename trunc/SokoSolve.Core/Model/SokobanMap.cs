@@ -159,6 +159,12 @@ namespace SokoSolve.Core.Model
                 case (Cell.Crate)   : return c == CellStates.FloorCrate || c == CellStates.FloorGoalCrate;
                 case (Cell.Goal)    : return c == CellStates.FloorGoal || c == CellStates.FloorGoalCrate;
                 case (Cell.Player)  : return c == CellStates.FloorPlayer || c == CellStates.FloorGoalPlayer;
+                case (Cell.Floor)   : return c == CellStates.Floor  
+                                                || c == CellStates.FloorCrate 
+                                                || c == CellStates.FloorGoal
+                                                || c == CellStates.FloorGoalCrate
+                                                || c == CellStates.FloorGoalPlayer
+                                                || c == CellStates.FloorPlayer;
                 default:
                     throw new NotImplementedException();
             }

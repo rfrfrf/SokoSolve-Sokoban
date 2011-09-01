@@ -12,5 +12,11 @@ namespace SoloSolve.UI.WPF
     /// </summary>
     public partial class App : Application
     {
+        private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            var txt = e.Exception.Message + Environment.NewLine + e.Exception.StackTrace;
+            MessageBox.Show(txt, e.Exception.GetType().FullName);
+            e.Handled = true;
+        }
     }
 }

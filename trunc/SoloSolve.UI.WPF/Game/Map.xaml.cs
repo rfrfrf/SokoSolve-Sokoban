@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,14 +18,15 @@ namespace SoloSolve.UI.WPF.Game
     /// </summary>
     public partial class Map : UserControl
     {
-        private readonly List<Crate> crates;
+        private List<Crate> crates;
         private SokoSolve.Core.Game.Game logic;
         private Image player;
         private int step;
         private Game game;
-        private VectorInt start;
-        private Path path;
+
         private List<VectorInt> stack;
+        private CursorMovement cursor;
+
 
         private class Crate
         {
@@ -40,13 +42,16 @@ namespace SoloSolve.UI.WPF.Game
         public Map()
         {
             InitializeComponent();
-
-            crates = new List<Crate>();
         }
 
         public void SetGame(Game g)
         {
             game = g;
+        }
+
+        public Canvas GetOverlayCanvus()
+        {
+            return canvas;
         }
 
         public SokoSolve.Core.Game.Game Logic
@@ -96,6 +101,10 @@ namespace SoloSolve.UI.WPF.Game
 
         private void Init()
         {
+            cursor = new CursorMovement(this);
+            crates = new List<Crate>();
+            stack = new List<VectorInt>();
+
             grid.Children.Clear();
             crates.Clear();
 
@@ -280,6 +289,18 @@ namespace SoloSolve.UI.WPF.Game
             game.SetStatus(string.Format("m:{0} c:{1} r:{2} = {3}", p, c, r, Logic.Current[c, r]));
         }
 
+        public void AddMoves(IEnumerable<VectorInt> moves)
+        {
+            if (stack.Count > 0)
+            {
+                throw new Exception("Cannot add moves while still moves outstanding");
+            }
+            foreach (var move in moves)
+            {
+                stack.Add(move);
+            }
+        }
+
        
 
         private void FireLeftMouseDown(object sender, MouseButtonEventArgs e)
@@ -288,13 +309,8 @@ namespace SoloSolve.UI.WPF.Game
             int c = Grid.GetColumn(element);
             int r = Grid.GetRow(element);
 
-            start = new VectorInt(c, r);
-
-            game.SetStatus(string.Format("Start {0}", start));
+            cursor.Start(new VectorInt(c, r));
         }
-
-
-        
 
         private void FireLeftMouseUp(object sender, MouseButtonEventArgs e)
         {
@@ -302,14 +318,8 @@ namespace SoloSolve.UI.WPF.Game
             int c = Grid.GetColumn(element);
             int r = Grid.GetRow(element);
 
-            var end = new VectorInt(c, r);
+            cursor.End(new VectorInt(c, r));
 
-            game.SetStatus(string.Format("Start {0} to {1}", start, end));
-
-            
-            stack = DrawPlayerPath(end, false);
-
-            start = VectorInt.Null;
         }
 
         private void FireMouseMove(object sender, MouseEventArgs e)
@@ -318,84 +328,17 @@ namespace SoloSolve.UI.WPF.Game
             int c = Grid.GetColumn(element);
             int r = Grid.GetRow(element);
 
-            var end = new VectorInt(c, r);
-            DrawPlayerPath(end, true);
+            cursor.Hover(new VectorInt(c, r));
         }
 
-        /// <summary>
-        /// Move the crate
-        /// </summary>
-        /// <param name="startCrateLocation"></param>
-        /// <param name="targetCrateLocation"></param>
-        private void PerformCrateMovement(VectorInt startCrateLocation, VectorInt targetCrateLocation)
+
+        public VectorDouble GetPhysFromLogical(VectorInt i)
         {
-            CrateAnalysis.ShortestCratePath path = CrateAnalysis.FindCratePath(Logic.Current, startCrateLocation, targetCrateLocation);
-            if (path != null)
-            {
-                var p = Logic.Current.Player;
-                foreach (Direction step in path.PlayerPath.Moves)
-                {
-                    p.Add(new VectorInt(step));
-                    stack.Add(p);
-                }
-            }
-        }
+            var v = grid.Children[0] as Image;
 
-        private List<VectorInt> DrawPlayerPath(VectorInt end, bool hover)
-        {
-            var steps = MoveAnalysis.FindPlayerPath(Logic.Current, end);
-            if (steps != null)
-            {
-                if (path == null)
-                {
-                    path = new Path()
-                    {
-                        StrokeThickness = 4
-                    };
-                    canvas.Children.Add(path);
-                }
-
-                var cHover = Colors.Black;
-                
-                path.StrokeDashCap = PenLineCap.Round;
-                path.StrokeStartLineCap = PenLineCap.Triangle;
-                path.StrokeDashArray = new DoubleCollection(new double[] { 0, 2});
-                path.Stroke = hover
-                                  ? new SolidColorBrush(Color.FromArgb(128, cHover.R, cHover.G, cHover.B))
-                                  : new SolidColorBrush(Colors.Orange);
-
-                // Paint trail
-                var segs = new List<PathSegment>();
-                foreach (var step in steps.Skip(1))
-                {
-                    var np = GetPhysFromLogical(step).ToWindowsPoint();
-                    segs.Add(new LineSegment(np, true));
-                }
-
-                var p = new PathGeometry(new List<PathFigure>()
-                {
-                    new PathFigure(GetPhysFromLogical(steps.First()).ToWindowsPoint(), segs, false)
-                });
-
-                path.Data = p;
-            }
-            else
-            {
-                canvas.Children.Remove(path);
-                path = null;
-            }
-
-            return steps;
-        }
-
-       
-
-
-        VectorInt GetPhysFromLogical(VectorInt i)
-        {
-            var s = new VectorInt((int) grid.ColumnDefinitions.First().ActualWidth,
-                                  (int) grid.RowDefinitions.First().ActualHeight);
-            return i.Multiply(s).Add( s.Divide(2,2) );
+            var s = new VectorDouble((int)v.ActualWidth,
+                                  (int)v.ActualWidth);
+            return new VectorDouble(i.X, i.Y).Multiply(s).Add( s.Divide(new VectorDouble(2,2))) ;
         }
 
         

@@ -13,5 +13,10 @@ namespace SoloSolve.UI.WPF
         {
             return new Point(p.X, p.Y);
         }
+
+        public static System.Windows.Point ToWindowsPoint(this VectorDouble p)
+        {
+            return new Point(p.X, p.Y);
+        }
     }
 }
