@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Windows;
+using SoloSolve.UI.WPF.Common;
 
 namespace SoloSolve.UI.WPF
 {
@@ -14,9 +15,13 @@ namespace SoloSolve.UI.WPF
     {
         private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-            var txt = e.Exception.Message + Environment.NewLine + e.Exception.StackTrace;
-            MessageBox.Show(txt, e.Exception.GetType().FullName);
             e.Handled = true;
+
+            ExceptionWindow window = new ExceptionWindow();
+            window.Exception = e.Exception;
+            window.ShowDialog();
+
+            
         }
     }
 }

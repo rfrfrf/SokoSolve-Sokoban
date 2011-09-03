@@ -29,7 +29,7 @@ namespace SoloSolve.UI.WPF.Game
             var xml = new XmlProvider();
 
             Library = xml.Load(@"C:\Projects\SokoSolve\SokoSolve.UI\Content\Libraries\Sasquatch.ssx");
-            logic = new SokoSolve.Core.Game.Game(Library.Puzzles.First(), Library.Puzzles[49].MasterMap.Map);
+            logic = new SokoSolve.Core.Game.Game(Library.Puzzles.First(), Library.Puzzles[0].MasterMap.Map);
         }
 
         protected SokoSolve.Core.Model.Library Library { get; set; }
@@ -138,13 +138,9 @@ namespace SoloSolve.UI.WPF.Game
             }
             catch (Exception e)
             {
-
                 Status.Text = e.Message;
                 Status.Tag = e;
             }
-           
-
-            
         }
 
         private void FirePreviewDown(object sender, KeyEventArgs e)
@@ -158,7 +154,6 @@ namespace SoloSolve.UI.WPF.Game
             {
                 MessageBox.Show(Status.Tag.ToString(), Status.Text);
             }
-            
         }
 
         public void SetStatus(string s)

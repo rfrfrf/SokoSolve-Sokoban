@@ -1,0 +1,21 @@
+﻿<Window x:Class="SoloSolve.UI.WPF.Common.ExceptionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        WindowStartupLocation="CenterScreen"
+        Title="Unexptected error" Height="500" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="166*" />
+            <RowDefinition Height="35" />
+        </Grid.RowDefinitions>
+        <Label Content="Label" Height="28" HorizontalAlignment="Left" Margin="12,12,0,0" Name="title" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" />
+        <TextBox Grid.Row="1" Margin="3"  Name="body" VerticalAlignment="Top" IsReadOnly="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" />
+        <StackPanel Grid.Row="2" Height="37" HorizontalAlignment="Left" Name="stackPanel1" VerticalAlignment="Top" Width="278" Orientation="Horizontal" >
+            <Button Content="Ok" Height="23" Margin="5" Name="bOk" Width="75" Click="bOk_Click"/>
+            <Button Content="Exit" Height="23" Margin="5" Name="bExit" Width="75" Click="bExit_Click"/>
+            <Button Content="Submit Error Report" Height="23" Margin="5"  Name="bSubmit" Click="bSubmit_Click" IsEnabled="False" />
+        </StackPanel>
+        
+    </Grid>
+</Window>

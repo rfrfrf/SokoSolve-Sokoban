@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using SokoSolve.Common.Math;
@@ -17,8 +18,11 @@ namespace SoloSolve.UI.WPF.Game
         private Map map;
         private VectorInt start;
         private VectorInt end;
-        private Path path;
+        private Path pathMoves;
+        private Path pathCrateMoves;
         private Modes mode;
+        readonly Color cHover = Colors.Black;
+        private readonly Color cCrateHover = Colors.BlueViolet;
 
         public enum Modes
         {
@@ -52,6 +56,8 @@ namespace SoloSolve.UI.WPF.Game
             if (moves != null)
             {
                 map.AddMoves(moves);
+                start = end = VectorInt.Null;
+                mode = Modes.None;
             }
         }
 
@@ -60,52 +66,23 @@ namespace SoloSolve.UI.WPF.Game
             UpdatePath(v, false);
         }
 
-        private List<VectorInt> UpdatePath(VectorInt end, bool hover)
+        
+
+        private List<VectorInt> UpdatePath(VectorInt dest, bool hover)
         {
             var canvus = map.GetOverlayCanvus();
 
-            if (mode == Modes.Player)
+            if (mode == Modes.Player  || mode == Modes.None)
             {
-                var steps = MoveAnalysis.FindPlayerPath(map.Logic.Current, end);
+                var steps = MoveAnalysis.FindPlayerPath(map.Logic.Current, dest);
                 if (steps != null)
                 {
-                    if (path == null)
-                    {
-                        path = new Path()
-                        {
-                            StrokeThickness = 4
-                        };
-                        canvus.Children.Add(path);
-                    }
-
-                    var cHover = Colors.Black;
-
-                    path.StrokeDashCap = PenLineCap.Round;
-                    path.StrokeStartLineCap = PenLineCap.Triangle;
-                    path.StrokeDashArray = new DoubleCollection(new double[] { 0, 2 });
-                    path.Stroke = hover
-                                      ? new SolidColorBrush(Color.FromArgb(128, cHover.R, cHover.G, cHover.B))
-                                      : new SolidColorBrush(Colors.Orange);
-
-                    // Paint trail
-                    var segs = new List<PathSegment>();
-                    foreach (var step in steps.Skip(1))
-                    {
-                        var np = map.GetPhysFromLogical(step).ToWindowsPoint();
-                        segs.Add(new LineSegment(np, true));
-                    }
-
-                    var p = new PathGeometry(new List<PathFigure>()
-                {
-                    new PathFigure(map.GetPhysFromLogical(steps.First()).ToWindowsPoint(), segs, false)
-                });
-
-                    path.Data = p;
+                    DrawPathFromLogicalPostiions(hover, steps, canvus);
                 }
                 else
                 {
-                    canvus.Children.Remove(path);
-                    path = null;
+                    canvus.Children.Remove(pathMoves);
+                    pathMoves = null;
                 }
 
                 return steps;
@@ -113,75 +90,74 @@ namespace SoloSolve.UI.WPF.Game
 
             if (mode == Modes.Crate)
             {
-
-                var steps = MoveAnalysis.FindPlayerPath(map.Logic.Current, end);
-                if (steps != null)
+                var path = CrateAnalysis.FindCratePath(map.Logic.Current, start, dest);
+                if (path != null)
                 {
-                    if (path == null)
-                    {
-                        path = new Path()
-                        {
-                            StrokeThickness = 4
-                        };
-                        canvus.Children.Add(path);
-                    }
-
-                    var cHover = Colors.Black;
-
-                    path.StrokeDashCap = PenLineCap.Round;
-                    path.StrokeStartLineCap = PenLineCap.Triangle;
-                    path.StrokeDashArray = new DoubleCollection(new double[] { 0, 2 });
-                    path.Stroke = hover
-                                      ? new SolidColorBrush(Color.FromArgb(128, cHover.R, cHover.G, cHover.B))
-                                      : new SolidColorBrush(Colors.Orange);
-
-                    // Paint trail
-                    var segs = new List<PathSegment>();
-                    foreach (var step in steps.Skip(1))
-                    {
-                        var np = map.GetPhysFromLogical(step).ToWindowsPoint();
-                        segs.Add(new LineSegment(np, true));
-                    }
-
-                    var p = new PathGeometry(new List<PathFigure>()
-                {
-                    new PathFigure(map.GetPhysFromLogical(steps.First()).ToWindowsPoint(), segs, false)
-                });
-
-                    path.Data = p;
+                    DrawPathFromLogicalPostiions(hover, path.PlayerPath.MovesAsPosition.ToList(), canvus);
+                    return path.PlayerPath.MovesAsPosition.ToList();
                 }
-                else
-                {
-                    canvus.Children.Remove(path);
-                    path = null;
-                }
-
-                return steps;
             }
 
             return null;
         }
 
+        private void DrawPathFromLogicalPostiions(bool hover, List<VectorInt> steps, Canvas canvus)
+        {
+            if (pathMoves == null)
+            {
+                pathMoves = new Path()
+                {
+                    StrokeThickness = 4
+                };
+                canvus.Children.Add(pathMoves);
+            }
 
+            
 
+            if (mode == Modes.Player || mode == Modes.None)
+            {
+                pathMoves.StrokeDashCap = PenLineCap.Square;
+                pathMoves.StrokeStartLineCap = PenLineCap.Triangle;
+                pathMoves.StrokeDashArray = new DoubleCollection(new double[] { 0, 2 });
+                if (hover)
+                {
+                    pathMoves.Stroke = new SolidColorBrush(Color.FromArgb(128, cHover.R, cHover.G, cHover.B));
+                }
+                else
+                {
+                    pathMoves.Stroke = new SolidColorBrush(Colors.RosyBrown);
+                }
+            }
+            else 
+            {
+                pathMoves.StrokeDashCap = PenLineCap.Square;
+                pathMoves.StrokeStartLineCap = PenLineCap.Round;
+                pathMoves.StrokeDashArray = null;
+                if (hover)
+                {
+                    pathMoves.Stroke = new SolidColorBrush(Color.FromArgb(128, cCrateHover.R, cCrateHover.G, cCrateHover.B));
+                }
+                else
+                {
+                    pathMoves.Stroke = new LinearGradientBrush(Colors.DarkRed, Colors.PaleTurquoise, 45);
+                }
+            }
+            
+
+            // Paint trail
+            var segs = new List<PathSegment>();
+            foreach (var step in steps.Skip(1))
+            {
+                var np = map.GetPhysFromLogical(step).ToWindowsPoint();
+                segs.Add(new LineSegment(np, true));
+            }
+
+            var p = new PathGeometry(new List<PathFigure>()
+            {
+                new PathFigure(map.GetPhysFromLogical(steps.First()).ToWindowsPoint(), segs, false)
+            });
+
+            pathMoves.Data = p;
+        }
     }
-
-        ///// <summary>
-        ///// Move the crate
-        ///// </summary>
-        ///// <param name="startCrateLocation"></param>
-        ///// <param name="targetCrateLocation"></param>
-        //private void PerformCrateMovement(VectorInt startCrateLocation, VectorInt targetCrateLocation)
-        //{
-        //    CrateAnalysis.ShortestCratePath path = CrateAnalysis.FindCratePath(Logic.Current, startCrateLocation, targetCrateLocation);
-        //    if (path != null)
-        //    {
-        //        var p = Logic.Current.Player;
-        //        foreach (Direction step in path.PlayerPath.Moves)
-        //        {
-        //            p.Add(new VectorInt(step));
-        //            stack.Add(p);
-        //        }
-        //    }
-        //}
 }

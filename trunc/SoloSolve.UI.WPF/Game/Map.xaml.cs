@@ -336,8 +336,8 @@ namespace SoloSolve.UI.WPF.Game
         {
             var v = grid.Children[0] as Image;
 
-            var s = new VectorDouble((int)v.ActualWidth,
-                                  (int)v.ActualWidth);
+            var s = new VectorDouble(grid.ColumnDefinitions.First().ActualWidth,
+                                  grid.RowDefinitions.First().ActualHeight);
             return new VectorDouble(i.X, i.Y).Multiply(s).Add( s.Divide(new VectorDouble(2,2))) ;
         }
 
