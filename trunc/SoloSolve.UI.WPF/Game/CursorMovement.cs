@@ -47,6 +47,7 @@ namespace SoloSolve.UI.WPF.Game
             {
                 mode = Modes.Player;
             }
+            UpdatePath(start, true);
         }
 
         public void End(VectorInt e)
@@ -63,10 +64,8 @@ namespace SoloSolve.UI.WPF.Game
 
         public void Hover(VectorInt v)
         {
-            UpdatePath(v, false);
+            UpdatePath(v, true);
         }
-
-        
 
         private List<VectorInt> UpdatePath(VectorInt dest, bool hover)
         {
@@ -77,7 +76,7 @@ namespace SoloSolve.UI.WPF.Game
                 var steps = MoveAnalysis.FindPlayerPath(map.Logic.Current, dest);
                 if (steps != null)
                 {
-                    DrawPathFromLogicalPostiions(hover, steps, canvus);
+                    DrawPathFromLogicalPostions(hover, steps, canvus);
                 }
                 else
                 {
@@ -93,7 +92,8 @@ namespace SoloSolve.UI.WPF.Game
                 var path = CrateAnalysis.FindCratePath(map.Logic.Current, start, dest);
                 if (path != null)
                 {
-                    DrawPathFromLogicalPostiions(hover, path.PlayerPath.MovesAsPosition.ToList(), canvus);
+                    DrawPathFromLogicalPostions(hover, path.PlayerPath.MovesAsPosition.ToList(), canvus);
+                    DrawCratePathFromLogicalPostions(hover, path.CratePath.MovesAsPosition.ToList(), canvus);
                     return path.PlayerPath.MovesAsPosition.ToList();
                 }
             }
@@ -101,21 +101,48 @@ namespace SoloSolve.UI.WPF.Game
             return null;
         }
 
-        private void DrawPathFromLogicalPostiions(bool hover, List<VectorInt> steps, Canvas canvus)
+        private void DrawCratePathFromLogicalPostions(bool hover, List<VectorInt> cratePos, Canvas canvus)
+        {
+            if (pathCrateMoves == null)
+            {
+                pathCrateMoves = new Path();
+                canvus.Children.Add(pathCrateMoves);
+            }
+
+            pathCrateMoves.StrokeThickness = 4;
+            pathCrateMoves.StrokeDashCap = PenLineCap.Round;
+            pathCrateMoves.StrokeStartLineCap = PenLineCap.Round;
+            pathCrateMoves.StrokeDashArray = null;
+            pathCrateMoves.Stroke = new LinearGradientBrush(Colors.DarkOrange, Colors.Orange, 45);
+          
+
+            // Paint trail
+            var segs = new List<PathSegment>();
+            foreach (var step in cratePos)
+            {
+                var np = map.GetPhysFromLogical(step).ToWindowsPoint();
+                segs.Add(new LineSegment(np, true));
+            }
+
+            var p = new PathGeometry(new List<PathFigure>()
+            {
+                new PathFigure(map.GetPhysFromLogical(cratePos.First()).ToWindowsPoint(), segs, false)
+            });
+
+            pathCrateMoves.Data = p;
+        }
+
+        private void DrawPathFromLogicalPostions(bool hover, List<VectorInt> steps, Canvas canvus)
         {
             if (pathMoves == null)
             {
-                pathMoves = new Path()
-                {
-                    StrokeThickness = 4
-                };
+                pathMoves = new Path();
                 canvus.Children.Add(pathMoves);
             }
 
-            
-
             if (mode == Modes.Player || mode == Modes.None)
             {
+                pathMoves.StrokeThickness = 1;
                 pathMoves.StrokeDashCap = PenLineCap.Square;
                 pathMoves.StrokeStartLineCap = PenLineCap.Triangle;
                 pathMoves.StrokeDashArray = new DoubleCollection(new double[] { 0, 2 });
@@ -130,16 +157,17 @@ namespace SoloSolve.UI.WPF.Game
             }
             else 
             {
+                pathMoves.StrokeThickness = 2;
                 pathMoves.StrokeDashCap = PenLineCap.Square;
-                pathMoves.StrokeStartLineCap = PenLineCap.Round;
-                pathMoves.StrokeDashArray = null;
+                pathMoves.StrokeStartLineCap = PenLineCap.Triangle;
+                pathMoves.StrokeDashArray = new DoubleCollection(new double[] { 0, 2 });
                 if (hover)
                 {
                     pathMoves.Stroke = new SolidColorBrush(Color.FromArgb(128, cCrateHover.R, cCrateHover.G, cCrateHover.B));
                 }
                 else
                 {
-                    pathMoves.Stroke = new LinearGradientBrush(Colors.DarkRed, Colors.PaleTurquoise, 45);
+                    pathMoves.Stroke = new LinearGradientBrush(Colors.DarkRed, Colors.DarkOrchid, 45);
                 }
             }
             
